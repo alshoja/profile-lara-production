@@ -16,7 +16,7 @@ class CreateSectionSupervisorsTable extends Migration
         Schema::create('section_supervisors', function (Blueprint $table) {
             $table->id();
             $table->foreignId('section_id')->constrained('sections');
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('supervisor_id')->constrained('users');
             $table->timestamps();
         });
     }
