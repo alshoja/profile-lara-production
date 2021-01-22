@@ -12,7 +12,7 @@ class DepartmentSupervisorFactory extends Factory
      *
      * @var string
      */
-    protected $model = Department_supervisor::class;
+    protected $model = DepartmentSupervisor::class;
 
     /**
      * Define the model's default state.

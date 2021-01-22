@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class DirectorGdSeeder extends Seeder
+class DirectorDepartmentHeadRelationSeeder extends Seeder
 {
     /**
      * Run the database seeds.

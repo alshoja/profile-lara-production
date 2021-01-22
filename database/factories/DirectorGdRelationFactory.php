@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Section_supervisor;
+use App\Models\DirectorGdRelation;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class SectionSupervisorFactory extends Factory
+class DirectorGdRelationFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Section_supervisor::class;
+    protected $model = DirectorGdRelation::class;
 
     /**
      * Define the model's default state.

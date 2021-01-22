@@ -15,7 +15,7 @@ class CreateDepartmentHeadsTable extends Migration
     {
         Schema::create('department_heads', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('depart_head')->constrained('users');
+            $table->foreignId('depart_head_id')->constrained('users');
             $table->foreignId('dep_id')->constrained('departments');
             $table->timestamps();
         });

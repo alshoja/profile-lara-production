@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Director_gd;
+use App\Models\Department_heads;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class DirectorGdFactory extends Factory
+class DepartmentHeadFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Director_gd::class;
+    protected $model = DepartmentHead::class;
 
     /**
      * Define the model's default state.

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSectionSupervisorsTable extends Migration
+class CreateDirectorDepartmentRelationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateSectionSupervisorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('section_supervisors', function (Blueprint $table) {
+        Schema::create('director_department_head_relations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('section_id')->constrained('sections');
-            $table->foreignId('supervisor_id')->constrained('users');
+            $table->foreignId('director_id')->constrained('users');
+            $table->foreignId('depart_head_id')->constrained('users');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateSectionSupervisorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('section_supervisors');
+        Schema::dropIfExists('director_department_relations');
     }
 }

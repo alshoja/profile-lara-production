@@ -2,18 +2,18 @@
 
 namespace App\Models;
 
+use App\Models\User;
 use App\Models\Employ;
-use App\Models\Department;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Section extends Model
+class Department_supervisor extends Model
 {
     use HasFactory;
 
-    public function department()
+    public function user()
     {
-        return $this->hasOne(Department::class);
+        return $this->belongsTo(User::class);
     }
 
     public function employs()

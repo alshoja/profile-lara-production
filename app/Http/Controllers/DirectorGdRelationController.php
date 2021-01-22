@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Department_head_director;
+use App\Models\DirectorGdRelation;
 use Illuminate\Http\Request;
 
-class DepartmentHeadDirectorController extends Controller
+class DirectorGdRelationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class DepartmentHeadDirectorController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Department_head_director  $department_head_director
+     * @param  \App\Models\DirectorGdRelation  $directorGdRelation
      * @return \Illuminate\Http\Response
      */
-    public function show(Department_head_director $department_head_director)
+    public function show(DirectorGdRelation $directorGdRelation)
     {
         //
     }
@@ -52,10 +52,10 @@ class DepartmentHeadDirectorController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Department_head_director  $department_head_director
+     * @param  \App\Models\DirectorGdRelation  $directorGdRelation
      * @return \Illuminate\Http\Response
      */
-    public function edit(Department_head_director $department_head_director)
+    public function edit(DirectorGdRelation $directorGdRelation)
     {
         //
     }
@@ -64,10 +64,10 @@ class DepartmentHeadDirectorController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Department_head_director  $department_head_director
+     * @param  \App\Models\DirectorGdRelation  $directorGdRelation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Department_head_director $department_head_director)
+    public function update(Request $request, DirectorGdRelation $directorGdRelation)
     {
         //
     }
@@ -75,10 +75,10 @@ class DepartmentHeadDirectorController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Department_head_director  $department_head_director
+     * @param  \App\Models\DirectorGdRelation  $directorGdRelation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Department_head_director $department_head_director)
+    public function destroy(DirectorGdRelation $directorGdRelation)
     {
         //
     }
