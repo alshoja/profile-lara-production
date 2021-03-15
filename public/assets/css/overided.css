@@ -1,0 +1,17 @@
+.wizard-repeat-select {
+    width: 250px;
+}
+
+.btn-gradient-danger {
+    background: radial-gradient(50% 4073.72% at 50% 100%, #ee3e09 0%, #ec691d 100%);
+    box-shadow: 0px 5px 5px rgba(38, 208, 124, 0.2), 0px 8px 10px rgba(38, 208, 124, 0.14),
+        0px 3px 14px rgba(38, 208, 124, 0.11);
+    border-radius: 100px;
+}
+
+.btn-gradient-success {
+    background: radial-gradient(50% 4073.72% at 50% 100%, #07c880 0%, #0da06e 100%);
+    box-shadow: 0px 5px 5px rgba(38, 208, 124, 0.2), 0px 8px 10px rgba(38, 208, 124, 0.14),
+        0px 3px 14px rgba(38, 208, 124, 0.11);
+    border-radius: 100px;
+}
