@@ -1,9 +1,6 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
-        <!--begin::Notice-->
-
-        <!--end::Notice-->
         <!--begin::Card-->
         <div class="d-flex flex-column-fluid">
             <!--begin::Container-->
@@ -54,11 +51,11 @@
                                                 <thead>
                                                     <tr class="text-left text-uppercase">
                                                         <!-- <th class="pl-0" style="width: 20px">
-                      <label class="checkbox checkbox-lg checkbox-inline mr-2">
-                       <input type="checkbox" value="1" />
-                       <span></span>
-                      </label>
-                     </th> -->
+                          <label class="checkbox checkbox-lg checkbox-inline mr-2">
+                           <input type="checkbox" value="1" />
+                           <span></span>
+                          </label>
+                         </th> -->
                                                         <th class="pr-0" style="width: 50px">authors</th>
                                                         <th class="pr-0" style="min-width: 120px"></th>
                                                         <th class="pr-0" style="min-width: 120px">country</th>
@@ -69,40 +66,27 @@
                                                 </thead>
                                                 <tbody>
 
-                                                    @php
-                                                        $Inames = ['001-boy.svg', '018-girl-9.svg', '047-girl-25.svg', '014-girl-7.svg', '014-girl-7.svg'];
-                                                    @endphp
-                                                    @for ($modal = 0; $modal < 10; $modal++)
-                                                        @php
-                                                            $profile = $modal + 12;
-                                                            $decition = $modal + 32;
-                                                            $track = $modal + 55;
-                                                            $doc1 = $modal + 66;
-                                                            $doc2 = $modal + 88;
-                                                            $doc3 = $modal + 92;
-                                                            $note = $modal + 23;
-                                                            $random_keys = array_rand($Inames, 5);
-                                                        @endphp
+                                            
                                                         <tr>
                                                             <!-- <td class="pl-0 py-7">
-                       <label class="checkbox checkbox-lg checkbox-inline">
-                        <input type="checkbox" value="1" />
-                        <span></span>
-                       </label>
-                      </td> -->
+                           <label class="checkbox checkbox-lg checkbox-inline">
+                            <input type="checkbox" value="1" />
+                            <span></span>
+                           </label>
+                          </td> -->
                                                             <td class="pl-0">
                                                                 <div class="symbol symbol-50 symbol-light mt-1">
                                                                     <span class="symbol-label">
-                                                                        <img src="assets/media/svg/avatars/@php echo $Inames[$random_keys[0]] @endphp"
+                                                                        <img src="assets/media/svg/avatars/"
                                                                             class="h-75 align-self-end" alt="" />
                                                                     </span>
                                                                 </div>
                                                             </td>
                                                             <td class="pl-0">
                                                                 <a href="#"
-                                                                    onclick="addClass('@php  echo $profile + 1 @endphp ','profile_nav_item')"
+                                                                    
                                                                     data-toggle="modal"
-                                                                    data-target="#exampleModalSizeXl @php  echo $modal @endphp "
+                                                                    data-target="#exampleModalSizeXl"
                                                                     class="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">Brad
                                                                     Simmons</a>
                                                                 <span
@@ -232,8 +216,8 @@
                                                                                     <i class="flaticon-speech-bubble"></i>
                                                                                 </span>
                                                                                 <span data-toggle="modal"
-                                                                                    data-target="#exampleModalSizeXl @php  echo $modal @endphp "
-                                                                                    onclick='addClass(@php  echo $note + 6 @endphp ,"note_nav_item")'
+                                                                                    data-target="#exampleModalSizeXl"
+                                                                                  
                                                                                     class="navi-text">Reply to note</span>
                                                                             </a>
                                                                         </li>
@@ -243,8 +227,8 @@
                                                                                     <i class="flaticon-placeholder-3"></i>
                                                                                 </span>
                                                                                 <span data-toggle="modal"
-                                                                                    data-target="#exampleModalSizeXl @php  echo $modal @endphp "
-                                                                                    onclick='addClass(@php  echo $track + 3 @endphp ,"track_nav_item")'
+                                                                                    data-target="#exampleModalSizeXl"
+                                                                                    
                                                                                     class="navi-text">Track</span>
                                                                             </a>
                                                                         </li>
@@ -262,16 +246,16 @@
                                                             </td>
                                                         </tr>
 
-                                                        <div class="modal fade" id="exampleModalSizeXl @php echo $modal @endphp"
+                                                        <div class="modal fade" id="exampleModalSizeXl"
                                                             tabindex="-1" role="dialog"
-                                                            aria-labelledby="exampleModalSizeXl @php echo $modal @endphp"
+                                                            aria-labelledby="exampleModalSizeXl"
                                                             aria-hidden="true">
                                                             <div class="modal-dialog modal-dialog-centered modal-xl"
                                                                 role="document">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
                                                                         <h5 class="modal-title" id="exampleModalLabel">Modal
-                                                                            Title @php echo $modal @endphp</h5>
+                                                                            Title </h5>
                                                                         <button type="button" class="close"
                                                                             data-dismiss="modal" aria-label="Close">
                                                                             <i aria-hidden="true" class="ki ki-close"></i>
@@ -283,10 +267,10 @@
                                                                                 <ul
                                                                                     class="nav nav-light-danger nav-bold nav-pills">
                                                                                     <li class="nav-item">
-                                                                                        <a id="profile_nav_item @php echo $profile + 1 @endphp"
+                                                                                        <a id="profile_nav_item"
                                                                                             class="nav-link"
                                                                                             data-toggle="tab"
-                                                                                            href="#kt_tab_pane_5_ @php echo $profile + 1 @endphp">
+                                                                                            href="#kt_tab_pane_5_e">
                                                                                             <span class="nav-icon"><i
                                                                                                     class="flaticon-businesswoman"></i></span>
                                                                                             <span
@@ -296,7 +280,7 @@
                                                                                     <li class="nav-item">
                                                                                         <a class="nav-link"
                                                                                             data-toggle="tab"
-                                                                                            href="#kt_tab_pane_5_ @php echo $decition + 2 @endphp">
+                                                                                            href="#kt_tab_pane_5_de">
                                                                                             <span class="nav-icon"><i
                                                                                                     class="flaticon-information"></i></span>
                                                                                             <span
@@ -304,10 +288,10 @@
                                                                                         </a>
                                                                                     </li>
                                                                                     <li class="nav-item">
-                                                                                        <a id="track_nav_item @php echo $track + 3 @endphp"
+                                                                                        <a id="track_nav_item"
                                                                                             class="nav-link"
                                                                                             data-toggle="tab"
-                                                                                            href="#kt_tab_pane_5_ @php echo $track + 3 @endphp">
+                                                                                            href="#kt_tab_pane_5_track">
                                                                                             <span class="nav-icon"><i
                                                                                                     class="flaticon-placeholder-3"></i></span>
                                                                                             <span
@@ -328,20 +312,20 @@
                                                                                         <div class="dropdown-menu">
                                                                                             <a class="dropdown-item"
                                                                                                 data-toggle="tab"
-                                                                                                href="#kt_tab_pane_5_ @php echo $doc1 + 4 @endphp">Doc-1</a>
+                                                                                                href="#kt_tab_pane_5_doc1">Doc-1</a>
                                                                                             <a class="dropdown-item"
                                                                                                 data-toggle="tab"
-                                                                                                href="#kt_tab_pane_5_ @php echo $doc2 + 5 @endphp">Doc-2</a>
+                                                                                                href="#kt_tab_pane_5_doc2">Doc-2</a>
                                                                                             <a class="dropdown-item"
                                                                                                 data-toggle="tab"
-                                                                                                href="#kt_tab_pane_5_ @php echo $doc3 + 6 @endphp">Doc-3</a>
+                                                                                                href="#kt_tab_pane_5_doc3">Doc-3</a>
                                                                                         </div>
                                                                                     </li>
                                                                                     <li class="nav-item">
-                                                                                        <a id="note_nav_item @php echo $note + 6 @endphp"
+                                                                                        <a id="note_nav_item"
                                                                                             class="nav-link"
                                                                                             data-toggle="tab"
-                                                                                            href="#kt_tab_pane_5_ @php echo $note + 6 @endphp">
+                                                                                            href="#kt_tab_pane_5_note">
                                                                                             <span class="nav-icon"><i
                                                                                                     class="flaticon-speech-bubble-1"></i></span>
                                                                                             <span
@@ -354,10 +338,10 @@
                                                                         <div class="card-body">
                                                                             <div class="tab-content">
                                                                                 <div class="tab-pane fade show active"
-                                                                                    id="kt_tab_pane_5_ @php echo $profile + 1 @endphp"
+                                                                                    id="kt_tab_pane_5_e"
                                                                                     role="tabpanel"
-                                                                                    aria-labelledby="kt_tab_pane_5_ @php echo $profile + 1 @endphp">
-                                                                                    <p> @php echo $modal @endphp Eprofile Ipsum is
+                                                                                    aria-labelledby="kt_tab_pane_5_e">
+                                                                                    <p>Eprofile Ipsum is
                                                                                         simply dummy text of the printing
                                                                                         and typesetting industry. Lorem
                                                                                         Ipsum passages, and more recently
@@ -379,9 +363,9 @@
                                                                                         of Lorem Ipsum</p>
                                                                                 </div>
                                                                                 <div class="tab-pane fade"
-                                                                                    id="kt_tab_pane_5_ @php echo $decition + 2 @endphp"
+                                                                                    id="kt_tab_pane_5_de"
                                                                                     role="tabpanel"
-                                                                                    aria-labelledby="kt_tab_pane_5_ @php echo $decition + 2 @endphp">
+                                                                                    aria-labelledby="kt_tab_pane_5_de">
                                                                                     <div
                                                                                         class="card card-custom mb-8 mb-lg-0">
                                                                                         <div class="card-body">
@@ -414,10 +398,9 @@
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="tab-pane fade"
-                                                                                    id="kt_tab_pane_5_ @php echo $track + 3 @endphp"
+                                                                                    id="kt_tab_pane_5_track"
                                                                                     role="tabpanel"
-                                                                                    aria-labelledby="kt_tab_pane_5_ @php echo $track + 3 @endphp">
-                                                                                    <!-- <p> @php echo $modal @endphp Track Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p> -->
+                                                                                    aria-labelledby="kt_tab_pane_5_track">
 
                                                                                     <div style="margin-right: 80px;"
                                                                                         class="timeline timeline-5">
@@ -615,8 +598,7 @@
                                                                                                     <span
                                                                                                         class="font-weight-bolder text-danger">Hesham
                                                                                                         7:05 PM</span>
-                                                                                                    <p
-                                                                                                        class="font-weight-normal text-dark-50 pt-1">
+                                                                                                    <p class="font-weight-normal text-dark-50 pt-1">
                                                                                                         To start a blog,
                                                                                                         think of a topic
                                                                                                         about and first
@@ -631,30 +613,30 @@
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="tab-pane fade"
-                                                                                    id="kt_tab_pane_5_ @php echo $doc1 + 4 @endphp"
+                                                                                    id="kt_tab_pane_5_doc1"
                                                                                     role="tabpanel"
-                                                                                    aria-labelledby="kt_tab_pane_5_ @php echo $doc1 + 4 @endphp">
+                                                                                    aria-labelledby="kt_tab_pane_5_doc1">
                                                                                     <img alt="Pic"
                                                                                         src="assets/media/demos/demo1.png" />
                                                                                 </div>
                                                                                 <div class="tab-pane fade"
-                                                                                    id="kt_tab_pane_5_ @php echo $doc2 + 5 @endphp"
+                                                                                    id="kt_tab_pane_5_doc2"
                                                                                     role="tabpanel"
-                                                                                    aria-labelledby="kt_tab_pane_5_ @php echo $doc2 + 5 @endphp">
+                                                                                    aria-labelledby="kt_tab_pane_5_doc2">
                                                                                     <img alt="Pic"
                                                                                         src="assets/media/demos/demo2.png" />
                                                                                 </div>
                                                                                 <div class="tab-pane fade"
-                                                                                    id="kt_tab_pane_5_ @php echo $doc3 + 6 @endphp"
+                                                                                    id="kt_tab_pane_5_doc3"
                                                                                     role="tabpanel"
-                                                                                    aria-labelledby="kt_tab_pane_5_ @php echo $doc3 + 6 @endphp">
+                                                                                    aria-labelledby="kt_tab_pane_5_doc3">
                                                                                     <img alt="Pic"
                                                                                         src="assets/media/demos/demo3.png" />
                                                                                 </div>
                                                                                 <div class="tab-pane fade"
-                                                                                    id="kt_tab_pane_5_ @php echo $note + 6 @endphp"
+                                                                                    id="kt_tab_pane_5_note"
                                                                                     role="tabpanel"
-                                                                                    aria-labelledby="kt_tab_pane_5_ @php echo $note + 6 @endphp">
+                                                                                    aria-labelledby="kt_tab_pane_5_note">
                                                                                     <div class="timeline timeline-4">
                                                                                         <div class="timeline-bar"></div>
                                                                                         <div class="timeline-items">
@@ -748,7 +730,6 @@
                                                             </div>
                                                         </div>
                                                         <!--end::Modal-->
-                                                    @endfor
 
                                                 </tbody>
                                             </table>

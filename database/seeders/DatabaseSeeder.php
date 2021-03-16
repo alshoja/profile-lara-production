@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Database\Seeders\SectionSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +14,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $this->call([
+            DepartmentSeeder::class,
+            SectionSeeder::class,
+            EmploySeeder::class,
+            DepartmentHeadsSeeder::class,
+            DirectorGdRelationSeeder::class,
+            // DirectorDepartmentHeadRelationSeeder::class
+        ]);
     }
 }

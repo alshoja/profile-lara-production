@@ -7,7 +7,7 @@ use App\Models\Employ;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Department_supervisor extends Model
+class DepartmentSupervisor extends Model
 {
     use HasFactory;
 

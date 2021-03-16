@@ -33,6 +33,10 @@ Route::get('/add-profile', function () {
     return view('pages.add-profile');
 });
 
+Route::get('/add-user', function () {
+    return view('pages.add-user');
+});
+
 Route::get('/departments', function () {
     return view('pages.departments');
 });
@@ -44,6 +48,7 @@ Route::get('/list-users', function () {
 Route::get('/profile-details', function () {
     return view('pages.profile-detail');
 });
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

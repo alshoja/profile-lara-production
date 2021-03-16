@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
-use App\Models\Department_heads;
+use App\Models\User;
+use App\Models\Department;
+use App\Models\DepartmentHead;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class DepartmentHeadFactory extends Factory
@@ -22,7 +24,8 @@ class DepartmentHeadFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'depart_head_id' => User::factory()->state(['role' => 'department_head',]),
+            'dep_id' => Department::factory(),
         ];
     }
 }

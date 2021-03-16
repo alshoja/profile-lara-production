@@ -2,19 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Employ;
-use App\Models\Section;
-use App\Models\User;
+use App\Models\Department_supervisor;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class EmployFactory extends Factory
+class DepartmentSupervisorFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Employ::class;
+    protected $model = DepartmentSupervisor::class;
 
     /**
      * Define the model's default state.
@@ -24,8 +22,7 @@ class EmployFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::factory(),
-            'section_id' => Section::factory(),
+            //
         ];
     }
 }

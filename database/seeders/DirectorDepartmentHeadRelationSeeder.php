@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\DirectorDepartmentHeadRelation;
 
 class DirectorDepartmentHeadRelationSeeder extends Seeder
 {
@@ -13,6 +14,8 @@ class DirectorDepartmentHeadRelationSeeder extends Seeder
      */
     public function run()
     {
-        //
+        \App\Models\DirectorDepartmentHeadRelation::factory()
+            ->count(10)
+            ->create();
     }
 }
