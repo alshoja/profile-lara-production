@@ -10,40 +10,38 @@
                 <div class="card-header">
                     <h3 class="card-title">Create User</h3>
                 </div>
-                <form class="form">
+                <form class="form" method="POST" action="{{ route('register') }}">
                     <div class="card-body">
                         <div class="form-group row">
-                            <div class="col-lg-4">
+                            <div class="col-lg-3">
                                 <label>Full Name</label>
                                 <input type="email" class="form-control" placeholder="Enter full name" />
                                 <!-- <span class="form-text text-muted">Please enter your full name</span> -->
                             </div>
-                            <div class="col-lg-4">
-                                <label>Email</label>
-                                <input type="email" class="form-control" placeholder="Enter username or email" />
-                                <!-- <span class="form-text text-danger">Please enter a valid Email or Username</span> -->
-                            </div>
-                            <div class="col-lg-4">
+                            <div class="col-lg-3">
                                 <label>Contact</label>
                                 <input type="number" class="form-control" placeholder="Contact Number" />
                                 <!-- <span class="form-text text-danger">Please enter a valid Email or Username</span> -->
                             </div>
-                        </div>
-
-                        <div class="separator separator-dashed my-10"></div>
-
-                        <div class="form-group row">
-                            <div class="col-lg-4">
+                            <div class="col-lg-3">
+                                <label>Email</label>
+                                <input type="email" class="form-control" placeholder="Enter username or email" />
+                                <!-- <span class="form-text text-danger">Please enter a valid Email or Username</span> -->
+                            </div>
+                            <div class="col-lg-3">
                                 <label>Password</label>
-                                <input type="email" class="form-control" placeholder="Password" />
+                                <div class="input-icon">
+                                    <input type="password" id="password" class="form-control" placeholder="Password" />
+                                    <span onclick="togglePassword()"><i
+                                            class="text-dark-50 flaticon-eye icon-md"></i></span>
+                                </div>
                                 <!-- <span class="form-text text-muted">Please enter your full name</span> -->
                             </div>
-                            <div class="col-lg-4">
-                                <label>Confirm Password</label>
-                                <input type="email" class="form-control" placeholder="Confirm Password" />
-                                <!-- <span class="form-text text-danger">Confirm password does not match</span> -->
-                            </div>
                         </div>
+
+
+                        {{-- <div class="separator separator-dashed my-10"></div> --}}
+
                         <div class="separator separator-dashed my-10"></div>
                         <div class="form-group row">
                             <div class="col-lg-2">
@@ -51,7 +49,7 @@
                                 <div class="col-3">
                                     <span class="switch switch-outline switch-icon switch-danger">
                                         <label>
-                                            <input type="checkbox" checked="checked" name="select" />
+                                            <input type="checkbox" checked="checked" value="0" name="suspend_user" />
                                             <span></span>
                                         </label>
                                     </span>
@@ -63,7 +61,7 @@
                                 <div class="col-3">
                                     <span class="switch switch-outline switch-icon switch-success">
                                         <label>
-                                            <input type="checkbox" checked="checked" name="select" />
+                                            <input type="checkbox" checked="checked" value="1" name="can_add_user" />
                                             <span></span>
                                         </label>
                                     </span>
@@ -586,6 +584,17 @@
                 supervisor.classList.remove('text-primary');
                 admin.classList.remove('text-primary');
                 break;
+        }
+    }
+
+</script>
+<script>
+    function togglePassword() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
         }
     }
 
