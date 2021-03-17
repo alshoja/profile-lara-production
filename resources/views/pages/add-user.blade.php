@@ -10,32 +10,52 @@
                 <div class="card-header">
                     <h3 class="card-title">Create User</h3>
                 </div>
-                <form class="form" method="POST" action="{{ route('register') }}">
+                <form class="form" method="POST" enctype="multipart/form-data" action="/user">
+                    @csrf
                     <div class="card-body">
                         <div class="form-group row">
                             <div class="col-lg-3">
                                 <label>Full Name</label>
-                                <input type="email" class="form-control" placeholder="Enter full name" />
+                                <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                    value="{{ old('name') }}" required name="name" autocomplete="name"
+                                    placeholder="Enter full name" />
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                                 <!-- <span class="form-text text-muted">Please enter your full name</span> -->
                             </div>
                             <div class="col-lg-3">
                                 <label>Contact</label>
-                                <input type="number" class="form-control" placeholder="Contact Number" />
+                                <input type="number" value="{{ old('contact') }}"  name="contact" class="form-control" placeholder="Contact Number" />
                                 <!-- <span class="form-text text-danger">Please enter a valid Email or Username</span> -->
                             </div>
                             <div class="col-lg-3">
                                 <label>Email</label>
-                                <input type="email" class="form-control" placeholder="Enter username or email" />
+                                <input type="email" name="email"  value="{{ old('email') }}"  class="form-control @error('email') is-invalid @enderror"
+                                    placeholder="Enter username or email" />
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                                 <!-- <span class="form-text text-danger">Please enter a valid Email or Username</span> -->
                             </div>
+
                             <div class="col-lg-3">
                                 <label>Password</label>
                                 <div class="input-icon">
-                                    <input type="password" id="password" class="form-control" placeholder="Password" />
+                                    <input  name="password" value="{{ old('password') }}"  type="password" id="password"
+                                        class="form-control @error('password') is-invalid @enderror"
+                                        placeholder="Password" />
                                     <span onclick="togglePassword()"><i
                                             class="text-dark-50 flaticon-eye icon-md"></i></span>
                                 </div>
-                                <!-- <span class="form-text text-muted">Please enter your full name</span> -->
+                                @error('password')
+                                    <span class="form-text text-danger ">   <strong>{{ $message }}</strong></span>
+                                @enderror
+
                             </div>
                         </div>
 
@@ -49,7 +69,7 @@
                                 <div class="col-3">
                                     <span class="switch switch-outline switch-icon switch-danger">
                                         <label>
-                                            <input type="checkbox" checked="checked" value="0" name="suspend_user" />
+                                            <input type="checkbox"  value="1"  name="suspend" />
                                             <span></span>
                                         </label>
                                     </span>
@@ -61,7 +81,7 @@
                                 <div class="col-3">
                                     <span class="switch switch-outline switch-icon switch-success">
                                         <label>
-                                            <input type="checkbox" checked="checked" value="1" name="can_add_user" />
+                                            <input value="1" type="checkbox" checked="checked" name="can_add_user" />
                                             <span></span>
                                         </label>
                                     </span>
@@ -81,7 +101,7 @@
                                         data-action="change" data-toggle="tooltip" title=""
                                         data-original-title="Change avatar">
                                         <i class="fa fa-pen icon-sm text-muted"></i>
-                                        <input type="file" name="profile_avatar" accept=".png, .jpg, .jpeg" />
+                                        <input type="file" name="image" accept=".png, .jpg, .jpeg" />
                                         <input type="hidden" name="profile_avatar_remove" />
                                     </label>
                                     <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
@@ -94,6 +114,12 @@
                                     </span>
                                 </div>
                                 <span class="form-text text-muted">Profile Picture</span>
+                                
+                                @error('image')
+                                    <span class="form-text text-danger" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                                 <div class="d-md-none mb-2"></div>
                             </div>
                             <div class="col-md-2">
@@ -105,7 +131,7 @@
                                         data-action="change" data-toggle="tooltip" title=""
                                         data-original-title="Change avatar">
                                         <i class="fa fa-pen icon-sm text-muted"></i>
-                                        <input type="file" name="profile_avatar" accept=".png, .jpg, .jpeg" />
+                                        <input type="file" name="sign" accept=".png, .jpg, .jpeg" />
                                         <input type="hidden" name="profile_avatar_remove" />
                                     </label>
                                     <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
@@ -118,6 +144,11 @@
                                     </span>
                                 </div>
                                 <span class="form-text text-muted">Sign</span>
+                                @error('sign')
+                                    <span class="form-text text-danger" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                                 <div class="d-md-none mb-2"></div>
                             </div>
                         </div>
@@ -128,42 +159,47 @@
                                 <!-- <label>User Role</label> -->
                                 <div class="radio-inline">
                                     <label id="admin-label" class="radio radio-solid text-primary">
-                                        <input type="radio" onclick="toggleDepartment('admin')" name="example_2"
-                                            checked="checked" value="2" />
+                                        <input type="radio" onclick="toggleDepartment('admin')" name="role"
+                                            checked="checked" value="admin" />
                                         <span></span>
                                         Admin
                                     </label>
                                     <label id="gd-label" class="radio radio-solid">
-                                        <input type="radio" onclick="toggleDepartment('gd')" name="example_2" value="2" />
+                                        <input type="radio"  name="role" value="general_director" />
                                         <span></span>
                                         General Director
                                     </label>
                                     <label id="director-label" class="radio radio-solid">
-                                        <input type="radio" onclick="toggleDepartment('director')" name="example_2"
-                                            value="2" />
+                                        <input type="radio" onclick="toggleDepartment('director')" name="role"
+                                            value="director" />
                                         <span></span>
                                         Director
                                     </label>
                                     <label id="dh-label" class="radio radio-solid">
-                                        <input type="radio" onclick="toggleDepartment('dh')" name="example_2" value="2" />
+                                        <input type="radio" onclick="toggleDepartment('dh')" name="role" value="department_head" />
                                         <span></span>
                                         Department Head
                                     </label>
                                     <label id="supervisor-label" class="radio radio-solid">
-                                        <input type="radio" onclick="toggleDepartment('super')" name="example_2"
-                                            value="2" />
+                                        <input type="radio" onclick="toggleDepartment('super')" name="role"
+                                            value="supervisor" />
                                         <span></span>
                                         Supervisor
                                     </label>
                                     <label id="employ-label" class="radio radio-solid">
-                                        <input type="radio" onclick="toggleDepartment('employ')" name="example_2"
-                                            value="2" />
+                                        <input type="radio" onclick="toggleDepartment('employ')" name="role"
+                                            value="employ" />
                                         <span></span>
                                         Employ
                                     </label>
                                 </div>
                                 <!-- <span class="form-text text-muted">Please select user group</span> -->
                             </div>
+                            @error('role')
+                                <span class="form-text text-danger" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="separator separator-dashed my-10"></div>
                         <div id="group-row" class="form-group row d-none">
@@ -454,7 +490,7 @@
                     <div class="card-footer">
                         <div class="row">
                             <div class="col-lg-6">
-                                <button type="reset" class="btn btn-primary btn-gradient-success  mr-2">Save</button>
+                                <input type="submit" value="save" class="btn btn-primary btn-gradient-success  mr-2">
                                 <button type="reset" class="btn btn-secondary">Cancel</button>
                             </div>
                         </div>

@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use App\Models\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Symfony\Component\HttpFoundation\Request;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -54,8 +57,8 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'role' => ['required', 'string'],
-            'image' => 'mimes:jpg,bmp,png',
-            'sign' => 'mimes:jpg,bmp,png'
+            'image' => 'required|mimes:jpg,png|max:2048',
+            'sign' => 'required|mimes:jpg,png|max:2048',
         ]);
     }
 
@@ -72,9 +75,15 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'role' => $data['role'],
             'image' => $data['image'],
-            'sign' => $data['sign'],
+            // 'sign' => $this->fileUploadPost(Request $request),
             'contact' => $data['contact'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+    public function fileUploadPost(Request $request)
+    {
+        $fileName = time() . '.' . $request->file->extension();
+        $request->file->move(public_path('uploads'), $fileName);
+        return $fileName;
     }
 }

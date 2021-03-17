@@ -268,7 +268,7 @@
                                                                                     class="nav nav-light-danger nav-bold nav-pills">
                                                                                     <li class="nav-item">
                                                                                         <a id="profile_nav_item"
-                                                                                            class="nav-link"
+                                                                                            class="nav-link active"
                                                                                             data-toggle="tab"
                                                                                             href="#kt_tab_pane_5_e">
                                                                                             <span class="nav-icon"><i
