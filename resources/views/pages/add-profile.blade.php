@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <link href="assets/css/pages/wizard/wizard-1.rtl.css" rel="stylesheet" type="text/css" />
+    <link href="{{asset('assets/css/pages/wizard/wizard-1.rtl.css')}}" rel="stylesheet" type="text/css" />
 
     <!--begin::Content-->
     <div class="d-flex flex-column-fluid">
@@ -1046,6 +1046,6 @@
     <!--end::Content-->
 @endsection
 @push('scripts')
-    <script src="assets/js/pages/crud/forms/widgets/form-repeater.js"></script>
-    <script src="assets/js/pages/custom/wizard/wizard-1.js"></script>
+    <script src="{{asset('assets/js/pages/crud/forms/widgets/form-repeater.js')}}"></script>
+    <script src="{{asset('assets/js/pages/custom/wizard/wizard-1.js')}}"></script>
 @endpush('scripts')

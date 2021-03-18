@@ -91,7 +91,7 @@
                                     <!--begin::User-->
                                     <!--begin::Actions-->
                                     <div class="my-lg-0 my-1">
-                                        <a href="{{ url('/profile-detail/' . $user->id) }}"
+                                        <a href="{{ url('user/profile-detail/' . $user->id) }}"
                                             class="btn btn-sm btn-success btn-gradient-success font-weight-bolder text-uppercase">
                                             More</a>
                                         {{-- <a href="{{ url('/user/' . $user->id) }}"

@@ -149,7 +149,7 @@
                                 <h4 class="menu-text">Manage Application</h4>
                                 <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                             </li>
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                            <li class="menu-item menu-item-submenu {{ Request::is('profile/*') ? 'menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
                                 <a href="javascript:;" class="menu-link menu-toggle">
                                     <span class="svg-icon menu-icon svg-icon-2x">
                                         <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Files\Folder-error.svg--><svg
@@ -179,8 +179,8 @@
                                                 <span class="menu-text">Profile</span>
                                             </span>
                                         </li>
-                                        <li class="menu-item" aria-haspopup="true">
-                                            <a href="{{ url('/add-profile') }}" class="menu-link">
+                                        <li class="menu-item {{ Request::is('profile/add-profile') ? 'menu-item-active' : '' }}" aria-haspopup="true">
+                                            <a href="{{ url('profile/add-profile') }}" class="menu-link">
                                                 <i class="menu-bullet menu-bullet-dot">
                                                     <span></span>
                                                 </i>
@@ -188,16 +188,16 @@
                                             </a>
                                         </li>
 
-                                        <li class="menu-item" aria-haspopup="true">
-                                            <a href="{{ url('/drafts') }}" class="menu-link">
+                                        <li class="menu-item {{ Request::is('profile/drafts') ? 'menu-item-active' : '' }}" aria-haspopup="true">
+                                            <a href="{{ url('profile/drafts') }}" class="menu-link">
                                                 <i class="menu-bullet menu-bullet-dot">
                                                     <span></span>
                                                 </i>
                                                 <span class="menu-text">Drafts</span>
                                             </a>
                                         </li>
-                                        <li class="menu-item" aria-haspopup="true">
-                                            <a href="{{ url('/track') }}" class="menu-link">
+                                        <li class="menu-item {{ Request::is('profile/track') ? 'menu-item-active' : '' }}" aria-haspopup="true">
+                                            <a href="{{ url('profile/track') }}" class="menu-link">
                                                 <i class="menu-bullet menu-bullet-dot">
                                                     <span></span>
                                                 </i>
@@ -208,7 +208,7 @@
                                 </div>
                             </li>
 
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                            <li class="menu-item menu-item-submenu {{ Request::is('user/*') ? 'menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
                                 <a href="javascript:;" class="menu-link menu-toggle">
                                     <span class="svg-icon menu-icon svg-icon-2x">
                                         <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\General\User.svg--><svg
@@ -230,11 +230,11 @@
                                     <span class="menu-text"> Users</span>
                                     <i class="menu-arrow"></i>
                                 </a>
-                                <div class="menu-submenu">
+                                <div class="menu-submenu ">
                                     <i class="menu-arrow"></i>
                                     <ul class="menu-subnav">
-                                        <li class="menu-item" aria-haspopup="true">
-                                            <a href="{{ url('/add-user') }}" class="menu-link">
+                                        <li class="menu-item {{ Request::is('user/add-user') ? 'menu-item-active' : '' }}" aria-haspopup="true">
+                                            <a href="{{ url('user/add-user') }}" class="menu-link">
                                                 <i class="menu-bullet menu-bullet-dot">
                                                     <span></span>
                                                 </i>
@@ -246,8 +246,8 @@
                                                 <span class="menu-text">List all</span>
                                             </span>
                                         </li>
-                                        <li class="menu-item" aria-haspopup="true">
-                                            <a href="{{ url('/list-users') }}" class="menu-link">
+                                        <li class="menu-item {{ Request::is('user/list-users') ? 'menu-item-active' : '' }}" aria-haspopup="true">
+                                            <a href="{{ url('user/list-users') }}" class="menu-link">
                                                 <i class="menu-bullet menu-bullet-dot">
                                                     <span></span>
                                                 </i>
