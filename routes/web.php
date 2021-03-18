@@ -34,23 +34,22 @@ Route::get('/add-profile', function () {
     return view('pages.add-profile');
 });
 
-Route::get('/add-user', function () {
-    return view('pages.add-user');
-});
 
 Route::get('/departments', function () {
     return view('pages.departments');
 });
 
-Route::get('/list-users', function () {
-    return view('pages.list-users');
-});
-
-Route::get('/profile-details', function () {
-    return view('pages.profile-detail');
-});
 
 Auth::routes();
 
+// Dashboard
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// User Management 
+Route::get('/list-users', [App\Http\Controllers\UserController::class, 'index'])->name('List users');
+Route::get('/add-user', [App\Http\Controllers\UserController::class, 'create'])->name('add user');
+Route::get('/profile-detail/{id}', [App\Http\Controllers\UserController::class, 'edit'])->name('edit user');
 Route::post('/user', [App\Http\Controllers\UserController::class, 'store']);
+Route::post('/update/user/{id}', [App\Http\Controllers\UserController::class, 'update']);
+Route::post('account/change/password', [App\Http\Controllers\UserController::class, 'changePassword']);
+Route::delete('/user/{id}', [App\Http\Controllers\UserController::class, 'destroy']);

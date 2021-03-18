@@ -16,30 +16,31 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
     <!--end::Fonts-->
     <!--begin::Page Vendors Styles(used by this page)-->
-    <link href="assets/plugins/custom/uppy/uppy.bundle.rtl.css" rel="stylesheet" type="text/css" />
-    <link href="assets/plugins/custom/fullcalendar/fullcalendar.bundle.rtl.css" rel="stylesheet"
+    <link href="{{ asset('assets/plugins/custom/uppy/uppy.bundle.rtl.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/plugins/custom/fullcalendar/fullcalendar.bundle.rtl.css') }}" rel="stylesheet"
         type="text/css" />
     <!--end::Page Vendors Styles-->
     <!--begin::Global Theme Styles(used by all pages)-->
-    <link href="assets/plugins/global/plugins.bundle.rtl.css" rel="stylesheet" type="text/css" />
-    <link href="assets/plugins/custom/prismjs/prismjs.bundle.rtl.css" rel="stylesheet"
+    <link href="{{ asset('assets/plugins/global/plugins.bundle.rtl.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/plugins/custom/prismjs/prismjs.bundle.rtl.css') }}" rel="stylesheet"
         type="text/css" />
-    <link href="assets/css/style.bundle.rtl.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/overided.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/style.bundle.rtl.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/overided.css') }}" rel="stylesheet" type="text/css" />
 
     <!--end::Global Theme Styles-->
     <!--begin::Layout Themes(used by all pages)-->
-    <link href="assets/css/themes/layout/header/base/light.rtl.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/themes/layout/header/menu/light.rtl.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/themes/layout/brand/dark.rtl.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/themes/layout/aside/dark.rtl.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/themes/layout/header/base/light.rtl.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/themes/layout/header/menu/light.rtl.css') }}" rel="stylesheet"
+        type="text/css" />
+    <link href="{{ asset('assets/css/themes/layout/brand/dark.rtl.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/themes/layout/aside/dark.rtl.css') }}" rel="stylesheet" type="text/css" />
 
     {{-- login css --}}
-    <link href="assets/css/pages/login/classic/login-3.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/pages/login/classic/login-3.css') }}" rel="stylesheet" type="text/css" />
 
 
 
     <!--end::Layout Themes-->
-    <link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+    <link rel="shortcut icon" href="{{ asset('assets/media/logos/favicon.iconm') }}" />
 </head>
 <!--end::Head-->

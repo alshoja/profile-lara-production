@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Rules\MatchOldPassword;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -15,7 +16,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::orderBy('id', 'DESC')->paginate(15);
+        return view('pages.list-users', compact('users'));
     }
 
     /**
@@ -25,7 +27,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.add-user');
     }
 
     /**
@@ -78,7 +80,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('pages.profile-detail', compact('user'));
     }
 
     /**
@@ -90,7 +93,45 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'role' => ['required', 'string'],
+        ]);
+        $user = User::findOrFail($id);
+        $user->name = $request->name;
+        $user->contact = $request->contact;
+        $user->role = $request->role;
+
+        if ($request->file('image')) {
+            $user->image = $request->file('image')->store('images');
+        }
+        if ($request->file('sign')) {
+            $user->sign = $request->file('sign')->store('signs');
+        }
+
+        $user->suspended = $request->suspended;
+        $user->can_add_user = $request->can_add_user;
+        $user->save();
+        return back()->with('message', 'User successfully updated');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function changePassword(Request $request)
+    {
+        // dd($request);
+        $request->validate([
+            'current_password' => ['required', new MatchOldPassword],
+            'new_password' => ['required'],
+            'confirm_password' => ['same:new_password'],
+        ]);
+
+        User::find(auth()->user()->id)->update(['password' => Hash::make($request->new_password)]);
+        return back()->with('message', 'Password updated');
     }
 
     /**
@@ -101,6 +142,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::destroy($id);
+        return back()->with('message', 'User Deleted');
     }
 }
