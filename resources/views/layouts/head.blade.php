@@ -41,6 +41,6 @@
 
 
     <!--end::Layout Themes-->
-    <link rel="shortcut icon" href="{{ asset('assets/media/logos/favicon.iconm') }}" />
+    <link rel="shortcut icon" href="{{ asset('assets/media/logos/favicon.ico') }}" />
 </head>
 <!--end::Head-->
