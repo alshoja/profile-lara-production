@@ -66,7 +66,7 @@
                                                         </g>
                                                     </svg>
                                                     <!--end::Svg Icon-->
-                                                </span>{{ $user->role }}</a>
+                                                </span>{{strtoupper($user->role) }}</a>
                                             <a href="#" class="text-muted text-hover-primary font-weight-bold">
                                                 <span class="svg-icon svg-icon-md svg-icon-gray-500 mr-1">
                                                     <!--begin::Svg Icon | path:assets/media/svg/icons/Map/Marker2.svg-->
@@ -92,7 +92,7 @@
                                     <!--begin::Actions-->
                                     <div class="my-lg-0 my-1">
                                         <a href="{{ url('/profile-detail/' . $user->id) }}"
-                                            class="btn btn-sm btn-success btn-gradient-success font-weight-bolder text-uppercase">Show
+                                            class="btn btn-sm btn-success btn-gradient-success font-weight-bolder text-uppercase">
                                             More</a>
                                         {{-- <a href="{{ url('/user/' . $user->id) }}"
                                             class="btn btn-sm btn-danger btn-gradient-danger font-weight-bolder text-uppercase">Delete</a> --}}
@@ -181,7 +181,6 @@
                     </div>
                 </div>
             @endforeach
-
             {{-- @php 	} @endphp --}}
             <!--end::Card-->
             <!--begin::Pagination-->
@@ -190,7 +189,9 @@
                     <!--begin::Pagination-->
                     <div class="d-flex justify-content-between align-items-center flex-wrap">
                         <div class="d-flex flex-wrap mr-3">
-                            <a href="#" class="btn btn-icon btn-sm btn-light-primary mr-2 my-1">
+            {{ $users->links() }}
+
+                            {{-- <a href="#" class="btn btn-icon btn-sm btn-light-primary mr-2 my-1">
                                 <i class="ki ki-bold-double-arrow-back icon-xs"></i>
                             </a>
                             <a href="#" class="btn btn-icon btn-sm btn-light-primary mr-2 my-1">
@@ -209,9 +210,9 @@
                             </a>
                             <a href="#" class="btn btn-icon btn-sm btn-light-primary mr-2 my-1">
                                 <i class="ki ki-bold-double-arrow-next icon-xs"></i>
-                            </a>
+                            </a> --}}
                         </div>
-                        <div class="d-flex align-items-center">
+                        {{-- <div class="d-flex align-items-center">
                             <select
                                 class="form-control form-control-sm text-primary font-weight-bold mr-4 border-0 bg-light-primary"
                                 style="width: 75px;">
@@ -222,7 +223,7 @@
                                 <option value="100">100</option>
                             </select>
                             <span class="text-muted">Displaying 10 of 230 records</span>
-                        </div>
+                        </div> --}}
                     </div>
                     <!--end:: Pagination-->
                 </div>

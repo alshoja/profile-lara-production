@@ -90,7 +90,7 @@
                         data-menu-dropdown-timeout="500">
                         <!--begin::Menu Nav-->
                         <ul class="menu-nav">
-                            <li class="menu-item menu-item-active" aria-haspopup="true">
+                            <li class="menu-item {{ Request::is('home') ? ' menu-item-active' : '' }}" aria-haspopup="true">
                                 <a href={{ url('/home') }} class="menu-link">
                                     <span class="svg-icon menu-icon svg-icon-2x">
                                         <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Communication\Dial-numbers.svg--><svg
@@ -119,7 +119,7 @@
                                     <span class="menu-text">Dashboard</span>
                                 </a>
                             </li>
-                            <li class="menu-item" aria-haspopup="true">
+                            <li class="menu-item {{ Request::is('inbox') ? 'menu-item-active' : '' }}" aria-haspopup="true">
                                 <a href="{{ url('/inbox') }}" class="menu-link">
                                     <span class="svg-icon menu-icon">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Layers.svg-->
@@ -262,7 +262,7 @@
                                 <h4 class="menu-text">Settings</h4>
                                 <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                             </li>
-                            <li class="menu-item" aria-haspopup="true">
+                            <li class="menu-item {{ Request::is('departments') ? ' menu-item-active' : '' }}" aria-haspopup="true">
                                 <a href="{{ url('/departments') }}" class="menu-link">
                                     <span class="svg-icon menu-icon svg-icon-2x">
                                         <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Home\Door-open.svg--><svg

@@ -65,7 +65,7 @@
                                                     </g>
                                                 </svg>
                                                 <!--end::Svg Icon-->
-                                            </span>{{ $user->role }}</a>
+                                            </span>{{ strtoupper($user->role) }}</a>
                                         <a href="#" class="text-muted text-hover-primary font-weight-bold">
                                             <span class="svg-icon svg-icon-md svg-icon-gray-500 mr-1">
                                                 <!--begin::Svg Icon | path:assets/media/svg/icons/Map/Marker2.svg-->
