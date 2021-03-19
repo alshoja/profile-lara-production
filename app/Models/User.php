@@ -20,7 +20,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role'
+        'role',
+        'image',
+        'sign',
+        'can_add_user',
+        'suspended'
     ];
 
     /**

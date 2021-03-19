@@ -13,6 +13,8 @@ class ProfileSeeder extends Seeder
      */
     public function run()
     {
-        //
+        \App\Models\Profile::factory()
+            ->count(10)
+            ->create();
     }
 }

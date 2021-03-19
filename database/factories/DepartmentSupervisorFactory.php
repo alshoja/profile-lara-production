@@ -2,7 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\Department_supervisor;
+use App\Models\User;
+use App\Models\Department;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class DepartmentSupervisorFactory extends Factory
@@ -22,7 +23,8 @@ class DepartmentSupervisorFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'supervisor_id' => User::factory()->state(['role' => 'supervisor',]),
+            'dep_id' => Department::factory(),
         ];
     }
 }

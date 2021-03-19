@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use App\Models\DirectorDepartmentRelation;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -22,7 +23,8 @@ class DirectorDepartmentHeadRelationFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'director_id' => User::factory()->state(['role' => 'director']),
+            'depart_head_id' => User::factory()->state(['role' => 'depart_head']),
         ];
     }
 }

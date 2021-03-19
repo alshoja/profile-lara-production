@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use App\Models\DirectorGdRelation;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -22,7 +23,8 @@ class DirectorGdRelationFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'director_id' => User::factory()->state(['role' => 'director']),
+            'general_director_id' => User::factory()->state(['role' => 'general_director']),
         ];
     }
 }

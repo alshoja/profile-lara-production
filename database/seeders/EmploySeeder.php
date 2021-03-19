@@ -13,6 +13,8 @@ class EmploySeeder extends Seeder
      */
     public function run()
     {
-        //
+        \App\Models\Employ::factory()
+            ->count(10)
+            ->create();
     }
 }
