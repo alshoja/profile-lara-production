@@ -13,6 +13,8 @@ class DepartmentSupervisorSeeder extends Seeder
      */
     public function run()
     {
-        //
+        \App\Models\DepartmentSupervisor::factory()
+        ->count(10)
+        ->create();
     }
 }

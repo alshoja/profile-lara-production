@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DepartmentHeadsSeeder extends Seeder
@@ -13,6 +14,7 @@ class DepartmentHeadsSeeder extends Seeder
      */
     public function run()
     {
-        //
+        \App\Models\DepartmentHead::factory(10)
+            ->create();
     }
 }

@@ -13,6 +13,8 @@ class DirectorGdRelationSeeder extends Seeder
      */
     public function run()
     {
-        //
+        \App\Models\DirectorGdRelation::factory()
+            ->count(10)
+            ->create();
     }
 }
