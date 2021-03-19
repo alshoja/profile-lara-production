@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Profile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class ProfileController extends Controller
 {
@@ -81,5 +82,17 @@ class ProfileController extends Controller
     public function destroy(Profile $profiles)
     {
         //
+    }
+    /**
+     * Render the specified PDF.
+     *
+     * @param  \App\Models\Profiles  $profiles
+     * @return \Illuminate\Http\Response
+     */
+    public function renderPdf(Profile $profiles)
+    {
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadHTML('<h1>Test</h1>');
+        return $pdf->stream();
     }
 }
