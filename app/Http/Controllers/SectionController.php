@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\SectionCollection;
 use App\Models\Section;
+use App\Models\Department;
 use Illuminate\Http\Request;
 
 class SectionController extends Controller
@@ -12,9 +14,16 @@ class SectionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+
+        $query = $request->get('query');
+        $id = $query['dep_id'];
+        $pagination = $request->get('pagination');
+        $page = $pagination['page'];
+        $perpage =  $pagination['perpage'];
+        $resource = Section::where('dep_id', $id)->paginate($perpage, ['*'], 'page', $page);
+        return new SectionCollection($resource);
     }
 
     /**

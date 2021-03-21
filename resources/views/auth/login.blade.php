@@ -133,7 +133,8 @@
     </div>
     <!--end::Main-->
     <script>
-        var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";
+        // var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";
+        var HOST_URL = "{{ url('/') }}"
 
     </script>
     <!--begin::Global Config(global config for global JS scripts)-->

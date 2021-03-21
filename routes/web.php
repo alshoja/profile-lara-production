@@ -53,3 +53,7 @@ Route::post('/user', [App\Http\Controllers\UserController::class, 'store']);
 Route::post('/update/user/{id}', [App\Http\Controllers\UserController::class, 'update']);
 Route::post('account/change/password', [App\Http\Controllers\UserController::class, 'changePassword']);
 Route::delete('/user/{id}', [App\Http\Controllers\UserController::class, 'destroy']);
+
+Route::post('list/departments', [App\Http\Controllers\DepartmentController::class, 'list']);
+Route::post('list/sections', [App\Http\Controllers\SectionController::class, 'index']);
+

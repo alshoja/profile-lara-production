@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Department;
 use Illuminate\Http\Request;
+use App\Http\Resources\DepartmentResource;
+use App\Http\Resources\DepartmentCollection;
 
 class DepartmentController extends Controller
 {
@@ -22,9 +24,16 @@ class DepartmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function list(Request $request)
     {
-        //
+        $pagination = $request->get('pagination');
+        $sort = $request->get('sort');
+        $field = $sort['field'];
+        $sortby = $sort['sort'];
+        $page = $pagination['page'];
+        $perpage =  $pagination['perpage'];
+        $resource = Department::orderBy($field, $sortby)->paginate($perpage, ['*'], 'page', $page);
+        return new DepartmentCollection($resource);
     }
 
     /**

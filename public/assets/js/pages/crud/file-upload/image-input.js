@@ -36,15 +36,15 @@ var KTImageInputDemo = function () {
             });
 		});
 
-		avatar3.on('remove', function(imageInput) {
-			swal.fire({
-                title: 'Image successfully removed !',
-                type: 'error',
-                buttonsStyling: false,
-                confirmButtonText: 'Got it!',
-                confirmButtonClass: 'btn btn-primary font-weight-bold'
-            });
-		});
+		// avatar3.on('remove', function(imageInput) {
+		// 	swal.fire({
+        //         title: 'Image successfully removed !',
+        //         type: 'error',
+        //         buttonsStyling: false,
+        //         confirmButtonText: 'Got it!',
+        //         confirmButtonClass: 'btn btn-primary font-weight-bold'
+        //     });
+		// });
 
 		// // Example 5
 		// var avatar5 = new KTImageInput('kt_image_5');
