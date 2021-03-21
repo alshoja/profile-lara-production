@@ -16,7 +16,7 @@ class CreateSectionsTable extends Migration
         Schema::create('sections', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('dep_id')->constrained('departments');
+            $table->foreignId('dep_id')->constrained('departments')->onDelete('cascade');;
             $table->timestamps();
         });
     }

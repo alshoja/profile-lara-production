@@ -35,11 +35,6 @@ Route::get('profile/add-profile', function () {
 });
 
 
-Route::get('/departments', function () {
-    return view('pages.departments');
-});
-
-
 Auth::routes();
 
 // Dashboard
@@ -54,6 +49,16 @@ Route::post('/update/user/{id}', [App\Http\Controllers\UserController::class, 'u
 Route::post('account/change/password', [App\Http\Controllers\UserController::class, 'changePassword']);
 Route::delete('/user/{id}', [App\Http\Controllers\UserController::class, 'destroy']);
 
+Route::get('departments', [App\Http\Controllers\DepartmentController::class, 'index']);
+Route::get('department/{id}', [App\Http\Controllers\DepartmentController::class, 'show']);
 Route::post('list/departments', [App\Http\Controllers\DepartmentController::class, 'list']);
+Route::post('department', [App\Http\Controllers\DepartmentController::class, 'store']);
+Route::put('department', [App\Http\Controllers\DepartmentController::class, 'update']);
+Route::delete('department/{id}', [App\Http\Controllers\DepartmentController::class, 'destroy']);
+
+Route::post('section', [App\Http\Controllers\SectionController::class, 'store']);
+Route::delete('section/{id}', [App\Http\Controllers\SectionController::class, 'destroy']);
+Route::get('section/{id}', [App\Http\Controllers\SectionController::class, 'show']);
+Route::put('section', [App\Http\Controllers\SectionController::class, 'update']);
 Route::post('list/sections', [App\Http\Controllers\SectionController::class, 'index']);
 

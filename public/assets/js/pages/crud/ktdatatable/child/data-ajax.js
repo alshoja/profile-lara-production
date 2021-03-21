@@ -2,9 +2,6 @@
 // Class definition
 
 var KTDatatableChildRemoteDataDemo = (function () {
-  // Private functions
-//   console.log("baseurl", HOST_URL);
-  // demo initializer
   var demo = function () {
     var datatable = $("#kt_datatable").KTDatatable({
       // datasource definition
@@ -13,6 +10,13 @@ var KTDatatableChildRemoteDataDemo = (function () {
         source: {
           read: {
             url: HOST_URL + "/list/departments",
+            map: function (raw) {
+              var dataSet = raw;
+              if (typeof raw.data !== "undefined") {
+                dataSet = raw.data;
+              }
+              return dataSet;
+            },
           },
         },
         pageSize: 100, // display 20 records per page
@@ -72,8 +76,9 @@ var KTDatatableChildRemoteDataDemo = (function () {
           sortable: false,
           overflow: "visible",
           autoHide: false,
-          template: function () {
-            return '\
+          template: function (row) {
+            return (
+              '\
 	                        <a href="javascript:;" data-toggle="modal" data-target="#dh" class="btn btn-sm btn-clean btn-icon mr-2" title="Permissions">\
 	                            <span class="svg-icon svg-icon-md">\
 	                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">\
@@ -85,7 +90,9 @@ var KTDatatableChildRemoteDataDemo = (function () {
 	                                </svg>\
 	                            </span>\
 	                        </a>\
-							<a href="javascript:;" class="btn btn-sm btn-clean btn-icon mr-2" title="Edit details">\
+							<a href="javascript:;" onclick="editDepartment(`department`,' +
+              row.id +
+              ')"  data-toggle="modal" data-target="#edit_department" class="btn btn-sm btn-clean btn-icon mr-2" title="Edit details">\
 	                            <span class="svg-icon svg-icon-md">\
 	                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">\
 	                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\
@@ -96,7 +103,9 @@ var KTDatatableChildRemoteDataDemo = (function () {
 	                                </svg>\
 	                            </span>\
 	                        </a>\
-	                        <a href="javascript:;" class="btn btn-sm btn-clean btn-icon" title="Delete">\
+	                        <a href="javascript:;" onclick="destroy(`department`,' +
+              row.id +
+              ')" class="btn btn-sm btn-clean btn-icon" title="Delete">\
 	                            <span class="svg-icon svg-icon-md">\
 	                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">\
 	                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\
@@ -107,7 +116,8 @@ var KTDatatableChildRemoteDataDemo = (function () {
 	                                </svg>\
 	                            </span>\
 	                        </a>\
-	                    ';
+	                    '
+            );
           },
         },
       ],
@@ -182,9 +192,12 @@ var KTDatatableChildRemoteDataDemo = (function () {
               sortable: false,
               overflow: "visible",
               autoHide: false,
-              template: function () {
-                return '\
-	                        <a href="javascript:;" class="btn btn-sm btn-clean btn-icon mr-2" title="Edit details">\
+              template: function (row) {
+                return (
+                  '\
+<a href="javascript:;" onclick="editSection(`section`,' +
+                  row.id +
+                  ')" data-toggle="modal" data-target="#edit_section" class="btn btn-sm btn-clean btn-icon mr-2" title="Edit details">\
 	                            <span class="svg-icon svg-icon-md">\
 	                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">\
 	                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\
@@ -195,7 +208,9 @@ var KTDatatableChildRemoteDataDemo = (function () {
 	                                </svg>\
 	                            </span>\
 	                        </a>\
-	                        <a href="javascript:;" class="btn btn-sm btn-clean btn-icon" title="Delete">\
+	                        <a href="javascript:;" onclick="destroy(`section`,' +
+                  row.id +
+                  ')" class="btn btn-sm btn-clean btn-icon" title="Delete">\
 	                            <span class="svg-icon svg-icon-md">\
 	                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">\
 	                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\
@@ -206,7 +221,8 @@ var KTDatatableChildRemoteDataDemo = (function () {
 	                                </svg>\
 	                            </span>\
 	                        </a>\
-	                    ';
+	                    '
+                );
               },
             },
           ],
@@ -217,7 +233,6 @@ var KTDatatableChildRemoteDataDemo = (function () {
   return {
     // Public functions
     init: function () {
-      // init dmeo
       demo();
     },
   };
@@ -226,3 +241,24 @@ var KTDatatableChildRemoteDataDemo = (function () {
 jQuery(document).ready(function () {
   KTDatatableChildRemoteDataDemo.init();
 });
+
+function reloadData() {
+  $("#kt_datatable").KTDatatable("reload");
+}
+
+function editDepartment(url, id) {
+  const data = getOrGetById(url, id);
+  console.log(data);
+  if (data) {
+    // document.getElementById("department_id").value = data.name;
+    $("#department_id").val(data.name);
+    $("#dep_id").val(data.id);
+  }
+}
+function editSection(url, id) {
+  const data = getOrGetById(url, id);
+  console.log("from ou", data.department.name);
+  $("#section_update").val(data.name);
+  $("#section_id").val(data.id);
+  $('#sec_dep_id').val(data.department.id).prop('selected', true);
+}

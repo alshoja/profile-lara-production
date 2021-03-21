@@ -65,36 +65,35 @@
                     </div>
                     <div class="modal-body">
                         <!--begin::Form-->
-                        <form class="form">
+                        <form class="form" method="POST" action="{{ url('section') }}">
+                            @csrf
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>Section Name</label>
-                                    <input type="text" class="form-control form-control-solid" placeholder="Name" />
+                                    <input name="section" type="text" class="form-control form-control-solid" placeholder="Name" />
                                 </div>
                                 <div class="form-group">
                                     <label>Select Department</label>
-                                    <select class="form-control form-control-solid">
-                                        <option>Department 1</option>
-                                        <option>department 2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
+                                    <select name="dep_id" class="form-control form-control-solid">
+                                      @foreach ($department as $item)
+                                          <option value="{{$item->id}}">{{$item->name}}</option>
+                                      @endforeach
                                     </select>
                                 </div>
                             </div>
-                        </form>
                         <!--end::Form-->
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-light-primary font-weight-bold"
                             data-dismiss="modal">Close</button>
-                        <button type="reset" class="btn btn-primary mr-2">Save changes</button>
+                        <input type="submit" value="Save" class="btn btn-primary mr-2">
+                    </form>
 
                     </div>
                 </div>
             </div>
         </div>
-        <!--end::section Modal-->
+        <!--end::department Modal-->
         <div class="modal fade" id="department" tabindex="-1" role="dialog" aria-labelledby="department" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -105,23 +104,100 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form class="form">
+                        <form class="form" method="POST" action="{{ url('department') }}">
+                            @csrf
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>Department Name</label>
-                                    <input type="text" class="form-control form-control-solid" placeholder="Name" />
+                                    <input type="text" name="name" class="form-control form-control-solid" placeholder="Name" />
                                 </div>
                             </div>
-                        </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-light-primary font-weight-bold"
                             data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary font-weight-bold">Save changes</button>
+                        <input type="submit" value="save" class="btn btn-primary font-weight-bold">
                     </div>
+                    </form>
+
                 </div>
             </div>
         </div>
+
+<!--begin:: section Modal-->
+<div class="modal fade" id="edit_section" tabindex="-1" role="dialog" aria-labelledby="section" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Update Section</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!--begin::Form-->
+                <form class="form" method="POST" action="{{ url('section') }}">
+                    @csrf
+                    @method('PUT')
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>Section Name</label>
+                            <input name="section" id="section_update" type="text" class="form-control form-control-solid" placeholder="Name" />
+                            <input type="hidden" name="section_id" id="section_id">
+                        </div>
+                        <div class="form-group">
+                            <label>Select Department</label>
+                            <select name="dep_id" id="sec_dep_id" class="form-control form-control-solid">
+                              @foreach ($department as $item)
+                                  <option value="{{$item->id}}">{{$item->name}}</option>
+                              @endforeach
+                            </select>
+                        </div>
+                    </div>
+                <!--end::Form-->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light-primary font-weight-bold"
+                    data-dismiss="modal">Close</button>
+                <input type="submit" value="Update" class="btn btn-primary mr-2">
+            </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--end::department Modal-->
+<div class="modal fade" id="edit_department" tabindex="-1" role="dialog" aria-labelledby="department" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Update Department</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="form" method="POST" action="{{ url('department') }}">
+                    @csrf
+                    @method('PUT')
+                    {{-- <h6>Current : <span class="text-primary">Hai</span></h6> --}}
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>Department Name</label>
+                            <input type="text" id="department_id" name="name" class="form-control form-control-solid" placeholder="Name" />
+                            <input type="hidden" name="dep_id" id="dep_id">
+                        </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light-primary font-weight-bold"
+                    data-dismiss="modal">Close</button>
+                <input type="submit" value="Update" class="btn btn-primary font-weight-bold">
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
         <!--begin::Container-->
         <div class="container">
             <!--begin::Notice-->
@@ -132,6 +208,9 @@
                     <div class="card-title">
                         <h3 class="card-label">Manage Department & Sections
                             <span class="d-block text-muted pt-2 font-size-sm">List of departments and Sections</span>
+                            @foreach ($errors->all() as $error)
+                                <span class="text-danger mt-3 font-weight-bold font-size-sm">{{ $error }}</span>
+                            @endforeach
                         </h3>
                     </div>
                     <div class="card-toolbar">

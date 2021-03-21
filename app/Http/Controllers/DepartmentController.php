@@ -6,6 +6,7 @@ use App\Models\Department;
 use Illuminate\Http\Request;
 use App\Http\Resources\DepartmentResource;
 use App\Http\Resources\DepartmentCollection;
+use Illuminate\Support\Facades\Validator;
 
 class DepartmentController extends Controller
 {
@@ -16,7 +17,8 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        //
+        $department = Department::all();
+        return view('pages.departments', compact('department'));
     }
 
     /**
@@ -44,7 +46,13 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string', 'max:50', 'unique:departments'],
+        ]);
+        $department = new Department();
+        $department->name = $request->name;
+        $department->save();
+        return back()->with('message', 'Department successfully added');
     }
 
     /**
@@ -53,9 +61,10 @@ class DepartmentController extends Controller
      * @param  \App\Models\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function show(Department $department)
+    public function show($id)
     {
-        //
+        $department = Department::findOrFail($id);
+        return response()->json($department, 200);
     }
 
     /**
@@ -76,9 +85,23 @@ class DepartmentController extends Controller
      * @param  \App\Models\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Department $department)
+    public function update(Request $request)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string', 'max:50', 'unique:departments'],
+        ]);
+
+        // $validator = Validator::make($request->all(), [
+        //     'name' => ['required', 'string', 'max:10', 'unique:departments'],
+        // ]);
+
+        // if ($validator->fails()) {
+        //     return response()->json($validator->errors(), 400);
+        // }
+        $department = Department::findOrFail($request->dep_id);
+        $department->name = $request->name;
+        $department->save();
+        return back()->with('message', 'Department updated added');
     }
 
     /**
@@ -87,8 +110,9 @@ class DepartmentController extends Controller
      * @param  \App\Models\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Department $department)
+    public function destroy($id)
     {
-        //
+        $department = Department::destroy($id);
+        return response()->json(['message' => 'Department deleted'], 200);
     }
 }

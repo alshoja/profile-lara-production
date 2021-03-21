@@ -13,7 +13,7 @@ class Section extends Model
 
     public function department()
     {
-        return $this->hasOne(Department::class);
+        return $this->belongsTo(Department::class,'dep_id');
     }
 
     public function employs()
