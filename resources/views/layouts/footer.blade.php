@@ -90,6 +90,7 @@
 <script src="{{ asset('assets/js/pages/custom/login/login-general.js') }}"></script>
 <script src="{{ asset('assets/js/ajax-req.js') }}"></script>
 <script src="{{ asset('assets/js/comon-sweet-alert.js') }}"></script>
+<script src="{{ asset('assets/js/toast.js') }}"></script>
 {{-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 <script>
     $(window).load(function() {

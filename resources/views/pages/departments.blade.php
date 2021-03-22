@@ -11,11 +11,12 @@
                             <i aria-hidden="true" class="ki ki-close"></i>
                         </button>
                     </div>
+                    <input type="hidden" id="per_dep_id" name="per_dep_id">
                     <div class="modal-body">
                         <div>
                             <label class="text-danger">General Directors</label>
 
-                            <input id="gd" class="form-control tagify" name='tags3' placeholder="Add department heads"
+                            <input id="gd" class="form-control tagify" name='gd' placeholder="Add department heads"
                                 value="Gd 1, Gd 2" />
                         </div>
                         <div class="separator separator-dashed my-10"></div>
@@ -124,7 +125,7 @@
             </div>
         </div>
 
-<!--begin:: section Modal-->
+<!--begin:: edit section Modal-->
 <div class="modal fade" id="edit_section" tabindex="-1" role="dialog" aria-labelledby="section" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -166,7 +167,7 @@
         </div>
     </div>
 </div>
-<!--end::department Modal-->
+<!--end::edit department Modal-->
 <div class="modal fade" id="edit_department" tabindex="-1" role="dialog" aria-labelledby="department" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">

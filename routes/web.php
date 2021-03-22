@@ -62,3 +62,7 @@ Route::get('section/{id}', [App\Http\Controllers\SectionController::class, 'show
 Route::put('section', [App\Http\Controllers\SectionController::class, 'update']);
 Route::post('list/sections', [App\Http\Controllers\SectionController::class, 'index']);
 
+
+Route::post('user/permissions', [App\Http\Controllers\UserPermission::class, 'index']);
+Route::post('user/permission', [App\Http\Controllers\UserPermission::class, 'store']);
+

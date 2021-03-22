@@ -1,8 +1,9 @@
 // Common function for Post and Put
 "use strict";
 
-function saveOrUpdate(url, method, formData = 0, id = 0) {
+function saveOrUpdateOrGet(url, method, formData, id) {
   let fullUrl = HOST_URL + "/" + url;
+  let res = null;
   $.ajax({
     url: fullUrl,
     method: method,
@@ -10,16 +11,18 @@ function saveOrUpdate(url, method, formData = 0, id = 0) {
       id: id,
       formData: formData,
     },
-    async: true,
+    async: false,
     dataType: "json",
     success: (data) => {
-      console.log(data);
+      // console.log(data);
+      res = data;
+      showTaost("Item added", 'Success');
     },
     error: function (XMLHttpRequest, textStatus, errorThrown) {
-      alert("some error");
+      openAlert("error", "Error", "Something went wrong");
     },
   });
-  return false;
+  return res;
 }
 
 function getOrGetById(url, id = 0) {
