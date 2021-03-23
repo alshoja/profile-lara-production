@@ -6,7 +6,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">User Permissions</h5>
+                        <h5 class="modal-title" id="user_p_head">User Permissions</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <i aria-hidden="true" class="ki ki-close"></i>
                         </button>
@@ -15,9 +15,7 @@
                     <div class="modal-body">
                         <div>
                             <label class="text-danger">General Directors</label>
-
-                            <input id="gd" class="form-control tagify" name='gd' placeholder="Add department heads"
-                                value="Gd 1, Gd 2" />
+                            <input id="gd" class="form-control tagify" name='gd' placeholder="Add department heads" />
                         </div>
                         <div class="separator separator-dashed my-10"></div>
 

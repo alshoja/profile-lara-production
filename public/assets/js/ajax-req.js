@@ -16,7 +16,7 @@ function saveOrUpdateOrGet(url, method, formData, id) {
     success: (data) => {
       // console.log(data);
       res = data;
-      showTaost("Item added", 'Success');
+      showToast("Item added", 'Success');
     },
     error: function (XMLHttpRequest, textStatus, errorThrown) {
       openAlert("error", "Error", "Something went wrong");
@@ -33,7 +33,7 @@ function getOrGetById(url, id = 0) {
     type: "GET",
     async: false,
     dataType: "json",
-    data: { some_query_var: id },
+    // data: { some_query_var: id },
     contentType: "application/json",
     success: function (result) {
       res = result;

@@ -51,6 +51,11 @@ class User extends Authenticatable
         return $this->hasMany(User::class);
     }
 
+    public function generalDirectors()
+    {
+        return $this->belongsTo(Users::class,'general_director_id','id');
+    }
+
     public function departmentHeads()
     {
         return $this->hasMany(User::class);

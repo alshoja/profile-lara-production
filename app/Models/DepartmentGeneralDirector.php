@@ -12,4 +12,10 @@ class DepartmentGeneralDirector extends Model
         'general_director_id',
         'dep_id',
     ];
+
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'general_director_id', 'id');
+    }
+
 }

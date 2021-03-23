@@ -1,90 +1,23 @@
 // Class definition
 var KTTagifyDemos = (function () {
   // Private functions
-  console.log(dep_id);
-  var tagGeneralDirector = function () {
-    // Init autocompletes
-    var toEl = document.querySelector('input[name="gd"]');
-    var tagify = new Tagify(toEl, {
-      delimiters: ", ", // add new tags when a comma or a space character is entered
-      maxTags: 10,
-      blacklist: ["fuck", "shit", "pussy"],
-      keepInvalidTags: false, // do not remove invalid tags (but keep them marked as invalid)
-      whitelist: [],
-      duplicates: false,
-      templates: {
-        dropdownItem: function (tagData) {
-          try {
-            var html = "";
-
-            html += '<div class="tagify__dropdown__item">';
-            html += '   <div class="d-flex align-items-center">';
-            html +=
-              '       <span class="symbol sumbol-' +
-              (tagData.initialsState ? tagData.initialsState : "") +
-              ' mr-2">';
-            html +=
-              '           <span class="symbol-label" style="background-image: url(\'' +
-              (tagData.pic ? tagData.pic : "") +
-              "')\">" +
-              (tagData.initials ? tagData.initials : "") +
-              "</span>";
-            html += "       </span>";
-            html += '       <div class="d-flex flex-column">';
-            html +=
-              '           <a href="#" class="text-dark-75 text-hover-primary font-weight-bold">' +
-              (tagData.value ? tagData.value : "") +
-              "</a>";
-            html +=
-              '           <span class="text-muted font-weight-bold">' +
-              (tagData.email ? tagData.email : "") +
-              "</span>";
-            html += "       </div>";
-            html += "   </div>";
-            html += "</div>";
-
-            return html;
-          } catch (err) {}
-        },
-      },
-      transformTag: function (tagData) {
-        tagData.class = "tagify__tag tagify__tag-light--danger";
-      },
-      dropdown: {
-        classname: "color-blue",
-        enabled: 1,
-        maxItems: 5,
-      },
-    });
-
+  let tagify = null;
+  let tagGeneralDirector = function () {
+    const generalDirector = document.querySelector('input[name="gd"]');
+    createTagfyInstance(generalDirector);
     tagify
-      .on("input", getGD())
+      .on("input", getTagUsers("gd", generalDirector))
       .on("add", (e) => {
-        console.log(e.type, e.detail);
-        const dep_id = $("#per_dep_id").val();
-        console.log(dep_id);
-        saveOrUpdateOrGet("user/permission", "POST", e.detail.data, dep_id);
+        console.log(tagify);
+        if (tagify.listeners.dropdown) {
+          const dep_id = $("#per_dep_id").val();
+          saveOrUpdateOrGet("user/permission", "POST", e.detail.data, dep_id);
+        }
       })
       .on("remove", (e) => console.log(e.type, e.detail));
-
-    async function getGD() {
-      tagify.settings.whitelist.length = 0;
-      var result = await getUserList("gd");
-      mappedArray = result.map((res) => {
-        return {
-          value: res.name,
-          email: res.email,
-          user_id: res.id,
-          role:'gd',
-          initialsState: "warning",
-          pic: HOST_URL + "/" + res.image,
-          class: "tagify__tag--primary",
-        };
-      });
-      tagify.settings.whitelist = mappedArray;
-    }
   };
-  var tagDirector = function () {
+
+  let tagDirector = function () {
     // Init autocompletes
     var toE2 = document.getElementById("director");
     var tagifyTo = new Tagify(toE2, {
@@ -196,7 +129,8 @@ var KTTagifyDemos = (function () {
       },
     });
   };
-  var tagDH = function () {
+
+  let tagDH = function () {
     // Init autocompletes
     var toE3 = document.getElementById("departhead");
     var tagifyTo = new Tagify(toE3, {
@@ -309,7 +243,7 @@ var KTTagifyDemos = (function () {
     });
   };
 
-  var tagSuper = function () {
+  let tagSuper = function () {
     // Init autocompletes
     var toE4 = document.getElementById("super");
     var tagifyTo = new Tagify(toE4, {
@@ -422,6 +356,88 @@ var KTTagifyDemos = (function () {
     });
   };
 
+  let createTagfyInstance = (input) => {
+    tagify = new Tagify(input, {
+      delimiters: ", ", // add new tags when a comma or a space character is entered
+      maxTags: 10,
+      enforceWhitelist: true,
+      blacklist: ["fuck", "shit", "pussy"],
+      keepInvalidTags: false, // do not remove invalid tags (but keep them marked as invalid)
+      whitelist: [],
+      duplicates: false,
+      templates: {
+        dropdownItem: function (tagData) {
+          try {
+            var html = "";
+
+            html += '<div class="tagify__dropdown__item">';
+            html += '   <div class="d-flex align-items-center">';
+            html +=
+              '       <span class="symbol sumbol-' +
+              (tagData.initialsState ? tagData.initialsState : "") +
+              ' mr-2">';
+            html +=
+              '           <span class="symbol-label" style="background-image: url(\'' +
+              (tagData.pic ? tagData.pic : "") +
+              "')\">" +
+              (tagData.initials ? tagData.initials : "") +
+              "</span>";
+            html += "       </span>";
+            html += '       <div class="d-flex flex-column">';
+            html +=
+              '           <a href="#" class="text-dark-75 text-hover-primary font-weight-bold">' +
+              (tagData.value ? tagData.value : "") +
+              "</a>";
+            html +=
+              '           <span class="text-muted font-weight-bold">' +
+              (tagData.email ? tagData.email : "") +
+              "</span>";
+            html += "       </div>";
+            html += "   </div>";
+            html += "</div>";
+
+            return html;
+          } catch (err) {}
+        },
+      },
+      transformTag: function (tagData) {
+        tagData.class = "tagify__tag tagify__tag-light--danger";
+      },
+      dropdown: {
+        classname: "color-blue",
+        enabled: 1,
+        maxItems: 5,
+      },
+    });
+  };
+
+  let getTagUsers = async (role, textbox) => {
+    tagify.settings.whitelist.length = 0;
+    var result = await getUserList(role);
+    mappedArray = result.map((res) => {
+      return {
+        value: res.name,
+        email: res.email,
+        user_id: res.id,
+        role: role,
+        initialsState: "warning",
+        pic: HOST_URL + "/" + res.image,
+        class: "tagify__tag--primary",
+      };
+    });
+    tagify.settings.whitelist = mappedArray;
+  };
+
+  let loadTags = function (id) {
+    tagify.removeAllTags();
+    if (typeof id != "undefined") {
+      const remoteTags = getOrGetById("user/permissions", id);
+      if (remoteTags.length > 0) {
+        tagify.addTags(remoteTags);
+      }
+    }
+  };
+
   return {
     // public functions
     init: function () {
@@ -429,6 +445,9 @@ var KTTagifyDemos = (function () {
       tagDirector();
       tagDH();
       tagSuper();
+    },
+    getTags: function (id) {
+      loadTags(id);
     },
   };
 
@@ -447,6 +466,8 @@ jQuery(document).ready(function () {
   KTTagifyDemos.init();
 });
 
-function setDepartment(id) {
+function setDepartment(id,name) {
   $("#per_dep_id").val(id);
+  $("#user_p_head").text("User permision of " + name);
+  KTTagifyDemos.getTags(id);
 }

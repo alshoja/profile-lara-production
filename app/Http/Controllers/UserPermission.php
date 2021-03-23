@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DepartmentGeneralDirector;
 use App\Models\User;
+use App\Models\Department;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
+use App\Models\DepartmentGeneralDirector;
 
 class UserPermission extends Controller
 {
@@ -15,7 +18,6 @@ class UserPermission extends Controller
      */
     public function index(Request $request)
     {
-        // dd($request->role);
         if ($request->role = "gd") {
             $users = User::where('role', 'general_director')->get();
             return response()->json($users, 200);
@@ -44,8 +46,9 @@ class UserPermission extends Controller
     public function store(Request $request)
     {
         $formData = $request->get('formData');
-        // dd($request);
+
         if ($formData['role'] == "gd") {
+
             $user = DepartmentGeneralDirector::create(
                 [
                     'general_director_id' =>  $formData['user_id'], 'dep_id' => $request->id
@@ -102,7 +105,25 @@ class UserPermission extends Controller
     {
         //
     }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function getUserTags($id)
+    {
+        if (Auth::user()->role == "admin") {
+            $users = DepartmentGeneralDirector::with('users')->where('dep_id', $id)->get()->pluck('users.name');
+            return response()->json($users, 200);
+        }
+        // else if(){
 
+        // }
+        else {
+            return response()->json(['message' => "you are not authorized"], 403);
+        }
+    }
     /**
      * Remove the specified resource from storage.
      *

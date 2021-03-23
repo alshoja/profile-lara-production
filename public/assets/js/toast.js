@@ -1,4 +1,4 @@
-function showTaost(message, title) {
+function showToast(message, title) {
   $.notify(
     {
       // options
