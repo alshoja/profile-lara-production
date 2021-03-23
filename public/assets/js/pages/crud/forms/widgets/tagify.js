@@ -14,7 +14,11 @@ var KTTagifyDemos = (function () {
           saveOrUpdateOrGet("user/permission", "POST", e.detail.data, dep_id);
         }
       })
-      .on("remove", (e) => console.log(e.type, e.detail));
+      .on("remove", (e) => {
+        const dep_id = $("#per_dep_id").val();
+        console.log(e.type, e.detail);
+        destroyItem("user/permission/" + e.detail.data.user_id, dep_id);
+      });
   };
 
   let tagDirector = function () {
@@ -414,7 +418,7 @@ var KTTagifyDemos = (function () {
   let getTagUsers = async (role, textbox) => {
     tagify.settings.whitelist.length = 0;
     var result = await getUserList(role);
-    console.log('tagged users',result);
+    console.log("tagged users", result);
     mappedArray = result.map((res) => {
       return {
         value: res.name,
