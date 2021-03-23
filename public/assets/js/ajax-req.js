@@ -2,24 +2,28 @@
 "use strict";
 
 function saveOrUpdateOrGet(url, method, formData, id) {
+  if (typeof id != "undefined") {
+    formData.id = id;
+  }
   let fullUrl = HOST_URL + "/" + url;
   let res = null;
   $.ajax({
     url: fullUrl,
     method: method,
-    data: {
-      id: id,
-      formData: formData,
-    },
+    data: formData,
+    id,
     async: false,
     dataType: "json",
     success: (data) => {
       // console.log(data);
       res = data;
-      showToast("Item added", 'Success');
+      showToast("Item added", "Success");
     },
     error: function (XMLHttpRequest, textStatus, errorThrown) {
-      openAlert("error", "Error", "Something went wrong");
+      console.log(XMLHttpRequest);
+      if (XMLHttpRequest.status != 400) {
+        openAlert("error", "Error", "Something went wrong");
+      }
     },
   });
   return res;

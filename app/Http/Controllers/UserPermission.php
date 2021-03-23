@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use App\Models\DepartmentGeneralDirector;
+use App\Rules\UniqueGDForDepartments;
+use Illuminate\Support\Facades\Validator;
 
 class UserPermission extends Controller
 {
@@ -45,42 +47,27 @@ class UserPermission extends Controller
      */
     public function store(Request $request)
     {
-        $formData = $request->get('formData');
+        // dd($request);
 
-        if ($formData['role'] == "gd") {
 
-            $user = DepartmentGeneralDirector::create(
-                [
-                    'general_director_id' =>  $formData['user_id'], 'dep_id' => $request->id
-                ]
-            );
-            return response()->json($user, 201);
-        } else if ($formData['role'] == "director") {
-            $user = DepartmentGeneralDirector::create(
-                [
-                    'general_director' => $request->id, 'dep_id' => $request->dep_id
-                ]
-            );
-            return response()->json($user, 201);
+        if ($request->role == "gd") {
+            $gdCount = DepartmentGeneralDirector::where('general_director_id', $request->user_id)
+                ->where('dep_id', $request->id)
+                ->count();
+            if ($gdCount < 1) {
+                $data = ['general_director_id' =>  $request->user_id, 'dep_id' => $request->id];
+            }
+        } else if ($request->role == "director") {
         }
-        if ($formData['role'] == "dh") {
-            $user = DepartmentGeneralDirector::create(
-                [
-                    'general_director' => $request->id, 'dep_id' => $request->dep_id
-                ]
-            );
-            return response()->json($user, 201);
+        if ($request->role == "dh") {
         }
-        if ($formData['role'] == "supervisor") {
-            $user = DepartmentGeneralDirector::create(
-                [
-                    'general_director' => $request->id, 'dep_id' => $request->dep_id
-                ]
-            );
-            return response()->json($user, 201);
-        } else {
-            return response()->json(["error" => "Something went wrong"], 500);
+        if ($request->role == "supervisor") {
         }
+        if (isset($data)) {
+            $user = DepartmentGeneralDirector::create($data);
+            return response()->json($user, 200);
+        }
+        return response()->json(['message' => 'user already added'], 400);
     }
 
     /**

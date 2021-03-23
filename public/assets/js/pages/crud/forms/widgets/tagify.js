@@ -414,6 +414,7 @@ var KTTagifyDemos = (function () {
   let getTagUsers = async (role, textbox) => {
     tagify.settings.whitelist.length = 0;
     var result = await getUserList(role);
+    console.log('tagged users',result);
     mappedArray = result.map((res) => {
       return {
         value: res.name,
@@ -447,6 +448,7 @@ var KTTagifyDemos = (function () {
       tagSuper();
     },
     getTags: function (id) {
+      alert(id);
       loadTags(id);
     },
   };
@@ -466,7 +468,7 @@ jQuery(document).ready(function () {
   KTTagifyDemos.init();
 });
 
-function setDepartment(id,name) {
+function setDepartment(id, name) {
   $("#per_dep_id").val(id);
   $("#user_p_head").text("User permision of " + name);
   KTTagifyDemos.getTags(id);
