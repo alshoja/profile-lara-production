@@ -22,7 +22,7 @@
                         <div>
                             <label class="text-warning"> Directors</label>
 
-                            <input id="director" class="form-control tagify" name='tags3' placeholder="Add department heads"
+                            <input id="director" class="form-control tagify" name='director' placeholder="Add department heads"
                                 value="Director 1, Ddirector 2" />
                         </div>
                         <div class="separator separator-dashed my-10"></div>

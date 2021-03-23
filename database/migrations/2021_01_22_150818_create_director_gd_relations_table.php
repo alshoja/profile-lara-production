@@ -16,6 +16,7 @@ class CreateDirectorGdRelationsTable extends Migration
         Schema::create('director_gd_relations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('director_id')->constrained('users');
+            $table->foreignId('dep_id')->constrained('departments');
             $table->foreignId('general_director_id')->constrained('users');
             $table->timestamps();
         });

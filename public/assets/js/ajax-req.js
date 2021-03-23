@@ -17,12 +17,12 @@ function saveOrUpdateOrGet(url, method, formData, id) {
     success: (data) => {
       // console.log(data);
       res = data;
-      showToast("Item added", "Success");
+      showToast("Item added");
     },
     error: function (XMLHttpRequest, textStatus, errorThrown) {
       console.log(XMLHttpRequest);
       if (XMLHttpRequest.status != 400) {
-        openAlert("error", "Error", "Something went wrong");
+        openAlert("error", "Error", "Oops! Server Error !");
       }
     },
   });
@@ -54,7 +54,7 @@ function destroyItem(url, id = 0) {
     dataType: "json",
     contentType: "application/json",
     success: function (result) {
-      openAlert("success", "Success", result.message);
+      showToast(result.message);
       reloadData();
     },
     error: function (XMLHttpRequest, textStatus, errorThrown) {

@@ -12,7 +12,7 @@ function showToast(message, title) {
       // settings
       element: "body",
       position: null,
-      type: "info",
+      type: "success",
       //   allow_dismiss: true,
       newest_on_top: false,
       showProgressbar: false,

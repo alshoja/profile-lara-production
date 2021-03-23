@@ -2,11 +2,14 @@
 var KTTagifyDemos = (function () {
   // Private functions
   let tagify = null;
-  let tagGeneralDirector = function () {
+  let directorTagify = null;
+
+  let initGeneralDirector = function () {
     const generalDirector = document.querySelector('input[name="gd"]');
-    createTagfyInstance(generalDirector);
+
+    tagify = createTagfyInstance(generalDirector);
     tagify
-      .on("input", getTagUsers("gd", generalDirector))
+      .on("input", getGDTagUsers("gd", generalDirector))
       .on("add", (e) => {
         if (tagify.listeners.dropdown) {
           const dep_id = $("#per_dep_id").val();
@@ -19,117 +22,84 @@ var KTTagifyDemos = (function () {
       });
   };
 
-  let tagDirector = function () {
-    // Init autocompletes
-    var toE2 = document.getElementById("director");
-    var tagifyTo = new Tagify(toE2, {
-      delimiters: ", ", // add new tags when a comma or a space character is entered
-      maxTags: 10,
-      blacklist: ["fuck", "shit", "pussy"],
-      keepInvalidTags: true, // do not remove invalid tags (but keep them marked as invalid)
-      whitelist: [
-        {
-          value: "Chris Muller",
-          email: "chris.muller@wix.com",
-          initials: "",
-          initialsState: "",
-          pic: "./assets/media/users/100_11.jpg",
-          class: "tagify__tag--primary",
-        },
-        {
-          value: "Nick Bold",
-          email: "nick.seo@gmail.com",
-          initials: "SS",
-          initialsState: "warning",
-          pic: "",
-        },
-        {
-          value: "Alon Silko",
-          email: "alon@keenthemes.com",
-          initials: "",
-          initialsState: "",
-          pic: "./assets/media/users/100_6.jpg",
-        },
-        {
-          value: "Sam Seanic",
-          email: "sam.senic@loop.com",
-          initials: "",
-          initialsState: "",
-          pic: "./assets/media/users/100_8.jpg",
-        },
-        {
-          value: "Sara Loran",
-          email: "sara.loran@tilda.com",
-          initials: "",
-          initialsState: "",
-          pic: "./assets/media/users/100_9.jpg",
-        },
-        {
-          value: "Eric Davok",
-          email: "davok@mix.com",
-          initials: "",
-          initialsState: "",
-          pic: "./assets/media/users/100_13.jpg",
-        },
-        {
-          value: "Sam Seanic",
-          email: "sam.senic@loop.com",
-          initials: "",
-          initialsState: "",
-          pic: "./assets/media/users/100_13.jpg",
-        },
-        {
-          value: "Lina Nilson",
-          email: "lina.nilson@loop.com",
-          initials: "LN",
-          initialsState: "danger",
-          pic: "./assets/media/users/100_15.jpg",
-        },
-      ],
-      templates: {
-        dropdownItem: function (tagData) {
-          try {
-            var html = "";
+  let initDirector = function () {
+    const Director = document.querySelector('input[name="director"]');
+    directorTagify = createTagfyInstance(Director);
+    directorTagify
+      .on("input", getDirectorTagUsers("director", Director))
+      .on("add", (e) => {
+        if (directorTagify.listeners.dropdown) {
+          const dep_id = $("#per_dep_id").val();
+          saveOrUpdateOrGet("user/permission", "POST", e.detail.data, dep_id);
+        }
+      })
+      .on("remove", (e) => {
+        console.log("director/remove", e.detail);
+        const dep_id = $("#per_dep_id").val();
+        alert("userID" + e.detail.data.user_id);
+        alert("dep_id" + dep_id);
+        destroyItem(
+          "user/permission/director/" + e.detail.data.user_id,
+          dep_id
+        );
+      });
+  };
 
-            html += '<div class="tagify__dropdown__item">';
-            html += '   <div class="d-flex align-items-center">';
-            html +=
-              '       <span class="symbol sumbol-' +
-              (tagData.initialsState ? tagData.initialsState : "") +
-              ' mr-2">';
-            html +=
-              '           <span class="symbol-label" style="background-image: url(\'' +
-              (tagData.pic ? tagData.pic : "") +
-              "')\">" +
-              (tagData.initials ? tagData.initials : "") +
-              "</span>";
-            html += "       </span>";
-            html += '       <div class="d-flex flex-column">';
-            html +=
-              '           <a href="#" class="text-dark-75 text-hover-primary font-weight-bold">' +
-              (tagData.value ? tagData.value : "") +
-              "</a>";
-            html +=
-              '           <span class="text-muted font-weight-bold">' +
-              (tagData.email ? tagData.email : "") +
-              "</span>";
-            html += "       </div>";
-            html += "   </div>";
-            html += "</div>";
-
-            return html;
-          } catch (err) {}
-        },
-      },
-      transformTag: function (tagData) {
-        tagData.class = "tagify__tag tagify__tag-light--warning";
-      },
-      dropdown: {
-        classname: "color-blue",
-        enabled: 1,
-        maxItems: 5,
-      },
+  let getGDTagUsers = async (role, textbox) => {
+    tagify.settings.whitelist.length = 0;
+    var result = await getUserList(role);
+    console.log("tagged users", result);
+    mappedArray = result.map((res) => {
+      return {
+        value: res.name,
+        email: res.email,
+        user_id: res.id,
+        role: role,
+        initialsState: "warning",
+        pic: HOST_URL + "/" + res.image,
+        class: "tagify__tag tagify__tag-light--danger",
+      };
     });
+    tagify.settings.whitelist = mappedArray;
+  };
+
+  let loadGDTags = function (id, type) {
+    let remoteTags = [];
+    tagify.removeAllTags();
+    if (typeof id != "undefined") {
+      const remoteTags = getOrGetById("user/permissions/" + type, id);
+      if (remoteTags.length > 0) {
+        tagify.addTags(remoteTags);
+      }
+    }
+  };
+
+  let getDirectorTagUsers = async (role, textbox) => {
+    directorTagify.settings.whitelist.length = 0;
+    var result = await getUserList(role);
+    console.log("tagged users director", result);
+    mappedArray = result.map((res) => {
+      return {
+        value: res.name,
+        email: res.email,
+        user_id: res.id,
+        role: role,
+        initialsState: "warning",
+        pic: HOST_URL + "/" + res.image,
+        class: "tagify__tag tagify__tag-light--warning",
+      };
+    });
+    directorTagify.settings.whitelist = mappedArray;
+  };
+
+  let loadDirectorTags = function (id, type) {
+    directorTagify.removeAllTags();
+    if (typeof id != "undefined") {
+      const remoteTags = getOrGetById("user/permissions/" + type, id);
+      if (remoteTags.length > 0) {
+        directorTagify.addTags(remoteTags);
+      }
+    }
   };
 
   let tagDH = function () {
@@ -359,7 +329,7 @@ var KTTagifyDemos = (function () {
   };
 
   let createTagfyInstance = (input) => {
-    tagify = new Tagify(input, {
+    return new Tagify(input, {
       delimiters: ", ", // add new tags when a comma or a space character is entered
       maxTags: 10,
       enforceWhitelist: true,
@@ -403,7 +373,7 @@ var KTTagifyDemos = (function () {
         },
       },
       transformTag: function (tagData) {
-        tagData.class = "tagify__tag tagify__tag-light--danger";
+        tagData.class = tagData.class;
       },
       dropdown: {
         classname: "color-blue",
@@ -413,44 +383,17 @@ var KTTagifyDemos = (function () {
     });
   };
 
-  let getTagUsers = async (role, textbox) => {
-    tagify.settings.whitelist.length = 0;
-    var result = await getUserList(role);
-    console.log("tagged users", result);
-    mappedArray = result.map((res) => {
-      return {
-        value: res.name,
-        email: res.email,
-        user_id: res.id,
-        role: role,
-        initialsState: "warning",
-        pic: HOST_URL + "/" + res.image,
-        class: "tagify__tag--primary",
-      };
-    });
-    tagify.settings.whitelist = mappedArray;
-  };
-
-  let loadTags = function (id) {
-    tagify.removeAllTags();
-    if (typeof id != "undefined") {
-      const remoteTags = getOrGetById("user/permissions", id);
-      if (remoteTags.length > 0) {
-        tagify.addTags(remoteTags);
-      }
-    }
-  };
-
   return {
     // public functions
     init: function () {
-      tagGeneralDirector();
-      tagDirector();
+      initGeneralDirector();
+      initDirector();
       tagDH();
       tagSuper();
     },
     getTags: function (id) {
-      loadTags(id);
+      loadGDTags(id, "gd");
+      loadDirectorTags(id, "director");
     },
   };
 

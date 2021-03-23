@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use App\Models\DepartmentGeneralDirector;
+use App\Models\DirectorGdRelation;
 use App\Rules\UniqueGDForDepartments;
 use Illuminate\Support\Facades\Validator;
 
@@ -20,23 +21,18 @@ class UserPermission extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->role = "gd") {
+        $users = null;
+        $role = $request->role;
+        if ($role == "gd") {
             $users = User::where('role', 'general_director')->get();
-            return response()->json($users, 200);
-        } else if ($request->role = "director") {
+        } else if ($role = "director") {
             $users = User::where('role', 'director')->get();
-            return response()->json($users, 200);
-        }
-        if ($request->role = "dh") {
+        } else if ($role = "dh") {
             $users = User::where('role', 'department_head')->get();
-            return response()->json($users, 200);
-        }
-        if ($request->role = "supervisor") {
+        } else if ($role = "supervisor") {
             $users = User::where('role', 'supervisor')->get();
-            return response()->json($users, 200);
-        } else {
-            return response()->json(["error" => "Something went wrong"], 500);
         }
+        return response()->json($users, 200);
     }
 
     /**
@@ -48,8 +44,6 @@ class UserPermission extends Controller
     public function store(Request $request)
     {
         // dd($request);
-
-
         if ($request->role == "gd") {
             $gdCount = DepartmentGeneralDirector::where('general_director_id', $request->user_id)
                 ->where('dep_id', $request->id)
@@ -98,16 +92,16 @@ class UserPermission extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function getUserTags($id)
+    public function getUserTags($type, $id)
     {
         if (Auth::user()->role == "admin") {
-            $users = DepartmentGeneralDirector::with('users')->where('dep_id', $id)->get()->pluck('users.name');
+            if ($type == "gd") {
+                $users = DepartmentGeneralDirector::with('users')->where('dep_id', $id)->get()->pluck('users.name');
+            } else if ($type == "director") {
+                $users = DirectorGdRelation::with('directors')->where('dep_id', $id)->get()->pluck('directors.name');
+            }
             return response()->json($users, 200);
-        }
-        // else if(){
-
-        // }
-        else {
+        } else {
             return response()->json(['message' => "you are not authorized"], 403);
         }
     }
@@ -117,11 +111,20 @@ class UserPermission extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($userId, $depId)
+    public function destroyGd($userId, $depId)
     {
         DepartmentGeneralDirector::where('general_director_id', $userId)
             ->where('dep_id', $depId)
             ->delete();
         return response()->json(['message' => "item deleted"], 202);
+    }
+
+    public function destroyDirector($userId, $depId)
+    {
+
+        $data = DirectorGdRelation::where('director_id', $userId)
+            ->where('dep_id', $depId)
+            ->delete();
+        return response()->json([$data, 'message' => "item deleted"], 202);
     }
 }

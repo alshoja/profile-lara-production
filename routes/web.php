@@ -64,6 +64,7 @@ Route::post('list/sections', [App\Http\Controllers\SectionController::class, 'in
 
 
 Route::post('user/permissions', [App\Http\Controllers\UserPermission::class, 'index']);
-Route::get('user/permissions/{id}', [App\Http\Controllers\UserPermission::class, 'getUserTags']);
-Route::delete('user/permission/{userId}/{depId}', [App\Http\Controllers\UserPermission::class, 'destroy']);
+Route::get('user/permissions/{type}/{id}', [App\Http\Controllers\UserPermission::class, 'getUserTags']);
+Route::delete('user/permission/{userId}/{depId}', [App\Http\Controllers\UserPermission::class, 'destroyGd']);
+Route::delete('user/permission/director/{userId}/{depId}', [App\Http\Controllers\UserPermission::class, 'destroyDirector']);
 Route::post('user/permission', [App\Http\Controllers\UserPermission::class, 'store']);
