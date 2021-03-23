@@ -8,7 +8,6 @@ var KTTagifyDemos = (function () {
     tagify
       .on("input", getTagUsers("gd", generalDirector))
       .on("add", (e) => {
-        console.log(tagify);
         if (tagify.listeners.dropdown) {
           const dep_id = $("#per_dep_id").val();
           saveOrUpdateOrGet("user/permission", "POST", e.detail.data, dep_id);
@@ -16,7 +15,6 @@ var KTTagifyDemos = (function () {
       })
       .on("remove", (e) => {
         const dep_id = $("#per_dep_id").val();
-        console.log(e.type, e.detail);
         destroyItem("user/permission/" + e.detail.data.user_id, dep_id);
       });
   };
@@ -452,7 +450,6 @@ var KTTagifyDemos = (function () {
       tagSuper();
     },
     getTags: function (id) {
-      alert(id);
       loadTags(id);
     },
   };
