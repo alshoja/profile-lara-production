@@ -10,10 +10,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class DepartmentSupervisor extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'depart_head_id',
+        'dep_id',
+        'supervisor_id'
+    ];
 
-    public function user()
+    public function departmentSupervisors()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'supervisor_id', 'id');
     }
 
     public function employs()

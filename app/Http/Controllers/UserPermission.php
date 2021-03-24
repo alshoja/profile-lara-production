@@ -3,16 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Department;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 use App\Models\DepartmentDirector;
-use App\Models\DirectorGdRelation;
 use Illuminate\Support\Facades\Auth;
-use App\Rules\UniqueGDForDepartments;
 use App\Models\DepartmentGeneralDirector;
 use App\Models\DepartmentHead;
-use Illuminate\Support\Facades\Validator;
+use App\Models\DepartmentSupervisor;
 
 class UserPermission extends Controller
 {
@@ -45,6 +41,7 @@ class UserPermission extends Controller
      */
     public function getUserTagsBy($role, $id)
     {
+     
         if (Auth::user()->role == "admin") {
             if ($role == "gd") {
                 $users = DepartmentGeneralDirector::with('users')->where('dep_id', $id)->get()->pluck('users.name');
@@ -52,6 +49,8 @@ class UserPermission extends Controller
                 $users = DepartmentDirector::with('directors')->where('dep_id', $id)->get()->pluck('directors.name');
             } else if ($role == "dh") {
                 $users = DepartmentHead::with('departmentHeads')->where('dep_id', $id)->get()->pluck('departmentHeads.name');
+            } else if ($role == "supervisor") {
+                $users = DepartmentSupervisor::with('departmentSupervisors')->where('dep_id', $id)->get()->pluck('departmentSupervisors.name');
             }
             return response()->json($users, 200);
         } else {

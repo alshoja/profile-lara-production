@@ -2,31 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Department_supervisor;
 use Illuminate\Http\Request;
+use App\Models\DepartmentSupervisor;
+use Illuminate\Support\Facades\Auth;
 
 class DepartmentSupervisorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -35,51 +16,37 @@ class DepartmentSupervisorController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $superCount = DepartmentSupervisor::where('supervisor_id', $request->user_id)
+            ->where('dep_id', $request->id)
+            ->count();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Department_supervisor  $department_supervisor
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Department_supervisor $department_supervisor)
-    {
-        //
-    }
+        if ($superCount < 1) {
+            $data = [
+                'supervisor_id' => $request->user_id,
+                'dep_id' => $request->id,
+                'depart_head_id' =>  Auth::user()->id
+            ];
+        }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Department_supervisor  $department_supervisor
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Department_supervisor $department_supervisor)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Department_supervisor  $department_supervisor
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Department_supervisor $department_supervisor)
-    {
-        //
+        if (isset($data)) {
+            $user = DepartmentSupervisor::create($data);
+            return response()->json($user, 200);
+        }
+        return response()->json(['message' => 'user already added'], 400);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Department_supervisor  $department_supervisor
+     * @param  int  $userId
+     * @param  int  $depId
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Department_supervisor $department_supervisor)
+    public function destroy($userId, $depId)
     {
-        //
+        $data = DepartmentSupervisor::where('supervisor_id', $userId)
+            ->where('dep_id', $depId)
+            ->delete();
+        return response()->json([$data, 'message' => "item deleted"], 202);
     }
 }

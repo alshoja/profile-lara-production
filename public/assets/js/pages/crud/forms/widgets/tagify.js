@@ -4,7 +4,9 @@ var userPermissionTags = (function () {
   let gdTagify = null;
   let directorTagify = null;
   let departHeadTagify = null;
+  let supervisorTagify = null;
 
+  // ------------------------------------------------- General Directors Tags Starts Here ------------------------------------
   let initGeneralDirector = function () {
     const generalDirector = document.querySelector('input[name="gd"]');
     gdTagify = createTagfyInstance(generalDirector);
@@ -25,35 +27,6 @@ var userPermissionTags = (function () {
       .on("remove", (e) => {
         const dep_id = $("#per_dep_id").val();
         destroyItem("user/permission/gd/" + e.detail.data.user_id, dep_id);
-      });
-  };
-
-  let initDirector = function () {
-    const Director = document.querySelector('input[name="director"]');
-    directorTagify = createTagfyInstance(Director);
-
-    directorTagify
-      .on("input", getDirectorTagUsers("director", Director))
-      .on("add", (e) => {
-        if (directorTagify.listeners.dropdown) {
-          const dep_id = $("#per_dep_id").val();
-          saveOrUpdateOrGet(
-            "user/permission/director",
-            "POST",
-            e.detail.data,
-            dep_id
-          );
-        }
-      })
-      .on("remove", (e) => {
-        console.log("director/remove", e.detail);
-        const dep_id = $("#per_dep_id").val();
-        alert("userID" + e.detail.data.user_id);
-        alert("dep_id" + dep_id);
-        destroyItem(
-          "user/permission/director/" + e.detail.data.user_id,
-          dep_id
-        );
       });
   };
 
@@ -84,14 +57,34 @@ var userPermissionTags = (function () {
     }
   };
 
-  let loadDhTags = function (id, role) {
-    gdTagify.removeAllTags();
-    if (typeof id != "undefined") {
-      const remoteTags = getOrGetById("user/permissions/" + role, id);
-      if (remoteTags.length > 0) {
-        gdTagify.addTags(remoteTags);
-      }
-    }
+  // ---------------------------------------------------Director tags starts here----------------------------------------
+  let initDirector = function () {
+    const Director = document.querySelector('input[name="director"]');
+    directorTagify = createTagfyInstance(Director);
+
+    directorTagify
+      .on("input", getDirectorTagUsers("director", Director))
+      .on("add", (e) => {
+        if (directorTagify.listeners.dropdown) {
+          const dep_id = $("#per_dep_id").val();
+          saveOrUpdateOrGet(
+            "user/permission/director",
+            "POST",
+            e.detail.data,
+            dep_id
+          );
+        }
+      })
+      .on("remove", (e) => {
+        console.log("director/remove", e.detail);
+        const dep_id = $("#per_dep_id").val();
+        alert("userID" + e.detail.data.user_id);
+        alert("dep_id" + dep_id);
+        destroyItem(
+          "user/permission/director/" + e.detail.data.user_id,
+          dep_id
+        );
+      });
   };
 
   let getDirectorTagUsers = async (role, textbox) => {
@@ -121,6 +114,7 @@ var userPermissionTags = (function () {
     }
   };
 
+  //  ------------------------------------------Department Head Tags starts Here--------------------------------------------------
   let initDH = function () {
     var departmentHead = document.querySelector('input[name="departhead"]');
     departHeadTagify = createTagfyInstance(departmentHead);
@@ -162,10 +156,68 @@ var userPermissionTags = (function () {
     departHeadTagify.settings.whitelist = mappedArray;
   };
 
-  let tagSuper = function () {
-    var superTagify = document.getElementById("super");
+  let loadDhTags = function (id, role) {
+    departHeadTagify.removeAllTags();
+    if (typeof id != "undefined") {
+      const remoteTags = getOrGetById("user/permissions/" + role, id);
+      if (remoteTags.length > 0) {
+        departHeadTagify.addTags(remoteTags);
+      }
+    }
   };
 
+  // ----------------------------- Supervisors Tags Starts Here ------------------------------------------------------------------
+  let initSupervisor = function () {
+    const supervisor = document.querySelector('input[name="supervisor"]');
+    supervisorTagify = createTagfyInstance(supervisor);
+
+    supervisorTagify
+      .on("input", getSuperTagUsers("supervisor", supervisor))
+      .on("add", (e) => {
+        if (supervisorTagify.listeners.dropdown) {
+          const dep_id = $("#per_dep_id").val();
+          saveOrUpdateOrGet(
+            "user/permission/super",
+            "POST",
+            e.detail.data,
+            dep_id
+          );
+        }
+      })
+      .on("remove", (e) => {
+        const dep_id = $("#per_dep_id").val();
+        destroyItem("user/permission/super/" + e.detail.data.user_id, dep_id);
+      });
+  };
+
+  let getSuperTagUsers = async (role, textbox) => {
+    supervisorTagify.settings.whitelist.length = 0;
+    var userList = await getUserList(role);
+    mappedArray = userList.map((res) => {
+      return {
+        value: res.name,
+        email: res.email,
+        user_id: res.id,
+        role: role,
+        initialsState: "warning",
+        pic: HOST_URL + "/" + res.image,
+        class: "tagify__tag tagify__tag-light--danger",
+      };
+    });
+    supervisorTagify.settings.whitelist = mappedArray;
+  };
+
+  let loadSuperTags = function (id, role) {
+    supervisorTagify.removeAllTags();
+    if (typeof id != "undefined") {
+      const remoteTags = getOrGetById("user/permissions/" + role, id);
+      if (remoteTags.length > 0) {
+        supervisorTagify.addTags(remoteTags);
+      }
+    }
+  };
+
+// ---------------------------------------- Create new Instance for tag Textboxes -----------------------------------------------
   let createTagfyInstance = (input) => {
     return new Tagify(input, {
       delimiters: ", ", // add new tags when a comma or a space character is entered
@@ -226,12 +278,13 @@ var userPermissionTags = (function () {
       initGeneralDirector();
       initDirector();
       initDH();
-      tagSuper();
+      initSupervisor();
     },
     getTags: function (id) {
       loadGDTags(id, "gd");
       loadDirectorTags(id, "director");
       loadDhTags(id, "dh");
+      loadSuperTags(id, "supervisor");
     },
   };
 

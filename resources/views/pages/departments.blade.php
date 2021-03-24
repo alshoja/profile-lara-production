@@ -30,16 +30,16 @@
                         <div>
                             <label class="text-success"> Department Heads</label>
 
-                            <input id="departhead" name="departhead" class="form-control tagify" name='tags3'
-                                placeholder="Add department heads" value="DHead 1, DHead 2" />
+                            <input id="departhead" name="departhead" class="form-control tagify" 
+                                placeholder="Add department heads" />
                         </div>
                         <div class="separator separator-dashed my-10"></div>
 
                         <div>
                             <label class="text-primary"> Supervisors</label>
 
-                            <input id="super" class="form-control tagify" name='tags4' placeholder="Add Supervisors"
-                                value="Sup 1, Sup 2 " />
+                            <input id="super" class="form-control tagify" name='supervisor' placeholder="Add Supervisors"
+                                 />
                         </div>
                     </div>
                     <div class="modal-footer">
