@@ -14,7 +14,7 @@ class DirectorGdRelationFactory extends Factory
      *
      * @var string
      */
-    protected $model = DirectorGdRelation::class;
+    protected $model = DeparmentDirector::class;
 
     /**
      * Define the model's default state.

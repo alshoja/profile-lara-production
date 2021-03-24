@@ -1,4 +1,4 @@
-function showToast(message, title) {
+let showToast = (message, title, type) => {
   $.notify(
     {
       // options
@@ -12,7 +12,7 @@ function showToast(message, title) {
       // settings
       element: "body",
       position: null,
-      type: "success",
+      type: type,
       //   allow_dismiss: true,
       newest_on_top: false,
       showProgressbar: false,
@@ -49,4 +49,4 @@ function showToast(message, title) {
         "</div>",
     }
   );
-}
+};

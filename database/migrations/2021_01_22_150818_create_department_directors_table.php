@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDirectorGdRelationsTable extends Migration
+class CreateDepartmentDirectorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateDirectorGdRelationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('director_gd_relations', function (Blueprint $table) {
+        Schema::create('department_directors', function (Blueprint $table) {
             $table->id();
             $table->foreignId('director_id')->constrained('users');
             $table->foreignId('dep_id')->constrained('departments');
-            $table->foreignId('general_director_id')->constrained('users');
+            $table->foreignId('general_director_id')->constrained('users')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateDirectorGdRelationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('director_gd_relations');
+        Schema::dropIfExists('department_directors');
     }
 }

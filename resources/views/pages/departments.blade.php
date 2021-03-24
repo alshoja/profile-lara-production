@@ -30,7 +30,7 @@
                         <div>
                             <label class="text-success"> Department Heads</label>
 
-                            <input id="departhead" class="form-control tagify" name='tags3'
+                            <input id="departhead" name="departhead" class="form-control tagify" name='tags3'
                                 placeholder="Add department heads" value="DHead 1, DHead 2" />
                         </div>
                         <div class="separator separator-dashed my-10"></div>

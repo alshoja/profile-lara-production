@@ -17,7 +17,7 @@ function saveOrUpdateOrGet(url, method, formData, id) {
     success: (data) => {
       // console.log(data);
       res = data;
-      showToast("Item added");
+      showToast("Item added",'','info');
     },
     error: function (XMLHttpRequest, textStatus, errorThrown) {
       console.log(XMLHttpRequest);
@@ -54,7 +54,7 @@ function destroyItem(url, id = 0) {
     dataType: "json",
     contentType: "application/json",
     success: function (result) {
-      showToast(result.message);
+      showToast(result.message, "", "danger");
       reloadData();
     },
     error: function (XMLHttpRequest, textStatus, errorThrown) {

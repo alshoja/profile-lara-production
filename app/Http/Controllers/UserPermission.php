@@ -6,10 +6,12 @@ use App\Models\User;
 use App\Models\Department;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Auth;
-use App\Models\DepartmentGeneralDirector;
+use App\Models\DepartmentDirector;
 use App\Models\DirectorGdRelation;
+use Illuminate\Support\Facades\Auth;
 use App\Rules\UniqueGDForDepartments;
+use App\Models\DepartmentGeneralDirector;
+use App\Models\DepartmentHead;
 use Illuminate\Support\Facades\Validator;
 
 class UserPermission extends Controller
@@ -25,106 +27,35 @@ class UserPermission extends Controller
         $role = $request->role;
         if ($role == "gd") {
             $users = User::where('role', 'general_director')->get();
-        } else if ($role = "director") {
+        } else if ($role == "director") {
             $users = User::where('role', 'director')->get();
-        } else if ($role = "dh") {
+        } else if ($role == "dh") {
             $users = User::where('role', 'department_head')->get();
-        } else if ($role = "supervisor") {
+        } else if ($role == "supervisor") {
             $users = User::where('role', 'supervisor')->get();
         }
         return response()->json($users, 200);
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        // dd($request);
-        if ($request->role == "gd") {
-            $gdCount = DepartmentGeneralDirector::where('general_director_id', $request->user_id)
-                ->where('dep_id', $request->id)
-                ->count();
-            if ($gdCount < 1) {
-                $data = ['general_director_id' =>  $request->user_id, 'dep_id' => $request->id];
-            }
-        } else if ($request->role == "director") {
-        }
-        if ($request->role == "dh") {
-        }
-        if ($request->role == "supervisor") {
-        }
-        if (isset($data)) {
-            $user = DepartmentGeneralDirector::create($data);
-            return response()->json($user, 200);
-        }
-        return response()->json(['message' => 'user already added'], 400);
-    }
-
-    /**
-     * Display the specified resource.
+     * Get the specified userTags from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function getUserTags($type, $id)
+    public function getUserTagsBy($role, $id)
     {
         if (Auth::user()->role == "admin") {
-            if ($type == "gd") {
+            if ($role == "gd") {
                 $users = DepartmentGeneralDirector::with('users')->where('dep_id', $id)->get()->pluck('users.name');
-            } else if ($type == "director") {
-                $users = DirectorGdRelation::with('directors')->where('dep_id', $id)->get()->pluck('directors.name');
+            } else if ($role == "director") {
+                $users = DepartmentDirector::with('directors')->where('dep_id', $id)->get()->pluck('directors.name');
+            } else if ($role == "dh") {
+                $users = DepartmentHead::with('departmentHeads')->where('dep_id', $id)->get()->pluck('departmentHeads.name');
             }
             return response()->json($users, 200);
         } else {
             return response()->json(['message' => "you are not authorized"], 403);
         }
-    }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroyGd($userId, $depId)
-    {
-        DepartmentGeneralDirector::where('general_director_id', $userId)
-            ->where('dep_id', $depId)
-            ->delete();
-        return response()->json(['message' => "item deleted"], 202);
-    }
-
-    public function destroyDirector($userId, $depId)
-    {
-
-        $data = DirectorGdRelation::where('director_id', $userId)
-            ->where('dep_id', $depId)
-            ->delete();
-        return response()->json([$data, 'message' => "item deleted"], 202);
     }
 }

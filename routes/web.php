@@ -62,9 +62,17 @@ Route::get('section/{id}', [App\Http\Controllers\SectionController::class, 'show
 Route::put('section', [App\Http\Controllers\SectionController::class, 'update']);
 Route::post('list/sections', [App\Http\Controllers\SectionController::class, 'index']);
 
-
+// Permissions
 Route::post('user/permissions', [App\Http\Controllers\UserPermission::class, 'index']);
-Route::get('user/permissions/{type}/{id}', [App\Http\Controllers\UserPermission::class, 'getUserTags']);
-Route::delete('user/permission/{userId}/{depId}', [App\Http\Controllers\UserPermission::class, 'destroyGd']);
-Route::delete('user/permission/director/{userId}/{depId}', [App\Http\Controllers\UserPermission::class, 'destroyDirector']);
-Route::post('user/permission', [App\Http\Controllers\UserPermission::class, 'store']);
+Route::get('user/permissions/{role}/{id}', [App\Http\Controllers\UserPermission::class, 'getUserTagsBy']);
+
+// General Director
+Route::post('user/permission/gd', [App\Http\Controllers\GeneralDirectorController::class, 'store']);
+Route::delete('user/permission/gd/{userId}/{depId}', [App\Http\Controllers\GeneralDirectorController::class, 'destroy']);
+// Department Head
+Route::post('user/permission/dh', [App\Http\Controllers\DepartmentHeadsController::class, 'store']);
+Route::delete('user/permission/dh/{userId}/{depId}', [App\Http\Controllers\DepartmentHeadsController::class, 'destroy']);
+
+// Director 
+Route::post('user/permission/director', [App\Http\Controllers\DirectorController::class, 'store']);
+Route::delete('user/permission/director/{userId}/{depId}', [App\Http\Controllers\UserPermission::class, 'destroy']);
