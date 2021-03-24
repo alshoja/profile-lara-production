@@ -150,7 +150,7 @@ var userPermissionTags = (function () {
         role: role,
         initialsState: "warning",
         pic: HOST_URL + "/" + res.image,
-        class: "tagify__tag tagify__tag-light--warning",
+        class: "tagify__tag tagify__tag-light--success",
       };
     });
     departHeadTagify.settings.whitelist = mappedArray;
@@ -201,7 +201,7 @@ var userPermissionTags = (function () {
         role: role,
         initialsState: "warning",
         pic: HOST_URL + "/" + res.image,
-        class: "tagify__tag tagify__tag-light--danger",
+        class: "tagify__tag tagify__tag-light--primary",
       };
     });
     supervisorTagify.settings.whitelist = mappedArray;
