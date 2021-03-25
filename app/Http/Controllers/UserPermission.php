@@ -21,14 +21,28 @@ class UserPermission extends Controller
     {
         $users = null;
         $role = $request->role;
-        if ($role == "gd") {
-            $users = User::where('role', 'general_director')->get();
-        } else if ($role == "director") {
-            $users = User::where('role', 'director')->get();
-        } else if ($role == "dh") {
-            $users = User::where('role', 'department_head')->get();
-        } else if ($role == "supervisor") {
-            $users = User::where('role', 'supervisor')->get();
+        if (Auth::user()->role == "admin" || Auth::user()->role == "general_director") {
+            if ($role == "gd") {
+                $users = User::where('role', 'general_director')->get();
+            } else if ($role == "director") {
+                $users = User::where('role', 'director')->get();
+            } else if ($role == "dh") {
+                $users = User::where('role', 'department_head')->get();
+            } else if ($role == "supervisor") {
+                $users = User::where('role', 'supervisor')->get();
+            }
+        } else if (Auth::user()->role == "director") {
+            if ($role == "dh") {
+                $users = User::where('role', 'department_head')->get();
+            } else if ($role == "supervisor") {
+                $users = User::where('role', 'supervisor')->get();
+            }
+        } else if (Auth::user()->role == "department_head") {
+            if ($role == "supervisor") {
+                $users = User::where('role', 'supervisor')->get();
+            }
+        } else {
+            return response()->json(['error' => "Oops ! The request is forbidden"], 403);
         }
         return response()->json($users, 200);
     }
@@ -41,8 +55,7 @@ class UserPermission extends Controller
      */
     public function getUserTagsBy($role, $id)
     {
-     
-        if (Auth::user()->role == "admin") {
+        if (Auth::user()->role == "admin" || Auth::user()->role == "general_director") {
             if ($role == "gd") {
                 $users = DepartmentGeneralDirector::with('users')->where('dep_id', $id)->get()->pluck('users.name');
             } else if ($role == "director") {
@@ -50,6 +63,18 @@ class UserPermission extends Controller
             } else if ($role == "dh") {
                 $users = DepartmentHead::with('departmentHeads')->where('dep_id', $id)->get()->pluck('departmentHeads.name');
             } else if ($role == "supervisor") {
+                $users = DepartmentSupervisor::with('departmentSupervisors')->where('dep_id', $id)->get()->pluck('departmentSupervisors.name');
+            }
+            return response()->json($users, 200);
+        } else if (Auth::user()->role == "director") {
+            if ($role == "dh") {
+                $users = DepartmentHead::with('departmentHeads')->where('dep_id', $id)->get()->pluck('departmentHeads.name');
+            } else if ($role == "supervisor") {
+                $users = DepartmentSupervisor::with('departmentSupervisors')->where('dep_id', $id)->get()->pluck('departmentSupervisors.name');
+            }
+            return response()->json($users, 200);
+        } else if (Auth::user()->role == "department_head") {
+            if ($role == "supervisor") {
                 $users = DepartmentSupervisor::with('departmentSupervisors')->where('dep_id', $id)->get()->pluck('departmentSupervisors.name');
             }
             return response()->json($users, 200);

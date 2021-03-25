@@ -8,8 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title> {{ config('app.name', 'Profile') }}</title>
-    <meta name="description"
-        content="Metronic admin dashboard live demo. Check out all the features of the admin panel. A large number of settings, additional services and widgets." />
+    <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="canonical" href="https://keenthemes.com/metronic" />
     <!--begin::Fonts-->
@@ -38,9 +37,7 @@
     {{-- login css --}}
     <link href="{{ asset('assets/css/pages/login/classic/login-3.css') }}" rel="stylesheet" type="text/css" />
 
-
-
     <!--end::Layout Themes-->
-    <link rel="shortcut icon" href="{{ asset('assets/media/logos/favicon.ico') }}" />
+    <link rel="icon" href="{{ asset('/favicon.ico') }}" />
 </head>
 <!--end::Head-->

@@ -33,7 +33,8 @@
                                     </span>
                                 </span>
                                 <div class="d-flex flex-column text-right">
-                                    <span class="text-dark-75 font-weight-bolder font-size-h3">75</span>
+                                    <span
+                                        class="text-dark-75 font-weight-bolder font-size-h3">{{ $dashData->profileEntered }}</span>
                                     <span class="text-muted font-weight-bold mt-2">My Profiles</span>
                                 </div>
                             </div>
@@ -70,7 +71,8 @@
                                     </span>
                                 </span>
                                 <div class="d-flex flex-column text-right">
-                                    <span class="text-dark-75 font-weight-bolder font-size-h3">+6,5K</span>
+                                    <span
+                                        class="text-dark-75 font-weight-bolder font-size-h3">{{ $dashData->usersCount }}</span>
                                     <span class="text-muted font-weight-bold mt-2">My Users</span>
                                 </div>
                             </div>
@@ -88,7 +90,7 @@
                         <!--begin::Header-->
                         <div class="card-header align-items-center border-0 mt-4">
                             <h3 class="card-title align-items-start flex-column">
-                                <span class="font-weight-bolder text-dark">My Activity</span>
+                                <span class="font-weight-bolder text-dark">Activity</span>
                                 <span class="text-muted mt-3 font-weight-bold font-size-sm">Last Profile</span>
                             </h3>
                             <div class="card-toolbar">
@@ -329,7 +331,8 @@
                                     <div class="col bg-light-warning px-6 py-8 rounded-xl mr-7 mb-7">
                                         <span class="svg-icon svg-icon-3x svg-icon-warning d-block my-2">
                                             <!--begin::Svg Icon | path:assets/media/svg/icons/Media/Equalizer.svg-->
-                                            <p class="text-warning font-weight-bold font-size-h6 mt-2">22</p>
+                                            <p class="text-warning font-weight-bold font-size-h6 mt-2">
+                                                {{ $dashData->profileEntered }}</p>
                                             <!--end::Svg Icon-->
                                         </span>
                                         <a href="#" class="text-warning font-weight-bold font-size-h6">Profile
@@ -337,7 +340,8 @@
                                     </div>
                                     <div class="col bg-light-primary px-6 py-8 rounded-xl mb-7">
                                         <span class="svg-icon svg-icon-3x svg-icon-primary d-block my-2">
-                                            <p class="text-info font-weight-bold font-size-h6 mt-2">22</p>
+                                            <p class="text-info font-weight-bold font-size-h6 mt-2">
+                                                {{ $dashData->usersCount }}</p>
                                             <!--end::Svg Icon-->
                                         </span>
                                         <a href="#" class="text-primary font-weight-bold font-size-h6 mt-2"> Users</a>
@@ -349,7 +353,8 @@
                                     <div class="col bg-light-danger px-6 py-8 rounded-xl mr-7">
                                         <span class="svg-icon svg-icon-3x svg-icon-danger d-block my-2">
                                             <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Layers.svg-->
-                                            <p class="text-danger font-weight-bold font-size-h6 mt-2">22</p>
+                                            <p class="text-danger font-weight-bold font-size-h6 mt-2">
+                                                {{ $dashData->profileApproved }}</p>
                                             <!--end::Svg Icon-->
                                         </span>
                                         <a href="#" class="text-danger font-weight-bold font-size-h6 mt-2">Approved
@@ -358,7 +363,8 @@
                                     <div class="col bg-light-success px-6 py-8 rounded-xl">
                                         <span class="svg-icon svg-icon-3x svg-icon-success d-block my-2">
                                             <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Urgent-mail.svg-->
-                                            <p class="text-success font-weight-bold font-size-h6 mt-2">22</p>
+                                            <p class="text-success font-weight-bold font-size-h6 mt-2">
+                                                {{ $dashData->profilePending }}</p>
                                             <!--end::Svg Icon-->
                                         </span>
                                         <a href="#" class="text-success font-weight-bold font-size-h6 mt-2">Profile
@@ -385,7 +391,7 @@
                                 <span class="card-label font-weight-bolder text-dark">Recent Profiles</span>
                                 <!-- <span class="text-muted mt-3 font-weight-bold font-size-sm">More than 400+ new members</span> -->
                             </h3>
-                            <div class="card-toolbar">
+                            {{-- <div class="card-toolbar">
                                 <div class="dropdown dropdown-inline">
                                     <a href="#"
                                         class="btn btn-danger btn-gradient-danger btn-sm font-weight-bolder dropdown-toggle px-5"
@@ -394,9 +400,9 @@
                                         <!--begin::Navigation-->
                                         <ul class="navi navi-hover">
                                             <!-- <li class="navi-header pb-1">
-               <span class="text-primary text-uppercase font-weight-bold font-size-sm">Add
-                new:</span>
-              </li> -->
+                                                               <span class="text-primary text-uppercase font-weight-bold font-size-sm">Add
+                                                                new:</span>
+                                                              </li> -->
                                             <li class="navi-item">
                                                 <a href="#" class="navi-link">
                                                     <span class="navi-icon">
@@ -406,42 +412,42 @@
                                                 </a>
                                             </li>
                                             <!-- <li class="navi-item">
-               <a href="#" class="navi-link">
-                <span class="navi-icon">
-                 <i class="flaticon2-calendar-8"></i>
-                </span>
-                <span class="navi-text">Event</span>
-               </a>
-              </li>
-              <li class="navi-item">
-               <a href="#" class="navi-link">
-                <span class="navi-icon">
-                 <i class="flaticon2-graph-1"></i>
-                </span>
-                <span class="navi-text">Report</span>
-               </a>
-              </li>
-              <li class="navi-item">
-               <a href="#" class="navi-link">
-                <span class="navi-icon">
-                 <i class="flaticon2-rocket-1"></i>
-                </span>
-                <span class="navi-text">Post</span>
-               </a>
-              </li>
-              <li class="navi-item">
-               <a href="#" class="navi-link">
-                <span class="navi-icon">
-                 <i class="flaticon2-writing"></i>
-                </span>
-                <span class="navi-text">File</span>
-               </a>
-              </li> -->
+                                                               <a href="#" class="navi-link">
+                                                                <span class="navi-icon">
+                                                                 <i class="flaticon2-calendar-8"></i>
+                                                                </span>
+                                                                <span class="navi-text">Event</span>
+                                                               </a>
+                                                              </li>
+                                                              <li class="navi-item">
+                                                               <a href="#" class="navi-link">
+                                                                <span class="navi-icon">
+                                                                 <i class="flaticon2-graph-1"></i>
+                                                                </span>
+                                                                <span class="navi-text">Report</span>
+                                                               </a>
+                                                              </li>
+                                                              <li class="navi-item">
+                                                               <a href="#" class="navi-link">
+                                                                <span class="navi-icon">
+                                                                 <i class="flaticon2-rocket-1"></i>
+                                                                </span>
+                                                                <span class="navi-text">Post</span>
+                                                               </a>
+                                                              </li>
+                                                              <li class="navi-item">
+                                                               <a href="#" class="navi-link">
+                                                                <span class="navi-icon">
+                                                                 <i class="flaticon2-writing"></i>
+                                                                </span>
+                                                                <span class="navi-text">File</span>
+                                                               </a>
+                                                              </li> -->
                                         </ul>
                                         <!--end::Navigation-->
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                         <!--end::Header-->
                         <!--begin::Body-->
@@ -460,46 +466,47 @@
                                                 <th style="min-width: 100px">Gender</th>
                                                 <th style="min-width: 100px">Country</th>
                                                 <!-- <th style="min-width: 100px">company</th>
-                     <th style="min-width: 130px">rating</th> -->
+                                                                             <th style="min-width: 130px">rating</th> -->
                                                 <th style="min-width: 80px"></th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php for ($i = 0; $i < 4; $i++) { ?> <tr>
-                                                <td class="pl-0 py-8">
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="symbol symbol-50 symbol-light mr-4">
-                                                            <span class="symbol-label">
-                                                                <img src="assets/media/svg/avatars/001-boy.svg"
-                                                                    class="h-75 align-self-end" alt="" />
-                                                            </span>
+                                            @foreach ($dashData->profileList as $item)
+
+                                                <tr>
+                                                    <td class="pl-0 py-8">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="symbol symbol-50 symbol-light mr-4">
+                                                                <span class="symbol-label">
+                                                                    <img src="assets/media/svg/avatars/001-boy.svg"
+                                                                        class="h-75 align-self-end" alt="" />
+                                                                </span>
+                                                            </div>
+                                                            <div>
+                                                                <a href="#"
+                                                                    class="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">
+                                                                    {{ $item->name }}</a>
+                                                                <span
+                                                                    class="text-muted font-weight-bold d-block">{{ $item->citizen_location }}</span>
+                                                            </div>
                                                         </div>
-                                                        <div>
-                                                            <a href="#"
-                                                                class="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">Brad
-                                                                Simmons</a>
-                                                            <span class="text-muted font-weight-bold d-block">HTML, JS,
-                                                                ReactJS</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span
-                                                        class="text-dark-75 font-weight-bolder d-block font-size-lg">Male</span>
-                                                    <!-- <span class="text-muted font-weight-bold">In Proccess</span> -->
-                                                </td>
-                                                <td>
-                                                    <span
-                                                        class="text-dark-75 font-weight-bolder d-block font-size-lg">United
-                                                        Kingdom</span>
-                                                    <!-- <span class="text-muted font-weight-bold">Paid</span> -->
-                                                </td>
-                                                <td class="pr-0 text-right">
-                                                    <a href="edit-profile.php"
-                                                        class="btn btn-success btn-gradient-success  font-weight-bolder font-size-sm">More</a>
-                                                </td>
+                                                    </td>
+                                                    <td>
+                                                        <span
+                                                            class="text-dark-75 font-weight-bolder d-block font-size-lg">{{ $item->gender }}</span>
+                                                        <!-- <span class="text-muted font-weight-bold">In Proccess</span> -->
+                                                    </td>
+                                                    <td>
+                                                        <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
+                                                            {{ $item->nationality }}</span>
+                                                        <!-- <span class="text-muted font-weight-bold">Paid</span> -->
+                                                    </td>
+                                                    <td class="pr-0 text-right">
+                                                        <a href="edit-profile.php"
+                                                            class="btn btn-success btn-gradient-success  font-weight-bolder font-size-sm">More</a>
+                                                    </td>
                                                 </tr>
-                                                <?php } ?>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -520,32 +527,57 @@
         <!--end::Container-->
     </div>
 @endsection
-<script src="assets/js/pages/crud/ktdatatable/base/data-json.js"></script>
+{{-- <script src="assets/js/pages/crud/ktdatatable/base/data-json.js"></script> --}}
 
 <script>
-	function addClass(active_link_id, type) {
-		switch (type) {
-			case "track_nav_item":
-				var current = document.getElementById('track_nav_item' + active_link_id);
-				var tabItem = document.getElementById('kt_tab_pane_5_' + active_link_id);
+    function addClass(active_link_id, type) {
+        switch (type) {
+            case "track_nav_item":
+                var current = document.getElementById('track_nav_item' + active_link_id);
+                var tabItem = document.getElementById('kt_tab_pane_5_' + active_link_id);
 
-				break;
-			case "note_nav_item":
-				var current = document.getElementById('note_nav_item' + active_link_id);
-				var tabItem = document.getElementById('kt_tab_pane_5_' + active_link_id);
+                break;
+            case "note_nav_item":
+                var current = document.getElementById('note_nav_item' + active_link_id);
+                var tabItem = document.getElementById('kt_tab_pane_5_' + active_link_id);
 
-				break;
-			case "profile_nav_item":
-				var current = document.getElementById('profile_nav_item' + active_link_id);
-				var tabItem = document.getElementById('kt_tab_pane_5_' + active_link_id);
+                break;
+            case "profile_nav_item":
+                var current = document.getElementById('profile_nav_item' + active_link_id);
+                var tabItem = document.getElementById('kt_tab_pane_5_' + active_link_id);
 
-		}
-		current.classList.add('active');
-		
-		$('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
-			console.log('tab view tog', e.target);
-			e.target // newly activated tab
-			e.relatedTarget // previous active tab
-		})
-	}
+        }
+        current.classList.add('active');
+
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
+            console.log('tab view tog', e.target);
+            e.target // newly activated tab
+            e.relatedTarget // previous active tab
+        })
+    }
+
+</script>
+
+<script>
+    var chartSettings = {
+        profile: {
+            data: [{{ implode(',', $dashData->profile) }}],
+            name: 'Profiles',
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            count: 66
+        },
+        users: {
+            data: [{{ implode(',', $dashData->users) }}],
+            name: 'Users',
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            count: 46
+
+        },
+        analytics: {
+            data:[{{ implode(',', $dashData->analytics) }}],
+            name: '',
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        }
+    };
+
 </script>

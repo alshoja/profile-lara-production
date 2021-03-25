@@ -8,7 +8,7 @@
     <div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
         <!--begin::Logo-->
         <a href="dashboard.php">
-            <img alt="Logo" src="{{asset('assets/media/logos/logo-light.png')}}" />
+            <img alt="Logo" src="{{ asset('assets/media/logos/logo-light.png') }}" />
         </a>
         <!--end::Logo-->
         <!--begin::Toolbar-->
@@ -56,7 +56,7 @@
                 <div class="brand flex-column-auto" id="kt_brand">
                     <!--begin::Logo-->
                     <a href="/" class="brand-logo">
-                        <img alt="Logo" src="{{asset('assets/media/logos/logo-light.png')}}" />
+                        <img alt="Logo" src="{{ asset('assets/media/logos/logo-light.png') }}" />
                     </a>
                     <!--end::Logo-->
                     <!--begin::Toggle-->
@@ -90,7 +90,8 @@
                         data-menu-dropdown-timeout="500">
                         <!--begin::Menu Nav-->
                         <ul class="menu-nav">
-                            <li class="menu-item {{ Request::is('home') ? ' menu-item-active' : '' }}" aria-haspopup="true">
+                            <li class="menu-item {{ Request::is('home') ? ' menu-item-active' : '' }}"
+                                aria-haspopup="true">
                                 <a href={{ url('/home') }} class="menu-link">
                                     <span class="svg-icon menu-icon svg-icon-2x">
                                         <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Communication\Dial-numbers.svg--><svg
@@ -119,7 +120,8 @@
                                     <span class="menu-text">Dashboard</span>
                                 </a>
                             </li>
-                            <li class="menu-item {{ Request::is('inbox') ? 'menu-item-active' : '' }}" aria-haspopup="true">
+                            <li class="menu-item {{ Request::is('inbox') ? 'menu-item-active' : '' }}"
+                                aria-haspopup="true">
                                 <a href="{{ url('/inbox') }}" class="menu-link">
                                     <span class="svg-icon menu-icon">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Layers.svg-->
@@ -149,7 +151,8 @@
                                 <h4 class="menu-text">Manage Application</h4>
                                 <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                             </li>
-                            <li class="menu-item menu-item-submenu {{ Request::is('profile/*') ? 'menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
+                            <li class="menu-item menu-item-submenu {{ Request::is('profile/*') ? 'menu-item-open' : '' }}"
+                                aria-haspopup="true" data-menu-toggle="hover">
                                 <a href="javascript:;" class="menu-link menu-toggle">
                                     <span class="svg-icon menu-icon svg-icon-2x">
                                         <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Files\Folder-error.svg--><svg
@@ -179,7 +182,8 @@
                                                 <span class="menu-text">Profile</span>
                                             </span>
                                         </li>
-                                        <li class="menu-item {{ Request::is('profile/add-profile') ? 'menu-item-active' : '' }}" aria-haspopup="true">
+                                        <li class="menu-item {{ Request::is('profile/add-profile') ? 'menu-item-active' : '' }}"
+                                            aria-haspopup="true">
                                             <a href="{{ url('profile/add-profile') }}" class="menu-link">
                                                 <i class="menu-bullet menu-bullet-dot">
                                                     <span></span>
@@ -188,7 +192,8 @@
                                             </a>
                                         </li>
 
-                                        <li class="menu-item {{ Request::is('profile/drafts') ? 'menu-item-active' : '' }}" aria-haspopup="true">
+                                        <li class="menu-item {{ Request::is('profile/drafts') ? 'menu-item-active' : '' }}"
+                                            aria-haspopup="true">
                                             <a href="{{ url('profile/drafts') }}" class="menu-link">
                                                 <i class="menu-bullet menu-bullet-dot">
                                                     <span></span>
@@ -196,7 +201,8 @@
                                                 <span class="menu-text">Drafts</span>
                                             </a>
                                         </li>
-                                        <li class="menu-item {{ Request::is('profile/track') ? 'menu-item-active' : '' }}" aria-haspopup="true">
+                                        <li class="menu-item {{ Request::is('profile/track') ? 'menu-item-active' : '' }}"
+                                            aria-haspopup="true">
                                             <a href="{{ url('profile/track') }}" class="menu-link">
                                                 <i class="menu-bullet menu-bullet-dot">
                                                     <span></span>
@@ -208,7 +214,8 @@
                                 </div>
                             </li>
 
-                            <li class="menu-item menu-item-submenu {{ Request::is('user/*') ? 'menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
+                            <li class="menu-item menu-item-submenu {{ Request::is('user/*') ? 'menu-item-open' : '' }}"
+                                aria-haspopup="true" data-menu-toggle="hover">
                                 <a href="javascript:;" class="menu-link menu-toggle">
                                     <span class="svg-icon menu-icon svg-icon-2x">
                                         <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\General\User.svg--><svg
@@ -233,7 +240,8 @@
                                 <div class="menu-submenu ">
                                     <i class="menu-arrow"></i>
                                     <ul class="menu-subnav">
-                                        <li class="menu-item {{ Request::is('user/add-user') ? 'menu-item-active' : '' }}" aria-haspopup="true">
+                                        <li class="menu-item {{ Request::is('user/add-user') ? 'menu-item-active' : '' }}"
+                                            aria-haspopup="true">
                                             <a href="{{ url('user/add-user') }}" class="menu-link">
                                                 <i class="menu-bullet menu-bullet-dot">
                                                     <span></span>
@@ -246,7 +254,8 @@
                                                 <span class="menu-text">List all</span>
                                             </span>
                                         </li>
-                                        <li class="menu-item {{ Request::is('user/list-users') ? 'menu-item-active' : '' }}" aria-haspopup="true">
+                                        <li class="menu-item {{ Request::is('user/list-users') ? 'menu-item-active' : '' }}"
+                                            aria-haspopup="true">
                                             <a href="{{ url('user/list-users') }}" class="menu-link">
                                                 <i class="menu-bullet menu-bullet-dot">
                                                     <span></span>
@@ -258,31 +267,36 @@
                                     </ul>
                                 </div>
                             </li>
-                            <li class="menu-section">
-                                <h4 class="menu-text">Settings</h4>
-                                <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
-                            </li>
-                            <li class="menu-item {{ Request::is('departments') ? ' menu-item-active' : '' }}" aria-haspopup="true">
-                                <a href="{{ url('/departments') }}" class="menu-link">
-                                    <span class="svg-icon menu-icon svg-icon-2x">
-                                        <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Home\Door-open.svg--><svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-                                            viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect opacity="0.300000012" x="0" y="0" width="24" height="24" />
-                                                <polygon fill="#000000" fill-rule="nonzero" opacity="0.3"
-                                                    points="7 4.89473684 7 21 5 21 5 3 11 3 11 4.89473684" />
-                                                <path
-                                                    d="M10.1782982,2.24743315 L18.1782982,3.6970464 C18.6540619,3.78325557 19,4.19751166 19,4.68102291 L19,19.3190064 C19,19.8025177 18.6540619,20.2167738 18.1782982,20.3029829 L10.1782982,21.7525962 C9.63486295,21.8510675 9.11449486,21.4903531 9.0160235,20.9469179 C9.00536265,20.8880837 9,20.8284119 9,20.7686197 L9,3.23140966 C9,2.67912491 9.44771525,2.23140966 10,2.23140966 C10.0597922,2.23140966 10.119464,2.2367723 10.1782982,2.24743315 Z M11.9166667,12.9060229 C12.6070226,12.9060229 13.1666667,12.2975724 13.1666667,11.5470105 C13.1666667,10.7964487 12.6070226,10.1879981 11.9166667,10.1879981 C11.2263107,10.1879981 10.6666667,10.7964487 10.6666667,11.5470105 C10.6666667,12.2975724 11.2263107,12.9060229 11.9166667,12.9060229 Z"
-                                                    fill="#000000" />
-                                            </g>
-                                        </svg>
-                                        <!--end::Svg Icon-->
-                                    </span>
-                                    <span class="menu-text">Departments</span>
-                                </a>
-                            </li>
+                            @if (Auth::user()->role != 'supervisor')
+
+                                <li class="menu-section">
+                                    <h4 class="menu-text">Settings</h4>
+                                    <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
+                                </li>
+                                <li class="menu-item {{ Request::is('departments') ? ' menu-item-active' : '' }}"
+                                    aria-haspopup="true">
+                                    <a href="{{ url('/departments') }}" class="menu-link">
+                                        <span class="svg-icon menu-icon svg-icon-2x">
+                                            <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Home\Door-open.svg--><svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
+                                                viewBox="0 0 24 24" version="1.1">
+                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <rect opacity="0.300000012" x="0" y="0" width="24" height="24" />
+                                                    <polygon fill="#000000" fill-rule="nonzero" opacity="0.3"
+                                                        points="7 4.89473684 7 21 5 21 5 3 11 3 11 4.89473684" />
+                                                    <path
+                                                        d="M10.1782982,2.24743315 L18.1782982,3.6970464 C18.6540619,3.78325557 19,4.19751166 19,4.68102291 L19,19.3190064 C19,19.8025177 18.6540619,20.2167738 18.1782982,20.3029829 L10.1782982,21.7525962 C9.63486295,21.8510675 9.11449486,21.4903531 9.0160235,20.9469179 C9.00536265,20.8880837 9,20.8284119 9,20.7686197 L9,3.23140966 C9,2.67912491 9.44771525,2.23140966 10,2.23140966 C10.0597922,2.23140966 10.119464,2.2367723 10.1782982,2.24743315 Z M11.9166667,12.9060229 C12.6070226,12.9060229 13.1666667,12.2975724 13.1666667,11.5470105 C13.1666667,10.7964487 12.6070226,10.1879981 11.9166667,10.1879981 C11.2263107,10.1879981 10.6666667,10.7964487 10.6666667,11.5470105 C10.6666667,12.2975724 11.2263107,12.9060229 11.9166667,12.9060229 Z"
+                                                        fill="#000000" />
+                                                </g>
+                                            </svg>
+                                            <!--end::Svg Icon-->
+                                        </span>
+                                        <span class="menu-text">Departments</span>
+                                    </a>
+                                </li>
+                            @endif
+
                         </ul>
                         <!--end::Menu Nav-->
                     </div>
@@ -353,7 +367,7 @@
                                     <form>
                                         <!--begin::Header-->
                                         <div class="d-flex flex-column pt-12 bgi-size-cover bgi-no-repeat rounded-top"
-                                            style="background-image: url({{asset('assets/media/misc/bg-1.jpg')}})">
+                                            style="background-image: url({{ asset('assets/media/misc/bg-1.jpg') }})">
                                             <!--begin::Title-->
                                             <h4 class="d-flex flex-center rounded-top">
                                                 <span class="text-white">User Notifications</span>
@@ -1067,7 +1081,7 @@
             <!--begin::Header-->
             <div class="d-flex align-items-center mt-5">
                 <div class="symbol symbol-100 mr-5">
-                    <div class="symbol-label" style="background-image:url({{asset(Auth::user()->image)}})"></div>
+                    <div class="symbol-label" style="background-image:url({{ asset(Auth::user()->image) }})"></div>
                     <i class="symbol-badge bg-success"></i>
                 </div>
                 <div class="d-flex flex-column">
@@ -1304,7 +1318,7 @@
     </ul>
     <!--end::Sticky Toolbar-->
     <div id="loader" class="loader"></div>
-   
+
     @extends('layouts.footer')
 
     <!--end::Page Scripts-->
@@ -1324,4 +1338,3 @@
 </style>
 
 </html>
-

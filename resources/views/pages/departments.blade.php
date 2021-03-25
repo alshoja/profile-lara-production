@@ -13,34 +13,40 @@
                     </div>
                     <input type="hidden" id="per_dep_id" name="per_dep_id">
                     <div class="modal-body">
-                        <div>
-                            <label class="text-danger">General Directors</label>
-                            <input id="gd" class="form-control tagify" name='gd' placeholder="Add department heads" />
-                        </div>
-                        <div class="separator separator-dashed my-10"></div>
+                        @if (Auth::user()->role == 'admin')
+                            <div>
+                                <label class="text-danger">General Directors</label>
+                                <input id="gd" class="form-control tagify" name='gd' placeholder="Add department heads" />
+                            </div>
+                            <div class="separator separator-dashed my-10"></div>
+                        @endif
+                        @if (Auth::user()->role == 'admin' || Auth::user()->role == 'general_director')
 
-                        <div>
-                            <label class="text-warning"> Directors</label>
+                            <div>
+                                <label class="text-warning"> Directors</label>
 
-                            <input id="director" class="form-control tagify" name='director' placeholder="Add department heads"
-                                value="Director 1, Ddirector 2" />
-                        </div>
-                        <div class="separator separator-dashed my-10"></div>
+                                <input id="director" class="form-control tagify" name='director'
+                                    placeholder="Add department heads" value="Director 1, Ddirector 2" />
+                            </div>
+                            <div class="separator separator-dashed my-10"></div>
+                        @endif
+                        @if (Auth::user()->role == 'admin' || Auth::user()->role == 'general_director' || Auth::user()->role == 'director')
+                            <div>
+                                <label class="text-success"> Department Heads</label>
 
-                        <div>
-                            <label class="text-success"> Department Heads</label>
+                                <input id="departhead" name="departhead" class="form-control tagify"
+                                    placeholder="Add department heads" />
+                            </div>
+                            <div class="separator separator-dashed my-10"></div>
+                        @endif
+                        @if (Auth::user()->role == 'admin' || Auth::user()->role == 'general_director' || Auth::user()->role == 'director' || Auth::user()->role == 'department_head')
+                            <div>
+                                <label class="text-primary"> Supervisors</label>
+                                <input id="super" class="form-control tagify" name='supervisor'
+                                    placeholder="Add Supervisors" />
+                            </div>
+                        @endif
 
-                            <input id="departhead" name="departhead" class="form-control tagify" 
-                                placeholder="Add department heads" />
-                        </div>
-                        <div class="separator separator-dashed my-10"></div>
-
-                        <div>
-                            <label class="text-primary"> Supervisors</label>
-
-                            <input id="super" class="form-control tagify" name='supervisor' placeholder="Add Supervisors"
-                                 />
-                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-light-primary font-weight-bold"
@@ -69,24 +75,25 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>Section Name</label>
-                                    <input name="section" type="text" class="form-control form-control-solid" placeholder="Name" />
+                                    <input name="section" type="text" class="form-control form-control-solid"
+                                        placeholder="Name" />
                                 </div>
                                 <div class="form-group">
                                     <label>Select Department</label>
                                     <select name="dep_id" class="form-control form-control-solid">
-                                      @foreach ($department as $item)
-                                          <option value="{{$item->id}}">{{$item->name}}</option>
-                                      @endforeach
+                                        @foreach ($department as $item)
+                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
-                        <!--end::Form-->
+                            <!--end::Form-->
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-light-primary font-weight-bold"
                             data-dismiss="modal">Close</button>
                         <input type="submit" value="Save" class="btn btn-primary mr-2">
-                    </form>
+                        </form>
 
                     </div>
                 </div>
@@ -108,7 +115,8 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>Department Name</label>
-                                    <input type="text" name="name" class="form-control form-control-solid" placeholder="Name" />
+                                    <input type="text" name="name" class="form-control form-control-solid"
+                                        placeholder="Name" />
                                 </div>
                             </div>
                     </div>
@@ -123,80 +131,83 @@
             </div>
         </div>
 
-<!--begin:: edit section Modal-->
-<div class="modal fade" id="edit_section" tabindex="-1" role="dialog" aria-labelledby="section" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Update Section</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <i aria-hidden="true" class="ki ki-close"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <!--begin::Form-->
-                <form class="form" method="POST" action="{{ url('section') }}">
-                    @csrf
-                    @method('PUT')
-                    <div class="card-body">
-                        <div class="form-group">
-                            <label>Section Name</label>
-                            <input name="section" id="section_update" type="text" class="form-control form-control-solid" placeholder="Name" />
-                            <input type="hidden" name="section_id" id="section_id">
-                        </div>
-                        <div class="form-group">
-                            <label>Select Department</label>
-                            <select name="dep_id" id="sec_dep_id" class="form-control form-control-solid">
-                              @foreach ($department as $item)
-                                  <option value="{{$item->id}}">{{$item->name}}</option>
-                              @endforeach
-                            </select>
-                        </div>
+        <!--begin:: edit section Modal-->
+        <div class="modal fade" id="edit_section" tabindex="-1" role="dialog" aria-labelledby="section" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Update Section</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i aria-hidden="true" class="ki ki-close"></i>
+                        </button>
                     </div>
-                <!--end::Form-->
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-light-primary font-weight-bold"
-                    data-dismiss="modal">Close</button>
-                <input type="submit" value="Update" class="btn btn-primary mr-2">
-            </form>
+                    <div class="modal-body">
+                        <!--begin::Form-->
+                        <form class="form" method="POST" action="{{ url('section') }}">
+                            @csrf
+                            @method('PUT')
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label>Section Name</label>
+                                    <input name="section" id="section_update" type="text"
+                                        class="form-control form-control-solid" placeholder="Name" />
+                                    <input type="hidden" name="section_id" id="section_id">
+                                </div>
+                                <div class="form-group">
+                                    <label>Select Department</label>
+                                    <select name="dep_id" id="sec_dep_id" class="form-control form-control-solid">
+                                        @foreach ($department as $item)
+                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <!--end::Form-->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light-primary font-weight-bold"
+                            data-dismiss="modal">Close</button>
+                        <input type="submit" value="Update" class="btn btn-primary mr-2">
+                        </form>
 
-            </div>
-        </div>
-    </div>
-</div>
-<!--end::edit department Modal-->
-<div class="modal fade" id="edit_department" tabindex="-1" role="dialog" aria-labelledby="department" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Update Department</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <i aria-hidden="true" class="ki ki-close"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form class="form" method="POST" action="{{ url('department') }}">
-                    @csrf
-                    @method('PUT')
-                    {{-- <h6>Current : <span class="text-primary">Hai</span></h6> --}}
-                    <div class="card-body">
-                        <div class="form-group">
-                            <label>Department Name</label>
-                            <input type="text" id="department_id" name="name" class="form-control form-control-solid" placeholder="Name" />
-                            <input type="hidden" name="dep_id" id="dep_id">
-                        </div>
                     </div>
+                </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-light-primary font-weight-bold"
-                    data-dismiss="modal">Close</button>
-                <input type="submit" value="Update" class="btn btn-primary font-weight-bold">
-            </div>
-            </form>
         </div>
-    </div>
-</div>
+        <!--end::edit department Modal-->
+        <div class="modal fade" id="edit_department" tabindex="-1" role="dialog" aria-labelledby="department"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Update Department</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i aria-hidden="true" class="ki ki-close"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form" method="POST" action="{{ url('department') }}">
+                            @csrf
+                            @method('PUT')
+                            {{-- <h6>Current : <span class="text-primary">Hai</span></h6> --}}
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label>Department Name</label>
+                                    <input type="text" id="department_id" name="name"
+                                        class="form-control form-control-solid" placeholder="Name" />
+                                    <input type="hidden" name="dep_id" id="dep_id">
+                                </div>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light-primary font-weight-bold"
+                            data-dismiss="modal">Close</button>
+                        <input type="submit" value="Update" class="btn btn-primary font-weight-bold">
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
         <!--begin::Container-->
         <div class="container">
             <!--begin::Notice-->
