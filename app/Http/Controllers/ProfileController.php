@@ -13,9 +13,11 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $tab = $request->input('tab');
+        $profiles = Profile::paginate();
+        return view('pages.inbox', compact('profiles'));
     }
 
     /**

@@ -84,6 +84,7 @@
 <!-- <script src="assets/js/pages/custom/user/list-datatable.js"></script> -->
 
 <script src="{{ asset('assets/js/pages/widgets.js') }}"></script>
+<script src="{{ asset('assets/js/pages/date-range-widgets.js') }}"></script>
 <script src="{{ asset('assets/js/pages/crud/forms/widgets/select2.js') }}"></script>
 <script src="{{ asset('assets/js/pages/crud/file-upload/image-input.js') }}"></script>
 

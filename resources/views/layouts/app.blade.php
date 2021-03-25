@@ -194,7 +194,7 @@
 
                                         <li class="menu-item {{ Request::is('profile/drafts') ? 'menu-item-active' : '' }}"
                                             aria-haspopup="true">
-                                            <a href="{{ url('profile/drafts') }}" class="menu-link">
+                                            <a href="{{ url('profile/drafts?tab=drafts') }}" class="menu-link">
                                                 <i class="menu-bullet menu-bullet-dot">
                                                     <span></span>
                                                 </i>

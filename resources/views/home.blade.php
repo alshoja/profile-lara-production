@@ -466,13 +466,13 @@
                                                 <th style="min-width: 100px">Gender</th>
                                                 <th style="min-width: 100px">Country</th>
                                                 <!-- <th style="min-width: 100px">company</th>
-                                                                             <th style="min-width: 130px">rating</th> -->
+                                                                                     <th style="min-width: 130px">rating</th> -->
                                                 <th style="min-width: 80px"></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach ($dashData->profileList as $item)
-
+                                             
                                                 <tr>
                                                     <td class="pl-0 py-8">
                                                         <div class="d-flex align-items-center">
@@ -507,6 +507,7 @@
                                                     </td>
                                                 </tr>
                                             @endforeach
+                                            
                                         </tbody>
                                     </table>
                                 </div>
@@ -574,7 +575,7 @@
 
         },
         analytics: {
-            data:[{{ implode(',', $dashData->analytics) }}],
+            data: [{{ implode(',', $dashData->analytics) }}],
             name: '',
             categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         }

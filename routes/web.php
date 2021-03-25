@@ -18,17 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/inbox', function () {
-    return view('pages.inbox');
-});
-
-Route::get('profile/drafts', function () {
-    return view('pages.inbox');
-});
-
-Route::get('profile/track', function () {
-    return view('pages.inbox');
-});
 
 Route::get('profile/add-profile', function () {
     return view('pages.add-profile');
@@ -39,6 +28,8 @@ Auth::routes();
 
 // Dashboard
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('profiles', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
+Route::get('/profile/drafts', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
 
 // User Management 
 Route::get('user/list-users', [App\Http\Controllers\UserController::class, 'index'])->name('List users');

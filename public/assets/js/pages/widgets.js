@@ -1,5 +1,5 @@
 "use strict";
-console.log(chartSettings);
+// console.log(chartSettings);
 // Class definition
 var KTWidgets = (function () {
   // Private properties
@@ -4818,7 +4818,7 @@ var KTWidgets = (function () {
   return {
     init: function () {
       // General Controls
-      _initDaterangepicker();
+      // _initDaterangepicker();
 
       // Stats Widgets
     //   _initStatsWidget7();
