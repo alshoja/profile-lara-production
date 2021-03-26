@@ -29,6 +29,7 @@ Auth::routes();
 // Dashboard
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('profiles', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
+Route::get('/notifications', [App\Http\Controllers\HomeController::class, 'getNotifications'])->name('notification');
 Route::get('/profile/drafts', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
 
 // User Management 
@@ -72,5 +73,3 @@ Route::delete('user/permission/dh/{userId}/{depId}', [App\Http\Controllers\Depar
 //  Department Supervisors
 Route::post('user/permission/super', [App\Http\Controllers\DepartmentSupervisorController::class, 'store']);
 Route::delete('user/permission/super/{userId}/{depId}', [App\Http\Controllers\DepartmentSupervisorController::class, 'destroy']);
-
-

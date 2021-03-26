@@ -7,7 +7,7 @@ use App\Models\User;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class HomeController extends BaseController
 {
     /**
      * Create a new controller instance.
@@ -16,7 +16,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -91,6 +91,7 @@ class HomeController extends Controller
         }
         return $userArr;
     }
+
     public function getProfileChartCount()
     {
         $profiles = Profile::select('id', 'created_at')
@@ -115,5 +116,13 @@ class HomeController extends Controller
             }
         }
         return $profileArr;
+    }
+
+    public function getNotifications()
+    {
+        $notification = (object)[];
+        $notification->approved = Profile::all()->take(5);
+        // $notification->rejected = Profile::all();
+        return response()->json($notification, 200);
     }
 }

@@ -99,4 +99,11 @@
     });
 
 </script> --}}
+<script>
+    setInterval(function() {
+        getNotifications()
+        console.info('Checking for new notification.....')
+    }, 2000);
+
+</script>
 @stack('scripts')
