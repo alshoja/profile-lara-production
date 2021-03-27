@@ -24,7 +24,10 @@ class User extends Authenticatable
         'image',
         'sign',
         'can_add_user',
-        'suspended'
+        'suspended',
+        'create',
+        'update',
+        'delete',
     ];
 
     /**

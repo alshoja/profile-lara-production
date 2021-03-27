@@ -90,8 +90,8 @@
                                 <!--begin::User-->
                                 <!--begin::Actions-->
                                 <!-- <div class="my-lg-0 my-1">
-                                                                                <a href="#" class="btn btn-sm btn-success font-weight-bolder text-uppercase">Show More</a>
-                                                                            </div> -->
+                                                                                    <a href="#" class="btn btn-sm btn-success font-weight-bolder text-uppercase">Show More</a>
+                                                                                </div> -->
                                 <!--end::Actions-->
                             </div>
                             <!--end::Title-->
@@ -146,8 +146,8 @@
                         <!--begin: Item-->
                         <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
                             <!-- <span class="mr-5">
-                                                       <i class="flaticon-user icon-2x text-muted font-weight-bold"></i>
-                                                      </span> -->
+                                                           <i class="flaticon-user icon-2x text-muted font-weight-bold"></i>
+                                                          </span> -->
                             <div class="d-flex flex-column flex-lg-fill">
                                 <span class="text-dark-75 font-weight-bolder font-size-sm">User Suspended</span>
                                 <!-- <a href="#" class="text-primary font-weight-bolder">No</a> -->
@@ -183,8 +183,8 @@
                             <div class="card-toolbar">
                                 <ul class="nav nav-pills nav-pills-sm nav-dark-75">
                                     <!-- <li class="nav-item">
-                                                                                    <a class="nav-link py-2 px-4" data-toggle="tab" href="#kt_tab_pane_11_1">Recent</a>
-                                                                                </li> -->
+                                                                                        <a class="nav-link py-2 px-4" data-toggle="tab" href="#kt_tab_pane_11_1">Recent</a>
+                                                                                    </li> -->
 
                                     <li class="nav-item">
                                         <a class="nav-link py-2 px-4" data-toggle="tab" href="#kt_tab_pane_11_2">My
@@ -824,6 +824,46 @@
 
                                                 </div>
                                             </div>
+                                            <div class="form-group row">
+                                                <div class="col-lg-2">
+                                                    <label class="col col-form-label">Create</label>
+                                                    <div class="col-3">
+                                                        <span class="switch switch-outline switch-icon switch-primary">
+                                                            <label>
+                                                                <input type="checkbox" @if ($user->create) checked="checked" @endif value="1" name="create" />
+                                                                <span></span>
+                                                            </label>
+                                                        </span>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-lg-2">
+                                                    <label class="col col-form-label">Edit</label>
+                                                    <div class="col-3">
+                                                        <span class="switch switch-outline switch-icon switch-warning">
+                                                            <label>
+                                                                <input type="checkbox" @if ($user->update) checked="checked" @endif value="1" name="update" />
+                                                                <span></span>
+                                                            </label>
+                                                        </span>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-lg-2">
+                                                    <label class="col col-form-label">Delete</label>
+                                                    <div class="col-3">
+                                                        <span class="switch switch-outline switch-icon switch-danger">
+                                                            <label>
+                                                                <input type="checkbox" @if ($user->delete) checked="checked" @endif value="1" name="delete" />
+                                                                <span></span>
+                                                            </label>
+                                                        </span>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="separator separator-dashed my-10"></div>
+
                                             <div class="row form-group">
                                                 <div class="col-md-2">
                                                     <div class="image-input image-input-empty image-input-outline"

@@ -28,9 +28,10 @@ Auth::routes();
 
 // Dashboard
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('profile/track', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
+Route::get('profile/drafts', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
 Route::get('profiles', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
 Route::get('/notifications', [App\Http\Controllers\HomeController::class, 'getNotifications'])->name('notification');
-Route::get('/profile/drafts', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
 
 // User Management 
 Route::get('user/list-users', [App\Http\Controllers\UserController::class, 'index'])->name('List users');

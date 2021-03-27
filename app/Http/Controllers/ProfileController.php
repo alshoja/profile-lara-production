@@ -15,6 +15,7 @@ class ProfileController extends Controller
      */
     public function index(Request $request)
     {
+        $search = request()->query('search');
         $tab = $request->input('tab');
         $profiles = Profile::paginate();
         return view('pages.inbox', compact('profiles'));

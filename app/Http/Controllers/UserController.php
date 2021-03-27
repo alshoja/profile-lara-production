@@ -54,6 +54,9 @@ class UserController extends Controller
         $user->password = Hash::make($request->password);
         $user->contact = $request->contact;
         $user->role = $request->role;
+        $user->create = $request->create;
+        $user->update = $request->update;
+        $user->delete = $request->delete;
         $user->image = $request->file('image')->store('images');
         $user->sign = $request->file('sign')->store('signs');
         $user->suspended = $request->suspended;
@@ -101,6 +104,9 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->name = $request->name;
         $user->contact = $request->contact;
+        $user->create = $request->create;
+        $user->update = $request->update;
+        $user->delete = $request->delete;
         $user->role = $request->role;
 
         if ($request->file('image')) {

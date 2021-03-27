@@ -120,7 +120,7 @@
                                     <span class="menu-text">Dashboard</span>
                                 </a>
                             </li>
-                            <li class="menu-item {{ Request::is('inbox') ? 'menu-item-active' : '' }}"
+                            <li class="menu-item {{ request()->query('tab')=="inbox" ? 'menu-item-active' : '' }}"
                                 aria-haspopup="true">
                                 <a href="{{ url('/profiles?tab=inbox') }}" class="menu-link">
                                     <span class="svg-icon menu-icon">
@@ -267,8 +267,7 @@
                                     </ul>
                                 </div>
                             </li>
-                            @if (Auth::user()->role != 'supervisor')
-
+                            @if (Auth::user()->role == 'admin')
                                 <li class="menu-section">
                                     <h4 class="menu-text">Settings</h4>
                                     <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
@@ -777,7 +776,7 @@
         <!--begin::Header-->
         <div class="offcanvas-header d-flex align-items-center justify-content-between pb-5">
             <h3 class="font-weight-bold m-0">User Profile
-                <small class="text-muted font-size-sm ml-2">12 messages</small>
+                {{-- <small class="text-muted font-size-sm ml-2">12 messages</small> --}}
             </h3>
             <a href="#" class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_user_close">
                 <i class="ki ki-close icon-xs text-muted"></i>
@@ -837,7 +836,7 @@
             <!--begin::Nav-->
             <div class="navi navi-spacer-x-0 p-0">
                 <!--begin::Item-->
-                <a href="custom/apps/user/profile-1/personal-information.html" class="navi-item">
+                <a href="{{ url('user/profile-detail') }}/{{ Auth::user()->id }}" class="navi-item">
                     <div class="navi-link">
                         <div class="symbol symbol-40 bg-light mr-3">
                             <div class="symbol-label">
@@ -867,7 +866,7 @@
                 </a>
                 <!--end:Item-->
                 <!--begin::Item-->
-                <a href="custom/apps/user/profile-3.html" class="navi-item">
+                {{-- <a href="custom/apps/user/profile-3.html" class="navi-item">
                     <div class="navi-link">
                         <div class="symbol symbol-40 bg-light mr-3">
                             <div class="symbol-label">
@@ -897,10 +896,10 @@
                             <div class="text-muted">Inbox and tasks</div>
                         </div>
                     </div>
-                </a>
+                </a> --}}
                 <!--end:Item-->
                 <!--begin::Item-->
-                <a href="custom/apps/user/profile-2.html" class="navi-item">
+                {{-- <a href="custom/apps/user/profile-2.html" class="navi-item">
                     <div class="navi-link">
                         <div class="symbol symbol-40 bg-light mr-3">
                             <div class="symbol-label">
@@ -927,10 +926,10 @@
                             <div class="text-muted">Logs and notifications</div>
                         </div>
                     </div>
-                </a>
+                </a> --}}
                 <!--end:Item-->
                 <!--begin::Item-->
-                <a href="custom/apps/userprofile-1/overview.html" class="navi-item">
+                {{-- <a href="custom/apps/userprofile-1/overview.html" class="navi-item">
                     <div class="navi-link">
                         <div class="symbol symbol-40 bg-light mr-3">
                             <div class="symbol-label">
@@ -957,12 +956,12 @@
                             <div class="text-muted">latest tasks and projects</div>
                         </div>
                     </div>
-                </a>
+                </a> --}}
                 <!--end:Item-->
             </div>
             <!--end::Nav-->
             <!--begin::Separator-->
-            <div class="separator separator-dashed my-7"></div>
+            {{-- <div class="separator separator-dashed my-7"></div> --}}
             <!--end::Separator-->
         </div>
         <!--end::Content-->

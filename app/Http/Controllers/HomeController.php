@@ -26,7 +26,7 @@ class HomeController extends BaseController
      */
     public function index()
     {
-
+        $search = request()->query('search');
         $dashData = (object)[];
         $dashData->profile = $this->getProfileChartCount();
         $dashData->users = $this->getUserChartCount();

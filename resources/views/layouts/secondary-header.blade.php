@@ -54,8 +54,8 @@
             <!--begin::Daterange-->
             <a href="#" class="btn btn-light btn-sm font-weight-bold mr-2" id="kt_dashboard_daterangepicker"
                 data-toggle="tooltip" title="Select dashboard daterange" data-placement="left">
-                <span class="text-muted font-weight-bold mr-2" id="kt_dashboard_daterangepicker_title">Today</span>
-                <span class="text-primary font-weight-bold" id="kt_dashboard_daterangepicker_date">Aug 16</span>
+                <span class="text-muted font-weight-bold mr-2" id="kt_dashboard_daterangepicker_title">{{request()->query('title')}}</span>
+                <span class="text-primary font-weight-bold" id="kt_dashboard_daterangepicker_date"> {{request()->query('date_range')}}</span>
                 <span class="svg-icon svg-icon-sm svg-icon-primary ml-1">
                     <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Chat-check.svg-->
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"

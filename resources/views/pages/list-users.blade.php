@@ -66,7 +66,7 @@
                                                         </g>
                                                     </svg>
                                                     <!--end::Svg Icon-->
-                                                </span>{{strtoupper($user->role) }}</a>
+                                                </span>{{ strtoupper($user->role) }}</a>
                                             <a href="#" class="text-muted text-hover-primary font-weight-bold">
                                                 <span class="svg-icon svg-icon-md svg-icon-gray-500 mr-1">
                                                     <!--begin::Svg Icon | path:assets/media/svg/icons/Map/Marker2.svg-->
@@ -96,15 +96,18 @@
                                             More</a>
                                         {{-- <a href="{{ url('/user/' . $user->id) }}"
                                             class="btn btn-sm btn-danger btn-gradient-danger font-weight-bolder text-uppercase">Delete</a> --}}
+                                        @if (Auth::user()->delete)
+                                            <a class="btn btn-sm btn-danger btn-gradient-danger font-weight-bolder"
+                                                href="javascript:void(0);" onclick="$(this).find('form').submit();">
+                                                Delete
+                                                <form style="display: none" action="{{ url('/user/' . $user->id) }}"
+                                                    method="post">
+                                                    @method('delete')
+                                                    @csrf()
+                                                </form>
+                                            </a>
+                                        @endif
 
-                                        <a class="btn btn-sm btn-danger btn-gradient-danger font-weight-bolder" href="javascript:void(0);" onclick="$(this).find('form').submit();">
-                                           Delete
-                                           <form style="display: none" action="{{ url('/user/' . $user->id) }}" method="post">
-                                            @method('delete')
-                                            @csrf()
-                                        </form>
-                                        </a>
-                                       
                                     </div>
 
                                     <!--end::Actions-->
@@ -161,8 +164,8 @@
                             <!--begin: Item-->
                             <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
                                 <!-- <span class="mr-5">
-                         <i class="flaticon-user icon-2x text-muted font-weight-bold"></i>
-                        </span> -->
+                                 <i class="flaticon-user icon-2x text-muted font-weight-bold"></i>
+                                </span> -->
                                 <div class="d-flex flex-column flex-lg-fill">
                                     <span class="text-dark-75 font-weight-bolder font-size-sm">User Suspended</span>
                                     <!-- <a href="#" class="text-primary font-weight-bolder">No</a> -->
@@ -189,7 +192,7 @@
                     <!--begin::Pagination-->
                     <div class="d-flex justify-content-between align-items-center flex-wrap">
                         <div class="d-flex flex-wrap mr-3">
-            {{ $users->links() }}
+                            {{ $users->links() }}
 
                             {{-- <a href="#" class="btn btn-icon btn-sm btn-light-primary mr-2 my-1">
                                 <i class="ki ki-bold-double-arrow-back icon-xs"></i>
