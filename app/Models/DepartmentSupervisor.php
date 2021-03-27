@@ -25,4 +25,9 @@ class DepartmentSupervisor extends Model
     {
         return $this->hasMany(Employ::class);
     }
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class, 'dep_id', 'id');
+    }
 }

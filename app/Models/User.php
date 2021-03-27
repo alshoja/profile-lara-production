@@ -56,21 +56,26 @@ class User extends Authenticatable
 
     public function generalDirectors()
     {
-        return $this->belongsTo(Users::class,'general_director_id','id');
+        return $this->belongsTo(Users::class, 'general_director_id', 'id');
     }
 
-    public function departmentHeads()
+    public function gdRelation()
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(DepartmentGeneralDirector::class, 'general_director_id', 'id');
     }
 
-    public function supervisors()
+    public function departmentRelation()
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(DepartmentDirector::class, 'director_id', 'id');
     }
 
-    public function employs()
+    public function dhRelation()
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(DepartmentHead::class, 'depart_head_id', 'id');
+    }
+
+    public function superRelation()
+    {
+        return $this->hasMany(DepartmentSupervisor::class, 'supervisor_id', 'id');
     }
 }

@@ -90,8 +90,8 @@
                                 <!--begin::User-->
                                 <!--begin::Actions-->
                                 <!-- <div class="my-lg-0 my-1">
-                                                                                    <a href="#" class="btn btn-sm btn-success font-weight-bolder text-uppercase">Show More</a>
-                                                                                </div> -->
+                                                                                                                    <a href="#" class="btn btn-sm btn-success font-weight-bolder text-uppercase">Show More</a>
+                                                                                                                </div> -->
                                 <!--end::Actions-->
                             </div>
                             <!--end::Title-->
@@ -146,8 +146,8 @@
                         <!--begin: Item-->
                         <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
                             <!-- <span class="mr-5">
-                                                           <i class="flaticon-user icon-2x text-muted font-weight-bold"></i>
-                                                          </span> -->
+                                                                                           <i class="flaticon-user icon-2x text-muted font-weight-bold"></i>
+                                                                                          </span> -->
                             <div class="d-flex flex-column flex-lg-fill">
                                 <span class="text-dark-75 font-weight-bolder font-size-sm">User Suspended</span>
                                 <!-- <a href="#" class="text-primary font-weight-bolder">No</a> -->
@@ -183,17 +183,25 @@
                             <div class="card-toolbar">
                                 <ul class="nav nav-pills nav-pills-sm nav-dark-75">
                                     <!-- <li class="nav-item">
-                                                                                        <a class="nav-link py-2 px-4" data-toggle="tab" href="#kt_tab_pane_11_1">Recent</a>
-                                                                                    </li> -->
+                                                                                                                        <a class="nav-link py-2 px-4" data-toggle="tab" href="#kt_tab_pane_11_1">Recent</a>
+                                                                                                                    </li> -->
 
                                     <li class="nav-item">
                                         <a class="nav-link py-2 px-4" data-toggle="tab" href="#kt_tab_pane_11_2">My
                                             Assets</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link py-2 px-4" data-toggle="tab" href="#kt_tab_pane_11_4">Change
-                                            Password</a>
-                                    </li>
+                                    @if (Auth::user()->id == Request::segment(3))
+                                        <li class="nav-item">
+                                            <a class="nav-link py-2 px-4" data-toggle="tab" href="#kt_tab_pane_11_4">Change
+                                                Password</a>
+                                        </li>
+                                    @else
+                                        <li class="nav-item">
+                                            <a class="nav-link py-2 px-4" data-toggle="tab" href="#kt_tab_pane_11_4">Change
+                                                {{ $user->name }}'s Password</a>
+                                        </li>
+                                    @endif
+
                                     <li class="nav-item">
                                         <a class="nav-link py-2 px-4 active" data-toggle="tab"
                                             href="#kt_tab_pane_11_3">Account</a>
@@ -218,6 +226,7 @@
                                                     <label>Current Password</label>
                                                     <input type="password" name="current_password" class="form-control"
                                                         placeholder="Password" />
+                                                    <input type="hidden" value="{{ $user->id }}" name="id">
                                                     <!-- <span class="form-text text-muted">Please enter your full name</span> -->
                                                 </div>
                                             </div>
@@ -824,44 +833,47 @@
 
                                                 </div>
                                             </div>
-                                            <div class="form-group row">
-                                                <div class="col-lg-2">
-                                                    <label class="col col-form-label">Create</label>
-                                                    <div class="col-3">
-                                                        <span class="switch switch-outline switch-icon switch-primary">
-                                                            <label>
-                                                                <input type="checkbox" @if ($user->create) checked="checked" @endif value="1" name="create" />
-                                                                <span></span>
-                                                            </label>
-                                                        </span>
-                                                    </div>
+                                            @if (Auth::user()->id != Request::segment(3))
+                                                <div class="form-group row">
+                                                    <div class="col-lg-2">
+                                                        <label class="col col-form-label">Create</label>
+                                                        <div class="col-3">
+                                                            <span class="switch switch-outline switch-icon switch-primary">
+                                                                <label>
+                                                                    <input type="checkbox" @if ($user->create) checked="checked" @endif value="1" name="create" />
+                                                                    <span></span>
+                                                                </label>
+                                                            </span>
+                                                        </div>
 
-                                                </div>
-                                                <div class="col-lg-2">
-                                                    <label class="col col-form-label">Edit</label>
-                                                    <div class="col-3">
-                                                        <span class="switch switch-outline switch-icon switch-warning">
-                                                            <label>
-                                                                <input type="checkbox" @if ($user->update) checked="checked" @endif value="1" name="update" />
-                                                                <span></span>
-                                                            </label>
-                                                        </span>
                                                     </div>
+                                                    <div class="col-lg-2">
+                                                        <label class="col col-form-label">Edit</label>
+                                                        <div class="col-3">
+                                                            <span class="switch switch-outline switch-icon switch-warning">
+                                                                <label>
+                                                                    <input type="checkbox" @if ($user->update) checked="checked" @endif value="1" name="update" />
+                                                                    <span></span>
+                                                                </label>
+                                                            </span>
+                                                        </div>
 
-                                                </div>
-                                                <div class="col-lg-2">
-                                                    <label class="col col-form-label">Delete</label>
-                                                    <div class="col-3">
-                                                        <span class="switch switch-outline switch-icon switch-danger">
-                                                            <label>
-                                                                <input type="checkbox" @if ($user->delete) checked="checked" @endif value="1" name="delete" />
-                                                                <span></span>
-                                                            </label>
-                                                        </span>
                                                     </div>
+                                                    <div class="col-lg-2">
+                                                        <label class="col col-form-label">Delete</label>
+                                                        <div class="col-3">
+                                                            <span class="switch switch-outline switch-icon switch-danger">
+                                                                <label>
+                                                                    <input type="checkbox" @if ($user->delete) checked="checked" @endif value="1" name="delete" />
+                                                                    <span></span>
+                                                                </label>
+                                                            </span>
+                                                        </div>
 
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            @endif
+
                                             <div class="separator separator-dashed my-10"></div>
 
                                             <div class="row form-group">
@@ -935,59 +947,55 @@
                                                     <div class="d-md-none mb-2"></div>
                                                 </div>
                                             </div>
-                                            <div class="separator separator-dashed my-10"></div>
-
-                                            <div class="form-group row">
-                                                <div class="col-lg-8">
-                                                    <!-- <label>User Role</label> -->
-                                                    <div class="radio-inline">
-                                                        <label id="admin-label" class="radio radio-solid ">
-                                                            <input type="radio" onclick="toggleDepartment('admin')"
-                                                                name="role" @if ($user->role == 'admin') checked="checked" @endif
-                                                                value="admin" />
-                                                            <span></span>
-                                                            Admin
-                                                        </label>
-                                                        <label id="gd-label" class="radio radio-solid">
-                                                            <input type="radio" onclick="toggleDepartment('gd')" name="role"
-                                                                @if ($user->role == 'general_director') checked="checked" @endif
-                                                                value="general_director" />
-                                                            <span></span>
-                                                            General Director
-                                                        </label>
-                                                        <label id="director-label" class="radio radio-solid">
-                                                            <input type="radio" onclick="toggleDepartment('director')"
-                                                                name="role" @if ($user->role == 'director') checked="checked" @endif
-                                                                value="director" />
-                                                            <span></span>
-                                                            Director
-                                                        </label>
-                                                        <label id="dh-label" class="radio radio-solid">
-                                                            <input type="radio" onclick="toggleDepartment('dh')" name="role"
-                                                                @if ($user->role == 'department_head') checked="checked" @endif
-                                                                value="department_head" />
-                                                            <span></span>
-                                                            Department Head
-                                                        </label>
-                                                        <label id="supervisor-label" class="radio radio-solid">
-                                                            <input type="radio" onclick="toggleDepartment('super')"
-                                                                name="role" @if ($user->role == 'supervisor') checked="checked" @endif
-                                                                value="supervisor" />
-                                                            <span></span>
-                                                            Supervisor
-                                                        </label>
-                                                        <label id="employ-label" class="radio radio-solid">
-                                                            <input type="radio" onclick="toggleDepartment('employ')"
-                                                                name="role" @if ($user->role == 'employ') checked="checked" @endif
-                                                                value="employ" />
-                                                            <span></span>
-                                                            Employ
-                                                        </label>
+                                            {{-- @if (Auth::user()->role == 'admin')
+                                                <div class="separator separator-dashed my-10"></div>
+                                                <div class="form-group row">
+                                                    <div class="col-lg-8">
+                                                        <!-- <label>User Role</label> -->
+                                                        <div class="radio-inline">
+                                                            <label id="admin-label" class="radio radio-solid ">
+                                                                <input type="radio" onclick="toggleDepartment('admin')"
+                                                                    name="role" @if ($user->role == 'admin') checked="checked" @endif value="admin" />
+                                                                <span></span>
+                                                                Admin
+                                                            </label>
+                                                            <label id="gd-label" class="radio radio-solid">
+                                                                <input type="radio" onclick="toggleDepartment('gd')"
+                                                                    name="role" @if ($user->role == 'general_director') checked="checked" @endif value="general_director" />
+                                                                <span></span>
+                                                                General Director
+                                                            </label>
+                                                            <label id="director-label" class="radio radio-solid">
+                                                                <input type="radio" onclick="toggleDepartment('director')"
+                                                                    name="role" @if ($user->role == 'director') checked="checked" @endif value="director" />
+                                                                <span></span>
+                                                                Director
+                                                            </label>
+                                                            <label id="dh-label" class="radio radio-solid">
+                                                                <input type="radio" onclick="toggleDepartment('dh')"
+                                                                    name="role" @if ($user->role == 'department_head') checked="checked" @endif value="department_head" />
+                                                                <span></span>
+                                                                Department Head
+                                                            </label>
+                                                            <label id="supervisor-label" class="radio radio-solid">
+                                                                <input type="radio" onclick="toggleDepartment('super')"
+                                                                    name="role" @if ($user->role == 'supervisor') checked="checked" @endif value="supervisor" />
+                                                                <span></span>
+                                                                Supervisor
+                                                            </label>
+                                                            <label id="employ-label" class="radio radio-solid">
+                                                                <input type="radio" onclick="toggleDepartment('employ')"
+                                                                    name="role" @if ($user->role == 'employ') checked="checked" @endif value="employ" />
+                                                                <span></span>
+                                                                Employ
+                                                            </label>
+                                                        </div>
+                                                        <!-- <span class="form-text text-muted">Please select user group</span> -->
                                                     </div>
-                                                    <!-- <span class="form-text text-muted">Please select user group</span> -->
                                                 </div>
-                                            </div>
-                                            <div class="separator separator-dashed my-10"></div>
+                                                <div class="separator separator-dashed my-10"></div>
+                                            @endif --}}
+
                                             <div id="group-row" class="form-group row d-none">
                                                 <div id="department-row" class="col-2 d-none">
                                                     <label class="ml-3">Department</label>

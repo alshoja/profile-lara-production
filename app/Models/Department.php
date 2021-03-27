@@ -21,8 +21,11 @@ class Department extends Model
     {
         return $this->hasMany(Department_supervisor::class);
     }
+
     public function gds()
     {
         return $this->hasMany(DepartmentGeneralDirector::class,'dep_id','id');
     }
+
+    
 }

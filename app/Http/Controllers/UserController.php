@@ -2,10 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Department;
+use App\Models\DepartmentDirector;
+use App\Models\DepartmentGeneralDirector;
+use App\Models\DepartmentHead;
+use App\Models\DepartmentSupervisor;
+use App\Models\Employ;
+use App\Models\Section;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Rules\MatchOldPassword;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -28,7 +36,15 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('pages.add-user');
+        $users = (object)[];
+        $users->general_directors = User::with('gdRelation.department')->where('role', 'general_director')->get();
+        $users->directors = User::with('departmentRelation.department')->where('role', 'director')->get();
+        $users->department_heads = User::with('dhRelation.department')->where('role', 'department_head')->get();
+        $users->supervisors = User::with('superRelation.department')->where('role', 'supervisors')->get();
+        $users->departments = Department::all();
+        $users->sections = Section::all();
+        // return response()->json($users, 200);
+        return view('pages.add-user', compact('users'));
     }
 
     /**
@@ -62,6 +78,32 @@ class UserController extends Controller
         $user->suspended = $request->suspended;
         $user->can_add_user = $request->can_add_user;
         $user->save();
+        if ($user->id) {
+            if (Auth::user()->role == "general_director") {
+                $director = new DepartmentDirector();
+                $director->director_id = $user->id;
+                $director->dep_id = $request->dep_id;
+                $director->general_director = Auth::user()->id;
+                $director->save();
+            } else if (Auth::user()->role == "director") {
+                $dh = new DepartmentHead();
+                $dh->depart_head_id = $user->id;
+                $dh->dep_id = $request->dep_id;
+                $dh->director_id = Auth::user()->id;
+                $dh->save();
+            } else if (Auth::user()->role == "department_head") {
+                $dh = new DepartmentSupervisor();
+                $dh->supervisor_id = $user->id;
+                $dh->dep_id = $request->dep_id;
+                $dh->depart_head_id = Auth::user()->id;
+                $dh->save();
+            } else if (Auth::user()->role == "supervisor") {
+                $dh = new Employ();
+                $dh->section_id = $request->section_id;
+                $dh->supervisor_id = Auth::user()->id;
+                $dh->save();
+            }
+        }
         return back()->with('message', 'User successfully added');
     }
 
@@ -99,15 +141,20 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'role' => ['required', 'string'],
         ]);
         $user = User::findOrFail($id);
         $user->name = $request->name;
-        $user->contact = $request->contact;
-        $user->create = $request->create;
-        $user->update = $request->update;
-        $user->delete = $request->delete;
-        $user->role = $request->role;
+        if (Auth::user()->id != $id) {
+            $user->contact = $request->contact;
+            $user->create = $request->create;
+            $user->update = $request->update;
+            $user->delete = $request->delete;
+        }
+
+        // if (Auth::user()->role == "admin") {
+        //     $user->role = $request->role;
+        // }
+
 
         if ($request->file('image')) {
             $user->image = $request->file('image')->store('images');
@@ -130,14 +177,12 @@ class UserController extends Controller
      */
     public function changePassword(Request $request)
     {
-        // dd($request);
         $request->validate([
             'current_password' => ['required', new MatchOldPassword],
             'new_password' => ['required'],
             'confirm_password' => ['same:new_password'],
         ]);
-
-        User::find(auth()->user()->id)->update(['password' => Hash::make($request->new_password)]);
+        User::find($request->id)->update(['password' => Hash::make($request->new_password)]);
         return back()->with('message', 'Password updated');
     }
 

@@ -18,4 +18,8 @@ class DepartmentGeneralDirector extends Model
         return $this->belongsTo(User::class, 'general_director_id', 'id');
     }
 
+    public function department()
+    {
+        return $this->belongsTo(Department::class, 'dep_id', 'id');
+    }
 }

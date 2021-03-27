@@ -94,7 +94,6 @@
 
                             </div>
                         </div>
-
                         <div class="form-group row">
                             <div class="col-lg-2">
                                 <label class="col col-form-label">Create</label>
@@ -196,6 +195,7 @@
                                 <div class="d-md-none mb-2"></div>
                             </div>
                         </div>
+
                         <h6 class="text-primary">Role</h6>
                         <div class="separator separator-dashed my-2"></div>
                         <br>
@@ -224,7 +224,7 @@
                                             Director
                                         </label>
                                     @endif
-                                    @if (Auth::user()->role == 'admin' || Auth::user()->role == 'general_director' || Auth::user()->role == 'director')
+                                    @if (Auth::user()->role == 'admin' || Auth::user()->role == 'director')
                                         <label id="dh-label" class="radio radio-solid">
                                             <input type="radio" onclick="toggleDepartment('dh')" name="role"
                                                 value="department_head" />
@@ -232,7 +232,7 @@
                                             Department Head
                                         </label>
                                     @endif
-                                    @if (Auth::user()->role == 'admin' || Auth::user()->role == 'general_director' || Auth::user()->role == 'director' || Auth::user()->role == 'department_head')
+                                    @if (Auth::user()->role == 'admin' || Auth::user()->role == 'department_head')
                                         <label id="supervisor-label" class="radio radio-solid">
                                             <input type="radio" onclick="toggleDepartment('super')" name="role"
                                                 value="supervisor" />
@@ -240,7 +240,7 @@
                                             Supervisor
                                         </label>
                                     @endif
-                                    @if (Auth::user()->role == 'admin' || Auth::user()->role == 'general_director' || Auth::user()->role == 'director' || Auth::user()->role == 'department_head' || Auth::user()->role == 'supervisor')
+                                    @if (Auth::user()->role == 'admin' || Auth::user()->role == 'supervisor')
                                         <label id="employ-label" class="radio radio-solid">
                                             <input type="radio" onclick="toggleDepartment('employ')" name="role"
                                                 value="employ" />
@@ -257,6 +257,58 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
+                        </div>
+                        <div id="group-row" class="form-group row d-none">
+                            <div id="department-row" class="col-2 d-none">
+                                <label class="ml-3">Department</label>
+                                <select required name="department_id" id="department_id" class="form-control form-control-solid">
+                                    @foreach ($users->departments as $item)
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            {{-- <div id="gd-row" class="col-2 d-none">
+                                <label class="ml-3">General Director</label>
+                                <select name="general_director_id" id="general_director_id"
+                                    class="form-control form-control-solid">
+                                    @foreach ($users->general_directors as $item)
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div id="director-row" class="col-2 d-none">
+                                <label class="ml-3">Director</label>
+                                <select name="director_id" id="director_id" class="form-control form-control-solid">
+                                    @foreach ($users->directors as $item)
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div id="dh-row" class="col-2 d-none">
+                                <label class="ml-3">Department Head</label>
+                                <select name="department_head_id" id="department_head_id"
+                                    class="form-control form-control-solid">
+                                    @foreach ($users->department_heads as $item)
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div id="super-row" class="col-2 d-none">
+                                <label class="ml-3">Supervisor</label>
+                                <select id="supervisor_id" name="supervisor_id" class="form-control form-control-solid">
+                                    @foreach ($users->supervisors as $item)
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div> --}}
+                            <div id="section-row" class="col-2 d-none">
+                                <label class="ml-3">Section</label>
+                                <select required ="section_id" name="section_id" class="form-control form-control-solid">
+                                    @foreach ($users->sections as $item)
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div class="card-footer">
@@ -278,70 +330,69 @@
 
 <script>
     function toggleDepartment(role) {
-        changeColor(role);
-    }
 
-    function changeColor(role) {
-        var admin = document.getElementById("admin-label");
-        var gd = document.getElementById("gd-label");
-        var director = document.getElementById("director-label");
-        var dh = document.getElementById("dh-label");
-        var supervisor = document.getElementById("supervisor-label");
-        var employ = document.getElementById("employ-label");
+        var mainDiv = document.getElementById("group-row");
+        var departmentDiv = document.getElementById("department-row");
+        var gdDiv = document.getElementById("gd-row");
+        var DirectorDiv = document.getElementById("director-row");
+        var dhDiv = document.getElementById("dh-row");
+        var superDiv = document.getElementById("super-row");
+        var sectionDiv = document.getElementById("section-row");
+
 
         switch (role) {
             case "admin":
-                admin.classList.add('text-primary');
-                gd.classList.remove('text-primary');
-                director.classList.remove('text-primary');
-                dh.classList.remove('text-primary');
-                supervisor.classList.remove('text-primary');
-                employ.classList.remove('text-primary');
+                // mainDiv.classList.add("d-none");
                 break;
             case "gd":
-                gd.classList.add('text-primary');
-                director.classList.remove('text-primary');
-                dh.classList.remove('text-primary');
-                supervisor.classList.remove('text-primary');
-                employ.classList.remove('text-primary');
-                admin.classList.remove('text-primary');
+                mainDiv.classList.remove("d-none");
+                departmentDiv.classList.remove("d-none");
+                // gdDiv.classList.add("d-none");
+                // DirectorDiv.classList.add("d-none");
+                // dhDiv.classList.add("d-none");
+                // superDiv.classList.add("d-none");
+                sectionDiv.classList.remove("d-none");
                 break;
             case "director":
-                director.classList.add('text-primary');
-                gd.classList.remove('text-primary');
-                dh.classList.remove('text-primary');
-                supervisor.classList.remove('text-primary');
-                employ.classList.remove('text-primary');
-                admin.classList.remove('text-primary');
+                mainDiv.classList.remove("d-none");
+                departmentDiv.classList.add("d-none")
+                // gdDiv.classList.remove("d-none");
+                // DirectorDiv.classList.remove("d-none");
+                // dhDiv.classList.remove("d-none");
+                // superDiv.classList.remove("d-none");
                 break;
             case "dh":
-                dh.classList.add('text-primary');
-                gd.classList.remove('text-primary');
-                director.classList.remove('text-primary');
-                supervisor.classList.remove('text-primary');
-                employ.classList.remove('text-primary');
-                admin.classList.remove('text-primary');
+                mainDiv.classList.remove("d-none");
+                departmentDiv.classList.remove("d-none")
+                // gdDiv.classList.add("d-none");
+                // DirectorDiv.classList.add("d-none");
+                // superDiv.classList.add("d-none");
+                sectionDiv.classList.add("d-none");
                 break;
             case "super":
-                supervisor.classList.add('text-primary');
-                gd.classList.remove('text-primary');
-                director.classList.remove('text-primary');
-                dh.classList.remove('text-primary');
-                employ.classList.remove('text-primary');
-                admin.classList.remove('text-primary');
+                mainDiv.classList.remove("d-none");
+                departmentDiv.classList.remove("d-none")
+                // gdDiv.classList.add("d-none");
+                // DirectorDiv.classList.add("d-none");
+                // superDiv.classList.add("d-none");
+                sectionDiv.classList.add("d-none");
                 break;
             case "employ":
-                employ.classList.add('text-primary');
-                gd.classList.remove('text-primary');
-                director.classList.remove('text-primary');
-                dh.classList.remove('text-primary');
-                supervisor.classList.remove('text-primary');
-                admin.classList.remove('text-primary');
+                mainDiv.classList.remove("d-none");
+                departmentDiv.classList.add("d-none");
+                // gdDiv.classList.add("d-none");
+                // DirectorDiv.classList.add("d-none");
+                // superDiv.classList.add("d-none");
+                sectionDiv.classList.remove("d-none");
                 break;
         }
     }
 
 </script>
+@push('script')
+    <script src="assets/js/pages/widgets.js"></script>
+
+@endpush
 <script>
     function togglePassword() {
         var x = document.getElementById("password");
