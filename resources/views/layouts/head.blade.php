@@ -38,6 +38,6 @@
     <link href="{{ asset('assets/css/pages/login/classic/login-3.css') }}" rel="stylesheet" type="text/css" />
 
     <!--end::Layout Themes-->
-    <link rel="icon" href="{{ asset('/favicon.ico') }}" />
+    <link rel="icon" href="{{ asset('favicon.ico') }}" />
 </head>
 <!--end::Head-->
