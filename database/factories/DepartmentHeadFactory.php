@@ -26,6 +26,7 @@ class DepartmentHeadFactory extends Factory
         return [
             'depart_head_id' => User::factory()->state(['role' => 'department_head',]),
             'dep_id' => Department::factory(),
+            'director_id'=> User::factory()->state(['role' => 'supervisor',]),
         ];
     }
 }
