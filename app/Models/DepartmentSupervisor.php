@@ -30,4 +30,13 @@ class DepartmentSupervisor extends Model
     {
         return $this->belongsTo(Department::class, 'dep_id', 'id');
     }
+    public function supervisors()
+    {
+        return $this->belongsTo(User::class, 'supervisor_id', 'id');
+    }
+
+    public function subUsers()
+    {
+        return $this->belongsTo(User::class, 'supervisor_id', 'id');
+    }
 }

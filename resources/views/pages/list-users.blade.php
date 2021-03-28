@@ -24,7 +24,7 @@
                                     <!--begin::User-->
                                     <div class="mr-3">
                                         <!--begin::Name-->
-                                        <a href="profile-detail.php"
+                                        <a href="{{ url('user/profile-detail/' . $user->id) }}?role={{ $user->role }}"
                                             class="d-flex align-items-center text-dark text-hover-primary font-size-h5 font-weight-bold mr-3">{{ $user->name }}
                                             <i class="flaticon2-correct text-success icon-md ml-2"></i></a>
                                         <!--end::Name-->
@@ -66,7 +66,7 @@
                                                         </g>
                                                     </svg>
                                                     <!--end::Svg Icon-->
-                                                </span>{{ strtoupper($user->role) }}</a>
+                                                </span>{{ ucwords(str_replace('_', ' ', $user->role)) }}</a>
                                             <a href="#" class="text-muted text-hover-primary font-weight-bold">
                                                 <span class="svg-icon svg-icon-md svg-icon-gray-500 mr-1">
                                                     <!--begin::Svg Icon | path:assets/media/svg/icons/Map/Marker2.svg-->
@@ -91,7 +91,7 @@
                                     <!--begin::User-->
                                     <!--begin::Actions-->
                                     <div class="my-lg-0 my-1">
-                                        <a href="{{ url('user/profile-detail/' . $user->id) }}"
+                                        <a href="{{ url('user/profile-detail/' . $user->id) }}?role={{ $user->role }}"
                                             class="btn btn-sm btn-success btn-gradient-success font-weight-bolder text-uppercase">
                                             More</a>
                                         {{-- <a href="{{ url('/user/' . $user->id) }}"
@@ -126,26 +126,46 @@
                         <div class="d-flex align-items-center flex-wrap">
                             <!--begin: Item-->
                             <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
-                                <span class="mr-4">
-                                    <i class="flaticon-map icon-2x text-muted font-weight-bold"></i>
-                                </span>
-                                <div class="d-flex flex-column text-dark-75">
-                                    <span class="font-weight-bolder font-size-sm">Departments</span>
-                                    <span class="font-weight-bolder font-size-h5">
-                                        <span class="text-dark-50 font-weight-bold"></span>249,500</span>
-                                </div>
+                                @if ($user->role != 'employ' && $user->role != 'admin')
+                                    <span class="mr-4">
+                                        <i class="flaticon-map icon-2x text-muted font-weight-bold"></i>
+                                    </span>
+                                    <div class="d-flex flex-column text-dark-75">
+                                        <span class="font-weight-bolder font-size-sm">Departments</span>
+                                        <span class="font-weight-bolder font-size-h5">
+                                            <span class="text-dark-50 font-weight-bold"></span>249,500</span>
+                                    </div>
+                                @endif
+
+
                             </div>
                             <!--end: Item-->
                             <!--begin: Item-->
                             <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
-                                <span class="mr-4">
-                                    <i class="flaticon-avatar icon-2x text-muted font-weight-bold"></i>
-                                </span>
-                                <div class="d-flex flex-column text-dark-75">
-                                    <span class="font-weight-bolder font-size-sm">Directors</span>
-                                    <span class="font-weight-bolder font-size-h5">
-                                        <span class="text-dark-50 font-weight-bold">$</span>164,700</span>
-                                </div>
+                                @if ($user->role != 'employ' && $user->role != 'admin')
+                                    <span class="mr-4">
+                                        <i class="flaticon-avatar icon-2x text-muted font-weight-bold"></i>
+                                    </span>
+                                    <div class="d-flex flex-column text-dark-75">
+                                        <span class="font-weight-bolder font-size-sm">
+                                            @if ($user->role == 'general_director')
+                                                Directors
+                                            @endif
+                                            @if ($user->role == 'director')
+                                                Department Heads
+                                            @endif
+                                            @if ($user->role == 'department_head')
+                                                Supervisors
+                                            @endif
+                                            @if ($user->role == 'supervisor')
+                                                Employs
+                                            @endif
+                                        </span>
+                                        <span class="font-weight-bolder font-size-h5">
+                                            <span class="text-dark-50 font-weight-bold">$</span>164,700</span>
+                                    </div>
+                                @endif
+
                             </div>
                             <!--end: Item-->
                             <!--begin: Item-->
@@ -164,8 +184,8 @@
                             <!--begin: Item-->
                             <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
                                 <!-- <span class="mr-5">
-                                 <i class="flaticon-user icon-2x text-muted font-weight-bold"></i>
-                                </span> -->
+                                                                 <i class="flaticon-user icon-2x text-muted font-weight-bold"></i>
+                                                                </span> -->
                                 <div class="d-flex flex-column flex-lg-fill">
                                     <span class="text-dark-75 font-weight-bolder font-size-sm">User Suspended</span>
                                     <!-- <a href="#" class="text-primary font-weight-bolder">No</a> -->

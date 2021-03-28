@@ -797,7 +797,7 @@
                 <div class="d-flex flex-column">
                     <a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">
                         {{ Auth::user()->name }}</a>
-                    <div class="text-muted mt-1"> {{ Auth::user()->role }}</div>
+                    <div class="text-muted mt-1"> {{ ucwords(str_replace('_', ' ', Auth::user()->role)) }}</div>
                     <div class="navi mt-2">
                         <a href="#" class="navi-item">
                             <span class="navi-link p-0 pb-2">
@@ -839,7 +839,8 @@
             <!--begin::Nav-->
             <div class="navi navi-spacer-x-0 p-0">
                 <!--begin::Item-->
-                <a href="{{ url('user/profile-detail') }}/{{ Auth::user()->id }}" class="navi-item">
+                <a href="{{ url('user/profile-detail') }}/{{ Auth::user()->id }}?role={{ Auth::user()->role }}"
+                    class="navi-item">
                     <div class="navi-link">
                         <div class="symbol symbol-40 bg-light mr-3">
                             <div class="symbol-label">

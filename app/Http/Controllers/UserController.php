@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Department;
-use App\Models\DepartmentDirector;
-use App\Models\DepartmentGeneralDirector;
-use App\Models\DepartmentHead;
-use App\Models\DepartmentSupervisor;
+use App\Models\User;
 use App\Models\Employ;
 use App\Models\Section;
-use App\Models\User;
+use App\Models\Department;
 use Illuminate\Http\Request;
+use App\Models\DepartmentHead;
 use App\Rules\MatchOldPassword;
+use App\Models\DepartmentDirector;
 use Illuminate\Support\Facades\App;
+use App\Models\DepartmentSupervisor;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Models\DepartmentGeneralDirector;
+use Illuminate\Database\Eloquent\Builder;
 
 class UserController extends Controller
 {
@@ -25,7 +26,24 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('id', 'DESC')->paginate(15);
+        $users = User::orderBy('id', 'DESC')->where('role','!=','admin')->where(function (Builder $query) {
+            $result = null;
+            if (Auth::user()->role == "general_director") {
+                $result =  $query->where('role', 'director');
+            }
+            if (Auth::user()->role == "director") {
+                $result =  $query->where('role', 'department_head');
+            }
+            if (Auth::user()->role == "department_head") {
+                $result =  $query->where('role', 'supervisor');
+            }
+            if (Auth::user()->role == "supervisor") {
+                $result =  $query->where('role', 'employ');
+            }
+            return $result;
+        })
+            ->paginate(15);
+        // return response()->json($users, 200);
         return view('pages.list-users', compact('users'));
     }
 
@@ -126,7 +144,23 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        $user = (object)[];
+        $role = request()->query('role');
         $user = User::findOrFail($id);
+        if (request()->query('role') == "general_director") {
+            $user->assets =  DepartmentDirector::with('subUsers')->where('general_director_id', $id)->paginate();
+        }
+        if (request()->query('role') == "director") {
+            $user->assets =  DepartmentHead::with('subUsers')->where('director_id', $id)->paginate();
+        }
+        if (request()->query('role') == "department_head") {
+            $user->assets =  DepartmentSupervisor::with('subUsers')->where('depart_head_id', $id)->paginate();
+        }
+        if (request()->query('role') == "supervisor") {
+            $user->assets =  Employ::with('subUsers')->where('supervisor_id', $id)->paginate();
+        }
+        // dd($user->assets[0]);
+        // return response()->json($user->assets, 200);
         return view('pages.profile-detail', compact('user'));
     }
 
