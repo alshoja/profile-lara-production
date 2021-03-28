@@ -76,8 +76,8 @@
                                                                 </div>
                                                             </td>
                                                             <td class="pl-0">
-                                                                <a href="#" data-toggle="modal"
-                                                                    data-target="#exampleModalSizeXl"
+                                                                <a href="#" onclick="getProfileData({{ $item->id }})"
+                                                                    data-toggle="modal" data-target="#exampleModalSizeXl"
                                                                     class="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">Brad
                                                                     Simmons</a>
                                                                 <span
@@ -368,32 +368,39 @@
                                                                                 role="tabpanel"
                                                                                 aria-labelledby="kt_tab_pane_5_de">
                                                                                 <div class="card card-custom mb-8 mb-lg-0">
-                                                                                    <div class="card-body">
+                                                                                    {{-- <div class="card card-custom mb-2"> --}}
+                                                                                    <form action="">
                                                                                         <div
-                                                                                            class="d-flex align-items-center p-5">
-                                                                                            <div class="mr-6">
-                                                                                                <span
-                                                                                                    class="svg-icon svg-icon-4x">
-                                                                                                    <img
-                                                                                                        src="assets/media/svg/icons/Map/Direction2.svg" />
-                                                                                                </span>
-                                                                                            </div>
-                                                                                            <div class="d-flex flex-column">
-                                                                                                <a href="#"
-                                                                                                    class="text-dark text-hover-primary font-weight-bold font-size-h4 mb-3">
-                                                                                                    Sign
-                                                                                                </a>
-                                                                                                <div class="text-dark-75">
-                                                                                                    Signed Ipsum is
-                                                                                                    simply dummy text of
-                                                                                                    the printing and
-                                                                                                    typesetting
-                                                                                                    industry.
+                                                                                            class="d-flex align-items-center justify-content-between p-4 flex-lg-wrap flex-xl-nowrap">
+                                                                                            <div
+                                                                                                class="d-flex flex-column mr-5">
+                                                                                                <span href="#"
+                                                                                                    class="h4 text-dark text-hover-primary mb-5">Approve
+                                                                                                    Or Reject
+                                                                                                    with a Note</span>
+
+                                                                                                <p>
+                                                                                                    <textarea required
+                                                                                                        name="approve_note"
+                                                                                                        class="form-control"
+                                                                                                        id="exampleTextarea"
+                                                                                                        rows="2"></textarea>
+                                                                                                </p>
+                                                                                                <div
+                                                                                                    class="ml-4 ml-lg-0 ml-xxl-4 flex-shrink-0">
+                                                                                                    <input type="submit"
+                                                                                                        value="Sign & Approve"
+                                                                                                        class="btn font-weight-bolder text-uppercase btn-success py-4 px-6">
+                                                                                                    <input type="submit"
+                                                                                                        value="Reject"
+                                                                                                        class="btn font-weight-bolder text-uppercase btn-danger py-4 px-6">
                                                                                                 </div>
                                                                                             </div>
+
                                                                                         </div>
-                                                                                    </div>
+                                                                                    </form>
                                                                                 </div>
+                                                                                {{-- </div> --}}
                                                                             </div>
                                                                             <div class="tab-pane fade"
                                                                                 id="kt_tab_pane_5_track" role="tabpanel"
@@ -401,212 +408,10 @@
 
                                                                                 <div style="margin-right: 80px;"
                                                                                     class="timeline timeline-5">
-                                                                                    <div class="timeline-items">
+                                                                                    <div id="track_timeline" class="timeline-items">
                                                                                         <!--begin::Item-->
-                                                                                        <div class="timeline-item">
-                                                                                            <!--begin::Icon-->
-                                                                                            <div
-                                                                                                class="timeline-media bg-light-primary">
-                                                                                                <span
-                                                                                                    class="svg-icon svg-icon-primary svg-icon-md">
-                                                                                                    <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-02-01-052524/theme/html/demo1/dist/../src/media/svg/icons/Navigation/Down-2.svg--><svg
-                                                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                                                        xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                                                        width="24px"
-                                                                                                        height="24px"
-                                                                                                        viewBox="0 0 24 24"
-                                                                                                        version="1.1">
-                                                                                                        <g stroke="none"
-                                                                                                            stroke-width="1"
-                                                                                                            fill="none"
-                                                                                                            fill-rule="evenodd">
-                                                                                                            <polygon
-                                                                                                                points="0 0 24 0 24 24 0 24" />
-                                                                                                            <path
-                                                                                                                d="M6.26193932,17.6476484 C5.90425297,18.0684559 5.27315905,18.1196257 4.85235158,17.7619393 C4.43154411,17.404253 4.38037434,16.773159 4.73806068,16.3523516 L13.2380607,6.35235158 C13.6013618,5.92493855 14.2451015,5.87991302 14.6643638,6.25259068 L19.1643638,10.2525907 C19.5771466,10.6195087 19.6143273,11.2515811 19.2474093,11.6643638 C18.8804913,12.0771466 18.2484189,12.1143273 17.8356362,11.7474093 L14.0997854,8.42665306 L6.26193932,17.6476484 Z"
-                                                                                                                fill="#000000"
-                                                                                                                fill-rule="nonzero"
-                                                                                                                transform="translate(11.999995, 12.000002) rotate(-180.000000) translate(-11.999995, -12.000002) " />
-                                                                                                        </g>
-                                                                                                    </svg>
-                                                                                                    <!--end::Svg Icon-->
-                                                                                                </span>
-                                                                                            </div>
-                                                                                            <!--end::Icon-->
-
-                                                                                            <!--begin::Info-->
-                                                                                            <div
-                                                                                                class="timeline-desc timeline-desc-light-primary">
-                                                                                                <span
-                                                                                                    class="font-weight-bolder text-primary">Salih
-                                                                                                    09:30 AM</span>
-                                                                                                <p
-                                                                                                    class="font-weight-normal text-dark-50 pb-2">
-                                                                                                    To start a blog,
-                                                                                                    think of a topic
-                                                                                                    about and first
-                                                                                                    brainstorm ways to
-                                                                                                    write details
-                                                                                                </p>
-                                                                                            </div>
-                                                                                            <!--end::Info-->
-                                                                                        </div>
-                                                                                        <!--end::Item-->
-
-                                                                                        <!--begin::Item-->
-                                                                                        <div class="timeline-item">
-                                                                                            <!--begin::Icon-->
-                                                                                            <div
-                                                                                                class="timeline-media bg-light-primary">
-                                                                                                <span
-                                                                                                    class="svg-icon svg-icon-primary svg-icon-md">
-                                                                                                    <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-02-01-052524/theme/html/demo1/dist/../src/media/svg/icons/Navigation/Down-2.svg--><svg
-                                                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                                                        xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                                                        width="24px"
-                                                                                                        height="24px"
-                                                                                                        viewBox="0 0 24 24"
-                                                                                                        version="1.1">
-                                                                                                        <g stroke="none"
-                                                                                                            stroke-width="1"
-                                                                                                            fill="none"
-                                                                                                            fill-rule="evenodd">
-                                                                                                            <polygon
-                                                                                                                points="0 0 24 0 24 24 0 24" />
-                                                                                                            <path
-                                                                                                                d="M6.26193932,17.6476484 C5.90425297,18.0684559 5.27315905,18.1196257 4.85235158,17.7619393 C4.43154411,17.404253 4.38037434,16.773159 4.73806068,16.3523516 L13.2380607,6.35235158 C13.6013618,5.92493855 14.2451015,5.87991302 14.6643638,6.25259068 L19.1643638,10.2525907 C19.5771466,10.6195087 19.6143273,11.2515811 19.2474093,11.6643638 C18.8804913,12.0771466 18.2484189,12.1143273 17.8356362,11.7474093 L14.0997854,8.42665306 L6.26193932,17.6476484 Z"
-                                                                                                                fill="#000000"
-                                                                                                                fill-rule="nonzero"
-                                                                                                                transform="translate(11.999995, 12.000002) rotate(-180.000000) translate(-11.999995, -12.000002) " />
-                                                                                                        </g>
-                                                                                                    </svg>
-                                                                                            </div>
-                                                                                            <!--end::Icon-->
-
-                                                                                            <!--begin::Info-->
-                                                                                            <div
-                                                                                                class="timeline-desc timeline-desc-light-warning">
-                                                                                                <span
-                                                                                                    class="font-weight-bolder text-primary">Alshoja
-                                                                                                    2:45 PM</span>
-                                                                                                <p
-                                                                                                    class="font-weight-normal text-dark-50 pt-1 pb-2">
-                                                                                                    To start a blog,
-                                                                                                    think of a topic
-                                                                                                    about and first
-                                                                                                    brainstorm ways to
-                                                                                                    write details
-                                                                                                </p>
-                                                                                            </div>
-                                                                                            <!--end::Info-->
-                                                                                        </div>
-                                                                                        <!--end::Item-->
-
-                                                                                        <!--begin::Item-->
-                                                                                        <div class="timeline-item">
-                                                                                            <!--begin::Icon-->
-                                                                                            <div
-                                                                                                class="timeline-media bg-light-primary">
-                                                                                                <span
-                                                                                                    class="svg-icon svg-icon-primary svg-icon-md">
-                                                                                                    <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-02-01-052524/theme/html/demo1/dist/../src/media/svg/icons/Navigation/Down-2.svg--><svg
-                                                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                                                        xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                                                        width="24px"
-                                                                                                        height="24px"
-                                                                                                        viewBox="0 0 24 24"
-                                                                                                        version="1.1">
-                                                                                                        <g stroke="none"
-                                                                                                            stroke-width="1"
-                                                                                                            fill="none"
-                                                                                                            fill-rule="evenodd">
-                                                                                                            <polygon
-                                                                                                                points="0 0 24 0 24 24 0 24" />
-                                                                                                            <path
-                                                                                                                d="M6.26193932,17.6476484 C5.90425297,18.0684559 5.27315905,18.1196257 4.85235158,17.7619393 C4.43154411,17.404253 4.38037434,16.773159 4.73806068,16.3523516 L13.2380607,6.35235158 C13.6013618,5.92493855 14.2451015,5.87991302 14.6643638,6.25259068 L19.1643638,10.2525907 C19.5771466,10.6195087 19.6143273,11.2515811 19.2474093,11.6643638 C18.8804913,12.0771466 18.2484189,12.1143273 17.8356362,11.7474093 L14.0997854,8.42665306 L6.26193932,17.6476484 Z"
-                                                                                                                fill="#000000"
-                                                                                                                fill-rule="nonzero"
-                                                                                                                transform="translate(11.999995, 12.000002) rotate(-180.000000) translate(-11.999995, -12.000002) " />
-                                                                                                        </g>
-                                                                                                    </svg>
-                                                                                            </div>
-                                                                                            <!--end::Icon-->
-
-                                                                                            <!--begin::Info-->
-                                                                                            <div
-                                                                                                class="timeline-desc timeline-desc-light-success">
-                                                                                                <span
-                                                                                                    class="font-weight-bolder text-primary">Haleem
-                                                                                                    3:12 PM</span>
-                                                                                                <p
-                                                                                                    class="font-weight-normal text-dark-50 pt-1 pb-2">
-                                                                                                    To start a blog,
-                                                                                                    think of a topic
-                                                                                                    about and first
-                                                                                                    brainstorm ways to
-                                                                                                    write details
-                                                                                                </p>
-                                                                                            </div>
-                                                                                            <!--end::Info-->
-                                                                                        </div>
-                                                                                        <!--end::Item-->
-
-                                                                                        <!--begin::Item-->
-                                                                                        <div class="timeline-item">
-                                                                                            <!--begin::Icon-->
-                                                                                            <div
-                                                                                                class="timeline-media bg-light-danger">
-                                                                                                <span
-                                                                                                    class="svg-icon svg-icon-danger svg-icon-md">
-                                                                                                    <!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-02-01-052524/theme/html/demo1/dist/../src/media/svg/icons/Code/Error-circle.svg--><svg
-                                                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                                                        xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                                                        width="24px"
-                                                                                                        height="24px"
-                                                                                                        viewBox="0 0 24 24"
-                                                                                                        version="1.1">
-                                                                                                        <g stroke="none"
-                                                                                                            stroke-width="1"
-                                                                                                            fill="none"
-                                                                                                            fill-rule="evenodd">
-                                                                                                            <rect x="0"
-                                                                                                                y="0"
-                                                                                                                width="24"
-                                                                                                                height="24" />
-                                                                                                            <circle
-                                                                                                                fill="#000000"
-                                                                                                                opacity="0.3"
-                                                                                                                cx="12"
-                                                                                                                cy="12"
-                                                                                                                r="10" />
-                                                                                                            <path
-                                                                                                                d="M12.0355339,10.6213203 L14.863961,7.79289322 C15.2544853,7.40236893 15.8876503,7.40236893 16.2781746,7.79289322 C16.6686989,8.18341751 16.6686989,8.81658249 16.2781746,9.20710678 L13.4497475,12.0355339 L16.2781746,14.863961 C16.6686989,15.2544853 16.6686989,15.8876503 16.2781746,16.2781746 C15.8876503,16.6686989 15.2544853,16.6686989 14.863961,16.2781746 L12.0355339,13.4497475 L9.20710678,16.2781746 C8.81658249,16.6686989 8.18341751,16.6686989 7.79289322,16.2781746 C7.40236893,15.8876503 7.40236893,15.2544853 7.79289322,14.863961 L10.6213203,12.0355339 L7.79289322,9.20710678 C7.40236893,8.81658249 7.40236893,8.18341751 7.79289322,7.79289322 C8.18341751,7.40236893 8.81658249,7.40236893 9.20710678,7.79289322 L12.0355339,10.6213203 Z"
-                                                                                                                fill="#000000" />
-                                                                                                        </g>
-                                                                                                    </svg>
-                                                                                                    <!--end::Svg Icon-->
-                                                                                                </span>
-                                                                                            </div>
-                                                                                            <!--end::Icon-->
-
-                                                                                            <!--begin::Info-->
-                                                                                            <div
-                                                                                                class="timeline-desc timeline-desc-light-danger">
-                                                                                                <span
-                                                                                                    class="font-weight-bolder text-danger">Hesham
-                                                                                                    7:05 PM</span>
-                                                                                                <p
-                                                                                                    class="font-weight-normal text-dark-50 pt-1">
-                                                                                                    To start a blog,
-                                                                                                    think of a topic
-                                                                                                    about and first
-                                                                                                    brainstorm ways to
-                                                                                                    write details
-                                                                                                </p>
-                                                                                            </div>
-                                                                                            <!--end::Info-->
-                                                                                        </div>
-                                                                                        <!--end::Item-->
+                                                                                       
+                                                                                        <!--end::Item--> 
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -781,6 +586,7 @@
         <!--end::Card-->
     </div>
 @endsection
+
 <script>
     function addClass(active_link_id, type) {
         switch (type) {

@@ -74,3 +74,7 @@ Route::delete('user/permission/dh/{userId}/{depId}', [App\Http\Controllers\Depar
 //  Department Supervisors
 Route::post('user/permission/super', [App\Http\Controllers\DepartmentSupervisorController::class, 'store']);
 Route::delete('user/permission/super/{userId}/{depId}', [App\Http\Controllers\DepartmentSupervisorController::class, 'destroy']);
+
+// Time Line
+Route::get('profile/details/{id}', [App\Http\Controllers\ProfileController::class, 'getProfileById']);
+Route::get('timeline', [App\Http\Controllers\TimeLineController::class, 'store']);

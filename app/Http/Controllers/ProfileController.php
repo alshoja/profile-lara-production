@@ -121,4 +121,10 @@ class ProfileController extends Controller
         $pdf->loadHTML('<h1>Test</h1>');
         return $pdf->stream();
     }
+
+    public function getProfileById($id)
+    {
+        $profile = Profile::with('timeline')->findOrFail($id);
+        return response()->json($profile, 200);
+    }
 }
