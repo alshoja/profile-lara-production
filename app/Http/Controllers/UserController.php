@@ -26,7 +26,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('id', 'DESC')->where('role','!=','admin')->where(function (Builder $query) {
+        $search = request()->query('search');
+        $users = User::orderBy('id', 'DESC')->where('role', '!=', 'admin')->where(function (Builder $query) use ($search) {
             $result = null;
             if (Auth::user()->role == "general_director") {
                 $result =  $query->where('role', 'director');
@@ -40,10 +41,15 @@ class UserController extends Controller
             if (Auth::user()->role == "supervisor") {
                 $result =  $query->where('role', 'employ');
             }
+            if ($search) {
+                $result = $query->orWhere('name', 'like', '%' . $search . '%')
+                    ->orWhere('role', 'like', '%' . $search . '%')
+                    ->orWhere('contact', 'like', '%' . $search . '%')
+                    ->orWhere('email', 'like', '%' . $search . '%');
+            }
             return $result;
         })
             ->paginate(15);
-        // return response()->json($users, 200);
         return view('pages.list-users', compact('users'));
     }
 

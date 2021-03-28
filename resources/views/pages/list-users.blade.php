@@ -184,8 +184,8 @@
                             <!--begin: Item-->
                             <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
                                 <!-- <span class="mr-5">
-                                                                 <i class="flaticon-user icon-2x text-muted font-weight-bold"></i>
-                                                                </span> -->
+                                                                                 <i class="flaticon-user icon-2x text-muted font-weight-bold"></i>
+                                                                                </span> -->
                                 <div class="d-flex flex-column flex-lg-fill">
                                     <span class="text-dark-75 font-weight-bolder font-size-sm">User Suspended</span>
                                     <!-- <a href="#" class="text-primary font-weight-bolder">No</a> -->
@@ -204,6 +204,11 @@
                     </div>
                 </div>
             @endforeach
+            @if (count($users) < 1)
+                <div class="card card-custom gutter-b">
+                    <p>Nothing Found</p>
+                </div>
+            @endif
             {{-- @php 	} @endphp --}}
             <!--end::Card-->
             <!--begin::Pagination-->

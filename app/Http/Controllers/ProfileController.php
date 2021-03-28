@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Database\Eloquent\Builder;
 
 class ProfileController extends Controller
 {
@@ -17,7 +18,29 @@ class ProfileController extends Controller
     {
         $search = request()->query('search');
         $tab = $request->input('tab');
-        $profiles = Profile::paginate();
+        $profiles = Profile::orderBy('id', 'DESC')->where(function (Builder $query) use ($search) {
+            $result = null;
+            // if (Auth::user()->role == "general_director") {
+            //     $result =  $query->where('role', 'director');
+            // }
+            // if (Auth::user()->role == "director") {
+            //     $result =  $query->where('role', 'department_head');
+            // }
+            // if (Auth::user()->role == "department_head") {
+            //     $result =  $query->where('role', 'supervisor');
+            // }
+            // if (Auth::user()->role == "supervisor") {
+            //     $result =  $query->where('role', 'employ');
+            // }
+            if ($search) {
+                $result = $query->orWhere('name', 'like', '%' . $search . '%')
+                    ->orWhere('name', 'like', '%' . $search . '%')
+                    ->orWhere('nationality', 'like', '%' . $search . '%')
+                    ->orWhere('gender', 'like', '%' . $search . '%');
+            }
+            return $result;
+        })
+            ->paginate(15);
         return view('pages.inbox', compact('profiles'));
     }
 

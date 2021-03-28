@@ -248,7 +248,7 @@
                                                                 <a href="#" data-toggle="modal"
                                                                     data-target="#exampleModalSizeXl"
                                                                     class="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">Oops..!
-                                                                    No Profiles</a>
+                                                                    Nothing Found</a>
                                                                 {{-- <span
                                                                     class="text-muted font-weight-bold text-muted d-block">No
                                                                     Profiles</span> --}}
