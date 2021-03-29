@@ -18,29 +18,26 @@ class ProfileController extends Controller
     {
         $search = request()->query('search');
         $tab = $request->input('tab');
-        $profiles = Profile::orderBy('id', 'DESC')->where(function (Builder $query) use ($search) {
+        $profiles = Profile::orderBy('id', 'DESC')->where(function (Builder $query) use ($search, $tab) {
             $result = null;
-            // if (Auth::user()->role == "general_director") {
-            //     $result =  $query->where('role', 'director');
-            // }
-            // if (Auth::user()->role == "director") {
-            //     $result =  $query->where('role', 'department_head');
-            // }
-            // if (Auth::user()->role == "department_head") {
-            //     $result =  $query->where('role', 'supervisor');
-            // }
-            // if (Auth::user()->role == "supervisor") {
-            //     $result =  $query->where('role', 'employ');
-            // }
             if ($search) {
                 $result = $query->orWhere('name', 'like', '%' . $search . '%')
                     ->orWhere('name', 'like', '%' . $search . '%')
                     ->orWhere('nationality', 'like', '%' . $search . '%')
                     ->orWhere('gender', 'like', '%' . $search . '%');
             }
+            if ($tab === "inbox") {
+                $result = $query->orWhere('is_notify', 1);
+            }
+            if ($tab === "drafts") {
+                $result = $query->orWhere('is_drafted', 1);
+            }
+            if ($tab === "completed") {
+                $result = $query->orWhere('is_completed', 1);
+            }
             return $result;
         })
-            ->paginate(15);
+            ->paginate(10);
         return view('pages.inbox', compact('profiles'));
     }
 
@@ -109,6 +106,28 @@ class ProfileController extends Controller
     {
         //
     }
+
+    public function forwardAsNew($id)
+    {
+        $existingProfile = Profile::find($id);
+
+        //Clone a attribute of existing row into a new copy
+        $duplicateProfile = $existingProfile->replicate();
+
+        //Change a name of the copy (duplicate) Profile by appending id of the existing Profile to make the name of duplicate Profile unique
+        $duplicateProfile->general_director_id = null;
+        $duplicateProfile->director_id = null;
+        $duplicateProfile->depart_head_id = null;
+        $duplicateProfile->supervisor_id = null;
+        $duplicateProfile->is_completed = null;
+        $duplicateProfile->is_drafted = null;
+        $duplicateProfile->is_notify = null;
+
+        //Now Create a duplicate Profile
+        $duplicateProfile->save();
+        return back()->with('message', 'Forwaded updated');
+    }
+
     /**
      * Render the specified PDF.
      *

@@ -123,7 +123,7 @@ class HomeController extends BaseController
     public function getNotifications()
     {
         $notification = (object)[];
-        $notification->approved = Profile::all()->take(5);
+        $notification->approved = Profile::where('is_notify',1)->take(5)->get();
         // $notification->rejected = Profile::all();
         return response()->json($notification, 200);
     }

@@ -308,8 +308,15 @@
                                                         <div class="d-flex align-items-center">
                                                             <div class="symbol symbol-50 symbol-light mr-4">
                                                                 <span class="symbol-label">
-                                                                    <img src="assets/media/svg/avatars/001-boy.svg"
-                                                                        class="h-75 align-self-end" alt="" />
+                                                                    @if ($item->gender == 'male')
+                                                                            <img src="{{ url('assets/media/svg/avatars/001-boy.svg') }}"
+                                                                                class="h-75 align-self-end" alt="" />
+
+                                                                        @else
+                                                                            <img src="{{ url('assets/media/svg/avatars/002-girl.svg') }}"
+                                                                                class="h-75 align-self-end" alt="" />
+                                                                        @endif
+
                                                                 </span>
                                                             </div>
                                                             <div>

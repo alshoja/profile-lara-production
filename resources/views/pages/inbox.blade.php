@@ -75,10 +75,9 @@
                                                                                 class="h-75 align-self-end" alt="" />
 
                                                                         @else
-                                                                            <img src="{{ url('assets/media/svg/avatars/001-girl.svg') }}"
+                                                                            <img src="{{ url('assets/media/svg/avatars/002-girl.svg') }}"
                                                                                 class="h-75 align-self-end" alt="" />
                                                                         @endif
-
                                                                     </span>
                                                                 </div>
                                                             </td>
@@ -208,7 +207,8 @@
                                                                                 class="text-primary text-uppercase font-weight-bold font-size-sm">Options</span>
                                                                         </li>
                                                                         <li class="navi-item">
-                                                                            <a href="#" class="navi-link">
+                                                                            <a href="{{ url('forward/new', $item->id) }}"
+                                                                                class="navi-link">
                                                                                 <span class="navi-icon">
                                                                                     <i class="flaticon2-reply"></i>
                                                                                 </span>
@@ -221,7 +221,9 @@
                                                                                 <span class="navi-icon">
                                                                                     <i class="flaticon-speech-bubble"></i>
                                                                                 </span>
-                                                                                <span data-toggle="modal"
+                                                                                <span
+                                                                                    onclick="getProfileData({{ $item->id }})"
+                                                                                    data-toggle="modal"
                                                                                     data-target="#exampleModalSizeXl"
                                                                                     class="navi-text">Reply to note</span>
                                                                             </a>
@@ -231,19 +233,21 @@
                                                                                 <span class="navi-icon">
                                                                                     <i class="flaticon-placeholder-3"></i>
                                                                                 </span>
-                                                                                <span data-toggle="modal"
+                                                                                <span
+                                                                                    onclick="getProfileData({{ $item->id }})"
+                                                                                    data-toggle="modal"
                                                                                     data-target="#exampleModalSizeXl"
                                                                                     class="navi-text">Track</span>
                                                                             </a>
                                                                         </li>
-                                                                        <li class="navi-item">
+                                                                        {{-- <li class="navi-item">
                                                                             <a href="#" class="navi-link">
                                                                                 <span class="navi-icon">
                                                                                     <i class="flaticon2-writing"></i>
                                                                                 </span>
                                                                                 <span class="navi-text">Submit Draft</span>
                                                                             </a>
-                                                                        </li>
+                                                                        </li> --}}
                                                                     </ul>
                                                                     <!--end::Navigation-->
                                                                 </div>

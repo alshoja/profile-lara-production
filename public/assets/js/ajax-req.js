@@ -67,7 +67,7 @@ function destroyItem(url, id = 0) {
 function getNotifications() {
   let fullUrl = HOST_URL + "/notifications";
   let res = null;
-  let suburl = "/profiles";
+  let suburl = "/profiles?tab=inbox";
   $.ajax({
     url: fullUrl,
     type: "GET",

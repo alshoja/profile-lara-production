@@ -25,13 +25,15 @@ Route::get('profile/add-profile', function () {
 
 
 Auth::routes();
-
 // Dashboard
+Route::get('/notifications', [App\Http\Controllers\HomeController::class, 'getNotifications'])->name('notification');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Profile
 Route::get('profile/track', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
 Route::get('profile/drafts', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
 Route::get('profiles', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
-Route::get('/notifications', [App\Http\Controllers\HomeController::class, 'getNotifications'])->name('notification');
+Route::get('forward/new/{id}', [App\Http\Controllers\ProfileController::class, 'forwardAsNew'])->name('notification');
 
 // User Management 
 Route::get('user/list-users', [App\Http\Controllers\UserController::class, 'index'])->name('List users');

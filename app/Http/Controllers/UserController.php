@@ -49,7 +49,7 @@ class UserController extends Controller
             }
             return $result;
         })
-            ->paginate(15);
+            ->paginate(10);
         return view('pages.list-users', compact('users'));
     }
 
