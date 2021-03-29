@@ -34,6 +34,7 @@ Route::get('profile/track', [App\Http\Controllers\ProfileController::class, 'ind
 Route::get('profile/drafts', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
 Route::get('profiles', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
 Route::get('forward/new/{id}', [App\Http\Controllers\ProfileController::class, 'forwardAsNew'])->name('notification');
+Route::get('profile/details/{id}', [App\Http\Controllers\ProfileController::class, 'getProfileById']);
 
 // User Management 
 Route::get('user/list-users', [App\Http\Controllers\UserController::class, 'index'])->name('List users');
@@ -78,5 +79,4 @@ Route::post('user/permission/super', [App\Http\Controllers\DepartmentSupervisorC
 Route::delete('user/permission/super/{userId}/{depId}', [App\Http\Controllers\DepartmentSupervisorController::class, 'destroy']);
 
 // Time Line
-Route::get('profile/details/{id}', [App\Http\Controllers\ProfileController::class, 'getProfileById']);
 Route::get('timeline', [App\Http\Controllers\TimeLineController::class, 'store']);

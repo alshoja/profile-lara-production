@@ -153,6 +153,9 @@ class UserController extends Controller
         $user = (object)[];
         $role = request()->query('role');
         $user = User::findOrFail($id);
+        if (request()->query('role') == "admin") {
+            $user->assets = [];
+        }
         if (request()->query('role') == "general_director") {
             $user->assets =  DepartmentDirector::with('subUsers')->where('general_director_id', $id)->paginate();
         }
