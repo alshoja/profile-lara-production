@@ -70,45 +70,53 @@
                                                             <td class="pl-0">
                                                                 <div class="symbol symbol-50 symbol-light mt-1">
                                                                     <span class="symbol-label">
-                                                                        <img src="assets/media/svg/avatars/"
-                                                                            class="h-75 align-self-end" alt="" />
+                                                                        @if ($item->gender == 'male')
+                                                                            <img src="{{ url('assets/media/svg/avatars/001-boy.svg') }}"
+                                                                                class="h-75 align-self-end" alt="" />
+
+                                                                        @else
+                                                                            <img src="{{ url('assets/media/svg/avatars/001-girl.svg') }}"
+                                                                                class="h-75 align-self-end" alt="" />
+                                                                        @endif
+
                                                                     </span>
                                                                 </div>
                                                             </td>
                                                             <td class="pl-0">
                                                                 <a href="#" onclick="getProfileData({{ $item->id }})"
                                                                     data-toggle="modal" data-target="#exampleModalSizeXl"
-                                                                    class="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">Brad
-                                                                    Simmons</a>
+                                                                    class="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">
+                                                                    {{ $item->name }}</a>
                                                                 <span
-                                                                    class="text-muted font-weight-bold text-muted d-block">Male</span>
+                                                                    class="text-muted text-capitalize font-weight-bold text-muted d-block">{{ $item->gender }}</span>
                                                             </td>
                                                             <td>
                                                                 <span
-                                                                    class="text-dark-75 font-weight-bolder d-block font-size-lg">CitizenShip
-                                                                    Location</span>
+                                                                    class="text-dark-75 font-weight-bolder d-block font-size-lg">
+                                                                    {{ $item->citizenship_location }}</span>
                                                                 <span class="text-muted font-weight-bold">
-                                                                    Nationality</span>
+                                                                    {{ $item->nationality }}</span>
                                                             </td>
                                                             <td>
                                                                 <span
-                                                                    class="text-dark-75 font-weight-bolder d-block font-size-lg">Final
-                                                                    Destination </span>
-                                                                <span class="text-muted font-weight-bold">Shipping No</span>
+                                                                    class="text-dark-75 text-capitalize font-weight-bolder d-block font-size-lg">
+                                                                    {{ $item->final_destination }} </span>
+                                                                <span
+                                                                    class="text-muted font-weight-bold">{{ $item->shipping_no }}</span>
                                                             </td>
                                                             <td>
                                                                 <div class="d-flex flex-column w-100 mr-2">
                                                                     <div
                                                                         class="d-flex align-items-center justify-content-between mb-2">
                                                                         <span
-                                                                            class="text-muted mr-2 font-size-sm font-weight-bold">65%</span>
+                                                                            class="text-muted mr-2 font-size-sm font-weight-bold">23%</span>
                                                                         <span
                                                                             class="text-muted font-size-sm font-weight-bold">Progress</span>
                                                                     </div>
                                                                     <div class="progress progress-xs w-100">
                                                                         <div class="progress-bar bg-danger"
-                                                                            role="progressbar" style="width: 65%;"
-                                                                            aria-valuenow="50" aria-valuemin="0"
+                                                                            role="progressbar" style="width: 15%;"
+                                                                            aria-valuenow="10" aria-valuemin="0"
                                                                             aria-valuemax="100"></div>
                                                                     </div>
                                                                 </div>
@@ -257,21 +265,24 @@
                                                     @endif
 
 
+                                                    <!-- Button trigger modal-->
+
+
+                                                    <!-- Modal-->
                                                     <div class="modal fade" id="exampleModalSizeXl" tabindex="-1"
-                                                        role="dialog" aria-labelledby="exampleModalSizeXl"
-                                                        aria-hidden="true">
-                                                        <div class="modal-dialog modal-dialog-centered modal-xl"
+                                                        role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl"
                                                             role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">Modal
-                                                                        Title </h5>
+                                                                    <h5 class="modal-title" id="exampleModalLabel">
+                                                                    </h5>
                                                                     <button type="button" class="close" data-dismiss="modal"
                                                                         aria-label="Close">
                                                                         <i aria-hidden="true" class="ki ki-close"></i>
                                                                     </button>
                                                                 </div>
-                                                                <div class="card card-custom">
+                                                                <div class="modal-body">
                                                                     <div class="card-header">
                                                                         <div class="card-toolbar">
                                                                             <ul
@@ -337,194 +348,157 @@
                                                                                 </li>
                                                                             </ul>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="card-body">
-                                                                        <div class="tab-content">
-                                                                            <div class="tab-pane fade show active"
-                                                                                id="kt_tab_pane_5_e" role="tabpanel"
-                                                                                aria-labelledby="kt_tab_pane_5_e">
-                                                                                <p>Eprofile Ipsum is
-                                                                                    simply dummy text of the printing
-                                                                                    and typesetting industry. Lorem
-                                                                                    Ipsum passages, and more recently
-                                                                                    with desktop publishing software
-                                                                                    like Aldus PageMaker including
-                                                                                    versions of Lorem Ipsum. Lorem Ipsum
-                                                                                    passages, and more recently with
-                                                                                    desktop publishing software like
-                                                                                    Aldus PageMaker including versions
-                                                                                    of Lorem Ipsum. Lorem Ipsum is
-                                                                                    simply dummy text of the printing
-                                                                                    and typesetting industry. with
-                                                                                    desktop publishing software like
-                                                                                    Aldus PageMaker including versions
-                                                                                    of Lorem Ipsum. Lorem Ipsum
-                                                                                    passages, and more recently with
-                                                                                    desktop publishing software like
-                                                                                    Aldus PageMaker including versions
-                                                                                    of Lorem Ipsum</p>
-                                                                            </div>
-                                                                            <div class="tab-pane fade" id="kt_tab_pane_5_de"
-                                                                                role="tabpanel"
-                                                                                aria-labelledby="kt_tab_pane_5_de">
-                                                                                <div class="card card-custom mb-8 mb-lg-0">
-                                                                                    {{-- <div class="card card-custom mb-2"> --}}
-                                                                                    <form action="">
+                                                                        <div data-scroll="true" data-height="300">
+                                                                            <div class="card-body">
+                                                                                <div class="tab-content">
+                                                                                    <div class="tab-pane fade show active"
+                                                                                        id="kt_tab_pane_5_e" role="tabpanel"
+                                                                                        aria-labelledby="kt_tab_pane_5_e">
+                                                                                        <p>Eprofile Ipsum is
+                                                                                            simply dummy text of the
+                                                                                            printing
+                                                                                            and typesetting industry. Lorem
+                                                                                            Ipsum passages, and more
+                                                                                            recently
+                                                                                            with desktop publishing software
+                                                                                            like Aldus PageMaker including
+                                                                                            versions of Lorem Ipsum. Lorem
+                                                                                            Ipsum
+                                                                                            passages, and more recently with
+                                                                                            desktop publishing software like
+                                                                                            Aldus PageMaker including
+                                                                                            versions
+                                                                                            of Lorem Ipsum. Lorem Ipsum is
+                                                                                            simply dummy text of the
+                                                                                            printing
+                                                                                            and typesetting industry. with
+                                                                                            desktop publishing software like
+                                                                                            Aldus PageMaker including
+                                                                                            versions
+                                                                                            of Lorem Ipsum. Lorem Ipsum
+                                                                                            passages, and more recently with
+                                                                                            desktop publishing software like
+                                                                                            Aldus PageMaker including
+                                                                                            versions
+                                                                                            of Lorem Ipsum</p>
+                                                                                    </div>
+                                                                                    <div class="tab-pane fade"
+                                                                                        id="kt_tab_pane_5_de"
+                                                                                        role="tabpanel"
+                                                                                        aria-labelledby="kt_tab_pane_5_de">
                                                                                         <div
-                                                                                            class="d-flex align-items-center justify-content-between p-4 flex-lg-wrap flex-xl-nowrap">
-                                                                                            <div
-                                                                                                class="d-flex flex-column mr-5">
-                                                                                                <span href="#"
-                                                                                                    class="h4 text-dark text-hover-primary mb-5">Approve
-                                                                                                    Or Reject
-                                                                                                    with a Note</span>
-
-                                                                                                <p>
-                                                                                                    <textarea required
-                                                                                                        name="approve_note"
-                                                                                                        class="form-control"
-                                                                                                        id="exampleTextarea"
-                                                                                                        rows="2"></textarea>
-                                                                                                </p>
+                                                                                            class="card card-custom mb-8 mb-lg-0">
+                                                                                            {{-- <div class="card card-custom mb-2"> --}}
+                                                                                            <form action="">
                                                                                                 <div
-                                                                                                    class="ml-4 ml-lg-0 ml-xxl-4 flex-shrink-0">
-                                                                                                    <input type="submit"
-                                                                                                        value="Sign & Approve"
-                                                                                                        class="btn font-weight-bolder text-uppercase btn-success py-4 px-6">
-                                                                                                    <input type="submit"
-                                                                                                        value="Reject"
-                                                                                                        class="btn font-weight-bolder text-uppercase btn-danger py-4 px-6">
+                                                                                                    class="d-flex align-items-center justify-content-between p-4 flex-lg-wrap flex-xl-nowrap">
+                                                                                                    <div
+                                                                                                        class="d-flex flex-column mr-5">
+                                                                                                        <span href="#"
+                                                                                                            class="h4 text-dark text-hover-primary mb-5">Approve
+                                                                                                            Or Reject
+                                                                                                            with a
+                                                                                                            Note</span>
+
+                                                                                                        <p>
+                                                                                                            <textarea
+                                                                                                                required
+                                                                                                                name="approve_note"
+                                                                                                                class="form-control"
+                                                                                                                id="exampleTextarea"
+                                                                                                                rows="2"></textarea>
+                                                                                                        </p>
+                                                                                                        <div
+                                                                                                            class="ml-4 ml-lg-0 ml-xxl-4 flex-shrink-0">
+                                                                                                            <input
+                                                                                                                type="submit"
+                                                                                                                value="Sign & Approve"
+                                                                                                                class="btn btn-sm  text-uppercase btn-success py-4 px-6">
+                                                                                                            <input
+                                                                                                                type="submit"
+                                                                                                                value="Reject"
+                                                                                                                class="btn btn-sm  text-uppercase btn-danger py-4 px-6">
+                                                                                                        </div>
+                                                                                                    </div>
+
                                                                                                 </div>
-                                                                                            </div>
-
+                                                                                            </form>
                                                                                         </div>
-                                                                                    </form>
-                                                                                </div>
-                                                                                {{-- </div> --}}
-                                                                            </div>
-                                                                            <div class="tab-pane fade"
-                                                                                id="kt_tab_pane_5_track" role="tabpanel"
-                                                                                aria-labelledby="kt_tab_pane_5_track">
-
-                                                                                <div style="margin-right: 80px;"
-                                                                                    class="timeline timeline-5">
-                                                                                    <div id="track_timeline" class="timeline-items">
-                                                                                        <!--begin::Item-->
-                                                                                       
-                                                                                        <!--end::Item--> 
+                                                                                        {{-- </div> --}}
                                                                                     </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="tab-pane fade"
-                                                                                id="kt_tab_pane_5_doc1" role="tabpanel"
-                                                                                aria-labelledby="kt_tab_pane_5_doc1">
-                                                                                <img alt="Pic"
-                                                                                    src="assets/media/demos/demo1.png" />
-                                                                            </div>
-                                                                            <div class="tab-pane fade"
-                                                                                id="kt_tab_pane_5_doc2" role="tabpanel"
-                                                                                aria-labelledby="kt_tab_pane_5_doc2">
-                                                                                <img alt="Pic"
-                                                                                    src="assets/media/demos/demo2.png" />
-                                                                            </div>
-                                                                            <div class="tab-pane fade"
-                                                                                id="kt_tab_pane_5_doc3" role="tabpanel"
-                                                                                aria-labelledby="kt_tab_pane_5_doc3">
-                                                                                <img alt="Pic"
-                                                                                    src="assets/media/demos/demo3.png" />
-                                                                            </div>
-                                                                            <div class="tab-pane fade"
-                                                                                id="kt_tab_pane_5_note" role="tabpanel"
-                                                                                aria-labelledby="kt_tab_pane_5_note">
-                                                                                <div class="timeline timeline-4">
-                                                                                    <div class="timeline-bar"></div>
-                                                                                    <div class="timeline-items">
-                                                                                        <div
-                                                                                            class="timeline-item timeline-item-left">
-                                                                                            <div class="timeline-badge">
-                                                                                                <div class="bg-danger">
-                                                                                                </div>
-                                                                                            </div>
+                                                                                    <div class="tab-pane fade"
+                                                                                        id="kt_tab_pane_5_track"
+                                                                                        role="tabpanel"
+                                                                                        aria-labelledby="kt_tab_pane_5_track">
 
-                                                                                            <div class="timeline-label">
-                                                                                                <span
-                                                                                                    class="text-primary font-weight-bold">Salih
-                                                                                                    11:35 AM</span>
-                                                                                            </div>
+                                                                                        <div style="margin-right: 80px;"
+                                                                                            class="timeline timeline-5">
+                                                                                            <div id="track_timeline"
+                                                                                                class="timeline-items fixed-div">
+                                                                                                <!--begin::Item-->
 
-                                                                                            <div class="timeline-content">
-                                                                                                Hello
+                                                                                                <!--end::Item-->
                                                                                             </div>
                                                                                         </div>
-                                                                                        <div
-                                                                                            class="timeline-item timeline-item-right">
-                                                                                            <div class="timeline-badge">
-                                                                                                <div class="bg-success">
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div
-                                                                                                class="timeline-label text-primary">
-                                                                                                <span
-                                                                                                    class="text-primary font-weight-bold">Alshoja
-                                                                                                    2:20 PM</span>
-                                                                                            </div>
-                                                                                            <div class="timeline-content">
-                                                                                                hai
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div
-                                                                                            class="timeline-item timeline-item-left">
-                                                                                            <div class="timeline-badge">
-                                                                                                <div class="bg-danger">
-                                                                                                </div>
-                                                                                            </div>
+                                                                                    </div>
+                                                                                    <div class="tab-pane fade"
+                                                                                        id="kt_tab_pane_5_doc1"
+                                                                                        role="tabpanel"
+                                                                                        aria-labelledby="kt_tab_pane_5_doc1">
+                                                                                        <img id="doc_1" alt="Pic"
+                                                                                            src="assets/media/demos/demo1.png" />
+                                                                                    </div>
+                                                                                    <div class="tab-pane fade"
+                                                                                        id="kt_tab_pane_5_doc2"
+                                                                                        role="tabpanel"
+                                                                                        aria-labelledby="kt_tab_pane_5_doc2">
+                                                                                        <img id="doc_2" alt="Pic"
+                                                                                            src="assets/media/demos/demo2.png" />
+                                                                                    </div>
+                                                                                    <div class="tab-pane fade"
+                                                                                        id="kt_tab_pane_5_doc3"
+                                                                                        role="tabpanel"
+                                                                                        aria-labelledby="kt_tab_pane_5_doc3">
+                                                                                        <img id="doc_3" alt="Pic"
+                                                                                            src="assets/media/demos/demo3.png" />
+                                                                                    </div>
+                                                                                    <div class="tab-pane fade"
+                                                                                        id="kt_tab_pane_5_note"
+                                                                                        role="tabpanel"
+                                                                                        aria-labelledby="kt_tab_pane_5_note">
+                                                                                        <div class="timeline timeline-4">
+                                                                                            <div class="timeline-bar"></div>
+                                                                                            <div id="note_chat_timeline"
+                                                                                                class="timeline-items">
 
-                                                                                            <div class="timeline-label">
-                                                                                                <span
-                                                                                                    class="text-primary font-weight-bold">Hesham
-                                                                                                    11:35 AM</span>
-                                                                                            </div>
-
-                                                                                            <div class="timeline-content">
-                                                                                                thats the reply note
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
-
-                                                                                <div class="card card-custom">
-                                                                                    <div class="card-body">
-                                                                                        <div class="form-group mb-1">
-                                                                                            <label
-                                                                                                for="exampleTextarea">Reply
-                                                                                                Note <span
-                                                                                                    class="text-danger">*</span></label>
-                                                                                            <textarea class="form-control"
-                                                                                                id="exampleTextarea"
-                                                                                                rows="2"></textarea>
-                                                                                        </div>
-                                                                                        <br>
-                                                                                        <div class="form-group mb-1">
-                                                                                            <button type="button"
-                                                                                                class="btn btn-danger font-weight-bold"
-                                                                                                data-dismiss="modal">Reply</button>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
+                                                                            </div>
+                                                                            <div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="card-body">
+                                                                            <div class="form-group mb-1">
+                                                                                <label for="exampleTextarea">Reply
+                                                                                    Note <span
+                                                                                        class="text-danger">*</span></label>
+                                                                                <textarea class="form-control"
+                                                                                    id="exampleTextarea"
+                                                                                    rows="2"></textarea>
+                                                                            </div>
+                                                                            <br>
+                                                                            <div class="form-group mb-1">
+                                                                                <button type="button"
+                                                                                    class="btn btn-danger font-weight-bold"
+                                                                                    data-dismiss="modal">Reply</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button"
-                                                                        class="btn btn-light-primary font-weight-bold"
-                                                                        data-dismiss="modal">Close</button>
-                                                                    <!-- <button type="button" class="btn btn-primary font-weight-bold">Save changes</button> -->
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!--end::Modal-->
+
+                                                                <!--end::Modal-->
 
                                                 </tbody>
                                             </table>
@@ -586,7 +560,13 @@
         <!--end::Card-->
     </div>
 @endsection
+<style>
+    fixed-div {
+        overflow: auto;
+        max-height: 200px;
+    }
 
+</style>
 <script>
     function addClass(active_link_id, type) {
         switch (type) {
@@ -617,5 +597,4 @@
 </script>
 @push('script')
     <script src="assets/js/pages/crud/ktdatatable/base/data-json.js"></script>
-
 @endpush

@@ -17,7 +17,7 @@ class CreateTimeLinesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('note');
-            $table->tinyInteger('is_approved')->default(0)->nullable();
+            // $table->tinyInteger('is_approved')->default(0)->nullable();
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('profile_id')->constrained('profiles');
             $table->timestamps();

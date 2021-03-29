@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Profile;
+use App\Models\TimeLine;
 use Illuminate\Http\Request;
 
 class HomeController extends BaseController
@@ -36,6 +37,7 @@ class HomeController extends BaseController
         $dashData->profileEntered = Profile::count();
         $dashData->profilePending = Profile::count();
         $dashData->profileApproved = Profile::count();
+        $dashData->activity = TimeLine::where('profile_id', 8)->get();
         // dd($dashData);
         return view('home', compact('dashData'));
     }
@@ -125,4 +127,14 @@ class HomeController extends BaseController
         // $notification->rejected = Profile::all();
         return response()->json($notification, 200);
     }
+
+    // public function getActivityProcessod($timeline)
+    // {
+    //     $data = (object)[];
+    //     foreach ($timeline as $key) {
+    //         $key->name;
+    //         $data = [$key->name];
+    //     }
+    //     return $data;
+    // }
 }

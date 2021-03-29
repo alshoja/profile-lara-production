@@ -132,3 +132,4 @@ if (typeof module !== "undefined") {
 jQuery(document).ready(function () {
   KTDateWidgets.init();
 });
+

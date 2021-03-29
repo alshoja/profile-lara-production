@@ -7,12 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class TimeLine extends Model
 {
+    use HasFactory;
     protected $fillable = [
         'name',
         'note',
         'usert_id',
         'profile_id'
     ];
-
-    use HasFactory;
 }
