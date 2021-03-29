@@ -18,24 +18,28 @@ class ProfileController extends Controller
     {
         $search = request()->query('search');
         $tab = $request->input('tab');
-        $profiles = Profile::orderBy('id', 'DESC')->where(function (Builder $query) use ($search, $tab) {
-            $result = null;
+        $from = $request->input('from');
+        $to = $request->input('to');
+        $profiles = Profile::orderBy('id', 'DESC')->where(function (Builder $query) use ($search, $tab, $from, $to) {
             if ($search) {
-                $result = $query->orWhere('name', 'like', '%' . $search . '%')
+                $query->orWhere('name', 'like', '%' . $search . '%')
                     ->orWhere('name', 'like', '%' . $search . '%')
                     ->orWhere('nationality', 'like', '%' . $search . '%')
                     ->orWhere('gender', 'like', '%' . $search . '%');
             }
             if ($tab === "inbox") {
-                $result = $query->orWhere('is_notify', 1);
+                $query->orWhere('is_notify', 1);
             }
             if ($tab === "drafts") {
-                $result = $query->orWhere('is_drafted', 1);
+                $query->orWhere('is_drafted', 1);
             }
             if ($tab === "completed") {
-                $result = $query->orWhere('is_completed', 1);
+                $query->orWhere('is_completed', 1);
             }
-            return $result;
+            if ($from && $to) {
+                $query->whereBetween('created_at', [$from, $to]);
+            }
+            return $query;
         })
             ->paginate(10);
         return view('pages.inbox', compact('profiles'));

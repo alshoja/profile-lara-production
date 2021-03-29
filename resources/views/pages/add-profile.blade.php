@@ -617,7 +617,7 @@
                                                                         <div class="row form-group">
                                                                             <div class="col-xl-3">
                                                                                 <!-- <label>Name:</label> -->
-                                                                                <select name="country"
+                                                                                <select name="product"
                                                                                     class="form-control form-control-solid ">
                                                                                     <option value="">Product-1</option>
                                                                                     <option value="YE">P 1</option>

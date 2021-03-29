@@ -295,8 +295,8 @@
                                                 </th>
                                                 <th style="min-width: 100px">Gender</th>
                                                 <th style="min-width: 100px">Country</th>
-                                                <!-- <th style="min-width: 100px">company</th>
-                                                                                                                     <th style="min-width: 130px">rating</th> -->
+                                                <th style="min-width: 100px">Date</th>
+                                                {{-- <th style="min-width: 130px">rating</th> --> --}}
                                                 <th style="min-width: 80px"></th>
                                             </tr>
                                         </thead>
@@ -309,13 +309,13 @@
                                                             <div class="symbol symbol-50 symbol-light mr-4">
                                                                 <span class="symbol-label">
                                                                     @if ($item->gender == 'male')
-                                                                            <img src="{{ url('assets/media/svg/avatars/001-boy.svg') }}"
-                                                                                class="h-75 align-self-end" alt="" />
+                                                                        <img src="{{ url('assets/media/svg/avatars/001-boy.svg') }}"
+                                                                            class="h-75 align-self-end" alt="" />
 
-                                                                        @else
-                                                                            <img src="{{ url('assets/media/svg/avatars/002-girl.svg') }}"
-                                                                                class="h-75 align-self-end" alt="" />
-                                                                        @endif
+                                                                    @else
+                                                                        <img src="{{ url('assets/media/svg/avatars/002-girl.svg') }}"
+                                                                            class="h-75 align-self-end" alt="" />
+                                                                    @endif
 
                                                                 </span>
                                                             </div>
@@ -338,8 +338,13 @@
                                                             {{ $item->nationality }}</span>
                                                         <!-- <span class="text-muted font-weight-bold">Paid</span> -->
                                                     </td>
+                                                    <td>
+                                                        <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
+                                                            {{ date('Y-m-d ', strtotime($item->created_at)) }}</span>
+                                                        <!-- <span class="text-muted font-weight-bold">Paid</span> -->
+                                                    </td>
                                                     <td class="pr-0 text-right">
-                                                        <a href="edit-profile.php"
+                                                        <a href="{{ url('profile/track') }}"
                                                             class="btn btn-success btn-gradient-success  font-weight-bolder font-size-sm">More</a>
                                                     </td>
                                                 </tr>
