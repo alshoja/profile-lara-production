@@ -7,7 +7,7 @@
     <!--begin::Header Mobile-->
     <div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
         <!--begin::Logo-->
-        <a href="dashboard.php">
+        <a href="{{ url('/home') }}">
             <img alt="Logo" src="{{ asset('assets/media/logos/logo-light.png') }}" />
         </a>
         <!--end::Logo-->
@@ -1021,7 +1021,7 @@
         <!--begin::Item-->
         <li class="nav-item" data-toggle="tooltip" title="Inbox" data-placement="left">
             <a class="btn btn-sm btn-icon btn-bg-light btn-icon-danger btn-hover-danger"
-                href="{{ url('/profiles?tab=inbox') }}" >
+                href="{{ url('/profiles?tab=inbox') }}">
                 <i class="flaticon2-chat-1"></i>
             </a>
         </li>

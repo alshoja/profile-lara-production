@@ -224,8 +224,8 @@ function setTrack(trackings) {
       <!--end::Info-->
   </div>`;
     });
-  } else if (data.length <= 0) {
-    contentStr += ` <p>No Track Data to Display </p>`;
+  } else if (trackings.length <= 0) {
+    contentStr += ` <br><br><div>No Track Data to Display </div>`;
   }
   document.getElementById("track_timeline").innerHTML = contentStr;
 }
@@ -267,8 +267,8 @@ function setNotes(notes) {
           </div>
       </div>`;
     });
-  } else if (data.length <= 0) {
-    notesString += ` <p>No Track Data to Display </p>`;
+  } else if (notes.length <= 0) {
+    notesString += `  <br><br><div>No Track notes to display </div>`;
   }
   document.getElementById("note_chat_timeline").innerHTML = notesString;
 }
