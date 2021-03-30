@@ -353,7 +353,7 @@
                                                                                 </li>
                                                                             </ul>
                                                                         </div>
-                                                                        <div data-scroll="true" data-height="300">
+                                                                        <div data-scroll="true" data-height="250">
                                                                             <div class="card-body">
                                                                                 <div class="tab-content">
                                                                                     <div class="tab-pane fade show active"
@@ -391,44 +391,43 @@
                                                                                         id="kt_tab_pane_5_de"
                                                                                         role="tabpanel"
                                                                                         aria-labelledby="kt_tab_pane_5_de">
-                                                                                        <div
-                                                                                            class="card card-custom mb-8 mb-lg-0">
-                                                                                            {{-- <div class="card card-custom mb-2"> --}}
-                                                                                            <form action="">
-                                                                                                <div
-                                                                                                    class="d-flex align-items-center justify-content-between p-4 flex-lg-wrap flex-xl-nowrap">
-                                                                                                    <div
-                                                                                                        class="d-flex flex-column mr-5">
-                                                                                                        <span href="#"
-                                                                                                            class="h4 text-dark text-hover-primary mb-5">Approve
-                                                                                                            Or Reject
-                                                                                                            with a
-                                                                                                            Note</span>
 
-                                                                                                        <p>
-                                                                                                            <textarea
-                                                                                                                required
-                                                                                                                name="approve_note"
-                                                                                                                class="form-control"
-                                                                                                                id="exampleTextarea"
-                                                                                                                rows="2"></textarea>
-                                                                                                        </p>
-                                                                                                        <div
-                                                                                                            class="ml-4 ml-lg-0 ml-xxl-4 flex-shrink-0">
-                                                                                                            <input
-                                                                                                                type="submit"
-                                                                                                                value="Sign & Approve"
-                                                                                                                class="btn btn-sm  text-uppercase btn-success py-4 px-6">
-                                                                                                            <input
-                                                                                                                type="submit"
-                                                                                                                value="Reject"
-                                                                                                                class="btn btn-sm  text-uppercase btn-danger py-4 px-6">
-                                                                                                        </div>
+                                                                                        {{-- <div class="card card-custom mb-2"> --}}
+                                                                                        <form action="">
+                                                                                            <div
+                                                                                                class="d-flex align-items-center justify-content-between p-4 flex-lg-wrap flex-xl-nowrap">
+                                                                                                <div
+                                                                                                    class="d-flex flex-column mr-5">
+                                                                                                    <span href="#"
+                                                                                                        class="h4 text-dark text-hover-primary mb-5">Approve
+                                                                                                        Or Reject
+                                                                                                        with a
+                                                                                                        Note</span>
+
+                                                                                                    <p>
+                                                                                                        <textarea required
+                                                                                                            name="approve_note"
+                                                                                                            class="form-control notebook"
+                                                                                                            id="exampleTextarea"
+                                                                                                            rows="2"></textarea>
+                                                                                                    </p>
+                                                                                                    <div
+                                                                                                        class="ml-4 ml-lg-0 ml-xxl-4 flex-shrink-0">
+                                                                                                        <input type="submit"
+                                                                                                            value="Sign & Approve"
+                                                                                                            class="btn btn-sm  text-uppercase btn-success">
+                                                                                                        <input type="submit"
+                                                                                                            value="Reject"
+                                                                                                            class="btn btn-sm  text-uppercase btn-danger ">
+                                                                                                        <img style="width: 10%;"
+                                                                                                            id="sign_img"
+                                                                                                            src="{{ url(Auth::user()->sign) }}">
                                                                                                     </div>
 
                                                                                                 </div>
-                                                                                            </form>
-                                                                                        </div>
+
+                                                                                            </div>
+                                                                                        </form>
                                                                                         {{-- </div> --}}
                                                                                     </div>
                                                                                     <div class="tab-pane fade"
@@ -484,6 +483,7 @@
                                                                             <div>
                                                                             </div>
                                                                         </div>
+                                                                        {{-- <hr> --}}
                                                                         <div class="card-body">
                                                                             <div class="form-group mb-1">
                                                                                 <label for="exampleTextarea">Reply
@@ -496,7 +496,7 @@
                                                                             <br>
                                                                             <div class="form-group mb-1">
                                                                                 <button type="button"
-                                                                                    class="btn btn-danger font-weight-bold"
+                                                                                    class="btn btn-gradient-success font-weight-bold"
                                                                                     data-dismiss="modal">Reply</button>
                                                                             </div>
                                                                         </div>
@@ -565,6 +565,30 @@
         <!--end::Card-->
     </div>
 @endsection
+<style type="text/css">
+    .notebook {
+        background: url(http://i.stack.imgur.com/ynxjD.png) repeat-y;
+        width: 600px;
+        height: 300px;
+        font: normal 14px verdana;
+        line-height: 25px;
+        padding: 2px 10px;
+        border-style: none;
+        border-color: Transparent;
+        overflow: auto;
+        border: none;
+        overflow: auto;
+        outline: none;
+
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+
+        resize: none;
+        /*remove the resize handle on the bottom right*/
+    }
+
+</style>
 <style>
     fixed-div {
         overflow: auto;
