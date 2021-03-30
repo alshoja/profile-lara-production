@@ -8,4 +8,6 @@
 </section>
 <div class="link-container">
     <a  href="{{ url('/home') }}" class="more-link">Home</a>
+    <a  href="{{ url()->previous() }}" class="more-link">Back</a>
+
 </div>

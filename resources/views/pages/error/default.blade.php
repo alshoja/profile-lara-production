@@ -159,7 +159,7 @@
     }
 
     body {
-        background-color:  #029563;
+        background-color:  #0b271e;
         margin-bottom: 50px;
     }
 
@@ -191,7 +191,7 @@
     a.more-link {
         text-transform: uppercase;
         font-size: 13px;
-        background-color: #07d865;
+        background-color: #3be286;
         padding: 10px 15px;
         border-radius: 0;
         color: #416475;
