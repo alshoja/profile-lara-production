@@ -97,7 +97,7 @@
                                         {{-- <a href="{{ url('/user/' . $user->id) }}"
                                             class="btn btn-sm btn-danger btn-gradient-danger font-weight-bolder text-uppercase">Delete</a> --}}
                                         @if (Auth::user()->delete)
-                                            <a class="btn btn-sm btn-danger btn-gradient-danger font-weight-bolder"
+                                            {{-- <a class="btn btn-sm btn-danger btn-gradient-danger font-weight-bolder"
                                                 href="javascript:void(0);" onclick="$(this).find('form').submit();">
                                                 Delete
                                                 <form style="display: none" action="{{ url('/user/' . $user->id) }}"
@@ -105,6 +105,11 @@
                                                     @method('delete')
                                                     @csrf()
                                                 </form>
+                                            </a> --}}
+                                            <a class="btn btn-sm btn-danger btn-gradient-danger font-weight-bolder"
+                                                href="javascript:void(0);"
+                                                onclick="alertAndGoToUrl('/user/delete/{{ $user->id }}','delete ?')">
+                                                Delete
                                             </a>
                                         @endif
 
@@ -184,8 +189,8 @@
                             <!--begin: Item-->
                             <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
                                 <!-- <span class="mr-5">
-                                                                                 <i class="flaticon-user icon-2x text-muted font-weight-bold"></i>
-                                                                                </span> -->
+                                                                                     <i class="flaticon-user icon-2x text-muted font-weight-bold"></i>
+                                                                                    </span> -->
                                 <div class="d-flex flex-column flex-lg-fill">
                                     <span class="text-dark-75 font-weight-bolder font-size-sm">User Suspended</span>
                                     <!-- <a href="#" class="text-primary font-weight-bolder">No</a> -->

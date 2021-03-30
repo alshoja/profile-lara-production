@@ -35,6 +35,7 @@ Route::get('profile/drafts', [App\Http\Controllers\ProfileController::class, 'in
 Route::get('profiles', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
 Route::get('forward/new/{id}', [App\Http\Controllers\ProfileController::class, 'forwardAsNew'])->name('notification');
 Route::get('profile/details/{id}', [App\Http\Controllers\ProfileController::class, 'getProfileById']);
+Route::get('profile/delete/{id}', [App\Http\Controllers\ProfileController::class, 'destroy']);
 
 // User Management 
 Route::get('user/list-users', [App\Http\Controllers\UserController::class, 'index'])->name('List users');
@@ -43,7 +44,7 @@ Route::get('user/profile-detail/{id}', [App\Http\Controllers\UserController::cla
 Route::post('/user', [App\Http\Controllers\UserController::class, 'store']);
 Route::post('/update/user/{id}', [App\Http\Controllers\UserController::class, 'update']);
 Route::post('account/change/password', [App\Http\Controllers\UserController::class, 'changePassword']);
-Route::delete('/user/{id}', [App\Http\Controllers\UserController::class, 'destroy']);
+Route::get('/user/delete/{id}', [App\Http\Controllers\UserController::class, 'destroy']);
 
 Route::get('departments', [App\Http\Controllers\DepartmentController::class, 'index']);
 Route::get('department/{id}', [App\Http\Controllers\DepartmentController::class, 'show']);

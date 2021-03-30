@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
     <!--end::Fonts-->
     <!--begin::Page Vendors Styles(used by this page)-->
+    <link href="{{ url('assets/css/pages/error/error-3.rtl.css?v=7.2.4"') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/custom/uppy/uppy.bundle.rtl.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/custom/fullcalendar/fullcalendar.bundle.rtl.css') }}" rel="stylesheet"
         type="text/css" />
@@ -36,6 +37,7 @@
 
     {{-- login css --}}
     <link href="{{ asset('assets/css/pages/login/classic/login-3.css') }}" rel="stylesheet" type="text/css" />
+
 
     <!--end::Layout Themes-->
     <link rel="icon" href="{{ asset('favicon.ico') }}" />

@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\App;
 use App\Models\DepartmentSupervisor;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\QueryException;
 use App\Models\DepartmentGeneralDirector;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -237,7 +238,14 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::destroy($id);
-        return back()->with('message', 'User Deleted');
+        try {
+            $user = User::destroy($id);
+            return back()->with('message', 'User Deleted');
+        } catch (\Illuminate\Database\QueryException $ex) {
+            if ($ex->getCode() === '23000') {
+                return view('pages.error.foreign-key');
+            }
+            return view('pages.error.foreign-key');
+        }
     }
 }

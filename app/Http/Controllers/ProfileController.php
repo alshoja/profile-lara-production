@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Builder;
 
 class ProfileController extends Controller
@@ -106,9 +107,12 @@ class ProfileController extends Controller
      * @param  \App\Models\Profiles  $profiles
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Profile $profiles)
+    public function destroy($id)
     {
-        //
+        if (Auth::user()->delete) {
+            $profiles = Profile::destroy($id);
+        }
+        return back()->with('message', 'Profile Deleted');
     }
 
     public function forwardAsNew($id)

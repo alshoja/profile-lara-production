@@ -173,7 +173,8 @@
                                                                 @endif
 
                                                                 @if (Auth::user()->delete)
-                                                                    <a href="#"
+                                                                    <a onclick="alertAndGoToUrl('/profile/delete/{{ $item->id }}','delete ? {{ $item->name }}')"
+                                                                        href="#"
                                                                         class="btn btn-icon btn-light btn-hover-primary btn-sm">
                                                                         <span class="svg-icon svg-icon-md svg-icon-primary">
                                                                             <!--begin::Svg Icon | path:assets/media/svg/icons/General/Trash.svg-->
@@ -207,8 +208,8 @@
                                                                                 class="text-primary text-uppercase font-weight-bold font-size-sm">Options</span>
                                                                         </li>
                                                                         <li class="navi-item">
-                                                                            <a href="{{ url('forward/new', $item->id) }}"
-                                                                                class="navi-link">
+                                                                            <a onclick="alertAndGoToUrl('/forward/new/{{ $item->id }}','Forward or Duplicate this Profile ?')"
+                                                                                href="#" class="navi-link">
                                                                                 <span class="navi-icon">
                                                                                     <i class="flaticon2-reply"></i>
                                                                                 </span>

@@ -68,10 +68,7 @@ var KTDateWidgets = (function () {
           to;
       }
       console.log(title);
-      if (title != "All") {
-        localStorage.setItem("range", range);
-        localStorage.setItem("title", title);
-      }
+      
       if (title != "All") {
         window.location = searchUrl;
       }
@@ -95,7 +92,7 @@ var KTDateWidgets = (function () {
         applyClass: "btn-primary",
         cancelClass: "btn-light-primary",
         ranges: {
-          Today: [moment(), moment()],
+          // Today: [moment(), moment()],
           Yesterday: [
             moment().subtract(1, "days"),
             moment().subtract(1, "days"),

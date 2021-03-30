@@ -22,3 +22,23 @@ function destroy(url, id) {
 function openAlert(type, tittle, message) {
   Swal.fire(tittle, message, type);
 }
+
+function alertAndGoToUrl(url, message) {
+  Swal.fire({
+    title: "Confirm",
+    text: "Are you sure you want to " + message,
+    icon: "success",
+    buttonsStyling: false,
+    confirmButtonText: " Confirm",
+    showCancelButton: true,
+    cancelButtonText: "Cancel ",
+    customClass: {
+      confirmButton: "btn btn-danger",
+      cancelButton: "btn btn-default",
+    },
+  }).then((result) => {
+    if (result.isConfirmed) {
+      window.location.href = HOST_URL + url;
+    }
+  });
+}
