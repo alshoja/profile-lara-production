@@ -35,6 +35,7 @@ Route::get('profile/drafts', [App\Http\Controllers\ProfileController::class, 'in
 Route::get('profiles', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
 Route::get('forward/new/{id}', [App\Http\Controllers\ProfileController::class, 'forwardAsNew'])->name('notification');
 Route::get('profile/details/{id}', [App\Http\Controllers\ProfileController::class, 'getProfileById']);
+Route::get('profile/sign/{id}', [App\Http\Controllers\ProfileController::class, 'rejectOrApprove']);
 Route::get('profile/delete/{id}', [App\Http\Controllers\ProfileController::class, 'destroy']);
 
 // User Management 
@@ -81,3 +82,4 @@ Route::delete('user/permission/super/{userId}/{depId}', [App\Http\Controllers\De
 
 // Time Line
 Route::get('timeline', [App\Http\Controllers\TimeLineController::class, 'store']);
+Route::post('timeline/reply/note', [App\Http\Controllers\TimeLineController::class, 'replyNote']);

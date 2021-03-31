@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Profile;
+use App\Models\TimeLine;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
@@ -153,5 +154,41 @@ class ProfileController extends Controller
     {
         $profile = Profile::with('timeline')->findOrFail($id);
         return response()->json($profile, 200);
+    }
+
+    public function replyNote(Request $request)
+    {
+        $timeLine = new TimeLine();
+        $timeLine->name = $request->name;
+        $timeLine->note = $request->note;
+        $timeLine->user_id = Auth()->user()->id;
+        $timeLine->profile_id = $request->profile_id;
+        $timeLine->is_approved = $request->is_approved;
+        $timeLine->is_note = $request->is_note;
+        return response()->json($timeLine, 200);
+    }
+
+    public function rejectOrApprove(Request $request)
+    {
+        $Profile = new Profile();
+
+        if ($Profile->role != "admin" && $Profile->role != "admin") {
+            if ($Profile->role == "general_director") {
+                $Profile->name = $request->value;
+            }
+            if ($Profile->role == "director") {
+                $Profile->name = $request->value;
+            }
+            if ($Profile->role == "department_head") {
+                $Profile->name = $request->value;
+            }
+            if ($Profile->role == "supervisor") {
+                $Profile->name = $request->value;
+            }
+        } else {
+            return response()->json(["error" => "you dont have permisison to do this action"], 403);
+        }
+        $Profile->save();
+        return response()->json($Profile, 200);
     }
 }
