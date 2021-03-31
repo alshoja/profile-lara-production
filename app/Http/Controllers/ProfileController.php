@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\SignOrRejectProfile;
 use App\Models\Profile;
 use App\Models\TimeLine;
 use Illuminate\Http\Request;
@@ -30,7 +31,7 @@ class ProfileController extends Controller
                     ->orWhere('gender', 'like', '%' . $search . '%');
             }
             if ($tab === "inbox") {
-                $query->orWhere('is_notify', 1);
+                $query->orWhere('is_completed', 0);
             }
             if ($tab === "drafts") {
                 $query->orWhere('is_drafted', 1);
@@ -156,37 +157,55 @@ class ProfileController extends Controller
         return response()->json($profile, 200);
     }
 
-    public function replyNote(Request $request)
-    {
-        $timeLine = new TimeLine();
-        $timeLine->name = $request->name;
-        $timeLine->note = $request->note;
-        $timeLine->user_id = Auth()->user()->id;
-        $timeLine->profile_id = $request->profile_id;
-        $timeLine->is_approved = $request->is_approved;
-        $timeLine->is_note = $request->is_note;
-        return response()->json($timeLine, 200);
-    }
 
-    public function rejectOrApprove(Request $request)
+    public function sigOrReject(Request $request)
     {
-        $Profile = Profile::findOrFail($request->id);
-        if (Auth::user()->role != "admin" && Auth::user()->role != "admin") {
-            if (Auth::user()->role == "general_director") {
-                $Profile->general_director_id = $request->value;
-                $Profile->is_completed = $request->is_completed;
-            }
-            if (Auth::user()->role == "director") {
-                $Profile->director_id = $request->value;
-            }
-            if (Auth::user()->role == "department_head") {
-                $Profile->depart_head_id = $request->value;
-            }
-            if (Auth::user()->role == "supervisor") {
-                $Profile->supervisor_id = $request->value;
+        if (Auth::user()->role != "admin" && Auth::user()->role != "employ") {
+            $Profile = Profile::findOrFail($request->profile_id);
+            if ($request->action == "sign") {
+                $this->signProfile($request, $Profile);
+            } else {
+                $this->rejectprofile($request, $Profile);
             }
         } else {
             return response()->json(["error" => "You dont have permisison to do this action !"], 403);
+        }
+    }
+
+    public function signProfile(Request $request, Profile $Profile)
+    {
+        if (Auth::user()->role == "general_director") {
+            $Profile->general_director_id = Auth::user()->id;
+            $Profile->is_completed = 1;
+            SignOrRejectProfile::dispatch($Profile);
+        }
+        if (Auth::user()->role == "director") {
+            $Profile->director_id = Auth::user()->id;
+        }
+        if (Auth::user()->role == "department_head") {
+            $Profile->depart_head_id = Auth::user()->id;
+        }
+        if (Auth::user()->role == "supervisor") {
+            $Profile->supervisor_id = Auth::user()->id;
+        }
+        $Profile->save();
+        return response()->json($Profile, 200);
+    }
+
+    public function rejectprofile(Request $request, $Profile)
+    {
+        if (Auth::user()->role == "general_director") {
+            $Profile->general_director_id = Auth::user()->id;
+            $Profile->is_completed = 1;
+        }
+        if (Auth::user()->role == "director") {
+            $Profile->director_id = Auth::user()->id;
+        }
+        if (Auth::user()->role == "department_head") {
+            $Profile->depart_head_id = Auth::user()->id;
+        }
+        if (Auth::user()->role == "supervisor") {
+            $Profile->supervisor_id = Auth::user()->id;
         }
         $Profile->save();
         return response()->json($Profile, 200);

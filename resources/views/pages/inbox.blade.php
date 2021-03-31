@@ -199,6 +199,7 @@
                                                                         </span>
                                                                     </a>
                                                                 @endif
+                                                                <input type="hidden" id="profile_id">
                                                                 <div
                                                                     class="dropdown-menu dropdown-menu-sm dropdown-menu-left">
                                                                     <!--begin::Navigation-->
@@ -254,6 +255,268 @@
                                                                 </div>
                                                             </td>
                                                         </tr>
+                                                        <!-- Modal-->
+                                                        <div class="modal fade" id="exampleModalSizeXl" tabindex="-1"
+                                                            role="dialog" aria-labelledby="staticBackdrop"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl"
+                                                                role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">
+                                                                        </h5>
+                                                                        <button type="button" class="close"
+                                                                            data-dismiss="modal" aria-label="Close">
+                                                                            <i aria-hidden="true" class="ki ki-close"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <div class="card-header">
+                                                                            <div class="card-toolbar">
+                                                                                <ul
+                                                                                    class="nav nav-light-danger nav-bold nav-pills">
+                                                                                    <li class="nav-item">
+                                                                                        <a id="profile_nav_item"
+                                                                                            class="nav-link active"
+                                                                                            data-toggle="tab"
+                                                                                            href="#kt_tab_pane_5_e">
+                                                                                            <span class="nav-icon"><i
+                                                                                                    class="flaticon-businesswoman"></i></span>
+                                                                                            <span
+                                                                                                class="nav-text">E-Profile</span>
+                                                                                        </a>
+                                                                                    </li>
+                                                                                    <li class="nav-item">
+                                                                                        <a class="nav-link"
+                                                                                            data-toggle="tab"
+                                                                                            href="#kt_tab_pane_5_de">
+                                                                                            <span class="nav-icon"><i
+                                                                                                    class="flaticon-information"></i></span>
+                                                                                            <span
+                                                                                                class="nav-text">Decision</span>
+                                                                                        </a>
+                                                                                    </li>
+                                                                                    <li class="nav-item">
+                                                                                        <a id="track_nav_item"
+                                                                                            class="nav-link"
+                                                                                            data-toggle="tab"
+                                                                                            href="#kt_tab_pane_5_track">
+                                                                                            <span class="nav-icon"><i
+                                                                                                    class="flaticon-placeholder-3"></i></span>
+                                                                                            <span
+                                                                                                class="nav-text">Track</span>
+                                                                                        </a>
+                                                                                    </li>
+                                                                                    <li class="nav-item dropdown">
+                                                                                        <a class="nav-link dropdown-toggle"
+                                                                                            data-toggle="dropdown" href="#"
+                                                                                            role="button"
+                                                                                            aria-haspopup="true"
+                                                                                            aria-expanded="false">
+                                                                                            <span class="nav-icon"><i
+                                                                                                    class="flaticon-profile"></i></span>
+                                                                                            <span
+                                                                                                class="nav-text">Docs</span>
+                                                                                        </a>
+                                                                                        <div class="dropdown-menu">
+                                                                                            <a class="dropdown-item"
+                                                                                                data-toggle="tab"
+                                                                                                href="#kt_tab_pane_5_doc1">Doc-1</a>
+                                                                                            <a class="dropdown-item"
+                                                                                                data-toggle="tab"
+                                                                                                href="#kt_tab_pane_5_doc2">Doc-2</a>
+                                                                                            <a class="dropdown-item"
+                                                                                                data-toggle="tab"
+                                                                                                href="#kt_tab_pane_5_doc3">Doc-3</a>
+                                                                                        </div>
+                                                                                    </li>
+                                                                                    <li class="nav-item">
+                                                                                        <a id="note_nav_item"
+                                                                                            class="nav-link"
+                                                                                            data-toggle="tab"
+                                                                                            href="#kt_tab_pane_5_note">
+                                                                                            <span class="nav-icon"><i
+                                                                                                    class="flaticon-speech-bubble-1"></i></span>
+                                                                                            <span
+                                                                                                class="nav-text">Notes</span>
+                                                                                        </a>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+                                                                            <div data-scroll="true" data-height="250">
+                                                                                <div class="card-body">
+                                                                                    <div class="tab-content">
+                                                                                        <div class="tab-pane fade show active"
+                                                                                            id="kt_tab_pane_5_e"
+                                                                                            role="tabpanel"
+                                                                                            aria-labelledby="kt_tab_pane_5_e">
+                                                                                            <p>Eprofile Ipsum is
+                                                                                                simply dummy text of the
+                                                                                                printing
+                                                                                                and typesetting industry.
+                                                                                                Lorem
+                                                                                                Ipsum passages, and more
+                                                                                                recently
+                                                                                                with desktop publishing
+                                                                                                software
+                                                                                                like Aldus PageMaker
+                                                                                                including
+                                                                                                versions of Lorem Ipsum.
+                                                                                                Lorem
+                                                                                                Ipsum
+                                                                                                passages, and more recently
+                                                                                                with
+                                                                                                desktop publishing software
+                                                                                                like
+                                                                                                Aldus PageMaker including
+                                                                                                versions
+                                                                                                of Lorem Ipsum. Lorem Ipsum
+                                                                                                is
+                                                                                                simply dummy text of the
+                                                                                                printing
+                                                                                                and typesetting industry.
+                                                                                                with
+                                                                                                desktop publishing software
+                                                                                                like
+                                                                                                Aldus PageMaker including
+                                                                                                versions
+                                                                                                of Lorem Ipsum. Lorem Ipsum
+                                                                                                passages, and more recently
+                                                                                                with
+                                                                                                desktop publishing software
+                                                                                                like
+                                                                                                Aldus PageMaker including
+                                                                                                versions
+                                                                                                of Lorem Ipsum</p>
+                                                                                        </div>
+                                                                                        <div class="tab-pane fade"
+                                                                                            id="kt_tab_pane_5_de"
+                                                                                            role="tabpanel"
+                                                                                            aria-labelledby="kt_tab_pane_5_de">
+
+                                                                                            {{-- <div class="card card-custom mb-2"> --}}
+                                                                                            <form action="">
+                                                                                                <div
+                                                                                                    class="d-flex align-items-center justify-content-between p-4 flex-lg-wrap flex-xl-nowrap">
+                                                                                                    <div
+                                                                                                        class="d-flex flex-column mr-5">
+                                                                                                        <span href="#"
+                                                                                                            class="h4 text-dark text-hover-primary mb-5">Approve
+                                                                                                            Or Reject
+                                                                                                            with a
+                                                                                                            Note</span>
+
+                                                                                                        <p>
+                                                                                                            <textarea
+                                                                                                                required
+                                                                                                                name="approve_note"
+                                                                                                                class="form-control notebook"
+                                                                                                                id="approve_note"
+                                                                                                                rows="2"></textarea>
+                                                                                                        </p>
+                                                                                                        <div
+                                                                                                            class="ml-4 ml-lg-0 ml-xxl-4 flex-shrink-0">
+                                                                                                            <button onclick="AproveOrReject('signed')"
+                                                                                                                id="approve"
+                                                                                                                type="button"
+                                                                                                                value="Sign & Approve"
+                                                                                                                class="btn btn-sm  text-uppercase btn-success">
+                                                                                                                Sign
+                                                                                                            </button>
+                                                                                                            <button onclick="AproveOrReject('rejected')"
+                                                                                                                id="reject"
+                                                                                                                type="button"
+                                                                                                                class="btn btn-sm  text-uppercase btn-danger ">Reject
+                                                                                                            </button>
+                                                                                                            <img style="width: 10%;"
+                                                                                                                id="sign_img"
+                                                                                                                src="{{ url(Auth::user()->sign) }}">
+                                                                                                        </div>
+
+                                                                                                    </div>
+
+                                                                                                </div>
+                                                                                            </form>
+                                                                                            {{-- </div> --}}
+                                                                                        </div>
+                                                                                        <div class="tab-pane fade"
+                                                                                            id="kt_tab_pane_5_track"
+                                                                                            role="tabpanel"
+                                                                                            aria-labelledby="kt_tab_pane_5_track">
+
+                                                                                            <div style="margin-right: 80px;"
+                                                                                                class="timeline timeline-5">
+                                                                                                <div id="track_timeline"
+                                                                                                    class="timeline-items fixed-div">
+                                                                                                    <!--begin::Item-->
+
+                                                                                                    <!--end::Item-->
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="tab-pane fade"
+                                                                                            id="kt_tab_pane_5_doc1"
+                                                                                            role="tabpanel"
+                                                                                            aria-labelledby="kt_tab_pane_5_doc1">
+                                                                                            <img id="doc_1" alt="Pic"
+                                                                                                src="assets/media/demos/demo1.png" />
+                                                                                        </div>
+                                                                                        <div class="tab-pane fade"
+                                                                                            id="kt_tab_pane_5_doc2"
+                                                                                            role="tabpanel"
+                                                                                            aria-labelledby="kt_tab_pane_5_doc2">
+                                                                                            <img id="doc_2" alt="Pic"
+                                                                                                src="assets/media/demos/demo2.png" />
+                                                                                        </div>
+                                                                                        <div class="tab-pane fade"
+                                                                                            id="kt_tab_pane_5_doc3"
+                                                                                            role="tabpanel"
+                                                                                            aria-labelledby="kt_tab_pane_5_doc3">
+                                                                                            <img id="doc_3" alt="Pic"
+                                                                                                src="assets/media/demos/demo3.png" />
+                                                                                        </div>
+                                                                                        <div class="tab-pane fade"
+                                                                                            id="kt_tab_pane_5_note"
+                                                                                            role="tabpanel"
+                                                                                            aria-labelledby="kt_tab_pane_5_note">
+                                                                                            <div
+                                                                                                class="timeline timeline-4">
+                                                                                                <div class="timeline-bar">
+                                                                                                </div>
+                                                                                                <div id="note_chat_timeline"
+                                                                                                    class="timeline-items">
+
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div>
+                                                                                </div>
+                                                                            </div>
+                                                                            {{-- <hr> --}}
+                                                                            <div class="card-body">
+                                                                                <div class="form-group mb-1">
+                                                                                    <label for="exampleTextarea">Reply
+                                                                                        Note <span
+                                                                                            class="text-danger">*</span></label>
+                                                                                    <textarea class="form-control"
+                                                                                        id="replynote" rows="2"></textarea>
+                                                                                </div>
+                                                                                <br>
+                                                                                <div class="form-group mb-1">
+                                                                                    <button onclick="replyNote()"
+                                                                                        type="button"
+                                                                                        class="btn btn-gradient-success font-weight-bold">Reply</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <!--end::Modal-->
                                                     @endforeach
                                                     @if (count($profiles) < 1)
                                                         <tr>
@@ -268,242 +531,6 @@
                                                             </td>
                                                         <tr>
                                                     @endif
-
-
-                                                    <!-- Button trigger modal-->
-
-
-                                                    <!-- Modal-->
-                                                    <div class="modal fade" id="exampleModalSizeXl" tabindex="-1"
-                                                        role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
-                                                        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl"
-                                                            role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">
-                                                                    </h5>
-                                                                    <button type="button" class="close" data-dismiss="modal"
-                                                                        aria-label="Close">
-                                                                        <i aria-hidden="true" class="ki ki-close"></i>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <div class="card-header">
-                                                                        <div class="card-toolbar">
-                                                                            <ul
-                                                                                class="nav nav-light-danger nav-bold nav-pills">
-                                                                                <li class="nav-item">
-                                                                                    <a id="profile_nav_item"
-                                                                                        class="nav-link active"
-                                                                                        data-toggle="tab"
-                                                                                        href="#kt_tab_pane_5_e">
-                                                                                        <span class="nav-icon"><i
-                                                                                                class="flaticon-businesswoman"></i></span>
-                                                                                        <span
-                                                                                            class="nav-text">E-Profile</span>
-                                                                                    </a>
-                                                                                </li>
-                                                                                <li class="nav-item">
-                                                                                    <a class="nav-link" data-toggle="tab"
-                                                                                        href="#kt_tab_pane_5_de">
-                                                                                        <span class="nav-icon"><i
-                                                                                                class="flaticon-information"></i></span>
-                                                                                        <span
-                                                                                            class="nav-text">Decision</span>
-                                                                                    </a>
-                                                                                </li>
-                                                                                <li class="nav-item">
-                                                                                    <a id="track_nav_item" class="nav-link"
-                                                                                        data-toggle="tab"
-                                                                                        href="#kt_tab_pane_5_track">
-                                                                                        <span class="nav-icon"><i
-                                                                                                class="flaticon-placeholder-3"></i></span>
-                                                                                        <span class="nav-text">Track</span>
-                                                                                    </a>
-                                                                                </li>
-                                                                                <li class="nav-item dropdown">
-                                                                                    <a class="nav-link dropdown-toggle"
-                                                                                        data-toggle="dropdown" href="#"
-                                                                                        role="button" aria-haspopup="true"
-                                                                                        aria-expanded="false">
-                                                                                        <span class="nav-icon"><i
-                                                                                                class="flaticon-profile"></i></span>
-                                                                                        <span class="nav-text">Docs</span>
-                                                                                    </a>
-                                                                                    <div class="dropdown-menu">
-                                                                                        <a class="dropdown-item"
-                                                                                            data-toggle="tab"
-                                                                                            href="#kt_tab_pane_5_doc1">Doc-1</a>
-                                                                                        <a class="dropdown-item"
-                                                                                            data-toggle="tab"
-                                                                                            href="#kt_tab_pane_5_doc2">Doc-2</a>
-                                                                                        <a class="dropdown-item"
-                                                                                            data-toggle="tab"
-                                                                                            href="#kt_tab_pane_5_doc3">Doc-3</a>
-                                                                                    </div>
-                                                                                </li>
-                                                                                <li class="nav-item">
-                                                                                    <a id="note_nav_item" class="nav-link"
-                                                                                        data-toggle="tab"
-                                                                                        href="#kt_tab_pane_5_note">
-                                                                                        <span class="nav-icon"><i
-                                                                                                class="flaticon-speech-bubble-1"></i></span>
-                                                                                        <span class="nav-text">Notes</span>
-                                                                                    </a>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                        <div data-scroll="true" data-height="250">
-                                                                            <div class="card-body">
-                                                                                <div class="tab-content">
-                                                                                    <div class="tab-pane fade show active"
-                                                                                        id="kt_tab_pane_5_e" role="tabpanel"
-                                                                                        aria-labelledby="kt_tab_pane_5_e">
-                                                                                        <p>Eprofile Ipsum is
-                                                                                            simply dummy text of the
-                                                                                            printing
-                                                                                            and typesetting industry. Lorem
-                                                                                            Ipsum passages, and more
-                                                                                            recently
-                                                                                            with desktop publishing software
-                                                                                            like Aldus PageMaker including
-                                                                                            versions of Lorem Ipsum. Lorem
-                                                                                            Ipsum
-                                                                                            passages, and more recently with
-                                                                                            desktop publishing software like
-                                                                                            Aldus PageMaker including
-                                                                                            versions
-                                                                                            of Lorem Ipsum. Lorem Ipsum is
-                                                                                            simply dummy text of the
-                                                                                            printing
-                                                                                            and typesetting industry. with
-                                                                                            desktop publishing software like
-                                                                                            Aldus PageMaker including
-                                                                                            versions
-                                                                                            of Lorem Ipsum. Lorem Ipsum
-                                                                                            passages, and more recently with
-                                                                                            desktop publishing software like
-                                                                                            Aldus PageMaker including
-                                                                                            versions
-                                                                                            of Lorem Ipsum</p>
-                                                                                    </div>
-                                                                                    <div class="tab-pane fade"
-                                                                                        id="kt_tab_pane_5_de"
-                                                                                        role="tabpanel"
-                                                                                        aria-labelledby="kt_tab_pane_5_de">
-
-                                                                                        {{-- <div class="card card-custom mb-2"> --}}
-                                                                                        <form action="">
-                                                                                            <div
-                                                                                                class="d-flex align-items-center justify-content-between p-4 flex-lg-wrap flex-xl-nowrap">
-                                                                                                <div
-                                                                                                    class="d-flex flex-column mr-5">
-                                                                                                    <span href="#"
-                                                                                                        class="h4 text-dark text-hover-primary mb-5">Approve
-                                                                                                        Or Reject
-                                                                                                        with a
-                                                                                                        Note</span>
-
-                                                                                                    <p>
-                                                                                                        <textarea required
-                                                                                                            name="approve_note"
-                                                                                                            class="form-control notebook"
-                                                                                                            id="exampleTextarea"
-                                                                                                            rows="2"></textarea>
-                                                                                                    </p>
-                                                                                                    <div
-                                                                                                        class="ml-4 ml-lg-0 ml-xxl-4 flex-shrink-0">
-                                                                                                        <input type="submit"
-                                                                                                            value="Sign & Approve"
-                                                                                                            class="btn btn-sm  text-uppercase btn-success">
-                                                                                                        <input type="submit"
-                                                                                                            value="Reject"
-                                                                                                            class="btn btn-sm  text-uppercase btn-danger ">
-                                                                                                        <img style="width: 10%;"
-                                                                                                            id="sign_img"
-                                                                                                            src="{{ url(Auth::user()->sign) }}">
-                                                                                                    </div>
-
-                                                                                                </div>
-
-                                                                                            </div>
-                                                                                        </form>
-                                                                                        {{-- </div> --}}
-                                                                                    </div>
-                                                                                    <div class="tab-pane fade"
-                                                                                        id="kt_tab_pane_5_track"
-                                                                                        role="tabpanel"
-                                                                                        aria-labelledby="kt_tab_pane_5_track">
-
-                                                                                        <div style="margin-right: 80px;"
-                                                                                            class="timeline timeline-5">
-                                                                                            <div id="track_timeline"
-                                                                                                class="timeline-items fixed-div">
-                                                                                                <!--begin::Item-->
-
-                                                                                                <!--end::Item-->
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="tab-pane fade"
-                                                                                        id="kt_tab_pane_5_doc1"
-                                                                                        role="tabpanel"
-                                                                                        aria-labelledby="kt_tab_pane_5_doc1">
-                                                                                        <img id="doc_1" alt="Pic"
-                                                                                            src="assets/media/demos/demo1.png" />
-                                                                                    </div>
-                                                                                    <div class="tab-pane fade"
-                                                                                        id="kt_tab_pane_5_doc2"
-                                                                                        role="tabpanel"
-                                                                                        aria-labelledby="kt_tab_pane_5_doc2">
-                                                                                        <img id="doc_2" alt="Pic"
-                                                                                            src="assets/media/demos/demo2.png" />
-                                                                                    </div>
-                                                                                    <div class="tab-pane fade"
-                                                                                        id="kt_tab_pane_5_doc3"
-                                                                                        role="tabpanel"
-                                                                                        aria-labelledby="kt_tab_pane_5_doc3">
-                                                                                        <img id="doc_3" alt="Pic"
-                                                                                            src="assets/media/demos/demo3.png" />
-                                                                                    </div>
-                                                                                    <div class="tab-pane fade"
-                                                                                        id="kt_tab_pane_5_note"
-                                                                                        role="tabpanel"
-                                                                                        aria-labelledby="kt_tab_pane_5_note">
-                                                                                        <div class="timeline timeline-4">
-                                                                                            <div class="timeline-bar"></div>
-                                                                                            <div id="note_chat_timeline"
-                                                                                                class="timeline-items">
-
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div>
-                                                                            </div>
-                                                                        </div>
-                                                                        {{-- <hr> --}}
-                                                                        <div class="card-body">
-                                                                            <div class="form-group mb-1">
-                                                                                <label for="exampleTextarea">Reply
-                                                                                    Note <span
-                                                                                        class="text-danger">*</span></label>
-                                                                                <textarea class="form-control"
-                                                                                    id="exampleTextarea"
-                                                                                    rows="2"></textarea>
-                                                                            </div>
-                                                                            <br>
-                                                                            <div class="form-group mb-1">
-                                                                                <button type="button"
-                                                                                    class="btn btn-gradient-success font-weight-bold"
-                                                                                    data-dismiss="modal">Reply</button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <!--end::Modal-->
 
                                                 </tbody>
                                             </table>
@@ -575,17 +602,6 @@
         padding: 2px 10px;
         border-style: none;
         border-color: Transparent;
-        overflow: auto;
-        border: none;
-        overflow: auto;
-        outline: none;
-
-        -webkit-box-shadow: none;
-        -moz-box-shadow: none;
-        box-shadow: none;
-
-        resize: none;
-        /*remove the resize handle on the bottom right*/
     }
 
 </style>

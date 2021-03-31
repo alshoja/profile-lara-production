@@ -101,10 +101,11 @@
 
 </script> --}}
 <script>
-    setInterval(function() {
-        getNotifications()
-        console.info('Checking for new notification.....')
-    }, 2000);
+    // setInterval(function() {
+    //     getNotifications()
+    //     console.info('Checking for new notification.....')
+    // }, 20000);
+    localStorage.setItem('session_id', {{ Auth::user()->id }});
 
 </script>
 @stack('scripts')

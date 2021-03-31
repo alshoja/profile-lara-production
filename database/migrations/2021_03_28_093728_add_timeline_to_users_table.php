@@ -14,12 +14,13 @@ class AddTimelineToUsersTable extends Migration
     public function up()
     {
         Schema::table('profiles', function (Blueprint $table) {
-            $table->foreignId('general_director_id')->nullable();
-            $table->foreignId('director_id')->nullable();
-            $table->foreignId('depart_head_id')->nullable();
-            $table->foreignId('supervisor_id')->nullable();
+            // $table->foreignId('general_director_id')->nullable();
+            // $table->foreignId('director_id')->nullable();
+            // $table->foreignId('depart_head_id')->nullable();
+            // $table->foreignId('supervisor_id')->nullable();
             $table->tinyInteger('is_completed')->nullable();
-            $table->tinyInteger('is_notify')->nullable();
+            // $table->tinyInteger('is_notify')->nullable();
+            // $table->tinyInteger('is_drafted')->nullable();\
             $table->tinyInteger('is_drafted')->nullable();
         });
     }
@@ -32,12 +33,13 @@ class AddTimelineToUsersTable extends Migration
     public function down()
     {
         Schema::table('profiles', function (Blueprint $table) {
-            $table->foreignId('general_director_id')->nullable();
-            $table->foreignId('director_id')->nullable();
-            $table->foreignId('depart_head_id')->nullable();
-            $table->foreignId('supervisor_id')->nullable();
+            // $table->foreignId('general_director_id')->nullable();
+            // $table->foreignId('director_id')->nullable();
+            // $table->foreignId('depart_head_id')->nullable();
+            // $table->foreignId('supervisor_id')->nullable();
             $table->tinyInteger('is_completed')->nullable();
-            $table->tinyInteger('is_notify')->nullable();
+            // $table->tinyInteger('is_notify')->nullable();
+            // $table->tinyInteger('is_drafted')->nullable();
             $table->tinyInteger('is_drafted')->nullable();
         });
     }
