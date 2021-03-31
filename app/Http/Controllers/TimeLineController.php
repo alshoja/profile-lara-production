@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DirectorDepartmentRelation;
+use App\Models\TimeLine;
 use Illuminate\Http\Request;
 
-class DirectorDepartmentHeadRelationController extends Controller
+class TimeLineController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,16 +35,32 @@ class DirectorDepartmentHeadRelationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8'],
+            'role' => ['required', 'string'],
+            'image' => 'required|mimes:jpg,png|max:2048',
+            'sign' => 'required|mimes:jpg,png|max:2048',
+        ]);
+
+        $timeline = new TimeLine();
+        $timeline->name = $request->name;
+        $timeline->note = $request->note;
+        $timeline->user_id = $request->user_id;
+        $timeline->profile_id = $request->profile_id;
+        $timeline->is_approved = $request->is_approved;
+        $timeline->save();
+        return response()->json($timeline, 200);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\DirectorDepartmentRelation  $directorDepartmentRelation
+     * @param  \App\Models\TimeLine  $timeLine
      * @return \Illuminate\Http\Response
      */
-    public function show(DirectorDepartmentRelation $directorDepartmentRelation)
+    public function show(TimeLine $timeLine)
     {
         //
     }
@@ -52,10 +68,10 @@ class DirectorDepartmentHeadRelationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\DirectorDepartmentRelation  $directorDepartmentRelation
+     * @param  \App\Models\TimeLine  $timeLine
      * @return \Illuminate\Http\Response
      */
-    public function edit(DirectorDepartmentRelation $directorDepartmentRelation)
+    public function edit(TimeLine $timeLine)
     {
         //
     }
@@ -64,10 +80,10 @@ class DirectorDepartmentHeadRelationController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\DirectorDepartmentRelation  $directorDepartmentRelation
+     * @param  \App\Models\TimeLine  $timeLine
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, DirectorDepartmentRelation $directorDepartmentRelation)
+    public function update(Request $request, TimeLine $timeLine)
     {
         //
     }
@@ -75,10 +91,10 @@ class DirectorDepartmentHeadRelationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\DirectorDepartmentRelation  $directorDepartmentRelation
+     * @param  \App\Models\TimeLine  $timeLine
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DirectorDepartmentRelation $directorDepartmentRelation)
+    public function destroy(TimeLine $timeLine)
     {
         //
     }

@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\DepartmentHead;
 use Illuminate\Database\Seeder;
-use App\Models\DirectorDepartmentHeadRelation;
 
-class DirectorDepartmentHeadRelationSeeder extends Seeder
+class DepartmentHeadSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +14,7 @@ class DirectorDepartmentHeadRelationSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\DirectorDepartmentHeadRelation::factory()
+        \App\Models\DepartmentHead::factory()
             ->count(10)
             ->create();
     }

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Profile;
 use Illuminate\Database\Seeder;
 use Database\Seeders\SectionSeeder;
 
@@ -18,9 +19,11 @@ class DatabaseSeeder extends Seeder
             DepartmentSeeder::class,
             SectionSeeder::class,
             EmploySeeder::class,
-            DepartmentHeadsSeeder::class,
-            DirectorGdRelationSeeder::class,
-            // DirectorDepartmentHeadRelationSeeder::class
+            // DepartmentHeadsSeeder::class,
+            // DirectorGdRelationSeeder::class,
+            // DepartmentHeadSeeder::class,
+            ProfileSeeder::class,
+            TimelineSeeder::class
         ]);
     }
 }

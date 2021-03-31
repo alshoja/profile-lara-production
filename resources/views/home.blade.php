@@ -33,7 +33,8 @@
                                     </span>
                                 </span>
                                 <div class="d-flex flex-column text-right">
-                                    <span class="text-dark-75 font-weight-bolder font-size-h3">75</span>
+                                    <span
+                                        class="text-dark-75 font-weight-bolder font-size-h3">{{ $dashData->profileEntered }}</span>
                                     <span class="text-muted font-weight-bold mt-2">My Profiles</span>
                                 </div>
                             </div>
@@ -44,41 +45,45 @@
                     </div>
                     <!--end::Stats Widget 11-->
                     <!--begin::Stats Widget 12-->
-                    <div class="card card-custom card-stretch card-stretch-half gutter-b">
-                        <!--begin::Body-->
-                        <div class="card-body p-0">
-                            <div class="d-flex align-items-center justify-content-between card-spacer flex-grow-1">
-                                <span class="symbol symbol-50 symbol-light-primary mr-2">
-                                    <span class="symbol-label">
-                                        <span class="svg-icon svg-icon-xl svg-icon-primary">
-                                            <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Group.svg-->
-                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-                                                viewBox="0 0 24 24" version="1.1">
-                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                    <polygon points="0 0 24 0 24 24 0 24" />
-                                                    <path
-                                                        d="M18,14 C16.3431458,14 15,12.6568542 15,11 C15,9.34314575 16.3431458,8 18,8 C19.6568542,8 21,9.34314575 21,11 C21,12.6568542 19.6568542,14 18,14 Z M9,11 C6.790861,11 5,9.209139 5,7 C5,4.790861 6.790861,3 9,3 C11.209139,3 13,4.790861 13,7 C13,9.209139 11.209139,11 9,11 Z"
-                                                        fill="#000000" fill-rule="nonzero" opacity="0.3" />
-                                                    <path
-                                                        d="M17.6011961,15.0006174 C21.0077043,15.0378534 23.7891749,16.7601418 23.9984937,20.4 C24.0069246,20.5466056 23.9984937,21 23.4559499,21 L19.6,21 C19.6,18.7490654 18.8562935,16.6718327 17.6011961,15.0006174 Z M0.00065168429,20.1992055 C0.388258525,15.4265159 4.26191235,13 8.98334134,13 C13.7712164,13 17.7048837,15.2931929 17.9979143,20.2 C18.0095879,20.3954741 17.9979143,21 17.2466999,21 C13.541124,21 8.03472472,21 0.727502227,21 C0.476712155,21 -0.0204617505,20.45918 0.00065168429,20.1992055 Z"
-                                                        fill="#000000" fill-rule="nonzero" />
-                                                </g>
-                                            </svg>
-                                            <!--end::Svg Icon-->
+                    @if (Auth::user()->role != 'employ')
+                        <div class="card card-custom card-stretch card-stretch-half gutter-b">
+                            <!--begin::Body-->
+                            <div class="card-body p-0">
+                                <div class="d-flex align-items-center justify-content-between card-spacer flex-grow-1">
+                                    <span class="symbol symbol-50 symbol-light-primary mr-2">
+                                        <span class="symbol-label">
+                                            <span class="svg-icon svg-icon-xl svg-icon-primary">
+                                                <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Group.svg-->
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
+                                                    viewBox="0 0 24 24" version="1.1">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <polygon points="0 0 24 0 24 24 0 24" />
+                                                        <path
+                                                            d="M18,14 C16.3431458,14 15,12.6568542 15,11 C15,9.34314575 16.3431458,8 18,8 C19.6568542,8 21,9.34314575 21,11 C21,12.6568542 19.6568542,14 18,14 Z M9,11 C6.790861,11 5,9.209139 5,7 C5,4.790861 6.790861,3 9,3 C11.209139,3 13,4.790861 13,7 C13,9.209139 11.209139,11 9,11 Z"
+                                                            fill="#000000" fill-rule="nonzero" opacity="0.3" />
+                                                        <path
+                                                            d="M17.6011961,15.0006174 C21.0077043,15.0378534 23.7891749,16.7601418 23.9984937,20.4 C24.0069246,20.5466056 23.9984937,21 23.4559499,21 L19.6,21 C19.6,18.7490654 18.8562935,16.6718327 17.6011961,15.0006174 Z M0.00065168429,20.1992055 C0.388258525,15.4265159 4.26191235,13 8.98334134,13 C13.7712164,13 17.7048837,15.2931929 17.9979143,20.2 C18.0095879,20.3954741 17.9979143,21 17.2466999,21 C13.541124,21 8.03472472,21 0.727502227,21 C0.476712155,21 -0.0204617505,20.45918 0.00065168429,20.1992055 Z"
+                                                            fill="#000000" fill-rule="nonzero" />
+                                                    </g>
+                                                </svg>
+                                                <!--end::Svg Icon-->
+                                            </span>
                                         </span>
                                     </span>
-                                </span>
-                                <div class="d-flex flex-column text-right">
-                                    <span class="text-dark-75 font-weight-bolder font-size-h3">+6,5K</span>
-                                    <span class="text-muted font-weight-bold mt-2">My Users</span>
+                                    <div class="d-flex flex-column text-right">
+                                        <span
+                                            class="text-dark-75 font-weight-bolder font-size-h3">{{ $dashData->usersCount }}</span>
+                                        <span class="text-muted font-weight-bold mt-2">My Users</span>
+                                    </div>
                                 </div>
+                                <div id="kt_stats_widget_12_chart" class="card-rounded-bottom" data-color="primary"
+                                    style="height: 150px"></div>
                             </div>
-                            <div id="kt_stats_widget_12_chart" class="card-rounded-bottom" data-color="primary"
-                                style="height: 150px"></div>
+                            <!--end::Body-->
                         </div>
-                        <!--end::Body-->
-                    </div>
+                    @endif
+
                     <!--end::Stats Widget 12-->
                 </div>
 
@@ -88,74 +93,9 @@
                         <!--begin::Header-->
                         <div class="card-header align-items-center border-0 mt-4">
                             <h3 class="card-title align-items-start flex-column">
-                                <span class="font-weight-bolder text-dark">My Activity</span>
-                                <span class="text-muted mt-3 font-weight-bold font-size-sm">Last Profile</span>
+                                <span class="font-weight-bolder text-dark">Activity</span>
+                                <span class="text-muted mt-3 font-weight-bold font-size-sm">Last Profile Activity</span>
                             </h3>
-                            <div class="card-toolbar">
-                                <div class="dropdown dropdown-inline">
-                                    <a href="#" class="btn btn-clean btn-hover-light-primary btn-sm btn-icon"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="ki ki-bold-more-hor"></i>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-md dropdown-menu-right">
-                                        <!--begin::Navigation-->
-                                        <ul class="navi navi-hover">
-                                            <li class="navi-header font-weight-bold py-4">
-                                                <span class="font-size-lg">Choose Label:</span>
-                                                <i class="flaticon2-information icon-md text-muted" data-toggle="tooltip"
-                                                    data-placement="right" title="Click to learn more..."></i>
-                                            </li>
-                                            <li class="navi-separator mb-3 opacity-70"></li>
-                                            <li class="navi-item">
-                                                <a href="#" class="navi-link">
-                                                    <span class="navi-text">
-                                                        <span
-                                                            class="label label-xl label-inline label-light-success">Customer</span>
-                                                    </span>
-                                                </a>
-                                            </li>
-                                            <li class="navi-item">
-                                                <a href="#" class="navi-link">
-                                                    <span class="navi-text">
-                                                        <span
-                                                            class="label label-xl label-inline label-light-danger">Partner</span>
-                                                    </span>
-                                                </a>
-                                            </li>
-                                            <li class="navi-item">
-                                                <a href="#" class="navi-link">
-                                                    <span class="navi-text">
-                                                        <span
-                                                            class="label label-xl label-inline label-light-warning">Suplier</span>
-                                                    </span>
-                                                </a>
-                                            </li>
-                                            <li class="navi-item">
-                                                <a href="#" class="navi-link">
-                                                    <span class="navi-text">
-                                                        <span
-                                                            class="label label-xl label-inline label-light-primary">Member</span>
-                                                    </span>
-                                                </a>
-                                            </li>
-                                            <li class="navi-item">
-                                                <a href="#" class="navi-link">
-                                                    <span class="navi-text">
-                                                        <span
-                                                            class="label label-xl label-inline label-light-dark">Staff</span>
-                                                    </span>
-                                                </a>
-                                            </li>
-                                            <li class="navi-separator mt-3 opacity-70"></li>
-                                            <li class="navi-footer py-4">
-                                                <a class="btn btn-clean font-weight-bold btn-sm" href="#">
-                                                    <i class="ki ki-plus icon-sm"></i>Add new</a>
-                                            </li>
-                                        </ul>
-                                        <!--end::Navigation-->
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                         <!--end::Header-->
                         <!--begin::Body-->
@@ -163,140 +103,32 @@
                             <!--begin::Timeline-->
                             <div class="timeline timeline-6 mt-3">
                                 <!--begin::Item-->
-                                <div class="timeline-item align-items-start">
-                                    <!--begin::Label-->
-                                    <div class="timeline-label font-weight-bolder text-dark-75 font-size-lg">08:42</div>
-                                    <!--end::Label-->
-                                    <!--begin::Badge-->
-                                    <div class="timeline-badge">
-                                        <i class="fa fa-genderless text-warning icon-xl"></i>
+                                @foreach ($dashData->activity as $item)
+                                    <div class="timeline-item align-items-start">
+                                        <!--begin::Label-->
+                                        <div class="timeline-label font-weight-bolder text-dark-75 font-size-lg">
+                                            {{ date('h:i', strtotime($item->created_at)) }}</div>
+                                        <!--end::Label-->
+                                        <!--begin::Badge-->
+                                        <div class="timeline-badge">
+                                            <i class="fa fa-genderless @if ($item->is_note ==
+                                                'null') text-warning @endif
+                                                @if ($item->is_approved != 'null')
+                                                    text-success
+                                                @else
+                                                    text-danger
+                                                    @endif icon-xl">
+                                            </i>
+                                        </div>
+                                        <!--end::Badge-->
+                                        <!--begin::Text-->
+                                        <div class="font-weight-normal font-size-lg timeline-content  @if ($item->is_note == 'null') text-dark-75
+                                        font-weight-bolder @else text-muted @endif
+                                            pl-3">
+                                            {{ $item->note }}</div>
+                                        <!--end::Text-->
                                     </div>
-                                    <!--end::Badge-->
-                                    <!--begin::Text-->
-                                    <div class="font-weight-mormal font-size-lg timeline-content text-muted pl-3">Outlines
-                                        keep you honest. And keep structure</div>
-                                    <!--end::Text-->
-                                </div>
-                                <!--end::Item-->
-                                <!--begin::Item-->
-                                <div class="timeline-item align-items-start">
-                                    <!--begin::Label-->
-                                    <div class="timeline-label font-weight-bolder text-dark-75 font-size-lg">10:00</div>
-                                    <!--end::Label-->
-                                    <!--begin::Badge-->
-                                    <div class="timeline-badge">
-                                        <i class="fa fa-genderless text-success icon-xl"></i>
-                                    </div>
-                                    <!--end::Badge-->
-                                    <!--begin::Content-->
-                                    <div class="timeline-content d-flex">
-                                        <span class="font-weight-bolder text-dark-75 pl-3 font-size-lg">AEOL meeting</span>
-                                    </div>
-                                    <!--end::Content-->
-                                </div>
-                                <!--end::Item-->
-                                <!--begin::Item-->
-                                <div class="timeline-item align-items-start">
-                                    <!--begin::Label-->
-                                    <div class="timeline-label font-weight-bolder text-dark-75 font-size-lg">14:37</div>
-                                    <!--end::Label-->
-                                    <!--begin::Badge-->
-                                    <div class="timeline-badge">
-                                        <i class="fa fa-genderless text-danger icon-xl"></i>
-                                    </div>
-                                    <!--end::Badge-->
-                                    <!--begin::Desc-->
-                                    <div class="timeline-content font-weight-bolder font-size-lg text-dark-75 pl-3">Make
-                                        deposit
-                                        <a href="#" class="text-primary">USD 700</a>. to ESL
-                                    </div>
-                                    <!--end::Desc-->
-                                </div>
-                                <!--end::Item-->
-                                <!--begin::Item-->
-                                <div class="timeline-item align-items-start">
-                                    <!--begin::Label-->
-                                    <div class="timeline-label font-weight-bolder text-dark-75 font-size-lg">16:50</div>
-                                    <!--end::Label-->
-                                    <!--begin::Badge-->
-                                    <div class="timeline-badge">
-                                        <i class="fa fa-genderless text-primary icon-xl"></i>
-                                    </div>
-                                    <!--end::Badge-->
-                                    <!--begin::Text-->
-                                    <div class="timeline-content font-weight-mormal font-size-lg text-muted pl-3">Indulging
-                                        in poorly driving and keep structure keep great</div>
-                                    <!--end::Text-->
-                                </div>
-                                <!--end::Item-->
-                                <!--begin::Item-->
-                                <div class="timeline-item align-items-start">
-                                    <!--begin::Label-->
-                                    <div class="timeline-label font-weight-bolder text-dark-75 font-size-lg">21:03</div>
-                                    <!--end::Label-->
-                                    <!--begin::Badge-->
-                                    <div class="timeline-badge">
-                                        <i class="fa fa-genderless text-danger icon-xl"></i>
-                                    </div>
-                                    <!--end::Badge-->
-                                    <!--begin::Desc-->
-                                    <div class="timeline-content font-weight-bolder text-dark-75 pl-3 font-size-lg">New
-                                        order placed
-                                        <a href="#" class="text-primary">#XF-2356</a>.
-                                    </div>
-                                    <!--end::Desc-->
-                                </div>
-                                <!--end::Item-->
-                                <!--begin::Item-->
-                                <div class="timeline-item align-items-start">
-                                    <!--begin::Label-->
-                                    <div class="timeline-label font-weight-bolder text-dark-75 font-size-lg">23:07</div>
-                                    <!--end::Label-->
-                                    <!--begin::Badge-->
-                                    <div class="timeline-badge">
-                                        <i class="fa fa-genderless text-info icon-xl"></i>
-                                    </div>
-                                    <!--end::Badge-->
-                                    <!--begin::Text-->
-                                    <div class="timeline-content font-weight-mormal font-size-lg text-muted pl-3">Outlines
-                                        keep and you honest. Indulging in poorly driving</div>
-                                    <!--end::Text-->
-                                </div>
-                                <!--end::Item-->
-                                <!--begin::Item-->
-                                <div class="timeline-item align-items-start">
-                                    <!--begin::Label-->
-                                    <div class="timeline-label font-weight-bolder text-dark-75 font-size-lg">16:50</div>
-                                    <!--end::Label-->
-                                    <!--begin::Badge-->
-                                    <div class="timeline-badge">
-                                        <i class="fa fa-genderless text-primary icon-xl"></i>
-                                    </div>
-                                    <!--end::Badge-->
-                                    <!--begin::Text-->
-                                    <div class="timeline-content font-weight-mormal font-size-lg text-muted pl-3">Indulging
-                                        in poorly driving and keep structure keep great</div>
-                                    <!--end::Text-->
-                                </div>
-                                <!--end::Item-->
-                                <!--begin::Item-->
-                                <div class="timeline-item align-items-start">
-                                    <!--begin::Label-->
-                                    <div class="timeline-label font-weight-bolder text-dark-75 font-size-lg">21:03</div>
-                                    <!--end::Label-->
-                                    <!--begin::Badge-->
-                                    <div class="timeline-badge">
-                                        <i class="fa fa-genderless text-danger icon-xl"></i>
-                                    </div>
-                                    <!--end::Badge-->
-                                    <!--begin::Desc-->
-                                    <div class="timeline-content font-weight-bolder font-size-lg text-dark-75 pl-3">New
-                                        order placed
-                                        <a href="#" class="text-primary">#XF-2356</a>.
-                                    </div>
-                                    <!--end::Desc-->
-                                </div>
-                                <!--end::Item-->
+                                @endforeach
                             </div>
                             <!--end::Timeline-->
                         </div>
@@ -329,7 +161,8 @@
                                     <div class="col bg-light-warning px-6 py-8 rounded-xl mr-7 mb-7">
                                         <span class="svg-icon svg-icon-3x svg-icon-warning d-block my-2">
                                             <!--begin::Svg Icon | path:assets/media/svg/icons/Media/Equalizer.svg-->
-                                            <p class="text-warning font-weight-bold font-size-h6 mt-2">22</p>
+                                            <p class="text-warning font-weight-bold font-size-h6 mt-2">
+                                                {{ $dashData->profileEntered }}</p>
                                             <!--end::Svg Icon-->
                                         </span>
                                         <a href="#" class="text-warning font-weight-bold font-size-h6">Profile
@@ -337,7 +170,8 @@
                                     </div>
                                     <div class="col bg-light-primary px-6 py-8 rounded-xl mb-7">
                                         <span class="svg-icon svg-icon-3x svg-icon-primary d-block my-2">
-                                            <p class="text-info font-weight-bold font-size-h6 mt-2">22</p>
+                                            <p class="text-info font-weight-bold font-size-h6 mt-2">
+                                                {{ $dashData->usersCount }}</p>
                                             <!--end::Svg Icon-->
                                         </span>
                                         <a href="#" class="text-primary font-weight-bold font-size-h6 mt-2"> Users</a>
@@ -349,7 +183,8 @@
                                     <div class="col bg-light-danger px-6 py-8 rounded-xl mr-7">
                                         <span class="svg-icon svg-icon-3x svg-icon-danger d-block my-2">
                                             <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Layers.svg-->
-                                            <p class="text-danger font-weight-bold font-size-h6 mt-2">22</p>
+                                            <p class="text-danger font-weight-bold font-size-h6 mt-2">
+                                                {{ $dashData->profileApproved }}</p>
                                             <!--end::Svg Icon-->
                                         </span>
                                         <a href="#" class="text-danger font-weight-bold font-size-h6 mt-2">Approved
@@ -358,7 +193,8 @@
                                     <div class="col bg-light-success px-6 py-8 rounded-xl">
                                         <span class="svg-icon svg-icon-3x svg-icon-success d-block my-2">
                                             <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Urgent-mail.svg-->
-                                            <p class="text-success font-weight-bold font-size-h6 mt-2">22</p>
+                                            <p class="text-success font-weight-bold font-size-h6 mt-2">
+                                                {{ $dashData->profilePending }}</p>
                                             <!--end::Svg Icon-->
                                         </span>
                                         <a href="#" class="text-success font-weight-bold font-size-h6 mt-2">Profile
@@ -385,7 +221,7 @@
                                 <span class="card-label font-weight-bolder text-dark">Recent Profiles</span>
                                 <!-- <span class="text-muted mt-3 font-weight-bold font-size-sm">More than 400+ new members</span> -->
                             </h3>
-                            <div class="card-toolbar">
+                            {{-- <div class="card-toolbar">
                                 <div class="dropdown dropdown-inline">
                                     <a href="#"
                                         class="btn btn-danger btn-gradient-danger btn-sm font-weight-bolder dropdown-toggle px-5"
@@ -394,9 +230,9 @@
                                         <!--begin::Navigation-->
                                         <ul class="navi navi-hover">
                                             <!-- <li class="navi-header pb-1">
-               <span class="text-primary text-uppercase font-weight-bold font-size-sm">Add
-                new:</span>
-              </li> -->
+                                                               <span class="text-primary text-uppercase font-weight-bold font-size-sm">Add
+                                                                new:</span>
+                                                              </li> -->
                                             <li class="navi-item">
                                                 <a href="#" class="navi-link">
                                                     <span class="navi-icon">
@@ -406,42 +242,42 @@
                                                 </a>
                                             </li>
                                             <!-- <li class="navi-item">
-               <a href="#" class="navi-link">
-                <span class="navi-icon">
-                 <i class="flaticon2-calendar-8"></i>
-                </span>
-                <span class="navi-text">Event</span>
-               </a>
-              </li>
-              <li class="navi-item">
-               <a href="#" class="navi-link">
-                <span class="navi-icon">
-                 <i class="flaticon2-graph-1"></i>
-                </span>
-                <span class="navi-text">Report</span>
-               </a>
-              </li>
-              <li class="navi-item">
-               <a href="#" class="navi-link">
-                <span class="navi-icon">
-                 <i class="flaticon2-rocket-1"></i>
-                </span>
-                <span class="navi-text">Post</span>
-               </a>
-              </li>
-              <li class="navi-item">
-               <a href="#" class="navi-link">
-                <span class="navi-icon">
-                 <i class="flaticon2-writing"></i>
-                </span>
-                <span class="navi-text">File</span>
-               </a>
-              </li> -->
+                                                               <a href="#" class="navi-link">
+                                                                <span class="navi-icon">
+                                                                 <i class="flaticon2-calendar-8"></i>
+                                                                </span>
+                                                                <span class="navi-text">Event</span>
+                                                               </a>
+                                                              </li>
+                                                              <li class="navi-item">
+                                                               <a href="#" class="navi-link">
+                                                                <span class="navi-icon">
+                                                                 <i class="flaticon2-graph-1"></i>
+                                                                </span>
+                                                                <span class="navi-text">Report</span>
+                                                               </a>
+                                                              </li>
+                                                              <li class="navi-item">
+                                                               <a href="#" class="navi-link">
+                                                                <span class="navi-icon">
+                                                                 <i class="flaticon2-rocket-1"></i>
+                                                                </span>
+                                                                <span class="navi-text">Post</span>
+                                                               </a>
+                                                              </li>
+                                                              <li class="navi-item">
+                                                               <a href="#" class="navi-link">
+                                                                <span class="navi-icon">
+                                                                 <i class="flaticon2-writing"></i>
+                                                                </span>
+                                                                <span class="navi-text">File</span>
+                                                               </a>
+                                                              </li> -->
                                         </ul>
                                         <!--end::Navigation-->
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                         <!--end::Header-->
                         <!--begin::Body-->
@@ -459,47 +295,61 @@
                                                 </th>
                                                 <th style="min-width: 100px">Gender</th>
                                                 <th style="min-width: 100px">Country</th>
-                                                <!-- <th style="min-width: 100px">company</th>
-                     <th style="min-width: 130px">rating</th> -->
+                                                <th style="min-width: 100px">Date</th>
+                                                {{-- <th style="min-width: 130px">rating</th> --> --}}
                                                 <th style="min-width: 80px"></th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php for ($i = 0; $i < 4; $i++) { ?> <tr>
-                                                <td class="pl-0 py-8">
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="symbol symbol-50 symbol-light mr-4">
-                                                            <span class="symbol-label">
-                                                                <img src="assets/media/svg/avatars/001-boy.svg"
-                                                                    class="h-75 align-self-end" alt="" />
-                                                            </span>
+                                            @foreach ($dashData->profileList as $item)
+
+                                                <tr>
+                                                    <td class="pl-0 py-8">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="symbol symbol-50 symbol-light mr-4">
+                                                                <span class="symbol-label">
+                                                                    @if ($item->gender == 'male')
+                                                                        <img src="{{ url('assets/media/svg/avatars/001-boy.svg') }}"
+                                                                            class="h-75 align-self-end" alt="" />
+
+                                                                    @else
+                                                                        <img src="{{ url('assets/media/svg/avatars/002-girl.svg') }}"
+                                                                            class="h-75 align-self-end" alt="" />
+                                                                    @endif
+
+                                                                </span>
+                                                            </div>
+                                                            <div>
+                                                                <a href="#"
+                                                                    class="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">
+                                                                    {{ $item->name }}</a>
+                                                                <span
+                                                                    class="text-muted font-weight-bold d-block">{{ $item->citizen_location }}</span>
+                                                            </div>
                                                         </div>
-                                                        <div>
-                                                            <a href="#"
-                                                                class="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">Brad
-                                                                Simmons</a>
-                                                            <span class="text-muted font-weight-bold d-block">HTML, JS,
-                                                                ReactJS</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span
-                                                        class="text-dark-75 font-weight-bolder d-block font-size-lg">Male</span>
-                                                    <!-- <span class="text-muted font-weight-bold">In Proccess</span> -->
-                                                </td>
-                                                <td>
-                                                    <span
-                                                        class="text-dark-75 font-weight-bolder d-block font-size-lg">United
-                                                        Kingdom</span>
-                                                    <!-- <span class="text-muted font-weight-bold">Paid</span> -->
-                                                </td>
-                                                <td class="pr-0 text-right">
-                                                    <a href="edit-profile.php"
-                                                        class="btn btn-success btn-gradient-success  font-weight-bolder font-size-sm">More</a>
-                                                </td>
+                                                    </td>
+                                                    <td>
+                                                        <span
+                                                            class="text-dark-75 text-capitalize font-weight-bolder d-block font-size-lg">{{ $item->gender }}</span>
+                                                        <!-- <span class="text-muted font-weight-bold">In Proccess</span> -->
+                                                    </td>
+                                                    <td>
+                                                        <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
+                                                            {{ $item->nationality }}</span>
+                                                        <!-- <span class="text-muted font-weight-bold">Paid</span> -->
+                                                    </td>
+                                                    <td>
+                                                        <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
+                                                            {{ date('Y-m-d ', strtotime($item->created_at)) }}</span>
+                                                        <!-- <span class="text-muted font-weight-bold">Paid</span> -->
+                                                    </td>
+                                                    <td class="pr-0 text-right">
+                                                        <a href="{{ url('profile/track') }}"
+                                                            class="btn btn-success btn-gradient-success  font-weight-bolder font-size-sm">More</a>
+                                                    </td>
                                                 </tr>
-                                                <?php } ?>
+                                            @endforeach
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -520,32 +370,57 @@
         <!--end::Container-->
     </div>
 @endsection
-<script src="assets/js/pages/crud/ktdatatable/base/data-json.js"></script>
+{{-- <script src="assets/js/pages/crud/ktdatatable/base/data-json.js"></script> --}}
 
 <script>
-	function addClass(active_link_id, type) {
-		switch (type) {
-			case "track_nav_item":
-				var current = document.getElementById('track_nav_item' + active_link_id);
-				var tabItem = document.getElementById('kt_tab_pane_5_' + active_link_id);
+    function addClass(active_link_id, type) {
+        switch (type) {
+            case "track_nav_item":
+                var current = document.getElementById('track_nav_item' + active_link_id);
+                var tabItem = document.getElementById('kt_tab_pane_5_' + active_link_id);
 
-				break;
-			case "note_nav_item":
-				var current = document.getElementById('note_nav_item' + active_link_id);
-				var tabItem = document.getElementById('kt_tab_pane_5_' + active_link_id);
+                break;
+            case "note_nav_item":
+                var current = document.getElementById('note_nav_item' + active_link_id);
+                var tabItem = document.getElementById('kt_tab_pane_5_' + active_link_id);
 
-				break;
-			case "profile_nav_item":
-				var current = document.getElementById('profile_nav_item' + active_link_id);
-				var tabItem = document.getElementById('kt_tab_pane_5_' + active_link_id);
+                break;
+            case "profile_nav_item":
+                var current = document.getElementById('profile_nav_item' + active_link_id);
+                var tabItem = document.getElementById('kt_tab_pane_5_' + active_link_id);
 
-		}
-		current.classList.add('active');
-		
-		$('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
-			console.log('tab view tog', e.target);
-			e.target // newly activated tab
-			e.relatedTarget // previous active tab
-		})
-	}
+        }
+        current.classList.add('active');
+
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
+            console.log('tab view tog', e.target);
+            e.target // newly activated tab
+            e.relatedTarget // previous active tab
+        })
+    }
+
+</script>
+
+<script>
+    var chartSettings = {
+        profile: {
+            data: [{{ implode(',', $dashData->profile) }}],
+            name: 'Profiles',
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            count: 66
+        },
+        users: {
+            data: [{{ implode(',', $dashData->users) }}],
+            name: 'Users',
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            count: 46
+
+        },
+        analytics: {
+            data: [{{ implode(',', $dashData->analytics) }}],
+            name: '',
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        }
+    };
+
 </script>

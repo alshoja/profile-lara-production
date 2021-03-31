@@ -40,7 +40,7 @@ class CreateProfilesTable extends Migration
             $table->string('record_status');
             $table->string('record_dep_transfer');
             $table->text('note');
-            $table->foreignId('belongs_to')->constrained('users');
+            $table->tinyInteger('belongs_to')->nullable();
             $table->timestamps();
         });
     }

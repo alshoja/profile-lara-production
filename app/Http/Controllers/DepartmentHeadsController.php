@@ -2,31 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Department_heads;
 use Illuminate\Http\Request;
+use App\Models\DepartmentHead;
+use Illuminate\Support\Facades\Auth;
 
 class DepartmentHeadsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -35,51 +16,37 @@ class DepartmentHeadsController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $directorCount = DepartmentHead::where('depart_head_id', $request->user_id)
+            ->where('dep_id', $request->id)
+            ->count();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Department_heads  $department_heads
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Department_heads $department_heads)
-    {
-        //
-    }
+        if ($directorCount < 1) {
+            $data = [
+                'depart_head_id' => $request->user_id,
+                'dep_id' => $request->id,
+                'director_id' =>  Auth::user()->id
+            ];
+        }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Department_heads  $department_heads
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Department_heads $department_heads)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Department_heads  $department_heads
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Department_heads $department_heads)
-    {
-        //
+        if (isset($data)) {
+            $user = DepartmentHead::create($data);
+            return response()->json($user, 200);
+        }
+        return response()->json(['message' => 'user already added'], 400);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Department_heads  $department_heads
+     * @param  int  $userId
+     * @param  int  $depId
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Department_heads $department_heads)
+    public function destroy($userId, $depId)
     {
-        //
+        $data = DepartmentHead::where('depart_head_id', $userId)
+            ->where('dep_id', $depId)
+            ->delete();
+        return response()->json([$data, 'message' => "item deleted"], 202);
     }
 }

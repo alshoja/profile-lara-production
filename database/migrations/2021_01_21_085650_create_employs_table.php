@@ -15,7 +15,8 @@ class CreateEmploysTable extends Migration
     {
         Schema::create('employs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('supervisor_id')->constrained('users');
+            $table->foreignId('employ_id')->constrained('users');
             $table->foreignId('section_id')->constrained('sections');
             $table->timestamps();
         });

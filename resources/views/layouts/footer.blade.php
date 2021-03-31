@@ -1,5 +1,6 @@
 <script>
-    var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";
+    // var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";
+    var HOST_URL = "{{ url('/') }}"
 
 </script>
 
@@ -83,10 +84,15 @@
 <!-- <script src="assets/js/pages/custom/user/list-datatable.js"></script> -->
 
 <script src="{{ asset('assets/js/pages/widgets.js') }}"></script>
+<script src="{{ asset('assets/js/pages/date-range-widgets.js') }}"></script>
 <script src="{{ asset('assets/js/pages/crud/forms/widgets/select2.js') }}"></script>
 <script src="{{ asset('assets/js/pages/crud/file-upload/image-input.js') }}"></script>
 
 <script src="{{ asset('assets/js/pages/custom/login/login-general.js') }}"></script>
+<script src="{{ asset('assets/js/ajax-req.js') }}"></script>
+<script src="{{ asset('assets/js/comon-sweet-alert.js') }}"></script>
+<script src="{{ asset('assets/js/toast.js') }}"></script>
+<script src="{{ asset('assets/js/time.js') }}"></script>
 {{-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 <script>
     $(window).load(function() {
@@ -94,4 +100,11 @@
     });
 
 </script> --}}
+<script>
+    setInterval(function() {
+        getNotifications()
+        console.info('Checking for new notification.....')
+    }, 2000);
+
+</script>
 @stack('scripts')

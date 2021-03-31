@@ -1,81 +1,86 @@
-'use strict';
+"use strict";
 // Class definition
 
-var KTDatatableChildRemoteDataDemo = function () {
-	// Private functions
+var KTDatatableChildRemoteDataDemo = (function () {
+  var demo = function () {
+    var datatable = $("#kt_datatable").KTDatatable({
+      // datasource definition
+      data: {
+        type: "remote",
+        source: {
+          read: {
+            url: HOST_URL + "/list/departments",
+            map: function (raw) {
+              var dataSet = raw;
+              if (typeof raw.data !== "undefined") {
+                dataSet = raw.data;
+              }
+              return dataSet;
+            },
+          },
+        },
+        pageSize: 100, // display 20 records per page
+        serverPaging: true,
+        serverFiltering: true,
+        serverSorting: true,
+      },
 
-	// demo initializer
-	var demo = function () {
+      // layout definition
+      layout: {
+        scroll: false,
+        footer: false,
+      },
 
-		var datatable = $('#kt_datatable').KTDatatable({
-			// datasource definition
-			data: {
-				type: 'remote',
-				source: {
-					read: {
-						url: HOST_URL + '/api/datatables/demos/customers.php',
-					},
-				},
-				pageSize: 10, // display 20 records per page
-				serverPaging: true,
-				serverFiltering: true,
-				serverSorting: true,
-			},
+      // column sorting
+      sortable: true,
 
-			// layout definition
-			layout: {
-				scroll: false,
-				footer: false,
-			},
+      pagination: true,
 
-			// column sorting
-			sortable: true,
+      detail: {
+        title: "Load sub table",
+        content: subTableInit,
+      },
 
-			pagination: true,
+      search: {
+        input: $("#kt_datatable_search_query"),
+        key: "generalSearch",
+      },
 
-			detail: {
-				title: 'Load sub table',
-				content: subTableInit,
-			},
-
-			search: {
-				input: $('#kt_datatable_search_query'),
-				key: 'generalSearch'
-			},
-
-			// columns definition
-			columns: [
-				{
-					field: 'RecordID',
-					title: '',
-					sortable: false,
-					width: 30,
-					textAlign: 'center',
-				},
-				// {
-				// 	field: 'checkbox',
-				// 	title: '',
-				// 	template: '{{RecordID}}',
-				// 	sortable: false,
-				// 	width: 20,
-				// 	textAlign: 'center',
-				// 	selector: { class: 'kt-checkbox--solid' },
-				// },
-				{
-					field: 'FirstName',
-					title: 'Department Name',
-					sortable: 'asc',
-				},
-				{
-					field: 'Actions',
-					width: 125,
-					title: 'Actions',
-					sortable: false,
-					overflow: 'visible',
-					autoHide: false,
-					template: function () {
-						return '\
-	                        <a href="javascript:;" data-toggle="modal" data-target="#dh" class="btn btn-sm btn-clean btn-icon mr-2" title="Permissions">\
+      // columns definition
+      columns: [
+        {
+          field: "id",
+          title: "",
+          sortable: false,
+          width: 30,
+          textAlign: "center",
+        },
+        // {
+        // 	field: 'checkbox',
+        // 	title: '',
+        // 	template: '{{RecordID}}',
+        // 	sortable: false,
+        // 	width: 20,
+        // 	textAlign: 'center',
+        // 	selector: { class: 'kt-checkbox--solid' },
+        // },
+        {
+          field: "name",
+          title: "Department Name",
+          sortable: "asc",
+        },
+        {
+          field: "Actions",
+          width: 125,
+          title: "Actions",
+          sortable: false,
+          overflow: "visible",
+          autoHide: false,
+          template: function (row) {
+            let depNameValue = row.name; 
+            return (
+              '\
+	                        <a href="javascript:;"  onclick="setDepartment(' + row.id +',`'+row.name+'`)"  data-toggle="modal" data-target="#dh" class="btn btn-sm btn-clean btn-icon mr-2" title="Permissions">\
 	                            <span class="svg-icon svg-icon-md">\
 	                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">\
 									<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\
@@ -86,18 +91,22 @@ var KTDatatableChildRemoteDataDemo = function () {
 	                                </svg>\
 	                            </span>\
 	                        </a>\
-							<a href="javascript:;" class="btn btn-sm btn-clean btn-icon mr-2" title="Edit details">\
+							<a href="javascript:;" onclick="editDepartment(`department`,' +
+              row.id +
+              ')"  data-toggle="modal" data-target="#edit_department" class="btn btn-sm btn-clean btn-icon mr-2" title="Edit details">\
 	                            <span class="svg-icon svg-icon-md">\
 	                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">\
 	                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\
 	                                        <rect x="0" y="0" width="24" height="24"/>\
-	                                        <path d="M8,17.9148182 L8,5.96685884 C8,5.56391781 8.16211443,5.17792052 8.44982609,4.89581508 L10.965708,2.42895648 C11.5426798,1.86322723 12.4640974,1.85620921 13.0496196,2.41308426 L15.5337377,4.77566479 C15.8314604,5.0588212 16,5.45170806 16,5.86258077 L16,17.9148182 C16,18.7432453 15.3284271,19.4148182 14.5,19.4148182 L9.5,19.4148182 C8.67157288,19.4148182 8,18.7432453 8,17.9148182 Z" fill="#000000" fill-rule="nonzero"\ transform="translate(12.000000, 10.707409) rotate(-135.000000) translate(-12.000000, -10.707409) "/>\
+	                                        <path d="M8,17.9148182 L8,5.96685884 C8,5.56391781 8.16211443,5.17792052 8.44982609,4.89581508 L10.965708,2.42895648 C11.5426798,1.86322723 12.4640974,1.85620921 13.0496196,2.41308426 L15.5337377,4.77566479 C15.8314604,5.0588212 16,5.45170806 16,5.86258077 L16,17.9148182 C16,18.7432453 15.3284271,19.4148182 14.5,19.4148182 L9.5,19.4148182 C8.67157288,19.4148182 8,18.7432453 8,17.9148182 Z" fill="#000000" fill-rule="nonzero" transform="translate(12.000000, 10.707409) rotate(-135.000000) translate(-12.000000, -10.707409) "/>\
 	                                        <rect fill="#000000" opacity="0.3" x="5" y="20" width="15" height="2" rx="1"/>\
 	                                    </g>\
 	                                </svg>\
 	                            </span>\
 	                        </a>\
-	                        <a href="javascript:;" class="btn btn-sm btn-clean btn-icon" title="Delete">\
+	                        <a href="javascript:;" onclick="destroy(`department`,' +
+              row.id +
+              ')" class="btn btn-sm btn-clean btn-icon" title="Delete">\
 	                            <span class="svg-icon svg-icon-md">\
 	                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">\
 	                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\
@@ -108,92 +117,101 @@ var KTDatatableChildRemoteDataDemo = function () {
 	                                </svg>\
 	                            </span>\
 	                        </a>\
-	                    ';
-					},
-				}],
-		});
+	                    '
+            );
+          },
+        },
+      ],
+    });
 
-		$('#kt_datatable_search_status').on('change', function () {
-			datatable.search($(this).val().toLowerCase(), 'Status');
-		});
+    $("#kt_datatable_search_status").on("change", function () {
+      datatable.search($(this).val().toLowerCase(), "Status");
+    });
 
-		$('#kt_datatable_search_type').on('change', function () {
-			datatable.search($(this).val().toLowerCase(), 'Type');
-		});
+    $("#kt_datatable_search_type").on("change", function () {
+      datatable.search($(this).val().toLowerCase(), "Type");
+    });
 
-		$('#kt_datatable_search_status, #kt_datatable_search_type').selectpicker();
+    $("#kt_datatable_search_status, #kt_datatable_search_type").selectpicker();
 
+    function subTableInit(e) {
+      $("<div/>")
+        .attr("id", "child_data_ajax_" + e.data.id)
+        .appendTo(e.detailCell)
+        .KTDatatable({
+          data: {
+            type: "remote",
+            source: {
+              read: {
+                url: HOST_URL + "/list/sections",
+                params: {
+                  // custom query params
+                  query: {
+                    generalSearch: "",
+                    dep_id: e.data.id,
+                  },
+                },
+              },
+            },
+            pageSize: 5,
+            serverPaging: true,
+            serverFiltering: false,
+            serverSorting: true,
+          },
 
-		function subTableInit(e) {
-			$('<div/>').attr('id', 'child_data_ajax_' + e.data.RecordID).appendTo(e.detailCell).KTDatatable({
-				data: {
-					type: 'remote',
-					source: {
-						read: {
-							url: HOST_URL + '/api/datatables/demos/orders.php',
-							params: {
-								// custom query params
-								query: {
-									generalSearch: '',
-									CustomerID: e.data.RecordID,
-								},
-							},
-						},
-					},
-					pageSize: 5,
-					serverPaging: true,
-					serverFiltering: false,
-					serverSorting: true,
-				},
+          // layout definition
+          layout: {
+            scroll: false,
+            footer: false,
 
-				// layout definition
-				layout: {
-					scroll: false,
-					footer: false,
+            // enable/disable datatable spinner.
+            spinner: {
+              type: 1,
+              theme: "default",
+            },
+          },
 
-					// enable/disable datatable spinner.
-					spinner: {
-						type: 1,
-						theme: 'default',
-					},
-				},
+          sortable: true,
 
-				sortable: true,
-
-				// columns definition
-				columns: [
-					{
-						field: 'RecordID',
-						title: '#',
-						sortable: false,
-						width: 30,
-					},
-					{
-						field: 'ShipCountry',
-						title: 'Section Name',
-						width: 100
-					},
-					{
-						field: 'Actions',
-						width: 125,
-						title: 'Actions',
-						sortable: false,
-						overflow: 'visible',
-						autoHide: false,
-						template: function () {
-							return '\
-	                        <a href="javascript:;" class="btn btn-sm btn-clean btn-icon mr-2" title="Edit details">\
+          // columns definition
+          columns: [
+            {
+              field: "id",
+              title: "#",
+              sortable: false,
+              width: 30,
+            },
+            {
+              field: "name",
+              title: "Section Name",
+              width: 100,
+            },
+            {
+              field: "Actions",
+              width: 125,
+              title: "Actions",
+              sortable: false,
+              overflow: "visible",
+              autoHide: false,
+              template: function (row) {
+                return (
+                  '\
+<a href="javascript:;" onclick="editSection(`section`,' +
+                  row.id +
+                  ')" data-toggle="modal" data-target="#edit_section" class="btn btn-sm btn-clean btn-icon mr-2" title="Edit details">\
 	                            <span class="svg-icon svg-icon-md">\
 	                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">\
 	                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\
 	                                        <rect x="0" y="0" width="24" height="24"/>\
-	                                        <path d="M8,17.9148182 L8,5.96685884 C8,5.56391781 8.16211443,5.17792052 8.44982609,4.89581508 L10.965708,2.42895648 C11.5426798,1.86322723 12.4640974,1.85620921 13.0496196,2.41308426 L15.5337377,4.77566479 C15.8314604,5.0588212 16,5.45170806 16,5.86258077 L16,17.9148182 C16,18.7432453 15.3284271,19.4148182 14.5,19.4148182 L9.5,19.4148182 C8.67157288,19.4148182 8,18.7432453 8,17.9148182 Z" fill="#000000" fill-rule="nonzero"\ transform="translate(12.000000, 10.707409) rotate(-135.000000) translate(-12.000000, -10.707409) "/>\
+	                                        <path d="M8,17.9148182 L8,5.96685884 C8,5.56391781 8.16211443,5.17792052 8.44982609,4.89581508 L10.965708,2.42895648 C11.5426798,1.86322723 12.4640974,1.85620921 13.0496196,2.41308426 L15.5337377,4.77566479 C15.8314604,5.0588212 16,5.45170806 16,5.86258077 L16,17.9148182 C16,18.7432453 15.3284271,19.4148182 14.5,19.4148182 L9.5,19.4148182 C8.67157288,19.4148182 8,18.7432453 8,17.9148182 Z" fill="#000000" fill-rule="nonzero" transform="translate(12.000000, 10.707409) rotate(-135.000000) translate(-12.000000, -10.707409) "/>\
 	                                        <rect fill="#000000" opacity="0.3" x="5" y="20" width="15" height="2" rx="1"/>\
 	                                    </g>\
 	                                </svg>\
 	                            </span>\
 	                        </a>\
-	                        <a href="javascript:;" class="btn btn-sm btn-clean btn-icon" title="Delete">\
+	                        <a href="javascript:;" onclick="destroy(`section`,' +
+                  row.id +
+                  ')" class="btn btn-sm btn-clean btn-icon" title="Delete">\
 	                            <span class="svg-icon svg-icon-md">\
 	                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">\
 	                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\
@@ -204,22 +222,45 @@ var KTDatatableChildRemoteDataDemo = function () {
 	                                </svg>\
 	                            </span>\
 	                        </a>\
-	                    ';
-						},
-					},],
-			});
-		}
-	};
+	                    '
+                );
+              },
+            },
+          ],
+        });
+    }
+  };
 
-	return {
-		// Public functions
-		init: function () {
-			// init dmeo
-			demo();
-		},
-	};
-}();
+  return {
+    // Public functions
+    init: function () {
+      demo();
+    },
+  };
+})();
 
 jQuery(document).ready(function () {
-	KTDatatableChildRemoteDataDemo.init();
+  KTDatatableChildRemoteDataDemo.init();
 });
+
+function reloadData() {
+  $("#kt_datatable").KTDatatable("reload");
+}
+
+function editDepartment(url, id) {
+  const data = getOrGetById(url, id);
+  console.log(data);
+  if (data) {
+    // document.getElementById("department_id").value = data.name;
+    $("#department_id").val(data.name);
+    $("#dep_id").val(data.id);
+  }
+}
+function editSection(url, id) {
+  const data = getOrGetById(url, id);
+  console.log("from ou", data.department.name);
+  $("#section_update").val(data.name);
+  $("#section_id").val(data.id);
+  $('#sec_dep_id').val(data.department.id).prop('selected', true);
+}
+

@@ -24,7 +24,7 @@
                                     <!--begin::User-->
                                     <div class="mr-3">
                                         <!--begin::Name-->
-                                        <a href="profile-detail.php"
+                                        <a href="{{ url('user/profile-detail/' . $user->id) }}?role={{ $user->role }}"
                                             class="d-flex align-items-center text-dark text-hover-primary font-size-h5 font-weight-bold mr-3">{{ $user->name }}
                                             <i class="flaticon2-correct text-success icon-md ml-2"></i></a>
                                         <!--end::Name-->
@@ -66,7 +66,7 @@
                                                         </g>
                                                     </svg>
                                                     <!--end::Svg Icon-->
-                                                </span>{{strtoupper($user->role) }}</a>
+                                                </span>{{ ucwords(str_replace('_', ' ', $user->role)) }}</a>
                                             <a href="#" class="text-muted text-hover-primary font-weight-bold">
                                                 <span class="svg-icon svg-icon-md svg-icon-gray-500 mr-1">
                                                     <!--begin::Svg Icon | path:assets/media/svg/icons/Map/Marker2.svg-->
@@ -91,20 +91,28 @@
                                     <!--begin::User-->
                                     <!--begin::Actions-->
                                     <div class="my-lg-0 my-1">
-                                        <a href="{{ url('user/profile-detail/' . $user->id) }}"
+                                        <a href="{{ url('user/profile-detail/' . $user->id) }}?role={{ $user->role }}"
                                             class="btn btn-sm btn-success btn-gradient-success font-weight-bolder text-uppercase">
                                             More</a>
                                         {{-- <a href="{{ url('/user/' . $user->id) }}"
                                             class="btn btn-sm btn-danger btn-gradient-danger font-weight-bolder text-uppercase">Delete</a> --}}
+                                        @if (Auth::user()->delete)
+                                            {{-- <a class="btn btn-sm btn-danger btn-gradient-danger font-weight-bolder"
+                                                href="javascript:void(0);" onclick="$(this).find('form').submit();">
+                                                Delete
+                                                <form style="display: none" action="{{ url('/user/' . $user->id) }}"
+                                                    method="post">
+                                                    @method('delete')
+                                                    @csrf()
+                                                </form>
+                                            </a> --}}
+                                            <a class="btn btn-sm btn-danger btn-gradient-danger font-weight-bolder"
+                                                href="javascript:void(0);"
+                                                onclick="alertAndGoToUrl('/user/delete/{{ $user->id }}','delete ?')">
+                                                Delete
+                                            </a>
+                                        @endif
 
-                                        <a class="btn btn-sm btn-danger btn-gradient-danger font-weight-bolder" href="javascript:void(0);" onclick="$(this).find('form').submit();">
-                                           Delete
-                                           <form style="display: none" action="{{ url('/user/' . $user->id) }}" method="post">
-                                            @method('delete')
-                                            @csrf()
-                                        </form>
-                                        </a>
-                                       
                                     </div>
 
                                     <!--end::Actions-->
@@ -123,26 +131,46 @@
                         <div class="d-flex align-items-center flex-wrap">
                             <!--begin: Item-->
                             <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
-                                <span class="mr-4">
-                                    <i class="flaticon-map icon-2x text-muted font-weight-bold"></i>
-                                </span>
-                                <div class="d-flex flex-column text-dark-75">
-                                    <span class="font-weight-bolder font-size-sm">Departments</span>
-                                    <span class="font-weight-bolder font-size-h5">
-                                        <span class="text-dark-50 font-weight-bold"></span>249,500</span>
-                                </div>
+                                @if ($user->role != 'employ' && $user->role != 'admin')
+                                    <span class="mr-4">
+                                        <i class="flaticon-map icon-2x text-muted font-weight-bold"></i>
+                                    </span>
+                                    <div class="d-flex flex-column text-dark-75">
+                                        <span class="font-weight-bolder font-size-sm">Departments</span>
+                                        <span class="font-weight-bolder font-size-h5">
+                                            <span class="text-dark-50 font-weight-bold"></span>249,500</span>
+                                    </div>
+                                @endif
+
+
                             </div>
                             <!--end: Item-->
                             <!--begin: Item-->
                             <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
-                                <span class="mr-4">
-                                    <i class="flaticon-avatar icon-2x text-muted font-weight-bold"></i>
-                                </span>
-                                <div class="d-flex flex-column text-dark-75">
-                                    <span class="font-weight-bolder font-size-sm">Directors</span>
-                                    <span class="font-weight-bolder font-size-h5">
-                                        <span class="text-dark-50 font-weight-bold">$</span>164,700</span>
-                                </div>
+                                @if ($user->role != 'employ' && $user->role != 'admin')
+                                    <span class="mr-4">
+                                        <i class="flaticon-avatar icon-2x text-muted font-weight-bold"></i>
+                                    </span>
+                                    <div class="d-flex flex-column text-dark-75">
+                                        <span class="font-weight-bolder font-size-sm">
+                                            @if ($user->role == 'general_director')
+                                                Directors
+                                            @endif
+                                            @if ($user->role == 'director')
+                                                Department Heads
+                                            @endif
+                                            @if ($user->role == 'department_head')
+                                                Supervisors
+                                            @endif
+                                            @if ($user->role == 'supervisor')
+                                                Employs
+                                            @endif
+                                        </span>
+                                        <span class="font-weight-bolder font-size-h5">
+                                            <span class="text-dark-50 font-weight-bold">$</span>164,700</span>
+                                    </div>
+                                @endif
+
                             </div>
                             <!--end: Item-->
                             <!--begin: Item-->
@@ -161,8 +189,8 @@
                             <!--begin: Item-->
                             <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
                                 <!-- <span class="mr-5">
-                         <i class="flaticon-user icon-2x text-muted font-weight-bold"></i>
-                        </span> -->
+                                                                                     <i class="flaticon-user icon-2x text-muted font-weight-bold"></i>
+                                                                                    </span> -->
                                 <div class="d-flex flex-column flex-lg-fill">
                                     <span class="text-dark-75 font-weight-bolder font-size-sm">User Suspended</span>
                                     <!-- <a href="#" class="text-primary font-weight-bolder">No</a> -->
@@ -181,52 +209,50 @@
                     </div>
                 </div>
             @endforeach
+            @if (count($users) < 1)
+                <div class="card card-custom gutter-b">
+                    <p>Nothing Found</p>
+                </div>
+            @endif
             {{-- @php 	} @endphp --}}
             <!--end::Card-->
             <!--begin::Pagination-->
-            <div class="card card-custom">
-                <div class="card-body py-7">
-                    <!--begin::Pagination-->
-                    <div class="d-flex justify-content-between align-items-center flex-wrap">
-                        <div class="d-flex flex-wrap mr-3">
-            {{ $users->links() }}
-
-                            {{-- <a href="#" class="btn btn-icon btn-sm btn-light-primary mr-2 my-1">
-                                <i class="ki ki-bold-double-arrow-back icon-xs"></i>
-                            </a>
-                            <a href="#" class="btn btn-icon btn-sm btn-light-primary mr-2 my-1">
-                                <i class="ki ki-bold-arrow-back icon-xs"></i>
-                            </a>
-                            <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">...</a>
-                            <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">23</a>
-                            <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary active mr-2 my-1">24</a>
-                            <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">25</a>
-                            <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">26</a>
-                            <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">27</a>
-                            <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">28</a>
-                            <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">...</a>
-                            <a href="#" class="btn btn-icon btn-sm btn-light-primary mr-2 my-1">
-                                <i class="ki ki-bold-arrow-next icon-xs"></i>
-                            </a>
-                            <a href="#" class="btn btn-icon btn-sm btn-light-primary mr-2 my-1">
-                                <i class="ki ki-bold-double-arrow-next icon-xs"></i>
-                            </a> --}}
-                        </div>
-                        {{-- <div class="d-flex align-items-center">
-                            <select
-                                class="form-control form-control-sm text-primary font-weight-bold mr-4 border-0 bg-light-primary"
-                                style="width: 75px;">
-                                <option value="10">10</option>
-                                <option value="20">20</option>
-                                <option value="30">30</option>
-                                <option value="50">50</option>
-                                <option value="100">100</option>
-                            </select>
-                            <span class="text-muted">Displaying 10 of 230 records</span>
-                        </div> --}}
-                    </div>
-                    <!--end:: Pagination-->
+            <div class="d-flex justify-content-between align-items-center flex-wrap">
+                <div class="d-flex flex-wrap mr-3">
+                    {{-- <a href="#" class="btn btn-icon btn-sm btn-light-primary mr-2 my-1">
+                        <i class="ki ki-bold-double-arrow-back icon-xs"></i>
+                    </a>
+                    <a href="#" class="btn btn-icon btn-sm btn-light-primary mr-2 my-1">
+                        <i class="ki ki-bold-arrow-back icon-xs"></i>
+                    </a>
+                    <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">...</a>
+                    <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">23</a>
+                    <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary active mr-2 my-1">24</a>
+                    <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">25</a>
+                    <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">26</a>
+                    <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">27</a>
+                    <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">28</a>
+                    <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">...</a>
+                    <a href="#" class="btn btn-icon btn-sm btn-light-primary mr-2 my-1">
+                        <i class="ki ki-bold-arrow-next icon-xs"></i>
+                    </a>
+                    <a href="#" class="btn btn-icon btn-sm btn-light-primary mr-2 my-1">
+                        <i class="ki ki-bold-double-arrow-next icon-xs"></i>
+                    </a> --}}
+                    {{ $users->links() }}
                 </div>
+                {{-- <div class="d-flex align-items-center">
+                    <select
+                        class="form-control form-control-sm text-primary font-weight-bold mr-4 border-0 bg-light-primary"
+                        style="width: 75px;">
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="30">30</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                    <span class="text-muted">Displaying 10 of 230 records</span>
+                </div> --}}
             </div>
             <!--end::Pagination-->
         </div>

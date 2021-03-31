@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\User;
 use App\Models\Section;
 use App\Models\Department_supervisor;
 use Illuminate\Database\Eloquent\Model;
@@ -13,11 +14,18 @@ class Department extends Model
 
     public function sections()
     {
-        return $this->hasMany(Section::class);
+        return $this->hasMany(Section::class,'dep_id');
     }
 
     public function supervisors()
     {
         return $this->hasMany(Department_supervisor::class);
     }
+
+    public function gds()
+    {
+        return $this->hasMany(DepartmentGeneralDirector::class,'dep_id','id');
+    }
+
+    
 }

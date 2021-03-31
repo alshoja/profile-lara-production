@@ -24,7 +24,10 @@ class User extends Authenticatable
         'image',
         'sign',
         'can_add_user',
-        'suspended'
+        'suspended',
+        'create',
+        'update',
+        'delete',
     ];
 
     /**
@@ -51,18 +54,28 @@ class User extends Authenticatable
         return $this->hasMany(User::class);
     }
 
-    public function departmentHeads()
+    public function generalDirectors()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(Users::class, 'general_director_id', 'id');
     }
 
-    public function supervisors()
+    public function gdRelation()
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(DepartmentGeneralDirector::class, 'general_director_id', 'id');
     }
 
-    public function employs()
+    public function departmentRelation()
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(DepartmentDirector::class, 'director_id', 'id');
+    }
+
+    public function dhRelation()
+    {
+        return $this->hasMany(DepartmentHead::class, 'depart_head_id', 'id');
+    }
+
+    public function superRelation()
+    {
+        return $this->hasMany(DepartmentSupervisor::class, 'supervisor_id', 'id');
     }
 }

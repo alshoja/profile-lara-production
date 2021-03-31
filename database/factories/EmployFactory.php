@@ -24,7 +24,8 @@ class EmployFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::factory(),
+            'employ_id' => User::factory(),
+            'supervisor_id' => User::factory(),
             'section_id' => Section::factory(),
         ];
     }

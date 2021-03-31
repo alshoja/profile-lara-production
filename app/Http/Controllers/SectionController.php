@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\SectionCollection;
 use App\Models\Section;
+use App\Models\Department;
 use Illuminate\Http\Request;
 
 class SectionController extends Controller
@@ -12,9 +14,16 @@ class SectionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+
+        $query = $request->get('query');
+        $id = $query['dep_id'];
+        $pagination = $request->get('pagination');
+        $page = $pagination['page'];
+        $perpage =  $pagination['perpage'];
+        $resource = Section::where('dep_id', $id)->paginate($perpage, ['*'], 'page', $page);
+        return new SectionCollection($resource);
     }
 
     /**
@@ -35,7 +44,14 @@ class SectionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'section' => ['required', 'string', 'max:10'],
+        ]);
+        $section = new Section();
+        $section->name = $request->section;
+        $section->dep_id = $request->dep_id;
+        $section->save();
+        return back()->with('message', 'Section successfully added');
     }
 
     /**
@@ -44,9 +60,10 @@ class SectionController extends Controller
      * @param  \App\Models\Section  $section
      * @return \Illuminate\Http\Response
      */
-    public function show(Section $section)
+    public function show($id)
     {
-        //
+        $section = Section::with('department')->findOrFail($id);
+        return response()->json($section, 200);
     }
 
     /**
@@ -69,7 +86,22 @@ class SectionController extends Controller
      */
     public function update(Request $request, Section $section)
     {
-        //
+        $request->validate([
+            'section' => ['required', 'string', 'max:50'],
+        ]);
+
+        // $validator = Validator::make($request->all(), [
+        //     'name' => ['required', 'string', 'max:10', 'unique:departments'],
+        // ]);
+
+        // if ($validator->fails()) {
+        //     return response()->json($validator->errors(), 400);
+        // }
+        $department = Section::findOrFail($request->section_id);
+        $department->name = $request->section;
+        $department->dep_id = $request->dep_id;
+        $department->save();
+        return back()->with('message', 'Section updated added');
     }
 
     /**
@@ -78,8 +110,9 @@ class SectionController extends Controller
      * @param  \App\Models\Section  $section
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Section $section)
+    public function destroy($id)
     {
-        //
+        $section  = Section::destroy($id);
+        return response()->json(['message' => 'Section deleted'], 200);
     }
 }
