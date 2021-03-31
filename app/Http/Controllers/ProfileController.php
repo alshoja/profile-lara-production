@@ -170,23 +170,23 @@ class ProfileController extends Controller
 
     public function rejectOrApprove(Request $request)
     {
-        $Profile = new Profile();
-
-        if ($Profile->role != "admin" && $Profile->role != "admin") {
-            if ($Profile->role == "general_director") {
-                $Profile->name = $request->value;
+        $Profile = Profile::findOrFail($request->id);
+        if (Auth::user()->role != "admin" && Auth::user()->role != "admin") {
+            if (Auth::user()->role == "general_director") {
+                $Profile->general_director_id = $request->value;
+                $Profile->is_completed = $request->is_completed;
             }
-            if ($Profile->role == "director") {
-                $Profile->name = $request->value;
+            if (Auth::user()->role == "director") {
+                $Profile->director_id = $request->value;
             }
-            if ($Profile->role == "department_head") {
-                $Profile->name = $request->value;
+            if (Auth::user()->role == "department_head") {
+                $Profile->depart_head_id = $request->value;
             }
-            if ($Profile->role == "supervisor") {
-                $Profile->name = $request->value;
+            if (Auth::user()->role == "supervisor") {
+                $Profile->supervisor_id = $request->value;
             }
         } else {
-            return response()->json(["error" => "you dont have permisison to do this action"], 403);
+            return response()->json(["error" => "You dont have permisison to do this action !"], 403);
         }
         $Profile->save();
         return response()->json($Profile, 200);
