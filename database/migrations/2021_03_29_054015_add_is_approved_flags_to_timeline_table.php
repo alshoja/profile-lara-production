@@ -15,7 +15,6 @@ class AddIsApprovedFlagsToTimelineTable extends Migration
     {
         Schema::table('time_lines', function (Blueprint $table) {
             $table->tinyInteger('is_approved')->default(0)->nullable();
-            $table->tinyInteger('is_completed')->default(0)->nullable();
         });
     }
 
@@ -28,7 +27,6 @@ class AddIsApprovedFlagsToTimelineTable extends Migration
     {
         Schema::table('time_lines', function (Blueprint $table) {
             $table->tinyInteger('is_approved')->default(0)->nullable();
-            $table->tinyInteger('is_completed')->default(0)->nullable();
         });
     }
 }
