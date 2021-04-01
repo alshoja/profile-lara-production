@@ -29,6 +29,8 @@ Auth::routes();
 Route::get('/notifications', [App\Http\Controllers\HomeController::class, 'getNotifications'])->name('notification');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('test', [App\Http\Controllers\ProfileController::class, 'testind'])->name('home');
+
 // Profile
 Route::get('profile/track', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
 Route::get('profile/drafts', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');

@@ -41,6 +41,7 @@ class CreateProfilesTable extends Migration
             $table->string('record_dep_transfer');
             $table->text('note');
             $table->tinyInteger('belongs_to')->nullable();
+            $table->tinyInteger('is_drafted')->nullable();
             $table->timestamps();
         });
     }

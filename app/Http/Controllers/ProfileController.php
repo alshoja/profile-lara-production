@@ -210,4 +210,12 @@ class ProfileController extends Controller
         $Profile->save();
         return response()->json($Profile, 200);
     }
+
+    public function testind()
+    {
+        $Profile = Profile::find(1);
+        $event = SignOrRejectProfile::dispatch($Profile);
+        return response()->json($event, 200);
+
+    }
 }
