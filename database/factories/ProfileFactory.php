@@ -48,7 +48,8 @@ class ProfileFactory extends Factory
             "record_status" => 'completed',
             "record_dep_transfer" => 'Done',
             "note" => "some note",
-            // "users" => '1',
+            "dep_id" => '2',
+            "section_id" => '1',
         ];
     }
 }

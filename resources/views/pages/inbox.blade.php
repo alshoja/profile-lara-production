@@ -346,49 +346,12 @@
                                                                             <div data-scroll="true" data-height="250">
                                                                                 <div class="card-body">
                                                                                     <div class="tab-content">
-                                                                                        
+
                                                                                         <div class="tab-pane fade show active"
                                                                                             id="kt_tab_pane_5_e"
                                                                                             role="tabpanel"
                                                                                             aria-labelledby="kt_tab_pane_5_e">
-                                                                                            <p>Eprofile Ipsum is
-                                                                                                simply dummy text of the
-                                                                                                printing
-                                                                                                and typesetting industry.
-                                                                                                Lorem
-                                                                                                Ipsum passages, and more
-                                                                                                recently
-                                                                                                with desktop publishing
-                                                                                                software
-                                                                                                like Aldus PageMaker
-                                                                                                including
-                                                                                                versions of Lorem Ipsum.
-                                                                                                Lorem
-                                                                                                Ipsum
-                                                                                                passages, and more recently
-                                                                                                with
-                                                                                                desktop publishing software
-                                                                                                like
-                                                                                                Aldus PageMaker including
-                                                                                                versions
-                                                                                                of Lorem Ipsum. Lorem Ipsum
-                                                                                                is
-                                                                                                simply dummy text of the
-                                                                                                printing
-                                                                                                and typesetting industry.
-                                                                                                with
-                                                                                                desktop publishing software
-                                                                                                like
-                                                                                                Aldus PageMaker including
-                                                                                                versions
-                                                                                                of Lorem Ipsum. Lorem Ipsum
-                                                                                                passages, and more recently
-                                                                                                with
-                                                                                                desktop publishing software
-                                                                                                like
-                                                                                                Aldus PageMaker including
-                                                                                                versions
-                                                                                                of Lorem Ipsum</p>
+                                                                                            <p>knlkdsldfjs</p>
                                                                                         </div>
                                                                                         <div class="tab-pane fade"
                                                                                             id="kt_tab_pane_5_de"
@@ -417,14 +380,16 @@
                                                                                                         </p>
                                                                                                         <div
                                                                                                             class="ml-4 ml-lg-0 ml-xxl-4 flex-shrink-0">
-                                                                                                            <button onclick="AproveOrReject('signed')"
+                                                                                                            <button
+                                                                                                                onclick="AproveOrReject('signed')"
                                                                                                                 id="approve"
                                                                                                                 type="button"
                                                                                                                 value="Sign & Approve"
                                                                                                                 class="btn btn-sm  text-uppercase btn-success">
                                                                                                                 Sign
                                                                                                             </button>
-                                                                                                            <button onclick="AproveOrReject('rejected')"
+                                                                                                            <button
+                                                                                                                onclick="AproveOrReject('rejected')"
                                                                                                                 id="reject"
                                                                                                                 type="button"
                                                                                                                 class="btn btn-sm  text-uppercase btn-danger ">Reject
