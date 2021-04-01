@@ -77,10 +77,14 @@ var KTDatatableChildRemoteDataDemo = (function () {
           overflow: "visible",
           autoHide: false,
           template: function (row) {
-            let depNameValue = row.name; 
+            let depNameValue = row.name;
             return (
               '\
-	                        <a href="javascript:;"  onclick="setDepartment(' + row.id +',`'+row.name+'`)"  data-toggle="modal" data-target="#dh" class="btn btn-sm btn-clean btn-icon mr-2" title="Permissions">\
+	                        <a href="javascript:;"  onclick="setDepartment(' +
+              row.id +
+              ",`" +
+              row.name +
+              '`)"  data-toggle="modal" data-target="#dh" class="btn btn-sm btn-clean btn-icon mr-2" title="Permissions">\
 	                            <span class="svg-icon svg-icon-md">\
 	                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">\
 									<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\
@@ -261,6 +265,5 @@ function editSection(url, id) {
   console.log("from ou", data.department.name);
   $("#section_update").val(data.name);
   $("#section_id").val(data.id);
-  $('#sec_dep_id').val(data.department.id).prop('selected', true);
+  $("#sec_dep_id").val(data.department.id).prop("selected", true);
 }
-
