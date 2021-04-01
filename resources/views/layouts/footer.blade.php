@@ -108,4 +108,13 @@
     localStorage.setItem('session_id', {{ Auth::user()->id }});
 
 </script>
+<script>
+    $(document).ajaxSend(function() {
+        $('#ajaxloader').fadeIn(250);
+    });
+    $(document).ajaxComplete(function() {
+        $('#ajaxloader').fadeOut(250);
+    });
+
+</script>
 @stack('scripts')
