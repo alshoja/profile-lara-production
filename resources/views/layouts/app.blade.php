@@ -1029,11 +1029,13 @@
     </ul>
     <!--end::Sticky Toolbar-->
     <div id="loader" class="loader"></div>
+    <img src={{ url('assets/loader4.svg') }} id="ajaxloader" class="ajaxloader">
 
     @extends('layouts.footer')
 
     <!--end::Page Scripts-->
 </body>
+
 <!--end::Body-->
 <style>
     .loader {
@@ -1044,6 +1046,22 @@
         height: 100%;
         /* z-index: 9999; */
         background: url('https://lkp.dispendik.surabaya.go.id/assets/loading.gif') 50% 50% no-repeat rgb(249, 249, 249);
+    }
+
+    .ajaxloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        /* to make it responsive */
+        width: 100vw;
+        /* to make it responsive */
+        overflow: hidden;
+        /*to remove scrollbars */
+        z-index: 99999;
+        /*to make it appear on topmost part of the page */
+        display: none;
+        /*to make it visible only on fadeIn() function */
     }
 
 </style>

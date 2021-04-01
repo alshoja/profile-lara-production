@@ -5,6 +5,7 @@ function saveOrUpdateOrGet(url, method, formData, id) {
   if (typeof id != "undefined") {
     formData.id = id;
   }
+  formData._token = $("#csrf-token")[0].content;
   let fullUrl = HOST_URL + "/" + url;
   let res = null;
   $.ajax({
@@ -126,6 +127,8 @@ function getNotifications() {
 }
 
 function getProfileData(id) {
+  console.log("proilde data called");
+  document.getElementById("profile_id").value = id;
   let fullUrl = HOST_URL + "/profile/details/" + id;
   let res = null;
   $.ajax({
@@ -271,4 +274,32 @@ function setNotes(notes) {
     notesString += `  <br><br><div>No Track notes to display </div>`;
   }
   document.getElementById("note_chat_timeline").innerHTML = notesString;
+}
+
+function replyNote() {
+  let profile_id = document.getElementById("profile_id");
+  let note = document.getElementById("replynote");
+
+  const payLoad = {};
+  payLoad.note = note.value;
+  payLoad.profile_id = profile_id.value;
+  payLoad.is_note = 1;
+  const res = saveOrUpdateOrGet("timeline/reply/note", "POST", payLoad);
+  getProfileData(res.profile_id);
+  note.value = "";
+  return res;
+}
+
+function AproveOrReject(action) {
+  let profile_id = document.getElementById("profile_id");
+  let note = document.getElementById("approve_note");
+
+  const payLoad = {};
+  payLoad.value = note.value;
+  payLoad.profile_id = profile_id.value;
+  payLoad.action = action;
+  const res = saveOrUpdateOrGet("profile/sign/", "POST", payLoad);
+  // getProfileData(res.profile_id);
+  note.value = "";
+  return res;
 }

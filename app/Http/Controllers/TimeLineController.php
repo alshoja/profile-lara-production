@@ -98,4 +98,26 @@ class TimeLineController extends Controller
     {
         //
     }
+
+    public function replyNote(Request $request)
+    {
+        $request->validate([
+            'note' => ['required'],
+            'profile_id' => ['required']
+        ]);
+
+        $timeLine = new TimeLine();
+        $timeLine->name = Auth()->user()->name;
+        $timeLine->note = $request->note;
+        $timeLine->user_id = Auth()->user()->id;
+        $timeLine->profile_id = $request->profile_id;
+        // $timeLine->is_approved = $request->is_approved;
+        $timeLine->is_note = $request->is_note;
+        $timeLine->save();
+        if ($timeLine->id) {
+            return response()->json($timeLine, 200);
+        } else {
+            return response()->json(['error' => "An error occured"], 403);
+        }
+    }
 }

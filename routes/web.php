@@ -29,12 +29,15 @@ Auth::routes();
 Route::get('/notifications', [App\Http\Controllers\HomeController::class, 'getNotifications'])->name('notification');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('test', [App\Http\Controllers\ProfileController::class, 'testind'])->name('home');
+
 // Profile
 Route::get('profile/track', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
 Route::get('profile/drafts', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
 Route::get('profiles', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
 Route::get('forward/new/{id}', [App\Http\Controllers\ProfileController::class, 'forwardAsNew'])->name('notification');
 Route::get('profile/details/{id}', [App\Http\Controllers\ProfileController::class, 'getProfileById']);
+Route::post('profile/sign/or/reject', [App\Http\Controllers\ProfileController::class, 'sigOrReject']);
 Route::get('profile/delete/{id}', [App\Http\Controllers\ProfileController::class, 'destroy']);
 
 // User Management 
@@ -81,3 +84,4 @@ Route::delete('user/permission/super/{userId}/{depId}', [App\Http\Controllers\De
 
 // Time Line
 Route::get('timeline', [App\Http\Controllers\TimeLineController::class, 'store']);
+Route::post('timeline/reply/note', [App\Http\Controllers\TimeLineController::class, 'replyNote']);
