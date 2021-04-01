@@ -44,7 +44,7 @@ class ProfileController extends Controller
             }
             return $query;
         })
-            ->paginate(10);
+            ->paginate(5);
         return view('pages.inbox', compact('profiles'));
     }
 
