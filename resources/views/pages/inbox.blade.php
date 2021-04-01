@@ -347,48 +347,390 @@
                                                                                 <div class="card-body">
                                                                                     <div class="tab-content">
                                                                                         <div class="tab-pane fade show active"
-                                                                                            id="kt_tab_pane_5_e"
-                                                                                            role="tabpanel"
-                                                                                            aria-labelledby="kt_tab_pane_5_e">
-                                                                                            <p>Eprofile Ipsum is
-                                                                                                simply dummy text of the
-                                                                                                printing
-                                                                                                and typesetting industry.
-                                                                                                Lorem
-                                                                                                Ipsum passages, and more
-                                                                                                recently
-                                                                                                with desktop publishing
-                                                                                                software
-                                                                                                like Aldus PageMaker
-                                                                                                including
-                                                                                                versions of Lorem Ipsum.
-                                                                                                Lorem
-                                                                                                Ipsum
-                                                                                                passages, and more recently
-                                                                                                with
-                                                                                                desktop publishing software
-                                                                                                like
-                                                                                                Aldus PageMaker including
-                                                                                                versions
-                                                                                                of Lorem Ipsum. Lorem Ipsum
-                                                                                                is
-                                                                                                simply dummy text of the
-                                                                                                printing
-                                                                                                and typesetting industry.
-                                                                                                with
-                                                                                                desktop publishing software
-                                                                                                like
-                                                                                                Aldus PageMaker including
-                                                                                                versions
-                                                                                                of Lorem Ipsum. Lorem Ipsum
-                                                                                                passages, and more recently
-                                                                                                with
-                                                                                                desktop publishing software
-                                                                                                like
-                                                                                                Aldus PageMaker including
-                                                                                                versions
-                                                                                                of Lorem Ipsum</p>
+                                                                        id="kt_tab_pane_5_e" role="tabpanel"
+                                                                        aria-labelledby="kt_tab_pane_5_e">
+                                                                        <!-- code-->
+                                                                        <div
+                                                                            class="justify-content-center my-10 px-8 my-lg-15 px-lg-10">
+                                                                            <div class="col-xl-12">
+                                                                                <div class="pb-5"
+                                                                                    data-wizard-type="step-content"
+                                                                                    data-wizard-state="current">
+                                                                                    <h6 class="text-success"><small>SUNDAY
+                                                                                            ,21-2021 TIME:01:15:28PM</small>
+                                                                                    </h6>
+                                                                                    <br>
+                                                                                
+                                                                                    <div class="form-group">
+                                                                                        <label class="text-muted font-size-sm">First Name</label>
+                                                                                        <p class="text-secondary font-weight-lighter font-size-sm">Neethumma</p>
+
+                                                                                    </div>
+                                                                                   
+                                                                                    <div class="row">
+                                                                                        <div class="col-xl-4">
+                                                                                            <!--begin::Input-->
+                                                                                            <div class="form-group">
+                                                                                                <label class="text-muted font-size-sm">Nationality</label>
+                                                                                                <p class="text-secondary font-weight-lighter font-size-sm">Neethumma</p>
+
+                                                                                            </div>
+                                                                                            <!--end::Input-->
                                                                                         </div>
+                                                                                        <div class="col-xl-4">
+                                                                                            <!--begin::Input-->
+                                                                                            <div class="form-group">
+                                                                                                <label class="text-muted font-size-sm">Gender</label>
+                                                                                                <p class="text-secondary font-weight-lighter font-size-sm">Neethumma</p>
+
+                                                                                            </div>
+                                                                                            <!--end::Input-->
+                                                                                        </div>
+                                                                                        <div class="col-xl-4">
+                                                                                            <div class="form-group">
+                                                                                                <label class="text-muted font-size-sm">DOB</label>
+                                                                                                <p class="text-secondary font-weight-lighter font-size-sm">Neethumma</p>
+
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="row">
+                                                                                        <div class="col-xl-4">
+                                                                                            <!--begin::Input-->
+                                                                                            <div class="form-group">
+                                                                                                <label class="text-muted font-size-sm">CitizenShip
+                                                                                                    Status</label>
+                                                                                                    <p class="text-secondary font-weight-lighter font-size-sm">Neethumma</p>
+
+                                                                                            </div>
+                                                                                            <!--end::Input-->
+                                                                                        </div>
+                                                                                        <div class="col-xl-4">
+                                                                                            <!--begin::Input-->
+                                                                                            <div class="form-group">
+                                                                                                <label class="text-muted font-size-sm">CitizenShip
+                                                                                                    Location</label>
+                                                                                                    <p class="text-secondary font-weight-lighter font-size-sm">Neethumma</p>
+
+                                                                                            </div>
+                                                                                            <!--end::Input-->
+                                                                                        </div>
+                                                                                        <div class="col-xl-4">
+                                                                                            <div class="form-group">
+                                                                                                <label class="text-muted font-size-sm">Citizenship ID
+                                                                                                    No</label>
+                                                                                                    <p class="text-secondary font-weight-lighter font-size-sm">Neethumma</p>
+
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row">
+                                                                                        <div class="col-xl-4">
+                                                                                            <!--begin::Input-->
+                                                                                            <div class="form-group">
+                                                                                                <label class="text-muted font-size-sm">Citizenship UID
+                                                                                                    No</label>
+                                                                                                    <p class="text-secondary font-weight-lighter font-size-sm">Neethumma</p>
+
+                                                                                            </div>
+                                                                                            <!--end::Input-->
+                                                                                        </div>
+                                                                                        <div class="col-xl-4">
+                                                                                            <!--begin::Input-->
+                                                                                            <div class="form-group">
+                                                                                                <label class="text-muted font-size-sm">Passport No</label>
+                                                                                                <p class="text-secondary font-weight-lighter font-size-sm">Neethumma</p>
+
+                                                                                            </div>
+                                                                                            <!--end::Input-->
+                                                                                        </div>
+                                                                                        <div class="col-xl-4">
+                                                                                            <!--begin::Select-->
+                                                                                            <div class="form-group">
+                                                                                                <label class="text-muted font-size-sm">Passport Type</label>
+                                                                                                <p class="text-secondary font-weight-lighter font-size-sm">Neethumma</p>
+
+
+                                                                                            </div>
+                                                                                            <!--end::Select-->
+                                                                                        </div>
+                                                                                    </div>
+
+
+
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+
+                                                                        <div
+                                                                            class="row  justify-content-center my-10 px-8 my-lg-15 px-lg-10">
+                                                                            <div class="col-xl-12 ">
+                                                                                <div class="pb-5">
+                                                                                    <div class="border-bottom">
+
+                                                                                        <h3 >LABEL TITLE  HERE</h3>
+                                                                                    </div>
+
+                                                                                    <br>
+                                                                                   
+                                                                                    <div class="row">
+                                                                                        <div class="col-xl-4">
+                                                                                            <div class="form-group">
+                                                                                                <label class="text-muted font-size-sm">Date Of Entry</label>
+                                                                                                <p class="text-secondary font-weight-lighter font-size-sm">Neethumma</p>
+
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row">
+                                                                                        <div class="col-xl-3">
+                                                                                            <!--begin::Input-->
+                                                                                            <div class="form-group">
+                                                                                                <label class="text-muted font-size-sm">Entered By</label>
+                                                                                                <p class="text-secondary font-weight-lighter font-size-sm">Neethumma</p>
+
+                                                                                            </div>
+                                                                                            <!--end::Input-->
+                                                                                        </div>
+                                                                                        <div class="col-xl-3">
+                                                                                            <!--begin::Input-->
+                                                                                            <div class="form-group">
+                                                                                                <label class="text-muted font-size-sm">Client Bought
+                                                                                                    By</label>
+                                                                                                    <p class="text-secondary font-weight-lighter font-size-sm">Neethumma</p>
+                                                                                            </div>
+                                                                                            <!--end::Input-->
+                                                                                        </div>
+                                                                                        <div class="col-xl-3">
+                                                                                            <!--begin::Input-->
+                                                                                            <div class="form-group">
+                                                                                                <label class="text-muted font-size-sm">Client Entity
+                                                                                                    By</label>
+                                                                                                    <p class="text-secondary font-weight-lighter font-size-sm">Neethumma</p>
+                                                                                            </div>
+                                                                                            <!--end::Input-->
+                                                                                        </div>
+                                                                                        <div class="col-xl-3">
+                                                                                            <!--begin::Input-->
+                                                                                            <div class="form-group">
+                                                                                                <label class="text-muted font-size-sm">Client Entity
+                                                                                                    Location</label>
+                                                                                                    <p class="text-secondary font-weight-lighter font-size-sm">Neethumma</p>
+                                                                                            </div>
+                                                                                            <!--end::Input-->
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row">
+                                                                                        <div
+                                                                                            class="border-bottom">
+
+                                                                                            <h4>LABEL TITLE HERE</h4>
+                                                                                        </div>
+
+                                                                                        <div class="col-md-12">
+                                                                                            <div class="table-responsive">
+                                                                                                <table class="table">
+                                                                                                    <thead>
+                                                                                                        <tr>
+                                                                                                            <th
+                                                                                                                class="pl-0 font-weight-bold text-muted text-uppercase">
+                                                                                                                Product type
+                                                                                                            </th>
+                                                                                                            <th
+                                                                                                            class="pl-0 font-weight-bold text-muted text-uppercase">
+                                                                                                                Manufacture
+                                                                                                                Type</th>
+                                                                                                            <th
+                                                                                                            class="pl-0 font-weight-bold text-muted text-uppercase">
+                                                                                                                shipped Type
+                                                                                                            </th>
+                                                                                                            <th
+                                                                                                            class="pl-0 font-weight-bold text-muted text-uppercase">
+                                                                                                                Digit</th>
+                                                                                                            <th
+                                                                                                            class="pl-0 font-weight-bold text-muted text-uppercase">
+                                                                                                                ML</th>
+                                                                                                            <th
+                                                                                                            class="pl-0 font-weight-bold text-muted text-uppercase">
+                                                                                                                GM</th>
+                                                                                                            <th
+                                                                                                            class="pl-0 font-weight-bold text-muted text-uppercase">
+                                                                                                                KG</th>
+                                                                                                        </tr>
+                                                                                                    </thead>
+                                                                                                    <tbody>
+                                                                                                        <tr
+                                                                                                            class="font-weight-boldest">
+                                                                                                            <td
+                                                                                                                class="pl-0 pt-7">
+                                                                                                                a</td>
+                                                                                                            <td
+                                                                                                                class="pl-0 pt-7">
+                                                                                                                a</td>
+                                                                                                            <td
+                                                                                                                class="pl-0 pt-7">
+                                                                                                                a</td>
+                                                                                                            <td
+                                                                                                                class="pl-0 pt-7">
+                                                                                                                a</td>
+                                                                                                            <td
+                                                                                                                class="pl-0 pt-7">
+                                                                                                                a</td>
+                                                                                                            <td
+                                                                                                                class="pl-0 pt-7">
+                                                                                                                a</td>
+                                                                                                            <td
+                                                                                                                class="pl-0 pt-7">
+                                                                                                                a</td>
+
+                                                                                                        </tr>
+
+                                                                                                    </tbody>
+                                                                                                </table>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                   
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div
+                                                                            class="row justify-content-center my-10 px-8 my-lg-15 px-lg-10">
+                                                                            <div class="col-xl-12 ">
+                                                                                <div class="pb-5">
+                                                                                    <div class="border-bottom">
+                                                                                        <h3>LABEL TITLE HERE</h3>
+                                                                                    </div>
+                                                                                    </br>
+                                                                                    <div class="row">
+                                                                                        <div class="col-xl-3">
+                                                                                            <div class="form-group">
+                                                                                                <label class="text-muted font-size-sm">Shipping No</label>
+                                                                                                <p class="text-secondary font-weight-lighter font-size-sm">Neethumma</p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-xl-3">
+                                                                                            <div class="form-group">
+                                                                                                <label class="text-muted font-size-sm">Coming From</label>
+                                                                                                <p class="text-secondary font-weight-lighter font-size-sm">Neethumma</p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-xl-3">
+                                                                                            <div class="form-group">
+                                                                                                <label class="text-muted font-size-sm">Going to</label>
+                                                                                                <p class="text-secondary font-weight-lighter font-size-sm">Neethumma</p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-xl-3">
+                                                                                            <div class="form-group">
+                                                                                                <label class="text-muted font-size-sm">Final
+                                                                                                    Destination</label>
+                                                                                                    <p class="text-secondary font-weight-lighter font-size-sm">Neethumma</p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <h6 class="mb-10 font-weight-bold text-dark">
+                                                                                        Label</h6>
+
+                                                                                    <div class="row">
+                                                                                        <div class="col-md-12">
+                                                                                            <div class="form-group">
+                                                                                                <label
+                                                                                                class="text-muted font-size-sm">Note</label>
+                                                                                                    <p class="text-secondary font-weight-lighter font-size-sm">Neethumma</p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <h6 class="mb-10 font-weight-bold text-dark"> Label</h6>
+                                                                                    <div class="row form-group">
+                                                                                        <div class="col-md-4">
+                                                                                            <label class="text-muted font-size-sm">Profile Picture</label>
+                                                                                        </div>
+                                                                                        <div class="col-md-4">
+                                                                                            <label class="text-muted font-size-sm">Product Image</label>
+                                                                                        </div>
+                                                                                        <div class="col-md-3">
+                                                                                            <label class="text-muted font-size-sm">Document</label>
+                                                                                       </div>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div
+                                                                            class="row justify-content-center my-10 px-8 my-lg-15 px-lg-10">
+                                                                            <div class="col-xl-12">
+                                                                                <div class="pb-5">
+                                                                                    <div  class="border-bottom">
+
+                                                                                        <h3>LABEL TITLE  HERE</h3>
+                                                                                    </div>
+                                                                                    </br>
+                                                                                    <div class="form-group row">
+                                                                                        <div class="col-xl-12">
+                                                                                            <div class="form-group">
+                                                                                                <label class="text-muted font-size-sm">Record Status</label>
+                                                                                                <p class="text-secondary font-weight-lighter font-size-sm">Neethumma</p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                            </div>
+                                                                        
+                                                                            <div class="col-xl-12">
+                                                                                <div class="pb-5">
+                                                                                    <div
+                                                                                        class="border-bottom">
+
+                                                                                        <h3>LABEL TITLE
+                                                                                            HERE</h3>
+                                                                                    </div>
+                                                                                    </br>
+                                                                                    <div class="form-group row">
+                                                                                        <div class="col-xl-12">
+                                                                                            <div class="form-group">
+                                                                                                <label class="text-muted font-size-sm">Record Department
+                                                                                                    Status</label>
+                                                                                                    <p class="text-secondary font-weight-lighter font-size-sm">Neethumma</p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                            </div>
+                                                                        
+                                                                            <div class="col-xl-12">
+                                                                                <div class="pb-5">
+                                                                                    <div  class="border-bottom">
+
+                                                                                        <h3>LABEL TITLE HERE</h3>
+                                                                                    </div>
+                                                                                    </br>
+                                                                                    <div class="form-group row">
+                                                                                        <div class="col-xl-12">
+                                                                                            <div class="form-group">
+                                                                                                <label class="text-muted font-size-sm">General
+                                                                                                    Director</label>
+                                                                                                    <p class="text-secondary font-weight-lighter font-size-sm">Neethumma</p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <!-- code end -->
+                                                                        
+
+
+                                                                    </div>
                                                                                         <div class="tab-pane fade"
                                                                                             id="kt_tab_pane_5_de"
                                                                                             role="tabpanel"
