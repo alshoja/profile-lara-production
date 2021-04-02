@@ -845,11 +845,20 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button"
-                                                                        class="btn btn-light-primary font-weight-bold"
-                                                                        data-dismiss="modal">Close</button>
-                                                                    <!-- <button type="button" class="btn btn-primary font-weight-bold">Save changes</button> -->
+                                                                <div class="card-body">
+                                                                    <div class="form-group mb-1">
+                                                                        <label for="exampleTextarea">Reply
+                                                                            Note <span
+                                                                                class="text-danger">*</span></label>
+                                                                        <textarea class="form-control"
+                                                                            id="replynote" rows="2"></textarea>
+                                                                    </div>
+                                                                    <br>
+                                                                    <div class="form-group mb-1">
+                                                                        <button onclick="replyNote()"
+                                                                            type="button"
+                                                                            class="btn btn-gradient-success font-weight-bold">Reply</button>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
