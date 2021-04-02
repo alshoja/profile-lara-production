@@ -2,7 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Models\Department;
+use App\Models\User;
 use App\Models\Profile;
+use App\Models\Section;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ProfileFactory extends Factory
@@ -48,8 +51,9 @@ class ProfileFactory extends Factory
             "record_status" => 'completed',
             "record_dep_transfer" => 'Done',
             "note" => "some note",
-            "dep_id" => '2',
-            "section_id" => '1',
+            "dep_id" => Department::factory(),
+            "section_id" => Section::factory(),
+            "employ_id" => User::factory()->state(['role' => 'employ']),
         ];
     }
 }

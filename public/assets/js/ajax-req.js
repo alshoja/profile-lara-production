@@ -293,12 +293,16 @@ function replyNote() {
 function AproveOrReject(action) {
   let profile_id = document.getElementById("profile_id");
   let note = document.getElementById("approve_note");
-
+  if (note.value == "") {
+    openAlert("error", "Required Empty", "A valid Note is required");
+    return false;
+  }
+  console.log(action);
   const payLoad = {};
-  payLoad.value = note.value;
+  payLoad.note = note.value;
   payLoad.profile_id = profile_id.value;
   payLoad.action = action;
-  const res = saveOrUpdateOrGet("profile/sign/", "POST", payLoad);
+  const res = saveOrUpdateOrGet("profile/sign/or/reject", "POST", payLoad);
   // getProfileData(res.profile_id);
   note.value = "";
   return res;

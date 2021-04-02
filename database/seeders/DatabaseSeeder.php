@@ -19,9 +19,9 @@ class DatabaseSeeder extends Seeder
             DepartmentSeeder::class,
             SectionSeeder::class,
             EmploySeeder::class,
-            // DepartmentHeadsSeeder::class,
-            // DirectorGdRelationSeeder::class,
-            // DepartmentHeadSeeder::class,
+            DepartmentHeadsSeeder::class,
+            // DepartmentGeneralDirector::class,
+            DepartmentHeadSeeder::class,
             ProfileSeeder::class,
             TimelineSeeder::class
         ]);

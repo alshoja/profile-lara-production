@@ -7,9 +7,10 @@ use App\Models\User;
 use App\Models\Profile;
 use App\Models\TimeLine;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Builder;
 
-class HomeController extends BaseController
+class HomeController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -36,7 +37,7 @@ class HomeController extends BaseController
         $dashData->profile = $this->getProfileChartCount($from, $to, $search_date);
         $dashData->users = $this->getUserChartCount($from, $to, $search_date);
         $dashData->analytics = $this->getAnalyticsCount($from, $to, $search_date);
-        $dashData->profileList = Profile::orderBy('id', 'desc')->where(function (Builder $query) use ($from, $to, $search_date) {
+        $dashData->profileList = Profile::with('trackings')->orderBy('id', 'desc')->where(function (Builder $query) use ($from, $to, $search_date) {
             if ($from  && $to) {
                 $query->where('created_at', '>=', $from)
                     ->where('created_at', '<=', $to);
@@ -44,7 +45,13 @@ class HomeController extends BaseController
             if ($search_date) {
                 $query->whereDate('created_at', '=', $search_date);
             }
-            return $query;
+            if (Auth::user()->role == "admin") {
+                return $query;
+            } else if (Auth::user()->role == "employ") {
+                return $query->whereIn('section_id', session('section'));;
+            } else {
+                return $query->whereIn('dep_id', session('department'));;
+            }
         })->take(5)->get();
         $dashData->usersCount = User::where(function (Builder $query) use ($from, $to, $search_date) {
             if ($from  && $to) {
@@ -65,7 +72,13 @@ class HomeController extends BaseController
             if ($search_date) {
                 $query->whereDate('created_at', '=', $search_date);
             }
-            return $query;
+            if (Auth::user()->role == "admin") {
+                return $query;
+            } else if (Auth::user()->role == "employ") {
+                return $query->whereIn('section_id', session('section'));;
+            } else {
+                return $query->whereIn('dep_id', session('department'));;
+            }
         })->count();
         $dashData->profileApproved = Profile::where('is_completed', 1)->where(function (Builder $query) use ($from, $to, $search_date) {
             if ($from  && $to) {
@@ -75,7 +88,13 @@ class HomeController extends BaseController
             if ($search_date) {
                 $query->whereDate('created_at', '=', $search_date);
             }
-            return $query;
+            if (Auth::user()->role == "admin") {
+                return $query;
+            } else if (Auth::user()->role == "employ") {
+                return $query->whereIn('section_id', session('section'));;
+            } else {
+                return $query->whereIn('dep_id', session('department'));;
+            }
         })->count();
         $dashData->activity = TimeLine::where('profile_id', 8)->where(function (Builder $query) use ($from, $to, $search_date) {
             if ($from  && $to) {
@@ -87,7 +106,7 @@ class HomeController extends BaseController
             }
             return $query;
         })->latest()->get();
-        // dd($dashData);
+       
         return view('home', compact('dashData'));
     }
 

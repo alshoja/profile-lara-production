@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\DepartmentDirector;
 use App\Models\DepartmentGeneralDirector;
+
 
 class DirectorGdRelationSeeder extends Seeder
 {

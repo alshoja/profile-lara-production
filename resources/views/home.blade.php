@@ -43,9 +43,10 @@
                         </div>
                         <!--end::Body-->
                     </div>
+
                     <!--end::Stats Widget 11-->
                     <!--begin::Stats Widget 12-->
-                    @if (Auth::user()->role != 'employ')
+                    {{-- @if (Auth::user()->role != 'employ') --}}
                         <div class="card card-custom card-stretch card-stretch-half gutter-b">
                             <!--begin::Body-->
                             <div class="card-body p-0">
@@ -82,7 +83,7 @@
                             </div>
                             <!--end::Body-->
                         </div>
-                    @endif
+                    {{-- @endif --}}
 
                     <!--end::Stats Widget 12-->
                 </div>
@@ -155,7 +156,7 @@
                             </div>
                             <!--end::Chart-->
                             <!--begin::Stats-->
-                            <div class="card-spacer mt-n25">
+                            <div class="card-spacer mt-n15">
                                 <!--begin::Row-->
                                 <div class="row m-0">
                                     <div class="col bg-light-warning px-6 py-8 rounded-xl mr-7 mb-7">

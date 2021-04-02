@@ -20,9 +20,6 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
-        SignOrRejectProfile::class => [
-            SignOrReject::class,
-        ],
     ];
 
     /**
@@ -33,5 +30,10 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+    }
+
+    public function shouldDiscoverEvents()
+    {
+        return true;
     }
 }

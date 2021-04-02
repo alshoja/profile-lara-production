@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Profile;
 use App\Models\Timeline;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -25,7 +26,7 @@ class TimeLineFactory extends Factory
             'name' => $this->faker->name,
             'note' => 'Some test notes which are under evaluation',
             'user_id' => 2,
-            'profile_id' => $this->faker->randomElement([1, 8]),
+            'profile_id' => Profile::factory(),
             'is_approved' =>  $this->faker->randomElement([0, 1]),
         ];
     }

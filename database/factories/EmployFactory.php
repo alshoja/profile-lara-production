@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Department;
 use App\Models\Employ;
 use App\Models\Section;
 use App\Models\User;
@@ -24,8 +25,8 @@ class EmployFactory extends Factory
     public function definition()
     {
         return [
-            'employ_id' => User::factory(),
-            'supervisor_id' => User::factory(),
+            'employ_id' => User::factory()->state(['role' => 'employ']),
+            'dep_id' => Department::factory(),
             'section_id' => Section::factory(),
         ];
     }
