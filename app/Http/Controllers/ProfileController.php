@@ -80,105 +80,100 @@ class ProfileController extends Controller
     public function store(Request $request)
     {
         $profile = new Profile();
-            $profile->name = $request->name;
-            $profile->nationality = $request->nationality;
-            $profile->dob = $request->dob;
-            $profile->gender = $request->gender;
-            $profile->citizen_status = $request->citizen_status;
-            $profile->citizen_location = $request->citizen_location;
-            $profile->citizen_id = $request->citizen_id;
-            $profile->citizen_uid = $request->citizen_uid;
-            $profile->passport_no = $request->passport_no;
-            $profile->passport_type = $request->passport_no;
-            $profile->entered_by="";
-            $profile-> bought_by="";
-            $profile->entity="";
-            $profile->entry_date="";
-            $profile->entity_location="";
-            $profile->shipping_no="";
-            $profile->coming_from="";
-            $profile->going_to="";
-            $profile->final_destination="";
-            $profile->profile_image="";
-            $profile->product_image="";
-            $profile->doc_image="";
-            $profile->record_status="";
-            $profile->record_dep_transfer="";
-            $profile->note="";
-            $profile->belongs_to=1;
-            $profile->dep_id=1;
-            $profile->section_id=1;
-            $profile->save();
-            return response()->json(['id' => $profile->id]);
+        $profile->name = $request->name;
+        $profile->nationality = $request->nationality;
+        $profile->dob = $request->dob;
+        $profile->gender = $request->gender;
+        $profile->citizen_status = $request->citizen_status;
+        $profile->citizen_location = $request->citizen_location;
+        $profile->citizen_id = $request->citizen_id;
+        $profile->citizen_uid = $request->citizen_uid;
+        $profile->passport_no = $request->passport_no;
+        $profile->passport_type = $request->passport_no;
+        $profile->entered_by = "";
+        $profile->bought_by = "";
+        $profile->entity = "";
+        $profile->entry_date = "";
+        $profile->entity_location = "";
+        $profile->shipping_no = "";
+        $profile->coming_from = "";
+        $profile->going_to = "";
+        $profile->final_destination = "";
+        $profile->profile_image = "";
+        $profile->product_image = "";
+        $profile->doc_image = "";
+        $profile->record_status = "";
+        $profile->record_dep_transfer = "";
+        $profile->note = "";
+        $profile->belongs_to = 1;
+        $profile->dep_id = session('department');
+        $profile->section_id = session('section')[0];
+        $profile->employ_id = Auth::user()->id;
+        $profile->save();
+        return response()->json(['id' => $profile->id]);
     }
-    public function updateUser(Request $request){
-        if($request->ajax())
-        {
-        $entered_by=$request->input('entered_by');
-        $bought_by=$request->input('bought_by');
-        $entity=$request->input('entity');
-        $entry_date=$request->input('entry_date');
-        $entity_location=$request->input('entity_location');
-        $editid=$request->input('editid');
-        try{
-            $data = array("entered_by"=>$entered_by,"bought_by"=>$bought_by,"entity"=>$entity,"entry_date"=>$entry_date,"entity_location"=>$entity_location);
-            Profile::updateData($editid, $data);
-            return response()->json(['success'=>'Form is successfully submitted!']);
+    public function updateUser(Request $request)
+    {
+        if ($request->ajax()) {
+            $entered_by = $request->input('entered_by');
+            $bought_by = $request->input('bought_by');
+            $entity = $request->input('entity');
+            $entry_date = $request->input('entry_date');
+            $entity_location = $request->input('entity_location');
+            $editid = $request->input('editid');
+            try {
+                $data = array("entered_by" => $entered_by, "bought_by" => $bought_by, "entity" => $entity, "entry_date" => $entry_date, "entity_location" => $entity_location);
+                Profile::updateData($editid, $data);
+                return response()->json(['success' => 'Form is successfully submitted!']);
+            } catch (\Illuminate\Database\QueryException $ex) {
+                dd($ex->getMessage());
             }
-            catch(\Illuminate\Database\QueryException $ex){ 
-                dd($ex->getMessage()); 
-            }
-        
         }
     }
     public function stageThree(Request $request)
     {
-        $shipping_no=$request->input('shipping_no');
-        $coming_from=$request->input('coming_from');
-        $going_to=$request->input('going_to');
-        $final_destination=$request->input('final_destination');
-        $profile_image=$request->file('profile_image')->store('images');
-        $product_image=$request->file('product_image')->store('images');
-        $doc_image=$request->file('doc_image')->store('images');
-        $note=$request->input('note');
-        $editid1=$request->input('editid1');
-        $data = array("shipping_no"=>$shipping_no,"coming_from"=>$coming_from,"going_to"=>$going_to,"final_destination"=>$final_destination,"profile_image"=>$profile_image,"product_image"=>$product_image,"doc_image"=>$doc_image,"note"=>$note);
-       try{
-             DB::table('profiles')->where('id', $editid1)->update($data);
-             return response()->json(['success'=>'Form is successfully submitted!']);
-          }
-        catch(\Illuminate\Database\QueryException $ex){ 
-            dd($ex->getMessage()); 
+        $shipping_no = $request->input('shipping_no');
+        $coming_from = $request->input('coming_from');
+        $going_to = $request->input('going_to');
+        $final_destination = $request->input('final_destination');
+        $profile_image = $request->file('profile_image')->store('images');
+        $product_image = $request->file('product_image')->store('images');
+        $doc_image = $request->file('doc_image')->store('images');
+        $note = $request->input('note');
+        $editid1 = $request->input('editid1');
+        $data = array("shipping_no" => $shipping_no, "coming_from" => $coming_from, "going_to" => $going_to, "final_destination" => $final_destination, "profile_image" => $profile_image, "product_image" => $product_image, "doc_image" => $doc_image, "note" => $note);
+        try {
+            DB::table('profiles')->where('id', $editid1)->update($data);
+            return response()->json(['success' => 'Form is successfully submitted!']);
+        } catch (\Illuminate\Database\QueryException $ex) {
+            dd($ex->getMessage());
         }
     }
     public function stageFour(Request $request)
     {
-      $record_status=$request->input('record_status');
-      $record_dep_transfer=$request->input('record_dep_transfer');
-      $editid3=$request->input('editid3');
-      $data = array("record_status"=>$record_status,"record_dep_transfer"=>$record_dep_transfer);
-      try{
-          DB::table('profiles')->where('id', $editid3)->update($data);
-          return response()->json(['success'=>'Form is successfully submitted!']);
-        }
-     catch(\Illuminate\Database\QueryException $ex){ 
-               dd($ex->getMessage()); 
+        $record_status = $request->input('record_status');
+        $record_dep_transfer = $request->input('record_dep_transfer');
+        $editid3 = $request->input('editid3');
+        $data = array("record_status" => $record_status, "record_dep_transfer" => $record_dep_transfer);
+        try {
+            DB::table('profiles')->where('id', $editid3)->update($data);
+            return response()->json(['success' => 'Form is successfully submitted!']);
+        } catch (\Illuminate\Database\QueryException $ex) {
+            dd($ex->getMessage());
         }
     }
     public function stageFive(Request $request)
-      {
-        $belongs_to =$request->input('belongs_to');
-        $editid4=$request->input('editid4');
-        $data = array("belongs_to"=>$belongs_to);
-        try{
+    {
+        $belongs_to = $request->input('belongs_to');
+        $editid4 = $request->input('editid4');
+        $data = array("belongs_to" => $belongs_to);
+        try {
             DB::table('profiles')->where('id', $editid4)->update($data);
-            return response()->json(['success'=>'Form is successfully submitted!']);
-          }
-             catch(\Illuminate\Database\QueryException $ex){ 
-                 dd($ex->getMessage()); 
-             }
-
-      }
+            return response()->json(['success' => 'Form is successfully submitted!']);
+        } catch (\Illuminate\Database\QueryException $ex) {
+            dd($ex->getMessage());
+        }
+    }
 
     /**
      * Display the specified resource.
