@@ -23,7 +23,7 @@ function saveOrUpdateOrGet(url, method, formData, id) {
     error: function (XMLHttpRequest, textStatus, errorThrown) {
       console.log(XMLHttpRequest);
       if (XMLHttpRequest.status != 400) {
-        openAlert("error", "Error", "Oops! Server Error !");
+        openAlert("error", "Error", "An Error occured while sending request!");
       }
     },
   });
