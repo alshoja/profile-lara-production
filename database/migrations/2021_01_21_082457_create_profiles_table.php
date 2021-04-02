@@ -28,7 +28,7 @@ class CreateProfilesTable extends Migration
             $table->string('entered_by');
             $table->string('bought_by');
             $table->string('entity');
-            $table->date('entry_date');
+            $table->string('entry_date');
             $table->string('entity_location');
             $table->string('shipping_no');
             $table->string('coming_from');

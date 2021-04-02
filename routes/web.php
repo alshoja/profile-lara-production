@@ -85,3 +85,11 @@ Route::delete('user/permission/super/{userId}/{depId}', [App\Http\Controllers\De
 // Time Line
 Route::get('timeline', [App\Http\Controllers\TimeLineController::class, 'store']);
 Route::post('timeline/reply/note', [App\Http\Controllers\TimeLineController::class, 'replyNote']);
+
+// Profile Management
+Route::get('profile/add-profile', [App\Http\Controllers\ProfileController::class, 'create'])->name('add profile');
+Route::post('profile/add-profile', [App\Http\Controllers\ProfileController::class, 'store'])->name('add profile');
+Route::post('updateUser', [App\Http\Controllers\ProfileController::class, 'updateUser'])->name('add profile');
+Route::post('stageThree', [App\Http\Controllers\ProfileController::class, 'stageThree'])->name('add profile');
+Route::post('stageFour', [App\Http\Controllers\ProfileController::class, 'stageFour'])->name('add profile');
+Route::post('stageFive', [App\Http\Controllers\ProfileController::class, 'stageFive'])->name('add profile');
