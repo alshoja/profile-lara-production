@@ -524,7 +524,8 @@
                                                 <!--end::Select-->
                                             </div>
                                         </div>
-                                        <button class="btn btn-success font-weight-bolder" id="submit" >save</button>
+                                        <button onclick="enableNext()" class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4" id="submit"  style="margin-right: 475;
+                                        margin-bottom: -25;">save</button>
                                     </div>
                                   
                                <!--<input type = 'submit' value = "Save" class="btn btn-success font-weight-bolder"/>-->
@@ -708,7 +709,9 @@
                                                  end::Form-->
                                                  </div>
                                              </div>
-                                            <button class="btn btn-success font-weight-bolder" id="submit"  type="submit">save</button>
+                                            <button class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4" id="submit"  type="submit" style="margin-bottom: -25;
+                                            margin-right: 475;
+                                            margin-top: 25;" onclick="enableNext()">save</button>
                                       </div>
 
                                 </form> 
@@ -870,7 +873,9 @@
                                         <!--end::Select
                                         <input type = 'submit' value = "Save" class="btn btn-success font-weight-bolder"/>
                                         <button class="btn btn-success font-weight-bolder" id="editstep">smave</button>-->
-                                        <button type="submit" id="submit" class="btn btn-success">Upload</button>
+                                        <button type="submit" id="submit" onclick="enableNext()" class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4" style="margin-top: 20;
+                                        margin-bottom: -25;
+                                        margin-right: 475;">Save</button>
                                     </div>
                                 </form>
                                 <form id="kt_form3" method="post" action="/stageFour">
@@ -911,7 +916,9 @@
                                                 </div>
                                             </div>
                                             
-                                            <button class="btn btn-success font-weight-bolder" id="submit"  type="submit">save</button>
+                                            <button class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4" id="submit"  type="submit" style="margin-top: 20;
+                                            margin-bottom: -45;
+                                            margin-right: 487;" onclick="enableNext()">save</button>
                                         </div>
                                  
                                     </div>
@@ -938,7 +945,9 @@
                                             </div>
                                         </div>
 
-                                        <button class="btn btn-success font-weight-bolder" id="submit"  type="submit">save</button>
+                                        <button class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4" id="submit"  type="submit" style="margin-top: 20;
+                                        margin-bottom: -26;
+                                        margin-right: 370">save</button>
 
                                         
                                         
@@ -947,18 +956,19 @@
                                     <!--begin::Wizard Actions-->
                                     <div class="d-flex justify-content-between border-top mt-5 pt-10">
                                         <div class="mr-2">
-                                            <button type="button"
-                                                class="btn btn-light-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
-                                                data-wizard-type="action-prev">Previous</button>
+                                            <button type="button" id="previous"
+                                                class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
+                                                data-wizard-type="action-prev" style="margin-top: -87;
+                                                margin-right: 235;" disabled onclick="enableNext()">Previous</button>
                                         </div>
                                         <div>
 
-                                            <div class="btn-group">
+                                            <div class="btn-group" >
                                                 <button type="button" data-wizard-type="action-submit"
-                                                    class="btn btn-success btn-gradient-success ">Save</button>
+                                                    class="btn btn-success btn-gradient-success " hidden>Save</button>
                                                 <button type="button" data-wizard-type="action-submit"
                                                     class="btn btn-primary btn-gradient-success dropdown-toggle dropdown-toggle-split"
-                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" hidden>
                                                     <span class="sr-only">Toggle Dropdown</span>
                                                 </button>
                                                 <div class="dropdown-menu">
@@ -967,9 +977,10 @@
                                             </div>
                                           
                                             <!-- <button type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-submit">Submit</button> -->
-                                            <button type="button"
+                                            <button id="next" type="button"
                                                 class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
-                                                data-wizard-type="action-next">Next</button>
+                                                data-wizard-type="action-next" style="margin-left: 500;
+                                                margin-top: -150;" disabled onclick="disableNext()">Next</button>
                                         </div>
                                     </div>
                                     <!--end::Wizard Actions-->
@@ -987,7 +998,20 @@
         <!--end::Container-->
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script type="text/javascript">
+        function enableNext() {
+            document.getElementById("next").disabled = false;
+        }
+       
+    </script>
+<script type="text/javascript">
+    function disableNext()
+    {
+        document.getElementById("next").disabled = true;  
+        document.getElementById("previous").disabled = false;  
 
+    }
+</script>
     <script type="text/javascript">
  
      $('#kt_form').on('submit',function(event){
