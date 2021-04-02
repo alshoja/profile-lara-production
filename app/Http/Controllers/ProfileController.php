@@ -29,7 +29,7 @@ class ProfileController extends Controller
         $tab = $request->input('tab');
         $from = $request->input('from');
         $to = $request->input('to');
-        $profiles = Profile::with('trackings')->orderBy('id', 'DESC')->where(function (Builder $query) use ($search, $tab, $from, $to) {
+        $profiles = Profile::with('trackings')->where(function (Builder $query) use ($search, $tab, $from, $to) {
             if ($search) {
                 $query->orWhere('name', 'like', '%' . $search . '%')
                     ->orWhere('name', 'like', '%' . $search . '%')
@@ -37,7 +37,33 @@ class ProfileController extends Controller
                     ->orWhere('gender', 'like', '%' . $search . '%');
             }
             if ($tab === "inbox") {
-                $query->whereHas('trackings');
+                $query->whereHas('trackings', function ($query) {
+                    if (Auth::user()->role == "supervisor") {
+                        $query->where('from', 'employ')
+                            ->where('status', 'pending')
+                            ->where('at_end_user', '!=', 1);
+                    }
+                    if (Auth::user()->role == "department_head") {
+                        $query->where('from', 'supervisor')
+                            ->where('status', 'pending')
+                            ->orWhere('status', 'rejected');
+                    }
+                    if (Auth::user()->role == "director") {
+                        $query->where('from', 'department_head')
+                            ->where('status', 'pending')
+                            ->orWhere('status', 'rejected');
+                    }
+                    if (Auth::user()->role == "general_director") {
+                        $query->where('from', 'director')
+                            ->where('status', 'pending')
+                            ->orWhere('status', 'rejected');
+                    }
+                    if (Auth::user()->role == "employ") {
+                        $query->where('from', 'employ')
+                            ->where('status', 'pending')
+                            ->where('at_end_user', 1);
+                    }
+                });
             }
             if ($tab === "drafts") {
                 $query->Where('is_drafted', 1);
@@ -55,8 +81,9 @@ class ProfileController extends Controller
             } else {
                 return $query->whereIn('dep_id', session('department'));
             }
-        })
-            ->paginate(5);
+        })->orderBy('id', 'DESC')->paginate(5);
+        // return response()->json($profiles, 200);
+
         return view('pages.inbox', compact('profiles'));
     }
 
@@ -252,63 +279,118 @@ class ProfileController extends Controller
 
     public function sigOrReject(Request $request)
     {
+        $res = null;
         if (Auth::user()->role != "admin" && Auth::user()->role != "employ") {
-            $Profile = Profile::findOrFail($request->profile_id);
             if ($request->action == "signed") {
-                $this->signProfile($request);
+                $res =  $this->signProfile($request);
             } else {
-                $this->rejectProfile($request);
+                $res = $this->rejectProfile($request);
             }
         } else {
             return response()->json(["error" => "You dont have permisison to do this action !"], 403);
         }
+        return response()->json([$res], 200);
     }
 
     public function signProfile(Request $request)
     {
-        $tracker = null;
-        $timeLine = new TimeLine();
-        $trackProfile  = new TrackProfile();
         $tracker = TrackProfile::where('profile_id', $request->profile_id)->orderBy('id', 'DESC')->first();
-        if (isset($tracker->sequencer)) {
-            $trackProfile->sequencer = $tracker->sequencer + 1;
-        } else {
-            $trackProfile->sequencer = 1;
+        $trackProfile  = new TrackProfile();
+        if ($tracker) {
+            $trackProfile->profile_id = $request->profile_id;
+            if (isset($tracker->sequencer)) {
+                $trackProfile->sequencer = $tracker->sequencer + 1;
+            } else {
+                $trackProfile->sequencer = 1;
+            }
+            $trackProfile->status = "pending";
+
+            $timeLine = new TimeLine();
+            $timeLine->profile_id = $request->profile_id;
+            $timeLine->note = $request->note;
+            $trackCheck = TrackProfile::where('from', Auth::user()->role)->where('profile_id', $request->profile_id)->count();
+            if ($trackCheck == 0) {
+                $signDocEvent = SignDocument::dispatch($trackProfile);
+                $addEntryEvent = AddTimeLineNote::dispatch($timeLine);
+                return ['timeline' => $addEntryEvent, 'action' => $signDocEvent];
+            }
         }
-        $trackProfile->status = "approved";
-
-        $timeLine->profile_id = $request->profile_id;
-        $timeLine->note = $request->note;
-
-        $signDocEvent = SignDocument::dispatch($trackProfile);
-        $addEntryEvent = AddTimeLineNote::dispatch($timeLine);
-        return response()->json([$signDocEvent, $addEntryEvent], 200);
+        return false;
     }
 
     public function rejectProfile(Request $request)
     {
-        $timeLine = new TimeLine();
-        TrackProfile::where('profile_id', $request->profile_id)->orderBy('id', 'DESC')->first()->delete();
         $trackProfile = TrackProfile::where('profile_id', $request->profile_id)->orderBy('id', 'DESC')->first();
-        $trackProfile->status = "rejected";
+        if ($trackProfile) {
 
-        $timeLine->profile_id = $request->profile_id;
-        $timeLine->note = $request->note;
+            $trackProfile->profile_id = $request->profile_id;
+            $trackProfile->id = $trackProfile->id;
 
-        $rejectDocEvent = RejectDocument::dispatch($trackProfile);
-        $addEntryEvent = AddTimeLineNote::dispatch($timeLine);
-        return response()->json([$rejectDocEvent, $addEntryEvent], 200);
+            $timeLine = new TimeLine();
+            $timeLine->profile_id = $request->profile_id;
+            $timeLine->note = $request->note;
+
+            $rejectDocEvent = RejectDocument::dispatch($trackProfile);
+            $addEntryEvent = AddTimeLineNote::dispatch($timeLine);
+        } else {
+            return response()->json(['error' => 'You dont have permission'], 500);
+        }
+        return ['timeline' => $addEntryEvent, 'action' => $rejectDocEvent];
     }
 
-    public function testind()
+    public function inbox(Request $request)
     {
-        $tracker = null;
-        $tracker = TrackProfile::where('profile_id', 11)->orderBy('id', 'DESC')->first();
-        if (isset($tracker->sequencer)) {
-            dd('True');
-        } else {
-            dd('false');
-        }
-        return response()->json($tracker, 200);
+        $search = request()->query('search');
+        $from = $request->input('from');
+        $to = $request->input('to');
+        $profiles = Profile::with('trackings')->where(function (Builder $query) use ($search, $from, $to) {
+            if ($search) {
+                $query->orWhere('name', 'like', '%' . $search . '%')
+                    ->orWhere('name', 'like', '%' . $search . '%')
+                    ->orWhere('nationality', 'like', '%' . $search . '%')
+                    ->orWhere('gender', 'like', '%' . $search . '%');
+            }
+            $query->whereHas('trackings', function ($query) {
+                if (Auth::user()->role == "supervisor") {
+                    $query->where('status', 'pending')
+                        ->orWhere('status', 'rejected')
+                        ->where('from', 'employ')
+                        ->where('id', 8);
+                }
+                if (Auth::user()->role == "department_head") {
+                    $query->where('status', 'pending')
+                        ->orWhere('status', 'rejected')
+                        ->where('from', 'supervisor');
+                }
+                if (Auth::user()->role == "director") {
+                    $query->where('status', 'pending')
+                        ->where('from', 'department_head')
+                        ->orWhere('status', 'rejected');
+                }
+                if (Auth::user()->role == "general_director") {
+                    $query->where('status', 'pending')
+                        ->where('from', 'director')
+                        ->orWhere('status', 'rejected');
+                }
+                if (Auth::user()->role == "employ") {
+                    $query->where('status', 'rejected')
+                        ->where('from', 'employ');
+                }
+            });
+
+            if ($from && $to) {
+                $query->whereBetween('created_at', [$from, $to]);
+            }
+            if (Auth::user()->role == "admin") {
+                return $query;
+            } else if (Auth::user()->role == "employ") {
+                return $query->where('employ_id', Auth::user()->id);
+            } else {
+                return $query->whereIn('dep_id', session('department'));
+            }
+        })->orderBy('id', 'DESC')->paginate(5);
+        // return response()->json($profiles, 200);
+
+        return view('pages.inbox', compact('profiles'));
     }
 }

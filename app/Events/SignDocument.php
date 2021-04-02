@@ -7,7 +7,7 @@ use Illuminate\Foundation\Events\Dispatchable;
 class SignDocument
 {
     use Dispatchable;
-    public $profileTimeline;
+    public $trackProfile;
 
 
     /**
@@ -16,8 +16,8 @@ class SignDocument
      * @return void
      */
 
-    public function __construct($profileTimeline)
+    public function __construct($trackProfile)
     {
-        $this->profileTimeline = $profileTimeline;
+        $this->trackProfile = $trackProfile;
     }
 }
