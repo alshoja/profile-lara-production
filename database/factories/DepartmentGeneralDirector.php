@@ -7,7 +7,7 @@ use App\Models\User;
 use App\Models\DirectorGdRelation;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class DirectorGdRelationFactory extends Factory
+class DepartmentGeneralDirector extends Factory
 {
     /**
      * The name of the factory's corresponding model.

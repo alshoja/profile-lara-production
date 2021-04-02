@@ -45,6 +45,7 @@ class CreateProfilesTable extends Migration
             $table->tinyInteger('is_drafted')->nullable();
             $table->foreignId('dep_id')->constrained('departments');
             $table->foreignId('section_id')->constrained('sections');
+            $table->foreignId('employ_id')->constrained('users');
             $table->timestamps();
         });
     }

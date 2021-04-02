@@ -15,18 +15,11 @@ class CreateTrackProfileStatusesTable extends Migration
     {
         Schema::create('track_profiles', function (Blueprint $table) {
             $table->id();
-            $table->string('role');
+            $table->string('from');
             $table->tinyInteger('profile_id');
-            $table->tinyInteger('general_director_id')->nullable();
-            $table->tinyInteger('director_id')->nullable();
-            $table->tinyInteger('depart_head_id')->nullable();
-            $table->tinyInteger('supervisor_id')->nullable();
-            $table->tinyInteger('employ_id')->default(0)->nullable();
-            $table->tinyInteger('approved_by')->default(0)->nullable();
-            $table->tinyInteger('is_notify')->nullable();
-            $table->tinyInteger('is_rejected')->default(0)->nullable();
-            $table->tinyInteger('is_rejected_by')->default(0)->nullable();
-            $table->tinyInteger('is_completed')->nullable();
+            $table->tinyInteger('sequencer');
+            $table->string('status');
+            $table->tinyInteger('owned_by');
             $table->timestamps();
         });
     }

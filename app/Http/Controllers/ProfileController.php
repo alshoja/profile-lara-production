@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\AddTimeLineNote;
+use App\Events\RejectDocument;
+use App\Events\SignDocument;
 use App\Events\SignOrRejectProfile;
 use App\Models\Profile;
 use Exception;
 use App\Models\TimeLine;
+use App\Models\TrackProfile;
 use Illuminate\Http\Request;
 use Validator;
 use Illuminate\Support\Facades\App;
@@ -26,7 +30,7 @@ class ProfileController extends Controller
         $tab = $request->input('tab');
         $from = $request->input('from');
         $to = $request->input('to');
-        $profiles = Profile::orderBy('id', 'DESC')->where(function (Builder $query) use ($search, $tab, $from, $to) {
+        $profiles = Profile::with('trackings')->orderBy('id', 'DESC')->where(function (Builder $query) use ($search, $tab, $from, $to) {
             if ($search) {
                 $query->orWhere('name', 'like', '%' . $search . '%')
                     ->orWhere('name', 'like', '%' . $search . '%')
@@ -34,18 +38,24 @@ class ProfileController extends Controller
                     ->orWhere('gender', 'like', '%' . $search . '%');
             }
             if ($tab === "inbox") {
-                $query->orWhere('is_completed', 0);
+                $query->whereHas('trackings');
             }
             if ($tab === "drafts") {
-                $query->orWhere('is_drafted', 1);
+                $query->Where('is_drafted', 1);
             }
             if ($tab === "completed") {
-                $query->orWhere('is_completed', 1);
+                $query->Where('is_completed', 1);
             }
             if ($from && $to) {
                 $query->whereBetween('created_at', [$from, $to]);
             }
-            return $query;
+            if (Auth::user()->role == "admin") {
+                return $query;
+            } else if (Auth::user()->role == "employ") {
+                return $query->where('employ_id', Auth::user()->id);
+            } else {
+                return $query->whereIn('dep_id', session('department'));
+            }
         })
             ->paginate(5);
         return view('pages.inbox', compact('profiles'));
@@ -263,60 +273,62 @@ class ProfileController extends Controller
     {
         if (Auth::user()->role != "admin" && Auth::user()->role != "employ") {
             $Profile = Profile::findOrFail($request->profile_id);
-            if ($request->action == "sign") {
-                $this->signProfile($request, $Profile);
+            if ($request->action == "signed") {
+                $this->signProfile($request);
             } else {
-                $this->rejectprofile($request, $Profile);
+                $this->rejectProfile($request);
             }
         } else {
             return response()->json(["error" => "You dont have permisison to do this action !"], 403);
         }
     }
 
-    public function signProfile(Request $request, Profile $Profile)
+    public function signProfile(Request $request)
     {
-        if (Auth::user()->role == "general_director") {
-            $Profile->general_director_id = Auth::user()->id;
-            $Profile->is_completed = 1;
-            SignOrRejectProfile::dispatch($Profile);
+        $tracker = null;
+        $timeLine = new TimeLine();
+        $trackProfile  = new TrackProfile();
+        $tracker = TrackProfile::where('profile_id', $request->profile_id)->orderBy('id', 'DESC')->first();
+        if (isset($tracker->sequencer)) {
+            $trackProfile->sequencer = $tracker->sequencer + 1;
+        } else {
+            $trackProfile->sequencer = 1;
         }
-        if (Auth::user()->role == "director") {
-            $Profile->director_id = Auth::user()->id;
-        }
-        if (Auth::user()->role == "department_head") {
-            $Profile->depart_head_id = Auth::user()->id;
-        }
-        if (Auth::user()->role == "supervisor") {
-            $Profile->supervisor_id = Auth::user()->id;
-        }
-        $Profile->save();
-        return response()->json($Profile, 200);
+        $trackProfile->status = "approved";
+
+        $timeLine->profile_id = $request->profile_id;
+        $timeLine->note = $request->note;
+
+        // stashed content check
+        $signDocEvent = SignDocument::dispatch($trackProfile);
+        $addEntryEvent = AddTimeLineNote::dispatch($timeLine);
+        return response()->json([$signDocEvent, $addEntryEvent], 200);
     }
 
-    public function rejectprofile(Request $request, $Profile)
+    public function rejectProfile(Request $request)
     {
-        if (Auth::user()->role == "general_director") {
-            $Profile->general_director_id = Auth::user()->id;
-            $Profile->is_completed = 1;
-        }
-        if (Auth::user()->role == "director") {
-            $Profile->director_id = Auth::user()->id;
-        }
-        if (Auth::user()->role == "department_head") {
-            $Profile->depart_head_id = Auth::user()->id;
-        }
-        if (Auth::user()->role == "supervisor") {
-            $Profile->supervisor_id = Auth::user()->id;
-        }
-        $Profile->save();
-        return response()->json($Profile, 200);
+        $timeLine = new TimeLine();
+        TrackProfile::where('profile_id', $request->profile_id)->orderBy('id', 'DESC')->first()->delete();
+        $trackProfile = TrackProfile::where('profile_id', $request->profile_id)->orderBy('id', 'DESC')->first();
+        $trackProfile->status = "rejected";
+
+        $timeLine->profile_id = $request->profile_id;
+        $timeLine->note = $request->note;
+
+        $rejectDocEvent = RejectDocument::dispatch($trackProfile);
+        $addEntryEvent = AddTimeLineNote::dispatch($timeLine);
+        return response()->json([$rejectDocEvent, $addEntryEvent], 200);
     }
 
     public function testind()
     {
-        $Profile = Profile::find(1);
-        $event = SignOrRejectProfile::dispatch($Profile);
-        return response()->json($event, 200);
-
+        $tracker = null;
+        $tracker = TrackProfile::where('profile_id', 11)->orderBy('id', 'DESC')->first();
+        if (isset($tracker->sequencer)) {
+            dd('True');
+        } else {
+            dd('false');
+        }
+        return response()->json($tracker, 200);
     }
 }
