@@ -17,7 +17,7 @@ class CreateTrackProfileStatusesTable extends Migration
             $table->id();
             $table->string('from');
             $table->tinyInteger('profile_id');
-            $table->tinyInteger('sequencer');
+            // $table->tinyInteger('sequencer');
             $table->tinyInteger('at_end_user')->default(0)->nullable();
             $table->string('status');
             $table->tinyInteger('owned_by');

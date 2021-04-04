@@ -27,6 +27,7 @@ class SignDocumentListener
      */
     public function handle(SignDocument $event)
     {
+        $track = null;
         if (Auth::user()->role == "supervisor") {
             $track = TrackProfile::where('from', 'employ')->where('profile_id', $event->trackProfile->profile_id)->firstOrFail();
             $track->status = "approved";
@@ -51,13 +52,12 @@ class SignDocumentListener
             $track->status = "approved";
             $track->save();
         }
-        if (Auth::user()->role != "general_director" && Auth::user()->role != "employ") {
+        if (Auth::user()->role != "general_director" && Auth::user()->role != "employ" && Auth::user()->role != "admin") {
             $trackProfile = new TrackProfile();
             $trackProfile->from = Auth::user()->role;
             $trackProfile->profile_id =  $event->trackProfile->profile_id;
             $trackProfile->status =  $event->trackProfile->status;
             $trackProfile->owned_by = Auth::user()->id;
-            $trackProfile->sequencer =  $event->trackProfile->sequencer;
             $trackProfile->save();
             return $trackProfile;
         }

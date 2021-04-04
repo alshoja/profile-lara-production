@@ -289,7 +289,7 @@ class ProfileController extends Controller
         } else {
             return response()->json(["error" => "You dont have permisison to do this action !"], 403);
         }
-        return response()->json([$res], 200);
+        return response()->json(["message" => 'Document Approved'], 200);
     }
 
     public function signProfile(Request $request)
@@ -298,11 +298,6 @@ class ProfileController extends Controller
         $trackProfile  = new TrackProfile();
         if ($tracker) {
             $trackProfile->profile_id = $request->profile_id;
-            if (isset($tracker->sequencer)) {
-                $trackProfile->sequencer = $tracker->sequencer + 1;
-            } else {
-                $trackProfile->sequencer = 1;
-            }
             $trackProfile->status = "pending";
 
             $timeLine = new TimeLine();
@@ -312,7 +307,7 @@ class ProfileController extends Controller
             if ($trackCheck == 0) {
                 $signDocEvent = SignDocument::dispatch($trackProfile);
                 $addEntryEvent = AddTimeLineNote::dispatch($timeLine);
-                return ['timeline' => $addEntryEvent, 'action' => $signDocEvent];
+                return $signDocEvent;
             }
         }
         return false;
@@ -335,7 +330,7 @@ class ProfileController extends Controller
         } else {
             return response()->json(['error' => 'You dont have permission'], 500);
         }
-        return ['timeline' => $addEntryEvent, 'action' => $rejectDocEvent];
+        return  $rejectDocEvent;
     }
 
     public function inbox(Request $request)

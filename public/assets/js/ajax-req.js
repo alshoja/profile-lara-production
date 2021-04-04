@@ -16,9 +16,10 @@ function saveOrUpdateOrGet(url, method, formData, id) {
     async: false,
     dataType: "json",
     success: (data) => {
-      // console.log(data);
+      console.log(data);
       res = data;
-      showToast("Item added", "", "info");
+      let message = res.message ? res.message : "Done";
+      showToast(message, "", "info");
     },
     error: function (XMLHttpRequest, textStatus, errorThrown) {
       console.log(XMLHttpRequest);
