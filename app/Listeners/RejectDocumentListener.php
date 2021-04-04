@@ -32,6 +32,8 @@ class RejectDocumentListener
             $track = TrackProfile::where('from', 'employ')->where('profile_id', $event->trackProfile_r->profile_id)->first();
             $track->status = "pending";
             $track->at_end_user = 1;
+            $track->is_rejected = 1;
+            $track->is_rejected_by = Auth::user()->id;
             $track->save();
         }
         if (Auth::user()->role == "department_head") {
@@ -39,6 +41,8 @@ class RejectDocumentListener
             if ($track) {
                 $tracking = TrackProfile::where('from', 'employ')->where('profile_id', $event->trackProfile_r->profile_id)->first();
                 $tracking->status = "pending";
+                $track->is_rejected = 1;
+                $track->is_rejected_by = Auth::user()->id;
                 $tracking->save();
             }
         }
@@ -47,6 +51,8 @@ class RejectDocumentListener
             if ($track) {
                 $tracking = TrackProfile::where('from', 'supervisor')->where('profile_id', $event->trackProfile_r->profile_id)->first();
                 $tracking->status = "pending";
+                $track->is_rejected = 1;
+                $track->is_rejected_by = Auth::user()->id;
                 $tracking->save();
             }
         }
@@ -55,6 +61,8 @@ class RejectDocumentListener
             if ($track) {
                 $tracking = TrackProfile::where('from', 'department_head')->where('profile_id', $event->trackProfile_r->profile_id)->first();
                 $tracking->status = "pending";
+                $track->is_rejected = 1;
+                $track->is_rejected_by = Auth::user()->id;
                 $tracking->save();
             }
         }

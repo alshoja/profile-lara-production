@@ -242,6 +242,19 @@
                                                                                     class="navi-text">Track</span>
                                                                             </a>
                                                                         </li>
+                                                                        @if (request()->query('tab') == 'inbox')
+                                                                            <li class="navi-item">
+                                                                                <a href="{{ url('') }}"
+                                                                                    class="navi-link">
+                                                                                    <span class="navi-icon">
+                                                                                        <i
+                                                                                            class="flaticon-paper-plane"></i>
+                                                                                    </span>
+                                                                                    <span class="navi-text">Resubmit</span>
+                                                                                </a>
+                                                                            </li>
+                                                                        @endif
+
                                                                         {{-- <li class="navi-item">
                                                                             <a href="#" class="navi-link">
                                                                                 <span class="navi-icon">

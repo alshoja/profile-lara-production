@@ -39,6 +39,7 @@ Route::get('forward/new/{id}', [App\Http\Controllers\ProfileController::class, '
 Route::get('profile/details/{id}', [App\Http\Controllers\ProfileController::class, 'getProfileById'])->name('single profile');
 Route::post('profile/sign/or/reject', [App\Http\Controllers\ProfileController::class, 'sigOrReject']);
 Route::get('profile/delete/{id}', [App\Http\Controllers\ProfileController::class, 'destroy'])->name('destroy');
+Route::get('profile/resubmit/{id}', [App\Http\Controllers\ProfileController::class, 'reSubmit'])->name('reSubmit');
 
 // User Management 
 Route::get('user/list-users', [App\Http\Controllers\UserController::class, 'index']);

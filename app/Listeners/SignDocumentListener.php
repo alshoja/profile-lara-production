@@ -43,7 +43,6 @@ class SignDocumentListener
         if (Auth::user()->role == "director") {
             $track = TrackProfile::where('from', 'department_head')->where('profile_id', $event->trackProfile->profile_id)->firstOrFail();
             $track->where('profile_id', $event->trackProfile->profile_id);
-            $track->status = "approved";
             $track->save();
         }
         if (Auth::user()->role == "general_director") {
@@ -57,6 +56,7 @@ class SignDocumentListener
             $trackProfile->from = Auth::user()->role;
             $trackProfile->profile_id =  $event->trackProfile->profile_id;
             $trackProfile->status =  $event->trackProfile->status;
+            $track->is_rejected = 0;
             $trackProfile->owned_by = Auth::user()->id;
             $trackProfile->save();
             return $trackProfile;
