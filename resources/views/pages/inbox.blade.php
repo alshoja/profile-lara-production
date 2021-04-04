@@ -367,7 +367,7 @@
                                                                                             Name</label>
                                                                                         <p id="name"
                                                                                             class="text-secondary font-weight-lighter font-size-sm">
-                                                                                            Neethumma</p>
+                                                                                            </p>
 
                                                                                     </div>
 
@@ -379,7 +379,7 @@
                                                                                                     class="text-muted font-size-sm">Nationality</label>
                                                                                                 <p id="nationality"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                    </p>
 
                                                                                             </div>
                                                                                             <!--end::Input-->
@@ -391,7 +391,7 @@
                                                                                                     class="text-muted font-size-sm">Gender</label>
                                                                                                 <p id="gender"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                    </p>
 
                                                                                             </div>
                                                                                             <!--end::Input-->
@@ -402,7 +402,7 @@
                                                                                                     class="text-muted font-size-sm">DOB</label>
                                                                                                 <p id="dob"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                    </p>
 
                                                                                             </div>
                                                                                         </div>
@@ -417,7 +417,7 @@
                                                                                                     Status</label>
                                                                                                 <p id="citizen_status"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                    </p>
 
                                                                                             </div>
                                                                                             <!--end::Input-->
@@ -430,7 +430,7 @@
                                                                                                     Location</label>
                                                                                                 <p id="citizen_location"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                    </p>
 
                                                                                             </div>
                                                                                             <!--end::Input-->
@@ -443,7 +443,7 @@
                                                                                                     No</label>
                                                                                                 <p id="citizen_id"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                    </p>
 
                                                                                             </div>
                                                                                         </div>
@@ -458,7 +458,7 @@
                                                                                                     No</label>
                                                                                                 <p id="citizen_uid"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                    </p>
 
                                                                                             </div>
                                                                                             <!--end::Input-->
@@ -471,7 +471,7 @@
                                                                                                     No</label>
                                                                                                 <p id="passport_no"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                    </p>
 
                                                                                             </div>
                                                                                             <!--end::Input-->
@@ -484,7 +484,7 @@
                                                                                                     Type</label>
                                                                                                 <p id="passport_type"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                    </p>
 
 
                                                                                             </div>
@@ -516,9 +516,8 @@
                                                                                                 <label
                                                                                                     class="text-muted font-size-sm">Date
                                                                                                     Of Entry</label>
-                                                                                                <p
-                                                                                                    class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                <p id="entry_date" class="text-secondary font-weight-lighter font-size-sm">
+                                                                                                    </p>
 
                                                                                             </div>
                                                                                         </div>
@@ -532,7 +531,7 @@
                                                                                                     By</label>
                                                                                                 <p id="entered_by"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                    </p>
 
                                                                                             </div>
                                                                                             <!--end::Input-->
@@ -546,7 +545,7 @@
                                                                                                     By</label>
                                                                                                 <p id="bought_by"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                    </p>
                                                                                             </div>
                                                                                             <!--end::Input-->
                                                                                         </div>
@@ -559,7 +558,7 @@
                                                                                                     By</label>
                                                                                                 <p id="entity"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                    </p>
                                                                                             </div>
                                                                                             <!--end::Input-->
                                                                                         </div>
@@ -572,7 +571,7 @@
                                                                                                     Location</label>
                                                                                                 <p id="entity_location"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                    </p>
                                                                                             </div>
                                                                                             <!--end::Input-->
                                                                                         </div>
@@ -666,7 +665,7 @@
                                                                                                     No</label>
                                                                                                 <p id="shipping_no"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                    </p>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="col-xl-3">
@@ -676,7 +675,7 @@
                                                                                                     From</label>
                                                                                                 <p id="coming_from"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                    </p>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="col-xl-3">
@@ -686,7 +685,7 @@
                                                                                                     to</label>
                                                                                                 <p id="going_to"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                    </p>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="col-xl-3">
@@ -696,7 +695,7 @@
                                                                                                     Destination</label>
                                                                                                 <p id="final_destination"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                    </p>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -712,7 +711,7 @@
                                                                                                     class="text-muted font-size-sm">Note</label>
                                                                                                 <p id="note"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                    </p>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -725,24 +724,24 @@
                                                                                             <label
                                                                                                 class="text-muted font-size-sm">Profile
                                                                                                 Picture</label>
-                                                                                            <p id="profile_image"
+                                                                                            <img id="profile_image"
                                                                                                 class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                Neethumma</p>
+                                                                                                
                                                                                         </div>
                                                                                         <div class="col-md-4">
                                                                                             <label
                                                                                                 class="text-muted font-size-sm">Product
                                                                                                 Image</label>
-                                                                                            <p id="product_image"
+                                                                                            <img id="product_image"
                                                                                                 class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                Neethumma</p>
+                                                                                               
                                                                                         </div>
-                                                                                        <div class="col-md-3">
+                                                                                        <div class="col-md-4">
                                                                                             <label
                                                                                                 class="text-muted font-size-sm">Document</label>
-                                                                                            <p id="doc_image"
+                                                                                            <img id="doc_image"
                                                                                                 class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                Neethumma</p>
+                                                                                                
                                                                                         </div>
                                                                                     </div>
 
@@ -767,7 +766,7 @@
                                                                                                     Status</label>
                                                                                                 <p id="record_status"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                    </p>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -792,7 +791,7 @@
                                                                                                     Status</label>
                                                                                                 <p id="record_dep_transfer"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                    </p>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -815,7 +814,7 @@
                                                                                                     Director</label>
                                                                                                 <p id="belongs_to"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                    </p>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
