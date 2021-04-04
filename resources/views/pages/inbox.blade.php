@@ -244,11 +244,10 @@
                                                                         </li>
                                                                         @if (request()->query('tab') == 'inbox')
                                                                             <li class="navi-item">
-                                                                                <a href="{{ url('') }}"
+                                                                                <a href="{{ url('profile/resubmit', $item->id) }}"
                                                                                     class="navi-link">
                                                                                     <span class="navi-icon">
-                                                                                        <i
-                                                                                            class="flaticon-paper-plane"></i>
+                                                                                        <i class="flaticon-paper-plane"></i>
                                                                                     </span>
                                                                                     <span class="navi-text">Resubmit</span>
                                                                                 </a>
@@ -867,7 +866,7 @@
                                                                                             name="approve_note"
                                                                                             class="form-control notebook"
                                                                                             id="approve_note"
-                                                                                            rows="2"></textarea>
+                                                                                            rows="2">Approved</textarea>
                                                                                     </p>
                                                                                     <div
                                                                                         class="ml-4 ml-lg-0 ml-xxl-4 flex-shrink-0">

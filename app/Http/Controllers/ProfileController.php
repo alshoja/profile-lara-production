@@ -340,13 +340,13 @@ class ProfileController extends Controller
         }
     }
 
-    public function reSubmit($id, $profile_id)
+    public function reSubmit($id)
     {
         if (Auth::user()->role == "employ") {
-            $trackProfile = TrackProfile::where('id', $id)->where('profile_id', $profile_id)->first();
+            $trackProfile = TrackProfile::where('at_end_user', 1)->where('profile_id', $id)->first();
             $trackProfile->at_end_user = 0;
             $trackProfile->save();
-            return  $trackProfile;
         }
+        return back()->with('message', 'Forwaded updated');
     }
 }

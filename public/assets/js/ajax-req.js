@@ -310,6 +310,6 @@ function AproveOrReject(action) {
   note.value = "";
   reject_button.disabled = true;
   approve_button.disabled = true;
-  // location.reload();
+  location.reload();
   return res;
 }
