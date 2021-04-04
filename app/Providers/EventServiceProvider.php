@@ -2,8 +2,14 @@
 
 namespace App\Providers;
 
+use App\Events\AddTimeLineNote;
+use App\Events\RejectDocument;
+use App\Events\SignDocument;
 use App\Events\SignOrRejectProfile;
+use App\Listeners\RejectDocumentListener;
+use App\Listeners\SignDocumentListener;
 use App\Listeners\SignOrReject;
+use App\Listeners\TimeLineNoteListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -19,6 +25,15 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         Registered::class => [
             SendEmailVerificationNotification::class,
+        ],
+        SignDocument::class => [
+            SignDocumentListener::class,
+        ],
+        RejectDocument::class => [
+            RejectDocumentListener::class,
+        ],
+        AddTimeLineNote::class => [
+            TimeLineNoteListener::class,
         ],
     ];
 

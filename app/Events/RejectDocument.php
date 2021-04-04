@@ -8,7 +8,7 @@ use Illuminate\Foundation\Events\Dispatchable;
 class RejectDocument
 {
     use Dispatchable;
-    public $profileTimeline;
+    public $trackProfile_r;
 
 
     /**
@@ -17,8 +17,8 @@ class RejectDocument
      * @return void
      */
 
-    public function __construct($profileTimeline)
+    public function __construct($trackProfile_r)
     {
-        $this->profileTimeline = $profileTimeline;
+        $this->trackProfile_r = $trackProfile_r;
     }
 }

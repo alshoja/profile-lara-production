@@ -13,8 +13,8 @@ let showToast = (message, title, type) => {
       element: "body",
       position: null,
       type: type,
-      //   allow_dismiss: true,
-      newest_on_top: false,
+        allow_dismiss: true,
+      newest_on_top: true,
       showProgressbar: false,
       placement: {
         from: "top",
@@ -24,7 +24,7 @@ let showToast = (message, title, type) => {
       spacing: 10,
       z_index: 1031,
       delay: 500,
-      timer: 100,
+      timer: 300,
       url_target: "_blank",
       mouse_over: null,
       animate: {

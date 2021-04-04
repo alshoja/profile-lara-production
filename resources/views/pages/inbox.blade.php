@@ -242,6 +242,18 @@
                                                                                     class="navi-text">Track</span>
                                                                             </a>
                                                                         </li>
+                                                                        @if (request()->query('tab') == 'inbox')
+                                                                            <li class="navi-item">
+                                                                                <a href="{{ url('profile/resubmit', $item->id) }}"
+                                                                                    class="navi-link">
+                                                                                    <span class="navi-icon">
+                                                                                        <i class="flaticon-paper-plane"></i>
+                                                                                    </span>
+                                                                                    <span class="navi-text">Resubmit</span>
+                                                                                </a>
+                                                                            </li>
+                                                                        @endif
+
                                                                         {{-- <li class="navi-item">
                                                                             <a href="#" class="navi-link">
                                                                                 <span class="navi-icon">
@@ -297,14 +309,20 @@
                                                                                 <span class="nav-text">E-Profile</span>
                                                                             </a>
                                                                         </li>
-                                                                        <li class="nav-item">
-                                                                            <a class="nav-link" data-toggle="tab"
-                                                                                href="#kt_tab_pane_5_de">
-                                                                                <span class="nav-icon"><i
-                                                                                        class="flaticon-information"></i></span>
-                                                                                <span class="nav-text">Decision</span>
-                                                                            </a>
-                                                                        </li>
+                                                                        @if (Auth::user()->role != 'employ')
+                                                                            @if (Auth::user()->role != 'employ')
+                                                                                <li class="nav-item">
+                                                                                    <a class="nav-link" data-toggle="tab"
+                                                                                        href="#kt_tab_pane_5_de">
+                                                                                        <span class="nav-icon"><i
+                                                                                                class="flaticon-information"></i></span>
+                                                                                        <span
+                                                                                            class="nav-text">Decision</span>
+                                                                                    </a>
+                                                                                </li>
+                                                                            @endif
+                                                                        @endif
+
                                                                         <li class="nav-item">
                                                                             <a id="track_nav_item" class="nav-link"
                                                                                 data-toggle="tab"
@@ -847,7 +865,7 @@
                                                                                             name="approve_note"
                                                                                             class="form-control notebook"
                                                                                             id="approve_note"
-                                                                                            rows="2"></textarea>
+                                                                                            rows="2">Approved</textarea>
                                                                                     </p>
                                                                                     <div
                                                                                         class="ml-4 ml-lg-0 ml-xxl-4 flex-shrink-0">
