@@ -49,7 +49,7 @@ class TimeLineController extends Controller
         $timeline->note = $request->note;
         $timeline->user_id = $request->user_id;
         $timeline->profile_id = $request->profile_id;
-        $timeline->is_approved = $request->is_approved;
+        $timeline->type = 'note';
         $timeline->save();
         return response()->json($timeline, 200);
     }
@@ -111,7 +111,7 @@ class TimeLineController extends Controller
         $timeLine->note = $request->note;
         $timeLine->user_id = Auth()->user()->id;
         $timeLine->profile_id = $request->profile_id;
-        // $timeLine->is_approved = $request->is_approved;
+        $timeLine->type = 'note';
         $timeLine->is_note = $request->is_note;
         $timeLine->save();
         if ($timeLine->id) {

@@ -303,6 +303,8 @@ class ProfileController extends Controller
             $timeLine = new TimeLine();
             $timeLine->profile_id = $request->profile_id;
             $timeLine->note = $request->note;
+            $timeLine->type = 'approved';
+            
             $trackCheck = TrackProfile::where('from', Auth::user()->role)->where('profile_id', $request->profile_id)->count();
             if ($trackCheck == 0) {
                 $signDocEvent = SignDocument::dispatch($trackProfile);
@@ -328,6 +330,7 @@ class ProfileController extends Controller
                 $timeLine = new TimeLine();
                 $timeLine->profile_id = $request->profile_id;
                 $timeLine->note = $request->note;
+                $timeLine->type = 'rejected';
 
                 $rejectDocEvent = RejectDocument::dispatch($trackProfile);
                 $addEntryEvent = AddTimeLineNote::dispatch($timeLine);

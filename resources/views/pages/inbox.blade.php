@@ -18,20 +18,23 @@
 
                                 <div class="card-toolbar">
                                     <ul class="nav nav-pills nav-pills-sm nav-dark-75">
-                                        <li class="nav-item">
+                                        {{-- <li class="nav-item">
                                             <a class="nav-link py-2 px-4  @if (request()->query('tab')
                                                 == null) {{ 'active' }} @endif"
                                                 href="{{ url('profiles') }}">
                                                 All
                                             </a>
-                                        </li>
+                                        </li> --}}
                                         @if (Auth::user()->role != 'admin')
-                                            <li class="nav-item">
-                                                <a class="nav-link py-2 px-4   @if (request()->query('tab') === 'drafts') {{ 'active' }} @endif"
-                                                    href="{{ url('profiles?tab=drafts') }}">
-                                                    Drafts
-                                                </a>
-                                            </li>
+                                            @if (Auth::user()->role == 'employ')
+                                                <li class="nav-item">
+                                                    <a class="nav-link py-2 px-4   @if (request()->query('tab') === 'drafts') {{ 'active' }} @endif"
+                                                        href="{{ url('profiles?tab=drafts') }}">
+                                                        Drafts
+                                                    </a>
+                                                </li>
+                                            @endif
+
                                             <li class="nav-item">
                                                 <a class="nav-link py-2 px-4   @if (request()->query('tab') === 'inbox') {{ 'active' }} @endif"
                                                     href="{{ url('profiles?tab=inbox') }}">
@@ -961,6 +964,10 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        @if (request()->query('tab') != 'inbox')
+                                                            <br>
+                                                            <br>
+                                                        @endif
                                                         @if (request()->query('tab') == 'inbox')
                                                             <div class="card-body">
                                                                 <div class="form-group mb-1">

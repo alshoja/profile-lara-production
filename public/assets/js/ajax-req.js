@@ -142,14 +142,19 @@ function getProfileData(id) {
       setEprofile(result);
       setDocs(result);
       const mappedArray = result.timeline.map((obj, i) => {
+        console.log("object", obj);
         let payload = {};
         (payload.name = obj.name), (payload.note = obj.note);
-        if (obj.is_approved == 0) {
+        if (obj.type == "rejected") {
           payload.class = "danger";
           payload.icon =
             HOST_URL + "/assets/media/svg/icons/Code/Error-circle.svg";
+        } else if (obj.type == "approved") {
+          payload.class = "success";
+          payload.icon =
+            HOST_URL + "/assets/media/svg/icons/Navigation/Down-2.svg";
         } else {
-          payload.class = "primary";
+          payload.class = "secondary";
           payload.icon =
             HOST_URL + "/assets/media/svg/icons/Navigation/Down-2.svg";
         }
@@ -160,6 +165,7 @@ function getProfileData(id) {
         }
         (payload.is_approved = obj.is_approved),
           (payload.user_id = obj.user_id);
+        payload.type = obj.type;
         payload.created_at = getTimeWithAmPm(new Date(obj.created_at));
         return payload;
       });
@@ -176,16 +182,20 @@ function setEprofile(profile) {
 }
 
 function setDocs(result) {
-  console.log(result)
+  console.log(result);
   document.getElementById("doc_1").src = result.doc_image;
   document.getElementById("doc_2").src = result.product_image;
   document.getElementById("doc_3").src = result.profile_image;
 }
 
 function setTrack(trackings) {
+  let filteredTrackings = trackings.filter((res) => {
+    return res.type == "rejected" || res.type == "approved";
+  });
+  console.log(filteredTrackings);
   let contentStr = "";
-  if (trackings.length > 0) {
-    trackings.forEach(function (o) {
+  if (filteredTrackings.length > 0) {
+    filteredTrackings.forEach(function (o) {
       contentStr +=
         ` <div class="timeline-item">
       <!--begin::Icon-->
@@ -238,7 +248,11 @@ function setTrack(trackings) {
 function setDecision(data) {}
 
 function setNotes(notes) {
+  console.log("notes", notes);
   let notesString = "";
+  // let filteredNotes = notes.filter((res) => {
+  //   return res.type == "note";
+  // });
   if (notes.length > 0) {
     notes.forEach(function (o) {
       notesString +=

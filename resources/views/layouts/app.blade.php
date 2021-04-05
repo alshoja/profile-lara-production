@@ -206,7 +206,7 @@
                                         @endif
                                         <li class="menu-item {{ Request::is('profile/track') ? 'menu-item-active' : '' }}"
                                             aria-haspopup="true">
-                                            <a href="{{ url('profile/track') }}" class="menu-link">
+                                            <a href="{{ url('profile/track?tab=completed') }}" class="menu-link">
                                                 <i class="menu-bullet menu-bullet-dot">
                                                     <span></span>
                                                 </i>
