@@ -258,7 +258,8 @@
                                 </span>
                             @enderror
                         </div>
-                        <div id="group-row" class="form-group row d-none">
+                        @if (Auth::user()->role!="admin")
+                                                    <div id="group-row" class="form-group row d-none">
                             <div id="department-row" class="col-2 d-none">
                                 <label class="ml-3">Department</label>
                                 <select required name="dep_id" id="department_id" class="form-control form-control-solid">
@@ -310,6 +311,8 @@
                                 </select>
                             </div>
                         </div>
+                        @endif
+
                     </div>
                     <div class="card-footer">
                         <div class="row">

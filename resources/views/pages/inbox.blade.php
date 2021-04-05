@@ -25,16 +25,21 @@
                                                 All
                                             </a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link py-2 px-4   @if (request()->query('tab') === 'drafts') {{ 'active' }} @endif" href="{{ url('profiles?tab=drafts') }}">
-                                                Drafts
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link py-2 px-4   @if (request()->query('tab') === 'inbox') {{ 'active' }} @endif" href="{{ url('profiles?tab=inbox') }}">
-                                                Inbox
-                                            </a>
-                                        </li>
+                                        @if (Auth::user()->role != 'admin')
+                                            <li class="nav-item">
+                                                <a class="nav-link py-2 px-4   @if (request()->query('tab') === 'drafts') {{ 'active' }} @endif"
+                                                    href="{{ url('profiles?tab=drafts') }}">
+                                                    Drafts
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link py-2 px-4   @if (request()->query('tab') === 'inbox') {{ 'active' }} @endif"
+                                                    href="{{ url('profiles?tab=inbox') }}">
+                                                    Inbox
+                                                </a>
+                                            </li>
+                                        @endif
+
                                         <li class="nav-item">
                                             <a class="nav-link py-2 px-4   @if (request()->query('tab') === 'completed') {{ 'active' }} @endif"
                                                 href="{{ url('profiles?tab=completed') }}">
@@ -108,13 +113,17 @@
                                                                     <div
                                                                         class="d-flex align-items-center justify-content-between mb-2">
                                                                         <span
-                                                                            class="text-muted mr-2 font-size-sm font-weight-bold">23%</span>
+                                                                            class="text-muted mr-2 font-size-sm font-weight-bold">
+                                                                            {{ (count($item->trackings) / 4) * 100 }} %</span>
                                                                         <span
                                                                             class="text-muted font-size-sm font-weight-bold">Progress</span>
                                                                     </div>
                                                                     <div class="progress progress-xs w-100">
-                                                                        <div class="progress-bar bg-danger"
-                                                                            role="progressbar" style="width: 15%;"
+                                                                        <div class="progress-bar @if ((count($item->trackings) / 4) * 100 ==
+                                                                            100) bg-danger
+                                                                        @else bg-warning @endif "
+                                                                            role="progressbar" style="width:
+                                                                            {{ (count($item->trackings) / 4) * 100 }}%;"
                                                                             aria-valuenow="10" aria-valuemin="0"
                                                                             aria-valuemax="100"></div>
                                                                     </div>

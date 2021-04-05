@@ -29,14 +29,16 @@ class UserController extends Controller
     public function index()
     {
         $search = request()->query('search');
-
+        if (Auth::user()->role == "admin") {
+            $users = User::where('role', 'general_director')->paginate();
+        }
         if (Auth::user()->role == "general_director") {
             $users = User::with('departmentDirectors')->whereHas('departmentDirectors.users', function ($innerQuery) use ($search) {
                 if ($search) {
                     $innerQuery->where('name', 'like', '%' . $search . '%')
                         ->orWhere('email', 'like', '%' . $search . '%');
                 }
-                $innerQuery->whereIn('dep_id',session('department'));
+                $innerQuery->whereIn('dep_id', session('department'));
             })->paginate();
         }
         if (Auth::user()->role == "director") {
@@ -45,7 +47,7 @@ class UserController extends Controller
                     $innerQuery->where('name', 'like', '%' . $search . '%')
                         ->orWhere('email', 'like', '%' . $search . '%');
                 }
-                $innerQuery->whereIn('dep_id',session('department'));
+                $innerQuery->whereIn('dep_id', session('department'));
             })->paginate();
         }
         if (Auth::user()->role == "department_head") {
@@ -54,7 +56,7 @@ class UserController extends Controller
                     $innerQuery->where('name', 'like', '%' . $search . '%')
                         ->orWhere('email', 'like', '%' . $search . '%');
                 }
-                $innerQuery->whereIn('dep_id',session('department'));
+                $innerQuery->whereIn('dep_id', session('department'));
             })->paginate();
         }
         if (Auth::user()->role == "supervisor") {
@@ -63,7 +65,7 @@ class UserController extends Controller
                     $innerQuery->where('name', 'like', '%' . $search . '%')
                         ->orWhere('email', 'like', '%' . $search . '%');
                 }
-                $innerQuery->whereIn('employs.dep_id',session('department'));
+                $innerQuery->whereIn('employs.dep_id', session('department'));
             })->paginate();
         }
 
@@ -84,7 +86,11 @@ class UserController extends Controller
         $users->directors = User::with('departmentRelation.department')->where('role', 'director')->get();
         $users->department_heads = User::with('dhRelation.department')->where('role', 'department_head')->get();
         $users->supervisors = User::with('superRelation.department')->where('role', 'supervisors')->get();
-        $users->departments = Department::whereIn('id',session('department'))->get();
+        if (Auth::user()->role == 'admin') {
+            $users->departments = Department::all();
+        } else {
+            $users->departments = Department::whereIn('id', session('department'))->get();
+        }
         $users->sections = Section::all();
         // return response()->json($users, 200);
         return view('pages.add-user', compact('users'));
@@ -121,30 +127,32 @@ class UserController extends Controller
         $user->suspended = $request->suspended;
         $user->can_add_user = $request->can_add_user;
         $user->save();
-        if ($user->id) {
-            if (Auth::user()->role == "general_director") {
-                $director = new DepartmentDirector();
-                $director->director_id = $user->id;
-                $director->dep_id = $request->dep_id;
-                $director->general_director = Auth::user()->id;
-                $director->save();
-            } else if (Auth::user()->role == "director") {
-                $dh = new DepartmentHead();
-                $dh->depart_head_id = $user->id;
-                $dh->dep_id = $request->dep_id;
-                $dh->director_id = Auth::user()->id;
-                $dh->save();
-            } else if (Auth::user()->role == "department_head") {
-                $dh = new DepartmentSupervisor();
-                $dh->supervisor_id = $user->id;
-                $dh->dep_id = $request->dep_id;
-                $dh->depart_head_id = Auth::user()->id;
-                $dh->save();
-            } else if (Auth::user()->role == "supervisor") {
-                $dh = new Employ();
-                $dh->section_id = $request->section_id;
-                $dh->supervisor_id = Auth::user()->id;
-                $dh->save();
+        if (Auth::user()->role != "admin" && Auth::user()->role != "employ") {
+            if ($user->id) {
+                if (Auth::user()->role == "general_director") {
+                    $director = new DepartmentDirector();
+                    $director->director_id = $user->id;
+                    $director->dep_id = $request->dep_id;
+                    $director->general_director = Auth::user()->id;
+                    $director->save();
+                } else if (Auth::user()->role == "director") {
+                    $dh = new DepartmentHead();
+                    $dh->depart_head_id = $user->id;
+                    $dh->dep_id = $request->dep_id;
+                    $dh->director_id = Auth::user()->id;
+                    $dh->save();
+                } else if (Auth::user()->role == "department_head") {
+                    $dh = new DepartmentSupervisor();
+                    $dh->supervisor_id = $user->id;
+                    $dh->dep_id = $request->dep_id;
+                    $dh->depart_head_id = Auth::user()->id;
+                    $dh->save();
+                } else if (Auth::user()->role == "supervisor") {
+                    $dh = new Employ();
+                    $dh->section_id = $request->section_id;
+                    $dh->supervisor_id = Auth::user()->id;
+                    $dh->save();
+                }
             }
         }
         return back()->with('message', 'User successfully added');
