@@ -78,4 +78,24 @@ class User extends Authenticatable
     {
         return $this->hasMany(DepartmentSupervisor::class, 'supervisor_id', 'id');
     }
+
+    public function employs()
+    {
+        return $this->hasMany(Employ::class, 'employ_id', 'id');
+    }
+
+    public function supervisors()
+    {
+        return $this->hasMany(DepartmentSupervisor::class, 'supervisor_id', 'id');
+    }
+
+    public function departmentDirectors()
+    {
+        return $this->hasMany(DepartmentDirector::class, 'director_id', 'id');
+    }
+
+    public function departmentHeads()
+    {
+        return $this->hasMany(DepartmentHead::class, 'depart_head_id', 'id');
+    }
 }

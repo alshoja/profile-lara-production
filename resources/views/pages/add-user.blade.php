@@ -261,7 +261,7 @@
                         <div id="group-row" class="form-group row d-none">
                             <div id="department-row" class="col-2 d-none">
                                 <label class="ml-3">Department</label>
-                                <select required name="department_id" id="department_id" class="form-control form-control-solid">
+                                <select required name="dep_id" id="department_id" class="form-control form-control-solid">
                                     @foreach ($users->departments as $item)
                                         <option value="{{ $item->id }}">{{ $item->name }}</option>
                                     @endforeach

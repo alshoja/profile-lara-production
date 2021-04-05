@@ -20,4 +20,9 @@ class Employ extends Model
     {
         return $this->belongsTo(Section::class);
     }
+
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'employ_id', 'id');
+    }
 }

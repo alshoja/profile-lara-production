@@ -34,4 +34,9 @@ class DepartmentHead extends Model
     {
         return $this->belongsTo(User::class, 'depart_head_id', 'id');
     }
+
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'depart_head_id', 'id');
+    }
 }
