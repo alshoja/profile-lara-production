@@ -117,7 +117,7 @@
 
                                     <!--end::Svg Icon-->
                                     </span>
-                                    <span class="menu-text">Dashboard</span>
+                                    <span class="menu-text">{{ __('menu.dashboard') }}</span>
                                 </a>
                             </li>
                             @if (Auth::user()->role != 'admin')
@@ -145,12 +145,12 @@
                                             </span>
                                             <!--end::Svg Icon-->
                                         </span>
-                                        <span class="menu-text">Inbox</span>
+                                        <span class="menu-text">{{ __('menu.inbox') }}</span>
                                     </a>
                                 </li>
                             @endif
                             <li class="menu-section">
-                                <h4 class="menu-text">Manage Application</h4>
+                                <h4 class="menu-text">{{ __('menu.manageapplication') }}</h4>
                                 <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                             </li>
                             <li class="menu-item menu-item-submenu {{ Request::is('profile/*') ? 'menu-item-open' : '' }}"
@@ -173,7 +173,7 @@
                                         </svg>
                                         <!--end::Svg Icon-->
                                     </span>
-                                    <span class="menu-text">Profile</span>
+                                    <span class="menu-text">{{ __('menu.profile') }}</span>
                                     <i class="menu-arrow"></i>
                                 </a>
                                 <div class="menu-submenu">
@@ -181,7 +181,7 @@
                                     <ul class="menu-subnav">
                                         <li class="menu-item menu-item-parent" aria-haspopup="true">
                                             <span class="menu-link">
-                                                <span class="menu-text">Profile</span>
+                                                <span class="menu-text">{{ __('menu.profile') }}</span>
                                             </span>
                                         </li>
                                         @if (Auth::user()->role == 'employ')
@@ -191,7 +191,7 @@
                                                     <i class="menu-bullet menu-bullet-dot">
                                                         <span></span>
                                                     </i>
-                                                    <span class="menu-text">New</span>
+                                                    <span class="menu-text">{{ __('menu.new') }}</span>
                                                 </a>
                                             </li>
                                             <li class="menu-item {{ Request::is('profile/drafts') ? 'menu-item-active' : '' }}"
@@ -200,7 +200,7 @@
                                                     <i class="menu-bullet menu-bullet-dot">
                                                         <span></span>
                                                     </i>
-                                                    <span class="menu-text">Drafts</span>
+                                                    <span class="menu-text">{{ __('menu.drafts') }}</span>
                                                 </a>
                                             </li>
                                         @endif
@@ -210,7 +210,7 @@
                                                 <i class="menu-bullet menu-bullet-dot">
                                                     <span></span>
                                                 </i>
-                                                <span class="menu-text">Track and Search</span>
+                                                <span class="menu-text">{{ __('menu.trackandsearch') }}</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -238,7 +238,7 @@
                                             <!--end::Svg Icon-->
                                         </span>
 
-                                        <span class="menu-text"> Users</span>
+                                        <span class="menu-text"> {{ __('menu.users') }}</span>
                                         <i class="menu-arrow"></i>
                                     </a>
                                     <div class="menu-submenu ">
@@ -250,12 +250,12 @@
                                                     <i class="menu-bullet menu-bullet-dot">
                                                         <span></span>
                                                     </i>
-                                                    <span class="menu-text">New</span>
+                                                    <span class="menu-text">{{ __('menu.new') }}</span>
                                                 </a>
                                             </li>
                                             <li class="menu-item menu-item-parent" aria-haspopup="true">
                                                 <span class="menu-link">
-                                                    <span class="menu-text">List all</span>
+                                                    <span class="menu-text">{{ __('menu.listall') }}</span>
                                                 </span>
                                             </li>
                                             <li class="menu-item {{ Request::is('user/list-users') ? 'menu-item-active' : '' }}"
@@ -264,7 +264,7 @@
                                                     <i class="menu-bullet menu-bullet-dot">
                                                         <span></span>
                                                     </i>
-                                                    <span class="menu-text">List all</span>
+                                                    <span class="menu-text">{{ __('menu.listall') }}</span>
                                                 </a>
                                             </li>
 
@@ -275,7 +275,7 @@
 
                             @if (Auth::user()->role == 'admin')
                                 <li class="menu-section">
-                                    <h4 class="menu-text">Settings</h4>
+                                    <h4 class="menu-text">{{ __('menu.settings') }}</h4>
                                     <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                                 </li>
                                 <li class="menu-item {{ Request::is('departments') ? ' menu-item-active' : '' }}"
@@ -297,7 +297,7 @@
                                             </svg>
                                             <!--end::Svg Icon-->
                                         </span>
-                                        <span class="menu-text">Departments</span>
+                                        <span class="menu-text">{{ __('menu.departments') }}</span>
                                     </a>
                                 </li>
                             @endif
