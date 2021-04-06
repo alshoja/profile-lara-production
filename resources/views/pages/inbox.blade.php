@@ -18,23 +18,31 @@
 
                                 <div class="card-toolbar">
                                     <ul class="nav nav-pills nav-pills-sm nav-dark-75">
-                                        <li class="nav-item">
+                                        {{-- <li class="nav-item">
                                             <a class="nav-link py-2 px-4  @if (request()->query('tab')
                                                 == null) {{ 'active' }} @endif"
                                                 href="{{ url('profiles') }}">
                                                 All
                                             </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link py-2 px-4   @if (request()->query('tab') === 'drafts') {{ 'active' }} @endif" href="{{ url('profiles?tab=drafts') }}">
-                                                Drafts
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link py-2 px-4   @if (request()->query('tab') === 'inbox') {{ 'active' }} @endif" href="{{ url('profiles?tab=inbox') }}">
-                                                Inbox
-                                            </a>
-                                        </li>
+                                        </li> --}}
+                                        @if (Auth::user()->role != 'admin')
+                                            @if (Auth::user()->role == 'employ')
+                                                <li class="nav-item">
+                                                    <a class="nav-link py-2 px-4   @if (request()->query('tab') === 'drafts') {{ 'active' }} @endif"
+                                                        href="{{ url('profiles?tab=drafts') }}">
+                                                        Drafts
+                                                    </a>
+                                                </li>
+                                            @endif
+
+                                            <li class="nav-item">
+                                                <a class="nav-link py-2 px-4   @if (request()->query('tab') === 'inbox') {{ 'active' }} @endif"
+                                                    href="{{ url('profiles?tab=inbox') }}">
+                                                    Inbox
+                                                </a>
+                                            </li>
+                                        @endif
+
                                         <li class="nav-item">
                                             <a class="nav-link py-2 px-4   @if (request()->query('tab') === 'completed') {{ 'active' }} @endif"
                                                 href="{{ url('profiles?tab=completed') }}">
@@ -108,13 +116,18 @@
                                                                     <div
                                                                         class="d-flex align-items-center justify-content-between mb-2">
                                                                         <span
-                                                                            class="text-muted mr-2 font-size-sm font-weight-bold">23%</span>
+                                                                            class="text-muted mr-2 font-size-sm font-weight-bold">
+                                                                            {{ (count($item->trackings) / 4) * 100 }}
+                                                                            %</span>
                                                                         <span
                                                                             class="text-muted font-size-sm font-weight-bold">Progress</span>
                                                                     </div>
                                                                     <div class="progress progress-xs w-100">
-                                                                        <div class="progress-bar bg-danger"
-                                                                            role="progressbar" style="width: 15%;"
+                                                                        <div class="progress-bar @if ((count($item->trackings) / 4) * 100 ==
+                                                                            100) bg-danger
+                                                                        @else bg-warning @endif "
+                                                                            role="progressbar" style="width:
+                                                                            {{ (count($item->trackings) / 4) * 100 }}%;"
                                                                             aria-valuenow="10" aria-valuemin="0"
                                                                             aria-valuemax="100"></div>
                                                                     </div>
@@ -853,41 +866,46 @@
                                                                         <form action="">
                                                                             <div
                                                                                 class="d-flex align-items-center justify-content-between p-4 flex-lg-wrap flex-xl-nowrap">
-                                                                                <div class="d-flex flex-column mr-5">
-                                                                                    <span href="#"
-                                                                                        class="h4 text-dark text-hover-primary mb-5">Approve
-                                                                                        Or Reject
-                                                                                        with a
-                                                                                        Note</span>
+                                                                                @if (request()->query('tab') == 'inbox')
+                                                                                    <div class="d-flex flex-column mr-5">
+                                                                                        <span href="#"
+                                                                                            class="h4 text-dark text-hover-primary mb-5">Approve
+                                                                                            Or Reject
+                                                                                            with a
+                                                                                            Note</span>
 
-                                                                                    <p>
-                                                                                        <textarea required
-                                                                                            name="approve_note"
-                                                                                            class="form-control notebook"
-                                                                                            id="approve_note"
-                                                                                            rows="2">Approved</textarea>
-                                                                                    </p>
-                                                                                    <div
-                                                                                        class="ml-4 ml-lg-0 ml-xxl-4 flex-shrink-0">
-                                                                                        <button
-                                                                                            onclick="AproveOrReject('signed')"
-                                                                                            id="approve" type="button"
-                                                                                            value="Sign & Approve"
-                                                                                            class="btn btn-sm  text-uppercase btn-success">
-                                                                                            Sign
-                                                                                        </button>
-                                                                                        <button
-                                                                                            onclick="AproveOrReject('rejected')"
-                                                                                            id="reject" type="button"
-                                                                                            class="btn btn-sm  text-uppercase btn-danger ">Reject
-                                                                                        </button>
-                                                                                        <img style="width: 10%;"
+                                                                                        <p>
+                                                                                            <textarea required
+                                                                                                name="approve_note"
+                                                                                                class="form-control notebook"
+                                                                                                id="approve_note"
+                                                                                                rows="2">Approved</textarea>
+                                                                                        </p>
+                                                                                        <div
+                                                                                            class="ml-4 ml-lg-0 ml-xxl-4 flex-shrink-0">
+                                                                                            <button
+                                                                                                onclick="AproveOrReject('signed')"
+                                                                                                id="approve" type="button"
+                                                                                                value="Sign & Approve"
+                                                                                                class="btn btn-sm  text-uppercase btn-success">
+                                                                                                Sign
+                                                                                            </button>
+                                                                                            <button
+                                                                                                onclick="AproveOrReject('rejected')"
+                                                                                                id="reject" type="button"
+                                                                                                class="btn btn-sm  text-uppercase btn-danger ">Reject
+                                                                                            </button>
+                                                                                            <img style="width: 10%;"
+                                                                                                id="sign_img"
+                                                                                                src="{{ url(Auth::user()->sign) }}">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                @else
+                                                                                    <div> <img style="width: 10%;"
                                                                                             id="sign_img"
                                                                                             src="{{ url(Auth::user()->sign) }}">
                                                                                     </div>
-
-                                                                                </div>
-
+                                                                                @endif
                                                                             </div>
                                                                         </form>
                                                                         {{-- </div> --}}
@@ -945,19 +963,25 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="card-body">
-                                                            <div class="form-group mb-1">
-                                                                <label for="exampleTextarea">Reply
-                                                                    Note <span class="text-danger">*</span></label>
-                                                                <textarea class="form-control" id="replynote"
-                                                                    rows="2"></textarea>
-                                                            </div>
+                                                        @if (request()->query('tab') != 'inbox')
                                                             <br>
-                                                            <div class="form-group mb-1">
-                                                                <button onclick="replyNote()" type="button"
-                                                                    class="btn btn-gradient-success font-weight-bold">Reply</button>
+                                                            <br>
+                                                        @endif
+                                                        @if (request()->query('tab') == 'inbox')
+                                                            <div class="card-body">
+                                                                <div class="form-group mb-1">
+                                                                    <label for="exampleTextarea">Reply
+                                                                        Note <span class="text-danger">*</span></label>
+                                                                    <textarea class="form-control" id="replynote"
+                                                                        rows="2"></textarea>
+                                                                </div>
+                                                                <br>
+                                                                <div class="form-group mb-1">
+                                                                    <button onclick="replyNote()" type="button"
+                                                                        class="btn btn-gradient-success font-weight-bold">Reply</button>
+                                                                </div>
                                                             </div>
-                                                        </div>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>

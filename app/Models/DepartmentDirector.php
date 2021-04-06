@@ -23,4 +23,10 @@ class DepartmentDirector extends Model
     {
         return $this->belongsTo(Department::class, 'dep_id', 'id');
     }
+
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'director_id', 'id');
+    }
+
 }

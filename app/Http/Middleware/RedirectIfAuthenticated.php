@@ -19,6 +19,9 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, ...$guards)
     {
+        if (Auth::check()) {
+            redirect('/home');
+        }
         $guards = empty($guards) ? [null] : $guards;
 
         foreach ($guards as $guard) {
@@ -26,6 +29,8 @@ class RedirectIfAuthenticated
                 return redirect(RouteServiceProvider::HOME);
             }
         }
+
+       
 
         return $next($request);
     }

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <link href="{{asset('assets/css/pages/wizard/wizard-1.rtl.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/pages/wizard/wizard-1.rtl.css') }}" rel="stylesheet" type="text/css" />
 
     <!--begin::Content-->
     <div class="d-flex flex-column-fluid">
@@ -23,7 +23,7 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                            <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
                                                 transform="translate(15.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-15.000000, -12.000000) "
@@ -47,7 +47,7 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                            <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
                                                 transform="translate(15.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-15.000000, -12.000000) "
@@ -71,7 +71,7 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                            <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
                                                 transform="translate(15.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-15.000000, -12.000000) "
@@ -95,7 +95,7 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                            <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
                                                 transform="translate(15.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-15.000000, -12.000000) "
@@ -119,7 +119,7 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow last">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                            <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
                                                 transform="translate(12.000000, 12.000000) rotate(-90.000000) translate(-12.000000, -12.000000)"
@@ -165,7 +165,8 @@
                                                 <div class="form-group">
                                                     <label>Nationality</label>
                                                     <select name="nationality"
-                                                        class="form-control form-control-solid form-control-lg" id="nationality">
+                                                        class="form-control form-control-solid form-control-lg"
+                                                        id="nationality">
                                                         <option value="">Select</option>
                                                         <option value="AF">Afghanistan</option>
                                                         <option value="AX">Åland Islands</option>
@@ -440,9 +441,8 @@
                                                 <div class="form-group">
                                                     <label>DOB</label>
                                                     <input type="date"
-                                                        class="form-control form-control-solid form-control-lg"
-                                                        name="dob" placeholder="Address Line 1"
-                                                         id="dob"/>
+                                                        class="form-control form-control-solid form-control-lg" name="dob"
+                                                        placeholder="Address Line 1" id="dob" />
                                                     <!-- <span class="form-text text-muted">Please enter DOb.</span> -->
                                                 </div>
                                             </div>
@@ -454,7 +454,8 @@
                                                 <div class="form-group">
                                                     <label>CitizenShip Status</label>
                                                     <select name="citizen_status"
-                                                        class="form-control form-control-solid form-control-lg" id="citizen_status">
+                                                        class="form-control form-control-solid form-control-lg"
+                                                        id="citizen_status">
                                                         <option value="">Select</option>
                                                         <option value="YE">Status 1</option>
                                                         <option value="ZM">Status 2</option>
@@ -468,7 +469,8 @@
                                                 <div class="form-group">
                                                     <label>CitizenShip Location</label>
                                                     <select name="citizen_location"
-                                                        class="form-control form-control-solid form-control-lg" id="citizen_location">
+                                                        class="form-control form-control-solid form-control-lg"
+                                                        id="citizen_location">
                                                         <option value="">Select</option>
                                                         <option value="AF">Male</option>
                                                         <option value="AX">Female</option>
@@ -481,7 +483,8 @@
                                                     <label>Citizenshi ID No</label>
                                                     <input type="number"
                                                         class="form-control form-control-solid form-control-lg"
-                                                        name="citizen_id" placeholder="ID number" value="" id="citizen_id" />
+                                                        name="citizen_id" placeholder="ID number" value=""
+                                                        id="citizen_id" />
                                                     <!-- <span class="form-text text-muted">Please enter DOb.</span> -->
                                                 </div>
                                             </div>
@@ -492,8 +495,8 @@
                                                 <div class="form-group">
                                                     <label>Citizenship UID No</label>
                                                     <input type="text"
-                                                        class="form-control form-control-solid form-control-lg" name="citizen_uid"
-                                                        placeholder="UID No" value="" id="citizen_uid" />
+                                                        class="form-control form-control-solid form-control-lg"
+                                                        name="citizen_uid" placeholder="UID No" value="" id="citizen_uid" />
                                                     <span class="form-text text-muted">Please enter your UID No.</span>
                                                 </div>
                                                 <!--end::Input-->
@@ -503,8 +506,9 @@
                                                 <div class="form-group">
                                                     <label>Passport No</label>
                                                     <input type="text"
-                                                        class="form-control form-control-solid form-control-lg" name="passport_no"
-                                                        placeholder="Passport Number" value=""  id="passport_no" />
+                                                        class="form-control form-control-solid form-control-lg"
+                                                        name="passport_no" placeholder="Passport Number" value=""
+                                                        id="passport_no" />
                                                     <span class="form-text text-muted">Please enter your Passport No.</span>
                                                 </div>
                                                 <!--end::Input-->
@@ -514,7 +518,8 @@
                                                 <div class="form-group">
                                                     <label>Passport Type</label>
                                                     <select name="passport_type"
-                                                        class="form-control form-control-solid form-control-lg" id="passport_type">
+                                                        class="form-control form-control-solid form-control-lg"
+                                                        id="passport_type">
                                                         <option value="">Select</option>
                                                         <option value="YE">P 1</option>
                                                         <option value="ZM">P 2</option>
@@ -524,13 +529,15 @@
                                                 <!--end::Select-->
                                             </div>
                                         </div>
-                                        <button onclick="enableNext()" class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4" id="submit"  style="margin-right: 475;
-                                        margin-bottom: -25;">save</button>
+                                        <button onclick="enableNext()"
+                                            class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
+                                            id="submit" style="margin-right: 475;
+                                            margin-bottom: -25;">save</button>
                                     </div>
-                                  
-                               <!--<input type = 'submit' value = "Save" class="btn btn-success font-weight-bolder"/>-->
+
+                                    <!--<input type = 'submit' value = "Save" class="btn btn-success font-weight-bolder"/>-->
                                 </form>
-                                <form id="kt_form1" class="form"b>
+                                <form id="kt_form1" class="form" b>
                                     @csrf
                                     <!--end::Wizard Step 1-->
                                     <!--begin::Wizard Step 2-->
@@ -541,9 +548,9 @@
                                                 <div class="form-group">
                                                     <label>Date Of Entry</label>
                                                     <input type="date" id="entry_date"
-                                                        class="form-control form-control-solid form-control-lg" name="entry_date"
-                                                        placeholder="Address Line 1"/>
-                                                        <input type="text" id="editid" hidden name="editid">
+                                                        class="form-control form-control-solid form-control-lg"
+                                                        name="entry_date" placeholder="Address Line 1" />
+                                                    <input type="text" id="editid" hidden name="editid">
                                                     <!-- <span class="form-text text-muted">Please enter DOb.</span> -->
                                                 </div>
                                             </div>
@@ -616,106 +623,116 @@
                                                 </div>
                                                 <!--begin::Form-->
                                                 <!--<form class="form">-->
-                                                    <div class="card-body">
-                                                        <div id="kt_repeater_1">
-                                                            <div class="form-group row" id="kt_repeater_1">
-                                                                <!-- <label class="col-lg-2 col-form-label text-right">Contacts:</label> -->
-                                                                <div data-repeater-list="" class="col-lg-12">
-                                                                    <div data-repeater-item
-                                                                        class="form-group row align-items-center">
-                                                                        <div class="row form-group">
-                                                                            <div class="col-xl-3">
-                                                                                <!-- <label>Name:</label> -->
-                                                                                <select name="product_type" id="product_type"
-                                                                                    class="form-control form-control-solid ">
-                                                                                    <option value="">Product-1</option>
-                                                                                    <option value="YE">P 1</option>
-                                                                                    <option value="ZM">P 2</option>
-                                                                                    <option value="ZW">P 3</option>
-                                                                                </select>
-                                                                                <div class="d-md-none mb-2"></div>
-                                                                            </div>
-                                                                            <div class="col-xl-3">
-                                                                                <!-- <label>Name:</label> -->
-                                                                                <select name="manufacture_type" id="manufacture_type"
-                                                                                    class="form-control form-control-solid">
-                                                                                    <option value="">Type-1</option>
-                                                                                    <option value="YE">P 1</option>
-                                                                                    <option value="ZM">P 2</option>
-                                                                                    <option value="ZW">P 3</option>
-                                                                                </select>
-                                                                                <div class="d-md-none mb-2"></div>
-                                                                            </div>
-                                                                            <div class="col-xl-3">
-                                                                                <!-- <label>Name:</label> -->
-                                                                                <select name="shipped_type" id="shipped_type"
-                                                                                    class="form-control form-control-solid">
-                                                                                    <option selected value="">Shipped type-1
-                                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                                    </option>
-                                                                                    <option value="YE">P 1</option>
-                                                                                    <option value="ZM">P 2</option>
-                                                                                    <option value="ZW">P 3</option>
-                                                                                </select>
-                                                                                <div class="d-md-none mb-2"></div>
-                                                                            </div>
-                                                                            <div class="col-md-3">
-                                                                                <a href="javascript:;"
-                                                                                    data-repeater-delete=""
-                                                                                    class="btn btn-sm font-weight-bolder btn-danger btn-gradient-danger">
-                                                                                    <i class="la la-trash-o"></i>Delete
-                                                                                </a>
-                                                                            </div>
+                                                <div class="card-body">
+                                                    <div id="kt_repeater_1">
+                                                        <div class="form-group row" id="kt_repeater_1">
+                                                            <!-- <label class="col-lg-2 col-form-label text-right">Contacts:</label> -->
+                                                            <div data-repeater-list="" class="col-lg-12">
+                                                                <div data-repeater-item
+                                                                    class="form-group row align-items-center">
+                                                                    <div class="row form-group">
+                                                                        <div class="col-xl-3">
+                                                                            <!-- <label>Name:</label> -->
+                                                                            <select name="product_type" id="product_type"
+                                                                                class="form-control form-control-solid ">
+                                                                                <option value="">Product-1</option>
+                                                                                <option value="YE">P 1</option>
+                                                                                <option value="ZM">P 2</option>
+                                                                                <option value="ZW">P 3</option>
+                                                                            </select>
+                                                                            <div class="d-md-none mb-2"></div>
                                                                         </div>
-                                                                        <div class="row form-group">
-                                                                            <div class="col-md-2">
-                                                                                <!-- <label>Name:</label> -->
-                                                                  <input type="text" class="form-control" placeholder="Kg" name="quantity_kg" id="quantity_kg" />
-                                                                                <div class="d-md-none mb-2"></div>
-                                                                            </div>
-                                                                            <div class="col-md-2">
-                                                                                <!-- <label>Name:</label> -->
-                                                                   <input type="text" class="form-control" placeholder="G" name="quantity_g" id="quantity_g" />
-                                                                                <div class="d-md-none mb-2"></div>
-                                                                            </div>
-                                                                            <div class="col-md-2">
-                                                                                <!-- <label>Name:</label> -->
-                                                                    <input type="text" class="form-control" placeholder="ML" name="quantity_ml" id="quantity_ml" />
-                                                                                <div class="d-md-none mb-2"></div>
-                                                                            </div>
-
-                                                                            <div class="col-md-2">
-                                                                                <!-- <label>Number:</label> -->
-                                                                      <input type="text" class="form-control"  placeholder="Digit" name="quantity_digit" id="quantity_digit"/>
-                                                                                <div class="d-md-none mb-2"></div>
-                                                                            </div>
+                                                                        <div class="col-xl-3">
+                                                                            <!-- <label>Name:</label> -->
+                                                                            <select name="manufacture_type"
+                                                                                id="manufacture_type"
+                                                                                class="form-control form-control-solid">
+                                                                                <option value="">Type-1</option>
+                                                                                <option value="YE">P 1</option>
+                                                                                <option value="ZM">P 2</option>
+                                                                                <option value="ZW">P 3</option>
+                                                                            </select>
+                                                                            <div class="d-md-none mb-2"></div>
                                                                         </div>
-
+                                                                        <div class="col-xl-3">
+                                                                            <!-- <label>Name:</label> -->
+                                                                            <select name="shipped_type" id="shipped_type"
+                                                                                class="form-control form-control-solid">
+                                                                                <option selected value="">Shipped type-1
+                                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                                </option>
+                                                                                <option value="YE">P 1</option>
+                                                                                <option value="ZM">P 2</option>
+                                                                                <option value="ZW">P 3</option>
+                                                                            </select>
+                                                                            <div class="d-md-none mb-2"></div>
+                                                                        </div>
+                                                                        <div class="col-md-3">
+                                                                            <a href="javascript:;" data-repeater-delete=""
+                                                                                class="btn btn-sm font-weight-bolder btn-danger btn-gradient-danger">
+                                                                                <i class="la la-trash-o"></i>Delete
+                                                                            </a>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <div class="col-lg-4">
-                                                                    <a href="javascript:;" data-repeater-create=""
-                                                                        class="btn btn-sm font-weight-bolder btn-light-primary btn-gradient-success">
-                                                                        <i class="la la-plus"></i>Add
-                                                                    </a>
+                                                                    <div class="row form-group">
+                                                                        <div class="col-md-2">
+                                                                            <!-- <label>Name:</label> -->
+                                                                            <input type="text" class="form-control"
+                                                                                placeholder="Kg" name="quantity_kg"
+                                                                                id="quantity_kg" />
+                                                                            <div class="d-md-none mb-2"></div>
+                                                                        </div>
+                                                                        <div class="col-md-2">
+                                                                            <!-- <label>Name:</label> -->
+                                                                            <input type="text" class="form-control"
+                                                                                placeholder="G" name="quantity_g"
+                                                                                id="quantity_g" />
+                                                                            <div class="d-md-none mb-2"></div>
+                                                                        </div>
+                                                                        <div class="col-md-2">
+                                                                            <!-- <label>Name:</label> -->
+                                                                            <input type="text" class="form-control"
+                                                                                placeholder="ML" name="quantity_ml"
+                                                                                id="quantity_ml" />
+                                                                            <div class="d-md-none mb-2"></div>
+                                                                        </div>
+
+                                                                        <div class="col-md-2">
+                                                                            <!-- <label>Number:</label> -->
+                                                                            <input type="text" class="form-control"
+                                                                                placeholder="Digit" name="quantity_digit"
+                                                                                id="quantity_digit" />
+                                                                            <div class="d-md-none mb-2"></div>
+                                                                        </div>
+                                                                    </div>
+
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-lg-4">
+                                                                <a href="javascript:;" data-repeater-create=""
+                                                                    class="btn btn-sm font-weight-bolder btn-light-primary btn-gradient-success">
+                                                                    <i class="la la-plus"></i>Add
+                                                                </a>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <!--</form>
-                                                 end::Form-->
-                                                 </div>
-                                             </div>
-                                            <button class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4" id="submit"  type="submit" style="margin-bottom: -25;
-                                            margin-right: 475;
-                                            margin-top: 25;" onclick="enableNext()">save</button>
-                                      </div>
+                                                </div>
+                                                <!--</form>
+                                                     end::Form-->
+                                            </div>
+                                        </div>
+                                        <button
+                                            class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
+                                            id="submit" type="submit" style="margin-bottom: -25;
+                                                margin-right: 475;
+                                                margin-top: 25;" onclick="enableNext()">save</button>
+                                    </div>
 
-                                </form> 
-                                <form  id="kt_form2" enctype="multipart/form-data" method="POST" >
+                                </form>
+                                <form id="kt_form2" enctype="multipart/form-data" method="POST">
                                     @csrf
                                     <!--end::Wizard Step 2-->
                                     <!--begin::Wizard Step 3-->
@@ -727,7 +744,9 @@
                                                 <!--begin::Input-->
                                                 <div class="form-group">
                                                     <label>Shipping No</label>
-<input type="text" id="shipping_no" class="form-control form-control-solid form-control-lg" name="shipping_no" placeholder="Shipping No" value="" />
+                                                    <input type="text" id="shipping_no"
+                                                        class="form-control form-control-solid form-control-lg"
+                                                        name="shipping_no" placeholder="Shipping No" value="" />
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
@@ -735,7 +754,8 @@
                                                 <!--begin::Input-->
                                                 <div class="form-group">
                                                     <label>Coming From</label>
- <select name="coming_from" id="coming_from" class="form-control form-control-solid form-control-lg">
+                                                    <select name="coming_from" id="coming_from"
+                                                        class="form-control form-control-solid form-control-lg">
                                                         <option value="">Select</option>
                                                         <option value="AF">ALshoja</option>
                                                         <option value="AX">Åland </option>
@@ -748,7 +768,8 @@
                                                 <!--begin::Input-->
                                                 <div class="form-group">
                                                     <label>Going to</label>
- <select name="going_to" id="going_to"  class="form-control form-control-solid form-control-lg">
+                                                    <select name="going_to" id="going_to"
+                                                        class="form-control form-control-solid form-control-lg">
                                                         <option value="">Select</option>
                                                         <option value="AF">ALshoja</option>
                                                         <option value="AX">Åland </option>
@@ -761,7 +782,8 @@
                                                 <!--begin::Input-->
                                                 <div class="form-group">
                                                     <label>Final Destination</label>
-<select name="final_destination" id="final_destination" class="form-control form-control-solid form-control-lg">
+                                                    <select name="final_destination" id="final_destination"
+                                                        class="form-control form-control-solid form-control-lg">
                                                         <option value="">Select</option>
                                                         <option value="AF">ALshoja</option>
                                                         <option value="AX">Åland </option>
@@ -785,7 +807,8 @@
                                                         data-action="change" data-toggle="tooltip" title=""
                                                         data-original-title="Change avatar">
                                                         <i class="fa fa-pen icon-sm text-muted"></i>
-<input type="file" name="profile_image" id="profile_image" accept=".png, .jpg, .jpeg" />
+                                                        <input type="file" name="profile_image" id="profile_image"
+                                                            accept=".png, .jpg, .jpeg" />
                                                         <input type="hidden" name="profile_avatar_remove" />
                                                     </label>
                                                     <span
@@ -865,31 +888,35 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="exampleTextarea">Note</label>
-                                                    <textarea class="form-control form-control-solid" rows="3" name="note" id="note"></textarea>
-                                                <input type="text" id="editid1" hidden name="editid1">
+                                                    <textarea class="form-control form-control-solid" rows="3" name="note"
+                                                        id="note"></textarea>
+                                                    <input type="text" id="editid1" hidden name="editid1">
                                                 </div>
                                             </div>
                                         </div>
                                         <!--end::Select
-                                        <input type = 'submit' value = "Save" class="btn btn-success font-weight-bolder"/>
-                                        <button class="btn btn-success font-weight-bolder" id="editstep">smave</button>-->
-                                        <button type="submit" id="submit" onclick="enableNext()" class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4" style="margin-top: 20;
-                                        margin-bottom: -25;
-                                        margin-right: 475;">Save</button>
+                                            <input type = 'submit' value = "Save" class="btn btn-success font-weight-bolder"/>
+                                            <button class="btn btn-success font-weight-bolder" id="editstep">smave</button>-->
+                                        <button type="submit" id="submit" onclick="enableNext()"
+                                            class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
+                                            style="margin-top: 20;
+                                            margin-bottom: -25;
+                                            margin-right: 475;">Save</button>
                                     </div>
                                 </form>
                                 <form id="kt_form3" method="post" action="/stageFour">
                                     <!--end::Wizard Step 3-->
                                     <!--begin::Wizard Step 4-->
                                     <div class="pb-5" data-wizard-type="step-content">
-                                   
+
                                         <h6 class="mb-10 font-weight-bold text-dark">Label</h6>
                                         <!--begin::Input-->
                                         <div class="form-group row">
                                             <div class="col-xl-12">
                                                 <div class="form-group">
                                                     <label>Record Status</label>
-                                                    <select name="record_status" id="record_status" class="form-control form-control-solid ">
+                                                    <select name="record_status" id="record_status"
+                                                        class="form-control form-control-solid ">
                                                         <option value="">Record-1</option>
                                                         <option value="YE">R1</option>
                                                         <option value="ZM">r 2</option>
@@ -905,7 +932,8 @@
                                             <div class="col-xl-12">
                                                 <div class="form-group">
                                                     <label>Record Department Status</label>
-                                                    <select name="record_dep_transfer" id="record_dep_transfer" class="form-control form-control-solid ">
+                                                    <select name="record_dep_transfer" id="record_dep_transfer"
+                                                        class="form-control form-control-solid ">
                                                         <option value="">status-1</option>
                                                         <option value="YE">s 1</option>
                                                         <option value="ZM">s 2</option>
@@ -915,12 +943,14 @@
                                                     <div class="d-md-none mb-2"></div>
                                                 </div>
                                             </div>
-                                            
-                                            <button class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4" id="submit"  type="submit" style="margin-top: 20;
-                                            margin-bottom: -45;
-                                            margin-right: 487;" onclick="enableNext()">save</button>
+
+                                            <button
+                                                class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
+                                                id="submit" type="submit" style="margin-top: 20;
+                                                margin-bottom: -45;
+                                                margin-right: 487;" onclick="enableNext()">save</button>
                                         </div>
-                                 
+
                                     </div>
                                 </form>
                                 <form id="kt_form4">
@@ -933,7 +963,8 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <label>General Director</label>
-                                                    <select name="belongs_to"  id="belongs_to" class="form-control form-control-solid ">
+                                                    <select name="belongs_to" id="belongs_to"
+                                                        class="form-control form-control-solid ">
                                                         <option value="1">Record-1</option>
                                                         <option value="2">R1</option>
                                                         <option value="3">r 2</option>
@@ -945,12 +976,14 @@
                                             </div>
                                         </div>
 
-                                        <button class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4" id="submit"  type="submit" style="margin-top: 20;
-                                        margin-bottom: -26;
-                                        margin-right: 370">save</button>
+                                        <button
+                                            class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
+                                            id="submit" type="submit" style="margin-top: 20;
+                                            margin-bottom: -26;
+                                            margin-right: 370">save</button>
 
-                                        
-                                        
+
+
                                     </div>
                                     <!--end::Wizard Step 5-->
                                     <!--begin::Wizard Actions-->
@@ -959,28 +992,29 @@
                                             <button type="button" id="previous"
                                                 class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
                                                 data-wizard-type="action-prev" style="margin-top: -87;
-                                                margin-right: 235;" disabled onclick="enableNext()">Previous</button>
+                                                    margin-right: 235;" disabled onclick="enableNext()">Previous</button>
                                         </div>
                                         <div>
 
-                                            <div class="btn-group" >
+                                            <div class="btn-group">
                                                 <button type="button" data-wizard-type="action-submit"
                                                     class="btn btn-success btn-gradient-success " hidden>Save</button>
                                                 <button type="button" data-wizard-type="action-submit"
                                                     class="btn btn-primary btn-gradient-success dropdown-toggle dropdown-toggle-split"
-                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" hidden>
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                                    hidden>
                                                     <span class="sr-only">Toggle Dropdown</span>
                                                 </button>
                                                 <div class="dropdown-menu">
                                                     <a href="#" class="dropdown-item">Save as Draft</a>
                                                 </div>
                                             </div>
-                                          
+
                                             <!-- <button type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-submit">Submit</button> -->
                                             <button id="next" type="button"
                                                 class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
                                                 data-wizard-type="action-next" style="margin-left: 500;
-                                                margin-top: -150;" disabled onclick="disableNext()">Next</button>
+                                                    margin-top: -150;" disabled onclick="disableNext()">Next</button>
                                         </div>
                                     </div>
                                     <!--end::Wizard Actions-->
@@ -1002,193 +1036,193 @@
         function enableNext() {
             document.getElementById("next").disabled = false;
         }
-       
+
     </script>
-<script type="text/javascript">
-    function disableNext()
-    {
-        document.getElementById("next").disabled = true;  
-        document.getElementById("previous").disabled = false;  
-
-    }
-</script>
     <script type="text/javascript">
- 
-     $('#kt_form').on('submit',function(event){
-         event.preventDefault();
- 
-         let name = $('#name').val();
-         let nationality = $('#nationality').val();
-         let gender = $('#gender').val();
-         let dob = $('#dob').val();
-         let citizen_status = $('#citizen_status').val();
-         let citizen_location = $('#citizen_location').val();
-         let citizen_id = $('#citizen_id').val();
-         let citizen_uid = $('#citizen_uid').val();
-         let passport_no = $('#passport_no').val();
-         let passport_type = $('#passport_type').val();
-         
-        $.ajax({
-           url: "/profile/add-profile",
-           type:"POST",
-           data:{
-             "_token": "{{ csrf_token() }}",
-          name:name, 
-          nationality:nationality,
-          gender:gender, 
-          dob:dob, 
-          citizen_status:citizen_status,
-          citizen_location:citizen_location,
-          citizen_id:citizen_id,
-          citizen_uid:citizen_uid,
-          passport_no:passport_no,
-          passport_type:passport_type,
-         
-           },
-           success:function(data){
-             var id=data.id;
-             alert(id);
-             $('#editid').val(id);
-             $('#editid1').val(id);
-             $('#editid3').val(id);
-             $('#editid4').val(id);
-            // console.log(response);
-           },
-          });
-         });
-       </script>
+        function disableNext() {
+            document.getElementById("next").disabled = true;
+            document.getElementById("previous").disabled = false;
 
-<script type="text/javascript">
- 
-    $('#kt_form3').on('submit',function(event){
-        event.preventDefault();
+        }
 
-        let record_status = $('#record_status').val();
-        let record_dep_transfer = $('#record_dep_transfer').val();
-        let editid3 = $('#editid3').val();
-        $.ajax({
-           url: "/stageFour",
-           type:"POST",
-           data:{
-             "_token": "{{ csrf_token() }}",
-             record_status:record_status, 
-             record_dep_transfer:record_dep_transfer,
-             editid3:editid3, 
-        },
-        success:function(response){
-           
-           
-             console.log(response);
-           },
-          });
-         });
-</script>
-<script type="text/javascript">
- 
-    $('#kt_form4').on('submit',function(event){
-        event.preventDefault();
-alert("jas");
-        let belongs_to  = $('#belongs_to').val();
-        
-        let editid4 = $('#editid4').val();
-        alert(belongs_to);
-        alert(editid4);
-        $.ajax({
-           url: "/stageFive",
-           type:"POST",
-           data:{
-             "_token": "{{ csrf_token() }}",
-             belongs_to:belongs_to, 
-             editid4:editid4, 
-        },
-        success:function(response){
-           
-           
-             console.log(response);
-           },
-          });
-         });
-</script>
+    </script>
+    <script type="text/javascript">
+        $('#kt_form').on('submit', function(event) {
+            event.preventDefault();
+
+            let name = $('#name').val();
+            let nationality = $('#nationality').val();
+            let gender = $('#gender').val();
+            let dob = $('#dob').val();
+            let citizen_status = $('#citizen_status').val();
+            let citizen_location = $('#citizen_location').val();
+            let citizen_id = $('#citizen_id').val();
+            let citizen_uid = $('#citizen_uid').val();
+            let passport_no = $('#passport_no').val();
+            let passport_type = $('#passport_type').val();
+
+            $.ajax({
+                url: "/profile/add-profile",
+                type: "POST",
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    name: name,
+                    nationality: nationality,
+                    gender: gender,
+                    dob: dob,
+                    citizen_status: citizen_status,
+                    citizen_location: citizen_location,
+                    citizen_id: citizen_id,
+                    citizen_uid: citizen_uid,
+                    passport_no: passport_no,
+                    passport_type: passport_type,
+
+                },
+                success: function(data) {
+                    var id = data.id;
+                    alert(id);
+                    $('#editid').val(id);
+                    $('#editid1').val(id);
+                    $('#editid3').val(id);
+                    $('#editid4').val(id);
+                    // console.log(response);
+                },
+            });
+        });
+
+    </script>
+
+    <script type="text/javascript">
+        $('#kt_form3').on('submit', function(event) {
+            event.preventDefault();
+
+            let record_status = $('#record_status').val();
+            let record_dep_transfer = $('#record_dep_transfer').val();
+            let editid3 = $('#editid3').val();
+            $.ajax({
+                url: "/stageFour",
+                type: "POST",
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    record_status: record_status,
+                    record_dep_transfer: record_dep_transfer,
+                    editid3: editid3,
+                },
+                success: function(response) {
 
 
-       <!-- Stage 2 Script-->
-       <script type="text/javascript">
- 
-        $('#kt_form1').on('submit',function(event){
-        //$('#edit').on('click',function (){
-        event.preventDefault();
-      alert("h")
+                    console.log(response);
+                },
+            });
+        });
+
+    </script>
+    <script type="text/javascript">
+        $('#kt_form4').on('submit', function(event) {
+            event.preventDefault();
+            alert("jas");
+            let belongs_to = $('#belongs_to').val();
+
+            let editid4 = $('#editid4').val();
+            alert(belongs_to);
+            alert(editid4);
+            $.ajax({
+                url: "/stageFive",
+                type: "POST",
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    belongs_to: belongs_to,
+                    editid4: editid4,
+                },
+                success: function(response) {
+
+
+                    console.log(response);
+                },
+            });
+        });
+
+    </script>
+
+
+    <!-- Stage 2 Script-->
+    <script type="text/javascript">
+        $('#kt_form1').on('submit', function(event) {
+            //$('#edit').on('click',function (){
+            event.preventDefault();
+            alert("h")
             let entered_by = $('#entered_by').val();
             let bought_by = $('#bought_by').val();
             let entity = $('#entity').val();
             let entry_date = $('#entry_date').val();
             let entity_location = $('#entity_location').val();
-            let editid=$('#editid').val();
+            let editid = $('#editid').val();
 
             $.ajax({
-                url:"/updateUser",
-                method:'POST',
-                data:$(this).serialize(),
-                dataType:'json',
-                success:function(response){
-                  alert(response);
-                console.log(response);
-              },
+                url: "/updateUser",
+                method: 'POST',
+                data: $(this).serialize(),
+                dataType: 'json',
+                success: function(response) {
+                    alert(response);
+                    console.log(response);
+                },
             });
-            
-          // $.ajax({
-             // url: "/updateUser",
-             // type:"POST",
-             // data:{
-              //  "_token": "{{ csrf_token() }}",
+
+            // $.ajax({
+            // url: "/updateUser",
+            // type:"POST",
+            // data:{
+            //  "_token": "{{ csrf_token() }}",
             // entered_by:entered_by,
             // bought_by:bought_by,
             // entity:entity,
             // entry_date:entry_date,
             // entity_location:entity_location,
-           //  editid:editid,
-            
+            //  editid:editid,
+
             //  },
             //  s//uccess:function(response){
-                //  alert(response);
-                //console.log(response);
+            //  alert(response);
+            //console.log(response);
             //  },
-             //});
-            });
-          </script>
-          
-<!-- stage 3 code-->
-           <script type="text/javascript">
- $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-      //  $('#kt_form1').on('edit',function(event){
-        $('#editstep').on('click',function (){
-        event.preventDefault();
-    alert("hh")
-    var fd = new FormData();
+            //});
+        });
+
+    </script>
+
+    <!-- stage 3 code-->
+    <script type="text/javascript">
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        //  $('#kt_form1').on('edit',function(event){
+        $('#editstep').on('click', function() {
+            event.preventDefault();
+            alert("hh")
+            var fd = new FormData();
             let shipping_no = $('#shipping_no').val();
             let coming_from = $('#coming_from').val();
             let going_to = $('#going_to').val();
             let final_destination = $('#final_destination').val();
-            let profile_image=  document.getElementById("profile_image").files[0].name; 
-          //  let profile_image=$('#profile_image').val();
-            let product_image=document.getElementById("product_image").files[0].name; 
-            let doc_image=document.getElementById("doc_image").files[0].name; 
-            let note=$('#note').val();
-            let editid=$('#editid').val();
-            
-            fd.append( 'shipping_no', shipping_no );
-            fd.append( 'coming_from', coming_from );
-            fd.append( 'going_to', going_to );
-            fd.append( 'final_destination', final_destination );
-            fd.append( 'profile_image', profile_image );
-            fd.append( 'product_image', product_image );
-            fd.append( 'doc_image', doc_image );
-            fd.append( 'note', note );
-            fd.append( 'editid', editid );
+            let profile_image = document.getElementById("profile_image").files[0].name;
+            //  let profile_image=$('#profile_image').val();
+            let product_image = document.getElementById("product_image").files[0].name;
+            let doc_image = document.getElementById("doc_image").files[0].name;
+            let note = $('#note').val();
+            let editid = $('#editid').val();
+
+            fd.append('shipping_no', shipping_no);
+            fd.append('coming_from', coming_from);
+            fd.append('going_to', going_to);
+            fd.append('final_destination', final_destination);
+            fd.append('profile_image', profile_image);
+            fd.append('product_image', product_image);
+            fd.append('doc_image', doc_image);
+            fd.append('note', note);
+            fd.append('editid', editid);
             alert(shipping_no);
             alert(coming_from);
             alert(going_to);
@@ -1198,38 +1232,40 @@ alert("jas");
             alert(doc_image);
             alert(note);
             alert(editid);
-            
-           $.ajax({
-              url: "/stageThree",
-              headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            //  type:"POST",
-             /// data:{
-               // "_token": "{{ csrf_token() }}",
-               // shipping_no:shipping_no,
-               // coming_from:coming_from,
-               // going_to:going_to,
-               // final_destination:final_destination,
-               // profile_image:profile_image,
-               // product_image:product_image,
-               // doc_image:doc_image,
-               // note:note,
-               // editid:editid,
 
-             // },
-             data: fd,
-           dataType:'json',
-           async:false,
-           type: 'POST',
-           processData: false,
-           contentType: false,
-           success:function(msg)
-           {
-               console.log(msg);
-           },                    
-             
-             });
+            $.ajax({
+                url: "/stageThree",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                //  type:"POST",
+                /// data:{
+                // "_token": "{{ csrf_token() }}",
+                // shipping_no:shipping_no,
+                // coming_from:coming_from,
+                // going_to:going_to,
+                // final_destination:final_destination,
+                // profile_image:profile_image,
+                // product_image:product_image,
+                // doc_image:doc_image,
+                // note:note,
+                // editid:editid,
+
+                // },
+                data: fd,
+                dataType: 'json',
+                async: false,
+                type: 'POST',
+                processData: false,
+                contentType: false,
+                success: function(msg) {
+                    console.log(msg);
+                },
+
             });
-          </script>
+        });
+
+    </script>
     <!--end::Content-->
 
     <script>
@@ -1238,35 +1274,35 @@ alert("jas");
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-    
-       $('#kt_form2').submit(function(e) {
-           e.preventDefault();
-           let formData = new FormData(this);
-         //  $('#image-input-error').text('');
-    
-           $.ajax({
-              type:'POST',
-              url: `/stageThree`,
-               data: formData,
-               contentType: false,
-               processData: false,
-               success: (response) => {
-                 if (response) {
-                   this.reset();
-                   alert('Image has been uploaded successfully');
-                 }
-               },
-               error: function(response){
-                  console.log(response);
-                  alert('Image has been not uploaded successfully');
-                   // $('#image-input-error').text(response.responseJSON.errors.file);
-               }
-           });
-      });
-    
+
+        $('#kt_form2').submit(function(e) {
+            e.preventDefault();
+            let formData = new FormData(this);
+            //  $('#image-input-error').text('');
+
+            $.ajax({
+                type: 'POST',
+                url: `/stageThree`,
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: (response) => {
+                    if (response) {
+                        this.reset();
+                        alert('Image has been uploaded successfully');
+                    }
+                },
+                error: function(response) {
+                    console.log(response);
+                    alert('Image has been not uploaded successfully');
+                    // $('#image-input-error').text(response.responseJSON.errors.file);
+                }
+            });
+        });
+
     </script>
 @endsection
 @push('scripts')
-    <script src="{{asset('assets/js/pages/crud/forms/widgets/form-repeater.js')}}"></script>
-    <script src="{{asset('assets/js/pages/custom/wizard/wizard-1.js')}}"></script>
+    <script src="{{ asset('assets/js/pages/crud/forms/widgets/form-repeater.js') }}"></script>
+    <script src="{{ asset('assets/js/pages/custom/wizard/wizard-1.js') }}"></script>
 @endpush('scripts')

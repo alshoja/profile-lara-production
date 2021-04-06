@@ -101,17 +101,20 @@
 
 </script> --}}
 <script>
-    // setInterval(function() {
-    //     getNotifications()
-    //     console.info('Checking for new notification.....')
-    // }, 20000);
+    setInterval(function() {
+        getNotifications()
+        console.info('Checking for new notification.....')
+    }, 20000);
     localStorage.setItem('session_id', {{ Auth::user()->id }});
 
 </script>
 <script>
-    $(document).ajaxSend(function() {
-        $('#ajaxloader').fadeIn(250);
+    $(document).ajaxSend(function(e, xhr, opt) {
+        if (opt.url != HOST_URL + '/' + 'notifications') {
+            $('#ajaxloader').fadeIn(250);
+        }
     });
+    
     $(document).ajaxComplete(function() {
         $('#ajaxloader').fadeOut(250);
     });

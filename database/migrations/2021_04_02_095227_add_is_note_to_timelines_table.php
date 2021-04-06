@@ -15,6 +15,7 @@ class AddIsNoteToTimelinesTable extends Migration
     {
         Schema::table('time_lines', function (Blueprint $table) {
             $table->tinyInteger('is_note')->default(0)->nullable();
+            $table->string('type')->nullable();
         });
     }
 
@@ -27,6 +28,7 @@ class AddIsNoteToTimelinesTable extends Migration
     {
         Schema::table('time_lines', function (Blueprint $table) {
             $table->tinyInteger('is_note')->default(0)->nullable();
+            $table->string('type')->nullable();
         });
     }
 }
