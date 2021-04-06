@@ -95,9 +95,8 @@ Route::post('profile/add-profile', [App\Http\Controllers\ProfileController::clas
 Route::post('updateUser', [App\Http\Controllers\ProfileController::class, 'updateUser']);
 Route::post('stageThree', [App\Http\Controllers\ProfileController::class, 'stageThree']);
 Route::post('stageFour', [App\Http\Controllers\ProfileController::class, 'stageFour']);
-Route::post('stageFive', [App\Http\Controllers\ProfileController::class, 'stageFive']);
-
+Route::post('profileUpdate',[App\Http\Controllers\ProfileController::class, 'profileUpdate']);
 Route::get('myinbox', [App\Http\Controllers\ProfileController::class, 'testind']);
-Route::post('profileUpdate', [App\Http\Controllers\ProfileController::class, 'profileUpdate'])->name('add profile');
+
 
 
