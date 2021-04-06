@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <link href="{{asset('assets/css/pages/wizard/wizard-1.rtl.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/pages/wizard/wizard-1.rtl.css') }}" rel="stylesheet" type="text/css" />
 
     <!--begin::Content-->
     <div class="d-flex flex-column-fluid">
@@ -23,7 +23,7 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                            <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
                                                 transform="translate(15.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-15.000000, -12.000000) "
@@ -47,7 +47,7 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                            <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
                                                 transform="translate(15.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-15.000000, -12.000000) "
@@ -71,7 +71,7 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                            <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
                                                 transform="translate(15.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-15.000000, -12.000000) "
@@ -95,7 +95,7 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                            <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
                                                 transform="translate(15.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-15.000000, -12.000000) "
@@ -119,7 +119,7 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow last">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                            <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
                                                 transform="translate(12.000000, 12.000000) rotate(-90.000000) translate(-12.000000, -12.000000)"
@@ -140,19 +140,20 @@
                         <!--begin::Wizard Body-->
                         <div class="row justify-content-center my-10 px-8 my-lg-15 px-lg-10">
                             <div class="col-xl-12 col-xxl-7">
-                                 @if ($errors->any())
-                                     <div class="alert alert-danger">
-                                          <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                                            <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
                                             @endforeach
-                                                </ul>
-                                                 </div>
-                                         @endif
+                                        </ul>
+                                    </div>
+                                @endif
                                 <!--begin::Wizard Form-->
-                                <form class="form" id="kt_form" enctype="multipart/form-data" action="/profileUpdate"  method="POST">
-                                   
+                                <form class="form" id="kt_form" enctype="multipart/form-data" action="/profileUpdate"
+                                    method="POST">
+
                                     @csrf
                                     <!--begin::Wizard Step 1-->
                                     <div class="pb-5" data-wizard-type="step-content" data-wizard-state="current">
@@ -164,7 +165,7 @@
                                             <label>First Name</label>
                                             <input type="text" class="form-control form-control-solid form-control-lg"
                                                 name="name" placeholder="Name" value="{{ $profile->name }}" id="name" />
-                                            
+
                                         </div>
                                         <!--end::Input-->
                                         <!--begin::Input-->
@@ -176,8 +177,10 @@
                                                 <div class="form-group">
                                                     <label>Nationality</label>
                                                     <select name="nationality"
-                                                        class="form-control form-control-solid form-control-lg" id="nationality">
-                                                        <option value="{{ $profile->nationality }}">{{ $profile->nationality }}</option>
+                                                        class="form-control form-control-solid form-control-lg"
+                                                        id="nationality">
+                                                        <option value="{{ $profile->nationality }}">
+                                                            {{ $profile->nationality }}</option>
                                                         <option value="AF">Afghanistan</option>
                                                         <option value="AX">Åland Islands</option>
                                                         <option value="AL">Albania</option>
@@ -191,7 +194,7 @@
                                                         <option value="AR">Argentina</option>
                                                         <option value="AM">Armenia</option>
                                                         <option value="AW">Aruba</option>
-                                                        <option value="AU" >Australia</option>
+                                                        <option value="AU">Australia</option>
                                                         <option value="AT">Austria</option>
                                                         <option value="AZ">Azerbaijan</option>
                                                         <option value="BS">Bahamas</option>
@@ -440,7 +443,8 @@
                                                     <label>Gender</label>
                                                     <select name="gender"
                                                         class="form-control form-control-solid form-control-lg" id="gender">
-                                                        <option value="{{ $profile->gemder }}">{{ $profile->gender }}</option>
+                                                        <option value="{{ $profile->gemder }}">{{ $profile->gender }}
+                                                        </option>
                                                         <option value="Male">Male</option>
                                                         <option value="Female">Female</option>
                                                     </select>
@@ -451,9 +455,9 @@
                                                 <div class="form-group">
                                                     <label>DOB</label>
                                                     <input type="date"
-                                                        class="form-control form-control-solid form-control-lg"
-                                                        name="dob" placeholder="Address Line 1"
-                                                         id="dob" value="{{ $profile->dob }}"/>
+                                                        class="form-control form-control-solid form-control-lg" name="dob"
+                                                        placeholder="Address Line 1" id="dob"
+                                                        value="{{ $profile->dob }}" />
                                                     <!-- <span class="form-text text-muted">Please enter DOb.</span> -->
                                                 </div>
                                             </div>
@@ -465,8 +469,10 @@
                                                 <div class="form-group">
                                                     <label>CitizenShip Status</label>
                                                     <select name="citizen_status"
-                                                        class="form-control form-control-solid form-control-lg" id="citizen_status">
-                                                        <option value="{{ $profile->citizen_status }}">{{ $profile->citizen_status }}</option>
+                                                        class="form-control form-control-solid form-control-lg"
+                                                        id="citizen_status">
+                                                        <option value="{{ $profile->citizen_status }}">
+                                                            {{ $profile->citizen_status }}</option>
                                                         <option value="YE">Status 1</option>
                                                         <option value="ZM">Status 2</option>
                                                         <option value="ZW">Status 3</option>
@@ -479,8 +485,10 @@
                                                 <div class="form-group">
                                                     <label>CitizenShip Location</label>
                                                     <select name="citizen_location"
-                                                        class="form-control form-control-solid form-control-lg" id="citizen_location">
-                                                        <option value="{{ $profile->citizen_location }}">{{ $profile->citizen_location }}</option>
+                                                        class="form-control form-control-solid form-control-lg"
+                                                        id="citizen_location">
+                                                        <option value="{{ $profile->citizen_location }}">
+                                                            {{ $profile->citizen_location }}</option>
                                                         <option value="AF">Male</option>
                                                         <option value="AX">Female</option>
                                                     </select>
@@ -492,7 +500,8 @@
                                                     <label>Citizenshi ID No</label>
                                                     <input type="number"
                                                         class="form-control form-control-solid form-control-lg"
-                                                        name="citizen_id" placeholder="ID number" value="{{ $profile->citizen_id }}" id="citizen_id" />
+                                                        name="citizen_id" placeholder="ID number"
+                                                        value="{{ $profile->citizen_id }}" id="citizen_id" />
                                                     <!-- <span class="form-text text-muted">Please enter DOb.</span> -->
                                                 </div>
                                             </div>
@@ -503,8 +512,9 @@
                                                 <div class="form-group">
                                                     <label>Citizenship UID No</label>
                                                     <input type="text"
-                                                        class="form-control form-control-solid form-control-lg" name="citizen_uid"
-                                                        placeholder="UID No" value="{{ $profile->citizen_uid }}" id="citizen_uid" />
+                                                        class="form-control form-control-solid form-control-lg"
+                                                        name="citizen_uid" placeholder="UID No"
+                                                        value="{{ $profile->citizen_uid }}" id="citizen_uid" />
                                                     <span class="form-text text-muted">Please enter your UID No.</span>
                                                 </div>
                                                 <!--end::Input-->
@@ -514,8 +524,9 @@
                                                 <div class="form-group">
                                                     <label>Passport No</label>
                                                     <input type="text"
-                                                        class="form-control form-control-solid form-control-lg" name="passport_no"
-                                                        placeholder="Passport Number" value="{{ $profile->passport_no }}"  id="passport_no" />
+                                                        class="form-control form-control-solid form-control-lg"
+                                                        name="passport_no" placeholder="Passport Number"
+                                                        value="{{ $profile->passport_no }}" id="passport_no" />
                                                     <span class="form-text text-muted">Please enter your Passport No.</span>
                                                 </div>
                                                 <!--end::Input-->
@@ -525,8 +536,10 @@
                                                 <div class="form-group">
                                                     <label>Passport Type</label>
                                                     <select name="passport_type"
-                                                        class="form-control form-control-solid form-control-lg" id="passport_type">
-                                                        <option value="{{ $profile->passport_type }}">{{ $profile->passport_type }}</option>
+                                                        class="form-control form-control-solid form-control-lg"
+                                                        id="passport_type">
+                                                        <option value="{{ $profile->passport_type }}">
+                                                            {{ $profile->passport_type }}</option>
                                                         <option value="YE">P 1</option>
                                                         <option value="ZM">P 2</option>
                                                         <option value="ZW">P 3</option>
@@ -535,11 +548,11 @@
                                                 <!--end::Select-->
                                             </div>
                                         </div>
-                                        
+
                                     </div>
-                                  
-                               
-                                                                  
+
+
+
                                     <!--end::Wizard Step 1-->
                                     <!--begin::Wizard Step 2-->
                                     <div class="pb-5" data-wizard-type="step-content">
@@ -549,9 +562,10 @@
                                                 <div class="form-group">
                                                     <label>Date Of Entry</label>
                                                     <input type="date" id="entry_date" value="{{ $profile->entry_date }}"
-                                                        class="form-control form-control-solid form-control-lg" name="entry_date"
-                                                        placeholder="Address Line 1"/>
-                                                        <input type="text" id="editid" value="{{ $profile->id }}" name="editid" hidden>
+                                                        class="form-control form-control-solid form-control-lg"
+                                                        name="entry_date" placeholder="Address Line 1" />
+                                                    <input type="text" id="editid" value="{{ $profile->id }}"
+                                                        name="editid" hidden>
                                                     <!-- <span class="form-text text-muted">Please enter DOb.</span> -->
                                                 </div>
                                             </div>
@@ -563,7 +577,8 @@
                                                     <label>Entered By</label>
                                                     <select name="entered_by" id="entered_by"
                                                         class="form-control form-control-solid form-control-lg">
-                                                        <option value="{{ $profile->entered_by }}">{{ $profile->entered_by }}</option>
+                                                        <option value="{{ $profile->entered_by }}">
+                                                            {{ $profile->entered_by }}</option>
                                                         <option value="AF">ALshoja</option>
                                                         <option value="AX">Åland </option>
                                                         <option value="AL">Albania</option>
@@ -577,7 +592,8 @@
                                                     <label>Client Bought By</label>
                                                     <select name="bought_by" id="bought_by"
                                                         class="form-control form-control-solid form-control-lg">
-                                                        <option value="{{ $profile->bought_by }}">{{ $profile->bought_by }}</option>
+                                                        <option value="{{ $profile->bought_by }}">
+                                                            {{ $profile->bought_by }}</option>
                                                         <option value="AF">ALshoja</option>
                                                         <option value="AX">Åland </option>
                                                         <option value="AL">Albania</option>
@@ -591,7 +607,8 @@
                                                     <label>Client Entity By</label>
                                                     <select name="entity" id="entity"
                                                         class="form-control form-control-solid form-control-lg">
-                                                        <option value="{{ $profile->entity_location }}">{{ $profile->entity_location }}</option>
+                                                        <option value="{{ $profile->entity_location }}">
+                                                            {{ $profile->entity_location }}</option>
                                                         <option value="AF">ALshoja</option>
                                                         <option value="AX">Åland </option>
                                                         <option value="AL">Albania</option>
@@ -605,7 +622,8 @@
                                                     <label>Client Entity Location</label>
                                                     <select name="entity_location" id="entity_location"
                                                         class="form-control form-control-solid form-control-lg">
-                                                        <option value="{{ $profile->entity_location }}">{{ $profile->entity_location }}</option>
+                                                        <option value="{{ $profile->entity_location }}">
+                                                            {{ $profile->entity_location }}</option>
                                                         <option value="AX">Åland </option>
                                                         <option value="AL">Albania</option>
                                                     </select>
@@ -624,103 +642,111 @@
                                                 </div>
                                                 <!--begin::Form-->
                                                 <!--<form class="form">-->
-                                                    <div class="card-body">
-                                                        <div id="kt_repeater_1">
-                                                            <div class="form-group row" id="kt_repeater_1">
-                                                                <!-- <label class="col-lg-2 col-form-label text-right">Contacts:</label> -->
-                                                                <div data-repeater-list="" class="col-lg-12">
-                                                                    <div data-repeater-item
-                                                                        class="form-group row align-items-center">
-                                                                        <div class="row form-group">
-                                                                            <div class="col-xl-3">
-                                                                                <!-- <label>Name:</label> -->
-                                                                                <select name="product_type" id="product_type"
-                                                                                    class="form-control form-control-solid ">
-                                                                                    <option value="">Product-1</option>
-                                                                                    <option value="YE">P 1</option>
-                                                                                    <option value="ZM">P 2</option>
-                                                                                    <option value="ZW">P 3</option>
-                                                                                </select>
-                                                                                <div class="d-md-none mb-2"></div>
-                                                                            </div>
-                                                                            <div class="col-xl-3">
-                                                                                <!-- <label>Name:</label> -->
-                                                                                <select name="manufacture_type" id="manufacture_type"
-                                                                                    class="form-control form-control-solid">
-                                                                                    <option value="">Type-1</option>
-                                                                                    <option value="YE">P 1</option>
-                                                                                    <option value="ZM">P 2</option>
-                                                                                    <option value="ZW">P 3</option>
-                                                                                </select>
-                                                                                <div class="d-md-none mb-2"></div>
-                                                                            </div>
-                                                                            <div class="col-xl-3">
-                                                                                <!-- <label>Name:</label> -->
-                                                                                <select name="shipped_type" id="shipped_type"
-                                                                                    class="form-control form-control-solid">
-                                                                                    <option selected value="">Shipped type-1
-                                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                                    </option>
-                                                                                    <option value="YE">P 1</option>
-                                                                                    <option value="ZM">P 2</option>
-                                                                                    <option value="ZW">P 3</option>
-                                                                                </select>
-                                                                                <div class="d-md-none mb-2"></div>
-                                                                            </div>
-                                                                            <div class="col-md-3">
-                                                                                <a href="javascript:;"
-                                                                                    data-repeater-delete=""
-                                                                                    class="btn btn-sm font-weight-bolder btn-danger btn-gradient-danger">
-                                                                                    <i class="la la-trash-o"></i>Delete
-                                                                                </a>
-                                                                            </div>
+                                                <div class="card-body">
+                                                    <div id="kt_repeater_1">
+                                                        <div class="form-group row" id="kt_repeater_1">
+                                                            <!-- <label class="col-lg-2 col-form-label text-right">Contacts:</label> -->
+                                                            <div data-repeater-list="" class="col-lg-12">
+                                                                <div data-repeater-item
+                                                                    class="form-group row align-items-center">
+                                                                    <div class="row form-group">
+                                                                        <div class="col-xl-3">
+                                                                            <!-- <label>Name:</label> -->
+                                                                            <select name="product_type" id="product_type"
+                                                                                class="form-control form-control-solid ">
+                                                                                <option value="">Product-1</option>
+                                                                                <option value="YE">P 1</option>
+                                                                                <option value="ZM">P 2</option>
+                                                                                <option value="ZW">P 3</option>
+                                                                            </select>
+                                                                            <div class="d-md-none mb-2"></div>
                                                                         </div>
-                                                                        <div class="row form-group">
-                                                                            <div class="col-md-2">
-                                                                                <!-- <label>Name:</label> -->
-                                                                  <input type="text" class="form-control" placeholder="Kg" name="quantity_kg" id="quantity_kg" />
-                                                                                <div class="d-md-none mb-2"></div>
-                                                                            </div>
-                                                                            <div class="col-md-2">
-                                                                                <!-- <label>Name:</label> -->
-                                                                   <input type="text" class="form-control" placeholder="G" name="quantity_g" id="quantity_g" />
-                                                                                <div class="d-md-none mb-2"></div>
-                                                                            </div>
-                                                                            <div class="col-md-2">
-                                                                                <!-- <label>Name:</label> -->
-                                                                    <input type="text" class="form-control" placeholder="ML" name="quantity_ml" id="quantity_ml" />
-                                                                                <div class="d-md-none mb-2"></div>
-                                                                            </div>
-
-                                                                            <div class="col-md-2">
-                                                                                <!-- <label>Number:</label> -->
-                                                                      <input type="text" class="form-control"  placeholder="Digit" name="quantity_digit" id="quantity_digit"/>
-                                                                                <div class="d-md-none mb-2"></div>
-                                                                            </div>
+                                                                        <div class="col-xl-3">
+                                                                            <!-- <label>Name:</label> -->
+                                                                            <select name="manufacture_type"
+                                                                                id="manufacture_type"
+                                                                                class="form-control form-control-solid">
+                                                                                <option value="">Type-1</option>
+                                                                                <option value="YE">P 1</option>
+                                                                                <option value="ZM">P 2</option>
+                                                                                <option value="ZW">P 3</option>
+                                                                            </select>
+                                                                            <div class="d-md-none mb-2"></div>
                                                                         </div>
-
+                                                                        <div class="col-xl-3">
+                                                                            <!-- <label>Name:</label> -->
+                                                                            <select name="shipped_type" id="shipped_type"
+                                                                                class="form-control form-control-solid">
+                                                                                <option selected value="">Shipped type-1
+                                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                                </option>
+                                                                                <option value="YE">P 1</option>
+                                                                                <option value="ZM">P 2</option>
+                                                                                <option value="ZW">P 3</option>
+                                                                            </select>
+                                                                            <div class="d-md-none mb-2"></div>
+                                                                        </div>
+                                                                        <div class="col-md-3">
+                                                                            <a href="javascript:;" data-repeater-delete=""
+                                                                                class="btn btn-sm font-weight-bolder btn-danger btn-gradient-danger">
+                                                                                <i class="la la-trash-o"></i>Delete
+                                                                            </a>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <div class="col-lg-4">
-                                                                    <a href="javascript:;" data-repeater-create=""
-                                                                        class="btn btn-sm font-weight-bolder btn-light-primary btn-gradient-success">
-                                                                        <i class="la la-plus"></i>Add
-                                                                    </a>
+                                                                    <div class="row form-group">
+                                                                        <div class="col-md-2">
+                                                                            <!-- <label>Name:</label> -->
+                                                                            <input type="text" class="form-control"
+                                                                                placeholder="Kg" name="quantity_kg"
+                                                                                id="quantity_kg" />
+                                                                            <div class="d-md-none mb-2"></div>
+                                                                        </div>
+                                                                        <div class="col-md-2">
+                                                                            <!-- <label>Name:</label> -->
+                                                                            <input type="text" class="form-control"
+                                                                                placeholder="G" name="quantity_g"
+                                                                                id="quantity_g" />
+                                                                            <div class="d-md-none mb-2"></div>
+                                                                        </div>
+                                                                        <div class="col-md-2">
+                                                                            <!-- <label>Name:</label> -->
+                                                                            <input type="text" class="form-control"
+                                                                                placeholder="ML" name="quantity_ml"
+                                                                                id="quantity_ml" />
+                                                                            <div class="d-md-none mb-2"></div>
+                                                                        </div>
+
+                                                                        <div class="col-md-2">
+                                                                            <!-- <label>Number:</label> -->
+                                                                            <input type="text" class="form-control"
+                                                                                placeholder="Digit" name="quantity_digit"
+                                                                                id="quantity_digit" />
+                                                                            <div class="d-md-none mb-2"></div>
+                                                                        </div>
+                                                                    </div>
+
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-lg-4">
+                                                                <a href="javascript:;" data-repeater-create=""
+                                                                    class="btn btn-sm font-weight-bolder btn-light-primary btn-gradient-success">
+                                                                    <i class="la la-plus"></i>Add
+                                                                </a>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <!--</form>
-                                                 end::Form-->
-                                                 </div>
-                                             </div>
-                                            
-                                      </div>
+                                                </div>
+                                                <!--</form>
+                                                     end::Form-->
+                                            </div>
+                                        </div>
 
-                                
+                                    </div>
+
+
                                     <!--end::Wizard Step 2-->
                                     <!--begin::Wizard Step 3-->
                                     <div class="pb-5" data-wizard-type="step-content">
@@ -731,7 +757,10 @@
                                                 <!--begin::Input-->
                                                 <div class="form-group">
                                                     <label>Shipping No</label>
-<input type="text" id="shipping_no" class="form-control form-control-solid form-control-lg" name="shipping_no" placeholder="Shipping No" value="{{ $profile->shipping_no }}" />
+                                                    <input type="text" id="shipping_no"
+                                                        class="form-control form-control-solid form-control-lg"
+                                                        name="shipping_no" placeholder="Shipping No"
+                                                        value="{{ $profile->shipping_no }}" />
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
@@ -739,8 +768,10 @@
                                                 <!--begin::Input-->
                                                 <div class="form-group">
                                                     <label>Coming From</label>
- <select name="coming_from" id="coming_from" class="form-control form-control-solid form-control-lg">
-                                                        <option value="{{ $profile->coming_from }}">{{ $profile->coming_from }}</option>
+                                                    <select name="coming_from" id="coming_from"
+                                                        class="form-control form-control-solid form-control-lg">
+                                                        <option value="{{ $profile->coming_from }}">
+                                                            {{ $profile->coming_from }}</option>
                                                         <option value="AF">ALshoja</option>
                                                         <option value="AX">Åland </option>
                                                         <option value="AL">Albania</option>
@@ -752,8 +783,10 @@
                                                 <!--begin::Input-->
                                                 <div class="form-group">
                                                     <label>Going to</label>
- <select name="going_to" id="going_to"  class="form-control form-control-solid form-control-lg">
-                                                        <option value="{{ $profile->going_to }}">{{ $profile->going_to }}</option>
+                                                    <select name="going_to" id="going_to"
+                                                        class="form-control form-control-solid form-control-lg">
+                                                        <option value="{{ $profile->going_to }}">
+                                                            {{ $profile->going_to }}</option>
                                                         <option value="AF">ALshoja</option>
                                                         <option value="AX">Åland </option>
                                                         <option value="AL">Albania</option>
@@ -765,8 +798,10 @@
                                                 <!--begin::Input-->
                                                 <div class="form-group">
                                                     <label>Final Destination</label>
-<select name="final_destination" id="final_destination" class="form-control form-control-solid form-control-lg">
-                                                        <option value="{{ $profile->final_destination }}">{{ $profile->final_destination }}</option>
+                                                    <select name="final_destination" id="final_destination"
+                                                        class="form-control form-control-solid form-control-lg">
+                                                        <option value="{{ $profile->final_destination }}">
+                                                            {{ $profile->final_destination }}</option>
                                                         <option value="AF">ALshoja</option>
                                                         <option value="AX">Åland </option>
                                                         <option value="AL">Albania</option>
@@ -789,8 +824,10 @@
                                                         data-action="change" data-toggle="tooltip" title=""
                                                         data-original-title="Change avatar">
                                                         <i class="fa fa-pen icon-sm text-muted"></i>
-<input type="file" name="profile_image" id="profile_image" accept=".png, .jpg, .jpeg" />
-                                                        <input type="hidden" name="profile_avatar_remove1" value="{{ $profile->profile_image }}" />
+                                                        <input type="file" name="profile_image" id="profile_image"
+                                                            accept=".png, .jpg, .jpeg" />
+                                                        <input type="hidden" name="profile_avatar_remove1"
+                                                            value="{{ $profile->profile_image }}" />
                                                     </label>
                                                     <span
                                                         class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
@@ -818,8 +855,9 @@
                                                         data-original-title="Change avatar">
                                                         <i class="fa fa-pen icon-sm text-muted"></i>
                                                         <input type="file" name="product_image" id="product_image"
-                                                            accept=".png, .jpg, .jpeg"  />
-                                                        <input type="hidden" name="profile_avatar_remove2" value="{{ $profile->product_image }}" />
+                                                            accept=".png, .jpg, .jpeg" />
+                                                        <input type="hidden" name="profile_avatar_remove2"
+                                                            value="{{ $profile->product_image }}" />
                                                     </label>
                                                     <span
                                                         class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
@@ -845,9 +883,10 @@
                                                         data-action="change" data-toggle="tooltip" title=""
                                                         data-original-title="Change avatar">
                                                         <i class="fa fa-pen icon-sm text-muted"></i>
-                                                        <input type="file"  name="doc_image" id="doc_image"
+                                                        <input type="file" name="doc_image" id="doc_image"
                                                             accept=".png, .jpg, .jpeg" />
-                                                        <input type="hidden" name="profile_avatar_remove3" value="{{ $profile->doc_image }}"/>
+                                                        <input type="hidden" name="profile_avatar_remove3"
+                                                            value="{{ $profile->doc_image }}" />
                                                     </label>
                                                     <span
                                                         class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
@@ -869,26 +908,29 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="exampleTextarea">Note</label>
-                                                    <textarea class="form-control form-control-solid" rows="3" name="note" id="note">{{ $profile->note }}</textarea>
-                                               
+                                                    <textarea class="form-control form-control-solid" rows="3" name="note"
+                                                        id="note">{{ $profile->note }}</textarea>
+
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
-                                
+
                                     <!--end::Wizard Step 3-->
                                     <!--begin::Wizard Step 4-->
                                     <div class="pb-5" data-wizard-type="step-content">
-                                   
+
                                         <h6 class="mb-10 font-weight-bold text-dark">Label</h6>
                                         <!--begin::Input-->
                                         <div class="form-group row">
                                             <div class="col-xl-12">
                                                 <div class="form-group">
                                                     <label>Record Status</label>
-                                                    <select name="record_status" id="record_status" class="form-control form-control-solid ">
-                                                        <option value="{{ $profile->record_status }}">{{ $profile->record_status }}</option>
+                                                    <select name="record_status" id="record_status"
+                                                        class="form-control form-control-solid ">
+                                                        <option value="{{ $profile->record_status }}">
+                                                            {{ $profile->record_status }}</option>
                                                         <option value="YE">R1</option>
                                                         <option value="ZM">r 2</option>
                                                         <option value="ZW">r 3</option>
@@ -903,22 +945,24 @@
                                             <div class="col-xl-12">
                                                 <div class="form-group">
                                                     <label>Record Department Status</label>
-                                                    <select name="record_dep_transfer" id="record_dep_transfer" class="form-control form-control-solid ">
-                                                        <option value="{{ $profile->record_dep_transfer }}">{{ $profile->record_dep_transfer }}</option>
+                                                    <select name="record_dep_transfer" id="record_dep_transfer"
+                                                        class="form-control form-control-solid ">
+                                                        <option value="{{ $profile->record_dep_transfer }}">
+                                                            {{ $profile->record_dep_transfer }}</option>
                                                         <option value="YE">s 1</option>
                                                         <option value="ZM">s 2</option>
                                                         <option value="ZW">s 3</option>
                                                     </select>
-                                                  
+
                                                     <div class="d-md-none mb-2"></div>
                                                 </div>
                                             </div>
-                                            
-                                            
+
+
                                         </div>
-                                 
+
                                     </div>
-                               
+
                                     <!--end::Wizard Step 4-->
                                     <!--begin::Wizard Step 5-->
                                     <div class="pb-5" data-wizard-type="step-content">
@@ -928,22 +972,18 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <label>General Director</label>
-                                                    <select name="belongs_to"  id="belongs_to" class="form-control form-control-solid ">
-                                                        <option value="{{ $profile->belongs_to }}">{{ $profile->belongs_to }}</option>
+                                                    <select name="belongs_to" id="belongs_to"
+                                                        class="form-control form-control-solid ">
+                                                        <option value="{{ $profile->belongs_to }}">
+                                                            {{ $profile->belongs_to }}</option>
                                                         <option value="2">R1</option>
                                                         <option value="3">r 2</option>
                                                         <option value="4">r 3</option>
                                                     </select>
                                                     <div class="d-md-none mb-2"></div>
-                                                    
                                                 </div>
                                             </div>
                                         </div>
-
-                                        
-
-                                        
-                                        
                                     </div>
                                     <!--end::Wizard Step 5-->
                                     <!--begin::Wizard Actions-->
@@ -951,15 +991,15 @@
                                         <div class="mr-2">
                                             <button type="button" id="previous"
                                                 class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
-                                                data-wizard-type="action-prev"   >Previous</button>
+                                                data-wizard-type="action-prev">Previous</button>
                                         </div>
                                         <div>
 
-                                            <div class="btn-group" >
+                                            <div class="btn-group">
                                                 <button type="submit" data-wizard-type="action-submit"
-                                                    class="btn btn-success btn-gradient-success " >Update</button>
+                                                    class="btn btn-success btn-gradient-success ">Update</button>
                                             </div>
-                                          
+
                                             <!-- <button type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-submit">Submit</button> -->
                                             <button id="next" type="button"
                                                 class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
@@ -985,193 +1025,193 @@
         function enableNext() {
             document.getElementById("next").disabled = false;
         }
-       
+
     </script>
-<script type="text/javascript">
-    function disableNext()
-    {
-        document.getElementById("next").disabled = true;  
-        document.getElementById("previous").disabled = false;  
-
-    }
-</script>
     <script type="text/javascript">
- 
-     $('#kt_form').on('submit',function(event){
-         event.preventDefault();
- 
-         let name = $('#name').val();
-         let nationality = $('#nationality').val();
-         let gender = $('#gender').val();
-         let dob = $('#dob').val();
-         let citizen_status = $('#citizen_status').val();
-         let citizen_location = $('#citizen_location').val();
-         let citizen_id = $('#citizen_id').val();
-         let citizen_uid = $('#citizen_uid').val();
-         let passport_no = $('#passport_no').val();
-         let passport_type = $('#passport_type').val();
-         
-        $.ajax({
-           url: "/profile/add-profile",
-           type:"POST",
-           data:{
-             "_token": "{{ csrf_token() }}",
-          name:name, 
-          nationality:nationality,
-          gender:gender, 
-          dob:dob, 
-          citizen_status:citizen_status,
-          citizen_location:citizen_location,
-          citizen_id:citizen_id,
-          citizen_uid:citizen_uid,
-          passport_no:passport_no,
-          passport_type:passport_type,
-         
-           },
-           success:function(data){
-             var id=data.id;
-             alert(id);
-             $('#editid').val(id);
-             $('#editid1').val(id);
-             $('#editid3').val(id);
-             $('#editid4').val(id);
-            // console.log(response);
-           },
-          });
-         });
-       </script>
+        function disableNext() {
+            document.getElementById("next").disabled = true;
+            document.getElementById("previous").disabled = false;
 
-<script type="text/javascript">
- 
-    $('#kt_form3').on('submit',function(event){
-        event.preventDefault();
+        }
 
-        let record_status = $('#record_status').val();
-        let record_dep_transfer = $('#record_dep_transfer').val();
-        let editid3 = $('#editid3').val();
-        $.ajax({
-           url: "/stageFour",
-           type:"POST",
-           data:{
-             "_token": "{{ csrf_token() }}",
-             record_status:record_status, 
-             record_dep_transfer:record_dep_transfer,
-             editid3:editid3, 
-        },
-        success:function(response){
-           
-           
-             console.log(response);
-           },
-          });
-         });
-</script>
-<script type="text/javascript">
- 
-    $('#kt_form4').on('submit',function(event){
-        event.preventDefault();
-alert("jas");
-        let belongs_to  = $('#belongs_to').val();
-        
-        let editid4 = $('#editid4').val();
-        alert(belongs_to);
-        alert(editid4);
-        $.ajax({
-           url: "/stageFive",
-           type:"POST",
-           data:{
-             "_token": "{{ csrf_token() }}",
-             belongs_to:belongs_to, 
-             editid4:editid4, 
-        },
-        success:function(response){
-           
-           
-             console.log(response);
-           },
-          });
-         });
-</script>
+    </script>
+    <script type="text/javascript">
+        $('#kt_form').on('submit', function(event) {
+            event.preventDefault();
+
+            let name = $('#name').val();
+            let nationality = $('#nationality').val();
+            let gender = $('#gender').val();
+            let dob = $('#dob').val();
+            let citizen_status = $('#citizen_status').val();
+            let citizen_location = $('#citizen_location').val();
+            let citizen_id = $('#citizen_id').val();
+            let citizen_uid = $('#citizen_uid').val();
+            let passport_no = $('#passport_no').val();
+            let passport_type = $('#passport_type').val();
+
+            $.ajax({
+                url: "/profile/add-profile",
+                type: "POST",
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    name: name,
+                    nationality: nationality,
+                    gender: gender,
+                    dob: dob,
+                    citizen_status: citizen_status,
+                    citizen_location: citizen_location,
+                    citizen_id: citizen_id,
+                    citizen_uid: citizen_uid,
+                    passport_no: passport_no,
+                    passport_type: passport_type,
+
+                },
+                success: function(data) {
+                    var id = data.id;
+                    alert(id);
+                    $('#editid').val(id);
+                    $('#editid1').val(id);
+                    $('#editid3').val(id);
+                    $('#editid4').val(id);
+                    // console.log(response);
+                },
+            });
+        });
+
+    </script>
+
+    <script type="text/javascript">
+        $('#kt_form3').on('submit', function(event) {
+            event.preventDefault();
+
+            let record_status = $('#record_status').val();
+            let record_dep_transfer = $('#record_dep_transfer').val();
+            let editid3 = $('#editid3').val();
+            $.ajax({
+                url: "/stageFour",
+                type: "POST",
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    record_status: record_status,
+                    record_dep_transfer: record_dep_transfer,
+                    editid3: editid3,
+                },
+                success: function(response) {
 
 
-       <!-- Stage 2 Script-->
-       <script type="text/javascript">
- 
-        $('#kt_form1').on('submit',function(event){
-        //$('#edit').on('click',function (){
-        event.preventDefault();
-      alert("h")
+                    console.log(response);
+                },
+            });
+        });
+
+    </script>
+    <script type="text/javascript">
+        $('#kt_form4').on('submit', function(event) {
+            event.preventDefault();
+            alert("jas");
+            let belongs_to = $('#belongs_to').val();
+
+            let editid4 = $('#editid4').val();
+            alert(belongs_to);
+            alert(editid4);
+            $.ajax({
+                url: "/stageFive",
+                type: "POST",
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    belongs_to: belongs_to,
+                    editid4: editid4,
+                },
+                success: function(response) {
+
+
+                    console.log(response);
+                },
+            });
+        });
+
+    </script>
+
+
+    <!-- Stage 2 Script-->
+    <script type="text/javascript">
+        $('#kt_form1').on('submit', function(event) {
+            //$('#edit').on('click',function (){
+            event.preventDefault();
+            alert("h")
             let entered_by = $('#entered_by').val();
             let bought_by = $('#bought_by').val();
             let entity = $('#entity').val();
             let entry_date = $('#entry_date').val();
             let entity_location = $('#entity_location').val();
-            let editid=$('#editid').val();
+            let editid = $('#editid').val();
 
             $.ajax({
-                url:"/updateUser",
-                method:'POST',
-                data:$(this).serialize(),
-                dataType:'json',
-                success:function(response){
-                  alert(response);
-                console.log(response);
-              },
+                url: "/updateUser",
+                method: 'POST',
+                data: $(this).serialize(),
+                dataType: 'json',
+                success: function(response) {
+                    alert(response);
+                    console.log(response);
+                },
             });
-            
-          // $.ajax({
-             // url: "/updateUser",
-             // type:"POST",
-             // data:{
-              //  "_token": "{{ csrf_token() }}",
+
+            // $.ajax({
+            // url: "/updateUser",
+            // type:"POST",
+            // data:{
+            //  "_token": "{{ csrf_token() }}",
             // entered_by:entered_by,
             // bought_by:bought_by,
             // entity:entity,
             // entry_date:entry_date,
             // entity_location:entity_location,
-           //  editid:editid,
-            
+            //  editid:editid,
+
             //  },
             //  s//uccess:function(response){
-                //  alert(response);
-                //console.log(response);
+            //  alert(response);
+            //console.log(response);
             //  },
-             //});
-            });
-          </script>
-          
-<!-- stage 3 code-->
-           <script type="text/javascript">
- $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-      //  $('#kt_form1').on('edit',function(event){
-        $('#editstep').on('click',function (){
-        event.preventDefault();
-    alert("hh")
-    var fd = new FormData();
+            //});
+        });
+
+    </script>
+
+    <!-- stage 3 code-->
+    <script type="text/javascript">
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        //  $('#kt_form1').on('edit',function(event){
+        $('#editstep').on('click', function() {
+            event.preventDefault();
+            alert("hh")
+            var fd = new FormData();
             let shipping_no = $('#shipping_no').val();
             let coming_from = $('#coming_from').val();
             let going_to = $('#going_to').val();
             let final_destination = $('#final_destination').val();
-            let profile_image=  document.getElementById("profile_image").files[0].name; 
-          //  let profile_image=$('#profile_image').val();
-            let product_image=document.getElementById("product_image").files[0].name; 
-            let doc_image=document.getElementById("doc_image").files[0].name; 
-            let note=$('#note').val();
-            let editid=$('#editid').val();
-            
-            fd.append( 'shipping_no', shipping_no );
-            fd.append( 'coming_from', coming_from );
-            fd.append( 'going_to', going_to );
-            fd.append( 'final_destination', final_destination );
-            fd.append( 'profile_image', profile_image );
-            fd.append( 'product_image', product_image );
-            fd.append( 'doc_image', doc_image );
-            fd.append( 'note', note );
-            fd.append( 'editid', editid );
+            let profile_image = document.getElementById("profile_image").files[0].name;
+            //  let profile_image=$('#profile_image').val();
+            let product_image = document.getElementById("product_image").files[0].name;
+            let doc_image = document.getElementById("doc_image").files[0].name;
+            let note = $('#note').val();
+            let editid = $('#editid').val();
+
+            fd.append('shipping_no', shipping_no);
+            fd.append('coming_from', coming_from);
+            fd.append('going_to', going_to);
+            fd.append('final_destination', final_destination);
+            fd.append('profile_image', profile_image);
+            fd.append('product_image', product_image);
+            fd.append('doc_image', doc_image);
+            fd.append('note', note);
+            fd.append('editid', editid);
             alert(shipping_no);
             alert(coming_from);
             alert(going_to);
@@ -1181,38 +1221,40 @@ alert("jas");
             alert(doc_image);
             alert(note);
             alert(editid);
-            
-           $.ajax({
-              url: "/stageThree",
-              headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            //  type:"POST",
-             /// data:{
-               // "_token": "{{ csrf_token() }}",
-               // shipping_no:shipping_no,
-               // coming_from:coming_from,
-               // going_to:going_to,
-               // final_destination:final_destination,
-               // profile_image:profile_image,
-               // product_image:product_image,
-               // doc_image:doc_image,
-               // note:note,
-               // editid:editid,
 
-             // },
-             data: fd,
-           dataType:'json',
-           async:false,
-           type: 'POST',
-           processData: false,
-           contentType: false,
-           success:function(msg)
-           {
-               console.log(msg);
-           },                    
-             
-             });
+            $.ajax({
+                url: "/stageThree",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                //  type:"POST",
+                /// data:{
+                // "_token": "{{ csrf_token() }}",
+                // shipping_no:shipping_no,
+                // coming_from:coming_from,
+                // going_to:going_to,
+                // final_destination:final_destination,
+                // profile_image:profile_image,
+                // product_image:product_image,
+                // doc_image:doc_image,
+                // note:note,
+                // editid:editid,
+
+                // },
+                data: fd,
+                dataType: 'json',
+                async: false,
+                type: 'POST',
+                processData: false,
+                contentType: false,
+                success: function(msg) {
+                    console.log(msg);
+                },
+
             });
-          </script>
+        });
+
+    </script>
     <!--end::Content-->
 
     <script>
@@ -1221,35 +1263,35 @@ alert("jas");
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-    
-       $('#kt_form2').submit(function(e) {
-           e.preventDefault();
-           let formData = new FormData(this);
-         //  $('#image-input-error').text('');
-    
-           $.ajax({
-              type:'POST',
-              url: `/stageThree`,
-               data: formData,
-               contentType: false,
-               processData: false,
-               success: (response) => {
-                 if (response) {
-                   this.reset();
-                   alert('Image has been uploaded successfully');
-                 }
-               },
-               error: function(response){
-                  console.log(response);
-                  alert('Image has been not uploaded successfully');
-                   // $('#image-input-error').text(response.responseJSON.errors.file);
-               }
-           });
-      });
-    
+
+        $('#kt_form2').submit(function(e) {
+            e.preventDefault();
+            let formData = new FormData(this);
+            //  $('#image-input-error').text('');
+
+            $.ajax({
+                type: 'POST',
+                url: `/stageThree`,
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: (response) => {
+                    if (response) {
+                        this.reset();
+                        alert('Image has been uploaded successfully');
+                    }
+                },
+                error: function(response) {
+                    console.log(response);
+                    alert('Image has been not uploaded successfully');
+                    // $('#image-input-error').text(response.responseJSON.errors.file);
+                }
+            });
+        });
+
     </script>
 @endsection
 @push('scripts')
-    <script src="{{asset('assets/js/pages/crud/forms/widgets/form-repeater.js')}}"></script>
-    <script src="{{asset('assets/js/pages/custom/wizard/wizard-1.js')}}"></script>
+    <script src="{{ asset('assets/js/pages/crud/forms/widgets/form-repeater.js') }}"></script>
+    <script src="{{ asset('assets/js/pages/custom/wizard/wizard-1.js') }}"></script>
 @endpush('scripts')

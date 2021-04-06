@@ -97,7 +97,7 @@ Route::post('stageThree', [App\Http\Controllers\ProfileController::class, 'stage
 Route::post('stageFour', [App\Http\Controllers\ProfileController::class, 'stageFour']);
 Route::post('stageFive', [App\Http\Controllers\ProfileController::class, 'stageFive']);
 
-Route::get('myinbox', [App\Http\Controllers\ProfileController::class, 'testind']);
+Route::post('profileUpdate', [App\Http\Controllers\ProfileController::class, 'profileUpdate']);
 
 
 
