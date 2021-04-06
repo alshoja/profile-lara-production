@@ -16,9 +16,10 @@ function saveOrUpdateOrGet(url, method, formData, id) {
     async: false,
     dataType: "json",
     success: (data) => {
-      // console.log(data);
+      console.log(data);
       res = data;
-      showToast("Item added", "", "info");
+      let message = res.message ? res.message : "Done";
+      showToast(message, "", "info");
     },
     error: function (XMLHttpRequest, textStatus, errorThrown) {
       console.log(XMLHttpRequest);
@@ -202,6 +203,7 @@ function setEprofile(profile) {
 }
 
 function setDocs(result) {
+  console.log(result)
   document.getElementById("doc_1").src = result.doc_image;
   document.getElementById("doc_2").src = result.product_image;
   document.getElementById("doc_3").src = result.profile_image;
@@ -319,6 +321,8 @@ function replyNote() {
 
 function AproveOrReject(action) {
   let profile_id = document.getElementById("profile_id");
+  let reject_button = document.getElementById("reject");
+  let approve_button = document.getElementById("approve");
   let note = document.getElementById("approve_note");
   if (note.value == "") {
     openAlert("error", "Required Empty", "A valid Note is required");
@@ -330,7 +334,9 @@ function AproveOrReject(action) {
   payLoad.profile_id = profile_id.value;
   payLoad.action = action;
   const res = saveOrUpdateOrGet("profile/sign/or/reject", "POST", payLoad);
-  // getProfileData(res.profile_id);
   note.value = "";
+  reject_button.disabled = true;
+  approve_button.disabled = true;
+  location.reload();
   return res;
 }

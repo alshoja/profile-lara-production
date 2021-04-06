@@ -31,21 +31,22 @@ Auth::routes();
 Route::get('/notifications', [App\Http\Controllers\HomeController::class, 'getNotifications'])->name('notification');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('test', [App\Http\Controllers\ProfileController::class, 'testind'])->name('home');
+Route::get('inbox', [App\Http\Controllers\ProfileController::class, 'inbox'])->name('inbox');
 
 // Profile
-Route::get('profile/track', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
-Route::get('profile/drafts', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
-Route::get('profiles', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
-Route::get('forward/new/{id}', [App\Http\Controllers\ProfileController::class, 'forwardAsNew'])->name('notification');
-Route::get('profile/details/{id}', [App\Http\Controllers\ProfileController::class, 'getProfileById']);
+Route::get('profile/track', [App\Http\Controllers\ProfileController::class, 'index'])->name('track');
+Route::get('profile/drafts', [App\Http\Controllers\ProfileController::class, 'index'])->name('drafts');
+Route::get('profiles', [App\Http\Controllers\ProfileController::class, 'index'])->name('all');
+Route::get('forward/new/{id}', [App\Http\Controllers\ProfileController::class, 'forwardAsNew'])->name('forward');
+Route::get('profile/details/{id}', [App\Http\Controllers\ProfileController::class, 'getProfileById'])->name('single profile');
 Route::post('profile/sign/or/reject', [App\Http\Controllers\ProfileController::class, 'sigOrReject']);
-Route::get('profile/delete/{id}', [App\Http\Controllers\ProfileController::class, 'destroy']);
+Route::get('profile/delete/{id}', [App\Http\Controllers\ProfileController::class, 'destroy'])->name('destroy');
+Route::get('profile/resubmit/{id}', [App\Http\Controllers\ProfileController::class, 'reSubmit'])->name('reSubmit');
 
 // User Management 
-Route::get('user/list-users', [App\Http\Controllers\UserController::class, 'index'])->name('List users');
-Route::get('user/add-user', [App\Http\Controllers\UserController::class, 'create'])->name('add user');
-Route::get('user/profile-detail/{id}', [App\Http\Controllers\UserController::class, 'edit'])->name('edit user');
+Route::get('user/list-users', [App\Http\Controllers\UserController::class, 'index']);
+Route::get('user/add-user', [App\Http\Controllers\UserController::class, 'create']);
+Route::get('user/profile-detail/{id}', [App\Http\Controllers\UserController::class, 'edit']);
 Route::post('/user', [App\Http\Controllers\UserController::class, 'store']);
 Route::post('/update/user/{id}', [App\Http\Controllers\UserController::class, 'update']);
 Route::post('account/change/password', [App\Http\Controllers\UserController::class, 'changePassword']);
@@ -89,6 +90,7 @@ Route::get('timeline', [App\Http\Controllers\TimeLineController::class, 'store']
 Route::post('timeline/reply/note', [App\Http\Controllers\TimeLineController::class, 'replyNote']);
 
 // Profile Management
+<<<<<<< HEAD
 Route::get('profile/add-profile', [App\Http\Controllers\ProfileController::class, 'create'])->name('add profile');
 Route::post('profile/add-profile', [App\Http\Controllers\ProfileController::class, 'store'])->name('add profile');
 Route::post('updateUser', [App\Http\Controllers\ProfileController::class, 'updateUser'])->name('add profile');
@@ -96,3 +98,16 @@ Route::post('stageThree', [App\Http\Controllers\ProfileController::class, 'stage
 Route::post('stageFour', [App\Http\Controllers\ProfileController::class, 'stageFour'])->name('add profile');
 Route::post('stageFive', [App\Http\Controllers\ProfileController::class, 'stageFive'])->name('add profile');
 Route::post('profileUpdate', [App\Http\Controllers\ProfileController::class, 'profileUpdate'])->name('add profile');
+=======
+Route::get('profile/add-profile', [App\Http\Controllers\ProfileController::class, 'create']);
+Route::post('profile/add-profile', [App\Http\Controllers\ProfileController::class, 'store']);
+Route::post('updateUser', [App\Http\Controllers\ProfileController::class, 'updateUser']);
+Route::post('stageThree', [App\Http\Controllers\ProfileController::class, 'stageThree']);
+Route::post('stageFour', [App\Http\Controllers\ProfileController::class, 'stageFour']);
+Route::post('stageFive', [App\Http\Controllers\ProfileController::class, 'stageFive']);
+
+Route::get('myinbox', [App\Http\Controllers\ProfileController::class, 'testind']);
+
+
+
+>>>>>>> 575ffb986315ceb31a950217b249203780893a5c
