@@ -145,7 +145,7 @@
                                                                     </span>
                                                                 </a>
                                                                 @if (Auth::user()->update)
-                                                                    <a href="#"
+                                                                    <a href="{{ route('profiles.edit', $item->id) }}"
                                                                         class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
                                                                         <span class="svg-icon svg-icon-md svg-icon-primary">
                                                                             <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Write.svg-->

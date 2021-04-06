@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,6 +24,7 @@ Route::get('profile/add-profile', function () {
     return view('pages.add-profile');
 });
 
+Route::resource('profiles', ProfileController::class);;
 
 Auth::routes();
 // Dashboard
@@ -93,3 +95,4 @@ Route::post('updateUser', [App\Http\Controllers\ProfileController::class, 'updat
 Route::post('stageThree', [App\Http\Controllers\ProfileController::class, 'stageThree'])->name('add profile');
 Route::post('stageFour', [App\Http\Controllers\ProfileController::class, 'stageFour'])->name('add profile');
 Route::post('stageFive', [App\Http\Controllers\ProfileController::class, 'stageFive'])->name('add profile');
+Route::post('profileUpdate', [App\Http\Controllers\ProfileController::class, 'profileUpdate'])->name('add profile');
