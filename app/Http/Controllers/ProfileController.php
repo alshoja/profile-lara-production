@@ -245,10 +245,10 @@ class ProfileController extends Controller
     public function profileUpdate(Request $request)
     {
         $editid=$request->input('editid');
-        $imagetest1=$request->file('profile_image');
-        $imagetest2=$request->file('product_image');
-        $imagetest3=$request->file('doc_image');
-        if($imagetest1==null )
+        $image_profile=$request->file('profile_image');
+        $image_product=$request->file('product_image');
+        $image_doc=$request->file('doc_image');
+        if($image_profile==null )
         {
         $progileimage=  $request->input('profile_avatar_remove1');
         }
@@ -257,14 +257,14 @@ class ProfileController extends Controller
             $progileimage=$request->file('profile_image')->store('images');
         }
         
-        if($imagetest2==null )
+        if($image_product==null )
         {
         $productimage=  $request->input('profile_avatar_remove2');
         }
         else{
             $productimage=$request->file('product_image')->store('images');
         }
-        if($imagetest3==null )
+        if($image_doc==null )
         {
         $docimage=  $request->input('profile_avatar_remove3');
         }
