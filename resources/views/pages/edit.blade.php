@@ -992,8 +992,8 @@
                                         <div>
 
                                             <div class="btn-group">
-                                                <button type="submit" data-wizard-type="action-submit"
-                                                    class="btn btn-success btn-gradient-success ">Update</button>
+                                                <button  type="submit" data-wizard-type="action-submit"
+                                                    class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4">Update</button>
                                             </div>
 
                                             <!-- <button type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-submit">Submit</button> -->

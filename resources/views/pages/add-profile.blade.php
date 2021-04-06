@@ -531,8 +531,7 @@
                                         </div>
                                         <button onclick="enableNext()"
                                             class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
-                                            id="submit" style="margin-right: 475;
-                                            margin-bottom: -25;">save</button>
+                                            id="submit">save</button>
                                     </div>
 
                                     <!--<input type = 'submit' value = "Save" class="btn btn-success font-weight-bolder"/>-->
@@ -726,9 +725,7 @@
                                         </div>
                                         <button
                                             class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
-                                            id="submit" type="submit" style="margin-bottom: -25;
-                                                margin-right: 475;
-                                                margin-top: 25;" onclick="enableNext()">save</button>
+                                            id="submit" type="submit" onclick="enableNext()">save</button>
                                     </div>
 
                                 </form>
@@ -899,9 +896,7 @@
                                             <button class="btn btn-success font-weight-bolder" id="editstep">smave</button>-->
                                         <button type="submit" id="submit" onclick="enableNext()"
                                             class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
-                                            style="margin-top: 20;
-                                            margin-bottom: -25;
-                                            margin-right: 475;">Save</button>
+                                            >Save</button>
                                     </div>
                                 </form>
                                 <form id="kt_form3" method="post" action="/stageFour">
@@ -946,9 +941,7 @@
 
                                             <button
                                                 class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
-                                                id="submit" type="submit" style="margin-top: 20;
-                                                margin-bottom: -45;
-                                                margin-right: 487;" onclick="enableNext()">save</button>
+                                                id="submit" type="submit"  onclick="enableNext()">save</button>
                                         </div>
 
                                     </div>
@@ -978,9 +971,7 @@
 
                                         <button
                                             class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
-                                            id="submit" type="submit" style="margin-top: 20;
-                                            margin-bottom: -26;
-                                            margin-right: 370">save</button>
+                                            id="submit" type="submit">save</button>
 
 
 
@@ -991,8 +982,7 @@
                                         <div class="mr-2">
                                             <button type="button" id="previous"
                                                 class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
-                                                data-wizard-type="action-prev" style="margin-top: -87;
-                                                    margin-right: 235;" disabled onclick="enableNext()">Previous</button>
+                                                data-wizard-type="action-prev"  disabled onclick="enableNext()">Previous</button>
                                         </div>
                                         <div>
 
@@ -1013,8 +1003,7 @@
                                             <!-- <button type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-submit">Submit</button> -->
                                             <button id="next" type="button"
                                                 class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
-                                                data-wizard-type="action-next" style="margin-left: 500;
-                                                    margin-top: -150;" disabled onclick="disableNext()">Next</button>
+                                                data-wizard-type="action-next"  disabled onclick="disableNext()">Next</button>
                                         </div>
                                     </div>
                                     <!--end::Wizard Actions-->
@@ -1080,7 +1069,7 @@
                 },
                 success: function(data) {
                     var id = data.id;
-                    alert(id);
+                    
                     $('#editid').val(id);
                     $('#editid1').val(id);
                     $('#editid3').val(id);
@@ -1120,12 +1109,11 @@
     <script type="text/javascript">
         $('#kt_form4').on('submit', function(event) {
             event.preventDefault();
-            alert("jas");
+            
             let belongs_to = $('#belongs_to').val();
 
             let editid4 = $('#editid4').val();
-            alert(belongs_to);
-            alert(editid4);
+            
             $.ajax({
                 url: "/stageFive",
                 type: "POST",
@@ -1150,7 +1138,7 @@
         $('#kt_form1').on('submit', function(event) {
             //$('#edit').on('click',function (){
             event.preventDefault();
-            alert("h")
+            
             let entered_by = $('#entered_by').val();
             let bought_by = $('#bought_by').val();
             let entity = $('#entity').val();
@@ -1169,24 +1157,7 @@
                 },
             });
 
-            // $.ajax({
-            // url: "/updateUser",
-            // type:"POST",
-            // data:{
-            //  "_token": "{{ csrf_token() }}",
-            // entered_by:entered_by,
-            // bought_by:bought_by,
-            // entity:entity,
-            // entry_date:entry_date,
-            // entity_location:entity_location,
-            //  editid:editid,
-
-            //  },
-            //  s//uccess:function(response){
-            //  alert(response);
-            //console.log(response);
-            //  },
-            //});
+            
         });
 
     </script>
@@ -1238,20 +1209,7 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                //  type:"POST",
-                /// data:{
-                // "_token": "{{ csrf_token() }}",
-                // shipping_no:shipping_no,
-                // coming_from:coming_from,
-                // going_to:going_to,
-                // final_destination:final_destination,
-                // profile_image:profile_image,
-                // product_image:product_image,
-                // doc_image:doc_image,
-                // note:note,
-                // editid:editid,
-
-                // },
+                
                 data: fd,
                 dataType: 'json',
                 async: false,
