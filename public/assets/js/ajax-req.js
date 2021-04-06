@@ -70,6 +70,7 @@ function getNotifications() {
   let fullUrl = HOST_URL + "/notifications";
   let res = null;
   let suburl = "/profiles?tab=inbox";
+  localStorage.setItem("notification", JSON.stringify([]));
   $.ajax({
     url: fullUrl,
     type: "GET",
@@ -77,7 +78,11 @@ function getNotifications() {
     dataType: "json",
     contentType: "application/json",
     success: function (result) {
-      let data = result.approved;
+      localStorage.setItem("notification", JSON.stringify(result));
+      let result2 = JSON.parse(localStorage.getItem("notification"));
+      let result1 = result.filter((o1) => result2.some((o2) => o1.id != o2.id));
+      console.log('new notificatio',result1)
+      let data = result;
       let contentStr = "";
       let span = document.getElementById("count-span");
       if (data.length > 0) {
@@ -95,7 +100,7 @@ function getNotifications() {
               </div>
               <div class="navi-text">
                   <div class="font-weight-bold">` +
-            o.name +
+            o.message +
             `</div>
                   <div class="text-muted"> Rejected
             </div>

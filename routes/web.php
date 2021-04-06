@@ -26,7 +26,7 @@ Route::get('/', function () {
 
 Auth::routes();
 // Dashboard
-Route::get('/notifications', [App\Http\Controllers\HomeController::class, 'getNotifications'])->name('notification');
+Route::get('/notifications', [App\Http\Controllers\NotificationController::class, 'index'])->name('notification');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 
 Route::get('inbox', [App\Http\Controllers\ProfileController::class, 'inbox'])->name('inbox');
