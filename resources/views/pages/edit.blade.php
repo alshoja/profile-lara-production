@@ -962,20 +962,20 @@
                                     <!--end::Wizard Step 4-->
                                     <!--begin::Wizard Step 5-->
                                     <div class="pb-5" data-wizard-type="step-content">
-                                        <h6 class="mb-10 font-weight-bold text-dark">Label</h6>
+                                        {{-- <h6 class="mb-10 font-weight-bold text-dark">Label</h6> --}}
                                         <!--begin::Input-->
                                         <div class="form-group row">
                                             <div class="col-xl-6">
                                                 <div class="form-group">
-                                                    <label>General Director</label>
-                                                    <select name="belongs_to" id="belongs_to"
-                                                        class="form-control form-control-solid ">
-                                                        <option value="{{ $profile->belongs_to }}">
-                                                            {{ $profile->belongs_to }}</option>
-                                                        <option value="2">R1</option>
-                                                        <option value="3">r 2</option>
-                                                        <option value="4">r 3</option>
-                                                    </select>
+                                                    <label>Department</label>
+                                                   <h6>{{$profile->department->name}}</h6>
+                                                    <div class="d-md-none mb-2"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6">
+                                                <div class="form-group">
+                                                    <label>Section</label>
+                                                   <h6>{{$profile->section->name}}</h6>
                                                     <div class="d-md-none mb-2"></div>
                                                 </div>
                                             </div>

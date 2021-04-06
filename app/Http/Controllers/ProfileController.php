@@ -223,7 +223,7 @@ class ProfileController extends Controller
     public function edit($id)
     {
         $profile = Profile::with('department', 'section')->find($id);
-        return response()->json($profile, 200);
+        // return response()->json($profile, 200);
         return view('pages.edit', compact('profile'));
     }
 
