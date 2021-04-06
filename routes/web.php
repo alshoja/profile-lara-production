@@ -90,15 +90,6 @@ Route::get('timeline', [App\Http\Controllers\TimeLineController::class, 'store']
 Route::post('timeline/reply/note', [App\Http\Controllers\TimeLineController::class, 'replyNote']);
 
 // Profile Management
-<<<<<<< HEAD
-Route::get('profile/add-profile', [App\Http\Controllers\ProfileController::class, 'create'])->name('add profile');
-Route::post('profile/add-profile', [App\Http\Controllers\ProfileController::class, 'store'])->name('add profile');
-Route::post('updateUser', [App\Http\Controllers\ProfileController::class, 'updateUser'])->name('add profile');
-Route::post('stageThree', [App\Http\Controllers\ProfileController::class, 'stageThree'])->name('add profile');
-Route::post('stageFour', [App\Http\Controllers\ProfileController::class, 'stageFour'])->name('add profile');
-Route::post('stageFive', [App\Http\Controllers\ProfileController::class, 'stageFive'])->name('add profile');
-Route::post('profileUpdate', [App\Http\Controllers\ProfileController::class, 'profileUpdate'])->name('add profile');
-=======
 Route::get('profile/add-profile', [App\Http\Controllers\ProfileController::class, 'create']);
 Route::post('profile/add-profile', [App\Http\Controllers\ProfileController::class, 'store']);
 Route::post('updateUser', [App\Http\Controllers\ProfileController::class, 'updateUser']);
@@ -110,4 +101,3 @@ Route::get('myinbox', [App\Http\Controllers\ProfileController::class, 'testind']
 
 
 
->>>>>>> 575ffb986315ceb31a950217b249203780893a5c
