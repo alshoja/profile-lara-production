@@ -755,7 +755,7 @@
                                                                                             <label
                                                                                                 class="text-muted font-size-sm">Profile
                                                                                                 Picture</label>
-                                                                                            <img id="profile_image"
+                                                                                            <img style="width: 20%" id="profile_image"
                                                                                                 class="text-secondary font-weight-lighter font-size-sm">
                                                                                                 
                                                                                         </div>
@@ -763,14 +763,14 @@
                                                                                             <label
                                                                                                 class="text-muted font-size-sm">Product
                                                                                                 Image</label>
-                                                                                            <img id="product_image"
+                                                                                            <img style="width: 20%" id="product_image"
                                                                                                 class="text-secondary font-weight-lighter font-size-sm">
                                                                                                
                                                                                         </div>
                                                                                         <div class="col-md-4">
                                                                                             <label
                                                                                                 class="text-muted font-size-sm">Document</label>
-                                                                                            <img id="doc_image"
+                                                                                            <img style="width: 20%" id="doc_image"
                                                                                                 class="text-secondary font-weight-lighter font-size-sm">
                                                                                                 
                                                                                         </div>
@@ -838,12 +838,22 @@
                                                                                     </div>
                                                                                     </br>
                                                                                     <div class="form-group row">
-                                                                                        <div class="col-xl-12">
+                                                                                        <div class="col-xl-6">
                                                                                             <div class="form-group">
                                                                                                 <label
-                                                                                                    class="text-muted font-size-sm">General
-                                                                                                    Director</label>
+                                                                                                    class="text-muted font-size-sm">
+                                                                                                    Department</label>
                                                                                                 <p id="belongs_to"
+                                                                                                    class="text-secondary font-weight-lighter font-size-sm">
+                                                                                                    </p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-xl-6">
+                                                                                            <div class="form-group">
+                                                                                                <label
+                                                                                                    class="text-muted font-size-sm">
+                                                                                                    Section</label>
+                                                                                                <p id="section"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
                                                                                                     </p>
                                                                                             </div>
