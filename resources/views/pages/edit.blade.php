@@ -23,7 +23,7 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                                <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
                                                 transform="translate(15.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-15.000000, -12.000000) "
@@ -47,7 +47,7 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                                <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
                                                 transform="translate(15.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-15.000000, -12.000000) "
@@ -71,7 +71,7 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                                <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
                                                 transform="translate(15.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-15.000000, -12.000000) "
@@ -95,7 +95,7 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                                <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
                                                 transform="translate(15.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-15.000000, -12.000000) "
@@ -119,7 +119,7 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow last">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                                <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
                                                 transform="translate(12.000000, 12.000000) rotate(-90.000000) translate(-12.000000, -12.000000)"
@@ -140,20 +140,32 @@
                         <!--begin::Wizard Body-->
                         <div class="row justify-content-center my-10 px-8 my-lg-15 px-lg-10">
                             <div class="col-xl-12 col-xxl-7">
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                                 <!--begin::Wizard Form-->
-                                <form class="form" id="kt_form">
+                                <form class="form" id="kt_form" enctype="multipart/form-data" action="/profileUpdate"
+                                    method="POST">
+
                                     @csrf
                                     <!--begin::Wizard Step 1-->
                                     <div class="pb-5" data-wizard-type="step-content" data-wizard-state="current">
-                                        <h6 class="text-success"><small>SUNDAY ,21-2021 TIME:01:15:28PM</small></h6>
+                                        <h6 class="text-success"><small>UPDATE DATA</small></h6>
                                         <br>
                                         <!-- <h3 class="mb-10 font-weight-bold text-dark">Some Label</h3> -->
                                         <!--begin::Input-->
                                         <div class="form-group">
                                             <label>First Name</label>
                                             <input type="text" class="form-control form-control-solid form-control-lg"
-                                                name="name" placeholder="Name" value="" id="name" />
-                                            <span class="form-text text-muted">Please enter your Name.</span>
+                                                name="name" placeholder="Name" value="{{ $profile->name }}" id="name" />
+
                                         </div>
                                         <!--end::Input-->
                                         <!--begin::Input-->
@@ -167,7 +179,8 @@
                                                     <select name="nationality"
                                                         class="form-control form-control-solid form-control-lg"
                                                         id="nationality">
-                                                        <option value="">Select</option>
+                                                        <option value="{{ $profile->nationality }}">
+                                                            {{ $profile->nationality }}</option>
                                                         <option value="AF">Afghanistan</option>
                                                         <option value="AX">Åland Islands</option>
                                                         <option value="AL">Albania</option>
@@ -181,7 +194,7 @@
                                                         <option value="AR">Argentina</option>
                                                         <option value="AM">Armenia</option>
                                                         <option value="AW">Aruba</option>
-                                                        <option value="AU" selected="selected">Australia</option>
+                                                        <option value="AU">Australia</option>
                                                         <option value="AT">Austria</option>
                                                         <option value="AZ">Azerbaijan</option>
                                                         <option value="BS">Bahamas</option>
@@ -430,9 +443,10 @@
                                                     <label>Gender</label>
                                                     <select name="gender"
                                                         class="form-control form-control-solid form-control-lg" id="gender">
-                                                        <option value="">Select</option>
-                                                        <option value="AF">Male</option>
-                                                        <option value="AX">Female</option>
+                                                        <option value="{{ $profile->gemder }}">{{ $profile->gender }}
+                                                        </option>
+                                                        <option value="Male">Male</option>
+                                                        <option value="Female">Female</option>
                                                     </select>
                                                 </div>
                                                 <!--end::Input-->
@@ -442,7 +456,8 @@
                                                     <label>DOB</label>
                                                     <input type="date"
                                                         class="form-control form-control-solid form-control-lg" name="dob"
-                                                        placeholder="Address Line 1" id="dob" />
+                                                        placeholder="Address Line 1" id="dob"
+                                                        value="{{ $profile->dob }}" />
                                                     <!-- <span class="form-text text-muted">Please enter DOb.</span> -->
                                                 </div>
                                             </div>
@@ -456,7 +471,8 @@
                                                     <select name="citizen_status"
                                                         class="form-control form-control-solid form-control-lg"
                                                         id="citizen_status">
-                                                        <option value="">Select</option>
+                                                        <option value="{{ $profile->citizen_status }}">
+                                                            {{ $profile->citizen_status }}</option>
                                                         <option value="YE">Status 1</option>
                                                         <option value="ZM">Status 2</option>
                                                         <option value="ZW">Status 3</option>
@@ -471,7 +487,8 @@
                                                     <select name="citizen_location"
                                                         class="form-control form-control-solid form-control-lg"
                                                         id="citizen_location">
-                                                        <option value="">Select</option>
+                                                        <option value="{{ $profile->citizen_location }}">
+                                                            {{ $profile->citizen_location }}</option>
                                                         <option value="AF">Male</option>
                                                         <option value="AX">Female</option>
                                                     </select>
@@ -483,8 +500,8 @@
                                                     <label>Citizenshi ID No</label>
                                                     <input type="number"
                                                         class="form-control form-control-solid form-control-lg"
-                                                        name="citizen_id" placeholder="ID number" value=""
-                                                        id="citizen_id" />
+                                                        name="citizen_id" placeholder="ID number"
+                                                        value="{{ $profile->citizen_id }}" id="citizen_id" />
                                                     <!-- <span class="form-text text-muted">Please enter DOb.</span> -->
                                                 </div>
                                             </div>
@@ -496,7 +513,8 @@
                                                     <label>Citizenship UID No</label>
                                                     <input type="text"
                                                         class="form-control form-control-solid form-control-lg"
-                                                        name="citizen_uid" placeholder="UID No" value="" id="citizen_uid" />
+                                                        name="citizen_uid" placeholder="UID No"
+                                                        value="{{ $profile->citizen_uid }}" id="citizen_uid" />
                                                     <span class="form-text text-muted">Please enter your UID No.</span>
                                                 </div>
                                                 <!--end::Input-->
@@ -507,8 +525,8 @@
                                                     <label>Passport No</label>
                                                     <input type="text"
                                                         class="form-control form-control-solid form-control-lg"
-                                                        name="passport_no" placeholder="Passport Number" value=""
-                                                        id="passport_no" />
+                                                        name="passport_no" placeholder="Passport Number"
+                                                        value="{{ $profile->passport_no }}" id="passport_no" />
                                                     <span class="form-text text-muted">Please enter your Passport No.</span>
                                                 </div>
                                                 <!--end::Input-->
@@ -520,7 +538,8 @@
                                                     <select name="passport_type"
                                                         class="form-control form-control-solid form-control-lg"
                                                         id="passport_type">
-                                                        <option value="">Select</option>
+                                                        <option value="{{ $profile->passport_type }}">
+                                                            {{ $profile->passport_type }}</option>
                                                         <option value="YE">P 1</option>
                                                         <option value="ZM">P 2</option>
                                                         <option value="ZW">P 3</option>
@@ -529,16 +548,11 @@
                                                 <!--end::Select-->
                                             </div>
                                         </div>
-                                        <button onclick="enableNext()"
-                                            class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
-                                            id="submit" style="margin-right: 475;
-                                            margin-bottom: -25;">save</button>
+
                                     </div>
 
-                                    <!--<input type = 'submit' value = "Save" class="btn btn-success font-weight-bolder"/>-->
-                                </form>
-                                <form id="kt_form1" class="form" b>
-                                    @csrf
+
+
                                     <!--end::Wizard Step 1-->
                                     <!--begin::Wizard Step 2-->
                                     <div class="pb-5" data-wizard-type="step-content">
@@ -547,10 +561,11 @@
                                             <div class="col-xl-4">
                                                 <div class="form-group">
                                                     <label>Date Of Entry</label>
-                                                    <input type="date" id="entry_date"
+                                                    <input type="date" id="entry_date" value="{{ $profile->entry_date }}"
                                                         class="form-control form-control-solid form-control-lg"
                                                         name="entry_date" placeholder="Address Line 1" />
-                                                    <input type="text" id="editid" hidden name="editid">
+                                                    <input type="text" id="editid" value="{{ $profile->id }}"
+                                                        name="editid" hidden>
                                                     <!-- <span class="form-text text-muted">Please enter DOb.</span> -->
                                                 </div>
                                             </div>
@@ -562,7 +577,8 @@
                                                     <label>Entered By</label>
                                                     <select name="entered_by" id="entered_by"
                                                         class="form-control form-control-solid form-control-lg">
-                                                        <option value="">Select</option>
+                                                        <option value="{{ $profile->entered_by }}">
+                                                            {{ $profile->entered_by }}</option>
                                                         <option value="AF">ALshoja</option>
                                                         <option value="AX">Åland </option>
                                                         <option value="AL">Albania</option>
@@ -576,7 +592,8 @@
                                                     <label>Client Bought By</label>
                                                     <select name="bought_by" id="bought_by"
                                                         class="form-control form-control-solid form-control-lg">
-                                                        <option value="">Select</option>
+                                                        <option value="{{ $profile->bought_by }}">
+                                                            {{ $profile->bought_by }}</option>
                                                         <option value="AF">ALshoja</option>
                                                         <option value="AX">Åland </option>
                                                         <option value="AL">Albania</option>
@@ -590,7 +607,8 @@
                                                     <label>Client Entity By</label>
                                                     <select name="entity" id="entity"
                                                         class="form-control form-control-solid form-control-lg">
-                                                        <option value="">Select</option>
+                                                        <option value="{{ $profile->entity_location }}">
+                                                            {{ $profile->entity_location }}</option>
                                                         <option value="AF">ALshoja</option>
                                                         <option value="AX">Åland </option>
                                                         <option value="AL">Albania</option>
@@ -604,7 +622,8 @@
                                                     <label>Client Entity Location</label>
                                                     <select name="entity_location" id="entity_location"
                                                         class="form-control form-control-solid form-control-lg">
-                                                        <option value="">Select</option>
+                                                        <option value="{{ $profile->entity_location }}">
+                                                            {{ $profile->entity_location }}</option>
                                                         <option value="AX">Åland </option>
                                                         <option value="AL">Albania</option>
                                                     </select>
@@ -721,19 +740,13 @@
                                                     </div>
                                                 </div>
                                                 <!--</form>
-                                                     end::Form-->
+                                                         end::Form-->
                                             </div>
                                         </div>
-                                        <button
-                                            class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
-                                            id="submit" type="submit" style="margin-bottom: -25;
-                                                margin-right: 475;
-                                                margin-top: 25;" onclick="enableNext()">save</button>
+
                                     </div>
 
-                                </form>
-                                <form id="kt_form2" enctype="multipart/form-data" method="POST">
-                                    @csrf
+
                                     <!--end::Wizard Step 2-->
                                     <!--begin::Wizard Step 3-->
                                     <div class="pb-5" data-wizard-type="step-content">
@@ -746,7 +759,8 @@
                                                     <label>Shipping No</label>
                                                     <input type="text" id="shipping_no"
                                                         class="form-control form-control-solid form-control-lg"
-                                                        name="shipping_no" placeholder="Shipping No" value="" />
+                                                        name="shipping_no" placeholder="Shipping No"
+                                                        value="{{ $profile->shipping_no }}" />
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
@@ -756,7 +770,8 @@
                                                     <label>Coming From</label>
                                                     <select name="coming_from" id="coming_from"
                                                         class="form-control form-control-solid form-control-lg">
-                                                        <option value="">Select</option>
+                                                        <option value="{{ $profile->coming_from }}">
+                                                            {{ $profile->coming_from }}</option>
                                                         <option value="AF">ALshoja</option>
                                                         <option value="AX">Åland </option>
                                                         <option value="AL">Albania</option>
@@ -770,7 +785,8 @@
                                                     <label>Going to</label>
                                                     <select name="going_to" id="going_to"
                                                         class="form-control form-control-solid form-control-lg">
-                                                        <option value="">Select</option>
+                                                        <option value="{{ $profile->going_to }}">
+                                                            {{ $profile->going_to }}</option>
                                                         <option value="AF">ALshoja</option>
                                                         <option value="AX">Åland </option>
                                                         <option value="AL">Albania</option>
@@ -784,7 +800,8 @@
                                                     <label>Final Destination</label>
                                                     <select name="final_destination" id="final_destination"
                                                         class="form-control form-control-solid form-control-lg">
-                                                        <option value="">Select</option>
+                                                        <option value="{{ $profile->final_destination }}">
+                                                            {{ $profile->final_destination }}</option>
                                                         <option value="AF">ALshoja</option>
                                                         <option value="AX">Åland </option>
                                                         <option value="AL">Albania</option>
@@ -800,7 +817,7 @@
                                                 <label>Profile Picture</label>
                                                 <div class="image-input image-input-empty image-input-outline"
                                                     id="kt_image_1"
-                                                    style="background-image: url(assets/media/users/blank.png)">
+                                                    style="background-image: url(/{{ $profile->profile_image }})">
                                                     <div class="image-input-wrapper"></div>
                                                     <label
                                                         class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
@@ -809,7 +826,8 @@
                                                         <i class="fa fa-pen icon-sm text-muted"></i>
                                                         <input type="file" name="profile_image" id="profile_image"
                                                             accept=".png, .jpg, .jpeg" />
-                                                        <input type="hidden" name="profile_avatar_remove" />
+                                                        <input type="hidden" name="profile_avatar_remove1"
+                                                            value="{{ $profile->profile_image }}" />
                                                     </label>
                                                     <span
                                                         class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
@@ -829,7 +847,7 @@
                                                 <label>Product Image</label>
                                                 <div class="image-input image-input-empty image-input-outline"
                                                     id="kt_image_2"
-                                                    style="background-image: url(assets/media/users/blank.png)">
+                                                    style="background-image: url(/{{ $profile->product_image }})">
                                                     <div class="image-input-wrapper"></div>
                                                     <label
                                                         class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
@@ -838,7 +856,8 @@
                                                         <i class="fa fa-pen icon-sm text-muted"></i>
                                                         <input type="file" name="product_image" id="product_image"
                                                             accept=".png, .jpg, .jpeg" />
-                                                        <input type="hidden" name="profile_avatar_remove" />
+                                                        <input type="hidden" name="profile_avatar_remove2"
+                                                            value="{{ $profile->product_image }}" />
                                                     </label>
                                                     <span
                                                         class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
@@ -857,7 +876,7 @@
                                                 <label>Document</label>
                                                 <div class="image-input image-input-empty image-input-outline"
                                                     id="kt_image_3"
-                                                    style="background-image: url(assets/media/users/blank.png)">
+                                                    style="background-image: url(/{{ $profile->doc_image }})">
                                                     <div class="image-input-wrapper"></div>
                                                     <label
                                                         class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
@@ -866,7 +885,8 @@
                                                         <i class="fa fa-pen icon-sm text-muted"></i>
                                                         <input type="file" name="doc_image" id="doc_image"
                                                             accept=".png, .jpg, .jpeg" />
-                                                        <input type="hidden" name="profile_avatar_remove" />
+                                                        <input type="hidden" name="profile_avatar_remove3"
+                                                            value="{{ $profile->doc_image }}" />
                                                     </label>
                                                     <span
                                                         class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
@@ -889,22 +909,14 @@
                                                 <div class="form-group">
                                                     <label for="exampleTextarea">Note</label>
                                                     <textarea class="form-control form-control-solid" rows="3" name="note"
-                                                        id="note"></textarea>
-                                                    <input type="text" id="editid1" hidden name="editid1">
+                                                        id="note">{{ $profile->note }}</textarea>
+
                                                 </div>
                                             </div>
                                         </div>
-                                        <!--end::Select
-                                            <input type = 'submit' value = "Save" class="btn btn-success font-weight-bolder"/>
-                                            <button class="btn btn-success font-weight-bolder" id="editstep">smave</button>-->
-                                        <button type="submit" id="submit" onclick="enableNext()"
-                                            class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
-                                            style="margin-top: 20;
-                                            margin-bottom: -25;
-                                            margin-right: 475;">Save</button>
+
                                     </div>
-                                </form>
-                                <form id="kt_form3" method="post" action="/stageFour">
+
                                     <!--end::Wizard Step 3-->
                                     <!--begin::Wizard Step 4-->
                                     <div class="pb-5" data-wizard-type="step-content">
@@ -917,7 +929,8 @@
                                                     <label>Record Status</label>
                                                     <select name="record_status" id="record_status"
                                                         class="form-control form-control-solid ">
-                                                        <option value="">Record-1</option>
+                                                        <option value="{{ $profile->record_status }}">
+                                                            {{ $profile->record_status }}</option>
                                                         <option value="YE">R1</option>
                                                         <option value="ZM">r 2</option>
                                                         <option value="ZW">r 3</option>
@@ -934,56 +947,39 @@
                                                     <label>Record Department Status</label>
                                                     <select name="record_dep_transfer" id="record_dep_transfer"
                                                         class="form-control form-control-solid ">
-                                                        <option value="">status-1</option>
+                                                        <option value="{{ $profile->record_dep_transfer }}">
+                                                            {{ $profile->record_dep_transfer }}</option>
                                                         <option value="YE">s 1</option>
                                                         <option value="ZM">s 2</option>
                                                         <option value="ZW">s 3</option>
                                                     </select>
-                                                    <input type="text" id="editid3" hidden name="editid3">
                                                     <div class="d-md-none mb-2"></div>
                                                 </div>
                                             </div>
-
-                                            <button
-                                                class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
-                                                id="submit" type="submit" style="margin-top: 20;
-                                                margin-bottom: -45;
-                                                margin-right: 487;" onclick="enableNext()">save</button>
                                         </div>
-
                                     </div>
-                                </form>
-                                <form id="kt_form4">
+
                                     <!--end::Wizard Step 4-->
                                     <!--begin::Wizard Step 5-->
                                     <div class="pb-5" data-wizard-type="step-content">
-                                        <h6 class="mb-10 font-weight-bold text-dark">Label</h6>
+                                        {{-- <h6 class="mb-10 font-weight-bold text-dark">Label</h6> --}}
                                         <!--begin::Input-->
                                         <div class="form-group row">
                                             <div class="col-xl-6">
                                                 <div class="form-group">
-                                                    <label>General Director</label>
-                                                    <select name="belongs_to" id="belongs_to"
-                                                        class="form-control form-control-solid ">
-                                                        <option value="1">Record-1</option>
-                                                        <option value="2">R1</option>
-                                                        <option value="3">r 2</option>
-                                                        <option value="4">r 3</option>
-                                                    </select>
+                                                    <label>Department</label>
+                                                   <h6>{{$profile->department->name}}</h6>
                                                     <div class="d-md-none mb-2"></div>
-                                                    <input type="text" id="editid4" hidden name="editid4">
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6">
+                                                <div class="form-group">
+                                                    <label>Section</label>
+                                                   <h6>{{$profile->section->name}}</h6>
+                                                    <div class="d-md-none mb-2"></div>
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <button
-                                            class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
-                                            id="submit" type="submit" style="margin-top: 20;
-                                            margin-bottom: -26;
-                                            margin-right: 370">save</button>
-
-
-
                                     </div>
                                     <!--end::Wizard Step 5-->
                                     <!--begin::Wizard Actions-->
@@ -991,30 +987,19 @@
                                         <div class="mr-2">
                                             <button type="button" id="previous"
                                                 class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
-                                                data-wizard-type="action-prev" style="margin-top: -87;
-                                                    margin-right: 235;" disabled onclick="enableNext()">Previous</button>
+                                                data-wizard-type="action-prev">Previous</button>
                                         </div>
                                         <div>
 
                                             <div class="btn-group">
-                                                <button type="button" data-wizard-type="action-submit"
-                                                    class="btn btn-success btn-gradient-success " hidden>Save</button>
-                                                <button type="button" data-wizard-type="action-submit"
-                                                    class="btn btn-primary btn-gradient-success dropdown-toggle dropdown-toggle-split"
-                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                                    hidden>
-                                                    <span class="sr-only">Toggle Dropdown</span>
-                                                </button>
-                                                <div class="dropdown-menu">
-                                                    <a href="#" class="dropdown-item">Save as Draft</a>
-                                                </div>
+                                                <button type="submit" data-wizard-type="action-submit"
+                                                    class="btn btn-success btn-gradient-success ">Update</button>
                                             </div>
 
                                             <!-- <button type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-submit">Submit</button> -->
                                             <button id="next" type="button"
                                                 class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
-                                                data-wizard-type="action-next" style="margin-left: 500;
-                                                    margin-top: -150;" disabled onclick="disableNext()">Next</button>
+                                                data-wizard-type="action-next">Next</button>
                                         </div>
                                     </div>
                                     <!--end::Wizard Actions-->

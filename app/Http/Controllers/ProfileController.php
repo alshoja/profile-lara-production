@@ -132,8 +132,10 @@ class ProfileController extends Controller
         $profile->record_dep_transfer = "";
         $profile->note = "";
         $profile->belongs_to = 1;
-        $profile->dep_id = 1;
-        $profile->section_id = 1;
+        $profile->is_drafted = 1;
+        $profile->dep_id = session('department');
+        $profile->section_id = session('section')[0];
+        $profile->employ_id = Auth::user()->id;
         $profile->save();
         return response()->json(['id' => $profile->id]);
     }
@@ -191,7 +193,9 @@ class ProfileController extends Controller
     {
         $belongs_to = $request->input('belongs_to');
         $editid4 = $request->input('editid4');
-        $data = array("belongs_to" => $belongs_to);
+        $is_drafted = 0;
+        $is_completed = 1;
+        $data = array("belongs_to" => $belongs_to, "is_drafted" => $is_drafted, "is_completed" => $is_completed);
         try {
             DB::table('profiles')->where('id', $editid4)->update($data);
             return response()->json(['success' => 'Form is successfully submitted!']);
@@ -208,7 +212,6 @@ class ProfileController extends Controller
      */
     public function show(Profile $profiles)
     {
-        //
     }
 
     /**
@@ -217,9 +220,11 @@ class ProfileController extends Controller
      * @param  \App\Models\Profiles  $profiles
      * @return \Illuminate\Http\Response
      */
-    public function edit(Profile $profiles)
+    public function edit($id)
     {
-        //
+        $profile = Profile::with('department', 'section')->find($id);
+        // return response()->json($profile, 200);
+        return view('pages.edit', compact('profile'));
     }
 
     /**
@@ -229,9 +234,67 @@ class ProfileController extends Controller
      * @param  \App\Models\Profiles  $profiles
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Profile $profiles)
+    public function update(Request $request)
     {
-        //
+    }
+    public function profileUpdate(Request $request)
+    {
+        $editid = $request->input('editid');
+        $image_1 = $request->file('profile_image');
+        $image_2 = $request->file('product_image');
+        $image_3 = $request->file('doc_image');
+        if ($image_1 == null) {
+            $progileimage =  $request->input('profile_avatar_remove1');
+        } else {
+            $progileimage = $request->file('profile_image')->store('images');
+        }
+
+        if ($image_2 == null) {
+            $productimage =  $request->input('profile_avatar_remove2');
+        } else {
+            $productimage = $request->file('product_image')->store('images');
+        }
+        if ($image_3 == null) {
+            $docimage =  $request->input('profile_avatar_remove3');
+        } else {
+            $docimage = $request->file('doc_image')->store('images');
+        }
+
+        $data = array(
+            "name" => $request->input('name'),
+            "nationality" => $request->input('nationality'),
+            "dob" => $request->input('dob'),
+            "gender" => $request->input('citizen_status'),
+            "citizen_location" => $request->input('citizen_location'),
+            "citizen_id" => $request->input('citizen_id'),
+            "citizen_uid" => $request->input('citizen_uid'),
+            "passport_no" => $request->input('passport_no'),
+            "passport_type" => $request->input('passport_no'),
+            "entered_by" => $request->input('entered_by'),
+            "bought_by" => $request->get('bought_by'),
+            "entity" => $request->input('entity'),
+            "entry_date" => $request->input('entry_date'),
+            "entity_location" => $request->input('entity_location'),
+            "shipping_no" => $request->input('shipping_no'),
+            "coming_from" => $request->input('coming_from'),
+            "going_to" => $request->input('going_to'),
+            "final_destination" => $request->input('final_destination'),
+            "profile_image" => $progileimage,
+            "product_image" => $productimage,
+            "doc_image" => $docimage,
+            "note" => $request->input('note'),
+            "record_status" => $request->input('record_status'),
+            "record_dep_transfer" => $request->input('record_dep_transfer'),
+            "belongs_to" => $request->input('belongs_to')
+        );
+
+
+        try {
+            DB::table('profiles')->where('id', $editid)->update($data);
+        } catch (\Illuminate\Database\QueryException $ex) {
+            dd($ex->getMessage());
+        }
+        return back()->with('message', 'Profile Deleted');
     }
 
     /**
