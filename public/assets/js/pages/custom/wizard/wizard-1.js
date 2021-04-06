@@ -267,14 +267,14 @@ var KTWizard1 = function () {
 		// Submit event
 		_wizardObj.on('submit', function (wizard) {
 			Swal.fire({
-				text: "All is good! Please confirm the form submission.",
+				text: "Are you sure you want to submit the data",
 				icon: "success",
 				showCancelButton: true,
 				buttonsStyling: false,
 				confirmButtonText: "Yes, submit!",
 				cancelButtonText: "No, cancel",
 				customClass: {
-					confirmButton: "btn font-weight-bold btn-primary",
+					confirmButton: "btn btn-primary btn-gradient-success",
 					cancelButton: "btn font-weight-bold btn-default"
 				}
 			}).then(function (result) {
@@ -282,12 +282,12 @@ var KTWizard1 = function () {
 					_formEl.submit(); // Submit form
 				} else if (result.dismiss === 'cancel') {
 					Swal.fire({
-						text: "Your form has not been submitted!.",
+						text: "Your data has not been submitted!.",
 						icon: "error",
 						buttonsStyling: false,
 						confirmButtonText: "Ok, got it!",
 						customClass: {
-							confirmButton: "btn font-weight-bold btn-primary",
+							confirmButton: "btn font-weight-bold btn-success",
 						}
 					});
 				}
