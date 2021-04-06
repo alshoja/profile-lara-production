@@ -222,7 +222,7 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        $profile = Profile::with('department','section')->find($id);
+        $profile = Profile::with('department', 'section')->find($id);
         return response()->json($profile, 200);
         return view('pages.edit', compact('profile'));
     }
@@ -240,21 +240,21 @@ class ProfileController extends Controller
     public function profileUpdate(Request $request)
     {
         $editid = $request->input('editid');
-        $imagetest1 = $request->file('profile_image');
-        $imagetest2 = $request->file('product_image');
-        $imagetest3 = $request->file('doc_image');
-        if ($imagetest1 == null) {
+        $image_1 = $request->file('profile_image');
+        $image_2 = $request->file('product_image');
+        $image_3 = $request->file('doc_image');
+        if ($image_1 == null) {
             $progileimage =  $request->input('profile_avatar_remove1');
         } else {
             $progileimage = $request->file('profile_image')->store('images');
         }
 
-        if ($imagetest2 == null) {
+        if ($image_2 == null) {
             $productimage =  $request->input('profile_avatar_remove2');
         } else {
             $productimage = $request->file('product_image')->store('images');
         }
-        if ($imagetest3 == null) {
+        if ($image_3 == null) {
             $docimage =  $request->input('profile_avatar_remove3');
         } else {
             $docimage = $request->file('doc_image')->store('images');
