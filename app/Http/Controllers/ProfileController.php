@@ -335,7 +335,7 @@ class ProfileController extends Controller
 
     public function getProfileById($id)
     {
-        $profile = Profile::with('timeline', 'trackings')->findOrFail($id);
+        $profile = Profile::with('timeline', 'trackings', 'department', 'section')->findOrFail($id);
         return response()->json($profile, 200);
     }
 
@@ -367,7 +367,7 @@ class ProfileController extends Controller
             $timeLine->profile_id = $request->profile_id;
             $timeLine->note = $request->note;
             $timeLine->type = 'approved';
-            
+
             $trackCheck = TrackProfile::where('from', Auth::user()->role)->where('profile_id', $request->profile_id)->count();
             if ($trackCheck == 0) {
                 $signDocEvent = SignDocument::dispatch($trackProfile);

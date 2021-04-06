@@ -843,7 +843,7 @@
                                                                                                 <label
                                                                                                     class="text-muted font-size-sm">
                                                                                                     Department</label>
-                                                                                                <p id="belongs_to"
+                                                                                                <p id="depart"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
                                                                                                     </p>
                                                                                             </div>

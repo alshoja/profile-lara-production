@@ -182,6 +182,7 @@ function getProfileData(id) {
 }
 
 function setEprofile(profile) {
+  console.log('profile',profile);
   let heading = document.getElementById("exampleModalLabel");
   heading.innerHTML = profile.name;
   let name = document.getElementById("name").innerHTML = profile.name;
@@ -209,7 +210,8 @@ function setEprofile(profile) {
   document.getElementById("doc_image").src = profile.doc_image;
   let record_status = document.getElementById("record_status").innerHTML = profile.record_status;
   let record_dep_transfer = document.getElementById("record_dep_transfer").innerHTML = profile.record_dep_transfer;
-  let belongs_to = document.getElementById("belongs_to").innerHTML = profile.belongs_to;
+   document.getElementById("depart").innerHTML = profile.department.name;
+   document.getElementById("section").innerHTML = profile.section.name;
   
 }
 
