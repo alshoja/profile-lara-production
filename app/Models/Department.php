@@ -27,5 +27,9 @@ class Department extends Model
         return $this->hasMany(DepartmentGeneralDirector::class,'dep_id','id');
     }
 
+    public function section()
+    {
+        return $this->belongsTo(Section::class,'dep_id');
+    }
     
 }

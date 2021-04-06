@@ -222,10 +222,8 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        // get the profile
-        $profile = Profile::find($id);
-        // return view('contacts.edit', compact('contact')); 
-        // dd($profiles);
+        $profile = Profile::with('department','section')->find($id);
+        return response()->json($profile, 200);
         return view('pages.edit', compact('profile'));
     }
 
@@ -292,7 +290,6 @@ class ProfileController extends Controller
 
 
         try {
-
             DB::table('profiles')->where('id', $editid)->update($data);
         } catch (\Illuminate\Database\QueryException $ex) {
             dd($ex->getMessage());
