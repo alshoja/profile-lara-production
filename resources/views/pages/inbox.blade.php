@@ -19,8 +19,7 @@
                                 <div class="card-toolbar">
                                     <ul class="nav nav-pills nav-pills-sm nav-dark-75">
                                         {{-- <li class="nav-item">
-                                            <a class="nav-link py-2 px-4  @if (request()->query('tab')
-                                                == null) {{ 'active' }} @endif"
+                                            <a class="nav-link py-2 px-4  @if (request()->query('tab') == null) {{ 'active' }} @endif"
                                                 href="{{ url('profiles') }}">
                                                 All
                                             </a>
@@ -213,61 +212,67 @@
                                                                     </a>
                                                                 @endif
                                                                 <input type="hidden" id="profile_id">
-                                                                <div
-                                                                    class="dropdown-menu dropdown-menu-sm dropdown-menu-left">
-                                                                    <!--begin::Navigation-->
-                                                                    <ul class="navi navi-hover">
-                                                                        <li class="navi-header pb-1">
-                                                                            <span
-                                                                                class="text-primary text-uppercase font-weight-bold font-size-sm">Options</span>
-                                                                        </li>
-                                                                        <li class="navi-item">
-                                                                            <a onclick="alertAndGoToUrl('/forward/new/{{ $item->id }}','Forward or Duplicate this Profile ?')"
-                                                                                href="#" class="navi-link">
-                                                                                <span class="navi-icon">
-                                                                                    <i class="flaticon2-reply"></i>
-                                                                                </span>
-                                                                                <span class="navi-text">Forward as
-                                                                                    New</span>
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="navi-item">
-                                                                            <a href="#" class="navi-link">
-                                                                                <span class="navi-icon">
-                                                                                    <i class="flaticon-speech-bubble"></i>
-                                                                                </span>
+                                                                @if ($item->is_drafted != 1)
+                                                                    <div
+                                                                        class="dropdown-menu dropdown-menu-sm dropdown-menu-left">
+                                                                        <!--begin::Navigation-->
+                                                                        <ul class="navi navi-hover">
+                                                                            <li class="navi-header pb-1">
                                                                                 <span
-                                                                                    onclick="getProfileData({{ $item->id }})"
-                                                                                    data-toggle="modal"
-                                                                                    data-target="#exampleModalSizeXl"
-                                                                                    class="navi-text">Reply to note</span>
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="navi-item">
-                                                                            <a href="#" class="navi-link">
-                                                                                <span class="navi-icon">
-                                                                                    <i class="flaticon-placeholder-3"></i>
-                                                                                </span>
-                                                                                <span
-                                                                                    onclick="getProfileData({{ $item->id }})"
-                                                                                    data-toggle="modal"
-                                                                                    data-target="#exampleModalSizeXl"
-                                                                                    class="navi-text">Track</span>
-                                                                            </a>
-                                                                        </li>
-                                                                        @if (request()->query('tab') == 'inbox')
+                                                                                    class="text-primary text-uppercase font-weight-bold font-size-sm">Options</span>
+                                                                            </li>
                                                                             <li class="navi-item">
-                                                                                <a href="{{ url('profile/resubmit', $item->id) }}"
-                                                                                    class="navi-link">
+                                                                                <a onclick="alertAndGoToUrl('/forward/new/{{ $item->id }}','Forward or Duplicate this Profile ?')"
+                                                                                    href="#" class="navi-link">
                                                                                     <span class="navi-icon">
-                                                                                        <i class="flaticon-paper-plane"></i>
+                                                                                        <i class="flaticon2-reply"></i>
                                                                                     </span>
-                                                                                    <span class="navi-text">Resubmit</span>
+                                                                                    <span class="navi-text">Forward as
+                                                                                        New</span>
                                                                                 </a>
                                                                             </li>
-                                                                        @endif
+                                                                            <li class="navi-item">
+                                                                                <a href="#" class="navi-link">
+                                                                                    <span class="navi-icon">
+                                                                                        <i
+                                                                                            class="flaticon-speech-bubble"></i>
+                                                                                    </span>
+                                                                                    <span
+                                                                                        onclick="getProfileData({{ $item->id }})"
+                                                                                        data-toggle="modal"
+                                                                                        data-target="#exampleModalSizeXl"
+                                                                                        class="navi-text">Reply to
+                                                                                        note</span>
+                                                                                </a>
+                                                                            </li>
+                                                                            <li class="navi-item">
+                                                                                <a href="#" class="navi-link">
+                                                                                    <span class="navi-icon">
+                                                                                        <i
+                                                                                            class="flaticon-placeholder-3"></i>
+                                                                                    </span>
+                                                                                    <span
+                                                                                        onclick="getProfileData({{ $item->id }})"
+                                                                                        data-toggle="modal"
+                                                                                        data-target="#exampleModalSizeXl"
+                                                                                        class="navi-text">Track</span>
+                                                                                </a>
+                                                                            </li>
+                                                                            @if (request()->query('tab') == 'inbox')
+                                                                                <li class="navi-item">
+                                                                                    <a href="{{ url('profile/resubmit', $item->id) }}"
+                                                                                        class="navi-link">
+                                                                                        <span class="navi-icon">
+                                                                                            <i
+                                                                                                class="flaticon-paper-plane"></i>
+                                                                                        </span>
+                                                                                        <span
+                                                                                            class="navi-text">Resubmit</span>
+                                                                                    </a>
+                                                                                </li>
+                                                                            @endif
 
-                                                                        {{-- <li class="navi-item">
+                                                                            {{-- <li class="navi-item">
                                                                             <a href="#" class="navi-link">
                                                                                 <span class="navi-icon">
                                                                                     <i class="flaticon2-writing"></i>
@@ -275,9 +280,10 @@
                                                                                 <span class="navi-text">Submit Draft</span>
                                                                             </a>
                                                                         </li> --}}
-                                                                    </ul>
-                                                                    <!--end::Navigation-->
-                                                                </div>
+                                                                        </ul>
+                                                                        <!--end::Navigation-->
+                                                                    </div>
+                                                                @endif
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -398,7 +404,7 @@
                                                                                             Name</label>
                                                                                         <p id="name"
                                                                                             class="text-secondary font-weight-lighter font-size-sm">
-                                                                                            </p>
+                                                                                        </p>
 
                                                                                     </div>
 
@@ -410,7 +416,7 @@
                                                                                                     class="text-muted font-size-sm">Nationality</label>
                                                                                                 <p id="nationality"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    </p>
+                                                                                                </p>
 
                                                                                             </div>
                                                                                             <!--end::Input-->
@@ -422,7 +428,7 @@
                                                                                                     class="text-muted font-size-sm">Gender</label>
                                                                                                 <p id="gender"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    </p>
+                                                                                                </p>
 
                                                                                             </div>
                                                                                             <!--end::Input-->
@@ -433,7 +439,7 @@
                                                                                                     class="text-muted font-size-sm">DOB</label>
                                                                                                 <p id="dob"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    </p>
+                                                                                                </p>
 
                                                                                             </div>
                                                                                         </div>
@@ -448,7 +454,7 @@
                                                                                                     Status</label>
                                                                                                 <p id="citizen_status"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    </p>
+                                                                                                </p>
 
                                                                                             </div>
                                                                                             <!--end::Input-->
@@ -461,7 +467,7 @@
                                                                                                     Location</label>
                                                                                                 <p id="citizen_location"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    </p>
+                                                                                                </p>
 
                                                                                             </div>
                                                                                             <!--end::Input-->
@@ -474,7 +480,7 @@
                                                                                                     No</label>
                                                                                                 <p id="citizen_id"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    </p>
+                                                                                                </p>
 
                                                                                             </div>
                                                                                         </div>
@@ -489,7 +495,7 @@
                                                                                                     No</label>
                                                                                                 <p id="citizen_uid"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    </p>
+                                                                                                </p>
 
                                                                                             </div>
                                                                                             <!--end::Input-->
@@ -502,7 +508,7 @@
                                                                                                     No</label>
                                                                                                 <p id="passport_no"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    </p>
+                                                                                                </p>
 
                                                                                             </div>
                                                                                             <!--end::Input-->
@@ -515,7 +521,7 @@
                                                                                                     Type</label>
                                                                                                 <p id="passport_type"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    </p>
+                                                                                                </p>
 
 
                                                                                             </div>
@@ -547,8 +553,9 @@
                                                                                                 <label
                                                                                                     class="text-muted font-size-sm">Date
                                                                                                     Of Entry</label>
-                                                                                                <p id="entry_date" class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    </p>
+                                                                                                <p id="entry_date"
+                                                                                                    class="text-secondary font-weight-lighter font-size-sm">
+                                                                                                </p>
 
                                                                                             </div>
                                                                                         </div>
@@ -562,7 +569,7 @@
                                                                                                     By</label>
                                                                                                 <p id="entered_by"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    </p>
+                                                                                                </p>
 
                                                                                             </div>
                                                                                             <!--end::Input-->
@@ -576,7 +583,7 @@
                                                                                                     By</label>
                                                                                                 <p id="bought_by"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    </p>
+                                                                                                </p>
                                                                                             </div>
                                                                                             <!--end::Input-->
                                                                                         </div>
@@ -589,7 +596,7 @@
                                                                                                     By</label>
                                                                                                 <p id="entity"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    </p>
+                                                                                                </p>
                                                                                             </div>
                                                                                             <!--end::Input-->
                                                                                         </div>
@@ -602,7 +609,7 @@
                                                                                                     Location</label>
                                                                                                 <p id="entity_location"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    </p>
+                                                                                                </p>
                                                                                             </div>
                                                                                             <!--end::Input-->
                                                                                         </div>
@@ -696,7 +703,7 @@
                                                                                                     No</label>
                                                                                                 <p id="shipping_no"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    </p>
+                                                                                                </p>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="col-xl-3">
@@ -706,7 +713,7 @@
                                                                                                     From</label>
                                                                                                 <p id="coming_from"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    </p>
+                                                                                                </p>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="col-xl-3">
@@ -716,7 +723,7 @@
                                                                                                     to</label>
                                                                                                 <p id="going_to"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    </p>
+                                                                                                </p>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="col-xl-3">
@@ -726,7 +733,7 @@
                                                                                                     Destination</label>
                                                                                                 <p id="final_destination"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    </p>
+                                                                                                </p>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -742,7 +749,7 @@
                                                                                                     class="text-muted font-size-sm">Note</label>
                                                                                                 <p id="note"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    </p>
+                                                                                                </p>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -755,24 +762,27 @@
                                                                                             <label
                                                                                                 class="text-muted font-size-sm">Profile
                                                                                                 Picture</label>
-                                                                                            <img style="width: 20%" id="profile_image"
+                                                                                            <img style="width: 20%"
+                                                                                                id="profile_image"
                                                                                                 class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                
+
                                                                                         </div>
                                                                                         <div class="col-md-4">
                                                                                             <label
                                                                                                 class="text-muted font-size-sm">Product
                                                                                                 Image</label>
-                                                                                            <img style="width: 20%" id="product_image"
+                                                                                            <img style="width: 20%"
+                                                                                                id="product_image"
                                                                                                 class="text-secondary font-weight-lighter font-size-sm">
-                                                                                               
+
                                                                                         </div>
                                                                                         <div class="col-md-4">
                                                                                             <label
                                                                                                 class="text-muted font-size-sm">Document</label>
-                                                                                            <img style="width: 20%" id="doc_image"
+                                                                                            <img style="width: 20%"
+                                                                                                id="doc_image"
                                                                                                 class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                
+
                                                                                         </div>
                                                                                     </div>
 
@@ -797,7 +807,7 @@
                                                                                                     Status</label>
                                                                                                 <p id="record_status"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    </p>
+                                                                                                </p>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -822,7 +832,7 @@
                                                                                                     Status</label>
                                                                                                 <p id="record_dep_transfer"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    </p>
+                                                                                                </p>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -845,7 +855,7 @@
                                                                                                     Department</label>
                                                                                                 <p id="depart"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    </p>
+                                                                                                </p>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="col-xl-6">
@@ -855,7 +865,7 @@
                                                                                                     Section</label>
                                                                                                 <p id="section"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    </p>
+                                                                                                </p>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -941,19 +951,19 @@
                                                                     <div class="tab-pane fade" id="kt_tab_pane_5_doc1"
                                                                         role="tabpanel"
                                                                         aria-labelledby="kt_tab_pane_5_doc1">
-                                                                        <img id="doc_1" alt="Pic"
+                                                                        <img style="width: 20%" id="doc_1" alt="Pic"
                                                                             src="assets/media/demos/demo1.png" />
                                                                     </div>
                                                                     <div class="tab-pane fade" id="kt_tab_pane_5_doc2"
                                                                         role="tabpanel"
                                                                         aria-labelledby="kt_tab_pane_5_doc2">
-                                                                        <img id="doc_2" alt="Pic"
+                                                                        <img style="width: 20%" id="doc_2" alt="Pic"
                                                                             src="assets/media/demos/demo2.png" />
                                                                     </div>
                                                                     <div class="tab-pane fade" id="kt_tab_pane_5_doc3"
                                                                         role="tabpanel"
                                                                         aria-labelledby="kt_tab_pane_5_doc3">
-                                                                        <img id="doc_3" alt="Pic"
+                                                                        <img style="width: 20%" id="doc_3" alt="Pic"
                                                                             src="assets/media/demos/demo3.png" />
                                                                     </div>
 

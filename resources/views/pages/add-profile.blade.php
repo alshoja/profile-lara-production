@@ -23,7 +23,7 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                                <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
                                                 transform="translate(15.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-15.000000, -12.000000) "
@@ -47,7 +47,7 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                                <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
                                                 transform="translate(15.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-15.000000, -12.000000) "
@@ -71,7 +71,7 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                                <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
                                                 transform="translate(15.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-15.000000, -12.000000) "
@@ -95,7 +95,7 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                                <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
                                                 transform="translate(15.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-15.000000, -12.000000) "
@@ -119,7 +119,7 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow last">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                                <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
                                                 transform="translate(12.000000, 12.000000) rotate(-90.000000) translate(-12.000000, -12.000000)"
@@ -720,7 +720,7 @@
                                                     </div>
                                                 </div>
                                                 <!--</form>
-                                                     end::Form-->
+                                                         end::Form-->
                                             </div>
                                         </div>
                                         <button
@@ -892,11 +892,10 @@
                                             </div>
                                         </div>
                                         <!--end::Select
-                                            <input type = 'submit' value = "Save" class="btn btn-success font-weight-bolder"/>
-                                            <button class="btn btn-success font-weight-bolder" id="editstep">smave</button>-->
+                                                <input type = 'submit' value = "Save" class="btn btn-success font-weight-bolder"/>
+                                                <button class="btn btn-success font-weight-bolder" id="editstep">smave</button>-->
                                         <button type="submit" id="submit" onclick="enableNext()"
-                                            class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
-                                            >Save</button>
+                                            class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4">Save</button>
                                     </div>
                                 </form>
                                 <form id="kt_form3" method="post" action="/stageFour">
@@ -941,7 +940,7 @@
 
                                             <button
                                                 class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
-                                                id="submit" type="submit"  onclick="enableNext()">save</button>
+                                                id="submit" type="submit" onclick="enableNext()">save</button>
                                         </div>
 
                                     </div>
@@ -982,7 +981,8 @@
                                         <div class="mr-2">
                                             <button type="button" id="previous"
                                                 class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
-                                                data-wizard-type="action-prev"  disabled onclick="enableNext()">Previous</button>
+                                                data-wizard-type="action-prev" disabled
+                                                onclick="enableNext()">Previous</button>
                                         </div>
                                         <div>
 
@@ -1003,7 +1003,8 @@
                                             <!-- <button type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-submit">Submit</button> -->
                                             <button id="next" type="button"
                                                 class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
-                                                data-wizard-type="action-next"  disabled onclick="disableNext()">Next</button>
+                                                data-wizard-type="action-next" disabled
+                                                onclick="disableNext()">Next</button>
                                         </div>
                                     </div>
                                     <!--end::Wizard Actions-->
@@ -1065,11 +1066,9 @@
                     citizen_uid: citizen_uid,
                     passport_no: passport_no,
                     passport_type: passport_type,
-
                 },
                 success: function(data) {
                     var id = data.id;
-                    
                     $('#editid').val(id);
                     $('#editid1').val(id);
                     $('#editid3').val(id);
@@ -1098,8 +1097,6 @@
                     editid3: editid3,
                 },
                 success: function(response) {
-
-
                     console.log(response);
                 },
             });
@@ -1109,11 +1106,9 @@
     <script type="text/javascript">
         $('#kt_form4').on('submit', function(event) {
             event.preventDefault();
-            
             let belongs_to = $('#belongs_to').val();
-
             let editid4 = $('#editid4').val();
-            
+
             $.ajax({
                 url: "/stageFive",
                 type: "POST",
@@ -1123,9 +1118,8 @@
                     editid4: editid4,
                 },
                 success: function(response) {
-
-
                     console.log(response);
+                    window.location.href = HOST_URL + "/profile/add-profile";
                 },
             });
         });
@@ -1136,9 +1130,8 @@
     <!-- Stage 2 Script-->
     <script type="text/javascript">
         $('#kt_form1').on('submit', function(event) {
-            //$('#edit').on('click',function (){
             event.preventDefault();
-            
+
             let entered_by = $('#entered_by').val();
             let bought_by = $('#bought_by').val();
             let entity = $('#entity').val();
@@ -1152,12 +1145,11 @@
                 data: $(this).serialize(),
                 dataType: 'json',
                 success: function(response) {
-                    alert(response);
                     console.log(response);
                 },
             });
 
-            
+
         });
 
     </script>
@@ -1169,17 +1161,14 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        //  $('#kt_form1').on('edit',function(event){
         $('#editstep').on('click', function() {
             event.preventDefault();
-            alert("hh")
             var fd = new FormData();
             let shipping_no = $('#shipping_no').val();
             let coming_from = $('#coming_from').val();
             let going_to = $('#going_to').val();
             let final_destination = $('#final_destination').val();
             let profile_image = document.getElementById("profile_image").files[0].name;
-            //  let profile_image=$('#profile_image').val();
             let product_image = document.getElementById("product_image").files[0].name;
             let doc_image = document.getElementById("doc_image").files[0].name;
             let note = $('#note').val();
@@ -1194,22 +1183,13 @@
             fd.append('doc_image', doc_image);
             fd.append('note', note);
             fd.append('editid', editid);
-            alert(shipping_no);
-            alert(coming_from);
-            alert(going_to);
-            alert(final_destination);
-            alert(profile_image);
-            alert(product_image);
-            alert(doc_image);
-            alert(note);
-            alert(editid);
 
             $.ajax({
                 url: "/stageThree",
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                
+
                 data: fd,
                 dataType: 'json',
                 async: false,
@@ -1236,7 +1216,6 @@
         $('#kt_form2').submit(function(e) {
             e.preventDefault();
             let formData = new FormData(this);
-            //  $('#image-input-error').text('');
 
             $.ajax({
                 type: 'POST',
@@ -1247,13 +1226,11 @@
                 success: (response) => {
                     if (response) {
                         this.reset();
-                        alert('Image has been uploaded successfully');
                     }
                 },
                 error: function(response) {
                     console.log(response);
                     alert('Image has been not uploaded successfully');
-                    // $('#image-input-error').text(response.responseJSON.errors.file);
                 }
             });
         });
