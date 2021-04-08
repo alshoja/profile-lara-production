@@ -48,9 +48,9 @@ class HomeController extends Controller
             if (Auth::user()->role == "admin") {
                 return $query;
             } else if (Auth::user()->role == "employ") {
-                return $query->whereIn('section_id', session('section'));;
+                return $query->whereIn('section_id', session('section'));
             } else {
-                return $query->whereIn('dep_id', session('department'));;
+                return $query->whereIn('dep_id', session('department'));
             }
         })->take(5)->get();
         $dashData->usersCount = User::where(function (Builder $query) use ($from, $to, $search_date) {
@@ -106,7 +106,8 @@ class HomeController extends Controller
             }
             return $query;
         })->latest()->get();
-       
+    //    dd(session('section'));
+    //    return response()->json($dashData, 200);
         return view('home', compact('dashData'));
     }
 

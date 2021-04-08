@@ -55,8 +55,8 @@ class LoginController extends Controller
 
     protected function setUserSession($user)
     {
-        $departmentIds = null;
-        $section = null;
+        $departmentIds = [];
+        $section = [];
         if (Auth::user()->role == "general_director") {
             $departmentIds = DepartmentGeneralDirector::where('general_director_id', Auth::user()->id)->get()->pluck('dep_id');
             $section = 0;
