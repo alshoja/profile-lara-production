@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -35,7 +36,16 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = new Product();
+        $product->product_type = $request->product_type;
+        $product->quantity_kg = $request->quantity_kg;
+        $product->quantity_g = $request->quantity_g;
+        $product->quantity_ml = $request->quantity_ml;
+        $product->quantity_digit = $request->quantity_digit;
+        $product->manufacture_type = $request->manufacture_type;
+        $product->shipped_type = $request->shipped_type;
+        $product->profile_id = $request->profile_id;
+        $product->save();
     }
 
     /**
@@ -78,8 +88,11 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
-        //
+        if (Auth::user()->role == "employ") {
+            $product = Product::destroy($id);
+            return response()->json($product, 200);
+        }
     }
 }

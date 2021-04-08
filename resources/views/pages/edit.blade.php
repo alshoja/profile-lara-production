@@ -632,118 +632,106 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="card card-custom">
-                                                <div class="card-header">
-                                                    <div class="row">
-                                                        <h3 class="card-title">
-                                                            Label
-                                                        </h3>
-                                                    </div>
+                                            <div class="card-header">
+                                                <div class="row">
+                                                    <h3 class="card-title">
+                                                        Label
+                                                    </h3>
                                                 </div>
-                                                <!--begin::Form-->
-                                                <!--<form class="form">-->
-                                                <div class="card-body">
-                                                    <div id="kt_repeater_1">
-                                                        <div class="form-group row" id="kt_repeater_1">
-                                                            <!-- <label class="col-lg-2 col-form-label text-right">Contacts:</label> -->
-                                                            <div data-repeater-list="" class="col-lg-12">
-                                                                <div data-repeater-item
-                                                                    class="form-group row align-items-center">
-                                                                    <div class="row form-group">
-                                                                        <div class="col-xl-3">
-                                                                            <!-- <label>Name:</label> -->
-                                                                            <select name="product_type" id="product_type"
-                                                                                class="form-control form-control-solid ">
-                                                                                <option value="">Product-1</option>
-                                                                                <option value="YE">P 1</option>
-                                                                                <option value="ZM">P 2</option>
-                                                                                <option value="ZW">P 3</option>
-                                                                            </select>
-                                                                            <div class="d-md-none mb-2"></div>
-                                                                        </div>
-                                                                        <div class="col-xl-3">
-                                                                            <!-- <label>Name:</label> -->
-                                                                            <select name="manufacture_type"
-                                                                                id="manufacture_type"
-                                                                                class="form-control form-control-solid">
-                                                                                <option value="">Type-1</option>
-                                                                                <option value="YE">P 1</option>
-                                                                                <option value="ZM">P 2</option>
-                                                                                <option value="ZW">P 3</option>
-                                                                            </select>
-                                                                            <div class="d-md-none mb-2"></div>
-                                                                        </div>
-                                                                        <div class="col-xl-3">
-                                                                            <!-- <label>Name:</label> -->
-                                                                            <select name="shipped_type" id="shipped_type"
-                                                                                class="form-control form-control-solid">
-                                                                                <option selected value="">Shipped type-1
-                                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                                </option>
-                                                                                <option value="YE">P 1</option>
-                                                                                <option value="ZM">P 2</option>
-                                                                                <option value="ZW">P 3</option>
-                                                                            </select>
-                                                                            <div class="d-md-none mb-2"></div>
-                                                                        </div>
-                                                                        <div class="col-md-3">
-                                                                            <a href="javascript:;" data-repeater-delete=""
-                                                                                class="btn btn-sm font-weight-bolder btn-danger btn-gradient-danger">
-                                                                                <i class="la la-trash-o"></i>Delete
-                                                                            </a>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row form-group">
-                                                                        <div class="col-md-2">
-                                                                            <!-- <label>Name:</label> -->
-                                                                            <input type="text" class="form-control"
-                                                                                placeholder="Kg" name="quantity_kg"
-                                                                                id="quantity_kg" />
-                                                                            <div class="d-md-none mb-2"></div>
-                                                                        </div>
-                                                                        <div class="col-md-2">
-                                                                            <!-- <label>Name:</label> -->
-                                                                            <input type="text" class="form-control"
-                                                                                placeholder="G" name="quantity_g"
-                                                                                id="quantity_g" />
-                                                                            <div class="d-md-none mb-2"></div>
-                                                                        </div>
-                                                                        <div class="col-md-2">
-                                                                            <!-- <label>Name:</label> -->
-                                                                            <input type="text" class="form-control"
-                                                                                placeholder="ML" name="quantity_ml"
-                                                                                id="quantity_ml" />
-                                                                            <div class="d-md-none mb-2"></div>
-                                                                        </div>
-
-                                                                        <div class="col-md-2">
-                                                                            <!-- <label>Number:</label> -->
-                                                                            <input type="text" class="form-control"
-                                                                                placeholder="Digit" name="quantity_digit"
-                                                                                id="quantity_digit" />
-                                                                            <div class="d-md-none mb-2"></div>
-                                                                        </div>
-                                                                    </div>
-
+                                            </div>
+                                            <div id="kt_repeater_1">
+                                                <div class="form-group row" id="kt_repeater_1">
+                                                    <!-- <label class="col-lg-2 col-form-label text-right">Contacts:</label> -->
+                                                    <div data-repeater-list="" class="col-lg-12">
+                                                        <div data-repeater-item class="form-group row ">
+                                                            <div class="row form-group">
+                                                                <div class="col-md-4">
+                                                                    <!-- <label>Name:</label> -->
+                                                                    <select name="product_type" id="product_type"
+                                                                        class="form-control form-control-solid ">
+                                                                        <option hidden value="">Select Product-1&nbsp;
+                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                            &nbsp;
+                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                        </option>
+                                                                        <option value="YE">P 1</option>
+                                                                        <option value="ZM">P 2</option>
+                                                                        <option value="ZW">P 3</option>
+                                                                    </select>
+                                                                    {{-- <div class="d-md-none mb-2"></div> --}}
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <!-- <label>Name:</label> -->
+                                                                    <select name="manufacture_type" id="manufacture_type"
+                                                                        class="form-control form-control-solid">
+                                                                        <option hidden value=""> Select Type-1</option>
+                                                                        <option value="YE">P 1</option>
+                                                                        <option value="ZM">P 2</option>
+                                                                        <option value="ZW">P 3</option>
+                                                                    </select>
+                                                                    {{-- <div class="d-md-none mb-2"></div> --}}
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <!-- <label>Name:</label> -->
+                                                                    <select name="shipped_type" id="shipped_type"
+                                                                        class="form-control form-control-solid">
+                                                                        <option selected hidden value="">Select type-3
+                                                                        </option>
+                                                                        <option value="YE">P 1</option>
+                                                                        <option value="ZM">P 2</option>
+                                                                        <option value="ZW">P 3</option>
+                                                                    </select>
+                                                                    {{-- <div class="d-md-none mb-2"></div> --}}
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <div class="col-lg-4">
-                                                                <a href="javascript:;" data-repeater-create=""
-                                                                    class="btn btn-sm font-weight-bolder btn-light-primary btn-gradient-success">
-                                                                    <i class="la la-plus"></i>Add
-                                                                </a>
+                                                            <div class="row form-group">
+                                                                <div class="col-md-2">
+                                                                    <!-- <label>Name:</label> -->
+                                                                    <input type="text" class="form-control" placeholder="Kg"
+                                                                        name="quantity_kg" id="quantity_kg" />
+                                                                    <div class="d-md-none mb-2"></div>
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <!-- <label>Name:</label> -->
+                                                                    <input type="text" class="form-control" placeholder="G"
+                                                                        name="quantity_g" id="quantity_g" />
+                                                                    <div class="d-md-none mb-2"></div>
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <!-- <label>Name:</label> -->
+                                                                    <input type="text" class="form-control" placeholder="ML"
+                                                                        name="quantity_ml" id="quantity_ml" />
+                                                                    <div class="d-md-none mb-2"></div>
+                                                                </div>
+
+                                                                <div class="col-md-2">
+                                                                    <!-- <label>Number:</label> -->
+                                                                    <input type="text" class="form-control"
+                                                                        placeholder="Digit" name="quantity_digit"
+                                                                        id="quantity_digit" />
+                                                                    <div class="d-md-none mb-2"></div>
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <a href="javascript:;" data-repeater-delete=""
+                                                                        class="btn btn-sm font-weight-bolder btn-danger btn-gradient-danger">
+                                                                        <i class="la la-trash-o"></i>Delete
+                                                                    </a>
+                                                                </div>
                                                             </div>
+
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <!--</form>
-                                                         end::Form-->
+                                                <div class="form-group row">
+                                                    <div class="col-lg-4">
+                                                        <a href="javascript:;" data-repeater-create=""
+                                                            class="btn btn-sm font-weight-bolder btn-light-primary btn-gradient-success">
+                                                            <i class="la la-plus"></i>Add
+                                                        </a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-
                                     </div>
 
 

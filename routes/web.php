@@ -43,6 +43,11 @@ Route::post('profile/sign/or/reject', [App\Http\Controllers\ProfileController::c
 Route::get('profile/delete/{id}', [App\Http\Controllers\ProfileController::class, 'destroy'])->name('destroy');
 Route::get('profile/resubmit/{id}', [App\Http\Controllers\ProfileController::class, 'reSubmit'])->name('reSubmit');
 
+// Product
+Route::post('product', [App\Http\Controllers\ProductController::class, 'store'])->name('Product add');
+Route::get('product/{id}', [App\Http\Controllers\ProductController::class, 'destroy'])->name('delete product');
+
+
 // User Management 
 Route::get('user/list-users', [App\Http\Controllers\UserController::class, 'index']);
 Route::get('user/add-user', [App\Http\Controllers\UserController::class, 'create']);
@@ -98,6 +103,3 @@ Route::post('stageFour', [App\Http\Controllers\ProfileController::class, 'stageF
 Route::post('stageFive', [App\Http\Controllers\ProfileController::class, 'stageFive']);
 
 Route::post('profileUpdate', [App\Http\Controllers\ProfileController::class, 'profileUpdate']);
-
-
-
