@@ -5,7 +5,7 @@ let showToast = (message, title, type) => {
       icon: "glyphicon glyphicon-warning-sign",
       title: title,
       message: message,
-      url: "https://github.com/mouse0270/bootstrap-notify",
+      url: "",
       target: "_blank",
     },
     {
@@ -15,7 +15,7 @@ let showToast = (message, title, type) => {
       type: type,
         allow_dismiss: true,
       newest_on_top: true,
-      showProgressbar: false,
+      showProgressbar: true,
       placement: {
         from: "top",
         align: "left",
@@ -23,8 +23,8 @@ let showToast = (message, title, type) => {
       offset: 20,
       spacing: 10,
       z_index: 1031,
-      delay: 500,
-      timer: 300,
+      delay: 5000,
+      timer: 1000,
       url_target: "_blank",
       mouse_over: null,
       animate: {
