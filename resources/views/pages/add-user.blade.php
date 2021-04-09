@@ -240,7 +240,7 @@
                                             Supervisor
                                         </label>
                                     @endif
-                                    @if (Auth::user()->role == 'admin' || Auth::user()->role == 'supervisor')
+                                    @if (Auth::user()->role != 'admin' || Auth::user()->role == 'supervisor')
                                         <label id="employ-label" class="radio radio-solid">
                                             <input type="radio" onclick="toggleDepartment('employ')" name="role"
                                                 value="employ" />

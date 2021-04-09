@@ -2,10 +2,12 @@
 
 namespace App\Providers;
 
+use App\Events\AddNotification;
 use App\Events\AddTimeLineNote;
 use App\Events\RejectDocument;
 use App\Events\SignDocument;
 use App\Events\SignOrRejectProfile;
+use App\Listeners\NotificationListener;
 use App\Listeners\RejectDocumentListener;
 use App\Listeners\SignDocumentListener;
 use App\Listeners\SignOrReject;
@@ -35,6 +37,10 @@ class EventServiceProvider extends ServiceProvider
         AddTimeLineNote::class => [
             TimeLineNoteListener::class,
         ],
+
+        AddNotification::class => [
+            NotificationListener::class,
+        ],
     ];
 
     /**
@@ -49,6 +55,6 @@ class EventServiceProvider extends ServiceProvider
 
     public function shouldDiscoverEvents()
     {
-        return true;
+        return false;
     }
 }

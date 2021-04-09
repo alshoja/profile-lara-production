@@ -22,7 +22,7 @@ class CreateProductsTable extends Migration
             $table->string('quantity_digit');
             $table->string('manufacture_type');
             $table->string('shipped_type');
-            $table->foreignId('profile_id')->constrained('profiles');
+            $table->foreignId('profile_id')->constrained('profiles')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -13,9 +13,9 @@ let showToast = (message, title, type) => {
       element: "body",
       position: null,
       type: type,
-        allow_dismiss: true,
+        allow_dismiss: false,
       newest_on_top: true,
-      showProgressbar: true,
+      showProgressbar: false,
       placement: {
         from: "top",
         align: "left",

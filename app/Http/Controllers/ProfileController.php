@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\AddNotification;
 use Exception;
 use Validator;
 use App\Models\Profile;
@@ -372,6 +373,7 @@ class ProfileController extends Controller
             if ($trackCheck == 0) {
                 $signDocEvent = SignDocument::dispatch($trackProfile);
                 $addEntryEvent = AddTimeLineNote::dispatch($timeLine);
+                AddNotification::dispatch($timeLine);
             }
         }
         return $signDocEvent;
