@@ -32,6 +32,7 @@ class HomeController extends Controller
         $search = request()->query('search');
         $from = $request->get('from');
         $to = $request->get('to');
+        $lastId = null;
         $search_date = $request->get('search_date');
         $dashData = (object)[];
         $dashData->profile = $this->getProfileChartCount($from, $to, $search_date);
@@ -46,8 +47,10 @@ class HomeController extends Controller
                 $query->whereDate('created_at', '=', $search_date);
             }
             if (Auth::user()->role == "admin") {
+                $query->where('is_completed', 1);
                 return $query;
             } else if (Auth::user()->role == "employ") {
+                $query->where('is_completed', 1);
                 return $query->whereIn('section_id', session('section'));
             } else {
                 return $query->whereIn('dep_id', session('department'));
@@ -63,7 +66,7 @@ class HomeController extends Controller
             }
             return $query;
         })->count();
-        $dashData->profileEntered = count($dashData->profileList);
+        $dashData->profileEntered = Profile::where('employ_id', Auth::user()->id)->count();
         $dashData->profilePending = Profile::where('is_completed', 0)->where(function (Builder $query) use ($from, $to, $search_date) {
             if ($from  && $to) {
                 $query->where('created_at', '>=', $from)
@@ -91,12 +94,21 @@ class HomeController extends Controller
             if (Auth::user()->role == "admin") {
                 return $query;
             } else if (Auth::user()->role == "employ") {
-                return $query->whereIn('section_id', session('section'));;
+                return $query->whereIn('section_id', session('section'));
             } else {
-                return $query->whereIn('dep_id', session('department'));;
+                return $query->whereIn('dep_id', session('department'));
             }
         })->count();
-        $dashData->activity = TimeLine::where('profile_id', 8)->where(function (Builder $query) use ($from, $to, $search_date) {
+        if (Auth::user()->role == 'employ') {
+            if (Profile::orderBy('id', 'desc')->where('is_drafted', 0)->where('employ_id', Auth::user()->id)->count() > 0) {
+                $lastId = Profile::orderBy('id', 'desc')->where('is_drafted', 0)->where('employ_id', Auth::user()->id)->take(1)->first()->id;
+            }
+        } else {
+            if (Profile::orderBy('id', 'desc')->where('is_drafted', 0)->whereIn('dep_id', session('department'))->count() > 0) {
+                $lastId = Profile::orderBy('id', 'desc')->whereIn('dep_id', session('department'))->take(1)->first()->id;
+            }
+        }
+        $dashData->activity = TimeLine::where('profile_id', $lastId)->take(10)->where(function (Builder $query) use ($from, $to, $search_date) {
             if ($from  && $to) {
                 $query->where('created_at', '>=', $from)
                     ->where('created_at', '<=', $to);
@@ -106,8 +118,8 @@ class HomeController extends Controller
             }
             return $query;
         })->latest()->get();
-    //    dd(session('section'));
-    //    return response()->json($dashData, 200);
+        //    dd(session('section'));
+        // return response()->json($dashData, 200);
         return view('home', compact('dashData'));
     }
 
