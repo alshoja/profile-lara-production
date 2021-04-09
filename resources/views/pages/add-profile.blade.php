@@ -1120,13 +1120,8 @@ $.ajaxSetup({
 
         $('#kt_form1').on('submit', function(event) {
             event.preventDefault();
-alert("hi");
-          //  let entered_by = $('#entered_by').val();
-           // let bought_by = $('#bought_by').val();
-           // let entity = $('#entity').val();
-           // let entry_date = $('#entry_date').val();
-           // let entity_location = $('#entity_location').val();
-           // let editid = $('#editid').val();
+
+          
 
             $.ajax({
                 url: "/updateUser",
