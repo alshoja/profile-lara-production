@@ -104,7 +104,7 @@
     setInterval(function() {
         getNotifications()
         console.info('Checking for new notification.....')
-    }, 20000);
+    }, 2000);
     localStorage.setItem('session_id', {{ Auth::user()->id }});
 
 </script>

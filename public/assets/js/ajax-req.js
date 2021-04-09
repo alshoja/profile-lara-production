@@ -70,7 +70,11 @@ function getNotifications() {
   let fullUrl = HOST_URL + "/notifications";
   let res = null;
   let suburl = "/profiles?tab=inbox";
-  localStorage.setItem("notification", JSON.stringify([]));
+  if (localStorage.getItem("notification") == null) {
+    let obj = {};
+    obj.id = 0;
+    localStorage.setItem("notification", JSON.stringify([obj]));
+  }
   $.ajax({
     url: fullUrl,
     type: "GET",
@@ -78,10 +82,17 @@ function getNotifications() {
     dataType: "json",
     contentType: "application/json",
     success: function (result) {
+      let localStorageObj = JSON.parse(localStorage.getItem("notification"));
+      const newNotification = result.filter(
+        ({ id: id1 }) => !localStorageObj.some(({ id: id2 }) => id2 === id1)
+      );
+      if (newNotification.length > 0) {
+        newNotification.forEach((res) => {
+          showToast(res.message, "Notification", "warning");
+        });
+      }
       localStorage.setItem("notification", JSON.stringify(result));
-      let result2 = JSON.parse(localStorage.getItem("notification"));
-      let result1 = result.filter((o1) => result2.some((o2) => o1.id != o2.id));
-      console.log('new notificatio',result1)
+
       let data = result;
       let contentStr = "";
       let span = document.getElementById("count-span");
@@ -102,7 +113,10 @@ function getNotifications() {
                   <div class="font-weight-bold">` +
             o.message +
             `</div>
-                  <div class="text-muted"> Rejected
+                  <div class="text-muted">  
+                  ` +
+            converMysqlToJsTime(o.created_at.toString()) +
+            `
             </div>
               </div>
           </div>
@@ -182,37 +196,56 @@ function getProfileData(id) {
 }
 
 function setEprofile(profile) {
-  console.log('profile',profile);
+  console.log("profile", profile);
   let heading = document.getElementById("exampleModalLabel");
   heading.innerHTML = profile.name;
-  let name = document.getElementById("name").innerHTML = profile.name;
-  let nationality = document.getElementById("nationality").innerHTML = profile.nationality;
-  let gender = document.getElementById("gender").innerHTML = profile.gender;
-  let dob = document.getElementById("dob").innerHTML = profile.dob;
-  let citizen_status = document.getElementById("citizen_status").innerHTML = profile.citizen_status;
-  let citizen_location = document.getElementById("citizen_location").innerHTML = profile.citizen_location;
-  let citizen_id = document.getElementById("citizen_id").innerHTML = profile.citizen_id;
-  let citizen_uid = document.getElementById("citizen_uid").innerHTML = profile.citizen_uid;
-  let passport_no = document.getElementById("passport_no").innerHTML = profile.passport_no;
-  let passport_type = document.getElementById("passport_type").innerHTML = profile.passport_type;
-  let doentered_byb = document.getElementById("entered_by").innerHTML = profile.entered_by;
-  let bought_by = document.getElementById("bought_by").innerHTML = profile.bought_by;
-  let entity = document.getElementById("entity").innerHTML = profile.entity;
-  let entry_date = document.getElementById("entry_date").innerHTML = profile.entry_date;
-  let entity_location = document.getElementById("entity_location").innerHTML = profile.entity_location;
-  let shipping_no = document.getElementById("shipping_no").innerHTML = profile.shipping_no;
-  let coming_from = document.getElementById("coming_from").innerHTML = profile.coming_from;
-  let going_to = document.getElementById("going_to").innerHTML = profile.going_to;
-  let final_destination = document.getElementById("final_destination").innerHTML = profile.final_destination;
-  let note = document.getElementById("note").innerHTML = profile.note;
+  let name = (document.getElementById("name").innerHTML = profile.name);
+  let nationality = (document.getElementById("nationality").innerHTML =
+    profile.nationality);
+  let gender = (document.getElementById("gender").innerHTML = profile.gender);
+  let dob = (document.getElementById("dob").innerHTML = profile.dob);
+  let citizen_status = (document.getElementById("citizen_status").innerHTML =
+    profile.citizen_status);
+  let citizen_location = (document.getElementById(
+    "citizen_location"
+  ).innerHTML = profile.citizen_location);
+  let citizen_id = (document.getElementById("citizen_id").innerHTML =
+    profile.citizen_id);
+  let citizen_uid = (document.getElementById("citizen_uid").innerHTML =
+    profile.citizen_uid);
+  let passport_no = (document.getElementById("passport_no").innerHTML =
+    profile.passport_no);
+  let passport_type = (document.getElementById("passport_type").innerHTML =
+    profile.passport_type);
+  let doentered_byb = (document.getElementById("entered_by").innerHTML =
+    profile.entered_by);
+  let bought_by = (document.getElementById("bought_by").innerHTML =
+    profile.bought_by);
+  let entity = (document.getElementById("entity").innerHTML = profile.entity);
+  let entry_date = (document.getElementById("entry_date").innerHTML =
+    profile.entry_date);
+  let entity_location = (document.getElementById("entity_location").innerHTML =
+    profile.entity_location);
+  let shipping_no = (document.getElementById("shipping_no").innerHTML =
+    profile.shipping_no);
+  let coming_from = (document.getElementById("coming_from").innerHTML =
+    profile.coming_from);
+  let going_to = (document.getElementById("going_to").innerHTML =
+    profile.going_to);
+  let final_destination = (document.getElementById(
+    "final_destination"
+  ).innerHTML = profile.final_destination);
+  let note = (document.getElementById("note").innerHTML = profile.note);
   document.getElementById("profile_image").src = profile.profile_image;
   document.getElementById("product_image").src = profile.product_image;
   document.getElementById("doc_image").src = profile.doc_image;
-  let record_status = document.getElementById("record_status").innerHTML = profile.record_status;
-  let record_dep_transfer = document.getElementById("record_dep_transfer").innerHTML = profile.record_dep_transfer;
-   document.getElementById("depart").innerHTML = profile.department.name;
-   document.getElementById("section").innerHTML = profile.section.name;
-  
+  let record_status = (document.getElementById("record_status").innerHTML =
+    profile.record_status);
+  let record_dep_transfer = (document.getElementById(
+    "record_dep_transfer"
+  ).innerHTML = profile.record_dep_transfer);
+  document.getElementById("depart").innerHTML = profile.department.name;
+  document.getElementById("section").innerHTML = profile.section.name;
 }
 
 function setDocs(result) {
@@ -360,4 +393,33 @@ function AproveOrReject(action) {
   approve_button.disabled = true;
   location.reload();
   return res;
+}
+
+function converMysqlToJsTime(timestamp) {
+  let d = new Date(Date.parse(timestamp));
+  return timeDifference(new Date(), d);
+}
+
+function timeDifference(current, previous) {
+  var msPerMinute = 60 * 1000;
+  var msPerHour = msPerMinute * 60;
+  var msPerDay = msPerHour * 24;
+  var msPerMonth = msPerDay * 30;
+  var msPerYear = msPerDay * 365;
+
+  var elapsed = current - previous;
+
+  if (elapsed < msPerMinute) {
+    return Math.round(elapsed / 1000) + " seconds ago";
+  } else if (elapsed < msPerHour) {
+    return Math.round(elapsed / msPerMinute) + " minutes ago";
+  } else if (elapsed < msPerDay) {
+    return Math.round(elapsed / msPerHour) + " hours ago";
+  } else if (elapsed < msPerMonth) {
+    return Math.round(elapsed / msPerDay) + " days ago";
+  } else if (elapsed < msPerYear) {
+    return Math.round(elapsed / msPerMonth) + " months ago";
+  } else {
+    return Math.round(elapsed / msPerYear) + " years ago";
+  }
 }

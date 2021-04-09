@@ -16,25 +16,25 @@ var KTImageInputDemo = function () {
 		// Example 4
 		var avatar4 = new KTImageInput('kt_image_4');
 
-		avatar1.on('cancel', function(imageInput) {
-			swal.fire({
-                title: 'Image successfully canceled !',
-                type: 'success',
-                buttonsStyling: false,
-                confirmButtonText: 'Awesome!',
-                confirmButtonClass: 'btn btn-primary font-weight-bold'
-            });
-		});
+		// avatar1.on('cancel', function(imageInput) {
+		// 	swal.fire({
+        //         title: 'Image successfully canceled !',
+        //         type: 'success',
+        //         buttonsStyling: false,
+        //         confirmButtonText: 'Awesome!',
+        //         confirmButtonClass: 'btn btn-primary font-weight-bold'
+        //     });
+		// });
 
-		avatar2.on('change', function(imageInput) {
-			swal.fire({
-                title: 'Image successfully changed !',
-                type: 'success',
-                buttonsStyling: false,
-                confirmButtonText: 'Awesome!',
-                confirmButtonClass: 'btn btn-primary font-weight-bold'
-            });
-		});
+		// avatar2.on('change', function(imageInput) {
+		// 	swal.fire({
+        //         title: 'Image successfully changed !',
+        //         type: 'success',
+        //         buttonsStyling: false,
+        //         confirmButtonText: 'Awesome!',
+        //         confirmButtonClass: 'btn btn-primary font-weight-bold'
+        //     });
+		// });
 
 		// avatar3.on('remove', function(imageInput) {
 		// 	swal.fire({
