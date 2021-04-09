@@ -57,14 +57,14 @@ class NotificationListener
             $notification = new Notification();
             $notification->user_id = Auth::user()->id;
             $notification->notify_id = $event->notification->owned_by;
-            $notification->message = 'You got a Profile rejected from.' . Auth::user()->name;
+            $notification->message = 'Your Profile rejected from ' . Auth::user()->name;
             $notification->save(); 
         } else {
             foreach ($dep_array as $department) {
                 $notification = new Notification();
                 $notification->user_id = Auth::user()->id;
                 $notification->notify_id = $department;
-                $notification->message = 'You got a Profile from.' . Auth::user()->name;
+                $notification->message = 'You got a New Profile from' . Auth::user()->name;
                 $notification->save();
             }
         }
