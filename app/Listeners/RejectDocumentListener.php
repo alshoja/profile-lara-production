@@ -50,7 +50,7 @@ class RejectDocumentListener
             }
         }
         if (Auth::user()->role == "director") {
-            $trackProfile = TrackProfile::where('from', 'supervisor')->where('profile_id', $event->trackProfile_r->profile_id)->first();
+            $trackProfile = TrackProfile::where('from', 'department_head')->where('profile_id', $event->trackProfile_r->profile_id)->first();
             $track = TrackProfile::where('from', 'department_head')->where('profile_id', $event->trackProfile_r->profile_id)->delete();
             if ($track) {
                 $tracking = TrackProfile::where('from', 'supervisor')->where('profile_id', $event->trackProfile_r->profile_id)->first();
@@ -61,7 +61,7 @@ class RejectDocumentListener
             }
         }
         if (Auth::user()->role == "general_director") {
-            $trackProfile = TrackProfile::where('from', 'supervisor')->where('profile_id', $event->trackProfile_r->profile_id)->first();
+            $trackProfile = TrackProfile::where('from', 'director')->where('profile_id', $event->trackProfile_r->profile_id)->first();
             $track = TrackProfile::where('from', 'director')->where('profile_id', $event->trackProfile_r->profile_id)->delete();
             if ($track) {
                 $tracking = TrackProfile::where('from', 'department_head')->where('profile_id', $event->trackProfile_r->profile_id)->first();
