@@ -541,7 +541,7 @@
 
                                     <!--<input type = 'submit' value = "Save" class="btn btn-success font-weight-bolder"/>-->
                                 </form>
-                                <form id="kt_form1" class="form" b>
+                                <form id="kt_form1" class="form">
                                     @csrf
                                     <!--end::Wizard Step 1-->
                                     <!--begin::Wizard Step 2-->
@@ -637,7 +637,7 @@
                                                     <div class="row form-group">
                                                         <div class="col-md-4">
                                                             <!-- <label>Name:</label> -->
-                                                            <select name="product_type[]" id="product_type"
+                                                            <select name="product_type[]" id="product_type[]"
                                                                 class="form-control form-control-solid ">
                                                                 <option hidden value="">Select Product-1&nbsp;
                                                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -652,7 +652,7 @@
                                                         </div>
                                                         <div class="col-md-4">
                                                             <!-- <label>Name:</label> -->
-                                                            <select name="manufacture_type[]" id="manufacture_type"
+                                                            <select name="manufacture_type[]" id="manufacture_type[]"
                                                                 class="form-control form-control-solid">
                                                                 <option hidden value=""> Select Type-1</option>
                                                                 <option value="YE">P 1</option>
@@ -663,7 +663,7 @@
                                                         </div>
                                                         <div class="col-md-4">
                                                             <!-- <label>Name:</label> -->
-                                                            <select name="shipped_type[]" id="shipped_type"
+                                                            <select name="shipped_type[]" id="shipped_type[]"
                                                                 class="form-control form-control-solid">
                                                                 <option selected hidden value="">Select type-3
                                                                 </option>
@@ -678,26 +678,26 @@
                                                         <div class="col-md-3">
                                                             <!-- <label>Name:</label> -->
                                                             <input type="text" class="form-control" placeholder="Kg"
-                                                                name="quantity_kg[]" id="quantity_kg" />
+                                                                name="quantity_kg[]" id="quantity_kg[]" />
                                                             <div class="d-md-none mb-2"></div>
                                                         </div>
                                                         <div class="col-md-3">
                                                             <!-- <label>Name:</label> -->
                                                             <input type="text" class="form-control" placeholder="G"
-                                                                name="quantity_g[]" id="quantity_g" />
+                                                                name="quantity_g[]" id="quantity_g[]" />
                                                             <div class="d-md-none mb-2"></div>
                                                         </div>
                                                         <div class="col-md-3">
                                                             <!-- <label>Name:</label> -->
                                                             <input type="text" class="form-control" placeholder="ML"
-                                                                name="quantity_ml[]" id="quantity_ml" />
+                                                                name="quantity_ml[]" id="quantity_ml[]" />
                                                             <div class="d-md-none mb-2"></div>
                                                         </div>
 
                                                         <div class="col-md-3">
                                                             <!-- <label>Number:</label> -->
                                                             <input type="text" class="form-control" placeholder="Digit"
-                                                                name="quantity_digit[]" id="quantity_digit" />
+                                                                name="quantity_digit[]" id="quantity_digit[]" />
                                                             <div class="d-md-none mb-2"></div>
                                                         </div>
                                                     </div>
@@ -1111,20 +1111,27 @@
 
     <!-- Stage 2 Script-->
     <script type="text/javascript">
+
+$.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+      });
+
         $('#kt_form1').on('submit', function(event) {
             event.preventDefault();
-
-            let entered_by = $('#entered_by').val();
-            let bought_by = $('#bought_by').val();
-            let entity = $('#entity').val();
-            let entry_date = $('#entry_date').val();
-            let entity_location = $('#entity_location').val();
-            let editid = $('#editid').val();
+alert("hi");
+          //  let entered_by = $('#entered_by').val();
+           // let bought_by = $('#bought_by').val();
+           // let entity = $('#entity').val();
+           // let entry_date = $('#entry_date').val();
+           // let entity_location = $('#entity_location').val();
+           // let editid = $('#editid').val();
 
             $.ajax({
                 url: "/updateUser",
                 method: 'POST',
-                data: $(this).serialize(),
+                data: $('#kt_form1').serialize(),
                 dataType: 'json',
                 success: function(response) {
                     console.log(response);
@@ -1229,7 +1236,7 @@
                             <div class="row form-group">
                                                                                 <div class="col-md-4">
                                                                                   
-                                                                                    <select name="product_type[]" id="product_type"
+                                                                                    <select name="product_type[]" id="product_type[]"
                                                                                         class="form-control form-control-solid ">
                                                                                         <option hidden value="">Select Product-1&nbsp;
                                                                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -1244,7 +1251,7 @@
                                                                                 </div>
                                                                                 <div class="col-md-4">
                                                                                   
-                                                                                    <select name="manufacture_type[]" id="manufacture_type"
+                                                                                    <select name="manufacture_type[]" id="manufacture_type[]"
                                                                                         class="form-control form-control-solid">
                                                                                         <option hidden value=""> Select Type-1</option>
                                                                                         <option value="YE">P 1</option>
@@ -1255,7 +1262,7 @@
                                                                                 </div>
                                                                                 <div class="col-md-4">
                                                                                
-                                                                                    <select name="shipped_type[]" id="shipped_type"
+                                                                                    <select name="shipped_type[]" id="shipped_type[]"
                                                                                         class="form-control form-control-solid">
                                                                                         <option selected hidden value="">Select type-3
                                                                                         </option>
@@ -1270,26 +1277,26 @@
                                                                                 <div class="col-md-3">
                                                                                    
                                                                                     <input type="text" class="form-control" placeholder="Kg"
-                                                                                        name="quantity_kg[]" id="quantity_kg" />
+                                                                                        name="quantity_kg[]" id="quantity_kg[]" />
                                                                                     <div class="d-md-none mb-2"></div>
                                                                                 </div>
                                                                                 <div class="col-md-3">
                                                                                    
                                                                                     <input type="text" class="form-control" placeholder="G"
-                                                                                        name="quantity_g[]" id="quantity_g" />
+                                                                                        name="quantity_g[]" id="quantity_g[]" />
                                                                                     <div class="d-md-none mb-2"></div>
                                                                                 </div>
                                                                                 <div class="col-md-3">
                                                                                  
                                                                                     <input type="text" class="form-control" placeholder="ML"
-                                                                                        name="quantity_ml[]" id="quantity_ml" />
+                                                                                        name="quantity_ml[]" id="quantity_ml[]" />
                                                                                     <div class="d-md-none mb-2"></div>
                                                                                 </div>
 
                                                                                 <div class="col-md-3">
                                                                                     <!-- <label>Number:</label> -->
                                                                                     <input type="text" class="form-control" placeholder="Digit"
-                                                                                        name="quantity_digit[]" id="quantity_digit" />
+                                                                                        name="quantity_digit[]" id="quantity_digit[]" />
                                                                                     <div class="d-md-none mb-2"></div>
                                                                                 </div>
                                                                             </div> 

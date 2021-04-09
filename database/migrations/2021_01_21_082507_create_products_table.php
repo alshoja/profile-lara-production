@@ -15,14 +15,14 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('product_type');
-            $table->string('quantity_kg');
-            $table->string('quantity_g');
-            $table->string('quantity_ml');
-            $table->string('quantity_digit');
-            $table->string('manufacture_type');
-            $table->string('shipped_type');
-            $table->foreignId('profile_id')->constrained('profiles');
+            $table->string('product_type')->nullable();
+            $table->string('quantity_kg')->nullable();
+            $table->string('quantity_g')->nullable();
+            $table->string('quantity_ml')->nullable();
+            $table->string('quantity_digit')->nullable();
+            $table->string('manufacture_type')->nullable();
+            $table->string('shipped_type')->nullable();
+            $table->foreignId('profile_id')->constrained('profiles')->nullable();
             $table->timestamps();
         });
     }

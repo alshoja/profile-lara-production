@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Exception;
 use Validator;
 use App\Models\Profile;
+use App\Models\Product;
 use App\Models\TimeLine;
 use App\Events\SignDocument;
 use App\Models\TrackProfile;
@@ -115,7 +116,7 @@ class ProfileController extends Controller
         $profile->citizen_id = $request->citizen_id;
         $profile->citizen_uid = $request->citizen_uid;
         $profile->passport_no = $request->passport_no;
-        $profile->passport_type = $request->passport_no;
+        $profile->passport_type = $request->passport_type;
         $profile->entered_by = "";
         $profile->bought_by = "";
         $profile->entity = "";
@@ -148,10 +149,36 @@ class ProfileController extends Controller
             $entry_date = $request->input('entry_date');
             $entity_location = $request->input('entity_location');
             $editid = $request->input('editid');
+
             try {
-                $data = array("entered_by" => $entered_by, "bought_by" => $bought_by, "entity" => $entity, "entry_date" => $entry_date, "entity_location" => $entity_location);
-                Profile::updateData($editid, $data);
-                return response()->json(['success' => 'Form is successfully submitted!']);
+        $product_type=$request->product_type;
+       $quantity_kg=$request->quantity_kg;
+       $quantity_g=$request->quantity_g;
+         $quantity_ml=$request->quantity_ml;
+        $quantity_digit=$request->quantity_digit;
+        $manufacture_type=$request->manufacture_type;
+        $shipped_type=$request->shipped_type;
+        $profile_id=$editid;
+       $product = new Product();
+       $m=count($product_type);
+        for($count = 0; $count < count($product_type); $count++)
+        {
+         $data = array(
+          'product_type' => $product_type[$count],
+          'quantity_kg'  => $quantity_kg[$count],
+          'quantity_g'  => $quantity_g[$count],
+          'quantity_ml'  => $quantity_ml[$count],
+          'quantity_digit' =>$quantity_digit[$count],
+         'manufacture_type' => $manufacture_type[$count],
+         'shipped_type' => $shipped_type[$count],
+          'profile_id' => $profile_id
+         );
+          Product::create($data);
+        }
+        
+      $data = array("entered_by" => $entered_by, "bought_by" => $bought_by, "entity" => $entity, "entry_date" => $entry_date, "entity_location" => $entity_location);
+               Profile::updateData($editid, $data);
+               return response()->json(['success' => 'Form is successfully submitted!']);
             } catch (\Illuminate\Database\QueryException $ex) {
                 dd($ex->getMessage());
             }
