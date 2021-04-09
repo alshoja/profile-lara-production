@@ -30,7 +30,7 @@ class RejectDocumentListener
     public function handle(RejectDocument $event)
     {
         if (Auth::user()->role == "supervisor") {
-            $trackProfile = TrackProfile::where('from', 'supervisor')->where('profile_id', $event->trackProfile_r->profile_id)->first();
+            $trackProfile = TrackProfile::where('from', 'employ')->where('profile_id', $event->trackProfile_r->profile_id)->first();
             $track = TrackProfile::where('from', 'employ')->where('profile_id', $event->trackProfile_r->profile_id)->first();
             $track->status = "pending";
             $track->at_end_user = 1;
@@ -71,10 +71,13 @@ class RejectDocumentListener
                 $tracking->save();
             }
         }
-        $newEvent = (object)[];
-        $event->trackProfile_r->owned_by = $trackProfile->owned_by;
-        $newEvent = $event;
-        AddNotification::dispatch($newEvent);
+
+        $notificationObjects = (object)[];
+        $notificationObjects->type = 'rejected';
+        $notificationObjects->profile_id = $event->trackProfile_r->profile_id;
+        $notificationObjects->owned_by = $trackProfile->owned_by;
+// dd($notificationObjects);
+        AddNotification::dispatch($notificationObjects);
         return $track;
     }
 }

@@ -34,6 +34,7 @@ class NotificationListener
      */
     public function handle(AddNotification $event)
     {
+        // dd($event->notification);
         $dep_array = [];
         $dep_id = Profile::find($event->notification->profile_id)->dep_id;
         if (Auth::user()->role == "employ") {
@@ -51,18 +52,19 @@ class NotificationListener
         if (Auth::user()->role == "general_director") {
             $dep_array = DepartmentDirector::where('dep_id', $dep_id)->pluck('director_id');
         }
-        if ($event->notification->type = 'rejected') {
+        // Type is not getting here so no notification
+        if ($event->notification->type == 'rejected') { 
             $notification = new Notification();
             $notification->user_id = Auth::user()->id;
-            $notification->owned_by = $event->notification->owned_by;
-            $notification->message = 'You got new item in inbox Form.' . Auth::user()->name;
+            $notification->notify_id = $event->notification->owned_by;
+            $notification->message = 'You got a Profile rejected from.' . Auth::user()->name;
             $notification->save(); 
         } else {
             foreach ($dep_array as $department) {
                 $notification = new Notification();
                 $notification->user_id = Auth::user()->id;
                 $notification->notify_id = $department;
-                $notification->message = 'You got new item in inbox Form.' . Auth::user()->name;
+                $notification->message = 'You got a Profile from.' . Auth::user()->name;
                 $notification->save();
             }
         }

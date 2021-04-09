@@ -159,6 +159,7 @@ function getProfileData(id) {
     dataType: "json",
     contentType: "application/json",
     success: function (result) {
+      console.log(result);
       setEprofile(result);
       setDocs(result);
       const mappedArray = result.timeline.map((obj, i) => {
