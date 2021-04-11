@@ -652,31 +652,35 @@
                                                                                                         </tr>
                                                                                                     </thead>
                                                                                                     <tbody>
-                                                                                                        <tr
+                                                                                                    @foreach($profiles as $item)
+                                                                                                         <tr
                                                                                                             class="font-weight-boldest">
                                                                                                             <td
                                                                                                                 class="pl-0 pt-7">
-                                                                                                                a</td>
+                                                                                                                {{ $item->products[0]->product_type }}
+                                                                                                              </td>
                                                                                                             <td
                                                                                                                 class="pl-0 pt-7">
-                                                                                                                a</td>
+                                                                                                                {{ $item->products[0]->manufacture_type }}</td>
                                                                                                             <td
                                                                                                                 class="pl-0 pt-7">
-                                                                                                                a</td>
+                                                                                                                {{ $item->products[0]->shipped_type }}</td>
                                                                                                             <td
                                                                                                                 class="pl-0 pt-7">
-                                                                                                                a</td>
+                                                                                                                {{ $item->products[0]->quantity_digit }}</td>
                                                                                                             <td
                                                                                                                 class="pl-0 pt-7">
-                                                                                                                a</td>
+                                                                                                                {{ $item->products[0]->quantity_ml }}</td>
                                                                                                             <td
                                                                                                                 class="pl-0 pt-7">
-                                                                                                                a</td>
+                                                                                                                {{ $item->products[0]->quantity_gm }}</td>
                                                                                                             <td
                                                                                                                 class="pl-0 pt-7">
-                                                                                                                a</td>
+                                                                                                                {{ $item->products[0]->quantity_kg }}</td>
 
-                                                                                                        </tr>
+                                                                                                          </tr>
+                                                                                                          @endforeach
+                                                                                                       
 
                                                                                                     </tbody>
                                                                                                 </table>

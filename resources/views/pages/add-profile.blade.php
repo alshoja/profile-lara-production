@@ -547,6 +547,7 @@
                                     <!--begin::Wizard Step 2-->
                                     <div class="pb-5" data-wizard-type="step-content">
                                         <h4 class="mb-10 font-weight-bold text-dark">Label </h4>
+                                        <span id="result"></span>
                                         <div class="row">
                                             <div class="col-xl-4">
                                                 <div class="form-group">
@@ -1128,8 +1129,22 @@ $.ajaxSetup({
                 method: 'POST',
                 data: $('#kt_form1').serialize(),
                 dataType: 'json',
-                success: function(response) {
-                    console.log(response);
+                success: function(data) {
+                   
+                    if(data.error)
+                {
+                    var error_html = '';
+                    for(var count = 0; count < data.error.length; count++)
+                    {
+                        error_html += '<p>'+data.error[count]+'</p>';
+                    }
+                    $('#result').html('<div class="alert alert-danger">'+error_html+'</div>');
+                }
+                else
+                {
+                    dynamic_field(1);
+                    $('#result').html('<div class="alert alert-success">'+data.success+'</div>');
+                }
                 },
             });
 

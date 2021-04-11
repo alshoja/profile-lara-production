@@ -645,91 +645,101 @@
                                                     <div data-repeater-list="" class="col-lg-12">
                                                         <div data-repeater-item class="form-group row ">
                                                             <div class="row form-group">
-                                                                <div class="col-md-4">
-                                                                    <!-- <label>Name:</label> -->
-                                                                    <select name="product_type" id="product_type"
-                                                                        class="form-control form-control-solid ">
-                                                                        <option hidden value="">Select Product-1&nbsp;
-                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                            &nbsp;
-                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <div class="col-md-12">
+                                                                    <div class="table-responsive">
+                                                                        <table class="table">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th
+                                                                                        class="pl-0 font-weight-bold text-muted text-uppercase">
+                                                                                        Product type
+                                                                                    </th>
+                                                                                    <th
+                                                                                        class="pl-0 font-weight-bold text-muted text-uppercase">
+                                                                                        Manufacture
+                                                                                        Type</th>
+                                                                                    <th
+                                                                                        class="pl-0 font-weight-bold text-muted text-uppercase">
+                                                                                        shipped Type
+                                                                                    </th>
+                                                                                    <th
+                                                                                        class="pl-0 font-weight-bold text-muted text-uppercase">
+                                                                                        Digit</th>
+                                                                                    <th
+                                                                                        class="pl-0 font-weight-bold text-muted text-uppercase">
+                                                                                        ML</th>
+                                                                                    <th
+                                                                                        class="pl-0 font-weight-bold text-muted text-uppercase">
+                                                                                        GM</th>
+                                                                                    <th
+                                                                                        class="pl-0 font-weight-bold text-muted text-uppercase">
+                                                                                        KG</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                            @foreach($profile->products as $key)
+                                                                       
+                                                                                 <tr
+                                                                                    class="font-weight-boldest">
+                                                                                    
+                                                                                    <td>
+                                                                                       
+                                                                                        <select name="product_typeedit[]" id="product_typeedit[]"
+                                                                                            class="form-control form-control-solid ">
+                                                                                            <option value="{{ $key->product_type }}">{{ $key->product_type }}</option>
+                                                                                              <option value="YE">P 1</option>
+                                                                        <option value="ZM">P 2</option>
+                                                                        <option value="ZW">P 3</option>
+                                                                    </select></td>
+                                                                                    <td>
+                                                                                        <select name="manufacture_typeedit[]" id="manufacture_typeedit[]"
+                                                                                           class="form-control form-control-solid">
+                                                                                         <option  value="{{ $key->manufacture_type }}">{{ $key->manufacture_type }}</option>
+                                                                                             <option value="YE">P 1</option>
+                                                                                             <option value="ZM">P 2</option>
+                                                                                             <option value="ZW">P 3</option>
+                                                                                        </select></td>
+                                                                                    <td>
+                                                                                        <select name="shipped_typeedit[]" id="shipped_typeedit[]"
+                                                                        class="form-control form-control-solid">
+                                                                        <option  value="{{ $key->shipped_type }}">{{ $key->shipped_type }}
                                                                         </option>
                                                                         <option value="YE">P 1</option>
                                                                         <option value="ZM">P 2</option>
                                                                         <option value="ZW">P 3</option>
-                                                                    </select>
-                                                                    {{-- <div class="d-md-none mb-2"></div> --}}
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <!-- <label>Name:</label> -->
-                                                                    <select name="manufacture_type" id="manufacture_type"
-                                                                        class="form-control form-control-solid">
-                                                                        <option hidden value=""> Select Type-1</option>
-                                                                        <option value="YE">P 1</option>
-                                                                        <option value="ZM">P 2</option>
-                                                                        <option value="ZW">P 3</option>
-                                                                    </select>
-                                                                    {{-- <div class="d-md-none mb-2"></div> --}}
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <!-- <label>Name:</label> -->
-                                                                    <select name="shipped_type" id="shipped_type"
-                                                                        class="form-control form-control-solid">
-                                                                        <option selected hidden value="">Select type-3
-                                                                        </option>
-                                                                        <option value="YE">P 1</option>
-                                                                        <option value="ZM">P 2</option>
-                                                                        <option value="ZW">P 3</option>
-                                                                    </select>
-                                                                    {{-- <div class="d-md-none mb-2"></div> --}}
-                                                                </div>
-                                                            </div>
-                                                            <div class="row form-group">
-                                                                <div class="col-md-2">
-                                                                    <!-- <label>Name:</label> -->
-                                                                    <input type="text" class="form-control" placeholder="Kg"
-                                                                        name="quantity_kg" id="quantity_kg" />
-                                                                    <div class="d-md-none mb-2"></div>
-                                                                </div>
-                                                                <div class="col-md-2">
-                                                                    <!-- <label>Name:</label> -->
-                                                                    <input type="text" class="form-control" placeholder="G"
-                                                                        name="quantity_g" id="quantity_g" />
-                                                                    <div class="d-md-none mb-2"></div>
-                                                                </div>
-                                                                <div class="col-md-2">
-                                                                    <!-- <label>Name:</label> -->
-                                                                    <input type="text" class="form-control" placeholder="ML"
-                                                                        name="quantity_ml" id="quantity_ml" />
-                                                                    <div class="d-md-none mb-2"></div>
-                                                                </div>
+                                                                    </select></td>
+                                                                                    <td style="width: 10%">
+                                                                                        <input type="text" class="form-control" placeholder="Kg"
+                                                                                        name="quantity_kgedit[]" id="quantity_kgedit[]" value="{{ $key->quantity_kg }}" /></td>
+                                                                                    <td style="width: 10%">
+                                                                                        <input type="text" class="form-control" placeholder="G"
+                                                                                        name="quantity_gedit[]" id="quantity_gedit[]" value="{{ $key->quantity_g }}"/></td>
+                                                                                    <td style="width: 10%">
+                                                                                        <input type="text" class="form-control" placeholder="ML"
+                                                                                        name="quantity_mledit[]" id="quantity_mledit[]" value="{{ $key->quantity_ml }}" /></td>
+                                                                                       
+                                                                                        <td style="width: 10%">
+                                                                                             <input type="text" class="form-control"
+                                                                        placeholder="Digit" name="quantity_digitedit[]"
+                                                                        id="quantity_digitedit[]" value="{{ $key->quantity_digit }}" /></td>
 
-                                                                <div class="col-md-2">
-                                                                    <!-- <label>Number:</label> -->
-                                                                    <input type="text" class="form-control"
-                                                                        placeholder="Digit" name="quantity_digit"
-                                                                        id="quantity_digit" />
-                                                                    <div class="d-md-none mb-2"></div>
+                                                                                  </tr>
+                                                                               @endforeach
+
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="col-md-2">
-                                                                    <a href="javascript:;" data-repeater-delete=""
-                                                                        class="btn btn-sm font-weight-bolder btn-danger btn-gradient-danger">
-                                                                        <i class="la la-trash-o"></i>Delete
-                                                                    </a>
-                                                                </div>
+                                                                
+                                                                
+                                                                
                                                             </div>
+                                                            
 
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="form-group row">
-                                                    <div class="col-lg-4">
-                                                        <a href="javascript:;" data-repeater-create=""
-                                                            class="btn btn-sm font-weight-bolder btn-light-primary btn-gradient-success">
-                                                            <i class="la la-plus"></i>Add
-                                                        </a>
-                                                    </div>
-                                                </div>
+                                                
                                             </div>
                                         </div>
                                     </div>

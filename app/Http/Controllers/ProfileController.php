@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Exception;
-use Validator;
 use App\Models\Profile;
 use App\Models\Product;
 use App\Models\TimeLine;
@@ -15,6 +14,7 @@ use App\Events\AddTimeLineNote;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Database\Eloquent\Builder;
 
 class ProfileController extends Controller
@@ -84,7 +84,7 @@ class ProfileController extends Controller
             }
         })->orderBy('id', 'DESC')->paginate(5);
         // return response()->json($profiles, 200);
-
+       // $profile = Profile::with('timeline', 'trackings', 'department', 'section', 'products')->findOrFail($id);
         return view('pages.inbox', compact('profiles'));
     }
 
@@ -142,7 +142,36 @@ class ProfileController extends Controller
     }
     public function updateUser(Request $request)
     {
+        
         if ($request->ajax()) {
+            $rules = array(
+                'product_type.*'  => 'required',
+                'quantity_kg.*'  => 'required',
+                'quantity_g.*'  => 'required',
+                'quantity_ml.*'  => 'required',
+                'quantity_digit.*'  => 'required',
+                'manufacture_type.*'  => 'required',
+                'shipped_type.*'  => 'required',
+
+               );
+               $customMessages = [
+                'product_type.*.required' => ' The Product Type field can not be blank value.',
+                'quantity_kg.*.required' => 'The Quantity in Kg field can not be blank value.',
+                'quantity_g.*.required' => 'The Quantity in gram field can not be blank value.',
+                'quantity_ml.*.required' => 'The Quantity in ml field can not be blank value.',
+                'quantity_digit.*.required' => 'The Quantity in digit field can not be blank value.',
+                'manufacture_type.*.required' => 'The Manufacture type field can not be blank value.',
+                'shipped_type.*.required' => 'The Shipped type field can not be blank value.',
+            ];
+        
+               $error = Validator::make($request->all(), $rules,$customMessages);
+               if($error->fails())
+               {
+                return response()->json([
+                 'error'  => $error->errors()->all()
+                ]);
+               }
+
             $entered_by = $request->input('entered_by');
             $bought_by = $request->input('bought_by');
             $entity = $request->input('entity');
@@ -249,8 +278,10 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        $profile = Profile::with('department', 'section')->find($id);
-        // return response()->json($profile, 200);
+        $profile = Profile::with('department', 'section','products')->find($id);
+        //$profile = Profile::with('timeline', 'trackings', 'department', 'section', 'products')->findOrFail($id);
+       
+       //  return response()->json($profile, 200);
         return view('pages.edit', compact('profile'));
     }
 
@@ -266,7 +297,13 @@ class ProfileController extends Controller
     }
     public function profileUpdate(Request $request)
     {
+
+        
+       
         $editid = $request->input('editid');
+       
+        
+
         $image_1 = $request->file('profile_image');
         $image_2 = $request->file('product_image');
         $image_3 = $request->file('doc_image');
@@ -362,7 +399,7 @@ class ProfileController extends Controller
 
     public function getProfileById($id)
     {
-        $profile = Profile::with('timeline', 'trackings', 'department', 'section')->findOrFail($id);
+        $profile = Profile::with('timeline', 'trackings', 'department', 'section', 'products')->findOrFail($id);
         return response()->json($profile, 200);
     }
 

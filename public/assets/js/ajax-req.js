@@ -158,7 +158,9 @@ function getProfileData(id) {
     dataType: "json",
     contentType: "application/json",
     success: function (result) {
+      
       setEprofile(result);
+      console.log(result);
       setDocs(result);
       const mappedArray = result.timeline.map((obj, i) => {
         console.log("object", obj);
@@ -196,7 +198,9 @@ function getProfileData(id) {
 }
 
 function setEprofile(profile) {
+
   console.log("profile", profile);
+  
   let heading = document.getElementById("exampleModalLabel");
   heading.innerHTML = profile.name;
   let name = (document.getElementById("name").innerHTML = profile.name);
