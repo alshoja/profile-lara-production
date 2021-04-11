@@ -36,8 +36,7 @@ var KTDateWidgets = (function () {
       }
       if (searchDate) {
         var searchUrl =
-          HOST_URL +
-          "/home?search_date=" +
+          "?search_date=" +
           searchDate +
           "/" +
           from +
@@ -53,8 +52,7 @@ var KTDateWidgets = (function () {
           to;
       } else {
         searchUrl =
-          HOST_URL +
-          "/home?from=" +
+          "?from=" +
           from +
           "&to=" +
           to +
@@ -70,7 +68,8 @@ var KTDateWidgets = (function () {
       console.log(title);
       
       if (title != "All") {
-        window.location = searchUrl;
+        location.href = window.location.href+searchUrl;
+        // location.reload();
       }
 
       // if (title != "All") {

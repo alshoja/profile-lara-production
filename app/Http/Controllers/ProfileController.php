@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\AddNotification;
 use Exception;
 use App\Models\Profile;
 use App\Models\Product;
@@ -180,34 +181,33 @@ class ProfileController extends Controller
             $editid = $request->input('editid');
 
             try {
-        $product_type=$request->product_type;
-       $quantity_kg=$request->quantity_kg;
-       $quantity_g=$request->quantity_g;
-         $quantity_ml=$request->quantity_ml;
-        $quantity_digit=$request->quantity_digit;
-        $manufacture_type=$request->manufacture_type;
-        $shipped_type=$request->shipped_type;
-        $profile_id=$editid;
-       $product = new Product();
-       $m=count($product_type);
-        for($count = 0; $count < count($product_type); $count++)
-        {
-         $data = array(
-          'product_type' => $product_type[$count],
-          'quantity_kg'  => $quantity_kg[$count],
-          'quantity_g'  => $quantity_g[$count],
-          'quantity_ml'  => $quantity_ml[$count],
-          'quantity_digit' =>$quantity_digit[$count],
-         'manufacture_type' => $manufacture_type[$count],
-         'shipped_type' => $shipped_type[$count],
-          'profile_id' => $profile_id
-         );
-          Product::create($data);
-        }
-        
-      $data = array("entered_by" => $entered_by, "bought_by" => $bought_by, "entity" => $entity, "entry_date" => $entry_date, "entity_location" => $entity_location);
-               Profile::updateData($editid, $data);
-               return response()->json(['success' => 'Form is successfully submitted!']);
+                $product_type = $request->product_type;
+                $quantity_kg = $request->quantity_kg;
+                $quantity_g = $request->quantity_g;
+                $quantity_ml = $request->quantity_ml;
+                $quantity_digit = $request->quantity_digit;
+                $manufacture_type = $request->manufacture_type;
+                $shipped_type = $request->shipped_type;
+                $profile_id = $editid;
+                $product = new Product();
+                $m = count($product_type);
+                for ($count = 0; $count < count($product_type); $count++) {
+                    $data = array(
+                        'product_type' => $product_type[$count],
+                        'quantity_kg'  => $quantity_kg[$count],
+                        'quantity_g'  => $quantity_g[$count],
+                        'quantity_ml'  => $quantity_ml[$count],
+                        'quantity_digit' => $quantity_digit[$count],
+                        'manufacture_type' => $manufacture_type[$count],
+                        'shipped_type' => $shipped_type[$count],
+                        'profile_id' => $profile_id
+                    );
+                    Product::create($data);
+                }
+
+                $data = array("entered_by" => $entered_by, "bought_by" => $bought_by, "entity" => $entity, "entry_date" => $entry_date, "entity_location" => $entity_location);
+                Profile::updateData($editid, $data);
+                return response()->json(['success' => 'Form is successfully submitted!']);
             } catch (\Illuminate\Database\QueryException $ex) {
                 dd($ex->getMessage());
             }
@@ -436,6 +436,7 @@ class ProfileController extends Controller
             if ($trackCheck == 0) {
                 $signDocEvent = SignDocument::dispatch($trackProfile);
                 $addEntryEvent = AddTimeLineNote::dispatch($timeLine);
+                AddNotification::dispatch($timeLine);
             }
         }
         return $signDocEvent;
@@ -476,6 +477,7 @@ class ProfileController extends Controller
             $trackProfile = TrackProfile::where('at_end_user', 1)->where('profile_id', $id)->first();
             $trackProfile->at_end_user = 0;
             $trackProfile->save();
+            AddNotification::dispatch($trackProfile);
         }
         return back()->with('message', 'Forwaded updated');
     }

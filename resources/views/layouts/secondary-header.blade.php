@@ -15,7 +15,7 @@
                         @if (request()->segment(1) !== 'departments')
                             @if (request()->segment(1) !== 'home')
                                 <div class="input-group input-group-sm input-group-solid max-w-175px">
-                                    <input type="text" name="search" class="form-control pl-4"
+                                    <input type="text" name="search" value="{{request()->query('search')}}" class="form-control pl-4"
                                         placeholder="Search..." />
                                     <div class="input-group-append">
                                         <span class="input-group-text">
@@ -52,7 +52,7 @@
         <!--begin::Toolbar-->
         <div class="d-flex align-items-center">
             <!--begin::Daterange-->
-            <a href="#" class="btn btn-light btn-sm font-weight-bold mr-2" id="kt_dashboard_daterangepicker"
+            <a href="javascript:void(0)" class="btn btn-light btn-sm font-weight-bold mr-2" id="kt_dashboard_daterangepicker"
                 data-toggle="tooltip" title="Select dashboard daterange" data-placement="left">
                 <span class="text-muted font-weight-bold mr-2"
                     id="kt_dashboard_daterangepicker_title">{{ request()->query('title') }}</span>

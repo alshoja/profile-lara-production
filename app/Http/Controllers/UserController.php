@@ -88,7 +88,7 @@ class UserController extends Controller
         } else {
             $users->departments = Department::whereIn('id', session('department'))->get();
         }
-        $users->sections = Section::all();
+        $users->sections = Section::whereIn('dep_id', session('department'))->get();
         // return response()->json($users, 200);
         return view('pages.add-user', compact('users'));
     }
@@ -223,11 +223,6 @@ class UserController extends Controller
             $user->update = $request->update;
             $user->delete = $request->delete;
         }
-
-        // if (Auth::user()->role == "admin") {
-        //     $user->role = $request->role;
-        // }
-
 
         if ($request->file('image')) {
             $user->image = $request->file('image')->store('images');

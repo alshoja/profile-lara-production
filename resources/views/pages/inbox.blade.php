@@ -122,13 +122,14 @@
                                                                             class="text-muted font-size-sm font-weight-bold">Progress</span>
                                                                     </div>
                                                                     <div class="progress progress-xs w-100">
-                                                                        <div class="progress-bar @if ((count($item->trackings) / 4) * 100 ==
-                                                                            100) bg-danger
-                                                                        @else bg-warning @endif "
-                                                                            role="progressbar" style="width:
-                                                                            {{ (count($item->trackings) / 4) * 100 }}%;"
-                                                                            aria-valuenow="10" aria-valuemin="0"
-                                                                            aria-valuemax="100"></div>
+                                                                        <div class="progress-bar @if ((count($item->trackings) / 4) * 100 == 25) bg-danger @endif
+                                                                            @if ((count($item->trackings) / 4) * 100 == 100)
+                                                                                bg-success
+                                                                            @else bg-warning @endif "
+                                                                                role="progressbar" style="width:
+                                                                                {{ (count($item->trackings) / 4) * 100 }}%;"
+                                                                                aria-valuenow="10" aria-valuemin="0"
+                                                                                aria-valuemax="100"></div>
                                                                     </div>
                                                                 </div>
                                                             </td>

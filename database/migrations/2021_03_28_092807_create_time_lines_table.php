@@ -17,8 +17,8 @@ class CreateTimeLinesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('note');
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('profile_id')->constrained('profiles');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('profile_id')->constrained('profiles')->onDelete('cascade');
             $table->timestamps();
         });
     }

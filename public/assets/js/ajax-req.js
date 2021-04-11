@@ -70,10 +70,11 @@ function getNotifications() {
   let fullUrl = HOST_URL + "/notifications";
   let res = null;
   let suburl = "/profiles?tab=inbox";
-  if (localStorage.getItem("notification") == null) {
+  let storageName = "notification_" + localStorage.getItem("session_id");
+  if (localStorage.getItem(storageName) == null) {
     let obj = {};
     obj.id = 0;
-    localStorage.setItem("notification", JSON.stringify([obj]));
+    localStorage.setItem(storageName, JSON.stringify([obj]));
   }
   $.ajax({
     url: fullUrl,
@@ -82,7 +83,7 @@ function getNotifications() {
     dataType: "json",
     contentType: "application/json",
     success: function (result) {
-      let localStorageObj = JSON.parse(localStorage.getItem("notification"));
+      let localStorageObj = JSON.parse(localStorage.getItem(storageName));
       const newNotification = result.filter(
         ({ id: id1 }) => !localStorageObj.some(({ id: id2 }) => id2 === id1)
       );
@@ -91,7 +92,7 @@ function getNotifications() {
           showToast(res.message, "Notification", "warning");
         });
       }
-      localStorage.setItem("notification", JSON.stringify(result));
+      localStorage.setItem(storageName, JSON.stringify(result));
 
       let data = result;
       let contentStr = "";
@@ -158,7 +159,7 @@ function getProfileData(id) {
     dataType: "json",
     contentType: "application/json",
     success: function (result) {
-      
+    
       setEprofile(result);
       console.log(result);
       setDocs(result);
@@ -395,13 +396,13 @@ function AproveOrReject(action) {
   note.value = "";
   reject_button.disabled = true;
   approve_button.disabled = true;
-  location.reload();
+  // location.reload();
   return res;
 }
 
 function converMysqlToJsTime(timestamp) {
-  let d = new Date(Date.parse(timestamp));
-  return timeDifference(new Date(), d);
+  let mysqlTs = new Date(Date.parse(timestamp));
+  return timeDifference(new Date(), mysqlTs);
 }
 
 function timeDifference(current, previous) {

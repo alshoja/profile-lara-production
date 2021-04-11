@@ -120,9 +120,9 @@
                                         <!--end::Label-->
                                         <!--begin::Badge-->
                                         <div class="timeline-badge">
-                                            <i class="fa fa-genderless @if ($item->is_note ==
-                                                'null') text-warning @endif
-                                                @if ($item->is_approved != 'null')
+                                            <i class="fa fa-genderless @if ($item->type ==
+                                                'note') text-warning @endif
+                                                @if ($item->type == 'approved')
                                                     text-success
                                                 @else
                                                     text-danger

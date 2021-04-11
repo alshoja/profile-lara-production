@@ -17,7 +17,7 @@ class CreateNotificationsTable extends Migration
             $table->id();
             $table->string('message')->nullable();
             $table->foreignId('user_id')->constrained('users');
-            $table->tinyInteger('notified')->default(0)->nullable();
+            $table->tinyInteger('notify_id')->default(0)->nullable();
             $table->timestamps();
         });
     }
