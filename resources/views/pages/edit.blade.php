@@ -151,7 +151,7 @@
                                     </div>
                                 @endif
                                 <!--begin::Wizard Form-->
-                                <form class="form" id="kt_form" enctype="multipart/form-data" action="/profileUpdate"
+                                <form class="form" id="kt_form1" enctype="multipart/form-data" 
                                     method="POST">
 
                                     @csrf
@@ -683,8 +683,8 @@
                                                                                     class="font-weight-boldest">
                                                                                     
                                                                                     <td>
-                                                                                       
-                                                                                        <select name="product_typeedit[]" id="product_typeedit[]"
+                                                                                       <input type="text" hidden name="product_id" id="product_id" value="{{ $key->id }}">
+                                                                                        <select name="product_type" id="product_type"
                                                                                             class="form-control form-control-solid ">
                                                                                             <option value="{{ $key->product_type }}">{{ $key->product_type }}</option>
                                                                                               <option value="YE">P 1</option>
@@ -692,7 +692,7 @@
                                                                         <option value="ZW">P 3</option>
                                                                     </select></td>
                                                                                     <td>
-                                                                                        <select name="manufacture_typeedit[]" id="manufacture_typeedit[]"
+                                                                                        <select name="manufacture_type" id="manufacture_type"
                                                                                            class="form-control form-control-solid">
                                                                                          <option  value="{{ $key->manufacture_type }}">{{ $key->manufacture_type }}</option>
                                                                                              <option value="YE">P 1</option>
@@ -700,7 +700,7 @@
                                                                                              <option value="ZW">P 3</option>
                                                                                         </select></td>
                                                                                     <td>
-                                                                                        <select name="shipped_typeedit[]" id="shipped_typeedit[]"
+                                                                                        <select name="shipped_type" id="shipped_type"
                                                                         class="form-control form-control-solid">
                                                                         <option  value="{{ $key->shipped_type }}">{{ $key->shipped_type }}
                                                                         </option>
@@ -710,18 +710,18 @@
                                                                     </select></td>
                                                                                     <td style="width: 10%">
                                                                                         <input type="text" class="form-control" placeholder="Kg"
-                                                                                        name="quantity_kgedit[]" id="quantity_kgedit[]" value="{{ $key->quantity_kg }}" /></td>
+                                                                                        name="quantity_kg" id="quantity_kg" value="{{ $key->quantity_kg }}" /></td>
                                                                                     <td style="width: 10%">
                                                                                         <input type="text" class="form-control" placeholder="G"
-                                                                                        name="quantity_gedit[]" id="quantity_gedit[]" value="{{ $key->quantity_g }}"/></td>
+                                                                                        name="quantity_g" id="quantity_g" value="{{ $key->quantity_g }}"/></td>
                                                                                     <td style="width: 10%">
                                                                                         <input type="text" class="form-control" placeholder="ML"
-                                                                                        name="quantity_mledit[]" id="quantity_mledit[]" value="{{ $key->quantity_ml }}" /></td>
+                                                                                        name="quantity_ml" id="quantity_ml" value="{{ $key->quantity_ml }}" /></td>
                                                                                        
                                                                                         <td style="width: 10%">
                                                                                              <input type="text" class="form-control"
-                                                                        placeholder="Digit" name="quantity_digitedit[]"
-                                                                        id="quantity_digitedit[]" value="{{ $key->quantity_digit }}" /></td>
+                                                                        placeholder="Digit" name="quantity_digit"
+                                                                        id="quantity_digit" value="{{ $key->quantity_digit }}" /></td>
 
                                                                                   </tr>
                                                                                @endforeach
@@ -990,7 +990,7 @@
                                         <div>
 
                                             <div class="btn-group">
-                                                <button  type="submit" data-wizard-type="action-submit"
+                                                <button id="submit" type="submit" data-wizard-type="action-submit"
                                                     class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4">Update</button>
                                             </div>
 
@@ -1029,151 +1029,52 @@
         }
 
     </script>
+    
     <script type="text/javascript">
-        $('#kt_form').on('submit', function(event) {
-            event.preventDefault();
 
-            let name = $('#name').val();
-            let nationality = $('#nationality').val();
-            let gender = $('#gender').val();
-            let dob = $('#dob').val();
-            let citizen_status = $('#citizen_status').val();
-            let citizen_location = $('#citizen_location').val();
-            let citizen_id = $('#citizen_id').val();
-            let citizen_uid = $('#citizen_uid').val();
-            let passport_no = $('#passport_no').val();
-            let passport_type = $('#passport_type').val();
+        $.ajaxSetup({
+                  headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                  }
+              });
+        
+                $('#kt_form1').on('submit', function(event) {
+                    event.preventDefault();
+        
+                  
+        
+                    $.ajax({
+                        url: "/profileUpdate",
+                        method: 'POST',
+                        data: $('#kt_form1').serialize(),
+                        dataType: 'json',
+                        success: function(data) {
+                           
+                            if(data.error)
+                        {
+                            var error_html = '';
+                            for(var count = 0; count < data.error.length; count++)
+                            {
+                                error_html += '<p>'+data.error[count]+'</p>';
+                            }
+                            $('#result').html('<div class="alert alert-danger">'+error_html+'</div>');
+                        }
+                        else
+                        {
+                            dynamic_field(1);
+                            $('#result').html('<div class="alert alert-success">'+data.success+'</div>');
+                        }
+                        },
+                    });
+        
+        
+                });
+        
+            </script>
+    
+    
 
-            $.ajax({
-                url: "/profile/add-profile",
-                type: "POST",
-                data: {
-                    "_token": "{{ csrf_token() }}",
-                    name: name,
-                    nationality: nationality,
-                    gender: gender,
-                    dob: dob,
-                    citizen_status: citizen_status,
-                    citizen_location: citizen_location,
-                    citizen_id: citizen_id,
-                    citizen_uid: citizen_uid,
-                    passport_no: passport_no,
-                    passport_type: passport_type,
-
-                },
-                success: function(data) {
-                    var id = data.id;
-                    alert(id);
-                    $('#editid').val(id);
-                    $('#editid1').val(id);
-                    $('#editid3').val(id);
-                    $('#editid4').val(id);
-                    // console.log(response);
-                },
-            });
-        });
-
-    </script>
-
-    <script type="text/javascript">
-        $('#kt_form3').on('submit', function(event) {
-            event.preventDefault();
-
-            let record_status = $('#record_status').val();
-            let record_dep_transfer = $('#record_dep_transfer').val();
-            let editid3 = $('#editid3').val();
-            $.ajax({
-                url: "/stageFour",
-                type: "POST",
-                data: {
-                    "_token": "{{ csrf_token() }}",
-                    record_status: record_status,
-                    record_dep_transfer: record_dep_transfer,
-                    editid3: editid3,
-                },
-                success: function(response) {
-
-
-                    console.log(response);
-                },
-            });
-        });
-
-    </script>
-    <script type="text/javascript">
-        $('#kt_form4').on('submit', function(event) {
-            event.preventDefault();
-            alert("jas");
-            let belongs_to = $('#belongs_to').val();
-
-            let editid4 = $('#editid4').val();
-            alert(belongs_to);
-            alert(editid4);
-            $.ajax({
-                url: "/stageFive",
-                type: "POST",
-                data: {
-                    "_token": "{{ csrf_token() }}",
-                    belongs_to: belongs_to,
-                    editid4: editid4,
-                },
-                success: function(response) {
-
-
-                    console.log(response);
-                },
-            });
-        });
-
-    </script>
-
-
-    <!-- Stage 2 Script-->
-    <script type="text/javascript">
-        $('#kt_form1').on('submit', function(event) {
-            //$('#edit').on('click',function (){
-            event.preventDefault();
-            alert("h")
-            let entered_by = $('#entered_by').val();
-            let bought_by = $('#bought_by').val();
-            let entity = $('#entity').val();
-            let entry_date = $('#entry_date').val();
-            let entity_location = $('#entity_location').val();
-            let editid = $('#editid').val();
-
-            $.ajax({
-                url: "/updateUser",
-                method: 'POST',
-                data: $(this).serialize(),
-                dataType: 'json',
-                success: function(response) {
-                    alert(response);
-                    console.log(response);
-                },
-            });
-
-            // $.ajax({
-            // url: "/updateUser",
-            // type:"POST",
-            // data:{
-            //  "_token": "{{ csrf_token() }}",
-            // entered_by:entered_by,
-            // bought_by:bought_by,
-            // entity:entity,
-            // entry_date:entry_date,
-            // entity_location:entity_location,
-            //  editid:editid,
-
-            //  },
-            //  s//uccess:function(response){
-            //  alert(response);
-            //console.log(response);
-            //  },
-            //});
-        });
-
-    </script>
-
+    
     <!-- stage 3 code-->
     <script type="text/javascript">
         $.ajaxSetup({

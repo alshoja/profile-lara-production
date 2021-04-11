@@ -352,8 +352,33 @@ class ProfileController extends Controller
             "belongs_to" => $request->input('belongs_to')
         );
 
-
         try {
+            $product_id=$request->product_id;
+            $product_type = $request->product_type;
+            $quantity_kg = $request->quantity_kg;
+            $quantity_g = $request->quantity_g;
+            $quantity_ml = $request->quantity_ml;
+            $quantity_digit = $request->quantity_digit;
+            $manufacture_type = $request->manufacture_type;
+            $shipped_type = $request->shipped_type;
+            $profile_id = $editid;
+            $product = new Product();
+            $m = count($product_type);
+            for ($count = 0; $count < count($product_type); $count++) {
+                $data = array(
+                    'id'=> $product_id[$count],
+                    'product_type' => $product_type[$count],
+                    'quantity_kg'  => $quantity_kg[$count],
+                    'quantity_g'  => $quantity_g[$count],
+                    'quantity_ml'  => $quantity_ml[$count],
+                    'quantity_digit' => $quantity_digit[$count],
+                    'manufacture_type' => $manufacture_type[$count],
+                    'shipped_type' => $shipped_type[$count],
+                    'profile_id' => $profile_id
+                );
+                Product::create($data);
+            }
+         
             DB::table('profiles')->where('id', $editid)->update($data);
         } catch (\Illuminate\Database\QueryException $ex) {
             dd($ex->getMessage());

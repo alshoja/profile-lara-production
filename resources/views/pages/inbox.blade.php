@@ -658,26 +658,26 @@
                                                                                                             class="font-weight-boldest">
                                                                                                             <td
                                                                                                                 class="pl-0 pt-7">
-                                                                                                                {{ $item->products[0]->product_type }}
+                                                                                                                
                                                                                                               </td>
                                                                                                             <td
                                                                                                                 class="pl-0 pt-7">
-                                                                                                                {{ $item->products[0]->manufacture_type }}</td>
+                                                                                                               </td>
                                                                                                             <td
                                                                                                                 class="pl-0 pt-7">
-                                                                                                                {{ $item->products[0]->shipped_type }}</td>
+                                                                                                                </td>
                                                                                                             <td
                                                                                                                 class="pl-0 pt-7">
-                                                                                                                {{ $item->products[0]->quantity_digit }}</td>
+                                                                                                              </td>
                                                                                                             <td
                                                                                                                 class="pl-0 pt-7">
-                                                                                                                {{ $item->products[0]->quantity_ml }}</td>
+                                                                                                               </td>
                                                                                                             <td
                                                                                                                 class="pl-0 pt-7">
-                                                                                                                {{ $item->products[0]->quantity_gm }}</td>
+                                                                                                               </td>
                                                                                                             <td
                                                                                                                 class="pl-0 pt-7">
-                                                                                                                {{ $item->products[0]->quantity_kg }}</td>
+                                                                                                              </td>
 
                                                                                                           </tr>
                                                                                                           @endforeach
