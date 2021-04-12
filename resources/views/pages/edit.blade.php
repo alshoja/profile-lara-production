@@ -637,107 +637,86 @@
                                                     </h3>
                                                 </div>
                                             </div>
-                                            <div id="kt_repeater_1">
-                                                <div class="form-group row" id="kt_repeater_1">
-                                                    <!-- <label class="col-lg-2 col-form-label text-right">Contacts:</label> -->
-                                                    <div data-repeater-list="" class="col-lg-12">
-                                                        <div data-repeater-item class="form-group row ">
-                                                            <div class="row form-group">
-                                                                <div class="col-md-12">
-                                                                    <div class="table-responsive">
-                                                                        <table class="table">
-                                                                            <thead>
-                                                                                <tr>
-                                                                                    <th
-                                                                                        class="pl-0 font-weight-bold text-muted text-uppercase">
-                                                                                        Product type
-                                                                                    </th>
-                                                                                    <th
-                                                                                        class="pl-0 font-weight-bold text-muted text-uppercase">
-                                                                                        Manufacture
-                                                                                        Type</th>
-                                                                                    <th
-                                                                                        class="pl-0 font-weight-bold text-muted text-uppercase">
-                                                                                        shipped Type
-                                                                                    </th>
-                                                                                    <th
-                                                                                        class="pl-0 font-weight-bold text-muted text-uppercase">
-                                                                                        Digit</th>
-                                                                                    <th
-                                                                                        class="pl-0 font-weight-bold text-muted text-uppercase">
-                                                                                        ML</th>
-                                                                                    <th
-                                                                                        class="pl-0 font-weight-bold text-muted text-uppercase">
-                                                                                        GM</th>
-                                                                                    <th
-                                                                                        class="pl-0 font-weight-bold text-muted text-uppercase">
-                                                                                        KG</th>
-                                                                                </tr>
-                                                                            </thead>
-                                                                            <tbody>
-                                                                            @foreach($profile->products as $key)
-                                                                       
-                                                                                 <tr
-                                                                                    class="font-weight-boldest">
-                                                                                    
-                                                                                    <td>
-                                                                                       <input type="text" hidden name="product_id[]" id="product_id[]" value="{{ $key->id }}">
-                                                                                        <select name="product_type[]" id="product_type[]"
-                                                                                            class="form-control form-control-solid ">
-                                                                                            <option value="{{ $key->product_type }}">{{ $key->product_type }}</option>
-                                                                                              <option value="YE">P 1</option>
-                                                                        <option value="ZM">P 2</option>
-                                                                        <option value="ZW">P 3</option>
-                                                                    </select></td>
-                                                                                    <td>
-                                                                                        <select name="manufacture_type[]" id="manufacture_type[]"
-                                                                                           class="form-control form-control-solid">
-                                                                                         <option  value="{{ $key->manufacture_type }}">{{ $key->manufacture_type }}</option>
-                                                                                             <option value="YE">P 1</option>
-                                                                                             <option value="ZM">P 2</option>
-                                                                                             <option value="ZW">P 3</option>
-                                                                                        </select></td>
-                                                                                    <td>
-                                                                                        <select name="shipped_type[]" id="shipped_type[]"
-                                                                        class="form-control form-control-solid">
-                                                                        <option  value="{{ $key->shipped_type }}">{{ $key->shipped_type }}
-                                                                        </option>
-                                                                        <option value="YE">P 1</option>
-                                                                        <option value="ZM">P 2</option>
-                                                                        <option value="ZW">P 3</option>
-                                                                    </select></td>
-                                                                                    <td style="width: 10%">
-                                                                                        <input type="text" class="form-control" placeholder="Kg"
-                                                                                        name="quantity_kg[]" id="quantity_kg[]" value="{{ $key->quantity_kg }}" /></td>
-                                                                                    <td style="width: 10%">
-                                                                                        <input type="text" class="form-control" placeholder="G"
-                                                                                        name="quantity_g[]" id="quantity_g[]" value="{{ $key->quantity_g }}"/></td>
-                                                                                    <td style="width: 10%">
-                                                                                        <input type="text" class="form-control" placeholder="ML"
-                                                                                        name="quantity_ml[]" id="quantity_ml[]" value="{{ $key->quantity_ml }}" /></td>
-                                                                                       
-                                                                                        <td style="width: 10%">
-                                                                                             <input type="text" class="form-control"
-                                                                        placeholder="Digit" name="quantity_digit[]"
-                                                                        id="quantity_digit[]" value="{{ $key->quantity_digit }}" /></td>
-
-                                                                                  </tr>
-                                                                               @endforeach
-
-                                                                            </tbody>
-                                                                        </table>
-                                                                    </div>
-                                                                </div>
-                                                                
-                                                                
-                                                                
-                                                            </div>
-                                                            
-
-                                                        </div>
+                                            <div>
+                                                <div class="form-group row">
+                                                    <div class="col-lg-3">
+                                                        <a href="javascript:void(0);"
+                                                            class="add_button btn btn-sm font-weight-bolder btn-light-primary btn-gradient-success">
+                                                            <i class="la la-plus"></i>Add
+                                                        </a>
                                                     </div>
                                                 </div>
-                                                
+                                                <div class="field_wrapper">
+                                                    
+                                                    @foreach($profile->products as $key)
+                                                                       
+                                                    <div class="row form-group">
+                                                        <div class="col-md-4">
+                                                            <!-- <label>Name:</label> -->
+                                                            <input type="text" hidden name="product_id[]" id="product_id[]" value="{{ $key->id }}">
+                                                            <select name="product_type[]" id="product_type[]"
+                                                                class="form-control form-control-solid ">
+                                                                <option value="{{ $key->product_type }}">{{ $key->product_type }}</option>
+                                                                <option value="YE">P 1</option>
+                                                                <option value="ZM">P 2</option>
+                                                                <option value="ZW">P 3</option>
+                                                            </select>
+                                                            {{-- <div class="d-md-none mb-2"></div> --}}
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <!-- <label>Name:</label> -->
+                                                            <select name="manufacture_type[]" id="manufacture_type[]"
+                                                                class="form-control form-control-solid">
+                                                                <option value="{{ $key->manufacture_type }}">{{ $key->manufacture_type }}</option>
+                                                                <option value="YE">P 1</option>
+                                                                <option value="ZM">P 2</option>
+                                                                <option value="ZW">P 3</option>
+                                                            </select>
+                                                            {{-- <div class="d-md-none mb-2"></div> --}}
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <!-- <label>Name:</label> -->
+                                                            <select name="shipped_type[]" id="shipped_type[]"
+                                                                class="form-control form-control-solid">
+                                                                <option value="{{ $key->shipped_type }}">{{ $key->shipped_type }}</option>
+                                                                <option value="YE">P 1</option>
+                                                                <option value="ZM">P 2</option>
+                                                                <option value="ZW">P 3</option>
+                                                            </select>
+                                                            {{-- <div class="d-md-none mb-2"></div> --}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <div class="col-md-3">
+                                                            <!-- <label>Name:</label> -->
+                                                            <input type="text" class="form-control" placeholder="Kg"
+                                                                name="quantity_kg[]" id="quantity_kg[]" value="{{ $key->quantity_kg }}" />
+                                                            <div class="d-md-none mb-2"></div>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <!-- <label>Name:</label> -->
+                                                            <input type="text" class="form-control" placeholder="G"
+                                                                name="quantity_g[]" id="quantity_g[]" value="{{ $key->quantity_g }}" />
+                                                            <div class="d-md-none mb-2"></div>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <!-- <label>Name:</label> -->
+                                                            <input type="text" class="form-control" placeholder="ML"
+                                                                name="quantity_ml[]" id="quantity_ml[]" value="{{ $key->quantity_ml }}" />
+                                                            <div class="d-md-none mb-2"></div>
+                                                        </div>
+
+                                                        <div class="col-md-3">
+                                                            <!-- <label>Number:</label> -->
+                                                            <input type="text" class="form-control" placeholder="Digit"
+                                                                name="quantity_digit[]" id="quantity_digit[]" value="{{ $key->quantity_digit }}"/>
+                                                            <div class="d-md-none mb-2"></div>
+                                                        </div>
+                                                    </div>
+                                                    @endforeach
+                                                </div>
+                                              
+
                                             </div>
                                         </div>
                                     </div>
@@ -1013,20 +992,7 @@
         <!--end::Container-->
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-    <script type="text/javascript">
-        function enableNext() {
-            document.getElementById("next").disabled = false;
-        }
-
-    </script>
-    <script type="text/javascript">
-        function disableNext() {
-            document.getElementById("next").disabled = true;
-            document.getElementById("previous").disabled = false;
-
-        }
-
-    </script>
+    
     
     <script type="text/javascript">
 
@@ -1039,7 +1005,7 @@
                 $('#kt_form').on('submit', function(event) {
                     event.preventDefault();
         
-                  alert("hai");
+                 
         
                     $.ajax({
                         url: "/profileUpdate",
@@ -1058,115 +1024,104 @@
         
             </script>
     
-    
+  
+     <script type="text/javascript">
+        $(document).ready(function() {
+            console.log('hai initiated')
+            var maxField = 10; //Input fields increment limitation
+            var addButton = $('.add_button'); //Add button selector
+            var wrapper = $('.field_wrapper'); //Input field wrapper
+            var fieldHTML = `
+                                <div> 
+                                <div class="row form-group">
+                                                                                    <div class="col-md-4">
+                                                                                        <input type="text" hidden name="product_id[]" id="product_id[]">
+                                                                                        <select name="product_type[]" id="product_type[]"
+                                                                                            class="form-control form-control-solid ">
+                                                                                            <option hidden value="">Select Product-1&nbsp;
+                                                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                                                &nbsp;
+                                                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                                            </option>
+                                                                                            <option value="YE">P 1</option>
+                                                                                            <option value="ZM">P 2</option>
+                                                                                            <option value="ZW">P 3</option>
+                                                                                        </select>
+                                                                                        {{-- <div class="d-md-none mb-2"></div> --}}
+                                                                                    </div>
+                                                                                    <div class="col-md-4">
+                                                                                      
+                                                                                        <select name="manufacture_type[]" id="manufacture_type[]"
+                                                                                            class="form-control form-control-solid">
+                                                                                            <option hidden value=""> Select Type-1</option>
+                                                                                            <option value="YE">P 1</option>
+                                                                                            <option value="ZM">P 2</option>
+                                                                                            <option value="ZW">P 3</option>
+                                                                                        </select>
+                                                                                        {{-- <div class="d-md-none mb-2"></div> --}}
+                                                                                    </div>
+                                                                                    <div class="col-md-4">
+                                                                                   
+                                                                                        <select name="shipped_type[]" id="shipped_type[]"
+                                                                                            class="form-control form-control-solid">
+                                                                                            <option selected hidden value="">Select type-3
+                                                                                            </option>
+                                                                                            <option value="YE">P 1</option>
+                                                                                            <option value="ZM">P 2</option>
+                                                                                            <option value="ZW">P 3</option>
+                                                                                        </select>
+                                                                                        {{-- <div class="d-md-none mb-2"></div> --}}
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="row form-group">
+                                                                                    <div class="col-md-3">
+                                                                                       
+                                                                                        <input type="text" class="form-control" placeholder="Kg"
+                                                                                            name="quantity_kg[]" id="quantity_kg[]" />
+                                                                                        <div class="d-md-none mb-2"></div>
+                                                                                    </div>
+                                                                                    <div class="col-md-3">
+                                                                                       
+                                                                                        <input type="text" class="form-control" placeholder="G"
+                                                                                            name="quantity_g[]" id="quantity_g[]" />
+                                                                                        <div class="d-md-none mb-2"></div>
+                                                                                    </div>
+                                                                                    <div class="col-md-3">
+                                                                                     
+                                                                                        <input type="text" class="form-control" placeholder="ML"
+                                                                                            name="quantity_ml[]" id="quantity_ml[]" />
+                                                                                        <div class="d-md-none mb-2"></div>
+                                                                                    </div>
 
-    
-    <!-- stage 3 code-->
-    <script type="text/javascript">
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        //  $('#kt_form1').on('edit',function(event){
-        $('#editstep').on('click', function() {
-            event.preventDefault();
-            alert("hh")
-            var fd = new FormData();
-            let shipping_no = $('#shipping_no').val();
-            let coming_from = $('#coming_from').val();
-            let going_to = $('#going_to').val();
-            let final_destination = $('#final_destination').val();
-            let profile_image = document.getElementById("profile_image").files[0].name;
-            //  let profile_image=$('#profile_image').val();
-            let product_image = document.getElementById("product_image").files[0].name;
-            let doc_image = document.getElementById("doc_image").files[0].name;
-            let note = $('#note').val();
-            let editid = $('#editid').val();
+                                                                                    <div class="col-md-3">
+                                                                                        <!-- <label>Number:</label> -->
+                                                                                        <input type="text" class="form-control" placeholder="Digit"
+                                                                                            name="quantity_digit[]" id="quantity_digit[]" />
+                                                                                        <div class="d-md-none mb-2"></div>
+                                                                                    </div>
+                                                                                </div> 
+                                                                                 <a style="margin:10px;" href="javascript:;" data-repeater-delete=""
+                                                                                            class="btn btn-sm font-weight-bolder btn-danger btn-gradient-danger remove_button">
+                                                                                            <i class="la la-trash-o"></i>
+                                                                                        </a>
+                                                                                        </div>`
+            // var fieldHTML = '<div><input type="text" name="field_name[]" value=""/><a href="javascript:void(0);" class="remove_button"><img src="remove-icon.png"/></a></div>'; //New input field html 
+            var x = 1; //Initial field counter is 1
 
-            fd.append('shipping_no', shipping_no);
-            fd.append('coming_from', coming_from);
-            fd.append('going_to', going_to);
-            fd.append('final_destination', final_destination);
-            fd.append('profile_image', profile_image);
-            fd.append('product_image', product_image);
-            fd.append('doc_image', doc_image);
-            fd.append('note', note);
-            fd.append('editid', editid);
-            alert(shipping_no);
-            alert(coming_from);
-            alert(going_to);
-            alert(final_destination);
-            alert(profile_image);
-            alert(product_image);
-            alert(doc_image);
-            alert(note);
-            alert(editid);
-
-            $.ajax({
-                url: "/stageThree",
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                //  type:"POST",
-                /// data:{
-                // "_token": "{{ csrf_token() }}",
-                // shipping_no:shipping_no,
-                // coming_from:coming_from,
-                // going_to:going_to,
-                // final_destination:final_destination,
-                // profile_image:profile_image,
-                // product_image:product_image,
-                // doc_image:doc_image,
-                // note:note,
-                // editid:editid,
-
-                // },
-                data: fd,
-                dataType: 'json',
-                async: false,
-                type: 'POST',
-                processData: false,
-                contentType: false,
-                success: function(msg) {
-                    console.log(msg);
-                },
-
-            });
-        });
-
-    </script>
-    <!--end::Content-->
-
-    <script>
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
-        $('#kt_form2').submit(function(e) {
-            e.preventDefault();
-            let formData = new FormData(this);
-            //  $('#image-input-error').text('');
-
-            $.ajax({
-                type: 'POST',
-                url: `/stageThree`,
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: (response) => {
-                    if (response) {
-                        this.reset();
-                        alert('Image has been uploaded successfully');
-                    }
-                },
-                error: function(response) {
-                    console.log(response);
-                    alert('Image has been not uploaded successfully');
-                    // $('#image-input-error').text(response.responseJSON.errors.file);
+            //Once add button is clicked
+            $(addButton).click(function() {
+                //Check maximum number of input fields
+                if (x < maxField) {
+                    x++; //Increment field counter
+                    $(wrapper).append(fieldHTML); //Add field html
                 }
+            });
+
+            //Once remove button is clicked
+            $(wrapper).on('click', '.remove_button', function(e) {
+                e.preventDefault();
+                $(this).parent('div').remove(); //Remove field html
+                x--; //Decrement field counter
             });
         });
 
