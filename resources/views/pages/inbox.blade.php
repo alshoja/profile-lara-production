@@ -652,34 +652,9 @@
                                                                                                                 KG</th>
                                                                                                         </tr>
                                                                                                     </thead>
-                                                                                                    <tbody>
+                                                                                                    <tbody id="product_table">
                                                                                                     @foreach($profiles as $item)
-                                                                                                         <tr
-                                                                                                            class="font-weight-boldest">
-                                                                                                            <td
-                                                                                                                class="pl-0 pt-7">
-                                                                                                                
-                                                                                                              </td>
-                                                                                                            <td
-                                                                                                                class="pl-0 pt-7">
-                                                                                                               </td>
-                                                                                                            <td
-                                                                                                                class="pl-0 pt-7">
-                                                                                                                </td>
-                                                                                                            <td
-                                                                                                                class="pl-0 pt-7">
-                                                                                                              </td>
-                                                                                                            <td
-                                                                                                                class="pl-0 pt-7">
-                                                                                                               </td>
-                                                                                                            <td
-                                                                                                                class="pl-0 pt-7">
-                                                                                                               </td>
-                                                                                                            <td
-                                                                                                                class="pl-0 pt-7">
-                                                                                                              </td>
-
-                                                                                                          </tr>
+                                                                                                         
                                                                                                           @endforeach
                                                                                                        
 

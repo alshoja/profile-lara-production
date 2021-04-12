@@ -111,7 +111,9 @@ function getNotifications() {
                   <i class="flaticon2-paper-plane  text-danger"></i>
               </div>
               <div class="navi-text">
-                  <div class="font-weight-bold"> <a href=`+HOST_URL+`/profiles?tab=inbox>` +
+                  <div class="font-weight-bold"> <a href=` +
+            HOST_URL +
+            `/profiles?tab=inbox>` +
             o.message +
             `</div>
                   <div class="text-muted">  
@@ -162,6 +164,7 @@ function getProfileData(id) {
       setEprofile(result);
       console.log(result);
       setDocs(result);
+      setProducts(result.products);
       const mappedArray = result.timeline.map((obj, i) => {
         console.log("object", obj);
         let payload = {};
@@ -205,7 +208,8 @@ function setEprofile(profile) {
   document.getElementById("gender").innerHTML = profile.gender;
   document.getElementById("dob").innerHTML = profile.dob;
   document.getElementById("citizen_status").innerHTML = profile.citizen_status;
-  document.getElementById("citizen_location").innerHTML = profile.citizen_location;
+  document.getElementById("citizen_location").innerHTML =
+    profile.citizen_location;
   document.getElementById("citizen_id").innerHTML = profile.citizen_id;
   document.getElementById("citizen_uid").innerHTML = profile.citizen_uid;
   document.getElementById("passport_no").innerHTML = profile.passport_no;
@@ -214,17 +218,20 @@ function setEprofile(profile) {
   document.getElementById("bought_by").innerHTML = profile.bought_by;
   document.getElementById("entity").innerHTML = profile.entity;
   document.getElementById("entry_date").innerHTML = profile.entry_date;
-  document.getElementById("entity_location").innerHTML = profile.entity_location;
+  document.getElementById("entity_location").innerHTML =
+    profile.entity_location;
   document.getElementById("shipping_no").innerHTML = profile.shipping_no;
   document.getElementById("coming_from").innerHTML = profile.coming_from;
   document.getElementById("going_to").innerHTML = profile.going_to;
-  document.getElementById("final_destination").innerHTML = profile.final_destination;
+  document.getElementById("final_destination").innerHTML =
+    profile.final_destination;
   document.getElementById("note").innerHTML = profile.note;
   document.getElementById("profile_image").src = profile.profile_image;
   document.getElementById("product_image").src = profile.product_image;
   document.getElementById("doc_image").src = profile.doc_image;
   document.getElementById("record_status").innerHTML = profile.record_status;
-  document.getElementById("record_dep_transfer").innerHTML = profile.record_dep_transfer;
+  document.getElementById("record_dep_transfer").innerHTML =
+    profile.record_dep_transfer;
   document.getElementById("depart").innerHTML = profile.department.name;
   document.getElementById("section").innerHTML = profile.section.name;
 }
@@ -293,12 +300,68 @@ function setTrack(trackings) {
   document.getElementById("track_timeline").innerHTML = contentStr;
 }
 
-function setDecision(data) {}
+function setProducts(data) {
+  let contentStr = "";
+  if (data.length > 0) {
+    data.forEach(function (o) {
+      contentStr +=
+        ` <tr
+        class="">
+        <td
+            class="pl-0 pt-7">
+            ` +
+        o.manufacture_type +
+        `
+          </td>
+        <td
+            class="pl-0 pt-7">
+            ` +
+        o.product_type +
+        `
+           </td>
+        <td
+            class="pl-0 pt-7">
+            ` +
+        o.quantity_digit +
+        `
+            </td>
+        <td
+            class="pl-0 pt-7">
+            ` +
+        o.quantity_g +
+        `
+          </td>
+        <td
+            class="pl-0 pt-7">
+            ` +
+        o.quantity_kg +
+        `
+           </td>
+        <td
+            class="pl-0 pt-7">
+            ` +
+        o.quantity_ml +
+        `
+           </td>
+        <td
+            class="pl-0 pt-7">
+            ` +
+        o.shipped_type +
+        `
+          </td>
+
+      </tr>`;
+    });
+  } else if (trackings.length <= 0) {
+    contentStr += ` <tr><td>No Track Data to Display </td></tr>`;
+  }
+  document.getElementById("product_table").innerHTML = contentStr;
+}
 
 function setNotes(notes) {
   console.log("notes", notes);
   let notesString = "";
- 
+
   if (notes.length > 0) {
     notes.forEach(function (o) {
       notesString +=
