@@ -373,7 +373,14 @@ class ProfileController extends Controller
                     'shipped_type' => $shipped_type[$count],
                     'profile_id' => $profile_id
                 );
-                Product::create($dataa);
+                if($product_id[$count] == "")
+                {
+                    Product::create($dataa);
+                }
+                else{
+                DB::table('products')->where('id', $product_id[$count])->update($dataa);
+                }
+              //  Product::create($dataa);
             }
             DB::table('profiles')->where('id', $editid)->update($data);
         } catch (\Illuminate\Database\QueryException $ex) {
