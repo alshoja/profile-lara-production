@@ -151,9 +151,7 @@
                                     </div>
                                 @endif
                                 <!--begin::Wizard Form-->
-                                <form class="form" id="kt_form1" enctype="multipart/form-data" 
-                                    method="POST">
-
+                                <form class="form" id="kt_form" enctype="multipart/form-data">
                                     @csrf
                                     <!--begin::Wizard Step 1-->
                                     <div class="pb-5" data-wizard-type="step-content" data-wizard-state="current">
@@ -683,8 +681,8 @@
                                                                                     class="font-weight-boldest">
                                                                                     
                                                                                     <td>
-                                                                                       <input type="text" hidden name="product_id" id="product_id" value="{{ $key->id }}">
-                                                                                        <select name="product_type" id="product_type"
+                                                                                       <input type="text" hidden name="product_id[]" id="product_id[]" value="{{ $key->id }}">
+                                                                                        <select name="product_type[]" id="product_type[]"
                                                                                             class="form-control form-control-solid ">
                                                                                             <option value="{{ $key->product_type }}">{{ $key->product_type }}</option>
                                                                                               <option value="YE">P 1</option>
@@ -692,7 +690,7 @@
                                                                         <option value="ZW">P 3</option>
                                                                     </select></td>
                                                                                     <td>
-                                                                                        <select name="manufacture_type" id="manufacture_type"
+                                                                                        <select name="manufacture_type[]" id="manufacture_type[]"
                                                                                            class="form-control form-control-solid">
                                                                                          <option  value="{{ $key->manufacture_type }}">{{ $key->manufacture_type }}</option>
                                                                                              <option value="YE">P 1</option>
@@ -700,7 +698,7 @@
                                                                                              <option value="ZW">P 3</option>
                                                                                         </select></td>
                                                                                     <td>
-                                                                                        <select name="shipped_type" id="shipped_type"
+                                                                                        <select name="shipped_type[]" id="shipped_type[]"
                                                                         class="form-control form-control-solid">
                                                                         <option  value="{{ $key->shipped_type }}">{{ $key->shipped_type }}
                                                                         </option>
@@ -710,18 +708,18 @@
                                                                     </select></td>
                                                                                     <td style="width: 10%">
                                                                                         <input type="text" class="form-control" placeholder="Kg"
-                                                                                        name="quantity_kg" id="quantity_kg" value="{{ $key->quantity_kg }}" /></td>
+                                                                                        name="quantity_kg[]" id="quantity_kg[]" value="{{ $key->quantity_kg }}" /></td>
                                                                                     <td style="width: 10%">
                                                                                         <input type="text" class="form-control" placeholder="G"
-                                                                                        name="quantity_g" id="quantity_g" value="{{ $key->quantity_g }}"/></td>
+                                                                                        name="quantity_g[]" id="quantity_g[]" value="{{ $key->quantity_g }}"/></td>
                                                                                     <td style="width: 10%">
                                                                                         <input type="text" class="form-control" placeholder="ML"
-                                                                                        name="quantity_ml" id="quantity_ml" value="{{ $key->quantity_ml }}" /></td>
+                                                                                        name="quantity_ml[]" id="quantity_ml[]" value="{{ $key->quantity_ml }}" /></td>
                                                                                        
                                                                                         <td style="width: 10%">
                                                                                              <input type="text" class="form-control"
-                                                                        placeholder="Digit" name="quantity_digit"
-                                                                        id="quantity_digit" value="{{ $key->quantity_digit }}" /></td>
+                                                                        placeholder="Digit" name="quantity_digit[]"
+                                                                        id="quantity_digit[]" value="{{ $key->quantity_digit }}" /></td>
 
                                                                                   </tr>
                                                                                @endforeach
@@ -990,7 +988,7 @@
                                         <div>
 
                                             <div class="btn-group">
-                                                <button id="submit" type="submit" data-wizard-type="action-submit"
+                                                <button id="submit" type="submit" 
                                                     class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4">Update</button>
                                             </div>
 
@@ -1038,32 +1036,20 @@
                   }
               });
         
-                $('#kt_form1').on('submit', function(event) {
+                $('#kt_form').on('submit', function(event) {
                     event.preventDefault();
         
-                  
+                  alert("hai");
         
                     $.ajax({
                         url: "/profileUpdate",
                         method: 'POST',
-                        data: $('#kt_form1').serialize(),
+                        data: $('#kt_form').serialize(),
                         dataType: 'json',
                         success: function(data) {
                            
-                            if(data.error)
-                        {
-                            var error_html = '';
-                            for(var count = 0; count < data.error.length; count++)
-                            {
-                                error_html += '<p>'+data.error[count]+'</p>';
-                            }
-                            $('#result').html('<div class="alert alert-danger">'+error_html+'</div>');
-                        }
-                        else
-                        {
-                            dynamic_field(1);
-                            $('#result').html('<div class="alert alert-success">'+data.success+'</div>');
-                        }
+                        console.log(data);   
+                      
                         },
                     });
         

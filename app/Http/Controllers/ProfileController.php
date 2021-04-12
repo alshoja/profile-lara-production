@@ -250,8 +250,9 @@ class ProfileController extends Controller
         $belongs_to = $request->input('belongs_to');
         $editid4 = $request->input('editid4');
         $is_drafted = 0;
-        $is_completed = 1;
-        $data = array("belongs_to" => $belongs_to, "is_drafted" => $is_drafted, "is_completed" => $is_completed);
+       
+        $data = array("belongs_to" => $belongs_to, "is_drafted" => $is_drafted
+    );
         try {
             DB::table('profiles')->where('id', $editid4)->update($data);
             return response()->json(['success' => 'Form is successfully submitted!']);
@@ -300,10 +301,8 @@ class ProfileController extends Controller
 
         
        
-        $editid = $request->input('editid');
-       
         
-
+        $editid = $request->input('editid');
         $image_1 = $request->file('profile_image');
         $image_2 = $request->file('product_image');
         $image_3 = $request->file('doc_image');
@@ -351,7 +350,7 @@ class ProfileController extends Controller
             "record_dep_transfer" => $request->input('record_dep_transfer'),
             "belongs_to" => $request->input('belongs_to')
         );
-
+        if ($request->ajax()) {
         try {
             $product_id=$request->product_id;
             $product_type = $request->product_type;
@@ -364,8 +363,8 @@ class ProfileController extends Controller
             $profile_id = $editid;
             $product = new Product();
             $m = count($product_type);
-            for ($count = 0; $count < count($product_type); $count++) {
-                $data = array(
+            for ($count = 0; $count < $m; $count++) {
+                $dataa = array(
                     'id'=> $product_id[$count],
                     'product_type' => $product_type[$count],
                     'quantity_kg'  => $quantity_kg[$count],
@@ -376,14 +375,17 @@ class ProfileController extends Controller
                     'shipped_type' => $shipped_type[$count],
                     'profile_id' => $profile_id
                 );
-                Product::create($data);
+                Product::create($dataa);
             }
+       
          
             DB::table('profiles')->where('id', $editid)->update($data);
         } catch (\Illuminate\Database\QueryException $ex) {
             dd($ex->getMessage());
         }
-        return back()->with('message', 'Profile Deleted');
+
+        return response()->json(['success' => 'Form is successfully submitted!']);
+    }
     }
 
     /**
