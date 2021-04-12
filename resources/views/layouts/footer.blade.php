@@ -89,7 +89,7 @@
 <script src="{{ asset('assets/js/pages/crud/file-upload/image-input.js') }}"></script>
 
 <script src="{{ asset('assets/js/pages/custom/login/login-general.js') }}"></script>
-<script src="{{ asset('assets/js/ajax-req.js') }}"></script>
+<script src="{{ asset('assets/js/custom-requests.js') }}"></script>
 <script src="{{ asset('assets/js/comon-sweet-alert.js') }}"></script>
 <script src="{{ asset('assets/js/toast.js') }}"></script>
 <script src="{{ asset('assets/js/time.js') }}"></script>

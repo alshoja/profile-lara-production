@@ -6,16 +6,17 @@ use Exception;
 use App\Models\Product;
 use App\Models\Profile;
 use App\Models\TimeLine;
-use Barryvdh\DomPDF\Facade as PDF;
 use App\Events\SignDocument;
 use App\Models\TrackProfile;
 use Illuminate\Http\Request;
 use App\Events\RejectDocument;
 use App\Events\AddNotification;
 use App\Events\AddTimeLineNote;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Validator;
 
@@ -28,10 +29,14 @@ class ProfileController extends Controller
      */
     public function index(Request $request)
     {
+        $tab = null;
         $search = request()->query('search');
         $tab = $request->input('tab');
         $from = $request->input('from');
         $to = $request->input('to');
+        if ($tab === null) {
+            return Redirect::back();
+        }
         $profiles = Profile::with('trackings')->where(function (Builder $query) use ($search, $tab, $from, $to) {
             if ($search) {
                 $query->orWhere('name', 'like', '%' . $search . '%')
