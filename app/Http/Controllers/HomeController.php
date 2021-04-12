@@ -27,6 +27,14 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    public function welcome(Request $request)
+    {
+        if (Auth::check()) {
+            return redirect('home');
+        }
+        return view('welcome');
+    }
+
     public function index(Request $request)
     {
         $search = request()->query('search');

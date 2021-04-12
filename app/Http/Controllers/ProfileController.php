@@ -2,21 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\AddNotification;
 use Exception;
-use App\Models\Profile;
 use App\Models\Product;
+use App\Models\Profile;
 use App\Models\TimeLine;
 use App\Events\SignDocument;
 use App\Models\TrackProfile;
 use Illuminate\Http\Request;
 use App\Events\RejectDocument;
+use App\Events\AddNotification;
 use App\Events\AddTimeLineNote;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
@@ -27,10 +29,14 @@ class ProfileController extends Controller
      */
     public function index(Request $request)
     {
+        $tab = null;
         $search = request()->query('search');
         $tab = $request->input('tab');
         $from = $request->input('from');
         $to = $request->input('to');
+        if ($tab === null) {
+            return Redirect::back();
+        }
         $profiles = Profile::with('trackings')->where(function (Builder $query) use ($search, $tab, $from, $to) {
             if ($search) {
                 $query->orWhere('name', 'like', '%' . $search . '%')
@@ -85,7 +91,7 @@ class ProfileController extends Controller
             }
         })->orderBy('id', 'DESC')->paginate(5);
         // return response()->json($profiles, 200);
-       // $profile = Profile::with('timeline', 'trackings', 'department', 'section', 'products')->findOrFail($id);
+        // $profile = Profile::with('timeline', 'trackings', 'department', 'section', 'products')->findOrFail($id);
         return view('pages.inbox', compact('profiles'));
     }
 
@@ -143,7 +149,7 @@ class ProfileController extends Controller
     }
     public function updateUser(Request $request)
     {
-        
+
         if ($request->ajax()) {
             $rules = array(
                 'product_type.*'  => 'required',
@@ -154,8 +160,8 @@ class ProfileController extends Controller
                 'manufacture_type.*'  => 'required',
                 'shipped_type.*'  => 'required',
 
-               );
-               $customMessages = [
+            );
+            $customMessages = [
                 'product_type.*.required' => ' The Product Type field can not be blank value.',
                 'quantity_kg.*.required' => 'The Quantity in Kg field can not be blank value.',
                 'quantity_g.*.required' => 'The Quantity in gram field can not be blank value.',
@@ -164,14 +170,13 @@ class ProfileController extends Controller
                 'manufacture_type.*.required' => 'The Manufacture type field can not be blank value.',
                 'shipped_type.*.required' => 'The Shipped type field can not be blank value.',
             ];
-        
-               $error = Validator::make($request->all(), $rules,$customMessages);
-               if($error->fails())
-               {
+
+            $error = Validator::make($request->all(), $rules, $customMessages);
+            if ($error->fails()) {
                 return response()->json([
-                 'error'  => $error->errors()->all()
+                    'error'  => $error->errors()->all()
                 ]);
-               }
+            }
 
             $entered_by = $request->input('entered_by');
             $bought_by = $request->input('bought_by');
@@ -279,10 +284,7 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        $profile = Profile::with('department', 'section','products')->find($id);
-        //$profile = Profile::with('timeline', 'trackings', 'department', 'section', 'products')->findOrFail($id);
-       
-       //  return response()->json($profile, 200);
+        $profile = Profile::with('department', 'section', 'products')->find($id);
         return view('pages.edit', compact('profile'));
     }
 
@@ -298,10 +300,6 @@ class ProfileController extends Controller
     }
     public function profileUpdate(Request $request)
     {
-
-        
-       
-        
         $editid = $request->input('editid');
         $image_1 = $request->file('profile_image');
         $image_2 = $request->file('product_image');
@@ -352,7 +350,7 @@ class ProfileController extends Controller
         );
         if ($request->ajax()) {
         try {
-            $product_id=$request->product_id;
+            $product_id = $request->product_id;
             $product_type = $request->product_type;
             $quantity_kg = $request->quantity_kg;
             $quantity_g = $request->quantity_g;
@@ -363,9 +361,9 @@ class ProfileController extends Controller
             $profile_id = $editid;
             $product = new Product();
             $m = count($product_type);
-            for ($count = 0; $count < $m; $count++) {
+            for ($count = 0; $count < count($product_type); $count++) {
                 $dataa = array(
-                    'id'=> $product_id[$count],
+                    'id' => $product_id[$count],
                     'product_type' => $product_type[$count],
                     'quantity_kg'  => $quantity_kg[$count],
                     'quantity_g'  => $quantity_g[$count],
@@ -377,8 +375,6 @@ class ProfileController extends Controller
                 );
                 Product::create($dataa);
             }
-       
-         
             DB::table('profiles')->where('id', $editid)->update($data);
         } catch (\Illuminate\Database\QueryException $ex) {
             dd($ex->getMessage());
@@ -417,11 +413,11 @@ class ProfileController extends Controller
      * @param  \App\Models\Profiles  $profiles
      * @return \Illuminate\Http\Response
      */
-    public function renderPdf(Profile $profiles)
+    public function renderPdf($id)
     {
-        $pdf = App::make('dompdf.wrapper');
-        $pdf->loadHTML('<h1>Test</h1>');
-        return $pdf->stream();
+        $profile = Profile::with('department', 'section', 'products')->find($id);
+        $pdf = PDF::loadView('pdf', $profile);
+        return $pdf->stream('invoice.pdf');
     }
 
     public function getProfileById($id)

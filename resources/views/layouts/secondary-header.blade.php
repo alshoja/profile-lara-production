@@ -8,14 +8,15 @@
 			<a href="#" class="btn btn-light-success font-weight-bolder btn-sm mr-2">Import</a> --}}
             <!--end::Actions-->
             <!--begin::Dropdowns-->
-            <form class="form" method="get">
+            {{-- <form class="form" method="get"> --}}
                 <br>
                 @if (request()->segment(2) !== 'add-profile')
                     @if (request()->segment(2) !== 'add-user')
                         @if (request()->segment(1) !== 'departments')
                             @if (request()->segment(1) !== 'home')
                                 <div class="input-group input-group-sm input-group-solid max-w-175px">
-                                    <input type="text" name="search" value="{{request()->query('search')}}" class="form-control pl-4"
+                                    <input type="text" id="search" onkeypress="search(event)" name="search"
+                                        value="{{ request()->query('search') }}" class="form-control pl-4"
                                         placeholder="Search..." />
                                     <div class="input-group-append">
                                         <span class="input-group-text">
@@ -44,7 +45,7 @@
                     @endif
                 @endif
 
-            </form>
+            {{-- </form> --}}
 
             <!--end::Dropdowns-->
         </div>
@@ -52,8 +53,9 @@
         <!--begin::Toolbar-->
         <div class="d-flex align-items-center">
             <!--begin::Daterange-->
-            <a href="javascript:void(0)" class="btn btn-light btn-sm font-weight-bold mr-2" id="kt_dashboard_daterangepicker"
-                data-toggle="tooltip" title="Select dashboard daterange" data-placement="left">
+            <a href="javascript:void(0)" class="btn btn-light btn-sm font-weight-bold mr-2"
+                id="kt_dashboard_daterangepicker" data-toggle="tooltip" title="Select dashboard daterange"
+                data-placement="left">
                 <span class="text-muted font-weight-bold mr-2"
                     id="kt_dashboard_daterangepicker_title">{{ request()->query('title') }}</span>
                 <span class="text-primary font-weight-bold" id="kt_dashboard_daterangepicker_date">
@@ -75,10 +77,10 @@
                     <!--end::Svg Icon-->
                 </span>
             </a>
-            @if (request()->query('title')|| request()->query('from'))
+            @if (request()->query('title') || request()->query('from'))
                 <a href="{{ url('/home') }}" class="btn btn-light btn-sm font-weight-bold mr-2" data-toggle="tooltip"
                     title="Reset to default date" data-placement="left">
-                    <span class="text-muted font-weight-bold mr-2">Back to Today</span>
+                    <span class="text-muted font-weight-bold mr-2">Back </span>
                     {{-- <span class="svg-icon svg-icon-sm svg-icon-primary ml-1">
                         <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Chat-check.svg-->
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
@@ -171,3 +173,5 @@
     </div>
 </div>
 <!--end::Subheader-->
+
+

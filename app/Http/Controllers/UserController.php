@@ -101,6 +101,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -198,8 +199,6 @@ class UserController extends Controller
         if (request()->query('role') == "supervisor") {
             $user->assets =  Employ::with('subUsers')->whereIn('dep_id', session('department'))->paginate();
         }
-        // dd($user->assets[0]);
-        // return response()->json($user->assets, 200);
         return view('pages.profile-detail', compact('user'));
     }
 

@@ -15,9 +15,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome'])->name('welocome');
 
 
 // Route::get('profile/add-profile', function () {
@@ -103,3 +101,6 @@ Route::post('stageFour', [App\Http\Controllers\ProfileController::class, 'stageF
 Route::post('stageFive', [App\Http\Controllers\ProfileController::class, 'stageFive']);
 
 Route::post('profileUpdate', [App\Http\Controllers\ProfileController::class, 'profileUpdate']);
+
+Route::get('profile/pdf/{id}', [App\Http\Controllers\ProfileController::class, 'renderPdf']);
+

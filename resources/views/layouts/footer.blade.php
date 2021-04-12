@@ -89,7 +89,7 @@
 <script src="{{ asset('assets/js/pages/crud/file-upload/image-input.js') }}"></script>
 
 <script src="{{ asset('assets/js/pages/custom/login/login-general.js') }}"></script>
-<script src="{{ asset('assets/js/ajax-req.js') }}"></script>
+<script src="{{ asset('assets/js/custom-requests.js') }}"></script>
 <script src="{{ asset('assets/js/comon-sweet-alert.js') }}"></script>
 <script src="{{ asset('assets/js/toast.js') }}"></script>
 <script src="{{ asset('assets/js/time.js') }}"></script>
@@ -114,10 +114,23 @@
             $('#ajaxloader').fadeIn(250);
         }
     });
-    
+
     $(document).ajaxComplete(function() {
         $('#ajaxloader').fadeOut(250);
     });
 
 </script>
+<script>
+    function search(event) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const search = document.getElementById('search').value;
+        var x = event.code;
+        if (x == "Enter") {
+            urlParams.set("search", search);
+            window.location.search = urlParams;
+        }
+    }
+
+</script>
+
 @stack('scripts')

@@ -111,7 +111,7 @@ function getNotifications() {
                   <i class="flaticon2-paper-plane  text-danger"></i>
               </div>
               <div class="navi-text">
-                  <div class="font-weight-bold">` +
+                  <div class="font-weight-bold"> <a href=`+HOST_URL+`/profiles?tab=inbox>` +
             o.message +
             `</div>
                   <div class="text-muted">  
@@ -159,7 +159,6 @@ function getProfileData(id) {
     dataType: "json",
     contentType: "application/json",
     success: function (result) {
-    
       setEprofile(result);
       console.log(result);
       setDocs(result);
@@ -199,56 +198,33 @@ function getProfileData(id) {
 }
 
 function setEprofile(profile) {
-
-  console.log("profile", profile);
-  
   let heading = document.getElementById("exampleModalLabel");
   heading.innerHTML = profile.name;
-  let name = (document.getElementById("name").innerHTML = profile.name);
-  let nationality = (document.getElementById("nationality").innerHTML =
-    profile.nationality);
-  let gender = (document.getElementById("gender").innerHTML = profile.gender);
-  let dob = (document.getElementById("dob").innerHTML = profile.dob);
-  let citizen_status = (document.getElementById("citizen_status").innerHTML =
-    profile.citizen_status);
-  let citizen_location = (document.getElementById(
-    "citizen_location"
-  ).innerHTML = profile.citizen_location);
-  let citizen_id = (document.getElementById("citizen_id").innerHTML =
-    profile.citizen_id);
-  let citizen_uid = (document.getElementById("citizen_uid").innerHTML =
-    profile.citizen_uid);
-  let passport_no = (document.getElementById("passport_no").innerHTML =
-    profile.passport_no);
-  let passport_type = (document.getElementById("passport_type").innerHTML =
-    profile.passport_type);
-  let doentered_byb = (document.getElementById("entered_by").innerHTML =
-    profile.entered_by);
-  let bought_by = (document.getElementById("bought_by").innerHTML =
-    profile.bought_by);
-  let entity = (document.getElementById("entity").innerHTML = profile.entity);
-  let entry_date = (document.getElementById("entry_date").innerHTML =
-    profile.entry_date);
-  let entity_location = (document.getElementById("entity_location").innerHTML =
-    profile.entity_location);
-  let shipping_no = (document.getElementById("shipping_no").innerHTML =
-    profile.shipping_no);
-  let coming_from = (document.getElementById("coming_from").innerHTML =
-    profile.coming_from);
-  let going_to = (document.getElementById("going_to").innerHTML =
-    profile.going_to);
-  let final_destination = (document.getElementById(
-    "final_destination"
-  ).innerHTML = profile.final_destination);
-  let note = (document.getElementById("note").innerHTML = profile.note);
+  document.getElementById("name").innerHTML = profile.name;
+  document.getElementById("nationality").innerHTML = profile.nationality;
+  document.getElementById("gender").innerHTML = profile.gender;
+  document.getElementById("dob").innerHTML = profile.dob;
+  document.getElementById("citizen_status").innerHTML = profile.citizen_status;
+  document.getElementById("citizen_location").innerHTML = profile.citizen_location;
+  document.getElementById("citizen_id").innerHTML = profile.citizen_id;
+  document.getElementById("citizen_uid").innerHTML = profile.citizen_uid;
+  document.getElementById("passport_no").innerHTML = profile.passport_no;
+  document.getElementById("passport_type").innerHTML = profile.passport_type;
+  document.getElementById("entered_by").innerHTML = profile.entered_by;
+  document.getElementById("bought_by").innerHTML = profile.bought_by;
+  document.getElementById("entity").innerHTML = profile.entity;
+  document.getElementById("entry_date").innerHTML = profile.entry_date;
+  document.getElementById("entity_location").innerHTML = profile.entity_location;
+  document.getElementById("shipping_no").innerHTML = profile.shipping_no;
+  document.getElementById("coming_from").innerHTML = profile.coming_from;
+  document.getElementById("going_to").innerHTML = profile.going_to;
+  document.getElementById("final_destination").innerHTML = profile.final_destination;
+  document.getElementById("note").innerHTML = profile.note;
   document.getElementById("profile_image").src = profile.profile_image;
   document.getElementById("product_image").src = profile.product_image;
   document.getElementById("doc_image").src = profile.doc_image;
-  let record_status = (document.getElementById("record_status").innerHTML =
-    profile.record_status);
-  let record_dep_transfer = (document.getElementById(
-    "record_dep_transfer"
-  ).innerHTML = profile.record_dep_transfer);
+  document.getElementById("record_status").innerHTML = profile.record_status;
+  document.getElementById("record_dep_transfer").innerHTML = profile.record_dep_transfer;
   document.getElementById("depart").innerHTML = profile.department.name;
   document.getElementById("section").innerHTML = profile.section.name;
 }
@@ -322,9 +298,7 @@ function setDecision(data) {}
 function setNotes(notes) {
   console.log("notes", notes);
   let notesString = "";
-  // let filteredNotes = notes.filter((res) => {
-  //   return res.type == "note";
-  // });
+ 
   if (notes.length > 0) {
     notes.forEach(function (o) {
       notesString +=
