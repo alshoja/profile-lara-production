@@ -1015,14 +1015,12 @@
         function disableNext() {
             document.getElementById("next").disabled = true;
             document.getElementById("previous").disabled = false;
-
         }
 
     </script>
     <script type="text/javascript">
         $('#kt_form').on('submit', function(event) {
             event.preventDefault();
-
             let name = $('#name').val();
             let nationality = $('#nationality').val();
             let gender = $('#gender').val();
