@@ -79,6 +79,6 @@ Please read [CONTRIBUTING.md](https://github.com/alshoja/Income-Expence-Manager/
 
 ## License
 
-The actual licence is under [Quantus Space](https://quantus.ae/)
+[Quantus Space](https://quantus.ae/)
 
 
