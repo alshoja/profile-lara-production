@@ -179,7 +179,7 @@
                                         <a href="#" class="text-warning font-weight-bold font-size-h6">
                                             Entered</a>
                                     </div>
-                                    @if (Auth::user()->role != 'employ')
+                                    {{-- @if (Auth::user()->role != 'employ')
                                         <div class="col bg-light-primary px-6 py-8 rounded-xl mb-7">
                                             <span class="svg-icon svg-icon-3x svg-icon-primary d-block my-2">
                                                 <p class="text-info font-weight-bold font-size-h6 mt-2">
@@ -188,7 +188,7 @@
                                             </span>
                                             <a href="#" class="text-primary font-weight-bold font-size-h6 mt-2"> Users</a>
                                         </div>
-                                    @endif
+                                    @endif --}}
                                 </div>
                                 <!--end::Row-->
                                 <!--begin::Row-->
