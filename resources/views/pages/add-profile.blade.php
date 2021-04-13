@@ -1224,7 +1224,7 @@ $.ajaxSetup({
                 processData: false,
                 success: (response) => {
                     if (response) {
-                        this.reset();
+                        console.log(response);
                     }
                 },
                 error: function(response) {
