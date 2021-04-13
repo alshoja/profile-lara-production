@@ -4,8 +4,7 @@
 
 .btn-gradient-danger {
     background: radial-gradient(50% 4073.72% at 50% 100%, #ee3e09 0%, #ec691d 100%);
-    box-shadow: 0px 5px 5px rgba(38, 208, 124, 0.2), 0px 8px 10px rgba(38, 208, 124, 0.14),
-        0px 3px 14px rgba(38, 208, 124, 0.11);
+    box-shadow: 0px 5px 5px rgb(208 75 38 / 20%), 0px 8px 10px rgb(208 38 38 / 14%), 0px 3px 14px rgb(208 38 38 / 11%);
     border-radius: 100px;
 }
 

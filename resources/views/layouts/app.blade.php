@@ -8,7 +8,7 @@
     <div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
         <!--begin::Logo-->
         <a href="{{ url('/home') }}">
-            <img alt="Logo" src="{{ asset('assets/media/logos/logo-light.png') }}" />
+            <img style="width: 70%" alt="Logo" src="{{ asset('assets/media/logos/logo-light.png') }}" />
         </a>
         <!--end::Logo-->
         <!--begin::Toolbar-->
@@ -56,7 +56,7 @@
                 <div class="brand flex-column-auto" id="kt_brand">
                     <!--begin::Logo-->
                     <a href="/" class="brand-logo">
-                        <img alt="Logo" src="{{ asset('assets/media/logos/logo-light.png') }}" />
+                        <img style="width: 70%" alt="Logo" src="{{ asset('assets/media/logos/logo-light.png') }}" />
                     </a>
                     <!--end::Logo-->
                     <!--begin::Toggle-->
@@ -439,11 +439,11 @@
                         <!--end::Copyright-->
                         <!--begin::Nav-->
                         <div class="nav nav-dark">
-                            <a href="http://keenthemes.com/metronic" target="_blank"
+                            {{-- <a href="http://keenthemes.com/metronic" target="_blank"
                                 class="nav-link pl-0 pr-5">About</a>
                             <a href="http://keenthemes.com/metronic" target="_blank" class="nav-link pl-0 pr-5">Team</a>
                             <a href="http://keenthemes.com/metronic" target="_blank"
-                                class="nav-link pl-0 pr-0">Contact</a>
+                                class="nav-link pl-0 pr-0">Contact</a> --}}
                         </div>
                         <!--end::Nav-->
                     </div>

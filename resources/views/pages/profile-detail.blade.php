@@ -90,8 +90,8 @@
                                 <!--begin::User-->
                                 <!--begin::Actions-->
                                 <!-- <div class="my-lg-0 my-1">
-                                                                                                                                                                                                                    <a href="#" class="btn btn-sm btn-success font-weight-bolder text-uppercase">Show More</a>
-                                                                                                                                                                                                                </div> -->
+                                                                                                                                                                                                                        <a href="#" class="btn btn-sm btn-success font-weight-bolder text-uppercase">Show More</a>
+                                                                                                                                                                                                                    </div> -->
                                 <!--end::Actions-->
                             </div>
                             <!--end::Title-->
@@ -154,8 +154,8 @@
                         <!--begin: Item-->
                         <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
                             <!-- <span class="mr-5">
-                                                                                                                                                                                           <i class="flaticon-user icon-2x text-muted font-weight-bold"></i>
-                                                                                                                                                                                          </span> -->
+                                                                                                                                                                                               <i class="flaticon-user icon-2x text-muted font-weight-bold"></i>
+                                                                                                                                                              </span> -->
                             <div class="d-flex flex-column flex-lg-fill">
                                 <span class="text-dark-75 font-weight-bolder font-size-sm">User Suspended</span>
                                 <!-- <a href="#" class="text-primary font-weight-bolder">No</a> -->
@@ -257,7 +257,7 @@
                                             <div class="row">
                                                 <div class="col-lg-6">
                                                     <input type="submit" value="Change Password"
-                                                        class="btn btn-primary btn-gradient-success mr-2">
+                                                        class="btn btn-primary btn-gradient-danger mr-2">
                                                     <button type="reset" class="btn btn-secondary">Cancel</button>
                                                 </div>
                                             </div>
@@ -420,35 +420,35 @@
                                                     <!-- <span class="form-text text-danger">Please enter a valid Email or Username</span> -->
                                                 </div>
                                             </div>
-
-                                            <div class="separator separator-dashed my-10"></div>
-                                            <div class="form-group row">
-                                                <div class="col-lg-2">
-                                                    <label class="col col-form-label">Suspend User</label>
-                                                    <div class="col-3">
-                                                        <span class="switch switch-outline switch-icon switch-danger">
-                                                            <label>
-                                                                <input type="checkbox" value="1" @if ($user->suspended) checked="checked" @endif name="suspended" />
-                                                                <span></span>
-                                                            </label>
-                                                        </span>
-                                                    </div>
-
-                                                </div>
-                                                <div class="col-lg-2">
-                                                    <label class="col col-form-label">Can add User</label>
-                                                    <div class="col-3">
-                                                        <span class="switch switch-outline switch-icon switch-success">
-                                                            <label>
-                                                                <input type="checkbox" value="1" @if ($user->can_add_user) checked="checked" @endif name="can_add_user" />
-                                                                <span></span>
-                                                            </label>
-                                                        </span>
-                                                    </div>
-
-                                                </div>
-                                            </div>
                                             @if (Auth::user()->id != Request::segment(3))
+                                                <div class="separator separator-dashed my-10"></div>
+                                                <div class="form-group row">
+                                                    <div class="col-lg-2">
+                                                        <label class="col col-form-label">Suspend User</label>
+                                                        <div class="col-3">
+                                                            <span class="switch switch-outline switch-icon switch-danger">
+                                                                <label>
+                                                                    <input type="checkbox" value="1" @if ($user->suspended) checked="checked" @endif name="suspended" />
+                                                                    <span></span>
+                                                                </label>
+                                                            </span>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <label class="col col-form-label">Can add User</label>
+                                                        <div class="col-3">
+                                                            <span class="switch switch-outline switch-icon switch-success">
+                                                                <label>
+                                                                    <input type="checkbox" value="1" @if ($user->can_add_user) checked="checked" @endif name="can_add_user" />
+                                                                    <span></span>
+                                                                </label>
+                                                            </span>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
                                                 <div class="form-group row">
                                                     <div class="col-lg-2">
                                                         <label class="col col-form-label">Create</label>
