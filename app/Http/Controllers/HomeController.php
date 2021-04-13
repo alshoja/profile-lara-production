@@ -7,7 +7,12 @@ use App\Models\User;
 use App\Models\Profile;
 use App\Models\TimeLine;
 use Illuminate\Http\Request;
+use App\Models\DepartmentHead;
+use App\Models\DepartmentDirector;
 use Illuminate\Support\Facades\Auth;
+use App\Models\DepartmentGeneralDirector;
+use App\Models\DepartmentSupervisor;
+use App\Models\Employ;
 use Illuminate\Database\Eloquent\Builder;
 
 class HomeController extends Controller
@@ -64,13 +69,33 @@ class HomeController extends Controller
                 return $query->whereIn('dep_id', session('department'));
             }
         })->take(5)->get();
-        $dashData->usersCount = User::where(function (Builder $query) use ($from, $to, $search_date) {
+        $dashData->usersCount = User::with('employs', 'supervisors', 'departmentDirectors', 'departmentHeads')->where(function (Builder $query) use ($from, $to, $search_date) {
             if ($from  && $to) {
                 $query->where('created_at', '>=', $from)
                     ->where('created_at', '<=', $to);
             }
             if ($search_date) {
                 $query->whereDate('created_at', '=', $search_date);
+            }
+            if (Auth::user()->role == "supervisor") {
+                $query->whereHas('employs', function ($query) {
+                    $query->whereIn('dep_id', session('department'));
+                });
+            }
+            if (Auth::user()->role == "department_head") {
+                $query->whereHas('supervisors', function ($query) {
+                    $query->whereIn('dep_id', session('department'));
+                });
+            }
+            if (Auth::user()->role == "director") {
+                $query->whereHas('departmentHeads', function ($query) {
+                    $query->whereIn('dep_id', session('department'));
+                });
+            }
+            if (Auth::user()->role == "general_director") {
+                $query->whereHas('departmentDirectors', function ($query) {
+                    $query->whereIn('dep_id', session('department'));
+                });
             }
             return $query;
         })->count();
@@ -133,11 +158,7 @@ class HomeController extends Controller
 
     public function getAnalyticsCount($from, $to, $search_date)
     {
-        if (Auth::user()->role == 'employ') {
-            return $this->getProfileEnteredCount($from, $to, $search_date);
-        } else {
-            return $this->getUserCount($from, $to, $search_date);
-        }
+        return $this->getProfileEnteredCount($from, $to, $search_date);
     }
 
     public function getUserCount($from, $to, $search_date)
@@ -184,7 +205,11 @@ class HomeController extends Controller
             if ($search_date) {
                 $query->whereDate('created_at', '=', $search_date);
             }
-            return $query->where('employ_id', Auth::user()->id);
+            if (Auth::user()->role == 'employ') {
+                return $query->where('employ_id', Auth::user()->id);
+            } else {
+                return $query->whereIn('dep_id', session('department'));
+            }
         })
             ->get()
             ->groupBy(function ($date) {
@@ -210,13 +235,33 @@ class HomeController extends Controller
 
     public function getUserChartCount($from, $to, $search_date)
     {
-        $users = User::select('id', 'created_at')->where(function (Builder $query) use ($from, $to, $search_date) {
+        $users =  User::with('employs', 'supervisors', 'departmentDirectors', 'departmentHeads')->where(function (Builder $query) use ($from, $to, $search_date) {
             if ($from  && $to) {
                 $query->where('created_at', '>=', $from)
                     ->where('created_at', '<=', $to);
             }
             if ($search_date) {
                 $query->whereDate('created_at', '=', $search_date);
+            }
+            if (Auth::user()->role == "supervisor") {
+                $query->whereHas('employs', function ($query) {
+                    $query->whereIn('dep_id', session('department'));
+                });
+            }
+            if (Auth::user()->role == "department_head") {
+                $query->whereHas('supervisors', function ($query) {
+                    $query->whereIn('dep_id', session('department'));
+                });
+            }
+            if (Auth::user()->role == "director") {
+                $query->whereHas('departmentHeads', function ($query) {
+                    $query->whereIn('dep_id', session('department'));
+                });
+            }
+            if (Auth::user()->role == "general_director") {
+                $query->whereHas('departmentDirectors', function ($query) {
+                    $query->whereIn('dep_id', session('department'));
+                });
             }
             return $query;
         })
