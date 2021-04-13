@@ -133,13 +133,17 @@ class HomeController extends Controller
                 return $query->whereIn('dep_id', session('department'));
             }
         })->count();
-        if (Auth::user()->role == 'employ') {
-            if (Profile::orderBy('id', 'desc')->where('is_drafted', 0)->where('employ_id', Auth::user()->id)->count() > 0) {
-                $lastId = Profile::orderBy('id', 'desc')->where('is_drafted', 0)->where('employ_id', Auth::user()->id)->take(1)->first()->id;
-            }
+        if (Auth::user()->role == 'admin') {
+            $lastId = 0;
         } else {
-            if (Profile::orderBy('id', 'desc')->where('is_drafted', 0)->whereIn('dep_id', session('department'))->count() > 0) {
-                $lastId = Profile::orderBy('id', 'desc')->whereIn('dep_id', session('department'))->take(1)->first()->id;
+            if (Auth::user()->role == 'employ') {
+                if (Profile::orderBy('id', 'desc')->where('is_drafted', 0)->where('employ_id', Auth::user()->id)->count() > 0) {
+                    $lastId = Profile::orderBy('id', 'desc')->where('is_drafted', 0)->where('employ_id', Auth::user()->id)->take(1)->first()->id;
+                }
+            } else {
+                if (Profile::orderBy('id', 'desc')->where('is_drafted', 0)->whereIn('dep_id', session('department'))->count() > 0) {
+                    $lastId = Profile::orderBy('id', 'desc')->whereIn('dep_id', session('department'))->take(1)->first()->id;
+                }
             }
         }
         $dashData->activity = TimeLine::orderBy('id', 'asc')->where('profile_id', $lastId)->take(8)->where(function (Builder $query) use ($from, $to, $search_date) {
@@ -206,10 +210,14 @@ class HomeController extends Controller
             if ($search_date) {
                 $query->whereDate('created_at', '=', $search_date);
             }
-            if (Auth::user()->role == 'employ') {
-                return $query->where('employ_id', Auth::user()->id);
+            if (Auth::user()->role == 'admin') {
+                return $query;
             } else {
-                return $query->whereIn('dep_id', session('department'));
+                if (Auth::user()->role == 'employ') {
+                    return $query->where('employ_id', Auth::user()->id);
+                } else {
+                    return $query->whereIn('dep_id', session('department'));
+                }
             }
         })
             ->get()
@@ -299,13 +307,15 @@ class HomeController extends Controller
             if ($search_date) {
                 $query->whereDate('created_at', '=', $search_date);
             }
-
-            if (Auth::user()->role == 'employ') {
-                $query->where('employ_id', '=', Auth::user()->id);
+            if (Auth::user()->role == 'admin') {
+                return $query;
             } else {
-                $query->whereIn('dep_id', session('department'));
+                if (Auth::user()->role == 'employ') {
+                    $query->where('employ_id', '=', Auth::user()->id);
+                } else {
+                    $query->whereIn('dep_id', session('department'));
+                }
             }
-
             if ($search_date) {
                 $query->whereDate('created_at', '=', $search_date);
             }

@@ -240,7 +240,7 @@
                                             Supervisor
                                         </label>
                                     @endif
-                                    @if (Auth::user()->role != 'admin' || Auth::user()->role == 'supervisor')
+                                    @if (Auth::user()->role == 'supervisor')
                                         <label id="employ-label" class="radio radio-solid">
                                             <input type="radio" onclick="toggleDepartment('employ')" name="role"
                                                 value="employ" />
@@ -258,66 +258,36 @@
                                 </span>
                             @enderror
                         </div>
-                        @if (Auth::user()->role!="admin")
-                                                    <div id="group-row" class="form-group row d-none">
-                            <div id="department-row" class="col-2 d-none">
-                                <label class="ml-3">Department</label>
-                                <select required name="dep_id" id="department_id" class="form-control form-control-solid">
-                                    @foreach ($users->departments as $item)
-                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                    @endforeach
-                                </select>
+                        @if (Auth::user()->role != 'admin')
+                            <div id="group-row" class="form-group row d-none">
+                                <div id="department-row" class="col-2 d-none">
+                                    <label class="ml-3">Department</label>
+                                    <select id="department" onChange="getSections(this.value,'department')" required
+                                        name="dep_id" class="form-control form-control-solid">
+                                        <option hidden>Select Department</option>
+                                        @foreach ($users->departments as $item)
+                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div id="section-row" class="col-2 d-none">
+                                    <label class="ml-3">Section</label>
+                                    <select required id="section_id" name="section_id"
+                                        class="form-control form-control-solid">
+                                        <option hidden>Select</option>
+                                    </select>
+                                </div>
                             </div>
-                            {{-- <div id="gd-row" class="col-2 d-none">
-                                <label class="ml-3">General Director</label>
-                                <select name="general_director_id" id="general_director_id"
-                                    class="form-control form-control-solid">
-                                    @foreach ($users->general_directors as $item)
-                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div id="director-row" class="col-2 d-none">
-                                <label class="ml-3">Director</label>
-                                <select name="director_id" id="director_id" class="form-control form-control-solid">
-                                    @foreach ($users->directors as $item)
-                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div id="dh-row" class="col-2 d-none">
-                                <label class="ml-3">Department Head</label>
-                                <select name="department_head_id" id="department_head_id"
-                                    class="form-control form-control-solid">
-                                    @foreach ($users->department_heads as $item)
-                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div id="super-row" class="col-2 d-none">
-                                <label class="ml-3">Supervisor</label>
-                                <select id="supervisor_id" name="supervisor_id" class="form-control form-control-solid">
-                                    @foreach ($users->supervisors as $item)
-                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div> --}}
-                            <div id="section-row" class="col-2 d-none">
-                                <label class="ml-3">Section</label>
-                                <select required ="section_id" name="section_id" class="form-control form-control-solid">
-                                    @foreach ($users->sections as $item)
-                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
                         @endif
 
                     </div>
                     <div class="card-footer">
                         <div class="row">
                             <div class="col-lg-6">
-                                <input type="submit" value="save" class="btn btn-primary btn-gradient-success  mr-2">
+                                <input type="submit" @if (Auth::user()->role != 'admin')  @if (count($users->departments) < 1)
+                                disabled @endif @endif
+                                value="save"
+                                class="btn btn-primary btn-gradient-success mr-2">
                                 <button type="reset" class="btn btn-secondary">Cancel</button>
                             </div>
                         </div>
@@ -350,42 +320,22 @@
             case "gd":
                 mainDiv.classList.remove("d-none");
                 departmentDiv.classList.remove("d-none");
-                // gdDiv.classList.add("d-none");
-                // DirectorDiv.classList.add("d-none");
-                // dhDiv.classList.add("d-none");
-                // superDiv.classList.add("d-none");
-                sectionDiv.classList.remove("d-none");
                 break;
             case "director":
                 mainDiv.classList.remove("d-none");
-                departmentDiv.classList.add("d-none")
-                // gdDiv.classList.remove("d-none");
-                // DirectorDiv.classList.remove("d-none");
-                // dhDiv.classList.remove("d-none");
-                // superDiv.classList.remove("d-none");
+                departmentDiv.classList.remove("d-none")
                 break;
             case "dh":
                 mainDiv.classList.remove("d-none");
                 departmentDiv.classList.remove("d-none")
-                // gdDiv.classList.add("d-none");
-                // DirectorDiv.classList.add("d-none");
-                // superDiv.classList.add("d-none");
-                sectionDiv.classList.add("d-none");
                 break;
             case "super":
                 mainDiv.classList.remove("d-none");
                 departmentDiv.classList.remove("d-none")
-                // gdDiv.classList.add("d-none");
-                // DirectorDiv.classList.add("d-none");
-                // superDiv.classList.add("d-none");
-                sectionDiv.classList.add("d-none");
                 break;
             case "employ":
                 mainDiv.classList.remove("d-none");
-                departmentDiv.classList.add("d-none");
-                // gdDiv.classList.add("d-none");
-                // DirectorDiv.classList.add("d-none");
-                // superDiv.classList.add("d-none");
+                departmentDiv.classList.remove("d-none");
                 sectionDiv.classList.remove("d-none");
                 break;
         }

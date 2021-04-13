@@ -646,11 +646,13 @@
                                                         </a>
                                                     </div>
                                                 </div>
-                                                <div class="field_wrapper" id="divid">
+                                                <div class="field_wrapper" >
+                                                     @foreach($profile->products as $key)
+                                               
                                                     
-                                                    @foreach($profile->products as $key)
+                                                    
                                                                        
-                                                    <div class="row form-group">
+                                                    <div class="row form-group" id="divid{{ $key->id }}">
                                                         <div class="col-md-4">
                                                             <!-- <label>Name:</label> -->
                                                            
@@ -687,12 +689,12 @@
                                                             {{-- <div class="d-md-none mb-2"></div> --}}
                                                         </div>
                                                         <div class="col-md-2">
-                                                            <button type="button" value="{{ $key->id }}" id="productdelete" class="btn btn-gradient-danger">
+                                                            
+                                                            <button type="button" value="{{ $key->id }}" id="productdelete" class="btn btn-gradient-danger remove-button">
                                                                 Delete</button>
-
                                                         </div>
                                                     </div>
-                                                    <div class="row form-group">
+                                                    <div class="row form-group" id="divdelete{{ $key->id }}">
                                                         <div class="col-md-3">
                                                             <!-- <label>Name:</label> -->
                                                             <input type="text" class="form-control" placeholder="Kg"
@@ -719,9 +721,10 @@
                                                             <div class="d-md-none mb-2"></div>
                                                         </div>
                                                     </div>
+                                                    
                                                     @endforeach
                                                 </div>
-                                              
+                                               
 
                                             </div>
                                         </div>
@@ -1029,12 +1032,17 @@
                 });
         
             </script>
-      <script type="text/javascript">
-      function refreshPage()
+      
+<script type="text/javascript">
+      function refreshPage(divname, divname1)
       {
-        window.location.reload();
-        //document.getElementById("next").click();
+        var gfg_down =  document.getElementById(divname);
+        gfg_down.remove();
+        var div_down =  document.getElementById(divname1);
+        div_down.remove();
+
       }
+
       
       </script>
     <script type="text/javascript">
@@ -1042,7 +1050,8 @@
     $(document).on('click', '#productdelete', function(e){
 
         let productid = $('#productdelete').val();
-            
+            let divid='divid'+productid;
+            let divdelete='divdelete'+productid;
             $.ajax({
                 url: "/stageFive",
                 type: "POST",
@@ -1053,8 +1062,8 @@
                 },
                 success: function(response) {
                     console.log(response);
-                 refreshPage();
-                   
+                 refreshPage(divid,divdelete);
+               
                 },
                 
             });
@@ -1139,8 +1148,8 @@
                                                                                     </div>
                                                                                 </div> 
                                                                                  <a style="margin:10px;" href="javascript:;" data-repeater-delete=""
-                                                                                            class="btn btn-sm font-weight-bolder btn-danger btn-gradient-danger remove_button">
-                                                                                            <i class="la la-trash-o"></i>
+                                                                                            class=" btn btn-gradient-danger remove_button">
+                                                                                            Delete
                                                                                         </a>
                                                                                         </div>`
             // var fieldHTML = '<div><input type="text" name="field_name[]" value=""/><a href="javascript:void(0);" class="remove_button"><img src="remove-icon.png"/></a></div>'; //New input field html 
