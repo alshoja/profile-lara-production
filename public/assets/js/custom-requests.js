@@ -244,10 +244,11 @@ function setDocs(result) {
 }
 
 function setTrack(trackings) {
+  console.log('filtered',trackings);
+
   let filteredTrackings = trackings.filter((res) => {
     return res.type == "rejected" || res.type == "approved";
   });
-  console.log(filteredTrackings);
   let contentStr = "";
   if (filteredTrackings.length > 0) {
     filteredTrackings.forEach(function (o) {
@@ -352,8 +353,8 @@ function setProducts(data) {
 
       </tr>`;
     });
-  } else if (trackings.length <= 0) {
-    contentStr += ` <tr><td>No Track Data to Display </td></tr>`;
+  } else if (data.length <= 0) {
+    contentStr += ` <tr><td>No  Products to Display </td></tr>`;
   }
   document.getElementById("product_table").innerHTML = contentStr;
 }
@@ -465,3 +466,13 @@ function timeDifference(current, previous) {
     return Math.round(elapsed / msPerYear) + " years ago";
   }
 }
+
+
+function perPageItems() {
+  var currentPage = document.getElementById("perpage").value;
+  const urlParams = new URLSearchParams(window.location.search);
+  urlParams.set("perPage", currentPage);
+  window.location.search = urlParams;
+  // document.getElementById("demo").innerHTML = "You selected: " + x;
+}
+

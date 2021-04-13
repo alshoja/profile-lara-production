@@ -129,34 +129,112 @@
                                                                                 role="progressbar" style="width:
                                                                                 {{ (count($item->trackings) / 4) * 100 }}%;"
                                                                                 aria-valuenow="10" aria-valuemin="0"
-                                                                                aria-valuemax="100"></div>
+                                                                                aria-valuemax="100">
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </td>
                                                             <td class="text-right pr-0">
-                                                                <a href="#" data-toggle="dropdown" aria-haspopup="true"
-                                                                    aria-expanded="false"
-                                                                    class="btn btn-icon btn-light btn-hover-primary btn-sm">
-                                                                    <span class="svg-icon svg-icon-md svg-icon-primary">
-                                                                        <!--begin::Svg Icon | path:assets/media/svg/icons/General/Settings-1.svg-->
-                                                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                                                            xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                            width="24px" height="24px" viewBox="0 0 24 24"
-                                                                            version="1.1">
-                                                                            <g stroke="none" stroke-width="1" fill="none"
-                                                                                fill-rule="evenodd">
-                                                                                <rect x="0" y="0" width="24" height="24" />
-                                                                                <path
-                                                                                    d="M7,3 L17,3 C19.209139,3 21,4.790861 21,7 C21,9.209139 19.209139,11 17,11 L7,11 C4.790861,11 3,9.209139 3,7 C3,4.790861 4.790861,3 7,3 Z M7,9 C8.1045695,9 9,8.1045695 9,7 C9,5.8954305 8.1045695,5 7,5 C5.8954305,5 5,5.8954305 5,7 C5,8.1045695 5.8954305,9 7,9 Z"
-                                                                                    fill="#000000" />
-                                                                                <path
-                                                                                    d="M7,13 L17,13 C19.209139,13 21,14.790861 21,17 C21,19.209139 19.209139,21 17,21 L7,21 C4.790861,21 3,19.209139 3,17 C3,14.790861 4.790861,13 7,13 Z M17,19 C18.1045695,19 19,18.1045695 19,17 C19,15.8954305 18.1045695,15 17,15 C15.8954305,15 15,15.8954305 15,17 C15,18.1045695 15.8954305,19 17,19 Z"
-                                                                                    fill="#000000" opacity="0.3" />
-                                                                            </g>
-                                                                        </svg>
-                                                                        <!--end::Svg Icon-->
-                                                                    </span>
-                                                                </a>
+                                                                @if (request()->query('tab') != 'drafts')
+                                                                    <a href="#" data-toggle="dropdown" aria-haspopup="true"
+                                                                        aria-expanded="false"
+                                                                        class="btn btn-icon btn-light btn-hover-primary btn-sm">
+                                                                        <span class="svg-icon svg-icon-md svg-icon-primary">
+                                                                            <!--begin::Svg Icon | path:assets/media/svg/icons/General/Settings-1.svg-->
+                                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                                width="24px" height="24px"
+                                                                                viewBox="0 0 24 24" version="1.1">
+                                                                                <g stroke="none" stroke-width="1"
+                                                                                    fill="none" fill-rule="evenodd">
+                                                                                    <rect x="0" y="0" width="24"
+                                                                                        height="24" />
+                                                                                    <path
+                                                                                        d="M7,3 L17,3 C19.209139,3 21,4.790861 21,7 C21,9.209139 19.209139,11 17,11 L7,11 C4.790861,11 3,9.209139 3,7 C3,4.790861 4.790861,3 7,3 Z M7,9 C8.1045695,9 9,8.1045695 9,7 C9,5.8954305 8.1045695,5 7,5 C5.8954305,5 5,5.8954305 5,7 C5,8.1045695 5.8954305,9 7,9 Z"
+                                                                                        fill="#000000" />
+                                                                                    <path
+                                                                                        d="M7,13 L17,13 C19.209139,13 21,14.790861 21,17 C21,19.209139 19.209139,21 17,21 L7,21 C4.790861,21 3,19.209139 3,17 C3,14.790861 4.790861,13 7,13 Z M17,19 C18.1045695,19 19,18.1045695 19,17 C19,15.8954305 18.1045695,15 17,15 C15.8954305,15 15,15.8954305 15,17 C15,18.1045695 15.8954305,19 17,19 Z"
+                                                                                        fill="#000000" opacity="0.3" />
+                                                                                </g>
+                                                                            </svg>
+                                                                            <!--end::Svg Icon-->
+                                                                        </span>
+                                                                    </a>
+                                                                    <div
+                                                                        class="dropdown-menu dropdown-menu-sm dropdown-menu-left">
+                                                                        <!--begin::Navigation-->
+                                                                        <ul class="navi navi-hover">
+                                                                            <li class="navi-header pb-1">
+                                                                                <span
+                                                                                    class="text-primary text-uppercase font-weight-bold font-size-sm">Options</span>
+                                                                            </li>
+                                                                            @if ($item->is_completed == 1)
+                                                                                <li class="navi-item">
+                                                                                    <a onclick="alertAndGoToUrl('/forward/new/{{ $item->id }}','Forward or Duplicate this Profile ?')"
+                                                                                        href="#" class="navi-link">
+                                                                                        <span class="navi-icon">
+                                                                                            <i class="flaticon2-reply"></i>
+                                                                                        </span>
+                                                                                        <span class="navi-text">Forward as
+                                                                                            New</span>
+                                                                                    </a>
+                                                                                </li>
+                                                                            @endif
+
+                                                                            @if (request()->query('tab') == 'inbox')
+                                                                                <li class="navi-item">
+                                                                                    <a href="#" class="navi-link">
+                                                                                        <span class="navi-icon">
+                                                                                            <i
+                                                                                                class="flaticon-speech-bubble"></i>
+                                                                                        </span>
+                                                                                        <span
+                                                                                            onclick="getProfileData({{ $item->id }})"
+                                                                                            data-toggle="modal"
+                                                                                            data-target="#exampleModalSizeXl"
+                                                                                            class="navi-text">Reply to
+                                                                                            note</span>
+                                                                                    </a>
+                                                                                </li>
+                                                                                <li class="navi-item">
+                                                                                    <a href="#" class="navi-link">
+                                                                                        <span class="navi-icon">
+                                                                                            <i
+                                                                                                class="flaticon-placeholder-3"></i>
+                                                                                        </span>
+                                                                                        <span
+                                                                                            onclick="getProfileData({{ $item->id }})"
+                                                                                            data-toggle="modal"
+                                                                                            data-target="#exampleModalSizeXl"
+                                                                                            class="navi-text">Track</span>
+                                                                                    </a>
+                                                                                </li>
+                                                                                <li class="navi-item">
+                                                                                    <a href="{{ url('profile/resubmit', $item->id) }}"
+                                                                                        class="navi-link">
+                                                                                        <span class="navi-icon">
+                                                                                            <i
+                                                                                                class="flaticon-paper-plane"></i>
+                                                                                        </span>
+                                                                                        <span
+                                                                                            class="navi-text">Resubmit</span>
+                                                                                    </a>
+                                                                                </li>
+                                                                            @endif
+
+                                                                            {{-- <li class="navi-item">
+                                                                            <a href="#" class="navi-link">
+                                                                                <span class="navi-icon">
+                                                                                    <i class="flaticon2-writing"></i>
+                                                                                </span>
+                                                                                <span class="navi-text">Submit Draft</span>
+                                                                            </a>
+                                                                        </li> --}}
+                                                                        </ul>
+                                                                        <!--end::Navigation-->
+                                                                    </div>
+                                                                @endif
+
                                                                 @if (Auth::user()->update)
                                                                     <a href="{{ route('profiles.edit', $item->id) }}"
                                                                         class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
@@ -213,78 +291,6 @@
                                                                     </a>
                                                                 @endif
                                                                 <input type="hidden" id="profile_id">
-                                                                @if ($item->is_drafted != 1)
-                                                                    <div
-                                                                        class="dropdown-menu dropdown-menu-sm dropdown-menu-left">
-                                                                        <!--begin::Navigation-->
-                                                                        <ul class="navi navi-hover">
-                                                                            <li class="navi-header pb-1">
-                                                                                <span
-                                                                                    class="text-primary text-uppercase font-weight-bold font-size-sm">Options</span>
-                                                                            </li>
-                                                                            <li class="navi-item">
-                                                                                <a onclick="alertAndGoToUrl('/forward/new/{{ $item->id }}','Forward or Duplicate this Profile ?')"
-                                                                                    href="#" class="navi-link">
-                                                                                    <span class="navi-icon">
-                                                                                        <i class="flaticon2-reply"></i>
-                                                                                    </span>
-                                                                                    <span class="navi-text">Forward as
-                                                                                        New</span>
-                                                                                </a>
-                                                                            </li>
-                                                                            <li class="navi-item">
-                                                                                <a href="#" class="navi-link">
-                                                                                    <span class="navi-icon">
-                                                                                        <i
-                                                                                            class="flaticon-speech-bubble"></i>
-                                                                                    </span>
-                                                                                    <span
-                                                                                        onclick="getProfileData({{ $item->id }})"
-                                                                                        data-toggle="modal"
-                                                                                        data-target="#exampleModalSizeXl"
-                                                                                        class="navi-text">Reply to
-                                                                                        note</span>
-                                                                                </a>
-                                                                            </li>
-                                                                            <li class="navi-item">
-                                                                                <a href="#" class="navi-link">
-                                                                                    <span class="navi-icon">
-                                                                                        <i
-                                                                                            class="flaticon-placeholder-3"></i>
-                                                                                    </span>
-                                                                                    <span
-                                                                                        onclick="getProfileData({{ $item->id }})"
-                                                                                        data-toggle="modal"
-                                                                                        data-target="#exampleModalSizeXl"
-                                                                                        class="navi-text">Track</span>
-                                                                                </a>
-                                                                            </li>
-                                                                            @if (request()->query('tab') == 'inbox')
-                                                                                <li class="navi-item">
-                                                                                    <a href="{{ url('profile/resubmit', $item->id) }}"
-                                                                                        class="navi-link">
-                                                                                        <span class="navi-icon">
-                                                                                            <i
-                                                                                                class="flaticon-paper-plane"></i>
-                                                                                        </span>
-                                                                                        <span
-                                                                                            class="navi-text">Resubmit</span>
-                                                                                    </a>
-                                                                                </li>
-                                                                            @endif
-
-                                                                            {{-- <li class="navi-item">
-                                                                            <a href="#" class="navi-link">
-                                                                                <span class="navi-icon">
-                                                                                    <i class="flaticon2-writing"></i>
-                                                                                </span>
-                                                                                <span class="navi-text">Submit Draft</span>
-                                                                            </a>
-                                                                        </li> --}}
-                                                                        </ul>
-                                                                        <!--end::Navigation-->
-                                                                    </div>
-                                                                @endif
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -652,11 +658,8 @@
                                                                                                                 KG</th>
                                                                                                         </tr>
                                                                                                     </thead>
-                                                                                                    <tbody id="product_table">
-                                                                                                    @foreach($profiles as $item)
-                                                                                                         
-                                                                                                          @endforeach
-                                                                                                       
+                                                                                                    <tbody
+                                                                                                        id="product_table">
 
                                                                                                     </tbody>
                                                                                                 </table>
@@ -1026,18 +1029,34 @@
                         </a> --}}
                         {{ $profiles->links() }}
                     </div>
-                    {{-- <div class="d-flex align-items-center">
-                        <select
+                    <div class="d-flex align-items-center">
+                        <select id="perpage" onchange="perPageItems()"
                             class="form-control form-control-sm text-primary font-weight-bold mr-4 border-0 bg-light-primary"
                             style="width: 75px;">
-                            <option value="10">10</option>
-                            <option value="20">20</option>
-                            <option value="30">30</option>
-                            <option value="50">50</option>
-                            <option value="100">100</option>
+                            @if (request()->query('perPage'))
+                                <option selected hidden value="{{ request()->query('perPage') }}">
+                                    {{ request()->query('perPage') }}
+                                </option>
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="30">30</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            @else
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="30">30</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            @endif
+
                         </select>
-                        <span class="text-muted">Displaying 10 of 230 records</span>
-                    </div> --}}
+                        @if (request()->query('perPage'))
+                            <span class="text-muted">Displaying {{ request()->query('perPage') }} records</span>
+                        @else
+                            <span class="text-muted">Displaying 10 records</span>
+                        @endif
+                    </div>
                 </div>
                 <!--end::Pagination-->
             </div>
