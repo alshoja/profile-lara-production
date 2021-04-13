@@ -179,6 +179,18 @@
                                                                                             New</span>
                                                                                     </a>
                                                                                 </li>
+                                                                                <li class="navi-item">
+                                                                                    <a target="_blank"
+                                                                                        href="{{ url('profile/pdf', $item->id) }}"
+                                                                                        href="#" class="navi-link">
+                                                                                        <span class="navi-icon">
+                                                                                            <i
+                                                                                                class="flaticon2-document"></i>
+                                                                                        </span>
+                                                                                        <span class="navi-text">Export
+                                                                                            PDF</span>
+                                                                                    </a>
+                                                                                </li>
                                                                             @endif
 
                                                                             @if (request()->query('tab') == 'inbox')
@@ -336,16 +348,19 @@
                                                                             </a>
                                                                         </li>
                                                                         @if (Auth::user()->role != 'employ')
-                                                                            @if (Auth::user()->role != 'employ')
-                                                                                <li class="nav-item">
-                                                                                    <a class="nav-link" data-toggle="tab"
-                                                                                        href="#kt_tab_pane_5_de">
-                                                                                        <span class="nav-icon"><i
-                                                                                                class="flaticon-information"></i></span>
-                                                                                        <span
-                                                                                            class="nav-text">Decision</span>
-                                                                                    </a>
-                                                                                </li>
+                                                                            @if (Auth::user()->role != 'admin')
+                                                                                @if (request()->query('tab') != 'completed')
+                                                                                    <li class="nav-item">
+                                                                                        <a class="nav-link"
+                                                                                            data-toggle="tab"
+                                                                                            href="#kt_tab_pane_5_de">
+                                                                                            <span class="nav-icon"><i
+                                                                                                    class="flaticon-information"></i></span>
+                                                                                            <span
+                                                                                                class="nav-text">Decision</span>
+                                                                                        </a>
+                                                                                    </li>
+                                                                                @endif
                                                                             @endif
                                                                         @endif
 
