@@ -99,8 +99,11 @@ Route::post('updateUser', [App\Http\Controllers\ProfileController::class, 'updat
 Route::post('stageThree', [App\Http\Controllers\ProfileController::class, 'stageThree']);
 Route::post('stageFour', [App\Http\Controllers\ProfileController::class, 'stageFour']);
 Route::post('stageFive', [App\Http\Controllers\ProfileController::class, 'stageFive']);
+Route::post('stageSix', [App\Http\Controllers\ProfileController::class, 'stageSix']);
+
 
 Route::post('profileUpdate', [App\Http\Controllers\ProfileController::class, 'profileUpdate']);
+//Route::post('productDelete', [App\Http\Controllers\ProfileController::class, 'productDelete']);
 
 Route::get('profile/pdf/{id}', [App\Http\Controllers\ProfileController::class, 'renderPdf']);
 

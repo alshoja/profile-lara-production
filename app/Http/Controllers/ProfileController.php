@@ -252,6 +252,16 @@ class ProfileController extends Controller
     }
     public function stageFive(Request $request)
     {
+
+       
+        $id=$request->input('productid');
+        $product = Product::destroy($id);
+        return response()->json(['success' => 'Form is successfully submitted!']);
+    }
+    public function stageSix(Request $request)
+    {
+
+        
         $belongs_to = $request->input('belongs_to');
         $editid4 = $request->input('editid4');
         $is_drafted = 0;
@@ -259,13 +269,12 @@ class ProfileController extends Controller
         $data = array("belongs_to" => $belongs_to, "is_drafted" => $is_drafted
     );
         try {
-            DB::table('profiles')->where('id', $editid4)->update($data);
-            return response()->json(['success' => 'Form is successfully submitted!']);
+           DB::table('profiles')->where('id', $editid4)->update($data);
+          return response()->json(['success' => 'Form is successfully submitted!']);
         } catch (\Illuminate\Database\QueryException $ex) {
             dd($ex->getMessage());
         }
     }
-
     /**
      * Display the specified resource.
      *
@@ -389,6 +398,12 @@ class ProfileController extends Controller
 
         return response()->json(['success' => 'Form is successfully submitted!']);
     }
+    }
+    public function productDelete(Request $request)
+    {
+        $id=$request->input('productid');
+        $product = Product::destroy($id);
+        return response()->json(['success' => 'Form is successfully submitted!']);
     }
 
     /**

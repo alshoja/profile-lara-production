@@ -1093,7 +1093,7 @@
             let editid4 = $('#editid4').val();
 
             $.ajax({
-                url: "/stageFive",
+                url: "/stageSix",
                 type: "POST",
                 data: {
                     "_token": "{{ csrf_token() }}",
