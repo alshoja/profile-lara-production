@@ -9,8 +9,9 @@ Project has been developed using Laravel and Bootstrap, You can seed the databas
 
 ### Prerequisites
 
-1. PHP 7.x higher versions
-2. Composer v1.9.0
+1. PHP 8.x higher versions
+1. Laravel 8.x higher versions
+2. Composer v2.0
 
 ### Features
 
@@ -65,7 +66,7 @@ Update any of the user's role field to 'admin' in users table for access of admi
 * [Laravel](https://laravel.com) - Download  Laravel from here.
 * [Bootstrap](http://getbootstrap.com/) - Frontend
 * [Sweet Alert](http://getbootstrap.com/)- Alerts
-* [Dashboard](https://preview.keenthemes.com/metronic/demo1/index.html)
+* [Dashboard](https://preview.keenthemes.com/metronic/demo1/index.html)-Dashboard
 
 
 Please read [CONTRIBUTING.md](https://github.com/alshoja/Income-Expence-Manager/blob/master/CODE_OF_CONDUCT.md) for details on our code of conduct, and the process for submitting pull requests to us.
@@ -73,7 +74,7 @@ Please read [CONTRIBUTING.md](https://github.com/alshoja/Income-Expence-Manager/
 
 ## Authors
 
-* **Alshoja M ikbal** - *Initial work* - [Alshoja ](https://github.com/alshoja)
+* **Alshoja M ikbal** - *Developer* - [Alshoja ](https://github.com/alshoja)
 
 
 ## License
