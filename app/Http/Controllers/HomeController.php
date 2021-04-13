@@ -133,9 +133,17 @@ class HomeController extends Controller
 
     public function getAnalyticsCount($from, $to, $search_date)
     {
+        if (Auth::user()->role == 'employ') {
+            return $this->getProfileEnteredCount($from, $to, $search_date);
+        } else {
+            return $this->getUserCount($from, $to, $search_date);
+        }
+    }
+
+    public function getUserCount($from, $to, $search_date)
+    {
         $users = User::select('id', 'created_at')->where(function (Builder $query) use ($from, $to, $search_date) {
             if ($from  && $to) {
-                // dd($from);
                 $query->where('created_at', '>=', $from)
                     ->where('created_at', '<=', $to);
             }
@@ -149,7 +157,40 @@ class HomeController extends Controller
                 //return Carbon::parse($date->created_at)->format('Y'); // grouping by years
                 return Carbon::parse($date->created_at)->format('m'); // grouping by months
             });
-        // dd($users);
+        $usermcount = [];
+        $userArr = [];
+
+        foreach ($users as $key => $value) {
+            $usermcount[(int)$key] = count($value);
+        }
+
+        for ($i = 1; $i <= 12; $i++) {
+            if (!empty($usermcount[$i])) {
+                $userArr[$i] = $usermcount[$i];
+            } else {
+                $userArr[$i] = 0;
+            }
+        }
+        return $userArr;
+    }
+
+    public function getProfileEnteredCount($from, $to, $search_date)
+    {
+        $users = Profile::select('id', 'created_at')->where(function (Builder $query) use ($from, $to, $search_date) {
+            if ($from  && $to) {
+                $query->where('created_at', '>=', $from)
+                    ->where('created_at', '<=', $to);
+            }
+            if ($search_date) {
+                $query->whereDate('created_at', '=', $search_date);
+            }
+            return $query->where('employ_id', Auth::user()->id);
+        })
+            ->get()
+            ->groupBy(function ($date) {
+                //return Carbon::parse($date->created_at)->format('Y'); // grouping by years
+                return Carbon::parse($date->created_at)->format('m'); // grouping by months
+            });
         $usermcount = [];
         $userArr = [];
 
@@ -212,6 +253,16 @@ class HomeController extends Controller
             if ($search_date) {
                 $query->whereDate('created_at', '=', $search_date);
             }
+
+            if (Auth::user()->role == 'employ') {
+                $query->where('employ_id', '=', Auth::user()->id);
+            } else {
+                $query->whereIn('dep_in', '=', session('department'));
+            }
+
+            if ($search_date) {
+                $query->whereDate('created_at', '=', $search_date);
+            }
             return $query;
         })
             ->get()
@@ -241,7 +292,6 @@ class HomeController extends Controller
     {
         $notification = (object)[];
         $notification->approved = Profile::where('is_notify', 1)->take(5)->get();
-        // $notification->rejected = Profile::all();
         return response()->json($notification, 200);
     }
 }
