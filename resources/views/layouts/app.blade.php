@@ -600,12 +600,15 @@
         </li> --}}
         <!--end::Item-->
         <!--begin::Item-->
-        <li class="nav-item mb-2" data-toggle="tooltip" title="Add new Profile" data-placement="left">
-            <a class="btn btn-sm btn-icon btn-bg-light btn-icon-warning btn-hover-warning"
-                href="{{ url('/profile/add-profile') }}" >
-                <i class="flaticon2-telegram-logo"></i>
-            </a>
-        </li>
+        @if (Auth::user()->role == 'employ')
+            <li class="nav-item mb-2" data-toggle="tooltip" title="Add new Profile" data-placement="left">
+                <a class="btn btn-sm btn-icon btn-bg-light btn-icon-warning btn-hover-warning"
+                    href="{{ url('/profile/add-profile') }}">
+                    <i class="flaticon2-telegram-logo"></i>
+                </a>
+            </li>
+        @endif
+
         <!--end::Item-->
         <!--begin::Item-->
         <li class="nav-item" data-toggle="tooltip" title="Inbox" data-placement="left">

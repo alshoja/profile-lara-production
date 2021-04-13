@@ -108,23 +108,25 @@
                         </div>
                         <!--end::Header-->
                         <!--begin::Body-->
-                        <div class="card-body pt-4">
+                        <div class="card-body pt-3">
                             <!--begin::Timeline-->
-                            <div class="timeline timeline-6 mt-3">
+                            <div class="timeline timeline-6 mt-2">
                                 <!--begin::Item-->
                                 @foreach ($dashData->activity as $item)
                                     <div class="timeline-item align-items-start">
                                         <!--begin::Label-->
-                                        <div class="timeline-label font-weight-bolder text-dark-75 font-size-lg">
-                                            {{ date('h:i', strtotime($item->created_at)) }}</div>
+                                        <div class="timeline-label  text-dark-70 ">
+                                            {{ date('h:i A', strtotime($item->created_at)) }}</div>
                                         <!--end::Label-->
                                         <!--begin::Badge-->
                                         <div class="timeline-badge">
-                                            <i class="fa fa-genderless @if ($item->type ==
-                                                'note') text-warning @endif
+                                            <i class="fa fa-genderless 
+                                            @if ($item->type == 'pending') text-warning @endif
+                                            @if ($item->type == 'note') text-grey @endif
                                                 @if ($item->type == 'approved')
                                                     text-success
-                                                @else
+                                                @endif
+                                                @if ($item->type == 'rejected')
                                                     text-danger
                                                     @endif icon-xl">
                                             </i>
@@ -177,7 +179,7 @@
                                         <a href="#" class="text-warning font-weight-bold font-size-h6">
                                             Entered</a>
                                     </div>
-                                    @if (Auth::user()->role != 'employ')
+                                    {{-- @if (Auth::user()->role != 'employ')
                                         <div class="col bg-light-primary px-6 py-8 rounded-xl mb-7">
                                             <span class="svg-icon svg-icon-3x svg-icon-primary d-block my-2">
                                                 <p class="text-info font-weight-bold font-size-h6 mt-2">
@@ -186,7 +188,7 @@
                                             </span>
                                             <a href="#" class="text-primary font-weight-bold font-size-h6 mt-2"> Users</a>
                                         </div>
-                                    @endif
+                                    @endif --}}
                                 </div>
                                 <!--end::Row-->
                                 <!--begin::Row-->
@@ -199,7 +201,7 @@
                                             <!--end::Svg Icon-->
                                         </span>
                                         <a href="#" class="text-danger font-weight-bold font-size-h6 mt-2">Approved
-                                            </a>
+                                        </a>
                                     </div>
                                     <div class="col bg-light-success px-6 py-8 rounded-xl">
                                         <span class="svg-icon svg-icon-3x svg-icon-success d-block my-2">

@@ -55,7 +55,7 @@ class SignDocumentListener
                 $track->status = "approved";
                 $track->save();
 
-                $profile = Profile::where('profile_id', $event->trackProfile->profile_id)->firstOrFail();
+                $profile = Profile::where('id', $event->trackProfile->profile_id)->firstOrFail();
                 $profile->is_completed = 1;
                 $profile->save();
             }

@@ -116,7 +116,7 @@ class HomeController extends Controller
                 $lastId = Profile::orderBy('id', 'desc')->whereIn('dep_id', session('department'))->take(1)->first()->id;
             }
         }
-        $dashData->activity = TimeLine::where('profile_id', $lastId)->take(10)->where(function (Builder $query) use ($from, $to, $search_date) {
+        $dashData->activity = TimeLine::orderBy('id', 'asc')->where('profile_id', $lastId)->take(8)->where(function (Builder $query) use ($from, $to, $search_date) {
             if ($from  && $to) {
                 $query->where('created_at', '>=', $from)
                     ->where('created_at', '<=', $to);
@@ -257,7 +257,7 @@ class HomeController extends Controller
             if (Auth::user()->role == 'employ') {
                 $query->where('employ_id', '=', Auth::user()->id);
             } else {
-                $query->whereIn('dep_in', '=', session('department'));
+                $query->whereIn('dep_id', session('department'));
             }
 
             if ($search_date) {
