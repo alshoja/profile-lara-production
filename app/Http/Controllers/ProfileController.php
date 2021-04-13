@@ -30,14 +30,16 @@ class ProfileController extends Controller
     public function index(Request $request)
     {
         $tab = null;
+        $perPage = null;
         $search = request()->query('search');
         $tab = $request->input('tab');
         $from = $request->input('from');
         $to = $request->input('to');
+        $perPage = $request->input('perPage');
         if ($tab === null) {
             return Redirect::back();
         }
-        $profiles = Profile::with('trackings')->where(function (Builder $query) use ($search, $tab, $from, $to) {
+        $profiles = Profile::with('trackings')->where(function (Builder $query) use ($search, $tab, $from, $to, $perPage) {
             if ($search) {
                 $query->orWhere('name', 'like', '%' . $search . '%')
                     ->orWhere('name', 'like', '%' . $search . '%')
@@ -89,9 +91,10 @@ class ProfileController extends Controller
             } else {
                 return $query->whereIn('dep_id', session('department'));
             }
-        })->orderBy('id', 'DESC')->paginate(5);
-        // return response()->json($profiles, 200);
-        // $profile = Profile::with('timeline', 'trackings', 'department', 'section', 'products')->findOrFail($id);
+            if ($perPage === null) {
+                $perPage = 10;
+            }
+        })->orderBy('id', 'DESC')->paginate($perPage);
         return view('pages.inbox', compact('profiles'));
     }
 
@@ -255,9 +258,10 @@ class ProfileController extends Controller
         $belongs_to = $request->input('belongs_to');
         $editid4 = $request->input('editid4');
         $is_drafted = 0;
-       
-        $data = array("belongs_to" => $belongs_to, "is_drafted" => $is_drafted
-    );
+
+        $data = array(
+            "belongs_to" => $belongs_to, "is_drafted" => $is_drafted
+        );
         try {
             DB::table('profiles')->where('id', $editid4)->update($data);
             return response()->json(['success' => 'Form is successfully submitted!']);
@@ -349,46 +353,44 @@ class ProfileController extends Controller
             "belongs_to" => $request->input('belongs_to')
         );
         if ($request->ajax()) {
-        try {
-            $product_id = $request->product_id;
-            $product_type = $request->product_type;
-            $quantity_kg = $request->quantity_kg;
-            $quantity_g = $request->quantity_g;
-            $quantity_ml = $request->quantity_ml;
-            $quantity_digit = $request->quantity_digit;
-            $manufacture_type = $request->manufacture_type;
-            $shipped_type = $request->shipped_type;
-            $profile_id = $editid;
-            $product = new Product();
-            $m = count($product_type);
-            for ($count = 0; $count < count($product_type); $count++) {
-                $dataa = array(
-                    'id' => $product_id[$count],
-                    'product_type' => $product_type[$count],
-                    'quantity_kg'  => $quantity_kg[$count],
-                    'quantity_g'  => $quantity_g[$count],
-                    'quantity_ml'  => $quantity_ml[$count],
-                    'quantity_digit' => $quantity_digit[$count],
-                    'manufacture_type' => $manufacture_type[$count],
-                    'shipped_type' => $shipped_type[$count],
-                    'profile_id' => $profile_id
-                );
-                if($product_id[$count] == "")
-                {
-                    Product::create($dataa);
+            try {
+                $product_id = $request->product_id;
+                $product_type = $request->product_type;
+                $quantity_kg = $request->quantity_kg;
+                $quantity_g = $request->quantity_g;
+                $quantity_ml = $request->quantity_ml;
+                $quantity_digit = $request->quantity_digit;
+                $manufacture_type = $request->manufacture_type;
+                $shipped_type = $request->shipped_type;
+                $profile_id = $editid;
+                $product = new Product();
+                $m = count($product_type);
+                for ($count = 0; $count < count($product_type); $count++) {
+                    $dataa = array(
+                        'id' => $product_id[$count],
+                        'product_type' => $product_type[$count],
+                        'quantity_kg'  => $quantity_kg[$count],
+                        'quantity_g'  => $quantity_g[$count],
+                        'quantity_ml'  => $quantity_ml[$count],
+                        'quantity_digit' => $quantity_digit[$count],
+                        'manufacture_type' => $manufacture_type[$count],
+                        'shipped_type' => $shipped_type[$count],
+                        'profile_id' => $profile_id
+                    );
+                    if ($product_id[$count] == "") {
+                        Product::create($dataa);
+                    } else {
+                        DB::table('products')->where('id', $product_id[$count])->update($dataa);
+                    }
+                    //  Product::create($dataa);
                 }
-                else{
-                DB::table('products')->where('id', $product_id[$count])->update($dataa);
-                }
-              //  Product::create($dataa);
+                DB::table('profiles')->where('id', $editid)->update($data);
+            } catch (\Illuminate\Database\QueryException $ex) {
+                dd($ex->getMessage());
             }
-            DB::table('profiles')->where('id', $editid)->update($data);
-        } catch (\Illuminate\Database\QueryException $ex) {
-            dd($ex->getMessage());
-        }
 
-        return response()->json(['success' => 'Form is successfully submitted!']);
-    }
+            return response()->json(['success' => 'Form is successfully submitted!']);
+        }
     }
 
     /**

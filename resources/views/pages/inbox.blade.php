@@ -1029,18 +1029,34 @@
                         </a> --}}
                         {{ $profiles->links() }}
                     </div>
-                    {{-- <div class="d-flex align-items-center">
-                        <select
+                    <div class="d-flex align-items-center">
+                        <select id="perpage" onchange="perPageItems()"
                             class="form-control form-control-sm text-primary font-weight-bold mr-4 border-0 bg-light-primary"
                             style="width: 75px;">
-                            <option value="10">10</option>
-                            <option value="20">20</option>
-                            <option value="30">30</option>
-                            <option value="50">50</option>
-                            <option value="100">100</option>
+                            @if (request()->query('perPage'))
+                                <option selected hidden value="{{ request()->query('perPage') }}">
+                                    {{ request()->query('perPage') }}
+                                </option>
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="30">30</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            @else
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="30">30</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            @endif
+
                         </select>
-                        <span class="text-muted">Displaying 10 of 230 records</span>
-                    </div> --}}
+                        @if (request()->query('perPage'))
+                            <span class="text-muted">Displaying {{ request()->query('perPage') }} records</span>
+                        @else
+                            <span class="text-muted">Displaying 10 records</span>
+                        @endif
+                    </div>
                 </div>
                 <!--end::Pagination-->
             </div>
