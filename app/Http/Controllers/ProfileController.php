@@ -257,7 +257,16 @@ class ProfileController extends Controller
 
     public function stageFive(Request $request)
     {
-        $data = [];
+
+       
+        $id=$request->input('productid');
+        $product = Product::destroy($id);
+        return response()->json(['success' => 'Form is successfully submitted!']);
+    }
+    public function stageSix(Request $request)
+    {
+
+        
         $belongs_to = $request->input('belongs_to');
         $id = $request->input('editid4');
 
@@ -291,7 +300,6 @@ class ProfileController extends Controller
             dd($ex->getMessage());
         }
     }
-
     /**
      * Display the specified resource.
      *
@@ -413,6 +421,12 @@ class ProfileController extends Controller
 
             return response()->json(['success' => 'Form is successfully submitted!']);
         }
+    }
+    public function productDelete(Request $request)
+    {
+        $id=$request->input('productid');
+        $product = Product::destroy($id);
+        return response()->json(['success' => 'Form is successfully submitted!']);
     }
 
     /**

@@ -646,13 +646,14 @@
                                                         </a>
                                                     </div>
                                                 </div>
-                                                <div class="field_wrapper">
+                                                <div class="field_wrapper" id="divid">
                                                     
                                                     @foreach($profile->products as $key)
                                                                        
                                                     <div class="row form-group">
                                                         <div class="col-md-4">
                                                             <!-- <label>Name:</label> -->
+                                                           
                                                             <input type="text" hidden name="product_id[]" id="product_id[]" value="{{ $key->id }}">
                                                             <select name="product_type[]" id="product_type[]"
                                                                 class="form-control form-control-solid ">
@@ -663,7 +664,7 @@
                                                             </select>
                                                             {{-- <div class="d-md-none mb-2"></div> --}}
                                                         </div>
-                                                        <div class="col-md-4">
+                                                        <div class="col-md-3">
                                                             <!-- <label>Name:</label> -->
                                                             <select name="manufacture_type[]" id="manufacture_type[]"
                                                                 class="form-control form-control-solid">
@@ -674,7 +675,7 @@
                                                             </select>
                                                             {{-- <div class="d-md-none mb-2"></div> --}}
                                                         </div>
-                                                        <div class="col-md-4">
+                                                        <div class="col-md-3">
                                                             <!-- <label>Name:</label> -->
                                                             <select name="shipped_type[]" id="shipped_type[]"
                                                                 class="form-control form-control-solid">
@@ -684,6 +685,11 @@
                                                                 <option value="ZW">P 3</option>
                                                             </select>
                                                             {{-- <div class="d-md-none mb-2"></div> --}}
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <button type="button" value="{{ $key->id }}" id="productdelete" class="btn btn-gradient-danger">
+                                                                Delete</button>
+
                                                         </div>
                                                     </div>
                                                     <div class="row form-group">
@@ -1015,7 +1021,7 @@
                         success: function(data) {
                            
                         console.log(data);   
-                      
+                        
                         },
                     });
         
@@ -1023,7 +1029,39 @@
                 });
         
             </script>
+      <script type="text/javascript">
+      function refreshPage()
+      {
+        window.location.reload();
+        //document.getElementById("next").click();
+      }
+      
+      </script>
+    <script type="text/javascript">
     
+    $(document).on('click', '#productdelete', function(e){
+
+        let productid = $('#productdelete').val();
+            
+            $.ajax({
+                url: "/stageFive",
+                type: "POST",
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    productid: productid,
+                   
+                },
+                success: function(response) {
+                    console.log(response);
+                 refreshPage();
+                   
+                },
+                
+            });
+});
+
+
+</script>
   
      <script type="text/javascript">
         $(document).ready(function() {
@@ -1126,6 +1164,7 @@
         });
 
     </script>
+    
 @endsection
 @push('scripts')
     <script src="{{ asset('assets/js/pages/crud/forms/widgets/form-repeater.js') }}"></script>
