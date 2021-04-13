@@ -3,6 +3,7 @@
 # Profile Management  
 # Look and Feel
 
+<a target="_blank" href="#"><img src="https://i.ibb.co/LdRW8PY/Screenshot-20210413-161528.png"/></a>
 <a target="_blank" href="#"><img src="https://i.ibb.co/jMfGjLv/Screenshot-20210413-155438.png"/></a>
 ## Getting Started
 Project has been developed using Laravel and Bootstrap, You can seed the database and Customize as you want
