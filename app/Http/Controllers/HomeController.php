@@ -66,6 +66,7 @@ class HomeController extends Controller
                 $query->where('is_completed', 1);
                 return $query->whereIn('section_id', session('section'));
             } else {
+                $query->where('is_completed', 1);
                 return $query->whereIn('dep_id', session('department'));
             }
         })->take(5)->get();
