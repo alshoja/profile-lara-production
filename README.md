@@ -47,7 +47,7 @@ cp .env.example .env
     php artisan migrate --seed
 
 
-## You can find the demo Here
+## How to run ?
 
 * Username :(Copy from users table after seeding)
 * Password : password
