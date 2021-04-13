@@ -1,11 +1,10 @@
-[![Build Status](https://travis-ci.org/alshoja/ShoppingCart.svg?branch=master)](https://travis-ci.org/alshoja/ShoppingCart)
 
 
 # LenzKart  
 A shopping cart which can to be used universally for all types of Ecommerce Websites 
 # Look and Feel
 
-<a target="_blank" href="http://shoppingcart.zenithsbm.com"><img src="https://i.imgur.com/T0Po2qO.png"/></a>
+<a target="_blank" href="#"><img src="https://i.ibb.co/jMfGjLv/Screenshot-20210413-155438.png"/></a>
 ## Getting Started
 Project has been developed using Laravel and Bootsrap, You can seed the database and Customize as you want
 
