@@ -1,6 +1,6 @@
 
 
-# Profile Management  
+# Profile Management 2.0 
 # Look and Feel
 
 <a target="_blank" href="#"><img src="https://i.ibb.co/LdRW8PY/Screenshot-20210413-161528.png"/></a>
