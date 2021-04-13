@@ -23,7 +23,7 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                                                                                    <g stroke=" none"
+                                                                                                        <g stroke=" none"
                                             stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
@@ -48,7 +48,7 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                                                                                    <g stroke=" none"
+                                                                                                        <g stroke=" none"
                                             stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
@@ -73,7 +73,7 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                                                                                    <g stroke=" none"
+                                                                                                        <g stroke=" none"
                                             stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
@@ -98,7 +98,7 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                                                                                    <g stroke=" none"
+                                                                                                        <g stroke=" none"
                                             stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
@@ -123,7 +123,7 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow last">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                                                                                    <g stroke=" none"
+                                                                                                        <g stroke=" none"
                                             stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
@@ -150,7 +150,7 @@
                                     @csrf
                                     <!--begin::Wizard Step 1-->
                                     <div class="pb-5" data-wizard-type="step-content" data-wizard-state="current">
-                                        <h6 class="text-success"><small><?php echo  date("l"); ?>&nbsp;,<?php echo date("d-Y"); ?>&nbsp;Time:<?php echo date("h:i:sa") ?></small></h6>
+                                        <h6 class="text-success"><small><?php echo date('l'); ?>&nbsp;,<?php echo date('d-Y'); ?>&nbsp;Time:<?php echo date('h:i:sa'); ?></small></h6>
                                         <br>
                                         <!-- <h3 class="mb-10 font-weight-bold text-dark">Some Label</h3> -->
                                         <!--begin::Input-->
@@ -875,8 +875,8 @@
                                             </div>
                                         </div>
                                         <!--end::Select
-                                                                                                <input type = 'submit' value = "Save" class="btn btn-success font-weight-bolder"/>
-                                                                                                <button class="btn btn-success font-weight-bolder" id="editstep">smave</button>-->
+                                                                                                    <input type = 'submit' value = "Save" class="btn btn-success font-weight-bolder"/>
+                                                                                                    <button class="btn btn-success font-weight-bolder" id="editstep">smave</button>-->
                                         <button type="submit" id="submit" onclick="enableNext()"
                                             class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4">Save</button>
                                     </div>
@@ -1112,39 +1112,32 @@
 
     <!-- Stage 2 Script-->
     <script type="text/javascript">
-
-$.ajaxSetup({
-          headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-          }
-      });
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
 
         $('#kt_form1').on('submit', function(event) {
             event.preventDefault();
-
-          
-
             $.ajax({
                 url: "/updateUser",
                 method: 'POST',
                 data: $('#kt_form1').serialize(),
                 dataType: 'json',
                 success: function(data) {
-                   
-                    if(data.error)
-                {
-                    var error_html = '';
-                    for(var count = 0; count < data.error.length; count++)
-                    {
-                        error_html += '<p>'+data.error[count]+'</p>';
+
+                    if (data.error) {
+                        console.log(data.error);
+                        var error_html = '';
+                        for (var count = 0; count < data.error.length; count++) {
+                            showToast(data.error[count], 'Validation Error', 'danger');
+                        }
+                    } else {
+                        // dynamic_field(1);
+                        $('#result').html('<div class="alert alert-success">' + data.success +
+                        '</div>');
                     }
-                    $('#result').html('<div class="alert alert-danger">'+error_html+'</div>');
-                }
-                else
-                {
-                    dynamic_field(1);
-                    $('#result').html('<div class="alert alert-success">'+data.success+'</div>');
-                }
                 },
             });
 
@@ -1242,79 +1235,79 @@ $.ajaxSetup({
             var addButton = $('.add_button'); //Add button selector
             var wrapper = $('.field_wrapper'); //Input field wrapper
             var fieldHTML = `
-                            <div> 
-                            <div class="row form-group">
-                                                                                <div class="col-md-4">
-                                                                                  
-                                                                                    <select name="product_type[]" id="product_type[]"
-                                                                                        class="form-control form-control-solid ">
-                                                                                        <option hidden value="">Select Product-1&nbsp;
-                                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                                            &nbsp;
-                                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                                        </option>
-                                                                                        <option value="YE">P 1</option>
-                                                                                        <option value="ZM">P 2</option>
-                                                                                        <option value="ZW">P 3</option>
-                                                                                    </select>
-                                                                                    {{-- <div class="d-md-none mb-2"></div> --}}
-                                                                                </div>
-                                                                                <div class="col-md-4">
-                                                                                  
-                                                                                    <select name="manufacture_type[]" id="manufacture_type[]"
-                                                                                        class="form-control form-control-solid">
-                                                                                        <option hidden value=""> Select Type-1</option>
-                                                                                        <option value="YE">P 1</option>
-                                                                                        <option value="ZM">P 2</option>
-                                                                                        <option value="ZW">P 3</option>
-                                                                                    </select>
-                                                                                    {{-- <div class="d-md-none mb-2"></div> --}}
-                                                                                </div>
-                                                                                <div class="col-md-4">
-                                                                               
-                                                                                    <select name="shipped_type[]" id="shipped_type[]"
-                                                                                        class="form-control form-control-solid">
-                                                                                        <option selected hidden value="">Select type-3
-                                                                                        </option>
-                                                                                        <option value="YE">P 1</option>
-                                                                                        <option value="ZM">P 2</option>
-                                                                                        <option value="ZW">P 3</option>
-                                                                                    </select>
-                                                                                    {{-- <div class="d-md-none mb-2"></div> --}}
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="row form-group">
-                                                                                <div class="col-md-3">
+                                <div> 
+                                <div class="row form-group">
+                                                                                    <div class="col-md-4">
+                                                                                      
+                                                                                        <select name="product_type[]" id="product_type[]"
+                                                                                            class="form-control form-control-solid ">
+                                                                                            <option hidden value="">Select Product-1&nbsp;
+                                                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                                                &nbsp;
+                                                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                                            </option>
+                                                                                            <option value="YE">P 1</option>
+                                                                                            <option value="ZM">P 2</option>
+                                                                                            <option value="ZW">P 3</option>
+                                                                                        </select>
+                                                                                        {{-- <div class="d-md-none mb-2"></div> --}}
+                                                                                    </div>
+                                                                                    <div class="col-md-4">
+                                                                                      
+                                                                                        <select name="manufacture_type[]" id="manufacture_type[]"
+                                                                                            class="form-control form-control-solid">
+                                                                                            <option hidden value=""> Select Type-1</option>
+                                                                                            <option value="YE">P 1</option>
+                                                                                            <option value="ZM">P 2</option>
+                                                                                            <option value="ZW">P 3</option>
+                                                                                        </select>
+                                                                                        {{-- <div class="d-md-none mb-2"></div> --}}
+                                                                                    </div>
+                                                                                    <div class="col-md-4">
                                                                                    
-                                                                                    <input type="text" class="form-control" placeholder="Kg"
-                                                                                        name="quantity_kg[]" id="quantity_kg[]" />
-                                                                                    <div class="d-md-none mb-2"></div>
+                                                                                        <select name="shipped_type[]" id="shipped_type[]"
+                                                                                            class="form-control form-control-solid">
+                                                                                            <option selected hidden value="">Select type-3
+                                                                                            </option>
+                                                                                            <option value="YE">P 1</option>
+                                                                                            <option value="ZM">P 2</option>
+                                                                                            <option value="ZW">P 3</option>
+                                                                                        </select>
+                                                                                        {{-- <div class="d-md-none mb-2"></div> --}}
+                                                                                    </div>
                                                                                 </div>
-                                                                                <div class="col-md-3">
-                                                                                   
-                                                                                    <input type="text" class="form-control" placeholder="G"
-                                                                                        name="quantity_g[]" id="quantity_g[]" />
-                                                                                    <div class="d-md-none mb-2"></div>
-                                                                                </div>
-                                                                                <div class="col-md-3">
-                                                                                 
-                                                                                    <input type="text" class="form-control" placeholder="ML"
-                                                                                        name="quantity_ml[]" id="quantity_ml[]" />
-                                                                                    <div class="d-md-none mb-2"></div>
-                                                                                </div>
+                                                                                <div class="row form-group">
+                                                                                    <div class="col-md-3">
+                                                                                       
+                                                                                        <input type="text" class="form-control" placeholder="Kg"
+                                                                                            name="quantity_kg[]" id="quantity_kg[]" />
+                                                                                        <div class="d-md-none mb-2"></div>
+                                                                                    </div>
+                                                                                    <div class="col-md-3">
+                                                                                       
+                                                                                        <input type="text" class="form-control" placeholder="G"
+                                                                                            name="quantity_g[]" id="quantity_g[]" />
+                                                                                        <div class="d-md-none mb-2"></div>
+                                                                                    </div>
+                                                                                    <div class="col-md-3">
+                                                                                     
+                                                                                        <input type="text" class="form-control" placeholder="ML"
+                                                                                            name="quantity_ml[]" id="quantity_ml[]" />
+                                                                                        <div class="d-md-none mb-2"></div>
+                                                                                    </div>
 
-                                                                                <div class="col-md-3">
-                                                                                    <!-- <label>Number:</label> -->
-                                                                                    <input type="text" class="form-control" placeholder="Digit"
-                                                                                        name="quantity_digit[]" id="quantity_digit[]" />
-                                                                                    <div class="d-md-none mb-2"></div>
-                                                                                </div>
-                                                                            </div> 
-                                                                             <a style="margin:10px;" href="javascript:;" data-repeater-delete=""
-                                                                                        class="btn btn-sm font-weight-bolder btn-danger btn-gradient-danger remove_button">
-                                                                                        <i class="la la-trash-o"></i>
-                                                                                    </a>
-                                                                                    </div>`
+                                                                                    <div class="col-md-3">
+                                                                                        <!-- <label>Number:</label> -->
+                                                                                        <input type="text" class="form-control" placeholder="Digit"
+                                                                                            name="quantity_digit[]" id="quantity_digit[]" />
+                                                                                        <div class="d-md-none mb-2"></div>
+                                                                                    </div>
+                                                                                </div> 
+                                                                                 <a style="margin:10px;" href="javascript:;" data-repeater-delete=""
+                                                                                            class="btn btn-sm font-weight-bolder btn-danger btn-gradient-danger remove_button">
+                                                                                            <i class="la la-trash-o"></i>
+                                                                                        </a>
+                                                                                        </div>`
             // var fieldHTML = '<div><input type="text" name="field_name[]" value=""/><a href="javascript:void(0);" class="remove_button"><img src="remove-icon.png"/></a></div>'; //New input field html 
             var x = 1; //Initial field counter is 1
 

@@ -257,16 +257,12 @@ class ProfileController extends Controller
 
     public function stageFive(Request $request)
     {
-
-       
         $id=$request->input('productid');
         $product = Product::destroy($id);
         return response()->json(['success' => 'Form is successfully submitted!']);
     }
     public function stageSix(Request $request)
     {
-
-        
         $belongs_to = $request->input('belongs_to');
         $id = $request->input('editid4');
 
