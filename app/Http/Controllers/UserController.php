@@ -87,8 +87,8 @@ class UserController extends Controller
             $users->departments = Department::all();
         } else {
             $users->departments = Department::whereIn('id', session('department'))->get();
+            $users->sections = Section::whereIn('dep_id', session('department'))->get();
         }
-        $users->sections = Section::whereIn('dep_id', session('department'))->get();
         // return response()->json($users, 200);
         return view('pages.add-user', compact('users'));
     }
