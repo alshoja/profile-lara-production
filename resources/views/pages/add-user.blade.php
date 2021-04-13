@@ -205,7 +205,7 @@
                                 <div class="radio-inline">
                                     @if (Auth::user()->role == 'admin')
                                         <label id="admin-label" class="radio radio-solid text-primary">
-                                            <input type="radio"  name="role"
+                                            <input type="radio" onclick="toggleDepartment('admin')" name="role"
                                                 checked="checked" value="admin" />
                                             <span></span>
                                             Admin
@@ -218,7 +218,7 @@
                                     @endif
                                     @if (Auth::user()->role == 'admin' || Auth::user()->role == 'general_director')
                                         <label id="director-label" class="radio radio-solid">
-                                            <input type="radio"  name="role"
+                                            <input type="radio" onclick="toggleDepartment('director')" name="role"
                                                 value="director" />
                                             <span></span>
                                             Director
@@ -226,7 +226,7 @@
                                     @endif
                                     @if (Auth::user()->role == 'admin' || Auth::user()->role == 'director')
                                         <label id="dh-label" class="radio radio-solid">
-                                            <input type="radio"  name="role"
+                                            <input type="radio" onclick="toggleDepartment('dh')" name="role"
                                                 value="department_head" />
                                             <span></span>
                                             Department Head
@@ -234,7 +234,7 @@
                                     @endif
                                     @if (Auth::user()->role == 'admin' || Auth::user()->role == 'department_head')
                                         <label id="supervisor-label" class="radio radio-solid">
-                                            <input type="radio"  name="role"
+                                            <input type="radio" onclick="toggleDepartment('super')" name="role"
                                                 value="supervisor" />
                                             <span></span>
                                             Supervisor
@@ -284,7 +284,10 @@
                     <div class="card-footer">
                         <div class="row">
                             <div class="col-lg-6">
-                                <input type="submit" value="save" class="btn btn-primary btn-gradient-success  mr-2">
+                                <input type="submit" @if (Auth::user()->role != 'admin')  @if (count($users->departments) < 1)
+                                disabled @endif @endif
+                                value="save"
+                                class="btn btn-primary btn-gradient-success mr-2">
                                 <button type="reset" class="btn btn-secondary">Cancel</button>
                             </div>
                         </div>
@@ -317,42 +320,22 @@
             case "gd":
                 mainDiv.classList.remove("d-none");
                 departmentDiv.classList.remove("d-none");
-                // gdDiv.classList.add("d-none");
-                // DirectorDiv.classList.add("d-none");
-                // dhDiv.classList.add("d-none");
-                // superDiv.classList.add("d-none");
-                sectionDiv.classList.remove("d-none");
                 break;
             case "director":
                 mainDiv.classList.remove("d-none");
-                departmentDiv.classList.add("d-none")
-                // gdDiv.classList.remove("d-none");
-                // DirectorDiv.classList.remove("d-none");
-                // dhDiv.classList.remove("d-none");
-                // superDiv.classList.remove("d-none");
+                departmentDiv.classList.remove("d-none")
                 break;
             case "dh":
                 mainDiv.classList.remove("d-none");
                 departmentDiv.classList.remove("d-none")
-                // gdDiv.classList.add("d-none");
-                // DirectorDiv.classList.add("d-none");
-                // superDiv.classList.add("d-none");
-                sectionDiv.classList.add("d-none");
                 break;
             case "super":
                 mainDiv.classList.remove("d-none");
                 departmentDiv.classList.remove("d-none")
-                // gdDiv.classList.add("d-none");
-                // DirectorDiv.classList.add("d-none");
-                // superDiv.classList.add("d-none");
-                sectionDiv.classList.add("d-none");
                 break;
             case "employ":
                 mainDiv.classList.remove("d-none");
                 departmentDiv.classList.remove("d-none");
-                // gdDiv.classList.add("d-none");
-                // DirectorDiv.classList.add("d-none");
-                // superDiv.classList.add("d-none");
                 sectionDiv.classList.remove("d-none");
                 break;
         }

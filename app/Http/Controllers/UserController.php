@@ -131,29 +131,27 @@ class UserController extends Controller
                         $director = new DepartmentDirector();
                         $director->director_id = $user->id;
                         $director->dep_id = $request->dep_id;
-                        $director->general_director = Auth::user()->id;
-                        $director->employ_id = $user->id;
+                        $director->general_director_id = Auth::user()->id;
+                        $director->director_id = $user->id;
                         $director->save();
                     } else if (Auth::user()->role == "director") {
                         $dh = new DepartmentHead();
                         $dh->depart_head_id = $user->id;
                         $dh->dep_id = $request->dep_id;
                         $dh->director_id = Auth::user()->id;
-                        $dh->employ_id = $user->id;
                         $dh->save();
                     } else if (Auth::user()->role == "department_head") {
                         $dh = new DepartmentSupervisor();
                         $dh->supervisor_id = $user->id;
                         $dh->dep_id = $request->dep_id;
                         $dh->depart_head_id = Auth::user()->id;
-                        $dh->employ_id = $user->id;
                         $dh->save();
                     } else if (Auth::user()->role == "supervisor") {
                         $dh = new Employ();
                         $dh->section_id = $request->section_id;
                         $dh->dep_id = $request->dep_id;
                         $dh->employ_id = $user->id;
-                        // $dh->supervisor_id = Auth::user()->id;
+                        $dh->supervisor_id = Auth::user()->id;
                         $dh->save();
                     }
                 }
