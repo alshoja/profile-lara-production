@@ -19,6 +19,7 @@ Project has been developed using Laravel and Bootstrap, You can seed the databas
 * Profile management
 * Analytics
 * Timeline
+* Live Notification System
 
 
 ### Installing
