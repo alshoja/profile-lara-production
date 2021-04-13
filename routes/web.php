@@ -22,7 +22,7 @@ Route::get('/blocked', function () {
 
 Auth::routes();
 
-Route::middleware(['auth','initUser','checkIsBlocked'])->group(function () {
+Route::middleware(['auth', 'initUser', 'checkIsBlocked'])->group(function () {
 
     // Dashboard
     Route::get('/notifications', [App\Http\Controllers\NotificationController::class, 'index'])->name('notification');
@@ -46,7 +46,7 @@ Route::middleware(['auth','initUser','checkIsBlocked'])->group(function () {
     Route::post('stageSix', [App\Http\Controllers\ProfileController::class, 'stageSix']);
     Route::post('profileUpdate', [App\Http\Controllers\ProfileController::class, 'profileUpdate']);
     Route::get('profile/pdf/{id}', [App\Http\Controllers\ProfileController::class, 'renderPdf']);
-    Route::resource('profiles', ProfileController::class);
+    Route::get('profile/edit/{id}', [App\Http\Controllers\ProfileController::class, 'edit'])->middleware('checkProfilePermision');
     Route::get('inbox', [App\Http\Controllers\ProfileController::class, 'inbox'])->name('inbox');
 
     // Product

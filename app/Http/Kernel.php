@@ -65,6 +65,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'initUser' => \App\Http\Middleware\SetDepartmentAndSection::class,
         'checkIsBlocked' => \App\Http\Middleware\checkIsUserSuspended::class,
-        'IsPermittedToViewUser' => \App\Http\Middleware\IsPermittedToViewUser::class
+        'IsPermittedToViewUser' => \App\Http\Middleware\IsPermittedToViewUser::class,
+        'checkProfilePermision'=> \App\Http\Middleware\IsPermittedToViewProfile::class,
     ];
 }
