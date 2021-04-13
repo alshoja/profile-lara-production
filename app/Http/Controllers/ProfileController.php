@@ -150,6 +150,7 @@ class ProfileController extends Controller
         $profile->save();
         return response()->json(['id' => $profile->id]);
     }
+
     public function updateUser(Request $request)
     {
 
@@ -186,7 +187,7 @@ class ProfileController extends Controller
             $entity = $request->input('entity');
             $entry_date = $request->input('entry_date');
             $entity_location = $request->input('entity_location');
-            $editid = $request->input('editid');
+            $id = $request->input('editid');
 
             try {
                 $product_type = $request->product_type;
@@ -196,9 +197,7 @@ class ProfileController extends Controller
                 $quantity_digit = $request->quantity_digit;
                 $manufacture_type = $request->manufacture_type;
                 $shipped_type = $request->shipped_type;
-                $profile_id = $editid;
-                $product = new Product();
-                $m = count($product_type);
+
                 for ($count = 0; $count < count($product_type); $count++) {
                     $data = array(
                         'product_type' => $product_type[$count],
@@ -208,19 +207,20 @@ class ProfileController extends Controller
                         'quantity_digit' => $quantity_digit[$count],
                         'manufacture_type' => $manufacture_type[$count],
                         'shipped_type' => $shipped_type[$count],
-                        'profile_id' => $profile_id
+                        'profile_id' => $id
                     );
                     Product::create($data);
                 }
 
                 $data = array("entered_by" => $entered_by, "bought_by" => $bought_by, "entity" => $entity, "entry_date" => $entry_date, "entity_location" => $entity_location);
-                Profile::updateData($editid, $data);
+                Profile::updateData($id, $data);
                 return response()->json(['success' => 'Form is successfully submitted!']);
             } catch (\Illuminate\Database\QueryException $ex) {
                 dd($ex->getMessage());
             }
         }
     }
+
     public function stageThree(Request $request)
     {
         $shipping_no = $request->input('shipping_no');
@@ -231,39 +231,61 @@ class ProfileController extends Controller
         $product_image = $request->file('product_image')->store('images');
         $doc_image = $request->file('doc_image')->store('images');
         $note = $request->input('note');
-        $editid1 = $request->input('editid1');
+        $id = $request->input('editid1');
         $data = array("shipping_no" => $shipping_no, "coming_from" => $coming_from, "going_to" => $going_to, "final_destination" => $final_destination, "profile_image" => $profile_image, "product_image" => $product_image, "doc_image" => $doc_image, "note" => $note);
         try {
-            DB::table('profiles')->where('id', $editid1)->update($data);
+            DB::table('profiles')->where('id', $id)->update($data);
             return response()->json(['success' => 'Form is successfully submitted!']);
         } catch (\Illuminate\Database\QueryException $ex) {
             dd($ex->getMessage());
         }
     }
+
     public function stageFour(Request $request)
     {
         $record_status = $request->input('record_status');
         $record_dep_transfer = $request->input('record_dep_transfer');
-        $editid3 = $request->input('editid3');
+        $id = $request->input('editid3');
         $data = array("record_status" => $record_status, "record_dep_transfer" => $record_dep_transfer);
         try {
-            DB::table('profiles')->where('id', $editid3)->update($data);
+            DB::table('profiles')->where('id', $id)->update($data);
             return response()->json(['success' => 'Form is successfully submitted!']);
         } catch (\Illuminate\Database\QueryException $ex) {
             dd($ex->getMessage());
         }
     }
+
     public function stageFive(Request $request)
     {
+        $data = [];
         $belongs_to = $request->input('belongs_to');
-        $editid4 = $request->input('editid4');
-        $is_drafted = 0;
+        $id = $request->input('editid4');
 
         $data = array(
-            "belongs_to" => $belongs_to, "is_drafted" => $is_drafted
+            "belongs_to" => $belongs_to, "is_drafted" => 0
         );
         try {
-            DB::table('profiles')->where('id', $editid4)->update($data);
+            DB::transaction(function () use ($data, $id) {
+                DB::table('profiles')->where('id', $id)->update($data);
+                if (count($data) > 0) {
+
+                    $trackProfile  = new TrackProfile();
+                    $trackProfile->profile_id = $id;
+                    $trackProfile->status = "pending";
+                    $trackProfile->from = Auth::user()->role;
+                    $trackProfile->status =  'pending';
+                    $trackProfile->owned_by = Auth::user()->id;
+                    $trackProfile->save();
+
+                    $timeLine = new TimeLine();
+                    $timeLine->profile_id = $id;
+                    $timeLine->note = 'Profile Submitted';
+                    $timeLine->type = 'pending';
+
+                    AddTimeLineNote::dispatch($timeLine);
+                    AddNotification::dispatch($timeLine);
+                }
+            });
             return response()->json(['success' => 'Form is successfully submitted!']);
         } catch (\Illuminate\Database\QueryException $ex) {
             dd($ex->getMessage());
