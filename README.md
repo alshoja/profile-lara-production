@@ -18,8 +18,9 @@ Project has been developed using Laravel and Bootstrap, You can seed the databas
 * Role management
 * Profile management
 * Analytics
-* Timeline
+* Activity Timeline
 * Live Notification System
+* User Tagging
 
 
 ### Installing
