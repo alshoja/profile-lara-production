@@ -32,6 +32,7 @@ class TimeLineNoteListener
         $timeLine->note = $event->timelineNote->note;
         $timeLine->user_id = Auth::user()->id;
         $timeLine->profile_id = $event->timelineNote->profile_id;
+        $timeLine->type = $event->timelineNote->type;
         $timeLine->save();
         return $timeLine;
     }

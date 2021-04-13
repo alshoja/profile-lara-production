@@ -29,7 +29,7 @@
     <link href="assets/css/themes/layout/aside/dark.rtl.css" rel="stylesheet" type="text/css" />
 
     <!--end::Layout Themes-->
-    <link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+    <link rel="icon" type="image/png" href="assets/media/logos/logo-light.png" />
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -41,20 +41,20 @@
         <!--begin::Login-->
         <div class="login login-3 login-signin-on d-flex flex-row-fluid" id="kt_login">
             <div class="d-flex flex-center bgi-size-cover bgi-no-repeat flex-row-fluid"
-                style="background-image: url(assets/media/bg/bg-1.jpg);">
+                style="background-image: url(assets/media/bg/bg-8.jpg);">
                 <div class="login-form text-center text-white p-7 position-relative overflow-hidden">
                     <!--begin::Login Header-->
                     <div class="d-flex flex-center mb-15">
                         <a href="#">
-                            <img src="assets/media/logos/logo-letter-9.png" class="max-h-100px" alt="" />
+                            <img src="assets/media/logos/logo-light.png" class="max-h-100px" alt="" />
                         </a>
                     </div>
                     <!--end::Login Header-->
                     <!--begin::Login Sign in form-->
                     <div class="login-signin">
                         <div class="mb-20">
-                            <h3>login</h3>
-                            <p class="opacity-60 font-weight-bold">Enter your details to login to your account:</p>
+                            {{-- <h3>login</h3> --}}
+                            {{-- <p class="opacity-60 font-weight-bold">Enter your details to login to your account:</p> --}}
                         </div>
                         <form method="POST" action="{{ route('login') }}" class="form">
                             @csrf
@@ -87,10 +87,10 @@
                                             {{ old('remember') ? 'checked' : '' }} />
                                         <span></span> {{ __('Remember Me') }}</label>
                                 </div>
-                                @if (Route::has('password.request'))
+                                {{-- @if (Route::has('password.request'))
                                     <a href="javascript:;" id="kt_login_forgot" class="text-white font-weight-bold">
                                         {{ __('Forgot Your Password') }} </a>
-                                @endif
+                                @endif --}}
                             </div>
                             <div class="form-group text-center mt-10">
                                 <button id="kt_login_signin_submit"

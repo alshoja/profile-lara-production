@@ -11,13 +11,10 @@ use App\Models\DepartmentHead;
 use App\Rules\MatchOldPassword;
 use App\Models\DepartmentDirector;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\App;
 use App\Models\DepartmentSupervisor;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Database\QueryException;
-use App\Models\DepartmentGeneralDirector;
-use Illuminate\Database\Eloquent\Builder;
+
 
 class UserController extends Controller
 {
@@ -91,7 +88,7 @@ class UserController extends Controller
         } else {
             $users->departments = Department::whereIn('id', session('department'))->get();
         }
-        $users->sections = Section::all();
+        $users->sections = Section::whereIn('dep_id', session('department'))->get();
         // return response()->json($users, 200);
         return view('pages.add-user', compact('users'));
     }
@@ -104,6 +101,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -112,49 +110,55 @@ class UserController extends Controller
             'image' => 'required|mimes:jpg,png|max:2048',
             'sign' => 'required|mimes:jpg,png|max:2048',
         ]);
-
-        $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->contact = $request->contact;
-        $user->role = $request->role;
-        $user->create = $request->create;
-        $user->update = $request->update;
-        $user->delete = $request->delete;
-        $user->image = $request->file('image')->store('images');
-        $user->sign = $request->file('sign')->store('signs');
-        $user->suspended = $request->suspended;
-        $user->can_add_user = $request->can_add_user;
-        $user->save();
-        if (Auth::user()->role != "admin" && Auth::user()->role != "employ") {
-            if ($user->id) {
-                if (Auth::user()->role == "general_director") {
-                    $director = new DepartmentDirector();
-                    $director->director_id = $user->id;
-                    $director->dep_id = $request->dep_id;
-                    $director->general_director = Auth::user()->id;
-                    $director->save();
-                } else if (Auth::user()->role == "director") {
-                    $dh = new DepartmentHead();
-                    $dh->depart_head_id = $user->id;
-                    $dh->dep_id = $request->dep_id;
-                    $dh->director_id = Auth::user()->id;
-                    $dh->save();
-                } else if (Auth::user()->role == "department_head") {
-                    $dh = new DepartmentSupervisor();
-                    $dh->supervisor_id = $user->id;
-                    $dh->dep_id = $request->dep_id;
-                    $dh->depart_head_id = Auth::user()->id;
-                    $dh->save();
-                } else if (Auth::user()->role == "supervisor") {
-                    $dh = new Employ();
-                    $dh->section_id = $request->section_id;
-                    $dh->supervisor_id = Auth::user()->id;
-                    $dh->save();
+        DB::transaction(function () use ($request) {
+            $user = new User();
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
+            $user->contact = $request->contact;
+            $user->role = $request->role;
+            $user->create = $request->create;
+            $user->update = $request->update;
+            $user->delete = $request->delete;
+            $user->image = $request->file('image')->store('images');
+            $user->sign = $request->file('sign')->store('signs');
+            $user->suspended = $request->suspended;
+            $user->can_add_user = $request->can_add_user;
+            $user->save();
+            if (Auth::user()->role != "admin" && Auth::user()->role != "employ") {
+                if ($user->id) {
+                    if (Auth::user()->role == "general_director") {
+                        $director = new DepartmentDirector();
+                        $director->director_id = $user->id;
+                        $director->dep_id = $request->dep_id;
+                        $director->general_director = Auth::user()->id;
+                        $director->employ_id = $user->id;
+                        $director->save();
+                    } else if (Auth::user()->role == "director") {
+                        $dh = new DepartmentHead();
+                        $dh->depart_head_id = $user->id;
+                        $dh->dep_id = $request->dep_id;
+                        $dh->director_id = Auth::user()->id;
+                        $dh->employ_id = $user->id;
+                        $dh->save();
+                    } else if (Auth::user()->role == "department_head") {
+                        $dh = new DepartmentSupervisor();
+                        $dh->supervisor_id = $user->id;
+                        $dh->dep_id = $request->dep_id;
+                        $dh->depart_head_id = Auth::user()->id;
+                        $dh->employ_id = $user->id;
+                        $dh->save();
+                    } else if (Auth::user()->role == "supervisor") {
+                        $dh = new Employ();
+                        $dh->section_id = $request->section_id;
+                        $dh->dep_id = $request->dep_id;
+                        $dh->employ_id = $user->id;
+                        // $dh->supervisor_id = Auth::user()->id;
+                        $dh->save();
+                    }
                 }
             }
-        }
+        });
         return back()->with('message', 'User successfully added');
     }
 
@@ -195,8 +199,6 @@ class UserController extends Controller
         if (request()->query('role') == "supervisor") {
             $user->assets =  Employ::with('subUsers')->whereIn('dep_id', session('department'))->paginate();
         }
-        // dd($user->assets[0]);
-        // return response()->json($user->assets, 200);
         return view('pages.profile-detail', compact('user'));
     }
 
@@ -220,11 +222,6 @@ class UserController extends Controller
             $user->update = $request->update;
             $user->delete = $request->delete;
         }
-
-        // if (Auth::user()->role == "admin") {
-        //     $user->role = $request->role;
-        // }
-
 
         if ($request->file('image')) {
             $user->image = $request->file('image')->store('images');

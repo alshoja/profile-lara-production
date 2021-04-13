@@ -40,6 +40,6 @@
 
 
     <!--end::Layout Themes-->
-    <link rel="icon" href="{{ asset('favicon.ico') }}" />
+    <link rel="icon" type="image/png" href="{{ asset('assets/media/logos/logo-light.png') }}" />
 </head>
 <!--end::Head-->

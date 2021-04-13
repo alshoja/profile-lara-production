@@ -70,6 +70,12 @@ function getNotifications() {
   let fullUrl = HOST_URL + "/notifications";
   let res = null;
   let suburl = "/profiles?tab=inbox";
+  let storageName = "notification_" + localStorage.getItem("session_id");
+  if (localStorage.getItem(storageName) == null) {
+    let obj = {};
+    obj.id = 0;
+    localStorage.setItem(storageName, JSON.stringify([obj]));
+  }
   $.ajax({
     url: fullUrl,
     type: "GET",
@@ -77,7 +83,18 @@ function getNotifications() {
     dataType: "json",
     contentType: "application/json",
     success: function (result) {
-      let data = result.approved;
+      let localStorageObj = JSON.parse(localStorage.getItem(storageName));
+      const newNotification = result.filter(
+        ({ id: id1 }) => !localStorageObj.some(({ id: id2 }) => id2 === id1)
+      );
+      if (newNotification.length > 0) {
+        newNotification.forEach((res) => {
+          showToast(res.message, "Notification", "warning");
+        });
+      }
+      localStorage.setItem(storageName, JSON.stringify(result));
+
+      let data = result;
       let contentStr = "";
       let span = document.getElementById("count-span");
       if (data.length > 0) {
@@ -94,10 +111,15 @@ function getNotifications() {
                   <i class="flaticon2-paper-plane  text-danger"></i>
               </div>
               <div class="navi-text">
-                  <div class="font-weight-bold">` +
-            o.name +
+                  <div class="font-weight-bold"> <a href=` +
+            HOST_URL +
+            `/profiles?tab=inbox>` +
+            o.message +
             `</div>
-                  <div class="text-muted"> Rejected
+                  <div class="text-muted">  
+                  ` +
+            converMysqlToJsTime(o.created_at.toString()) +
+            `
             </div>
               </div>
           </div>
@@ -140,7 +162,9 @@ function getProfileData(id) {
     contentType: "application/json",
     success: function (result) {
       setEprofile(result);
+      console.log(result);
       setDocs(result);
+      setProducts(result.products);
       const mappedArray = result.timeline.map((obj, i) => {
         console.log("object", obj);
         let payload = {};
@@ -179,6 +203,37 @@ function getProfileData(id) {
 function setEprofile(profile) {
   let heading = document.getElementById("exampleModalLabel");
   heading.innerHTML = profile.name;
+  document.getElementById("name").innerHTML = profile.name;
+  document.getElementById("nationality").innerHTML = profile.nationality;
+  document.getElementById("gender").innerHTML = profile.gender;
+  document.getElementById("dob").innerHTML = profile.dob;
+  document.getElementById("citizen_status").innerHTML = profile.citizen_status;
+  document.getElementById("citizen_location").innerHTML =
+    profile.citizen_location;
+  document.getElementById("citizen_id").innerHTML = profile.citizen_id;
+  document.getElementById("citizen_uid").innerHTML = profile.citizen_uid;
+  document.getElementById("passport_no").innerHTML = profile.passport_no;
+  document.getElementById("passport_type").innerHTML = profile.passport_type;
+  document.getElementById("entered_by").innerHTML = profile.entered_by;
+  document.getElementById("bought_by").innerHTML = profile.bought_by;
+  document.getElementById("entity").innerHTML = profile.entity;
+  document.getElementById("entry_date").innerHTML = profile.entry_date;
+  document.getElementById("entity_location").innerHTML =
+    profile.entity_location;
+  document.getElementById("shipping_no").innerHTML = profile.shipping_no;
+  document.getElementById("coming_from").innerHTML = profile.coming_from;
+  document.getElementById("going_to").innerHTML = profile.going_to;
+  document.getElementById("final_destination").innerHTML =
+    profile.final_destination;
+  document.getElementById("note").innerHTML = profile.note;
+  document.getElementById("profile_image").src = profile.profile_image;
+  document.getElementById("product_image").src = profile.product_image;
+  document.getElementById("doc_image").src = profile.doc_image;
+  document.getElementById("record_status").innerHTML = profile.record_status;
+  document.getElementById("record_dep_transfer").innerHTML =
+    profile.record_dep_transfer;
+  document.getElementById("depart").innerHTML = profile.department.name;
+  document.getElementById("section").innerHTML = profile.section.name;
 }
 
 function setDocs(result) {
@@ -189,10 +244,11 @@ function setDocs(result) {
 }
 
 function setTrack(trackings) {
+  console.log('filtered',trackings);
+
   let filteredTrackings = trackings.filter((res) => {
     return res.type == "rejected" || res.type == "approved";
   });
-  console.log(filteredTrackings);
   let contentStr = "";
   if (filteredTrackings.length > 0) {
     filteredTrackings.forEach(function (o) {
@@ -245,14 +301,68 @@ function setTrack(trackings) {
   document.getElementById("track_timeline").innerHTML = contentStr;
 }
 
-function setDecision(data) {}
+function setProducts(data) {
+  let contentStr = "";
+  if (data.length > 0) {
+    data.forEach(function (o) {
+      contentStr +=
+        ` <tr
+        class="">
+        <td
+            class="pl-0 pt-7">
+            ` +
+        o.manufacture_type +
+        `
+          </td>
+        <td
+            class="pl-0 pt-7">
+            ` +
+        o.product_type +
+        `
+           </td>
+        <td
+            class="pl-0 pt-7">
+            ` +
+        o.quantity_digit +
+        `
+            </td>
+        <td
+            class="pl-0 pt-7">
+            ` +
+        o.quantity_g +
+        `
+          </td>
+        <td
+            class="pl-0 pt-7">
+            ` +
+        o.quantity_kg +
+        `
+           </td>
+        <td
+            class="pl-0 pt-7">
+            ` +
+        o.quantity_ml +
+        `
+           </td>
+        <td
+            class="pl-0 pt-7">
+            ` +
+        o.shipped_type +
+        `
+          </td>
+
+      </tr>`;
+    });
+  } else if (data.length <= 0) {
+    contentStr += ` <tr><td>No  Products to Display </td></tr>`;
+  }
+  document.getElementById("product_table").innerHTML = contentStr;
+}
 
 function setNotes(notes) {
   console.log("notes", notes);
   let notesString = "";
-  // let filteredNotes = notes.filter((res) => {
-  //   return res.type == "note";
-  // });
+
   if (notes.length > 0) {
     notes.forEach(function (o) {
       notesString +=
@@ -324,6 +434,45 @@ function AproveOrReject(action) {
   note.value = "";
   reject_button.disabled = true;
   approve_button.disabled = true;
-  location.reload();
+  // location.reload();
   return res;
 }
+
+function converMysqlToJsTime(timestamp) {
+  let mysqlTs = new Date(Date.parse(timestamp));
+  return timeDifference(new Date(), mysqlTs);
+}
+
+function timeDifference(current, previous) {
+  var msPerMinute = 60 * 1000;
+  var msPerHour = msPerMinute * 60;
+  var msPerDay = msPerHour * 24;
+  var msPerMonth = msPerDay * 30;
+  var msPerYear = msPerDay * 365;
+
+  var elapsed = current - previous;
+
+  if (elapsed < msPerMinute) {
+    return Math.round(elapsed / 1000) + " seconds ago";
+  } else if (elapsed < msPerHour) {
+    return Math.round(elapsed / msPerMinute) + " minutes ago";
+  } else if (elapsed < msPerDay) {
+    return Math.round(elapsed / msPerHour) + " hours ago";
+  } else if (elapsed < msPerMonth) {
+    return Math.round(elapsed / msPerDay) + " days ago";
+  } else if (elapsed < msPerYear) {
+    return Math.round(elapsed / msPerMonth) + " months ago";
+  } else {
+    return Math.round(elapsed / msPerYear) + " years ago";
+  }
+}
+
+
+function perPageItems() {
+  var currentPage = document.getElementById("perpage").value;
+  const urlParams = new URLSearchParams(window.location.search);
+  urlParams.set("perPage", currentPage);
+  window.location.search = urlParams;
+  // document.getElementById("demo").innerHTML = "You selected: " + x;
+}
+

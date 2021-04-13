@@ -20,6 +20,7 @@ var KTDateWidgets = (function () {
       var searchDate = "";
       var from = "";
       var to = "";
+      const urlParams = new URLSearchParams(window.location.search);
 
       if (end - start < 100 || label == "Today") {
         title = "All";
@@ -34,53 +35,28 @@ var KTDateWidgets = (function () {
         from = start.format("Y-MM-D");
         to = end.format("Y-MM-DD");
       }
+
       if (searchDate) {
-        var searchUrl =
-          HOST_URL +
-          "/home?search_date=" +
-          searchDate +
-          "/" +
-          from +
-          "&to=" +
-          to +
-          "&title=" +
-          title +
-          "&range=" +
-          range +
-          "&date_range=" +
-          from +
-          "-" +
-          to;
+        urlParams.set("search_date", searchDate);
+        urlParams.set("from", from);
+        urlParams.set("to", to);
+        urlParams.set("title", title);
+        urlParams.set("range", range);
+        urlParams.set("date_range", from + "-" + to);
       } else {
-        searchUrl =
-          HOST_URL +
-          "/home?from=" +
-          from +
-          "&to=" +
-          to +
-          "&title=" +
-          title +
-          "&range=" +
-          range +
-          "&date_range=" +
-          from +
-          "/" +
-          to;
+        urlParams.set("from", from);
+        urlParams.set("to", to);
+        urlParams.set("title", title);
+        urlParams.set("range", range);
+        urlParams.set("date_range", from + "/" + to);
       }
       console.log(title);
-      
-      if (title != "All") {
-        window.location = searchUrl;
-      }
 
-      // if (title != "All") {
-      //   $("#kt_dashboard_daterangepicker_date").html(
-      //     localStorage.getItem("range")
-      //   );
-      //   $("#kt_dashboard_daterangepicker_title").html(
-      //     localStorage.getItem("title")
-      //   );
-      // }
+      if (title != "All") {
+        // location.href = window.location.href + searchUrl;
+        window.location.search = urlParams;
+        // location.reload();
+      }
     }
 
     picker.daterangepicker(
@@ -129,4 +105,3 @@ if (typeof module !== "undefined") {
 jQuery(document).ready(function () {
   KTDateWidgets.init();
 });
-

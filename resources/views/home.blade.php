@@ -47,42 +47,50 @@
                     <!--end::Stats Widget 11-->
                     <!--begin::Stats Widget 12-->
                     {{-- @if (Auth::user()->role != 'employ') --}}
-                        <div class="card card-custom card-stretch card-stretch-half gutter-b">
-                            <!--begin::Body-->
-                            <div class="card-body p-0">
-                                <div class="d-flex align-items-center justify-content-between card-spacer flex-grow-1">
-                                    <span class="symbol symbol-50 symbol-light-primary mr-2">
-                                        <span class="symbol-label">
-                                            <span class="svg-icon svg-icon-xl svg-icon-primary">
-                                                <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Group.svg-->
-                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-                                                    viewBox="0 0 24 24" version="1.1">
-                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                        <polygon points="0 0 24 0 24 24 0 24" />
-                                                        <path
-                                                            d="M18,14 C16.3431458,14 15,12.6568542 15,11 C15,9.34314575 16.3431458,8 18,8 C19.6568542,8 21,9.34314575 21,11 C21,12.6568542 19.6568542,14 18,14 Z M9,11 C6.790861,11 5,9.209139 5,7 C5,4.790861 6.790861,3 9,3 C11.209139,3 13,4.790861 13,7 C13,9.209139 11.209139,11 9,11 Z"
-                                                            fill="#000000" fill-rule="nonzero" opacity="0.3" />
-                                                        <path
-                                                            d="M17.6011961,15.0006174 C21.0077043,15.0378534 23.7891749,16.7601418 23.9984937,20.4 C24.0069246,20.5466056 23.9984937,21 23.4559499,21 L19.6,21 C19.6,18.7490654 18.8562935,16.6718327 17.6011961,15.0006174 Z M0.00065168429,20.1992055 C0.388258525,15.4265159 4.26191235,13 8.98334134,13 C13.7712164,13 17.7048837,15.2931929 17.9979143,20.2 C18.0095879,20.3954741 17.9979143,21 17.2466999,21 C13.541124,21 8.03472472,21 0.727502227,21 C0.476712155,21 -0.0204617505,20.45918 0.00065168429,20.1992055 Z"
-                                                            fill="#000000" fill-rule="nonzero" />
-                                                    </g>
-                                                </svg>
-                                                <!--end::Svg Icon-->
-                                            </span>
+                    <div class="card card-custom card-stretch card-stretch-half gutter-b">
+                        <!--begin::Body-->
+                        <div class="card-body p-0">
+                            <div class="d-flex align-items-center justify-content-between card-spacer flex-grow-1">
+                                <span class="symbol symbol-50 symbol-light-primary mr-2">
+                                    <span class="symbol-label">
+                                        <span class="svg-icon svg-icon-xl svg-icon-primary">
+                                            <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Group.svg-->
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
+                                                viewBox="0 0 24 24" version="1.1">
+                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <polygon points="0 0 24 0 24 24 0 24" />
+                                                    <path
+                                                        d="M18,14 C16.3431458,14 15,12.6568542 15,11 C15,9.34314575 16.3431458,8 18,8 C19.6568542,8 21,9.34314575 21,11 C21,12.6568542 19.6568542,14 18,14 Z M9,11 C6.790861,11 5,9.209139 5,7 C5,4.790861 6.790861,3 9,3 C11.209139,3 13,4.790861 13,7 C13,9.209139 11.209139,11 9,11 Z"
+                                                        fill="#000000" fill-rule="nonzero" opacity="0.3" />
+                                                    <path
+                                                        d="M17.6011961,15.0006174 C21.0077043,15.0378534 23.7891749,16.7601418 23.9984937,20.4 C24.0069246,20.5466056 23.9984937,21 23.4559499,21 L19.6,21 C19.6,18.7490654 18.8562935,16.6718327 17.6011961,15.0006174 Z M0.00065168429,20.1992055 C0.388258525,15.4265159 4.26191235,13 8.98334134,13 C13.7712164,13 17.7048837,15.2931929 17.9979143,20.2 C18.0095879,20.3954741 17.9979143,21 17.2466999,21 C13.541124,21 8.03472472,21 0.727502227,21 C0.476712155,21 -0.0204617505,20.45918 0.00065168429,20.1992055 Z"
+                                                        fill="#000000" fill-rule="nonzero" />
+                                                </g>
+                                            </svg>
+                                            <!--end::Svg Icon-->
                                         </span>
                                     </span>
-                                    <div class="d-flex flex-column text-right">
+                                </span>
+                                <div class="d-flex flex-column text-right">
+                                    @if (Auth::user()->role != 'employ')
                                         <span
                                             class="text-dark-75 font-weight-bolder font-size-h3">{{ $dashData->usersCount }}</span>
                                         <span class="text-muted font-weight-bold mt-2">My Users</span>
-                                    </div>
+                                    @else
+                                        <span class="text-muted font-weight-bold mt-2">No Users</span>
+                                    @endif
                                 </div>
-                                <div id="kt_stats_widget_12_chart" class="card-rounded-bottom" data-color="primary"
-                                    style="height: 150px"></div>
                             </div>
-                            <!--end::Body-->
+                            @if (Auth::user()->role != 'employ')
+                                <div id="kt_stats_widget_12_chart" class="card-rounded-bottom" data-color="primary"
+                                    style="height: 150px">
+                                </div>
+                            @endif
+
                         </div>
+                        <!--end::Body-->
+                    </div>
                     {{-- @endif --}}
 
                     <!--end::Stats Widget 12-->
@@ -100,23 +108,25 @@
                         </div>
                         <!--end::Header-->
                         <!--begin::Body-->
-                        <div class="card-body pt-4">
+                        <div class="card-body pt-3">
                             <!--begin::Timeline-->
-                            <div class="timeline timeline-6 mt-3">
+                            <div class="timeline timeline-6 mt-2">
                                 <!--begin::Item-->
                                 @foreach ($dashData->activity as $item)
                                     <div class="timeline-item align-items-start">
                                         <!--begin::Label-->
-                                        <div class="timeline-label font-weight-bolder text-dark-75 font-size-lg">
-                                            {{ date('h:i', strtotime($item->created_at)) }}</div>
+                                        <div class="timeline-label  text-dark-70 ">
+                                            {{ date('h:i A', strtotime($item->created_at)) }}</div>
                                         <!--end::Label-->
                                         <!--begin::Badge-->
                                         <div class="timeline-badge">
-                                            <i class="fa fa-genderless @if ($item->is_note ==
-                                                'null') text-warning @endif
-                                                @if ($item->is_approved != 'null')
+                                            <i class="fa fa-genderless 
+                                            @if ($item->type == 'pending') text-warning @endif
+                                            @if ($item->type == 'note') text-grey @endif
+                                                @if ($item->type == 'approved')
                                                     text-success
-                                                @else
+                                                @endif
+                                                @if ($item->type == 'rejected')
                                                     text-danger
                                                     @endif icon-xl">
                                             </i>
@@ -143,7 +153,7 @@
                     <div class="card card-custom bg-gray-100 card-stretch gutter-b">
                         <!--begin::Header-->
                         <div class="card-header border-0 bg-danger py-5">
-                            <h3 class="card-title font-weight-bolder text-white">Analytics</h3>
+                            <h3 class="card-title font-weight-bolder text-white">Profile Analytics</h3>
                             <div class="card-toolbar">
 
                             </div>
@@ -166,17 +176,19 @@
                                                 {{ $dashData->profileEntered }}</p>
                                             <!--end::Svg Icon-->
                                         </span>
-                                        <a href="#" class="text-warning font-weight-bold font-size-h6">Profile
+                                        <a href="#" class="text-warning font-weight-bold font-size-h6">
                                             Entered</a>
                                     </div>
-                                    <div class="col bg-light-primary px-6 py-8 rounded-xl mb-7">
-                                        <span class="svg-icon svg-icon-3x svg-icon-primary d-block my-2">
-                                            <p class="text-info font-weight-bold font-size-h6 mt-2">
-                                                {{ $dashData->usersCount }}</p>
-                                            <!--end::Svg Icon-->
-                                        </span>
-                                        <a href="#" class="text-primary font-weight-bold font-size-h6 mt-2"> Users</a>
-                                    </div>
+                                    {{-- @if (Auth::user()->role != 'employ')
+                                        <div class="col bg-light-primary px-6 py-8 rounded-xl mb-7">
+                                            <span class="svg-icon svg-icon-3x svg-icon-primary d-block my-2">
+                                                <p class="text-info font-weight-bold font-size-h6 mt-2">
+                                                    {{ $dashData->usersCount }}</p>
+                                                <!--end::Svg Icon-->
+                                            </span>
+                                            <a href="#" class="text-primary font-weight-bold font-size-h6 mt-2"> Users</a>
+                                        </div>
+                                    @endif --}}
                                 </div>
                                 <!--end::Row-->
                                 <!--begin::Row-->
@@ -189,7 +201,7 @@
                                             <!--end::Svg Icon-->
                                         </span>
                                         <a href="#" class="text-danger font-weight-bold font-size-h6 mt-2">Approved
-                                            Profiles</a>
+                                        </a>
                                     </div>
                                     <div class="col bg-light-success px-6 py-8 rounded-xl">
                                         <span class="svg-icon svg-icon-3x svg-icon-success d-block my-2">
@@ -198,7 +210,7 @@
                                                 {{ $dashData->profilePending }}</p>
                                             <!--end::Svg Icon-->
                                         </span>
-                                        <a href="#" class="text-success font-weight-bold font-size-h6 mt-2">Profile
+                                        <a href="#" class="text-success font-weight-bold font-size-h6 mt-2">
                                             Pending</a>
                                     </div>
                                 </div>
@@ -345,7 +357,7 @@
                                                         <!-- <span class="text-muted font-weight-bold">Paid</span> -->
                                                     </td>
                                                     <td class="pr-0 text-right">
-                                                        <a href="{{ url('profile/track') }}"
+                                                        <a href="{{ url('profile/track?tab=completed') }}"
                                                             class="btn btn-success btn-gradient-success  font-weight-bolder font-size-sm">More</a>
                                                     </td>
                                                 </tr>

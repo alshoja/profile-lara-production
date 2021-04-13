@@ -3,18 +3,22 @@
 namespace App\Http\Controllers;
 
 use Exception;
-use Validator;
+use App\Models\Product;
 use App\Models\Profile;
 use App\Models\TimeLine;
 use App\Events\SignDocument;
 use App\Models\TrackProfile;
 use Illuminate\Http\Request;
 use App\Events\RejectDocument;
+use App\Events\AddNotification;
 use App\Events\AddTimeLineNote;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
@@ -25,11 +29,17 @@ class ProfileController extends Controller
      */
     public function index(Request $request)
     {
+        $tab = null;
+        $perPage = null;
         $search = request()->query('search');
         $tab = $request->input('tab');
         $from = $request->input('from');
         $to = $request->input('to');
-        $profiles = Profile::with('trackings')->where(function (Builder $query) use ($search, $tab, $from, $to) {
+        $perPage = $request->input('perPage');
+        if ($tab === null) {
+            return Redirect::back();
+        }
+        $profiles = Profile::with('trackings')->where(function (Builder $query) use ($search, $tab, $from, $to, $perPage) {
             if ($search) {
                 $query->orWhere('name', 'like', '%' . $search . '%')
                     ->orWhere('name', 'like', '%' . $search . '%')
@@ -81,9 +91,10 @@ class ProfileController extends Controller
             } else {
                 return $query->whereIn('dep_id', session('department'));
             }
-        })->orderBy('id', 'DESC')->paginate(5);
-        // return response()->json($profiles, 200);
-
+            if ($perPage === null) {
+                $perPage = 10;
+            }
+        })->orderBy('id', 'DESC')->paginate($perPage);
         return view('pages.inbox', compact('profiles'));
     }
 
@@ -115,7 +126,7 @@ class ProfileController extends Controller
         $profile->citizen_id = $request->citizen_id;
         $profile->citizen_uid = $request->citizen_uid;
         $profile->passport_no = $request->passport_no;
-        $profile->passport_type = $request->passport_no;
+        $profile->passport_type = $request->passport_type;
         $profile->entered_by = "";
         $profile->bought_by = "";
         $profile->entity = "";
@@ -132,29 +143,84 @@ class ProfileController extends Controller
         $profile->record_dep_transfer = "";
         $profile->note = "";
         $profile->belongs_to = 1;
-        $profile->dep_id = 1;
-        $profile->section_id = 1;
+        $profile->is_drafted = 1;
+        $profile->dep_id = session('department');
+        $profile->section_id = session('section')[0];
+        $profile->employ_id = Auth::user()->id;
         $profile->save();
         return response()->json(['id' => $profile->id]);
     }
+
     public function updateUser(Request $request)
     {
+
         if ($request->ajax()) {
+            $rules = array(
+                'product_type.*'  => 'required',
+                'quantity_kg.*'  => 'required',
+                'quantity_g.*'  => 'required',
+                'quantity_ml.*'  => 'required',
+                'quantity_digit.*'  => 'required',
+                'manufacture_type.*'  => 'required',
+                'shipped_type.*'  => 'required',
+
+            );
+            $customMessages = [
+                'product_type.*.required' => ' The Product Type field can not be blank value.',
+                'quantity_kg.*.required' => 'The Quantity in Kg field can not be blank value.',
+                'quantity_g.*.required' => 'The Quantity in gram field can not be blank value.',
+                'quantity_ml.*.required' => 'The Quantity in ml field can not be blank value.',
+                'quantity_digit.*.required' => 'The Quantity in digit field can not be blank value.',
+                'manufacture_type.*.required' => 'The Manufacture type field can not be blank value.',
+                'shipped_type.*.required' => 'The Shipped type field can not be blank value.',
+            ];
+
+            $error = Validator::make($request->all(), $rules, $customMessages);
+            if ($error->fails()) {
+                return response()->json([
+                    'error'  => $error->errors()->all()
+                ]);
+            }
+
             $entered_by = $request->input('entered_by');
             $bought_by = $request->input('bought_by');
             $entity = $request->input('entity');
             $entry_date = $request->input('entry_date');
             $entity_location = $request->input('entity_location');
-            $editid = $request->input('editid');
+            $id = $request->input('editid');
+
             try {
+                $product_type = $request->product_type;
+                $quantity_kg = $request->quantity_kg;
+                $quantity_g = $request->quantity_g;
+                $quantity_ml = $request->quantity_ml;
+                $quantity_digit = $request->quantity_digit;
+                $manufacture_type = $request->manufacture_type;
+                $shipped_type = $request->shipped_type;
+
+                for ($count = 0; $count < count($product_type); $count++) {
+                    $data = array(
+                        'product_type' => $product_type[$count],
+                        'quantity_kg'  => $quantity_kg[$count],
+                        'quantity_g'  => $quantity_g[$count],
+                        'quantity_ml'  => $quantity_ml[$count],
+                        'quantity_digit' => $quantity_digit[$count],
+                        'manufacture_type' => $manufacture_type[$count],
+                        'shipped_type' => $shipped_type[$count],
+                        'profile_id' => $id
+                    );
+                    Product::create($data);
+                }
+
                 $data = array("entered_by" => $entered_by, "bought_by" => $bought_by, "entity" => $entity, "entry_date" => $entry_date, "entity_location" => $entity_location);
-                Profile::updateData($editid, $data);
+                Profile::updateData($id, $data);
                 return response()->json(['success' => 'Form is successfully submitted!']);
             } catch (\Illuminate\Database\QueryException $ex) {
                 dd($ex->getMessage());
             }
         }
     }
+
     public function stageThree(Request $request)
     {
         $shipping_no = $request->input('shipping_no');
@@ -165,41 +231,71 @@ class ProfileController extends Controller
         $product_image = $request->file('product_image')->store('images');
         $doc_image = $request->file('doc_image')->store('images');
         $note = $request->input('note');
-        $editid1 = $request->input('editid1');
+        $id = $request->input('editid1');
         $data = array("shipping_no" => $shipping_no, "coming_from" => $coming_from, "going_to" => $going_to, "final_destination" => $final_destination, "profile_image" => $profile_image, "product_image" => $product_image, "doc_image" => $doc_image, "note" => $note);
         try {
-            DB::table('profiles')->where('id', $editid1)->update($data);
-            return response()->json(['success' => 'Form is successfully submitted!']);
-        } catch (\Illuminate\Database\QueryException $ex) {
-            dd($ex->getMessage());
-        }
-    }
-    public function stageFour(Request $request)
-    {
-        $record_status = $request->input('record_status');
-        $record_dep_transfer = $request->input('record_dep_transfer');
-        $editid3 = $request->input('editid3');
-        $data = array("record_status" => $record_status, "record_dep_transfer" => $record_dep_transfer);
-        try {
-            DB::table('profiles')->where('id', $editid3)->update($data);
-            return response()->json(['success' => 'Form is successfully submitted!']);
-        } catch (\Illuminate\Database\QueryException $ex) {
-            dd($ex->getMessage());
-        }
-    }
-    public function stageFive(Request $request)
-    {
-        $belongs_to = $request->input('belongs_to');
-        $editid4 = $request->input('editid4');
-        $data = array("belongs_to" => $belongs_to);
-        try {
-            DB::table('profiles')->where('id', $editid4)->update($data);
+            DB::table('profiles')->where('id', $id)->update($data);
             return response()->json(['success' => 'Form is successfully submitted!']);
         } catch (\Illuminate\Database\QueryException $ex) {
             dd($ex->getMessage());
         }
     }
 
+    public function stageFour(Request $request)
+    {
+        $record_status = $request->input('record_status');
+        $record_dep_transfer = $request->input('record_dep_transfer');
+        $id = $request->input('editid3');
+        $data = array("record_status" => $record_status, "record_dep_transfer" => $record_dep_transfer);
+        try {
+            DB::table('profiles')->where('id', $id)->update($data);
+            return response()->json(['success' => 'Form is successfully submitted!']);
+        } catch (\Illuminate\Database\QueryException $ex) {
+            dd($ex->getMessage());
+        }
+    }
+
+    public function stageFive(Request $request)
+    {
+        $id=$request->input('productid');
+        $product = Product::destroy($id);
+        return response()->json(['success' => 'Form is successfully submitted!']);
+    }
+    public function stageSix(Request $request)
+    {
+        $belongs_to = $request->input('belongs_to');
+        $id = $request->input('editid4');
+
+        $data = array(
+            "belongs_to" => $belongs_to, "is_drafted" => 0
+        );
+        try {
+            DB::transaction(function () use ($data, $id) {
+                DB::table('profiles')->where('id', $id)->update($data);
+                if (count($data) > 0) {
+
+                    $trackProfile  = new TrackProfile();
+                    $trackProfile->profile_id = $id;
+                    $trackProfile->status = "pending";
+                    $trackProfile->from = Auth::user()->role;
+                    $trackProfile->status =  'pending';
+                    $trackProfile->owned_by = Auth::user()->id;
+                    $trackProfile->save();
+
+                    $timeLine = new TimeLine();
+                    $timeLine->profile_id = $id;
+                    $timeLine->note = 'Profile Submitted';
+                    $timeLine->type = 'pending';
+
+                    AddTimeLineNote::dispatch($timeLine);
+                    AddNotification::dispatch($timeLine);
+                }
+            });
+            return response()->json(['success' => 'Form is successfully submitted!']);
+        } catch (\Illuminate\Database\QueryException $ex) {
+            dd($ex->getMessage());
+        }
+    }
     /**
      * Display the specified resource.
      *
@@ -208,7 +304,6 @@ class ProfileController extends Controller
      */
     public function show(Profile $profiles)
     {
-        //
     }
 
     /**
@@ -217,9 +312,10 @@ class ProfileController extends Controller
      * @param  \App\Models\Profiles  $profiles
      * @return \Illuminate\Http\Response
      */
-    public function edit(Profile $profiles)
+    public function edit($id)
     {
-        //
+        $profile = Profile::with('department', 'section', 'products')->find($id);
+        return view('pages.edit', compact('profile'));
     }
 
     /**
@@ -229,9 +325,104 @@ class ProfileController extends Controller
      * @param  \App\Models\Profiles  $profiles
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Profile $profiles)
+    public function update(Request $request)
     {
-        //
+    }
+    public function profileUpdate(Request $request)
+    {
+        $editid = $request->input('editid');
+        $image_1 = $request->file('profile_image');
+        $image_2 = $request->file('product_image');
+        $image_3 = $request->file('doc_image');
+        if ($image_1 == null) {
+            $progileimage =  $request->input('profile_avatar_remove1');
+        } else {
+            $progileimage = $request->file('profile_image')->store('images');
+        }
+
+        if ($image_2 == null) {
+            $productimage =  $request->input('profile_avatar_remove2');
+        } else {
+            $productimage = $request->file('product_image')->store('images');
+        }
+        if ($image_3 == null) {
+            $docimage =  $request->input('profile_avatar_remove3');
+        } else {
+            $docimage = $request->file('doc_image')->store('images');
+        }
+
+        $data = array(
+            "name" => $request->input('name'),
+            "nationality" => $request->input('nationality'),
+            "dob" => $request->input('dob'),
+            "gender" => $request->input('citizen_status'),
+            "citizen_location" => $request->input('citizen_location'),
+            "citizen_id" => $request->input('citizen_id'),
+            "citizen_uid" => $request->input('citizen_uid'),
+            "passport_no" => $request->input('passport_no'),
+            "passport_type" => $request->input('passport_no'),
+            "entered_by" => $request->input('entered_by'),
+            "bought_by" => $request->get('bought_by'),
+            "entity" => $request->input('entity'),
+            "entry_date" => $request->input('entry_date'),
+            "entity_location" => $request->input('entity_location'),
+            "shipping_no" => $request->input('shipping_no'),
+            "coming_from" => $request->input('coming_from'),
+            "going_to" => $request->input('going_to'),
+            "final_destination" => $request->input('final_destination'),
+            "profile_image" => $progileimage,
+            "product_image" => $productimage,
+            "doc_image" => $docimage,
+            "note" => $request->input('note'),
+            "record_status" => $request->input('record_status'),
+            "record_dep_transfer" => $request->input('record_dep_transfer'),
+            "belongs_to" => $request->input('belongs_to')
+        );
+        if ($request->ajax()) {
+            try {
+                $product_id = $request->product_id;
+                $product_type = $request->product_type;
+                $quantity_kg = $request->quantity_kg;
+                $quantity_g = $request->quantity_g;
+                $quantity_ml = $request->quantity_ml;
+                $quantity_digit = $request->quantity_digit;
+                $manufacture_type = $request->manufacture_type;
+                $shipped_type = $request->shipped_type;
+                $profile_id = $editid;
+                $product = new Product();
+                $m = count($product_type);
+                for ($count = 0; $count < count($product_type); $count++) {
+                    $dataa = array(
+                        'id' => $product_id[$count],
+                        'product_type' => $product_type[$count],
+                        'quantity_kg'  => $quantity_kg[$count],
+                        'quantity_g'  => $quantity_g[$count],
+                        'quantity_ml'  => $quantity_ml[$count],
+                        'quantity_digit' => $quantity_digit[$count],
+                        'manufacture_type' => $manufacture_type[$count],
+                        'shipped_type' => $shipped_type[$count],
+                        'profile_id' => $profile_id
+                    );
+                    if ($product_id[$count] == "") {
+                        Product::create($dataa);
+                    } else {
+                        DB::table('products')->where('id', $product_id[$count])->update($dataa);
+                    }
+                    //  Product::create($dataa);
+                }
+                DB::table('profiles')->where('id', $editid)->update($data);
+            } catch (\Illuminate\Database\QueryException $ex) {
+                dd($ex->getMessage());
+            }
+
+            return response()->json(['success' => 'Form is successfully submitted!']);
+        }
+    }
+    public function productDelete(Request $request)
+    {
+        $id=$request->input('productid');
+        $product = Product::destroy($id);
+        return response()->json(['success' => 'Form is successfully submitted!']);
     }
 
     /**
@@ -263,16 +454,16 @@ class ProfileController extends Controller
      * @param  \App\Models\Profiles  $profiles
      * @return \Illuminate\Http\Response
      */
-    public function renderPdf(Profile $profiles)
+    public function renderPdf($id)
     {
-        $pdf = App::make('dompdf.wrapper');
-        $pdf->loadHTML('<h1>Test</h1>');
-        return $pdf->stream();
+        $profile = Profile::with('department', 'section', 'products')->find($id);
+        $pdf = PDF::loadView('pdf', $profile);
+        return $pdf->stream('invoice.pdf');
     }
 
     public function getProfileById($id)
     {
-        $profile = Profile::with('timeline', 'trackings')->findOrFail($id);
+        $profile = Profile::with('timeline', 'trackings', 'department', 'section', 'products')->findOrFail($id);
         return response()->json($profile, 200);
     }
 
@@ -304,11 +495,12 @@ class ProfileController extends Controller
             $timeLine->profile_id = $request->profile_id;
             $timeLine->note = $request->note;
             $timeLine->type = 'approved';
-            
+
             $trackCheck = TrackProfile::where('from', Auth::user()->role)->where('profile_id', $request->profile_id)->count();
             if ($trackCheck == 0) {
                 $signDocEvent = SignDocument::dispatch($trackProfile);
                 $addEntryEvent = AddTimeLineNote::dispatch($timeLine);
+                AddNotification::dispatch($timeLine);
             }
         }
         return $signDocEvent;
@@ -349,6 +541,7 @@ class ProfileController extends Controller
             $trackProfile = TrackProfile::where('at_end_user', 1)->where('profile_id', $id)->first();
             $trackProfile->at_end_user = 0;
             $trackProfile->save();
+            AddNotification::dispatch($trackProfile);
         }
         return back()->with('message', 'Forwaded updated');
     }

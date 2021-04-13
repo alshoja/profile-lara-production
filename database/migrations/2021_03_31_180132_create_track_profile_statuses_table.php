@@ -16,8 +16,7 @@ class CreateTrackProfileStatusesTable extends Migration
         Schema::create('track_profiles', function (Blueprint $table) {
             $table->id();
             $table->string('from');
-            $table->tinyInteger('profile_id');
-            // $table->tinyInteger('sequencer');
+            $table->foreignId('profile_id')->constrained('profiles')->onDelete('cascade');
             $table->tinyInteger('at_end_user')->default(0)->nullable();
             $table->string('status');
             $table->tinyInteger('owned_by');

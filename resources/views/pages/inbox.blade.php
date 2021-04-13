@@ -19,8 +19,7 @@
                                 <div class="card-toolbar">
                                     <ul class="nav nav-pills nav-pills-sm nav-dark-75">
                                         {{-- <li class="nav-item">
-                                            <a class="nav-link py-2 px-4  @if (request()->query('tab')
-                                                == null) {{ 'active' }} @endif"
+                                            <a class="nav-link py-2 px-4  @if (request()->query('tab') == null) {{ 'active' }} @endif"
                                                 href="{{ url('profiles') }}">
                                                 All
                                             </a>
@@ -123,42 +122,133 @@
                                                                             class="text-muted font-size-sm font-weight-bold">Progress</span>
                                                                     </div>
                                                                     <div class="progress progress-xs w-100">
-                                                                        <div class="progress-bar @if ((count($item->trackings) / 4) * 100 ==
-                                                                            100) bg-danger
-                                                                        @else bg-warning @endif "
-                                                                            role="progressbar" style="width:
-                                                                            {{ (count($item->trackings) / 4) * 100 }}%;"
-                                                                            aria-valuenow="10" aria-valuemin="0"
-                                                                            aria-valuemax="100"></div>
+                                                                        <div class="progress-bar @if ((count($item->trackings) / 4) * 100 == 25) bg-danger @endif
+                                                                            @if ((count($item->trackings) / 4) * 100 == 100)
+                                                                                bg-success
+                                                                            @else bg-warning @endif "
+                                                                                role="progressbar" style="width:
+                                                                                {{ (count($item->trackings) / 4) * 100 }}%;"
+                                                                                aria-valuenow="10" aria-valuemin="0"
+                                                                                aria-valuemax="100">
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </td>
                                                             <td class="text-right pr-0">
-                                                                <a href="#" data-toggle="dropdown" aria-haspopup="true"
-                                                                    aria-expanded="false"
-                                                                    class="btn btn-icon btn-light btn-hover-primary btn-sm">
-                                                                    <span class="svg-icon svg-icon-md svg-icon-primary">
-                                                                        <!--begin::Svg Icon | path:assets/media/svg/icons/General/Settings-1.svg-->
-                                                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                                                            xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                            width="24px" height="24px" viewBox="0 0 24 24"
-                                                                            version="1.1">
-                                                                            <g stroke="none" stroke-width="1" fill="none"
-                                                                                fill-rule="evenodd">
-                                                                                <rect x="0" y="0" width="24" height="24" />
-                                                                                <path
-                                                                                    d="M7,3 L17,3 C19.209139,3 21,4.790861 21,7 C21,9.209139 19.209139,11 17,11 L7,11 C4.790861,11 3,9.209139 3,7 C3,4.790861 4.790861,3 7,3 Z M7,9 C8.1045695,9 9,8.1045695 9,7 C9,5.8954305 8.1045695,5 7,5 C5.8954305,5 5,5.8954305 5,7 C5,8.1045695 5.8954305,9 7,9 Z"
-                                                                                    fill="#000000" />
-                                                                                <path
-                                                                                    d="M7,13 L17,13 C19.209139,13 21,14.790861 21,17 C21,19.209139 19.209139,21 17,21 L7,21 C4.790861,21 3,19.209139 3,17 C3,14.790861 4.790861,13 7,13 Z M17,19 C18.1045695,19 19,18.1045695 19,17 C19,15.8954305 18.1045695,15 17,15 C15.8954305,15 15,15.8954305 15,17 C15,18.1045695 15.8954305,19 17,19 Z"
-                                                                                    fill="#000000" opacity="0.3" />
-                                                                            </g>
-                                                                        </svg>
-                                                                        <!--end::Svg Icon-->
-                                                                    </span>
-                                                                </a>
+                                                                @if (request()->query('tab') != 'drafts')
+                                                                    <a href="#" data-toggle="dropdown" aria-haspopup="true"
+                                                                        aria-expanded="false"
+                                                                        class="btn btn-icon btn-light btn-hover-primary btn-sm">
+                                                                        <span class="svg-icon svg-icon-md svg-icon-primary">
+                                                                            <!--begin::Svg Icon | path:assets/media/svg/icons/General/Settings-1.svg-->
+                                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                                width="24px" height="24px"
+                                                                                viewBox="0 0 24 24" version="1.1">
+                                                                                <g stroke="none" stroke-width="1"
+                                                                                    fill="none" fill-rule="evenodd">
+                                                                                    <rect x="0" y="0" width="24"
+                                                                                        height="24" />
+                                                                                    <path
+                                                                                        d="M7,3 L17,3 C19.209139,3 21,4.790861 21,7 C21,9.209139 19.209139,11 17,11 L7,11 C4.790861,11 3,9.209139 3,7 C3,4.790861 4.790861,3 7,3 Z M7,9 C8.1045695,9 9,8.1045695 9,7 C9,5.8954305 8.1045695,5 7,5 C5.8954305,5 5,5.8954305 5,7 C5,8.1045695 5.8954305,9 7,9 Z"
+                                                                                        fill="#000000" />
+                                                                                    <path
+                                                                                        d="M7,13 L17,13 C19.209139,13 21,14.790861 21,17 C21,19.209139 19.209139,21 17,21 L7,21 C4.790861,21 3,19.209139 3,17 C3,14.790861 4.790861,13 7,13 Z M17,19 C18.1045695,19 19,18.1045695 19,17 C19,15.8954305 18.1045695,15 17,15 C15.8954305,15 15,15.8954305 15,17 C15,18.1045695 15.8954305,19 17,19 Z"
+                                                                                        fill="#000000" opacity="0.3" />
+                                                                                </g>
+                                                                            </svg>
+                                                                            <!--end::Svg Icon-->
+                                                                        </span>
+                                                                    </a>
+                                                                    <div
+                                                                        class="dropdown-menu dropdown-menu-sm dropdown-menu-left">
+                                                                        <!--begin::Navigation-->
+                                                                        <ul class="navi navi-hover">
+                                                                            <li class="navi-header pb-1">
+                                                                                <span
+                                                                                    class="text-primary text-uppercase font-weight-bold font-size-sm">Options</span>
+                                                                            </li>
+                                                                            @if ($item->is_completed == 1)
+                                                                                <li class="navi-item">
+                                                                                    <a onclick="alertAndGoToUrl('/forward/new/{{ $item->id }}','Forward or Duplicate this Profile ?')"
+                                                                                        href="#" class="navi-link">
+                                                                                        <span class="navi-icon">
+                                                                                            <i class="flaticon2-reply"></i>
+                                                                                        </span>
+                                                                                        <span class="navi-text">Forward as
+                                                                                            New</span>
+                                                                                    </a>
+                                                                                </li>
+                                                                                <li class="navi-item">
+                                                                                    <a target="_blank"
+                                                                                        href="{{ url('profile/pdf', $item->id) }}"
+                                                                                        href="#" class="navi-link">
+                                                                                        <span class="navi-icon">
+                                                                                            <i
+                                                                                                class="flaticon2-document"></i>
+                                                                                        </span>
+                                                                                        <span class="navi-text">Export
+                                                                                            PDF</span>
+                                                                                    </a>
+                                                                                </li>
+                                                                            @endif
+
+                                                                            @if (request()->query('tab') == 'inbox')
+                                                                                <li class="navi-item">
+                                                                                    <a href="#" class="navi-link">
+                                                                                        <span class="navi-icon">
+                                                                                            <i
+                                                                                                class="flaticon-speech-bubble"></i>
+                                                                                        </span>
+                                                                                        <span
+                                                                                            onclick="getProfileData({{ $item->id }})"
+                                                                                            data-toggle="modal"
+                                                                                            data-target="#exampleModalSizeXl"
+                                                                                            class="navi-text">Reply to
+                                                                                            note</span>
+                                                                                    </a>
+                                                                                </li>
+                                                                                <li class="navi-item">
+                                                                                    <a href="#" class="navi-link">
+                                                                                        <span class="navi-icon">
+                                                                                            <i
+                                                                                                class="flaticon-placeholder-3"></i>
+                                                                                        </span>
+                                                                                        <span
+                                                                                            onclick="getProfileData({{ $item->id }})"
+                                                                                            data-toggle="modal"
+                                                                                            data-target="#exampleModalSizeXl"
+                                                                                            class="navi-text">Track</span>
+                                                                                    </a>
+                                                                                </li>
+                                                                                <li class="navi-item">
+                                                                                    <a href="{{ url('profile/resubmit', $item->id) }}"
+                                                                                        class="navi-link">
+                                                                                        <span class="navi-icon">
+                                                                                            <i
+                                                                                                class="flaticon-paper-plane"></i>
+                                                                                        </span>
+                                                                                        <span
+                                                                                            class="navi-text">Resubmit</span>
+                                                                                    </a>
+                                                                                </li>
+                                                                            @endif
+
+                                                                            {{-- <li class="navi-item">
+                                                                            <a href="#" class="navi-link">
+                                                                                <span class="navi-icon">
+                                                                                    <i class="flaticon2-writing"></i>
+                                                                                </span>
+                                                                                <span class="navi-text">Submit Draft</span>
+                                                                            </a>
+                                                                        </li> --}}
+                                                                        </ul>
+                                                                        <!--end::Navigation-->
+                                                                    </div>
+                                                                @endif
+
                                                                 @if (Auth::user()->update)
-                                                                    <a href="#"
+                                                                    <a href="{{ route('profiles.edit', $item->id) }}"
                                                                         class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
                                                                         <span class="svg-icon svg-icon-md svg-icon-primary">
                                                                             <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Write.svg-->
@@ -213,71 +303,6 @@
                                                                     </a>
                                                                 @endif
                                                                 <input type="hidden" id="profile_id">
-                                                                <div
-                                                                    class="dropdown-menu dropdown-menu-sm dropdown-menu-left">
-                                                                    <!--begin::Navigation-->
-                                                                    <ul class="navi navi-hover">
-                                                                        <li class="navi-header pb-1">
-                                                                            <span
-                                                                                class="text-primary text-uppercase font-weight-bold font-size-sm">Options</span>
-                                                                        </li>
-                                                                        <li class="navi-item">
-                                                                            <a onclick="alertAndGoToUrl('/forward/new/{{ $item->id }}','Forward or Duplicate this Profile ?')"
-                                                                                href="#" class="navi-link">
-                                                                                <span class="navi-icon">
-                                                                                    <i class="flaticon2-reply"></i>
-                                                                                </span>
-                                                                                <span class="navi-text">Forward as
-                                                                                    New</span>
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="navi-item">
-                                                                            <a href="#" class="navi-link">
-                                                                                <span class="navi-icon">
-                                                                                    <i class="flaticon-speech-bubble"></i>
-                                                                                </span>
-                                                                                <span
-                                                                                    onclick="getProfileData({{ $item->id }})"
-                                                                                    data-toggle="modal"
-                                                                                    data-target="#exampleModalSizeXl"
-                                                                                    class="navi-text">Reply to note</span>
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="navi-item">
-                                                                            <a href="#" class="navi-link">
-                                                                                <span class="navi-icon">
-                                                                                    <i class="flaticon-placeholder-3"></i>
-                                                                                </span>
-                                                                                <span
-                                                                                    onclick="getProfileData({{ $item->id }})"
-                                                                                    data-toggle="modal"
-                                                                                    data-target="#exampleModalSizeXl"
-                                                                                    class="navi-text">Track</span>
-                                                                            </a>
-                                                                        </li>
-                                                                        @if (request()->query('tab') == 'inbox')
-                                                                            <li class="navi-item">
-                                                                                <a href="{{ url('profile/resubmit', $item->id) }}"
-                                                                                    class="navi-link">
-                                                                                    <span class="navi-icon">
-                                                                                        <i class="flaticon-paper-plane"></i>
-                                                                                    </span>
-                                                                                    <span class="navi-text">Resubmit</span>
-                                                                                </a>
-                                                                            </li>
-                                                                        @endif
-
-                                                                        {{-- <li class="navi-item">
-                                                                            <a href="#" class="navi-link">
-                                                                                <span class="navi-icon">
-                                                                                    <i class="flaticon2-writing"></i>
-                                                                                </span>
-                                                                                <span class="navi-text">Submit Draft</span>
-                                                                            </a>
-                                                                        </li> --}}
-                                                                    </ul>
-                                                                    <!--end::Navigation-->
-                                                                </div>
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -323,16 +348,19 @@
                                                                             </a>
                                                                         </li>
                                                                         @if (Auth::user()->role != 'employ')
-                                                                            @if (Auth::user()->role != 'employ')
-                                                                                <li class="nav-item">
-                                                                                    <a class="nav-link" data-toggle="tab"
-                                                                                        href="#kt_tab_pane_5_de">
-                                                                                        <span class="nav-icon"><i
-                                                                                                class="flaticon-information"></i></span>
-                                                                                        <span
-                                                                                            class="nav-text">Decision</span>
-                                                                                    </a>
-                                                                                </li>
+                                                                            @if (Auth::user()->role != 'admin')
+                                                                                @if (request()->query('tab') != 'completed')
+                                                                                    <li class="nav-item">
+                                                                                        <a class="nav-link"
+                                                                                            data-toggle="tab"
+                                                                                            href="#kt_tab_pane_5_de">
+                                                                                            <span class="nav-icon"><i
+                                                                                                    class="flaticon-information"></i></span>
+                                                                                            <span
+                                                                                                class="nav-text">Decision</span>
+                                                                                        </a>
+                                                                                    </li>
+                                                                                @endif
                                                                             @endif
                                                                         @endif
 
@@ -398,7 +426,7 @@
                                                                                             Name</label>
                                                                                         <p id="name"
                                                                                             class="text-secondary font-weight-lighter font-size-sm">
-                                                                                            Neethumma</p>
+                                                                                        </p>
 
                                                                                     </div>
 
@@ -410,7 +438,7 @@
                                                                                                     class="text-muted font-size-sm">Nationality</label>
                                                                                                 <p id="nationality"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                </p>
 
                                                                                             </div>
                                                                                             <!--end::Input-->
@@ -422,7 +450,7 @@
                                                                                                     class="text-muted font-size-sm">Gender</label>
                                                                                                 <p id="gender"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                </p>
 
                                                                                             </div>
                                                                                             <!--end::Input-->
@@ -433,7 +461,7 @@
                                                                                                     class="text-muted font-size-sm">DOB</label>
                                                                                                 <p id="dob"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                </p>
 
                                                                                             </div>
                                                                                         </div>
@@ -448,7 +476,7 @@
                                                                                                     Status</label>
                                                                                                 <p id="citizen_status"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                </p>
 
                                                                                             </div>
                                                                                             <!--end::Input-->
@@ -461,7 +489,7 @@
                                                                                                     Location</label>
                                                                                                 <p id="citizen_location"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                </p>
 
                                                                                             </div>
                                                                                             <!--end::Input-->
@@ -474,7 +502,7 @@
                                                                                                     No</label>
                                                                                                 <p id="citizen_id"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                </p>
 
                                                                                             </div>
                                                                                         </div>
@@ -489,7 +517,7 @@
                                                                                                     No</label>
                                                                                                 <p id="citizen_uid"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                </p>
 
                                                                                             </div>
                                                                                             <!--end::Input-->
@@ -502,7 +530,7 @@
                                                                                                     No</label>
                                                                                                 <p id="passport_no"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                </p>
 
                                                                                             </div>
                                                                                             <!--end::Input-->
@@ -515,7 +543,7 @@
                                                                                                     Type</label>
                                                                                                 <p id="passport_type"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                </p>
 
 
                                                                                             </div>
@@ -547,9 +575,9 @@
                                                                                                 <label
                                                                                                     class="text-muted font-size-sm">Date
                                                                                                     Of Entry</label>
-                                                                                                <p
+                                                                                                <p id="entry_date"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                </p>
 
                                                                                             </div>
                                                                                         </div>
@@ -563,7 +591,7 @@
                                                                                                     By</label>
                                                                                                 <p id="entered_by"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                </p>
 
                                                                                             </div>
                                                                                             <!--end::Input-->
@@ -577,7 +605,7 @@
                                                                                                     By</label>
                                                                                                 <p id="bought_by"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                </p>
                                                                                             </div>
                                                                                             <!--end::Input-->
                                                                                         </div>
@@ -590,7 +618,7 @@
                                                                                                     By</label>
                                                                                                 <p id="entity"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                </p>
                                                                                             </div>
                                                                                             <!--end::Input-->
                                                                                         </div>
@@ -603,7 +631,7 @@
                                                                                                     Location</label>
                                                                                                 <p id="entity_location"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                </p>
                                                                                             </div>
                                                                                             <!--end::Input-->
                                                                                         </div>
@@ -645,32 +673,8 @@
                                                                                                                 KG</th>
                                                                                                         </tr>
                                                                                                     </thead>
-                                                                                                    <tbody>
-                                                                                                        <tr
-                                                                                                            class="font-weight-boldest">
-                                                                                                            <td
-                                                                                                                class="pl-0 pt-7">
-                                                                                                                a</td>
-                                                                                                            <td
-                                                                                                                class="pl-0 pt-7">
-                                                                                                                a</td>
-                                                                                                            <td
-                                                                                                                class="pl-0 pt-7">
-                                                                                                                a</td>
-                                                                                                            <td
-                                                                                                                class="pl-0 pt-7">
-                                                                                                                a</td>
-                                                                                                            <td
-                                                                                                                class="pl-0 pt-7">
-                                                                                                                a</td>
-                                                                                                            <td
-                                                                                                                class="pl-0 pt-7">
-                                                                                                                a</td>
-                                                                                                            <td
-                                                                                                                class="pl-0 pt-7">
-                                                                                                                a</td>
-
-                                                                                                        </tr>
+                                                                                                    <tbody
+                                                                                                        id="product_table">
 
                                                                                                     </tbody>
                                                                                                 </table>
@@ -697,7 +701,7 @@
                                                                                                     No</label>
                                                                                                 <p id="shipping_no"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                </p>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="col-xl-3">
@@ -707,7 +711,7 @@
                                                                                                     From</label>
                                                                                                 <p id="coming_from"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                </p>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="col-xl-3">
@@ -717,7 +721,7 @@
                                                                                                     to</label>
                                                                                                 <p id="going_to"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                </p>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="col-xl-3">
@@ -727,7 +731,7 @@
                                                                                                     Destination</label>
                                                                                                 <p id="final_destination"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                </p>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -743,7 +747,7 @@
                                                                                                     class="text-muted font-size-sm">Note</label>
                                                                                                 <p id="note"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                </p>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -756,24 +760,27 @@
                                                                                             <label
                                                                                                 class="text-muted font-size-sm">Profile
                                                                                                 Picture</label>
-                                                                                            <p id="profile_image"
+                                                                                            <img style="width: 20%"
+                                                                                                id="profile_image"
                                                                                                 class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                Neethumma</p>
+
                                                                                         </div>
                                                                                         <div class="col-md-4">
                                                                                             <label
                                                                                                 class="text-muted font-size-sm">Product
                                                                                                 Image</label>
-                                                                                            <p id="product_image"
+                                                                                            <img style="width: 20%"
+                                                                                                id="product_image"
                                                                                                 class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                Neethumma</p>
+
                                                                                         </div>
-                                                                                        <div class="col-md-3">
+                                                                                        <div class="col-md-4">
                                                                                             <label
                                                                                                 class="text-muted font-size-sm">Document</label>
-                                                                                            <p id="doc_image"
+                                                                                            <img style="width: 20%"
+                                                                                                id="doc_image"
                                                                                                 class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                Neethumma</p>
+
                                                                                         </div>
                                                                                     </div>
 
@@ -798,7 +805,7 @@
                                                                                                     Status</label>
                                                                                                 <p id="record_status"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                </p>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -823,7 +830,7 @@
                                                                                                     Status</label>
                                                                                                 <p id="record_dep_transfer"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                </p>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -839,14 +846,24 @@
                                                                                     </div>
                                                                                     </br>
                                                                                     <div class="form-group row">
-                                                                                        <div class="col-xl-12">
+                                                                                        <div class="col-xl-6">
                                                                                             <div class="form-group">
                                                                                                 <label
-                                                                                                    class="text-muted font-size-sm">General
-                                                                                                    Director</label>
-                                                                                                <p id="belongs_to"
+                                                                                                    class="text-muted font-size-sm">
+                                                                                                    Department</label>
+                                                                                                <p id="depart"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                    Neethumma</p>
+                                                                                                </p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-xl-6">
+                                                                                            <div class="form-group">
+                                                                                                <label
+                                                                                                    class="text-muted font-size-sm">
+                                                                                                    Section</label>
+                                                                                                <p id="section"
+                                                                                                    class="text-secondary font-weight-lighter font-size-sm">
+                                                                                                </p>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -932,19 +949,19 @@
                                                                     <div class="tab-pane fade" id="kt_tab_pane_5_doc1"
                                                                         role="tabpanel"
                                                                         aria-labelledby="kt_tab_pane_5_doc1">
-                                                                        <img id="doc_1" alt="Pic"
+                                                                        <img style="width: 20%" id="doc_1" alt="Pic"
                                                                             src="assets/media/demos/demo1.png" />
                                                                     </div>
                                                                     <div class="tab-pane fade" id="kt_tab_pane_5_doc2"
                                                                         role="tabpanel"
                                                                         aria-labelledby="kt_tab_pane_5_doc2">
-                                                                        <img id="doc_2" alt="Pic"
+                                                                        <img style="width: 20%" id="doc_2" alt="Pic"
                                                                             src="assets/media/demos/demo2.png" />
                                                                     </div>
                                                                     <div class="tab-pane fade" id="kt_tab_pane_5_doc3"
                                                                         role="tabpanel"
                                                                         aria-labelledby="kt_tab_pane_5_doc3">
-                                                                        <img id="doc_3" alt="Pic"
+                                                                        <img style="width: 20%" id="doc_3" alt="Pic"
                                                                             src="assets/media/demos/demo3.png" />
                                                                     </div>
 
@@ -1027,18 +1044,34 @@
                         </a> --}}
                         {{ $profiles->links() }}
                     </div>
-                    {{-- <div class="d-flex align-items-center">
-                        <select
+                    <div class="d-flex align-items-center">
+                        <select id="perpage" onchange="perPageItems()"
                             class="form-control form-control-sm text-primary font-weight-bold mr-4 border-0 bg-light-primary"
                             style="width: 75px;">
-                            <option value="10">10</option>
-                            <option value="20">20</option>
-                            <option value="30">30</option>
-                            <option value="50">50</option>
-                            <option value="100">100</option>
+                            @if (request()->query('perPage'))
+                                <option selected hidden value="{{ request()->query('perPage') }}">
+                                    {{ request()->query('perPage') }}
+                                </option>
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="30">30</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            @else
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="30">30</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            @endif
+
                         </select>
-                        <span class="text-muted">Displaying 10 of 230 records</span>
-                    </div> --}}
+                        @if (request()->query('perPage'))
+                            <span class="text-muted">Displaying {{ request()->query('perPage') }} records</span>
+                        @else
+                            <span class="text-muted">Displaying 10 records</span>
+                        @endif
+                    </div>
                 </div>
                 <!--end::Pagination-->
             </div>

@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 class Profile extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'name',
         'nationality',
@@ -50,7 +51,7 @@ class Profile extends Model
 
     public function products()
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Product::class,'profile_id', 'id');
     }
 
     public function timeline()
@@ -61,6 +62,16 @@ class Profile extends Model
     public function trackings()
     {
         return $this->hasMany(TrackProfile::class, 'profile_id', 'id');
+    }
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class, 'dep_id', 'id');
+    }
+
+    public function section()
+    {
+        return $this->belongsTo(Section::class, 'section_id');
     }
 
     // public function trackingsWithHigherId()
