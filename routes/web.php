@@ -16,9 +16,13 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome'])->name('welocome');
+Route::get('/blocked', function () {
+    return view('pages.error.blocked');
+});
+
 Auth::routes();
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth','initUser','checkIsBlocked'])->group(function () {
 
     // Dashboard
     Route::get('/notifications', [App\Http\Controllers\NotificationController::class, 'index'])->name('notification');
