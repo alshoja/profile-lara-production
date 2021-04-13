@@ -257,7 +257,7 @@ class HomeController extends Controller
             if (Auth::user()->role == 'employ') {
                 $query->where('employ_id', '=', Auth::user()->id);
             } else {
-                $query->whereIn('dep_in', '=', session('department'));
+                $query->whereIn('dep_id', session('department'));
             }
 
             if ($search_date) {

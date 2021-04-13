@@ -29,7 +29,7 @@
     <link href="assets/css/themes/layout/aside/dark.rtl.css" rel="stylesheet" type="text/css" />
 
     <!--end::Layout Themes-->
-    <link rel="shortcut icon" href="assets/media/logos/logo-light.png" />
+    <link rel="icon" type="image/png" href="assets/media/logos/logo-light.png" />
 </head>
 <!--end::Head-->
 <!--begin::Body-->
