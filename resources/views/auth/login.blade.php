@@ -46,15 +46,15 @@
                     <!--begin::Login Header-->
                     <div class="d-flex flex-center mb-15">
                         <a href="#">
-                            <img src="assets/media/logos/logo-letter-9.png" class="max-h-100px" alt="" />
+                            <img src="assets/media/logos/logo-light.png" class="max-h-100px" alt="" />
                         </a>
                     </div>
                     <!--end::Login Header-->
                     <!--begin::Login Sign in form-->
                     <div class="login-signin">
                         <div class="mb-20">
-                            <h3>login</h3>
-                            <p class="opacity-60 font-weight-bold">Enter your details to login to your account:</p>
+                            {{-- <h3>login</h3> --}}
+                            {{-- <p class="opacity-60 font-weight-bold">Enter your details to login to your account:</p> --}}
                         </div>
                         <form method="POST" action="{{ route('login') }}" class="form">
                             @csrf
@@ -87,10 +87,10 @@
                                             {{ old('remember') ? 'checked' : '' }} />
                                         <span></span> {{ __('Remember Me') }}</label>
                                 </div>
-                                @if (Route::has('password.request'))
+                                {{-- @if (Route::has('password.request'))
                                     <a href="javascript:;" id="kt_login_forgot" class="text-white font-weight-bold">
                                         {{ __('Forgot Your Password') }} </a>
-                                @endif
+                                @endif --}}
                             </div>
                             <div class="form-group text-center mt-10">
                                 <button id="kt_login_signin_submit"
