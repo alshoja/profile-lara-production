@@ -552,7 +552,7 @@
                 </a>
                 <!--end:Item-->
             </div>
-          
+
         </div>
         <!--end::Content-->
     </div>
@@ -580,13 +580,16 @@
     <!--begin::Sticky Toolbar-->
     <ul class="sticky-toolbar nav flex-column pl-2 pr-2 pt-3 pb-3 mt-4">
         <!--begin::Item-->
-        <li class="nav-item mb-2" id="kt_demo_panel_toggle" data-toggle="tooltip" title="Add New User"
-            data-placement="right">
-            <a class="btn btn-sm btn-icon btn-bg-light btn-icon-success btn-hover-success"
-                href="{{ url('/user/add-user') }}">
-                <i class="flaticon2-drop"></i>
-            </a>
-        </li>
+        @if (Auth::user()->role != 'employ')
+            <li class="nav-item mb-2" id="kt_demo_panel_toggle" data-toggle="tooltip" title="Add New User"
+                data-placement="right">
+                <a class="btn btn-sm btn-icon btn-bg-light btn-icon-success btn-hover-success"
+                    href="{{ url('/user/add-user') }}">
+                    <i class="flaticon2-drop"></i>
+                </a>
+            </li>
+        @endif
+
         <!--end::Item-->
         <!--begin::Item-->
         {{-- <li class="nav-item mb-2" data-toggle="tooltip" title="Layout Builder" data-placement="left">
@@ -599,7 +602,7 @@
         <!--begin::Item-->
         <li class="nav-item mb-2" data-toggle="tooltip" title="Add new Profile" data-placement="left">
             <a class="btn btn-sm btn-icon btn-bg-light btn-icon-warning btn-hover-warning"
-                href="{{ url('/profile/add-profile') }}" target="_blank">
+                href="{{ url('/profile/add-profile') }}" >
                 <i class="flaticon2-telegram-logo"></i>
             </a>
         </li>

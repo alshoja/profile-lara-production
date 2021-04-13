@@ -151,7 +151,7 @@
                     <div class="card card-custom bg-gray-100 card-stretch gutter-b">
                         <!--begin::Header-->
                         <div class="card-header border-0 bg-danger py-5">
-                            <h3 class="card-title font-weight-bolder text-white">Analytics</h3>
+                            <h3 class="card-title font-weight-bolder text-white">Profile Analytics</h3>
                             <div class="card-toolbar">
 
                             </div>
@@ -174,7 +174,7 @@
                                                 {{ $dashData->profileEntered }}</p>
                                             <!--end::Svg Icon-->
                                         </span>
-                                        <a href="#" class="text-warning font-weight-bold font-size-h6">Profile
+                                        <a href="#" class="text-warning font-weight-bold font-size-h6">
                                             Entered</a>
                                     </div>
                                     @if (Auth::user()->role != 'employ')
@@ -199,7 +199,7 @@
                                             <!--end::Svg Icon-->
                                         </span>
                                         <a href="#" class="text-danger font-weight-bold font-size-h6 mt-2">Approved
-                                            Profiles</a>
+                                            </a>
                                     </div>
                                     <div class="col bg-light-success px-6 py-8 rounded-xl">
                                         <span class="svg-icon svg-icon-3x svg-icon-success d-block my-2">
@@ -208,7 +208,7 @@
                                                 {{ $dashData->profilePending }}</p>
                                             <!--end::Svg Icon-->
                                         </span>
-                                        <a href="#" class="text-success font-weight-bold font-size-h6 mt-2">Profile
+                                        <a href="#" class="text-success font-weight-bold font-size-h6 mt-2">
                                             Pending</a>
                                     </div>
                                 </div>
