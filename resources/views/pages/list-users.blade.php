@@ -138,8 +138,11 @@
                                     <div class="d-flex flex-column text-dark-75">
                                         <span class="font-weight-bolder font-size-sm">Departments</span>
                                         <span class="font-weight-bolder font-size-h5">
-                                            <span
-                                                class="text-dark-50 font-weight-bold"></span>{{ count(session('department')) }}</span>
+                                            <span class="text-dark-50 font-weight-bold"></span>
+                                            @if (Auth::user()->role != 'admin')
+                                                {{ count(session('department')) }}
+                                            @endif
+                                        </span>
                                     </div>
                                 @endif
                             </div>
@@ -188,8 +191,8 @@
                             <!--begin: Item-->
                             <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
                                 <!-- <span class="mr-5">
-                                                                                                 <i class="flaticon-user icon-2x text-muted font-weight-bold"></i>
-                                                                                                </span> -->
+                                                                                                     <i class="flaticon-user icon-2x text-muted font-weight-bold"></i>
+                                                                                                    </span> -->
                                 <div class="d-flex flex-column flex-lg-fill">
                                     <span class="text-dark-75 font-weight-bolder font-size-sm">User Suspended</span>
                                     <!-- <a href="#" class="text-primary font-weight-bolder">No</a> -->
