@@ -231,18 +231,34 @@
                                                                                             class="navi-text">Track</span>
                                                                                     </a>
                                                                                 </li>
-
                                                                             @endif
-                                                                            <li class="navi-item">
-                                                                                <a href="{{ url('profile/resubmit', $item->id) }}"
-                                                                                    class="navi-link">
-                                                                                    <span class="navi-icon">
-                                                                                        <i class="flaticon-paper-plane"></i>
-                                                                                    </span>
-                                                                                    <span class="navi-text">Submit
-                                                                                        Draft</span>
-                                                                                </a>
-                                                                            </li>
+                                                                            @if (request()->query('tab') == 'drafts')
+                                                                                <li class="navi-item">
+                                                                                    <a href="{{ url('profile/submit/draft', $item->id) }}"
+                                                                                        class="navi-link">
+                                                                                        <span class="navi-icon">
+                                                                                            <i
+                                                                                                class="flaticon-paper-plane"></i>
+                                                                                        </span>
+                                                                                        <span class="navi-text">Submit
+                                                                                            Draft</span>
+                                                                                    </a>
+                                                                                </li>
+                                                                            @endif
+                                                                            @if (request()->query('tab') == 'inbox')
+                                                                                <li class="navi-item">
+                                                                                    <a href="{{ url('profile/resubmit', $item->id) }}"
+                                                                                        class="navi-link">
+                                                                                        <span class="navi-icon">
+                                                                                            <i
+                                                                                                class="flaticon-paper-plane"></i>
+                                                                                        </span>
+                                                                                        <span
+                                                                                            class="navi-text">Resubmit</span>
+                                                                                    </a>
+                                                                                </li>
+                                                                            @endif
+
                                                                             {{-- <li class="navi-item">
                                                                             <a href="#" class="navi-link">
                                                                                 <span class="navi-icon">

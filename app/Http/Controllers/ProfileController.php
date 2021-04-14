@@ -356,7 +356,7 @@ class ProfileController extends Controller
     public function profileUpdate(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            
+
             "name" => 'required',
             "nationality" => 'required',
             "dob" => 'required',
@@ -381,7 +381,7 @@ class ProfileController extends Controller
             "note" => 'required',
             "record_status" => 'required',
             "record_dep_transfer" => 'required',
-            
+
 
 
         ]);
@@ -604,6 +604,17 @@ class ProfileController extends Controller
             $trackProfile->at_end_user = 0;
             $trackProfile->save();
             AddNotification::dispatch($trackProfile);
+        }
+        return back()->with('message', 'Forwaded updated');
+    }
+
+    public function submitDraft($id)
+    {
+        $profile = Profile::find($id);
+        $profile->is_drafted = 0;
+        $profile->save();
+        if ($profile) {
+            $this->trigerEvent($id);
         }
         return back()->with('message', 'Forwaded updated');
     }
