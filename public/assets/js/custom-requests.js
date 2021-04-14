@@ -244,7 +244,7 @@ function setDocs(result) {
 }
 
 function setTrack(trackings) {
-  console.log('filtered',trackings);
+  console.log("filtered", trackings);
 
   let filteredTrackings = trackings.filter((res) => {
     return res.type == "rejected" || res.type == "approved";
@@ -434,7 +434,7 @@ function AproveOrReject(action) {
   note.value = "";
   reject_button.disabled = true;
   approve_button.disabled = true;
-  // location.reload();
+  location.reload();
   return res;
 }
 
@@ -467,12 +467,26 @@ function timeDifference(current, previous) {
   }
 }
 
-
 function perPageItems() {
   var currentPage = document.getElementById("perpage").value;
   const urlParams = new URLSearchParams(window.location.search);
   urlParams.set("perPage", currentPage);
   window.location.search = urlParams;
-  // document.getElementById("demo").innerHTML = "You selected: " + x;
 }
 
+function getSections(val, url) {
+  const data = getOrGetById(url, val);
+  console.log('sections',data)
+  var html = "";
+  var i;
+  for (i = 0; i < data.sections.length; i++) {
+    html +=
+      "<option value=" +
+      data.sections[i].id +
+      ">" +
+      data.sections[i].name +
+      "</option>";
+  }
+  document.getElementById("section_id").innerHTML = html
+  return false;
+}

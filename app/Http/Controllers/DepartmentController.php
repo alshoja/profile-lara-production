@@ -63,7 +63,7 @@ class DepartmentController extends Controller
      */
     public function show($id)
     {
-        $department = Department::findOrFail($id);
+        $department = Department::with('sections')->findOrFail($id);
         return response()->json($department, 200);
     }
 
@@ -91,13 +91,6 @@ class DepartmentController extends Controller
             'name' => ['required', 'string', 'max:50', 'unique:departments'],
         ]);
 
-        // $validator = Validator::make($request->all(), [
-        //     'name' => ['required', 'string', 'max:10', 'unique:departments'],
-        // ]);
-
-        // if ($validator->fails()) {
-        //     return response()->json($validator->errors(), 400);
-        // }
         $department = Department::findOrFail($request->dep_id);
         $department->name = $request->name;
         $department->save();
