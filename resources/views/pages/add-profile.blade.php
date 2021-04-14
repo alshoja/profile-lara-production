@@ -1101,7 +1101,7 @@
         });
         function printErrorMsg (msg) {
             $.each( msg, function( key, value ) {
-                alert(key);
+              
             console.log(key);
               $('.'+key+'_err').text(value);
             });
@@ -1205,7 +1205,7 @@
             }
         });
         $('#editstep').on('click', function() {
-            alert("alert");
+            
             event.preventDefault();
             var fd = new FormData();
             let shipping_no = $('#shipping_no').val();
