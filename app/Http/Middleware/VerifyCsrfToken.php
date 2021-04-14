@@ -19,6 +19,7 @@ class VerifyCsrfToken extends Middleware
         'user/permission',
         'user/permission/*',
         'user/permissions',
-        'user/permissions/*'
+        'user/permissions/*',
+        'profileUpdate/'
     ];
 }

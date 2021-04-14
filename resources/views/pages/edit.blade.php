@@ -23,8 +23,8 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                                                                <g stroke=" none" stroke-width="1"
-                                            fill="none" fill-rule="evenodd">
+                                                                                                            <g stroke="
+                                            none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
                                                 transform="translate(15.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-15.000000, -12.000000) "
@@ -48,8 +48,8 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                                                                <g stroke=" none" stroke-width="1"
-                                            fill="none" fill-rule="evenodd">
+                                                                                                            <g stroke="
+                                            none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
                                                 transform="translate(15.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-15.000000, -12.000000) "
@@ -73,8 +73,8 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                                                                <g stroke=" none" stroke-width="1"
-                                            fill="none" fill-rule="evenodd">
+                                                                                                            <g stroke="
+                                            none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
                                                 transform="translate(15.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-15.000000, -12.000000) "
@@ -98,8 +98,8 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                                                                <g stroke=" none" stroke-width="1"
-                                            fill="none" fill-rule="evenodd">
+                                                                                                            <g stroke="
+                                            none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
                                                 transform="translate(15.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-15.000000, -12.000000) "
@@ -123,8 +123,8 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow last">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                                                                <g stroke=" none" stroke-width="1"
-                                            fill="none" fill-rule="evenodd">
+                                                                                                            <g stroke="
+                                            none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
                                                 transform="translate(12.000000, 12.000000) rotate(-90.000000) translate(-12.000000, -12.000000)"
@@ -156,7 +156,7 @@
                                     </div>
                                 @endif
                                 <!--begin::Wizard Form-->
-                                <form class="form" id="kt_form" enctype="multipart/form-data">
+                                <form class="form" id="kt_form" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <!--begin::Wizard Step 1-->
                                     <div class="pb-5" data-wizard-type="step-content" data-wizard-state="current">
@@ -824,7 +824,7 @@
                                         </div>
 
                                         <h6 class="mb-10 font-weight-bold text-dark">Label</h6>
-                                        <div class="row form-group">
+                                        {{-- <div class="row form-group">
                                             <div class="col-md-3">
                                                 <label>Profile Picture</label>
                                                 <div class="image-input image-input-empty image-input-outline"
@@ -914,6 +914,103 @@
                                                         <i class="ki ki-bold-close icon-xs text-muted"></i>
                                                     </span>
                                                 </div>
+                                                <div class="d-md-none mb-2"></div>
+                                            </div>
+                                        </div> --}}
+                                        <div class="row form-group">
+                                            <div class="col-md-3">
+                                                <label>Profile Picture</label>
+
+                                                <div class="image-input image-input-empty image-input-outline"
+                                                    id="kt_image_1"
+                                                    style="background-image: url(assets/media/users/blank.png)">
+                                                    <div class="image-input-wrapper"></div>
+                                                    <label
+                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+                                                        data-action="change" data-toggle="tooltip" title=""
+                                                        data-original-title="Change avatar">
+                                                        <i class="fa fa-pen icon-sm text-muted"></i>
+                                                        <input type="file" name="profile_image" id="profile_image"
+                                                            accept=".png, .jpg, .jpeg" />
+                                                        <input type="hidden" name="profile_avatar_remove" />
+
+                                                    </label>
+                                                    <span
+                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+                                                        data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+                                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                                    </span>
+                                                    <span
+                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+                                                        data-action="remove" data-toggle="tooltip" title="Remove avatar">
+                                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                                    </span>
+                                                </div>
+                                                <span class="text-danger error-text profile_image_err"></span>
+                                                <!-- <span class="form-text text-muted">Max file size is 1MB and max number of files is 5.</span> -->
+                                                <div class="d-md-none mb-2"></div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Product Image</label>
+
+                                                <div class="image-input image-input-empty image-input-outline"
+                                                    id="kt_image_2"
+                                                    style="background-image: url(assets/media/users/blank.png)">
+                                                    <div class="image-input-wrapper"></div>
+                                                    <label
+                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+                                                        data-action="change" data-toggle="tooltip" title=""
+                                                        data-original-title="Change avatar">
+                                                        <i class="fa fa-pen icon-sm text-muted"></i>
+                                                        <input type="file" name="product_image" id="product_image"
+                                                            accept=".png, .jpg, .jpeg" />
+                                                        <input type="hidden" name="profile_avatar_remove" />
+
+                                                    </label>
+                                                    <span
+                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+                                                        data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+                                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                                    </span>
+                                                    <span
+                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+                                                        data-action="remove" data-toggle="tooltip" title="Remove avatar">
+                                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                                    </span>
+                                                </div>
+                                                <span class="text-danger error-text product_image_err"></span>
+                                                <div class="d-md-none mb-2"></div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Document</label>
+
+                                                <div class="image-input image-input-empty image-input-outline"
+                                                    id="kt_image_3"
+                                                    style="background-image: url(assets/media/users/blank.png)">
+                                                    <div class="image-input-wrapper"></div>
+                                                    <label
+                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+                                                        data-action="change" data-toggle="tooltip" title=""
+                                                        data-original-title="Change avatar">
+                                                        <i class="fa fa-pen icon-sm text-muted"></i>
+                                                        <input type="file" name="doc_image" id="doc_image"
+                                                            accept=".png, .jpg, .jpeg" />
+                                                        <input type="hidden" name="profile_avatar_remove" />
+
+
+                                                    </label>
+                                                    <span
+                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+                                                        data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+                                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                                    </span>
+                                                    <span
+                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+                                                        data-action="remove" data-toggle="tooltip" title="Remove avatar">
+                                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                                    </span>
+                                                </div>
+                                                <span class="text-danger error-text doc_image_err"></span>
                                                 <div class="d-md-none mb-2"></div>
                                             </div>
                                         </div>
@@ -1015,7 +1112,7 @@
                                         <div>
 
                                             <button id="next" type="button"
-                                                class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
+                                                class="btn btn-success btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
                                                 data-wizard-type="action-next">Next</button>
                                             <button
                                                 class="btn btn-success btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
@@ -1052,8 +1149,11 @@
             $.ajax({
                 url: "/profileUpdate",
                 method: 'POST',
-                data: $('#kt_form').serialize(),
-                dataType: 'json',
+                enctype: 'multipart/form-data',
+                data: new FormData(this),
+                dataType: 'JSON',
+                processData: false,
+                contentType: false,
                 success: function(data) {
                     if ($.isEmptyObject(data.error)) {
                         console.log(data);
@@ -1065,8 +1165,6 @@
                         'Validation Error', 'danger');
                 },
             });
-
-
         });
 
         function printErrorMsg(msg) {
@@ -1090,7 +1188,6 @@
             gfg_down.remove();
             var div_down = document.getElementById(divname1);
             div_down.remove();
-
         }
 
     </script>
@@ -1127,79 +1224,73 @@
             var addButton = $('.add_button');
             var wrapper = $('.field_wrapper');
             var fieldHTML = `
-                                                            <div> 
-                                                            <div class="row form-group">
-                                                            <div class="col-md-4">
-                                                            <input type="text" hidden name="product_id[]" id="product_id[]">
-                                                            <select required name="product_type[]" id="product_type[]" class="form-control form-control-solid ">
-                                                                    <option hidden value="">Select Product-1&nbsp;
-                                                                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                                                                            &nbsp;
-                                                                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                                                                        </option>
-                                                                                                                        <option value="YE">P 1</option>
-                                                                                                                        <option value="ZM">P 2</option>
-                                                                                                                        <option value="ZW">P 3</option>
-                                                                                                                    </select>
-                                                                                                                    {{-- <div class="d-md-none mb-2"></div> --}}
-                                                                                                                </div>
-                                                                                                                <div class="col-md-4">
-                                                                                                                  
-                                                                                                                    <select required name="manufacture_type[]" id="manufacture_type[]"
-                                                                                                                        class="form-control form-control-solid">
-                                                                                                                        <option hidden value=""> Select Type-1</option>
-                                                                                                                        <option value="YE">P 1</option>
-                                                                                                                        <option value="ZM">P 2</option>
-                                                                                                                        <option value="ZW">P 3</option>
-                                                                                                                    </select>
-                                                                                                                    {{-- <div class="d-md-none mb-2"></div> --}}
-                                                                                                                </div>
-                                                                                                                <div class="col-md-4">
-                                                                                                               
-                                                                                                                    <select required name="shipped_type[]" id="shipped_type[]"
-                                                                                                                        class="form-control form-control-solid">
-                                                                                                                        <option selected hidden value="">Select type-3
-                                                                                                                        </option>
-                                                                                                                        <option value="YE">P 1</option>
-                                                                                                                        <option value="ZM">P 2</option>
-                                                                                                                        <option value="ZW">P 3</option>
-                                                                                                                    </select>
-                                                                                                                    {{-- <div class="d-md-none mb-2"></div> --}}
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                            <div class="row form-group">
-                                                                                                                <div class="col-md-3">
-                                                                                                                   
-                                                                                                                    <input required type="text" class="form-control" placeholder="Kg"
-                                                                                                                        name="quantity_kg[]" id="quantity_kg[]" />
-                                                                                                                    <div class="d-md-none mb-2"></div>
-                                                                                                                </div>
-                                                                                                                <div class="col-md-3">
-                                                                                                                   
-                                                                                                                    <input required type="text" class="form-control" placeholder="G"
-                                                                                                                        name="quantity_g[]" id="quantity_g[]" />
-                                                                                                                    <div class="d-md-none mb-2"></div>
-                                                                                                                </div>
-                                                                                                                <div class="col-md-3">
-                                                                                                                 
-                                                                                                                    <input required type="text" class="form-control" placeholder="ML"
-                                                                                                                        name="quantity_ml[]" id="quantity_ml[]" />
-                                                                                                                    <div class="d-md-none mb-2"></div>
-                                                                                                                </div>
+                <div>
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            <input type="text" hidden name="product_id[]" id="product_id[]">
+                            <select required name="product_type[]" id="product_type[]" class="form-control form-control-solid ">
+                                <option hidden value="">Select Product-1&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                </option>
+                                <option value="YE">P 1</option>
+                                <option value="ZM">P 2</option>
+                                <option value="ZW">P 3</option>
+                            </select>
+                            {{-- <div class="d-md-none mb-2"></div> --}}
+                        </div>
+                        <div class="col-md-4">
 
-                                                                                                                <div class="col-md-3">
-                                                                                                                    <!-- <label>Number:</label> -->
-                                                                                                                    <input required type="text" class="form-control" placeholder="Digit"
-                                                                                                                        name="quantity_digit[]" id="quantity_digit[]" />
-                                                                                                                    <div class="d-md-none mb-2"></div>
-                                                                                                                </div>
-                                                                                                            </div> 
-                                                                                                             <a style="margin:10px;" href="javascript:;" data-repeater-delete=""
-                                                                                                                        class=" btn btn-gradient-danger remove_button">
-                                                                                                                        Delete
-                                                                                                                    </a>
-                                                                                                                    </div>`
+                            <select required name="manufacture_type[]" id="manufacture_type[]" class="form-control form-control-solid">
+                                <option hidden value=""> Select Type-1</option>
+                                <option value="YE">P 1</option>
+                                <option value="ZM">P 2</option>
+                                <option value="ZW">P 3</option>
+                            </select>
+                            {{-- <div class="d-md-none mb-2"></div> --}}
+                        </div>
+                        <div class="col-md-4">
 
+                            <select required name="shipped_type[]" id="shipped_type[]" class="form-control form-control-solid">
+                                <option selected hidden value="">Select type-3
+                                </option>
+                                <option value="YE">P 1</option>
+                                <option value="ZM">P 2</option>
+                                <option value="ZW">P 3</option>
+                            </select>
+                            {{-- <div class="d-md-none mb-2"></div> --}}
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-3">
+
+                            <input required type="text" class="form-control" placeholder="Kg" name="quantity_kg[]" id="quantity_kg[]" />
+                            <div class="d-md-none mb-2"></div>
+                        </div>
+                        <div class="col-md-3">
+
+                            <input required type="text" class="form-control" placeholder="G" name="quantity_g[]" id="quantity_g[]" />
+                            <div class="d-md-none mb-2"></div>
+                        </div>
+                        <div class="col-md-3">
+
+                            <input required type="text" class="form-control" placeholder="ML" name="quantity_ml[]" id="quantity_ml[]" />
+                            <div class="d-md-none mb-2"></div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <!-- <label>Number:</label> -->
+                            <input required type="text" class="form-control" placeholder="Digit" name="quantity_digit[]"
+                                id="quantity_digit[]" />
+                            <div class="d-md-none mb-2"></div>
+                        </div>
+                    </div>
+                    <a style="margin:10px;" href="javascript:;" data-repeater-delete="" class=" btn btn-gradient-danger remove_button">
+                        Delete
+                    </a>
+                </div>
+                `;
             var x = 1;
 
             $(addButton).click(function() {

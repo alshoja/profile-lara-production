@@ -355,8 +355,9 @@ class ProfileController extends Controller
 
     public function profileUpdate(Request $request)
     {
+        dd($request);
         $validator = Validator::make($request->all(), [
-            
+
             "name" => 'required',
             "nationality" => 'required',
             "dob" => 'required',
@@ -375,13 +376,13 @@ class ProfileController extends Controller
             "coming_from" => 'required',
             "going_to" => 'required',
             "final_destination" => 'required',
-            //'profile_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            //'product_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            //'doc_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'profile_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'product_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'doc_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             "note" => 'required',
             "record_status" => 'required',
             "record_dep_transfer" => 'required',
-            
+
 
 
         ]);
@@ -451,7 +452,7 @@ class ProfileController extends Controller
                 $product = new Product();
                 // $m = count($product_type);
                 for ($count = 0; $count < count($product_type); $count++) {
-                    $dataa = array(
+                    $data = array(
                         'id' => $product_id[$count],
                         'product_type' => $product_type[$count],
                         'quantity_kg'  => $quantity_kg[$count],
@@ -463,9 +464,9 @@ class ProfileController extends Controller
                         'profile_id' => $profile_id
                     );
                     if ($product_id[$count] == "") {
-                        Product::create($dataa);
+                        Product::create($data);
                     } else {
-                        DB::table('products')->where('id', $product_id[$count])->update($dataa);
+                        DB::table('products')->where('id', $product_id[$count])->update($data);
                     }
                 }
                 DB::table('profiles')->where('id', $editid)->update($data);
