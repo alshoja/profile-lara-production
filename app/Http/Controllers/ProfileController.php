@@ -118,12 +118,12 @@ class ProfileController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            
+
             'name'  => 'required',
             'nationality' => 'required',
             'dob'  => 'required',
             'gender' => 'required',
-           'citizen_status' => 'required',
+            'citizen_status' => 'required',
             'citizen_location' => 'required',
             'citizen_id' => 'required',
             'citizen_uid' => 'required',
@@ -131,44 +131,42 @@ class ProfileController extends Controller
             'passport_type' => 'required',
         ]);
         if ($validator->fails()) {
-            return response()->json(['error'=>$validator->errors()]);
+            return response()->json(['error' => $validator->errors()], 422);
+        } else {
+            $profile = new Profile();
+            $profile->name = $request->name;
+            $profile->nationality = $request->nationality;
+            $profile->dob = $request->dob;
+            $profile->gender = $request->gender;
+            $profile->citizen_status = $request->citizen_status;
+            $profile->citizen_location = $request->citizen_location;
+            $profile->citizen_id = $request->citizen_id;
+            $profile->citizen_uid = $request->citizen_uid;
+            $profile->passport_no = $request->passport_no;
+            $profile->passport_type = $request->passport_type;
+            $profile->entered_by = "";
+            $profile->bought_by = "";
+            $profile->entity = "";
+            $profile->entry_date = "";
+            $profile->entity_location = "";
+            $profile->shipping_no = "";
+            $profile->coming_from = "";
+            $profile->going_to = "";
+            $profile->final_destination = "";
+            $profile->profile_image = "";
+            $profile->product_image = "";
+            $profile->doc_image = "";
+            $profile->record_status = "";
+            $profile->record_dep_transfer = "";
+            $profile->note = "";
+            $profile->belongs_to = 1;
+            $profile->is_drafted = 1;
+            $profile->dep_id = session('department');
+            $profile->section_id = session('section')[0];
+            $profile->employ_id = Auth::user()->id;
+            $profile->save();
+            return response()->json(['id' => $profile->id]);
         }
-        else{
-        $profile = new Profile();
-        $profile->name = $request->name;
-        $profile->nationality = $request->nationality;
-        $profile->dob = $request->dob;
-        $profile->gender = $request->gender;
-        $profile->citizen_status = $request->citizen_status;
-        $profile->citizen_location = $request->citizen_location;
-        $profile->citizen_id = $request->citizen_id;
-        $profile->citizen_uid = $request->citizen_uid;
-        $profile->passport_no = $request->passport_no;
-        $profile->passport_type = $request->passport_type;
-        $profile->entered_by = "";
-        $profile->bought_by = "";
-        $profile->entity = "";
-        $profile->entry_date = "";
-        $profile->entity_location = "";
-        $profile->shipping_no = "";
-        $profile->coming_from = "";
-        $profile->going_to = "";
-        $profile->final_destination = "";
-        $profile->profile_image = "";
-        $profile->product_image = "";
-        $profile->doc_image = "";
-        $profile->record_status = "";
-        $profile->record_dep_transfer = "";
-        $profile->note = "";
-        $profile->belongs_to = 1;
-        $profile->is_drafted = 1;
-        $profile->dep_id = session('department');
-        $profile->section_id = session('section')[0];
-        $profile->employ_id = Auth::user()->id;
-        $profile->save();
-        return response()->json(['id' => $profile->id]);
-        }
-        
     }
 
     public function updateUser(Request $request)
@@ -190,50 +188,46 @@ class ProfileController extends Controller
                 'shipped_type.*'  => 'required',
 
             ]);
-            
-
             if ($validator->fails()) {
-                return response()->json(['error'=>$validator->errors()]);
-            }
-             else{
-            $entered_by = $request->input('entered_by');
-            $bought_by = $request->input('bought_by');
-            $entity = $request->input('entity');
-            $entry_date = $request->input('entry_date');
-            $entity_location = $request->input('entity_location');
-            $id = $request->input('editid');
+                return response()->json(['error' => $validator->errors()], 422);
+            } else {
+                $entered_by = $request->input('entered_by');
+                $bought_by = $request->input('bought_by');
+                $entity = $request->input('entity');
+                $entry_date = $request->input('entry_date');
+                $entity_location = $request->input('entity_location');
+                $id = $request->input('editid');
 
-            try {
-                $product_type = $request->product_type;
-                $quantity_kg = $request->quantity_kg;
-                $quantity_g = $request->quantity_g;
-                $quantity_ml = $request->quantity_ml;
-                $quantity_digit = $request->quantity_digit;
-                $manufacture_type = $request->manufacture_type;
-                $shipped_type = $request->shipped_type;
+                try {
+                    $product_type = $request->product_type;
+                    $quantity_kg = $request->quantity_kg;
+                    $quantity_g = $request->quantity_g;
+                    $quantity_ml = $request->quantity_ml;
+                    $quantity_digit = $request->quantity_digit;
+                    $manufacture_type = $request->manufacture_type;
+                    $shipped_type = $request->shipped_type;
 
-                for ($count = 0; $count < count($product_type); $count++) {
-                    $data = array(
-                        'product_type' => $product_type[$count],
-                        'quantity_kg'  => $quantity_kg[$count],
-                        'quantity_g'  => $quantity_g[$count],
-                        'quantity_ml'  => $quantity_ml[$count],
-                        'quantity_digit' => $quantity_digit[$count],
-                        'manufacture_type' => $manufacture_type[$count],
-                        'shipped_type' => $shipped_type[$count],
-                        'profile_id' => $id
-                    );
-                    Product::create($data);
+                    for ($count = 0; $count < count($product_type); $count++) {
+                        $data = array(
+                            'product_type' => $product_type[$count],
+                            'quantity_kg'  => $quantity_kg[$count],
+                            'quantity_g'  => $quantity_g[$count],
+                            'quantity_ml'  => $quantity_ml[$count],
+                            'quantity_digit' => $quantity_digit[$count],
+                            'manufacture_type' => $manufacture_type[$count],
+                            'shipped_type' => $shipped_type[$count],
+                            'profile_id' => $id
+                        );
+                        Product::create($data);
+                    }
+
+                    $data = array("entered_by" => $entered_by, "bought_by" => $bought_by, "entity" => $entity, "entry_date" => $entry_date, "entity_location" => $entity_location);
+                    Profile::updateData($id, $data);
+                    return response()->json(['success' => 'Form is successfully submitted!']);
+                } catch (\Illuminate\Database\QueryException $ex) {
+                    dd($ex->getMessage());
                 }
-
-                $data = array("entered_by" => $entered_by, "bought_by" => $bought_by, "entity" => $entity, "entry_date" => $entry_date, "entity_location" => $entity_location);
-                Profile::updateData($id, $data);
-                return response()->json(['success' => 'Form is successfully submitted!']);
-            } catch (\Illuminate\Database\QueryException $ex) {
-                dd($ex->getMessage());
             }
-        }
-
         }
     }
 
@@ -244,32 +238,31 @@ class ProfileController extends Controller
             'coming_from' => 'required',
             'going_to' => 'required',
             'final_destination' => 'required',
-           'profile_image' =>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-           'product_image' =>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-           'doc_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'profile_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'product_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'doc_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         if ($validator->fails()) {
-            return response()->json(['error'=>$validator->errors()]);
+            return response()->json(['error' => $validator->errors()], 422);
+        } else {
+
+            $shipping_no = $request->input('shipping_no');
+            $coming_from = $request->input('coming_from');
+            $going_to = $request->input('going_to');
+            $final_destination = $request->input('final_destination');
+            $profile_image = $request->file('profile_image')->store('images');
+            $product_image = $request->file('product_image')->store('images');
+            $doc_image = $request->file('doc_image')->store('images');
+            $note = $request->input('note');
+            $id = $request->input('editid1');
+            $data = array("shipping_no" => $shipping_no, "coming_from" => $coming_from, "going_to" => $going_to, "final_destination" => $final_destination, "profile_image" => $profile_image, "product_image" => $product_image, "doc_image" => $doc_image, "note" => $note);
+            try {
+                DB::table('profiles')->where('id', $id)->update($data);
+                return response()->json(['success' => 'Form is successfully submitted!']);
+            } catch (\Illuminate\Database\QueryException $ex) {
+                dd($ex->getMessage());
+            }
         }
-         else{
-       
-        $shipping_no = $request->input('shipping_no');
-        $coming_from = $request->input('coming_from');
-        $going_to = $request->input('going_to');
-        $final_destination = $request->input('final_destination');
-        $profile_image = $request->file('profile_image')->store('images');
-        $product_image = $request->file('product_image')->store('images');
-        $doc_image = $request->file('doc_image')->store('images');
-        $note = $request->input('note');
-        $id = $request->input('editid1');
-        $data = array("shipping_no" => $shipping_no, "coming_from" => $coming_from, "going_to" => $going_to, "final_destination" => $final_destination, "profile_image" => $profile_image, "product_image" => $product_image, "doc_image" => $doc_image, "note" => $note);
-        try {
-            DB::table('profiles')->where('id', $id)->update($data);
-            return response()->json(['success' => 'Form is successfully submitted!']);
-        } catch (\Illuminate\Database\QueryException $ex) {
-            dd($ex->getMessage());
-        }
-    }
     }
 
     public function stageFour(Request $request)
@@ -277,28 +270,27 @@ class ProfileController extends Controller
         $validator = Validator::make($request->all(), [
             'record_status' => 'required',
             'record_dep_transfer' => 'required',
-            ]);
+        ]);
         if ($validator->fails()) {
-            return response()->json(['error'=>$validator->errors()]);
+            return response()->json(['error' => $validator->errors()], 422);
+        } else {
+            $record_status = $request->input('record_status');
+            $record_dep_transfer = $request->input('record_dep_transfer');
+            $id = $request->input('editid3');
+            $data = array("record_status" => $record_status, "record_dep_transfer" => $record_dep_transfer);
+            try {
+                DB::table('profiles')->where('id', $id)->update($data);
+                return response()->json(['success' => 'Form is successfully submitted!']);
+            } catch (\Illuminate\Database\QueryException $ex) {
+                dd($ex->getMessage());
+            }
         }
-         else{
-        $record_status = $request->input('record_status');
-        $record_dep_transfer = $request->input('record_dep_transfer');
-        $id = $request->input('editid3');
-        $data = array("record_status" => $record_status, "record_dep_transfer" => $record_dep_transfer);
-        try {
-            DB::table('profiles')->where('id', $id)->update($data);
-            return response()->json(['success' => 'Form is successfully submitted!']);
-        } catch (\Illuminate\Database\QueryException $ex) {
-            dd($ex->getMessage());
-        }
-    }
     }
 
     public function stageFive(Request $request)
     {
-       
-        $id=$request->input('productid');
+
+        $id = $request->input('productid');
         $product = Product::destroy($id);
         return response()->json(['success' => 'Form is successfully submitted!']);
     }
@@ -306,11 +298,11 @@ class ProfileController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'belongs_to' => 'required',
-            ]);
+        ]);
         if ($validator->fails()) {
-            return response()->json(['error'=>$validator->errors()]);
+            return response()->json(['error' => $validator->errors()], 422);
         }
-         
+
         $belongs_to = $request->input('belongs_to');
         $id = $request->input('editid4');
 
@@ -380,36 +372,36 @@ class ProfileController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'belongs_to' => 'required',
-            "name"=> 'required',
+            "name" => 'required',
             "nationality" => 'required',
             "dob" => 'required',
-            "gender" =>'required',
+            "gender" => 'required',
             "citizen_location" => 'required',
             "citizen_id" => 'required',
             "citizen_uid" => 'required',
-            "passport_no" =>'required',
+            "passport_no" => 'required',
             "passport_type" => 'required',
-            "entered_by" =>'required',
+            "entered_by" => 'required',
             "bought_by" => 'required',
             "entity" => 'required',
             "entry_date" => 'required',
             "entity_location" => 'required',
-            "shipping_no" =>'required',
+            "shipping_no" => 'required',
             "coming_from" => 'required',
             "going_to" => 'required',
-            "final_destination" =>'required',
-            'profile_image' =>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-           'product_image' =>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-           'doc_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            "note" =>'required',
+            "final_destination" => 'required',
+            'profile_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'product_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'doc_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            "note" => 'required',
             "record_status" => 'required',
             "record_dep_transfer" => 'required',
             "belongs_to" => 'required',
 
 
-            ]);
+        ]);
         if ($validator->fails()) {
-            return response()->json(['error'=>$validator->errors()]);
+            return response()->json(['error' => $validator->errors()]);
         }
 
         $editid = $request->input('editid');
@@ -502,7 +494,7 @@ class ProfileController extends Controller
     }
     public function productDelete(Request $request)
     {
-        $id=$request->input('productid');
+        $id = $request->input('productid');
         $product = Product::destroy($id);
         return response()->json(['success' => 'Form is successfully submitted!']);
     }
