@@ -37,6 +37,7 @@ Route::middleware(['auth', 'initUser', 'checkIsBlocked'])->group(function () {
     Route::post('profile/sign/or/reject', [App\Http\Controllers\ProfileController::class, 'sigOrReject']);
     Route::get('profile/delete/{id}', [App\Http\Controllers\ProfileController::class, 'destroy'])->name('destroy');
     Route::get('profile/resubmit/{id}', [App\Http\Controllers\ProfileController::class, 'reSubmit'])->name('reSubmit');
+    Route::get('profile/submit/draft/{id}', [App\Http\Controllers\ProfileController::class, 'submitDraft'])->name('submitDraft');
     Route::get('profile/add-profile', [App\Http\Controllers\ProfileController::class, 'create']);
     Route::post('profile/add-profile', [App\Http\Controllers\ProfileController::class, 'store']);
     Route::post('updateUser', [App\Http\Controllers\ProfileController::class, 'updateUser']);

@@ -1195,7 +1195,6 @@
                 data: $('#kt_form1').serialize(),
                 dataType: 'json',
                 success: function(data) {
-
                     if ($.isEmptyObject(data.error)) {
                         console.log(data);
                     } 
