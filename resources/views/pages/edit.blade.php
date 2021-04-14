@@ -824,7 +824,7 @@
                                         </div>
 
                                         <h6 class="mb-10 font-weight-bold text-dark">Label</h6>
-                                        {{-- <div class="row form-group">
+                                        <div class="row form-group">
                                             <div class="col-md-3">
                                                 <label>Profile Picture</label>
                                                 <div class="image-input image-input-empty image-input-outline"
@@ -916,104 +916,8 @@
                                                 </div>
                                                 <div class="d-md-none mb-2"></div>
                                             </div>
-                                        </div> --}}
-                                        <div class="row form-group">
-                                            <div class="col-md-3">
-                                                <label>Profile Picture</label>
-
-                                                <div class="image-input image-input-empty image-input-outline"
-                                                    id="kt_image_1"
-                                                    style="background-image: url(assets/media/users/blank.png)">
-                                                    <div class="image-input-wrapper"></div>
-                                                    <label
-                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                        data-action="change" data-toggle="tooltip" title=""
-                                                        data-original-title="Change avatar">
-                                                        <i class="fa fa-pen icon-sm text-muted"></i>
-                                                        <input type="file" name="profile_image" id="profile_image"
-                                                            accept=".png, .jpg, .jpeg" />
-                                                        <input type="hidden" name="profile_avatar_remove" />
-
-                                                    </label>
-                                                    <span
-                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                        data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
-                                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
-                                                    </span>
-                                                    <span
-                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                        data-action="remove" data-toggle="tooltip" title="Remove avatar">
-                                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
-                                                    </span>
-                                                </div>
-                                                <span class="text-danger error-text profile_image_err"></span>
-                                                <!-- <span class="form-text text-muted">Max file size is 1MB and max number of files is 5.</span> -->
-                                                <div class="d-md-none mb-2"></div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <label>Product Image</label>
-
-                                                <div class="image-input image-input-empty image-input-outline"
-                                                    id="kt_image_2"
-                                                    style="background-image: url(assets/media/users/blank.png)">
-                                                    <div class="image-input-wrapper"></div>
-                                                    <label
-                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                        data-action="change" data-toggle="tooltip" title=""
-                                                        data-original-title="Change avatar">
-                                                        <i class="fa fa-pen icon-sm text-muted"></i>
-                                                        <input type="file" name="product_image" id="product_image"
-                                                            accept=".png, .jpg, .jpeg" />
-                                                        <input type="hidden" name="profile_avatar_remove" />
-
-                                                    </label>
-                                                    <span
-                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                        data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
-                                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
-                                                    </span>
-                                                    <span
-                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                        data-action="remove" data-toggle="tooltip" title="Remove avatar">
-                                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
-                                                    </span>
-                                                </div>
-                                                <span class="text-danger error-text product_image_err"></span>
-                                                <div class="d-md-none mb-2"></div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <label>Document</label>
-
-                                                <div class="image-input image-input-empty image-input-outline"
-                                                    id="kt_image_3"
-                                                    style="background-image: url(assets/media/users/blank.png)">
-                                                    <div class="image-input-wrapper"></div>
-                                                    <label
-                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                        data-action="change" data-toggle="tooltip" title=""
-                                                        data-original-title="Change avatar">
-                                                        <i class="fa fa-pen icon-sm text-muted"></i>
-                                                        <input type="file" name="doc_image" id="doc_image"
-                                                            accept=".png, .jpg, .jpeg" />
-                                                        <input type="hidden" name="profile_avatar_remove" />
-
-
-                                                    </label>
-                                                    <span
-                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                        data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
-                                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
-                                                    </span>
-                                                    <span
-                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                        data-action="remove" data-toggle="tooltip" title="Remove avatar">
-                                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
-                                                    </span>
-                                                </div>
-                                                <span class="text-danger error-text doc_image_err"></span>
-                                                <div class="d-md-none mb-2"></div>
-                                            </div>
                                         </div>
+                                        
                                         <h6 class="mb-10 font-weight-bold text-dark">Label</h6>
 
                                         <div class="row">
