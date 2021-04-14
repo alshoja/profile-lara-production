@@ -163,7 +163,7 @@
                                             <label>First Name</label>
                                             <input type="text" class="form-control form-control-solid form-control-lg"
                                                 name="name" placeholder="Name" value="{{ $profile->name }}" id="name" />
-
+                                                <span class="text-danger error-text name_err"></span>
                                         </div>
                                         <!--end::Input-->
                                         <!--begin::Input-->
@@ -432,6 +432,7 @@
                                                         <option value="ZM">Zambia</option>
                                                         <option value="ZW">Zimbabwe</option>
                                                     </select>
+                                                    <span class="text-danger error-text nationality _err"></span>
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
@@ -446,6 +447,7 @@
                                                         <option value="Male">Male</option>
                                                         <option value="Female">Female</option>
                                                     </select>
+                                                    <span class="text-danger error-text gender_err"></span>
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
@@ -456,6 +458,7 @@
                                                         class="form-control form-control-solid form-control-lg" name="dob"
                                                         placeholder="Address Line 1" id="dob"
                                                         value="{{ $profile->dob }}" />
+                                                        <span class="text-danger error-text dob_err"></span>
                                                     <!-- <span class="form-text text-muted">Please enter DOb.</span> -->
                                                 </div>
                                             </div>
@@ -475,6 +478,7 @@
                                                         <option value="ZM">Status 2</option>
                                                         <option value="ZW">Status 3</option>
                                                     </select>
+                                                    <span class="text-danger error-text citizen_status_err"></span>
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
@@ -490,6 +494,7 @@
                                                         <option value="AF">Male</option>
                                                         <option value="AX">Female</option>
                                                     </select>
+                                                    <span class="text-danger error-text citizen_location_err"></span>
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
@@ -500,6 +505,7 @@
                                                         class="form-control form-control-solid form-control-lg"
                                                         name="citizen_id" placeholder="ID number"
                                                         value="{{ $profile->citizen_id }}" id="citizen_id" />
+                                                        <span class="text-danger error-text citizen_id_err"></span>
                                                     <!-- <span class="form-text text-muted">Please enter DOb.</span> -->
                                                 </div>
                                             </div>
@@ -513,7 +519,7 @@
                                                         class="form-control form-control-solid form-control-lg"
                                                         name="citizen_uid" placeholder="UID No"
                                                         value="{{ $profile->citizen_uid }}" id="citizen_uid" />
-                                                    <span class="form-text text-muted">Please enter your UID No.</span>
+                                                        <span class="text-danger error-text citizen_uid_err"></span>
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
@@ -525,7 +531,7 @@
                                                         class="form-control form-control-solid form-control-lg"
                                                         name="passport_no" placeholder="Passport Number"
                                                         value="{{ $profile->passport_no }}" id="passport_no" />
-                                                    <span class="form-text text-muted">Please enter your Passport No.</span>
+                                                        <span class="text-danger error-text passport_no_err"></span>
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
@@ -542,6 +548,7 @@
                                                         <option value="ZM">P 2</option>
                                                         <option value="ZW">P 3</option>
                                                     </select>
+                                                    <span class="text-danger error-text passport_type_err"></span>
                                                 </div>
                                                 <!--end::Select-->
                                             </div>
@@ -564,7 +571,7 @@
                                                         name="entry_date" placeholder="Address Line 1" />
                                                     <input type="text" id="editid" value="{{ $profile->id }}"
                                                         name="editid" hidden>
-                                                    <!-- <span class="form-text text-muted">Please enter DOb.</span> -->
+                                                        <span class="text-danger error-text entry_date_err"></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -581,6 +588,7 @@
                                                         <option value="AX">Åland </option>
                                                         <option value="AL">Albania</option>
                                                     </select>
+                                                    <span class="text-danger error-text entered_by_err"></span>
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
@@ -596,6 +604,8 @@
                                                         <option value="AX">Åland </option>
                                                         <option value="AL">Albania</option>
                                                     </select>
+                                                    <span class="text-danger error-text bought_by_err"></span>
+                                                    
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
@@ -611,6 +621,7 @@
                                                         <option value="AX">Åland </option>
                                                         <option value="AL">Albania</option>
                                                     </select>
+                                                    <span class="text-danger error-text entity_err"></span>
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
@@ -625,6 +636,7 @@
                                                         <option value="AX">Åland </option>
                                                         <option value="AL">Albania</option>
                                                     </select>
+                                                    <span class="text-danger error-text entity_location_err"></span>
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
@@ -656,7 +668,7 @@
                                                         <div class="col-md-4">
                                                             <!-- <label>Name:</label> -->
                                                            
-                                                            <input type="text" hidden name="product_id[]" id="product_id[]" value="{{ $key->id }}">
+                                                            <input  required type="text" hidden name="product_id[]" id="product_id[]" value="{{ $key->id }}">
                                                             <select name="product_type[]" id="product_type[]"
                                                                 class="form-control form-control-solid ">
                                                                 <option value="{{ $key->product_type }}">{{ $key->product_type }}</option>
@@ -668,7 +680,7 @@
                                                         </div>
                                                         <div class="col-md-3">
                                                             <!-- <label>Name:</label> -->
-                                                            <select name="manufacture_type[]" id="manufacture_type[]"
+                                                            <select required name="manufacture_type[]" id="manufacture_type[]"
                                                                 class="form-control form-control-solid">
                                                                 <option value="{{ $key->manufacture_type }}">{{ $key->manufacture_type }}</option>
                                                                 <option value="YE">P 1</option>
@@ -679,7 +691,7 @@
                                                         </div>
                                                         <div class="col-md-3">
                                                             <!-- <label>Name:</label> -->
-                                                            <select name="shipped_type[]" id="shipped_type[]"
+                                                            <select required name="shipped_type[]" id="shipped_type[]"
                                                                 class="form-control form-control-solid">
                                                                 <option value="{{ $key->shipped_type }}">{{ $key->shipped_type }}</option>
                                                                 <option value="YE">P 1</option>
@@ -697,26 +709,26 @@
                                                     <div class="row form-group" id="divdelete{{ $key->id }}">
                                                         <div class="col-md-3">
                                                             <!-- <label>Name:</label> -->
-                                                            <input type="text" class="form-control" placeholder="Kg"
+                                                            <input required type="text" class="form-control" placeholder="Kg"
                                                                 name="quantity_kg[]" id="quantity_kg[]" value="{{ $key->quantity_kg }}" />
                                                             <div class="d-md-none mb-2"></div>
                                                         </div>
                                                         <div class="col-md-3">
                                                             <!-- <label>Name:</label> -->
-                                                            <input type="text" class="form-control" placeholder="G"
+                                                            <input required type="text" class="form-control" placeholder="G"
                                                                 name="quantity_g[]" id="quantity_g[]" value="{{ $key->quantity_g }}" />
                                                             <div class="d-md-none mb-2"></div>
                                                         </div>
                                                         <div class="col-md-3">
                                                             <!-- <label>Name:</label> -->
-                                                            <input type="text" class="form-control" placeholder="ML"
+                                                            <input required type="text" class="form-control" placeholder="ML"
                                                                 name="quantity_ml[]" id="quantity_ml[]" value="{{ $key->quantity_ml }}" />
                                                             <div class="d-md-none mb-2"></div>
                                                         </div>
 
                                                         <div class="col-md-3">
                                                             <!-- <label>Number:</label> -->
-                                                            <input type="text" class="form-control" placeholder="Digit"
+                                                            <input required type="text" class="form-control" placeholder="Digit"
                                                                 name="quantity_digit[]" id="quantity_digit[]" value="{{ $key->quantity_digit }}"/>
                                                             <div class="d-md-none mb-2"></div>
                                                         </div>
@@ -745,6 +757,7 @@
                                                         class="form-control form-control-solid form-control-lg"
                                                         name="shipping_no" placeholder="Shipping No"
                                                         value="{{ $profile->shipping_no }}" />
+                                                        <span class="text-danger error-text shipping_no_err"></span>
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
@@ -760,6 +773,7 @@
                                                         <option value="AX">Åland </option>
                                                         <option value="AL">Albania</option>
                                                     </select>
+                                                    <span class="text-danger error-text coming_from_err"></span>
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
@@ -775,6 +789,7 @@
                                                         <option value="AX">Åland </option>
                                                         <option value="AL">Albania</option>
                                                     </select>
+                                                    <span class="text-danger error-text going_to_err"></span>
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
@@ -790,6 +805,7 @@
                                                         <option value="AX">Åland </option>
                                                         <option value="AL">Albania</option>
                                                     </select>
+                                                    <span class="text-danger error-text final_destination_err"></span>
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
@@ -812,6 +828,7 @@
                                                             accept=".png, .jpg, .jpeg" />
                                                         <input type="hidden" name="profile_avatar_remove1"
                                                             value="{{ $profile->profile_image }}" />
+                                                            <span class="text-danger error-text profile_image_err"></span>
                                                     </label>
                                                     <span
                                                         class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
@@ -842,6 +859,7 @@
                                                             accept=".png, .jpg, .jpeg" />
                                                         <input type="hidden" name="profile_avatar_remove2"
                                                             value="{{ $profile->product_image }}" />
+                                                            <span class="text-danger error-text product_image_err"></span>
                                                     </label>
                                                     <span
                                                         class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
@@ -871,6 +889,7 @@
                                                             accept=".png, .jpg, .jpeg" />
                                                         <input type="hidden" name="profile_avatar_remove3"
                                                             value="{{ $profile->doc_image }}" />
+                                                            <span class="text-danger error-text doc_image_err"></span>
                                                     </label>
                                                     <span
                                                         class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
@@ -894,6 +913,7 @@
                                                     <label for="exampleTextarea">Note</label>
                                                     <textarea class="form-control form-control-solid" rows="3" name="note"
                                                         id="note">{{ $profile->note }}</textarea>
+                                                        <span class="text-danger error-text note_err"></span>
 
                                                 </div>
                                             </div>
@@ -919,6 +939,7 @@
                                                         <option value="ZM">r 2</option>
                                                         <option value="ZW">r 3</option>
                                                     </select>
+                                                    <span class="text-danger error-text record_status_err"></span>
                                                     <div class="d-md-none mb-2"></div>
                                                 </div>
                                             </div>
@@ -937,6 +958,7 @@
                                                         <option value="ZM">s 2</option>
                                                         <option value="ZW">s 3</option>
                                                     </select>
+                                                    <span class="text-danger error-text record_dep_transfer_err"></span>
                                                     <div class="d-md-none mb-2"></div>
                                                 </div>
                                             </div>
@@ -1022,15 +1044,28 @@
                         data: $('#kt_form').serialize(),
                         dataType: 'json',
                         success: function(data) {
-                           
-                        console.log(data);   
+                            if($.isEmptyObject(data.error)){
+                        console.log(data);
+                    }
+                    else{
+                        printErrorMsg(data.error);
+                    }  
+                        
                         
                         },
                     });
         
         
                 });
-        
+
+                function printErrorMsg (msg) {
+            $.each( msg, function( key, value ) {
+                alert(key);
+            console.log(key);
+              $('.'+key+'_err').text(value);
+            });
+             //document.getElementById("next").disabled = true;  
+        }
             </script>
       
 <script type="text/javascript">

@@ -116,6 +116,24 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
+
+        $validator = Validator::make($request->all(), [
+            
+            'name'  => 'required',
+            'nationality' => 'required',
+            'dob'  => 'required',
+            'gender' => 'required',
+           'citizen_status' => 'required',
+            'citizen_location' => 'required',
+            'citizen_id' => 'required',
+            'citizen_uid' => 'required',
+            'passport_no' => 'required',
+            'passport_type' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['error'=>$validator->errors()]);
+        }
+        else{
         $profile = new Profile();
         $profile->name = $request->name;
         $profile->nationality = $request->nationality;
@@ -149,13 +167,20 @@ class ProfileController extends Controller
         $profile->employ_id = Auth::user()->id;
         $profile->save();
         return response()->json(['id' => $profile->id]);
+        }
+        
     }
 
     public function updateUser(Request $request)
     {
 
         if ($request->ajax()) {
-            $rules = array(
+            $validator = Validator::make($request->all(), [
+                'entered_by' => 'required',
+                'bought_by' => 'required',
+                'entity' => 'required',
+                'entry_date' => 'required',
+                'entity_location' => 'required',
                 'product_type.*'  => 'required',
                 'quantity_kg.*'  => 'required',
                 'quantity_g.*'  => 'required',
@@ -164,24 +189,13 @@ class ProfileController extends Controller
                 'manufacture_type.*'  => 'required',
                 'shipped_type.*'  => 'required',
 
-            );
-            $customMessages = [
-                'product_type.*.required' => ' The Product Type field can not be blank value.',
-                'quantity_kg.*.required' => 'The Quantity in Kg field can not be blank value.',
-                'quantity_g.*.required' => 'The Quantity in gram field can not be blank value.',
-                'quantity_ml.*.required' => 'The Quantity in ml field can not be blank value.',
-                'quantity_digit.*.required' => 'The Quantity in digit field can not be blank value.',
-                'manufacture_type.*.required' => 'The Manufacture type field can not be blank value.',
-                'shipped_type.*.required' => 'The Shipped type field can not be blank value.',
-            ];
+            ]);
+            
 
-            $error = Validator::make($request->all(), $rules, $customMessages);
-            if ($error->fails()) {
-                return response()->json([
-                    'error'  => $error->errors()->all()
-                ]);
+            if ($validator->fails()) {
+                return response()->json(['error'=>$validator->errors()]);
             }
-
+             else{
             $entered_by = $request->input('entered_by');
             $bought_by = $request->input('bought_by');
             $entity = $request->input('entity');
@@ -219,10 +233,26 @@ class ProfileController extends Controller
                 dd($ex->getMessage());
             }
         }
+
+        }
     }
 
     public function stageThree(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'shipping_no' => 'required',
+            'coming_from' => 'required',
+            'going_to' => 'required',
+            'final_destination' => 'required',
+           'profile_image' =>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+           'product_image' =>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+           'file' => 'required|max:10000|mimes:doc,docx,pdf',
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['error'=>$validator->errors()]);
+        }
+         else{
+       
         $shipping_no = $request->input('shipping_no');
         $coming_from = $request->input('coming_from');
         $going_to = $request->input('going_to');
@@ -240,9 +270,18 @@ class ProfileController extends Controller
             dd($ex->getMessage());
         }
     }
+    }
 
     public function stageFour(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'record_status' => 'required',
+            'record_dep_transfer' => 'required',
+            ]);
+        if ($validator->fails()) {
+            return response()->json(['error'=>$validator->errors()]);
+        }
+         else{
         $record_status = $request->input('record_status');
         $record_dep_transfer = $request->input('record_dep_transfer');
         $id = $request->input('editid3');
@@ -254,15 +293,24 @@ class ProfileController extends Controller
             dd($ex->getMessage());
         }
     }
+    }
 
     public function stageFive(Request $request)
     {
+       
         $id=$request->input('productid');
         $product = Product::destroy($id);
         return response()->json(['success' => 'Form is successfully submitted!']);
     }
     public function stageSix(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'belongs_to' => 'required',
+            ]);
+        if ($validator->fails()) {
+            return response()->json(['error'=>$validator->errors()]);
+        }
+         
         $belongs_to = $request->input('belongs_to');
         $id = $request->input('editid4');
 
@@ -330,6 +378,40 @@ class ProfileController extends Controller
     }
     public function profileUpdate(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'belongs_to' => 'required',
+            "name"=> 'required',
+            "nationality" => 'required',
+            "dob" => 'required',
+            "gender" =>'required',
+            "citizen_location" => 'required',
+            "citizen_id" => 'required',
+            "citizen_uid" => 'required',
+            "passport_no" =>'required',
+            "passport_type" => 'required',
+            "entered_by" =>'required',
+            "bought_by" => 'required',
+            "entity" => 'required',
+            "entry_date" => 'required',
+            "entity_location" => 'required',
+            "shipping_no" =>'required',
+            "coming_from" => 'required',
+            "going_to" => 'required',
+            "final_destination" =>'required',
+            "profile_image" => 'required',
+            "product_image" => 'required',
+            "doc_image" => 'required',
+            "note" =>'required',
+            "record_status" => 'required',
+            "record_dep_transfer" => 'required',
+            "belongs_to" => 'required',
+
+
+            ]);
+        if ($validator->fails()) {
+            return response()->json(['error'=>$validator->errors()]);
+        }
+
         $editid = $request->input('editid');
         $image_1 = $request->file('profile_image');
         $image_2 = $request->file('product_image');

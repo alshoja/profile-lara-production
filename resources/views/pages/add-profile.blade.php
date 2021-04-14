@@ -158,7 +158,7 @@
                                             <label>First Name</label>
                                             <input type="text" class="form-control form-control-solid form-control-lg"
                                                 name="name" placeholder="Name" value="" id="name" />
-                                            <span class="form-text text-muted">Please enter your Name.</span>
+                                                <span class="text-danger error-text name_err"></span>
                                         </div>
                                         <!--end::Input-->
                                         <!--begin::Input-->
@@ -426,6 +426,7 @@
                                                         <option value="ZM">Zambia</option>
                                                         <option value="ZW">Zimbabwe</option>
                                                     </select>
+                                                    <span class="text-danger error-text nationality_err"></span>
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
@@ -439,6 +440,7 @@
                                                         <option value="AF">Male</option>
                                                         <option value="AX">Female</option>
                                                     </select>
+                                                    <span class="text-danger error-text gender_err"></span>
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
@@ -448,7 +450,7 @@
                                                     <input type="date"
                                                         class="form-control form-control-solid form-control-lg" name="dob"
                                                         placeholder="Address Line 1" id="dob" />
-                                                    <!-- <span class="form-text text-muted">Please enter DOb.</span> -->
+                                                        <span class="text-danger error-text dob_err"></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -466,6 +468,7 @@
                                                         <option value="ZM">Status 2</option>
                                                         <option value="ZW">Status 3</option>
                                                     </select>
+                                                    <span class="text-danger error-text citizen_status_err"></span>
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
@@ -480,6 +483,7 @@
                                                         <option value="AF">Male</option>
                                                         <option value="AX">Female</option>
                                                     </select>
+                                                    <span class="text-danger error-text citizen_location_err"></span>
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
@@ -490,7 +494,7 @@
                                                         class="form-control form-control-solid form-control-lg"
                                                         name="citizen_id" placeholder="ID number" value=""
                                                         id="citizen_id" />
-                                                    <!-- <span class="form-text text-muted">Please enter DOb.</span> -->
+                                                        <span class="text-danger error-text citizen_id_err"></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -502,7 +506,7 @@
                                                     <input type="text"
                                                         class="form-control form-control-solid form-control-lg"
                                                         name="citizen_uid" placeholder="UID No" value="" id="citizen_uid" />
-                                                    <span class="form-text text-muted">Please enter your UID No.</span>
+                                                        <span class="text-danger error-text citizen_uid_err"></span>
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
@@ -514,7 +518,7 @@
                                                         class="form-control form-control-solid form-control-lg"
                                                         name="passport_no" placeholder="Passport Number" value=""
                                                         id="passport_no" />
-                                                    <span class="form-text text-muted">Please enter your Passport No.</span>
+                                                        <span class="text-danger error-text passport_no_err"></span>
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
@@ -530,6 +534,7 @@
                                                         <option value="ZM">P 2</option>
                                                         <option value="ZW">P 3</option>
                                                     </select>
+                                                    <span class="text-danger error-text passport_type_err"></span>
                                                 </div>
                                                 <!--end::Select-->
                                             </div>
@@ -556,7 +561,7 @@
                                                         class="form-control form-control-solid form-control-lg"
                                                         name="entry_date" placeholder="Address Line 1" />
                                                     <input type="text" id="editid" hidden name="editid">
-                                                    <!-- <span class="form-text text-muted">Please enter DOb.</span> -->
+                                                    <span class="text-danger error-text entry_date_err"></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -572,6 +577,7 @@
                                                         <option value="AX">Åland </option>
                                                         <option value="AL">Albania</option>
                                                     </select>
+                                                    <span class="text-danger error-text entered_by_err"></span>
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
@@ -586,6 +592,7 @@
                                                         <option value="AX">Åland </option>
                                                         <option value="AL">Albania</option>
                                                     </select>
+                                                    <span class="text-danger error-text bought_by_err"></span>
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
@@ -600,6 +607,7 @@
                                                         <option value="AX">Åland </option>
                                                         <option value="AL">Albania</option>
                                                     </select>
+                                                    <span class="text-danger error-text entity_err"></span>
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
@@ -613,6 +621,7 @@
                                                         <option value="AX">Åland </option>
                                                         <option value="AL">Albania</option>
                                                     </select>
+                                                    <span class="text-danger error-text entity_location_err"></span>
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
@@ -638,7 +647,7 @@
                                                     <div class="row form-group">
                                                         <div class="col-md-4">
                                                             <!-- <label>Name:</label> -->
-                                                            <select name="product_type[]" id="product_type[]"
+                                                            <select  required name="product_type[]" id="product_type[]"
                                                                 class="form-control form-control-solid ">
                                                                 <option hidden value="">Select Product-1&nbsp;
                                                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -649,29 +658,32 @@
                                                                 <option value="ZM">P 2</option>
                                                                 <option value="ZW">P 3</option>
                                                             </select>
+                                                            
                                                             {{-- <div class="d-md-none mb-2"></div> --}}
                                                         </div>
                                                         <div class="col-md-4">
                                                             <!-- <label>Name:</label> -->
                                                             <select name="manufacture_type[]" id="manufacture_type[]"
-                                                                class="form-control form-control-solid">
+                                                                class="form-control form-control-solid" required>
                                                                 <option hidden value=""> Select Type-1</option>
                                                                 <option value="YE">P 1</option>
                                                                 <option value="ZM">P 2</option>
                                                                 <option value="ZW">P 3</option>
                                                             </select>
+                                                            
                                                             {{-- <div class="d-md-none mb-2"></div> --}}
                                                         </div>
                                                         <div class="col-md-4">
                                                             <!-- <label>Name:</label> -->
                                                             <select name="shipped_type[]" id="shipped_type[]"
-                                                                class="form-control form-control-solid">
+                                                                class="form-control form-control-solid" required>
                                                                 <option selected hidden value="">Select type-3
                                                                 </option>
                                                                 <option value="YE">P 1</option>
                                                                 <option value="ZM">P 2</option>
                                                                 <option value="ZW">P 3</option>
                                                             </select>
+                                                          
                                                             {{-- <div class="d-md-none mb-2"></div> --}}
                                                         </div>
                                                     </div>
@@ -679,26 +691,30 @@
                                                         <div class="col-md-3">
                                                             <!-- <label>Name:</label> -->
                                                             <input type="text" class="form-control" placeholder="Kg"
-                                                                name="quantity_kg[]" id="quantity_kg[]" />
+                                                                name="quantity_kg[]" id="quantity_kg[]" required/>
+                                                             
                                                             <div class="d-md-none mb-2"></div>
                                                         </div>
                                                         <div class="col-md-3">
                                                             <!-- <label>Name:</label> -->
-                                                            <input type="text" class="form-control" placeholder="G"
+                                                            <input required type="text" class="form-control" placeholder="G"
                                                                 name="quantity_g[]" id="quantity_g[]" />
+                                                                
                                                             <div class="d-md-none mb-2"></div>
                                                         </div>
                                                         <div class="col-md-3">
                                                             <!-- <label>Name:</label> -->
                                                             <input type="text" class="form-control" placeholder="ML"
-                                                                name="quantity_ml[]" id="quantity_ml[]" />
+                                                                name="quantity_ml[]" id="quantity_ml[]" required/>
+                                                                
                                                             <div class="d-md-none mb-2"></div>
                                                         </div>
 
                                                         <div class="col-md-3">
                                                             <!-- <label>Number:</label> -->
                                                             <input type="text" class="form-control" placeholder="Digit"
-                                                                name="quantity_digit[]" id="quantity_digit[]" />
+                                                                name="quantity_digit[]" id="quantity_digit[]" required />
+                                                                
                                                             <div class="d-md-none mb-2"></div>
                                                         </div>
                                                     </div>
@@ -727,6 +743,7 @@
                                                     <input type="text" id="shipping_no"
                                                         class="form-control form-control-solid form-control-lg"
                                                         name="shipping_no" placeholder="Shipping No" value="" />
+                                                        <span class="text-danger error-text shipping_no_err"></span>
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
@@ -741,6 +758,7 @@
                                                         <option value="AX">Åland </option>
                                                         <option value="AL">Albania</option>
                                                     </select>
+                                                    <span class="text-danger error-text coming_from_err"></span>
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
@@ -755,6 +773,7 @@
                                                         <option value="AX">Åland </option>
                                                         <option value="AL">Albania</option>
                                                     </select>
+                                                    <span class="text-danger error-text going_to_err"></span>
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
@@ -769,6 +788,7 @@
                                                         <option value="AX">Åland </option>
                                                         <option value="AL">Albania</option>
                                                     </select>
+                                                    <span class="text-danger error-text final_destination_err"></span>
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
@@ -790,6 +810,7 @@
                                                         <input type="file" name="profile_image" id="profile_image"
                                                             accept=".png, .jpg, .jpeg" />
                                                         <input type="hidden" name="profile_avatar_remove" />
+                                                        <span class="text-danger error-text profile_image_err"></span>
                                                     </label>
                                                     <span
                                                         class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
@@ -819,6 +840,7 @@
                                                         <input type="file" name="product_image" id="product_image"
                                                             accept=".png, .jpg, .jpeg" />
                                                         <input type="hidden" name="profile_avatar_remove" />
+                                                        <span class="text-danger error-text product_image_err"></span>
                                                     </label>
                                                     <span
                                                         class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
@@ -847,6 +869,8 @@
                                                         <input type="file" name="doc_image" id="doc_image"
                                                             accept=".png, .jpg, .jpeg" />
                                                         <input type="hidden" name="profile_avatar_remove" />
+                                                        <span class="text-danger error-text doc_image_err"></span>
+
                                                     </label>
                                                     <span
                                                         class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
@@ -871,6 +895,7 @@
                                                     <textarea class="form-control form-control-solid" rows="3" name="note"
                                                         id="note"></textarea>
                                                     <input type="text" id="editid1" hidden name="editid1">
+                                                    <span class="text-danger error-text note_err"></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -899,6 +924,7 @@
                                                         <option value="ZM">r 2</option>
                                                         <option value="ZW">r 3</option>
                                                     </select>
+                                                    <span class="text-danger error-text record_status_err"></span>
                                                     <div class="d-md-none mb-2"></div>
                                                 </div>
                                             </div>
@@ -909,13 +935,14 @@
                                             <div class="col-xl-12">
                                                 <div class="form-group">
                                                     <label>Record Department Status</label>
-                                                    <select name="record_dep_transfer" id="record_dep_transfer"
+                                                    <select required name="record_dep_transfer" id="record_dep_transfer"
                                                         class="form-control form-control-solid ">
                                                         <option value="">status-1</option>
                                                         <option value="YE">s 1</option>
                                                         <option value="ZM">s 2</option>
                                                         <option value="ZW">s 3</option>
                                                     </select>
+                                                    <span class="text-danger error-text record_dep_transfer_err"></span>
                                                     <input type="text" id="editid3" hidden name="editid3">
                                                     <div class="d-md-none mb-2"></div>
                                                 </div>
@@ -945,6 +972,7 @@
                                                         <option value="3">r 2</option>
                                                         <option value="4">r 3</option>
                                                     </select>
+                                                    <span class="text-danger error-text belongs_to_err"></span>
                                                     <div class="d-md-none mb-2"></div>
                                                     <input type="text" id="editid4" hidden name="editid4">
                                                 </div>
@@ -1051,16 +1079,31 @@
                     passport_type: passport_type,
                 },
                 success: function(data) {
-                    var id = data.id;
+
+                    if($.isEmptyObject(data.error)){
+                        var id = data.id;
                     $('#editid').val(id);
                     $('#editid1').val(id);
                     $('#editid3').val(id);
                     $('#editid4').val(id);
-                    // console.log(response);
+                   
+                    }else{
+                        printErrorMsg(data.error);
+                    }
+
+                    
+                    
                 },
             });
         });
-
+        function printErrorMsg (msg) {
+            $.each( msg, function( key, value ) {
+                alert(key);
+            console.log(key);
+              $('.'+key+'_err').text(value);
+            });
+             document.getElementById("next").disabled = true;  
+        }
     </script>
 
     <script type="text/javascript">
@@ -1079,8 +1122,13 @@
                     record_dep_transfer: record_dep_transfer,
                     editid3: editid3,
                 },
-                success: function(response) {
-                    console.log(response);
+                success: function(data) {
+                    if($.isEmptyObject(data.error)){
+                        console.log(data);
+                    }
+                    else{
+                        printErrorMsg(data.error);
+                    }
                 },
             });
         });
@@ -1100,8 +1148,13 @@
                     belongs_to: belongs_to,
                     editid4: editid4,
                 },
-                success: function(response) {
-                    console.log(response);
+                success: function(data) {
+                    if($.isEmptyObject(data.error)){
+                        console.log(data);
+                    }
+                    else{
+                        printErrorMsg(data.error);
+                    }
                     window.location.href = HOST_URL + "/profile/add-profile";
                 },
             });
@@ -1127,16 +1180,11 @@
                 dataType: 'json',
                 success: function(data) {
 
-                    if (data.error) {
-                        console.log(data.error);
-                        var error_html = '';
-                        for (var count = 0; count < data.error.length; count++) {
-                            showToast(data.error[count], 'Validation Error', 'danger');
-                        }
-                    } else {
-                        // dynamic_field(1);
-                        $('#result').html('<div class="alert alert-success">' + data.success +
-                        '</div>');
+                    if($.isEmptyObject(data.error)){
+                        console.log(data);
+                    }
+                    else{
+                        printErrorMsg(data.error);
                     }
                 },
             });
@@ -1154,6 +1202,7 @@
             }
         });
         $('#editstep').on('click', function() {
+            alert("alert");
             event.preventDefault();
             var fd = new FormData();
             let shipping_no = $('#shipping_no').val();
@@ -1215,15 +1264,15 @@
                 data: formData,
                 contentType: false,
                 processData: false,
-                success: (response) => {
-                    if (response) {
-                        console.log(response);
+                success: function(data) {
+                    if($.isEmptyObject(data.error)){
+                        console.log(data);
+                    }
+                    else{
+                        printErrorMsg(data.error);
                     }
                 },
-                error: function(response) {
-                    console.log(response);
-                    alert('Image has been not uploaded successfully');
-                }
+                
             });
         });
 
@@ -1239,7 +1288,7 @@
                                 <div class="row form-group">
                                                                                     <div class="col-md-4">
                                                                                       
-                                                                                        <select name="product_type[]" id="product_type[]"
+                                                                                        <select required name="product_type[]" id="product_type[]"
                                                                                             class="form-control form-control-solid ">
                                                                                             <option hidden value="">Select Product-1&nbsp;
                                                                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -1254,7 +1303,7 @@
                                                                                     </div>
                                                                                     <div class="col-md-4">
                                                                                       
-                                                                                        <select name="manufacture_type[]" id="manufacture_type[]"
+                                                                                        <select required name="manufacture_type[]" id="manufacture_type[]"
                                                                                             class="form-control form-control-solid">
                                                                                             <option hidden value=""> Select Type-1</option>
                                                                                             <option value="YE">P 1</option>
@@ -1265,7 +1314,7 @@
                                                                                     </div>
                                                                                     <div class="col-md-4">
                                                                                    
-                                                                                        <select name="shipped_type[]" id="shipped_type[]"
+                                                                                        <select required name="shipped_type[]" id="shipped_type[]"
                                                                                             class="form-control form-control-solid">
                                                                                             <option selected hidden value="">Select type-3
                                                                                             </option>
@@ -1279,24 +1328,24 @@
                                                                                 <div class="row form-group">
                                                                                     <div class="col-md-3">
                                                                                        
-                                                                                        <input type="text" class="form-control" placeholder="Kg"
+                                                                                        <input required type="text" class="form-control" placeholder="Kg"
                                                                                             name="quantity_kg[]" id="quantity_kg[]" />
                                                                                         <div class="d-md-none mb-2"></div>
                                                                                     </div>
                                                                                     <div class="col-md-3">
                                                                                        
-                                                                                        <input type="text" class="form-control" placeholder="G"
+                                                                                        <input required type="text" class="form-control" placeholder="G"
                                                                                             name="quantity_g[]" id="quantity_g[]" />
                                                                                         <div class="d-md-none mb-2"></div>
                                                                                     </div>
                                                                                     <div class="col-md-3">
                                                                                      
-                                                                                        <input type="text" class="form-control" placeholder="ML"
+                                                                                        <input required type="text" class="form-control" placeholder="ML"
                                                                                             name="quantity_ml[]" id="quantity_ml[]" />
                                                                                         <div class="d-md-none mb-2"></div>
                                                                                     </div>
 
-                                                                                    <div class="col-md-3">
+                                                                                    <div required class="col-md-3">
                                                                                         <!-- <label>Number:</label> -->
                                                                                         <input type="text" class="form-control" placeholder="Digit"
                                                                                             name="quantity_digit[]" id="quantity_digit[]" />
