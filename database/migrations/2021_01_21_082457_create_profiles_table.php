@@ -39,7 +39,7 @@ class CreateProfilesTable extends Migration
             $table->string('doc_image');
             $table->string('record_status');
             $table->string('record_dep_transfer');
-            $table->text('note');
+            $table->text('note')->nullable();
             $table->tinyInteger('is_completed')->default(0)->nullable();
             $table->tinyInteger('belongs_to')->nullable();
             $table->tinyInteger('is_drafted')->nullable();
