@@ -23,7 +23,8 @@
                                                 <li class="nav-item">
                                                     <a class="nav-link py-2 px-4  @if (request()->query('tab') == 'pending') {{ 'active' }} @endif"
                                                         href="{{ url('profiles?tab=pending') }}">
-                                                        @if (Auth::user()->role == 'employ')  Pending  @else Upcoming & In Progress @endif
+                                                    @if (Auth::user()->role == 'employ') Pending @else
+                                                            Upcoming & In Progress @endif
                                                     </a>
                                             @endif
                                         @endif
@@ -175,18 +176,22 @@
                                                                                         class="text-primary text-uppercase font-weight-bold font-size-sm">Options</span>
                                                                                 </li>
                                                                                 @if ($item->is_completed == 1)
-                                                                                    <li class="navi-item">
-                                                                                        <a onclick="alertAndGoToUrl('/forward/new/{{ $item->id }}','Forward or Duplicate this Profile ?')"
-                                                                                            href="#" class="navi-link">
-                                                                                            <span class="navi-icon">
-                                                                                                <i
-                                                                                                    class="flaticon2-reply"></i>
-                                                                                            </span>
-                                                                                            <span class="navi-text">Forward
-                                                                                                as
-                                                                                                New</span>
-                                                                                        </a>
-                                                                                    </li>
+                                                                                    @if (Auth::user()->role == 'employ')
+                                                                                        <li class="navi-item">
+                                                                                            <a onclick="alertAndGoToUrl('/forward/new/{{ $item->id }}','Forward or Duplicate this Profile ?')"
+                                                                                                href="#" class="navi-link">
+                                                                                                <span class="navi-icon">
+                                                                                                    <i
+                                                                                                        class="flaticon2-reply"></i>
+                                                                                                </span>
+                                                                                                <span
+                                                                                                    class="navi-text">Forward
+                                                                                                    as
+                                                                                                    New</span>
+                                                                                            </a>
+                                                                                        </li>
+                                                                                    @endif
+
                                                                                     <li class="navi-item">
                                                                                         <a target="_blank"
                                                                                             href="{{ url('profile/pdf', $item->id) }}"
