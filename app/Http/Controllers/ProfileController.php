@@ -401,7 +401,7 @@ class ProfileController extends Controller
 
         ]);
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()]);
+            return response()->json(['error' => $validator->errors()], 422);
         }
 
         $editid = $request->input('editid');
