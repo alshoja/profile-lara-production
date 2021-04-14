@@ -825,8 +825,8 @@
                                                         data-original-title="Change avatar">
                                                         <i class="fa fa-pen icon-sm text-muted"></i>
                                                         <input type="file" name="profile_image" id="profile_image"
-                                                            accept=".png, .jpg, .jpeg" />
-                                                        <input type="hidden" name="profile_avatar_remove1"
+                                                          />
+                                                        <input type="text" hidden name="profile_avatar_remove1"
                                                             value="{{ $profile->profile_image }}" />
                                                             <span class="text-danger error-text profile_image_err"></span>
                                                     </label>
@@ -856,8 +856,8 @@
                                                         data-original-title="Change avatar">
                                                         <i class="fa fa-pen icon-sm text-muted"></i>
                                                         <input type="file" name="product_image" id="product_image"
-                                                            accept=".png, .jpg, .jpeg" />
-                                                        <input type="hidden" name="profile_avatar_remove2"
+                                                          />
+                                                        <input type="text" hidden name="profile_avatar_remove2"
                                                             value="{{ $profile->product_image }}" />
                                                             <span class="text-danger error-text product_image_err"></span>
                                                     </label>
@@ -886,8 +886,8 @@
                                                         data-original-title="Change avatar">
                                                         <i class="fa fa-pen icon-sm text-muted"></i>
                                                         <input type="file" name="doc_image" id="doc_image"
-                                                            accept=".png, .jpg, .jpeg" />
-                                                        <input type="hidden" name="profile_avatar_remove3"
+                                                             />
+                                                        <input type="text" hidden sname="profile_avatar_remove3"
                                                             value="{{ $profile->doc_image }}" />
                                                             <span class="text-danger error-text doc_image_err"></span>
                                                     </label>
