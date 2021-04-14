@@ -1060,7 +1060,7 @@
 
                 function printErrorMsg (msg) {
             $.each( msg, function( key, value ) {
-                alert(key);
+              
             console.log(key);
               $('.'+key+'_err').text(value);
             });
