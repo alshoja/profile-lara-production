@@ -986,6 +986,11 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="btn-group">
+                                            <button id="submit" type="submit" 
+                                                class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4">Update</button>
+                                        </div>
+
                                     </div>
                                     <!--end::Wizard Step 5-->
                                     <!--begin::Wizard Actions-->
@@ -996,12 +1001,8 @@
                                                 data-wizard-type="action-prev">Previous</button>
                                         </div>
                                         <div>
-
-                                            <div class="btn-group">
-                                                <button id="submit" type="submit" 
-                                                    class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4">Update</button>
-                                            </div>
-
+                                       
+                                            
                                             <!-- <button type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-submit">Submit</button> -->
                                             <button id="next" type="button"
                                                 class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
@@ -1046,7 +1047,7 @@
                         success: function(data) {
                             if($.isEmptyObject(data.error)){
                         console.log(data);
-                    }
+                       }
                      
                         
                         

@@ -375,7 +375,7 @@ class ProfileController extends Controller
     public function profileUpdate(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'belongs_to' => 'required',
+            
             "name" => 'required',
             "nationality" => 'required',
             "dob" => 'required',
@@ -394,13 +394,13 @@ class ProfileController extends Controller
             "coming_from" => 'required',
             "going_to" => 'required',
             "final_destination" => 'required',
-            'profile_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'product_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'doc_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            //'profile_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            //'product_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            //'doc_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             "note" => 'required',
             "record_status" => 'required',
             "record_dep_transfer" => 'required',
-            "belongs_to" => 'required',
+            
 
 
         ]);
