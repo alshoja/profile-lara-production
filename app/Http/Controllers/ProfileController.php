@@ -246,7 +246,7 @@ class ProfileController extends Controller
             'final_destination' => 'required',
            'profile_image' =>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
            'product_image' =>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-           'file' => 'required|max:10000|mimes:doc,docx,pdf',
+           'doc_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         if ($validator->fails()) {
             return response()->json(['error'=>$validator->errors()]);
@@ -398,9 +398,9 @@ class ProfileController extends Controller
             "coming_from" => 'required',
             "going_to" => 'required',
             "final_destination" =>'required',
-            "profile_image" => 'required',
-            "product_image" => 'required',
-            "doc_image" => 'required',
+            'profile_image' =>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+           'product_image' =>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+           'doc_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             "note" =>'required',
             "record_status" => 'required',
             "record_dep_transfer" => 'required',

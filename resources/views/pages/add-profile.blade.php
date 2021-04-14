@@ -798,6 +798,7 @@
                                         <div class="row form-group">
                                             <div class="col-md-3">
                                                 <label>Profile Picture</label>
+                                                <span class="text-danger error-text profile_image_err"></span>
                                                 <div class="image-input image-input-empty image-input-outline"
                                                     id="kt_image_1"
                                                     style="background-image: url(assets/media/users/blank.png)">
@@ -810,7 +811,7 @@
                                                         <input type="file" name="profile_image" id="profile_image"
                                                             accept=".png, .jpg, .jpeg" />
                                                         <input type="hidden" name="profile_avatar_remove" />
-                                                        <span class="text-danger error-text profile_image_err"></span>
+                                                       
                                                     </label>
                                                     <span
                                                         class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
@@ -828,6 +829,7 @@
                                             </div>
                                             <div class="col-md-3">
                                                 <label>Product Image</label>
+                                                <span class="text-danger error-text product_image_err"></span>
                                                 <div class="image-input image-input-empty image-input-outline"
                                                     id="kt_image_2"
                                                     style="background-image: url(assets/media/users/blank.png)">
@@ -840,7 +842,7 @@
                                                         <input type="file" name="product_image" id="product_image"
                                                             accept=".png, .jpg, .jpeg" />
                                                         <input type="hidden" name="profile_avatar_remove" />
-                                                        <span class="text-danger error-text product_image_err"></span>
+                                                       
                                                     </label>
                                                     <span
                                                         class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
@@ -857,6 +859,7 @@
                                             </div>
                                             <div class="col-md-3">
                                                 <label>Document</label>
+                                                <span class="text-danger error-text doc_image_err"></span>
                                                 <div class="image-input image-input-empty image-input-outline"
                                                     id="kt_image_3"
                                                     style="background-image: url(assets/media/users/blank.png)">
@@ -869,7 +872,7 @@
                                                         <input type="file" name="doc_image" id="doc_image"
                                                             accept=".png, .jpg, .jpeg" />
                                                         <input type="hidden" name="profile_avatar_remove" />
-                                                        <span class="text-danger error-text doc_image_err"></span>
+                                                       
 
                                                     </label>
                                                     <span
