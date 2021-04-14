@@ -23,7 +23,8 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                                    <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                                                            <g stroke="
+                                            none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
                                                 transform="translate(15.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-15.000000, -12.000000) "
@@ -47,7 +48,8 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                                    <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                                                            <g stroke="
+                                            none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
                                                 transform="translate(15.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-15.000000, -12.000000) "
@@ -71,7 +73,8 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                                    <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                                                            <g stroke="
+                                            none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
                                                 transform="translate(15.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-15.000000, -12.000000) "
@@ -95,7 +98,8 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                                    <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                                                            <g stroke="
+                                            none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
                                                 transform="translate(15.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-15.000000, -12.000000) "
@@ -119,7 +123,8 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow last">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                                    <g stroke=" none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                                                            <g stroke="
+                                            none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
                                                 transform="translate(12.000000, 12.000000) rotate(-90.000000) translate(-12.000000, -12.000000)"
@@ -151,7 +156,7 @@
                                     </div>
                                 @endif
                                 <!--begin::Wizard Form-->
-                                <form class="form" id="kt_form" enctype="multipart/form-data">
+                                <form class="form" id="kt_form" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <!--begin::Wizard Step 1-->
                                     <div class="pb-5" data-wizard-type="step-content" data-wizard-state="current">
@@ -163,7 +168,7 @@
                                             <label>First Name</label>
                                             <input type="text" class="form-control form-control-solid form-control-lg"
                                                 name="name" placeholder="Name" value="{{ $profile->name }}" id="name" />
-                                                <span class="text-danger error-text name_err"></span>
+                                            <span class="text-danger error-text name_err"></span>
                                         </div>
                                         <!--end::Input-->
                                         <!--begin::Input-->
@@ -458,7 +463,7 @@
                                                         class="form-control form-control-solid form-control-lg" name="dob"
                                                         placeholder="Address Line 1" id="dob"
                                                         value="{{ $profile->dob }}" />
-                                                        <span class="text-danger error-text dob_err"></span>
+                                                    <span class="text-danger error-text dob_err"></span>
                                                     <!-- <span class="form-text text-muted">Please enter DOb.</span> -->
                                                 </div>
                                             </div>
@@ -505,7 +510,7 @@
                                                         class="form-control form-control-solid form-control-lg"
                                                         name="citizen_id" placeholder="ID number"
                                                         value="{{ $profile->citizen_id }}" id="citizen_id" />
-                                                        <span class="text-danger error-text citizen_id_err"></span>
+                                                    <span class="text-danger error-text citizen_id_err"></span>
                                                     <!-- <span class="form-text text-muted">Please enter DOb.</span> -->
                                                 </div>
                                             </div>
@@ -519,7 +524,7 @@
                                                         class="form-control form-control-solid form-control-lg"
                                                         name="citizen_uid" placeholder="UID No"
                                                         value="{{ $profile->citizen_uid }}" id="citizen_uid" />
-                                                        <span class="text-danger error-text citizen_uid_err"></span>
+                                                    <span class="text-danger error-text citizen_uid_err"></span>
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
@@ -531,7 +536,7 @@
                                                         class="form-control form-control-solid form-control-lg"
                                                         name="passport_no" placeholder="Passport Number"
                                                         value="{{ $profile->passport_no }}" id="passport_no" />
-                                                        <span class="text-danger error-text passport_no_err"></span>
+                                                    <span class="text-danger error-text passport_no_err"></span>
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
@@ -571,7 +576,7 @@
                                                         name="entry_date" placeholder="Address Line 1" />
                                                     <input type="text" id="editid" value="{{ $profile->id }}"
                                                         name="editid" hidden>
-                                                        <span class="text-danger error-text entry_date_err"></span>
+                                                    <span class="text-danger error-text entry_date_err"></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -605,7 +610,7 @@
                                                         <option value="AL">Albania</option>
                                                     </select>
                                                     <span class="text-danger error-text bought_by_err"></span>
-                                                    
+
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
@@ -658,85 +663,92 @@
                                                         </a>
                                                     </div>
                                                 </div>
-                                                <div class="field_wrapper" >
-                                                     @foreach($profile->products as $key)
-                                               
-                                                    
-                                                    
-                                                                       
-                                                    <div class="row form-group" id="divid{{ $key->id }}">
-                                                        <div class="col-md-4">
-                                                            <!-- <label>Name:</label> -->
-                                                           
-                                                            <input  required type="text" hidden name="product_id[]" id="product_id[]" value="{{ $key->id }}">
-                                                            <select name="product_type[]" id="product_type[]"
-                                                                class="form-control form-control-solid ">
-                                                                <option value="{{ $key->product_type }}">{{ $key->product_type }}</option>
-                                                                <option value="YE">P 1</option>
-                                                                <option value="ZM">P 2</option>
-                                                                <option value="ZW">P 3</option>
-                                                            </select>
-                                                            {{-- <div class="d-md-none mb-2"></div> --}}
+                                                <div class="field_wrapper">
+                                                    @foreach ($profile->products as $key)
+                                                        <div class="row form-group" id="divid{{ $key->id }}">
+                                                            <div class="col-md-4">
+                                                                <!-- <label>Name:</label> -->
+
+                                                                <input required type="text" hidden name="product_id[]"
+                                                                    id="product_id[]" value="{{ $key->id }}">
+                                                                <select name="product_type[]" id="product_type[]"
+                                                                    class="form-control form-control-solid ">
+                                                                    <option value="{{ $key->product_type }}">
+                                                                        {{ $key->product_type }}</option>
+                                                                    <option value="YE">P 1</option>
+                                                                    <option value="ZM">P 2</option>
+                                                                    <option value="ZW">P 3</option>
+                                                                </select>
+                                                                {{-- <div class="d-md-none mb-2"></div> --}}
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <!-- <label>Name:</label> -->
+                                                                <select required name="manufacture_type[]"
+                                                                    id="manufacture_type[]"
+                                                                    class="form-control form-control-solid">
+                                                                    <option value="{{ $key->manufacture_type }}">
+                                                                        {{ $key->manufacture_type }}</option>
+                                                                    <option value="YE">P 1</option>
+                                                                    <option value="ZM">P 2</option>
+                                                                    <option value="ZW">P 3</option>
+                                                                </select>
+                                                                {{-- <div class="d-md-none mb-2"></div> --}}
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <!-- <label>Name:</label> -->
+                                                                <select required name="shipped_type[]" id="shipped_type[]"
+                                                                    class="form-control form-control-solid">
+                                                                    <option value="{{ $key->shipped_type }}">
+                                                                        {{ $key->shipped_type }}</option>
+                                                                    <option value="YE">P 1</option>
+                                                                    <option value="ZM">P 2</option>
+                                                                    <option value="ZW">P 3</option>
+                                                                </select>
+                                                                {{-- <div class="d-md-none mb-2"></div> --}}
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <button type="button" value="{{ $key->id }}"
+                                                                    id="productdelete"
+                                                                    class="btn btn-gradient-danger remove-button">
+                                                                    Delete</button>
+                                                            </div>
                                                         </div>
-                                                        <div class="col-md-3">
-                                                            <!-- <label>Name:</label> -->
-                                                            <select required name="manufacture_type[]" id="manufacture_type[]"
-                                                                class="form-control form-control-solid">
-                                                                <option value="{{ $key->manufacture_type }}">{{ $key->manufacture_type }}</option>
-                                                                <option value="YE">P 1</option>
-                                                                <option value="ZM">P 2</option>
-                                                                <option value="ZW">P 3</option>
-                                                            </select>
-                                                            {{-- <div class="d-md-none mb-2"></div> --}}
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <!-- <label>Name:</label> -->
-                                                            <select required name="shipped_type[]" id="shipped_type[]"
-                                                                class="form-control form-control-solid">
-                                                                <option value="{{ $key->shipped_type }}">{{ $key->shipped_type }}</option>
-                                                                <option value="YE">P 1</option>
-                                                                <option value="ZM">P 2</option>
-                                                                <option value="ZW">P 3</option>
-                                                            </select>
-                                                            {{-- <div class="d-md-none mb-2"></div> --}}
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            
-                                                            <button type="button" value="{{ $key->id }}" id="productdelete" class="btn btn-gradient-danger remove-button">
-                                                                Delete</button>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row form-group" id="divdelete{{ $key->id }}">
-                                                        <div class="col-md-3">
-                                                            <!-- <label>Name:</label> -->
-                                                            <input required type="text" class="form-control" placeholder="Kg"
-                                                                name="quantity_kg[]" id="quantity_kg[]" value="{{ $key->quantity_kg }}" />
-                                                            <div class="d-md-none mb-2"></div>
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <!-- <label>Name:</label> -->
-                                                            <input required type="text" class="form-control" placeholder="G"
-                                                                name="quantity_g[]" id="quantity_g[]" value="{{ $key->quantity_g }}" />
-                                                            <div class="d-md-none mb-2"></div>
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <!-- <label>Name:</label> -->
-                                                            <input required type="text" class="form-control" placeholder="ML"
-                                                                name="quantity_ml[]" id="quantity_ml[]" value="{{ $key->quantity_ml }}" />
-                                                            <div class="d-md-none mb-2"></div>
+                                                        <div class="row form-group" id="divdelete{{ $key->id }}">
+                                                            <div class="col-md-3">
+                                                                <!-- <label>Name:</label> -->
+                                                                <input required type="text" class="form-control"
+                                                                    placeholder="Kg" name="quantity_kg[]" id="quantity_kg[]"
+                                                                    value="{{ $key->quantity_kg }}" />
+                                                                <div class="d-md-none mb-2"></div>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <!-- <label>Name:</label> -->
+                                                                <input required type="text" class="form-control"
+                                                                    placeholder="G" name="quantity_g[]" id="quantity_g[]"
+                                                                    value="{{ $key->quantity_g }}" />
+                                                                <div class="d-md-none mb-2"></div>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <!-- <label>Name:</label> -->
+                                                                <input required type="text" class="form-control"
+                                                                    placeholder="ML" name="quantity_ml[]" id="quantity_ml[]"
+                                                                    value="{{ $key->quantity_ml }}" />
+                                                                <div class="d-md-none mb-2"></div>
+                                                            </div>
+
+                                                            <div class="col-md-3">
+                                                                <!-- <label>Number:</label> -->
+                                                                <input required type="text" class="form-control"
+                                                                    placeholder="Digit" name="quantity_digit[]"
+                                                                    id="quantity_digit[]"
+                                                                    value="{{ $key->quantity_digit }}" />
+                                                                <div class="d-md-none mb-2"></div>
+                                                            </div>
                                                         </div>
 
-                                                        <div class="col-md-3">
-                                                            <!-- <label>Number:</label> -->
-                                                            <input required type="text" class="form-control" placeholder="Digit"
-                                                                name="quantity_digit[]" id="quantity_digit[]" value="{{ $key->quantity_digit }}"/>
-                                                            <div class="d-md-none mb-2"></div>
-                                                        </div>
-                                                    </div>
-                                                    
                                                     @endforeach
                                                 </div>
-                                               
+
 
                                             </div>
                                         </div>
@@ -757,7 +769,7 @@
                                                         class="form-control form-control-solid form-control-lg"
                                                         name="shipping_no" placeholder="Shipping No"
                                                         value="{{ $profile->shipping_no }}" />
-                                                        <span class="text-danger error-text shipping_no_err"></span>
+                                                    <span class="text-danger error-text shipping_no_err"></span>
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
@@ -817,7 +829,7 @@
                                                 <label>Profile Picture</label>
                                                 <div class="image-input image-input-empty image-input-outline"
                                                     id="kt_image_1"
-                                                    style="background-image: url(/{{ $profile->profile_image }})">
+                                                    style="background-image: url({{ url($profile->profile_image) }})">
                                                     <div class="image-input-wrapper"></div>
                                                     <label
                                                         class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
@@ -828,7 +840,7 @@
                                                           />
                                                         <input type="text" hidden name="profile_avatar_remove1"
                                                             value="{{ $profile->profile_image }}" />
-                                                            <span class="text-danger error-text profile_image_err"></span>
+                                                        <span class="text-danger error-text profile_image_err"></span>
                                                     </label>
                                                     <span
                                                         class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
@@ -848,7 +860,7 @@
                                                 <label>Product Image</label>
                                                 <div class="image-input image-input-empty image-input-outline"
                                                     id="kt_image_2"
-                                                    style="background-image: url(/{{ $profile->product_image }})">
+                                                    style="background-image: url({{ url($profile->product_image) }})">
                                                     <div class="image-input-wrapper"></div>
                                                     <label
                                                         class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
@@ -859,7 +871,7 @@
                                                           />
                                                         <input type="text" hidden name="profile_avatar_remove2"
                                                             value="{{ $profile->product_image }}" />
-                                                            <span class="text-danger error-text product_image_err"></span>
+                                                        <span class="text-danger error-text product_image_err"></span>
                                                     </label>
                                                     <span
                                                         class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
@@ -889,7 +901,7 @@
                                                              />
                                                         <input type="text" hidden sname="profile_avatar_remove3"
                                                             value="{{ $profile->doc_image }}" />
-                                                            <span class="text-danger error-text doc_image_err"></span>
+                                                        <span class="text-danger error-text doc_image_err"></span>
                                                     </label>
                                                     <span
                                                         class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
@@ -905,6 +917,7 @@
                                                 <div class="d-md-none mb-2"></div>
                                             </div>
                                         </div>
+                                        
                                         <h6 class="mb-10 font-weight-bold text-dark">Label</h6>
 
                                         <div class="row">
@@ -913,7 +926,7 @@
                                                     <label for="exampleTextarea">Note</label>
                                                     <textarea class="form-control form-control-solid" rows="3" name="note"
                                                         id="note">{{ $profile->note }}</textarea>
-                                                        <span class="text-danger error-text note_err"></span>
+                                                    <span class="text-danger error-text note_err"></span>
 
                                                 </div>
                                             </div>
@@ -974,21 +987,21 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <label>Department</label>
-                                                   <h6>{{$profile->department->name}}</h6>
+                                                    <h6>{{ $profile->department->name }}</h6>
                                                     <div class="d-md-none mb-2"></div>
                                                 </div>
                                             </div>
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <label>Section</label>
-                                                   <h6>{{$profile->section->name}}</h6>
+                                                    <h6>{{ $profile->section->name }}</h6>
                                                     <div class="d-md-none mb-2"></div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="btn-group">
-                                            <button id="submit" type="submit" 
-                                                class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4">Update</button>
+                                            {{-- <button id="submit" type="submit"
+                                                class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4">Update</button> --}}
                                         </div>
 
                                     </div>
@@ -1001,12 +1014,14 @@
                                                 data-wizard-type="action-prev">Previous</button>
                                         </div>
                                         <div>
-                                       
-                                            
-                                            <!-- <button type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-submit">Submit</button> -->
+
                                             <button id="next" type="button"
-                                                class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
+                                                class="btn btn-success btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
                                                 data-wizard-type="action-next">Next</button>
+                                            <button
+                                                class="btn btn-success btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
+                                                id="submit" type="submit">Update</button>
+
                                         </div>
                                     </div>
                                     <!--end::Wizard Actions-->
@@ -1024,200 +1039,179 @@
         <!--end::Container-->
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-    
-    
-    <script type="text/javascript">
 
+
+    <script type="text/javascript">
         $.ajaxSetup({
-                  headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                  }
-              });
-        
-                $('#kt_form').on('submit', function(event) {
-                    event.preventDefault();
-        
-                 
-        
-                    $.ajax({
-                        url: "/profileUpdate",
-                        method: 'POST',
-                        data: $('#kt_form').serialize(),
-                        dataType: 'json',
-                        success: function(data) {
-                            if($.isEmptyObject(data.error)){
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $('#kt_form').on('submit', function(event) {
+            event.preventDefault();
+            $.ajax({
+                url: "/profileUpdate",
+                method: 'POST',
+                enctype: 'multipart/form-data',
+                data: new FormData(this),
+                dataType: 'JSON',
+                processData: false,
+                contentType: false,
+                success: function(data) {
+                    if ($.isEmptyObject(data.error)) {
                         console.log(data);
-                       }
-                     
-                        
-                        
-                        },
-                        error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    }
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
                     printErrorMsg(XMLHttpRequest.responseJSON.error);
                     showToast('You have some validation errors please fix it first !',
                         'Validation Error', 'danger');
                 },
-                    });
-        
-        
-                });
+            });
+        });
 
-                function printErrorMsg (msg) {
-            $.each( msg, function( key, value ) {
-              
+        function printErrorMsg(msg) {
+            $.each(msg, function(key, value) {
+
                 $('.' + key + '_err').text(value);
-                $('#'+ key).on('input',  function(e) {
+                $('#' + key).on('input', function(e) {
 
-                $('.' + key + '_err').text(value).hide();
+                    $('.' + key + '_err').text(value).hide();
                 });
 
             });
-             //document.getElementById("next").disabled = true;  
+            //document.getElementById("next").disabled = true;  
         }
-            </script>
-      
-<script type="text/javascript">
-      function refreshPage(divname, divname1)
-      {
-        var gfg_down =  document.getElementById(divname);
-        gfg_down.remove();
-        var div_down =  document.getElementById(divname1);
-        div_down.remove();
 
-      }
+    </script>
 
-      
-      </script>
     <script type="text/javascript">
-    
-    $(document).on('click', '#productdelete', function(e){
+        function refreshPage(divname, divname1) {
+            var gfg_down = document.getElementById(divname);
+            gfg_down.remove();
+            var div_down = document.getElementById(divname1);
+            div_down.remove();
+        }
 
-        let productid = $('#productdelete').val();
-            let divid='divid'+productid;
-            let divdelete='divdelete'+productid;
+    </script>
+    <script type="text/javascript">
+        $(document).on('click', '#productdelete', function(e) {
+
+            let productid = $('#productdelete').val();
+            let divid = 'divid' + productid;
+            let divdelete = 'divdelete' + productid;
             $.ajax({
                 url: "/stageFive",
                 type: "POST",
                 data: {
                     "_token": "{{ csrf_token() }}",
                     productid: productid,
-                   
+
                 },
                 success: function(response) {
                     console.log(response);
-                 refreshPage(divid,divdelete);
-               
+                    refreshPage(divid, divdelete);
+
                 },
-                
-                
-            });
-});
 
 
-</script>
-  
-     <script type="text/javascript">
-        $(document).ready(function() {
-            console.log('hai initiated')
-            var maxField = 10; //Input fields increment limitation
-            var addButton = $('.add_button'); //Add button selector
-            var wrapper = $('.field_wrapper'); //Input field wrapper
-            var fieldHTML = `
-                                <div> 
-                                <div class="row form-group">
-                                                                                    <div class="col-md-4">
-                                                                                        <input type="text" hidden name="product_id[]" id="product_id[]">
-                                                                                        <select required name="product_type[]" id="product_type[]"
-                                                                                            class="form-control form-control-solid ">
-                                                                                            <option hidden value="">Select Product-1&nbsp;
-                                                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                                                &nbsp;
-                                                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                                            </option>
-                                                                                            <option value="YE">P 1</option>
-                                                                                            <option value="ZM">P 2</option>
-                                                                                            <option value="ZW">P 3</option>
-                                                                                        </select>
-                                                                                        {{-- <div class="d-md-none mb-2"></div> --}}
-                                                                                    </div>
-                                                                                    <div class="col-md-4">
-                                                                                      
-                                                                                        <select required name="manufacture_type[]" id="manufacture_type[]"
-                                                                                            class="form-control form-control-solid">
-                                                                                            <option hidden value=""> Select Type-1</option>
-                                                                                            <option value="YE">P 1</option>
-                                                                                            <option value="ZM">P 2</option>
-                                                                                            <option value="ZW">P 3</option>
-                                                                                        </select>
-                                                                                        {{-- <div class="d-md-none mb-2"></div> --}}
-                                                                                    </div>
-                                                                                    <div class="col-md-4">
-                                                                                   
-                                                                                        <select required name="shipped_type[]" id="shipped_type[]"
-                                                                                            class="form-control form-control-solid">
-                                                                                            <option selected hidden value="">Select type-3
-                                                                                            </option>
-                                                                                            <option value="YE">P 1</option>
-                                                                                            <option value="ZM">P 2</option>
-                                                                                            <option value="ZW">P 3</option>
-                                                                                        </select>
-                                                                                        {{-- <div class="d-md-none mb-2"></div> --}}
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="row form-group">
-                                                                                    <div class="col-md-3">
-                                                                                       
-                                                                                        <input required type="text" class="form-control" placeholder="Kg"
-                                                                                            name="quantity_kg[]" id="quantity_kg[]" />
-                                                                                        <div class="d-md-none mb-2"></div>
-                                                                                    </div>
-                                                                                    <div class="col-md-3">
-                                                                                       
-                                                                                        <input required type="text" class="form-control" placeholder="G"
-                                                                                            name="quantity_g[]" id="quantity_g[]" />
-                                                                                        <div class="d-md-none mb-2"></div>
-                                                                                    </div>
-                                                                                    <div class="col-md-3">
-                                                                                     
-                                                                                        <input required type="text" class="form-control" placeholder="ML"
-                                                                                            name="quantity_ml[]" id="quantity_ml[]" />
-                                                                                        <div class="d-md-none mb-2"></div>
-                                                                                    </div>
-
-                                                                                    <div class="col-md-3">
-                                                                                        <!-- <label>Number:</label> -->
-                                                                                        <input required type="text" class="form-control" placeholder="Digit"
-                                                                                            name="quantity_digit[]" id="quantity_digit[]" />
-                                                                                        <div class="d-md-none mb-2"></div>
-                                                                                    </div>
-                                                                                </div> 
-                                                                                 <a style="margin:10px;" href="javascript:;" data-repeater-delete=""
-                                                                                            class=" btn btn-gradient-danger remove_button">
-                                                                                            Delete
-                                                                                        </a>
-                                                                                        </div>`
-            // var fieldHTML = '<div><input type="text" name="field_name[]" value=""/><a href="javascript:void(0);" class="remove_button"><img src="remove-icon.png"/></a></div>'; //New input field html 
-            var x = 1; //Initial field counter is 1
-
-            //Once add button is clicked
-            $(addButton).click(function() {
-                //Check maximum number of input fields
-                if (x < maxField) {
-                    x++; //Increment field counter
-                    $(wrapper).append(fieldHTML); //Add field html
-                }
-            });
-
-            //Once remove button is clicked
-            $(wrapper).on('click', '.remove_button', function(e) {
-                e.preventDefault();
-                $(this).parent('div').remove(); //Remove field html
-                x--; //Decrement field counter
             });
         });
 
     </script>
-    
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            console.log('hai initiated')
+            var maxField = 100;
+            var addButton = $('.add_button');
+            var wrapper = $('.field_wrapper');
+            var fieldHTML = `
+                <div>
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            <input type="text" hidden name="product_id[]" id="product_id[]">
+                            <select required name="product_type[]" id="product_type[]" class="form-control form-control-solid ">
+                                <option hidden value="">Select Product-1&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                </option>
+                                <option value="YE">P 1</option>
+                                <option value="ZM">P 2</option>
+                                <option value="ZW">P 3</option>
+                            </select>
+                            {{-- <div class="d-md-none mb-2"></div> --}}
+                        </div>
+                        <div class="col-md-4">
+
+                            <select required name="manufacture_type[]" id="manufacture_type[]" class="form-control form-control-solid">
+                                <option hidden value=""> Select Type-1</option>
+                                <option value="YE">P 1</option>
+                                <option value="ZM">P 2</option>
+                                <option value="ZW">P 3</option>
+                            </select>
+                            {{-- <div class="d-md-none mb-2"></div> --}}
+                        </div>
+                        <div class="col-md-4">
+
+                            <select required name="shipped_type[]" id="shipped_type[]" class="form-control form-control-solid">
+                                <option selected hidden value="">Select type-3
+                                </option>
+                                <option value="YE">P 1</option>
+                                <option value="ZM">P 2</option>
+                                <option value="ZW">P 3</option>
+                            </select>
+                            {{-- <div class="d-md-none mb-2"></div> --}}
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-3">
+
+                            <input required type="text" class="form-control" placeholder="Kg" name="quantity_kg[]" id="quantity_kg[]" />
+                            <div class="d-md-none mb-2"></div>
+                        </div>
+                        <div class="col-md-3">
+
+                            <input required type="text" class="form-control" placeholder="G" name="quantity_g[]" id="quantity_g[]" />
+                            <div class="d-md-none mb-2"></div>
+                        </div>
+                        <div class="col-md-3">
+
+                            <input required type="text" class="form-control" placeholder="ML" name="quantity_ml[]" id="quantity_ml[]" />
+                            <div class="d-md-none mb-2"></div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <!-- <label>Number:</label> -->
+                            <input required type="text" class="form-control" placeholder="Digit" name="quantity_digit[]"
+                                id="quantity_digit[]" />
+                            <div class="d-md-none mb-2"></div>
+                        </div>
+                    </div>
+                    <a style="margin:10px;" href="javascript:;" data-repeater-delete="" class=" btn btn-gradient-danger remove_button">
+                        Delete
+                    </a>
+                </div>
+                `;
+            var x = 1;
+
+            $(addButton).click(function() {
+                if (x < maxField) {
+                    x++;
+                    $(wrapper).append(fieldHTML);
+                }
+            });
+            $(wrapper).on('click', '.remove_button', function(e) {
+                e.preventDefault();
+                $(this).parent('div').remove();
+                x--;
+            });
+        });
+
+    </script>
+
 @endsection
 @push('scripts')
     <script src="{{ asset('assets/js/pages/crud/forms/widgets/form-repeater.js') }}"></script>
