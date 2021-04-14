@@ -1064,8 +1064,12 @@
                 function printErrorMsg (msg) {
             $.each( msg, function( key, value ) {
               
-            console.log(key);
-              $('.'+key+'_err').text(value);
+                $('.' + key + '_err').text(value);
+                $('#'+ key).on('input',  function(e) {
+
+                $('.' + key + '_err').text(value).hide();
+                });
+
             });
              //document.getElementById("next").disabled = true;  
         }
