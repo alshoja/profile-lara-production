@@ -449,7 +449,7 @@ class ProfileController extends Controller
                 $shipped_type = $request->shipped_type;
                 $profile_id = $editid;
                 $product = new Product();
-                $m = count($product_type);
+                // $m = count($product_type);
                 for ($count = 0; $count < count($product_type); $count++) {
                     $dataa = array(
                         'id' => $product_id[$count],
@@ -467,7 +467,6 @@ class ProfileController extends Controller
                     } else {
                         DB::table('products')->where('id', $product_id[$count])->update($dataa);
                     }
-                    //  Product::create($dataa);
                 }
                 DB::table('profiles')->where('id', $editid)->update($data);
             } catch (\Illuminate\Database\QueryException $ex) {

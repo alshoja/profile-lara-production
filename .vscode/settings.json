@@ -1,4 +1,5 @@
 {
     "git.notify": {
-    }
+    },
+    "editor.tabSize": 2
 }
