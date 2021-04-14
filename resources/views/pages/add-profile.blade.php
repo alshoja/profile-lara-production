@@ -798,7 +798,7 @@
                                         <div class="row form-group">
                                             <div class="col-md-3">
                                                 <label>Profile Picture</label>
-                                                <span class="text-danger error-text profile_image_err"></span>
+                                                
                                                 <div class="image-input image-input-empty image-input-outline"
                                                     id="kt_image_1"
                                                     style="background-image: url(assets/media/users/blank.png)">
@@ -824,12 +824,13 @@
                                                         <i class="ki ki-bold-close icon-xs text-muted"></i>
                                                     </span>
                                                 </div>
+                                                <span class="text-danger error-text profile_image_err"></span>
                                                 <!-- <span class="form-text text-muted">Max file size is 1MB and max number of files is 5.</span> -->
                                                 <div class="d-md-none mb-2"></div>
                                             </div>
                                             <div class="col-md-3">
                                                 <label>Product Image</label>
-                                                <span class="text-danger error-text product_image_err"></span>
+                                                
                                                 <div class="image-input image-input-empty image-input-outline"
                                                     id="kt_image_2"
                                                     style="background-image: url(assets/media/users/blank.png)">
@@ -855,11 +856,12 @@
                                                         <i class="ki ki-bold-close icon-xs text-muted"></i>
                                                     </span>
                                                 </div>
+                                                <span class="text-danger error-text product_image_err"></span>
                                                 <div class="d-md-none mb-2"></div>
                                             </div>
                                             <div class="col-md-3">
                                                 <label>Document</label>
-                                                <span class="text-danger error-text doc_image_err"></span>
+                                               
                                                 <div class="image-input image-input-empty image-input-outline"
                                                     id="kt_image_3"
                                                     style="background-image: url(assets/media/users/blank.png)">
@@ -886,6 +888,7 @@
                                                         <i class="ki ki-bold-close icon-xs text-muted"></i>
                                                     </span>
                                                 </div>
+                                                <span class="text-danger error-text doc_image_err"></span>
                                                 <div class="d-md-none mb-2"></div>
                                             </div>
                                         </div>
@@ -938,7 +941,7 @@
                                             <div class="col-xl-12">
                                                 <div class="form-group">
                                                     <label>Record Department Status</label>
-                                                    <select required name="record_dep_transfer" id="record_dep_transfer"
+                                                    <select  name="record_dep_transfer" id="record_dep_transfer"
                                                         class="form-control form-control-solid ">
                                                         <option value="">status-1</option>
                                                         <option value="YE">s 1</option>
@@ -1094,14 +1097,22 @@
                     printErrorMsg(XMLHttpRequest.responseJSON.error);
                     showToast('You have some validation errors please fix it first !',
                         'Validation Error', 'danger');
+                        
                 },
             });
         });
 
         function printErrorMsg(msg) {
+
             $.each(msg, function(key, value) {
                 $('.' + key + '_err').text(value);
-            });
+                $('#'+ key).on('input',  function(e) {
+
+                $('.' + key + '_err').text(value).hide();
+                });
+
+             });
+           
             document.getElementById("next").disabled = true;
         }
 
@@ -1126,9 +1137,12 @@
                 success: function(data) {
                     if ($.isEmptyObject(data.error)) {
                         console.log(data);
-                    } else {
-                        printErrorMsg(data.error);
-                    }
+                    } 
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    printErrorMsg(XMLHttpRequest.responseJSON.error);
+                    showToast('You have some validation errors please fix it first !',
+                        'Validation Error', 'danger');
                 },
             });
         });
@@ -1151,10 +1165,13 @@
                 success: function(data) {
                     if ($.isEmptyObject(data.error)) {
                         console.log(data);
-                    } else {
-                        printErrorMsg(data.error);
-                    }
+                    } 
                     window.location.href = HOST_URL + "/profile/add-profile";
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    printErrorMsg(XMLHttpRequest.responseJSON.error);
+                    showToast('You have some validation errors please fix it first !',
+                        'Validation Error', 'danger');
                 },
             });
         });
@@ -1181,9 +1198,12 @@
 
                     if ($.isEmptyObject(data.error)) {
                         console.log(data);
-                    } else {
-                        printErrorMsg(data.error);
-                    }
+                    } 
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    printErrorMsg(XMLHttpRequest.responseJSON.error);
+                    showToast('You have some validation errors please fix it first !',
+                        'Validation Error', 'danger');
                 },
             });
 
@@ -1192,58 +1212,7 @@
 
     </script>
 
-    <!-- stage 3 code-->
-    <script type="text/javascript">
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        $('#editstep').on('click', function() {
-            
-            event.preventDefault();
-            var fd = new FormData();
-            let shipping_no = $('#shipping_no').val();
-            let coming_from = $('#coming_from').val();
-            let going_to = $('#going_to').val();
-            let final_destination = $('#final_destination').val();
-            let profile_image = document.getElementById("profile_image").files[0].name;
-            let product_image = document.getElementById("product_image").files[0].name;
-            let doc_image = document.getElementById("doc_image").files[0].name;
-            let note = $('#note').val();
-            let editid = $('#editid').val();
 
-            fd.append('shipping_no', shipping_no);
-            fd.append('coming_from', coming_from);
-            fd.append('going_to', going_to);
-            fd.append('final_destination', final_destination);
-            fd.append('profile_image', profile_image);
-            fd.append('product_image', product_image);
-            fd.append('doc_image', doc_image);
-            fd.append('note', note);
-            fd.append('editid', editid);
-
-            $.ajax({
-                url: "/stageThree",
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-
-                data: fd,
-                dataType: 'json',
-                async: false,
-                type: 'POST',
-                processData: false,
-                contentType: false,
-                success: function(msg) {
-                    console.log(msg);
-                },
-
-            });
-        });
-
-    </script>
-    <!--end::Content-->
 
     <script>
         $.ajaxSetup({
@@ -1265,9 +1234,12 @@
                 success: function(data) {
                     if ($.isEmptyObject(data.error)) {
                         console.log(data);
-                    } else {
-                        printErrorMsg(data.error);
-                    }
+                    } 
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    printErrorMsg(XMLHttpRequest.responseJSON.error);
+                    showToast('You have some validation errors please fix it first !',
+                        'Validation Error', 'danger');
                 },
 
             });

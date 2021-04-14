@@ -442,7 +442,7 @@
                                                     <label>Gender</label>
                                                     <select name="gender"
                                                         class="form-control form-control-solid form-control-lg" id="gender">
-                                                        <option value="{{ $profile->gemder }}">{{ $profile->gender }}
+                                                        <option value="{{ $profile->gender }}">{{ $profile->gender }}
                                                         </option>
                                                         <option value="Male">Male</option>
                                                         <option value="Female">Female</option>
@@ -1047,12 +1047,15 @@
                             if($.isEmptyObject(data.error)){
                         console.log(data);
                     }
-                    else{
-                        printErrorMsg(data.error);
-                    }  
+                     
                         
                         
                         },
+                        error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    printErrorMsg(XMLHttpRequest.responseJSON.error);
+                    showToast('You have some validation errors please fix it first !',
+                        'Validation Error', 'danger');
+                },
                     });
         
         
@@ -1061,8 +1064,12 @@
                 function printErrorMsg (msg) {
             $.each( msg, function( key, value ) {
               
-            console.log(key);
-              $('.'+key+'_err').text(value);
+                $('.' + key + '_err').text(value);
+                $('#'+ key).on('input',  function(e) {
+
+                $('.' + key + '_err').text(value).hide();
+                });
+
             });
              //document.getElementById("next").disabled = true;  
         }
@@ -1101,6 +1108,7 @@
                
                 },
                 
+                
             });
 });
 
@@ -1118,7 +1126,7 @@
                                 <div class="row form-group">
                                                                                     <div class="col-md-4">
                                                                                         <input type="text" hidden name="product_id[]" id="product_id[]">
-                                                                                        <select name="product_type[]" id="product_type[]"
+                                                                                        <select required name="product_type[]" id="product_type[]"
                                                                                             class="form-control form-control-solid ">
                                                                                             <option hidden value="">Select Product-1&nbsp;
                                                                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -1133,7 +1141,7 @@
                                                                                     </div>
                                                                                     <div class="col-md-4">
                                                                                       
-                                                                                        <select name="manufacture_type[]" id="manufacture_type[]"
+                                                                                        <select required name="manufacture_type[]" id="manufacture_type[]"
                                                                                             class="form-control form-control-solid">
                                                                                             <option hidden value=""> Select Type-1</option>
                                                                                             <option value="YE">P 1</option>
@@ -1144,7 +1152,7 @@
                                                                                     </div>
                                                                                     <div class="col-md-4">
                                                                                    
-                                                                                        <select name="shipped_type[]" id="shipped_type[]"
+                                                                                        <select required name="shipped_type[]" id="shipped_type[]"
                                                                                             class="form-control form-control-solid">
                                                                                             <option selected hidden value="">Select type-3
                                                                                             </option>
@@ -1158,26 +1166,26 @@
                                                                                 <div class="row form-group">
                                                                                     <div class="col-md-3">
                                                                                        
-                                                                                        <input type="text" class="form-control" placeholder="Kg"
+                                                                                        <input required type="text" class="form-control" placeholder="Kg"
                                                                                             name="quantity_kg[]" id="quantity_kg[]" />
                                                                                         <div class="d-md-none mb-2"></div>
                                                                                     </div>
                                                                                     <div class="col-md-3">
                                                                                        
-                                                                                        <input type="text" class="form-control" placeholder="G"
+                                                                                        <input required type="text" class="form-control" placeholder="G"
                                                                                             name="quantity_g[]" id="quantity_g[]" />
                                                                                         <div class="d-md-none mb-2"></div>
                                                                                     </div>
                                                                                     <div class="col-md-3">
                                                                                      
-                                                                                        <input type="text" class="form-control" placeholder="ML"
+                                                                                        <input required type="text" class="form-control" placeholder="ML"
                                                                                             name="quantity_ml[]" id="quantity_ml[]" />
                                                                                         <div class="d-md-none mb-2"></div>
                                                                                     </div>
 
                                                                                     <div class="col-md-3">
                                                                                         <!-- <label>Number:</label> -->
-                                                                                        <input type="text" class="form-control" placeholder="Digit"
+                                                                                        <input required type="text" class="form-control" placeholder="Digit"
                                                                                             name="quantity_digit[]" id="quantity_digit[]" />
                                                                                         <div class="d-md-none mb-2"></div>
                                                                                     </div>

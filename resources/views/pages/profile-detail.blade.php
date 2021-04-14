@@ -22,7 +22,7 @@
                                 <!--begin::User-->
                                 <div class="mr-3">
                                     <!--begin::Name-->
-                                    <a href="list-employsOrsupervisor.php"
+                                    <a href="#"
                                         class="d-flex align-items-center text-dark text-hover-primary font-size-h5 font-weight-bold mr-3">
                                         {{ $user->name }}
 
@@ -109,13 +109,13 @@
                         <!--begin: Item-->
                         <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
                             @if (request()->query('role') != 'employ')
-                                <span class="mr-4">
+                                {{-- <span class="mr-4">
                                     <i class="flaticon-map icon-2x text-muted font-weight-bold"></i>
-                                </span>
+                                </span> --}}
                                 <div class="d-flex flex-column text-dark-75">
-                                    <span class="font-weight-bolder font-size-sm">Departments</span>
+                                    {{-- <span class="font-weight-bolder font-size-sm">Departments</span> --}}
                                     <span class="font-weight-bolder font-size-h5">
-                                        <span class="text-dark-50 font-weight-bold"></span>249,500</span>
+                                        {{-- <span class="text-dark-50 font-weight-bold"></span>249,500</span> --}}
                                 </div>
                             @endif
 
@@ -125,13 +125,13 @@
                         <!--begin: Item-->
                         <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
                             @if (request()->query('role') != 'employ')
-                                <span class="mr-4">
+                                {{-- <span class="mr-4">
                                     <i class="flaticon-avatar icon-2x text-muted font-weight-bold"></i>
-                                </span>
+                                </span> --}}
                                 <div class="d-flex flex-column text-dark-75">
-                                    <span class="font-weight-bolder font-size-sm">Directors</span>
+                                    {{-- <span class="font-weight-bolder font-size-sm">Directors</span> --}}
                                     <span class="font-weight-bolder font-size-h5">
-                                        <span class="text-dark-50 font-weight-bold">$</span>164,700</span>
+                                        {{-- <span class="text-dark-50 font-weight-bold">$</span>164,700</span> --}}
                                 </div>
                             @endif
 

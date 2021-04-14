@@ -23,7 +23,7 @@
                                                 <li class="nav-item">
                                                     <a class="nav-link py-2 px-4  @if (request()->query('tab') == 'pending') {{ 'active' }} @endif"
                                                         href="{{ url('profiles?tab=pending') }}">
-                                                        Pending
+                                                        @if (Auth::user()->role == 'employ')  Pending  @else Upcoming & In Progress @endif
                                                     </a>
                                             @endif
                                         @endif
