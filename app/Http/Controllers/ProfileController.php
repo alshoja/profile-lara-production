@@ -355,9 +355,8 @@ class ProfileController extends Controller
 
     public function profileUpdate(Request $request)
     {
-        dd($request);
         $validator = Validator::make($request->all(), [
-
+            
             "name" => 'required',
             "nationality" => 'required',
             "dob" => 'required',
@@ -382,7 +381,7 @@ class ProfileController extends Controller
             "note" => 'required',
             "record_status" => 'required',
             "record_dep_transfer" => 'required',
-
+            
 
 
         ]);
@@ -450,9 +449,9 @@ class ProfileController extends Controller
                 $shipped_type = $request->shipped_type;
                 $profile_id = $editid;
                 $product = new Product();
-                // $m = count($product_type);
+                $m = count($product_type);
                 for ($count = 0; $count < count($product_type); $count++) {
-                    $data = array(
+                    $dataa = array(
                         'id' => $product_id[$count],
                         'product_type' => $product_type[$count],
                         'quantity_kg'  => $quantity_kg[$count],
@@ -464,10 +463,11 @@ class ProfileController extends Controller
                         'profile_id' => $profile_id
                     );
                     if ($product_id[$count] == "") {
-                        Product::create($data);
+                        Product::create($dataa);
                     } else {
-                        DB::table('products')->where('id', $product_id[$count])->update($data);
+                        DB::table('products')->where('id', $product_id[$count])->update($dataa);
                     }
+                    //  Product::create($dataa);
                 }
                 DB::table('profiles')->where('id', $editid)->update($data);
             } catch (\Illuminate\Database\QueryException $ex) {

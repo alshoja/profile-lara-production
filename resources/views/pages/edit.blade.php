@@ -829,7 +829,7 @@
                                                 <label>Profile Picture</label>
                                                 <div class="image-input image-input-empty image-input-outline"
                                                     id="kt_image_1"
-                                                    style="background-image: url(assets/{{ $profile->profile_image }})">
+                                                    style="background-image: url({{ url($profile->profile_image) }})">
                                                     <div class="image-input-wrapper"></div>
                                                     <label
                                                         class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
