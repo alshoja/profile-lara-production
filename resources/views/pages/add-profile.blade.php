@@ -1046,7 +1046,6 @@
         function disableNext() {
             document.getElementById("next").disabled = true;
             document.getElementById("previous").disabled = false;
-
         }
 
     </script>
