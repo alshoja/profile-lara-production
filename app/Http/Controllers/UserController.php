@@ -265,8 +265,7 @@ class UserController extends Controller
 
     public function getAdminRoleUsers($id, Request $request)
     {
-
-        $users = null;
+        $user = null;
         if (request()->query('role') == "admin") {
             $user = [];
         }

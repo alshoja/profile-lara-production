@@ -352,6 +352,7 @@
                                                 </tbody>
                                             </table>
                                             <!-- Modal-->
+                                            
                                             <div class="modal fade" id="exampleModalSizeXl" tabindex="-1" role="dialog"
                                                 aria-labelledby="exampleModalSizeXl" aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
@@ -1037,6 +1038,60 @@
 
                                         </div>
                                         <!--end::Table-->
+                                        <div class="d-flex justify-content-between align-items-center flex-wrap">
+                                            <div class="d-flex flex-wrap mr-3">
+                                                {{-- <a href="#" class="btn btn-icon btn-sm btn-light-primary mr-2 my-1">
+                                                    <i class="ki ki-bold-double-arrow-back icon-xs"></i>
+                                                </a>
+                                                <a href="#" class="btn btn-icon btn-sm btn-light-primary mr-2 my-1">
+                                                    <i class="ki ki-bold-arrow-back icon-xs"></i>
+                                                </a>
+                                                <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">...</a>
+                                                <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">23</a>
+                                                <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary active mr-2 my-1">24</a>
+                                                <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">25</a>
+                                                <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">26</a>
+                                                <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">27</a>
+                                                <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">28</a>
+                                                <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">...</a>
+                                                <a href="#" class="btn btn-icon btn-sm btn-light-primary mr-2 my-1">
+                                                    <i class="ki ki-bold-arrow-next icon-xs"></i>
+                                                </a>
+                                                <a href="#" class="btn btn-icon btn-sm btn-light-primary mr-2 my-1">
+                                                    <i class="ki ki-bold-double-arrow-next icon-xs"></i>
+                                                </a> --}}
+                                                {{ $profiles->links() }}
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <select id="perpage" onchange="perPageItems()"
+                                                    class="form-control form-control-sm text-primary font-weight-bold mr-4 border-0 bg-light-primary"
+                                                    style="width: 75px;">
+                                                    @if (request()->query('perPage'))
+                                                        <option selected hidden value="{{ request()->query('perPage') }}">
+                                                            {{ request()->query('perPage') }}
+                                                        </option>
+                                                        <option value="10">10</option>
+                                                        <option value="20">20</option>
+                                                        <option value="30">30</option>
+                                                        <option value="50">50</option>
+                                                        <option value="100">100</option>
+                                                    @else
+                                                        <option value="10">10</option>
+                                                        <option value="20">20</option>
+                                                        <option value="30">30</option>
+                                                        <option value="50">50</option>
+                                                        <option value="100">100</option>
+                                                    @endif
+                        
+                                                </select>
+                                                @if (request()->query('perPage'))
+                                                    <span class="text-muted">Displaying {{ request()->query('perPage') }} records</span>
+                                                @else
+                                                    <span class="text-muted">Displaying 10 records</span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <br>
                                     </div>
                                     <!--end::Tap pane-->
                                 </div>
@@ -1049,59 +1104,7 @@
                 </div>
                 <!--end::Row-->
                 <!--begin::Pagination-->
-                <div class="d-flex justify-content-between align-items-center flex-wrap">
-                    <div class="d-flex flex-wrap mr-3">
-                        {{-- <a href="#" class="btn btn-icon btn-sm btn-light-primary mr-2 my-1">
-                            <i class="ki ki-bold-double-arrow-back icon-xs"></i>
-                        </a>
-                        <a href="#" class="btn btn-icon btn-sm btn-light-primary mr-2 my-1">
-                            <i class="ki ki-bold-arrow-back icon-xs"></i>
-                        </a>
-                        <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">...</a>
-                        <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">23</a>
-                        <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary active mr-2 my-1">24</a>
-                        <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">25</a>
-                        <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">26</a>
-                        <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">27</a>
-                        <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">28</a>
-                        <a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1">...</a>
-                        <a href="#" class="btn btn-icon btn-sm btn-light-primary mr-2 my-1">
-                            <i class="ki ki-bold-arrow-next icon-xs"></i>
-                        </a>
-                        <a href="#" class="btn btn-icon btn-sm btn-light-primary mr-2 my-1">
-                            <i class="ki ki-bold-double-arrow-next icon-xs"></i>
-                        </a> --}}
-                        {{ $profiles->links() }}
-                    </div>
-                    <div class="d-flex align-items-center">
-                        <select id="perpage" onchange="perPageItems()"
-                            class="form-control form-control-sm text-primary font-weight-bold mr-4 border-0 bg-light-primary"
-                            style="width: 75px;">
-                            @if (request()->query('perPage'))
-                                <option selected hidden value="{{ request()->query('perPage') }}">
-                                    {{ request()->query('perPage') }}
-                                </option>
-                                <option value="10">10</option>
-                                <option value="20">20</option>
-                                <option value="30">30</option>
-                                <option value="50">50</option>
-                                <option value="100">100</option>
-                            @else
-                                <option value="10">10</option>
-                                <option value="20">20</option>
-                                <option value="30">30</option>
-                                <option value="50">50</option>
-                                <option value="100">100</option>
-                            @endif
-
-                        </select>
-                        @if (request()->query('perPage'))
-                            <span class="text-muted">Displaying {{ request()->query('perPage') }} records</span>
-                        @else
-                            <span class="text-muted">Displaying 10 records</span>
-                        @endif
-                    </div>
-                </div>
+                
                 <!--end::Pagination-->
             </div>
             <!--end::Container-->
