@@ -204,7 +204,7 @@
                                 <!-- <label>User Role</label> -->
                                 <div class="radio-inline">
                                     @if (Auth::user()->role == 'admin')
-                                        <label id="admin-label" class="radio radio-solid text-primary">
+                                        <label id="admin-label" class="radio radio-solid ">
                                             <input type="radio" onclick="toggleDepartment('admin')" name="role"
                                                 checked="checked" value="admin" />
                                             <span></span>
@@ -264,7 +264,6 @@
                                     <label class="ml-3">Department</label>
                                     <select id="department" onChange="getSections(this.value,'department')" required
                                         name="dep_id" class="form-control form-control-solid">
-                                        <option hidden>Select Department</option>
                                         @foreach ($users->departments as $item)
                                             <option value="{{ $item->id }}">{{ $item->name }}</option>
                                         @endforeach

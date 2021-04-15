@@ -101,7 +101,7 @@ class HomeController extends Controller
             return $query;
         })->count();
         $dashData->profileEntered = Profile::where('employ_id', Auth::user()->id)->count();
-        $dashData->profilePending = Profile::where('is_completed', 0)->where(function (Builder $query) use ($from, $to, $search_date) {
+        $dashData->profilePending = Profile::where('is_completed', 0)->where('is_drafted', 0)->where(function (Builder $query) use ($from, $to, $search_date) {
             if ($from  && $to) {
                 $query->where('created_at', '>=', $from)
                     ->where('created_at', '<=', $to);

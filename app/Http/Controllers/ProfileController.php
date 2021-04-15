@@ -81,6 +81,10 @@ class ProfileController extends Controller
             if ($tab === "completed") {
                 $query->Where('is_completed', 1);
             }
+            if ($tab === "pending") {
+                $query->Where('is_drafted', 0);
+                $query->Where('is_completed', 0);
+            }
             if ($from && $to) {
                 $query->whereBetween('created_at', [$from, $to]);
             }
@@ -116,7 +120,6 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-
         $validator = Validator::make($request->all(), [
 
             'name'  => 'required',
@@ -171,7 +174,6 @@ class ProfileController extends Controller
 
     public function updateUser(Request $request)
     {
-
         if ($request->ajax()) {
             $validator = Validator::make($request->all(), [
                 'entered_by' => 'required',
@@ -289,11 +291,11 @@ class ProfileController extends Controller
 
     public function stageFive(Request $request)
     {
-
         $id = $request->input('productid');
         $product = Product::destroy($id);
         return response()->json(['success' => 'Form is successfully submitted!']);
     }
+
     public function stageSix(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -313,22 +315,7 @@ class ProfileController extends Controller
             DB::transaction(function () use ($data, $id) {
                 DB::table('profiles')->where('id', $id)->update($data);
                 if (count($data) > 0) {
-
-                    $trackProfile  = new TrackProfile();
-                    $trackProfile->profile_id = $id;
-                    $trackProfile->status = "pending";
-                    $trackProfile->from = Auth::user()->role;
-                    $trackProfile->status =  'pending';
-                    $trackProfile->owned_by = Auth::user()->id;
-                    $trackProfile->save();
-
-                    $timeLine = new TimeLine();
-                    $timeLine->profile_id = $id;
-                    $timeLine->note = 'Profile Submitted';
-                    $timeLine->type = 'pending';
-
-                    AddTimeLineNote::dispatch($timeLine);
-                    AddNotification::dispatch($timeLine);
+                    $this->trigerEvent($id);
                 }
             });
             return response()->json(['success' => 'Form is successfully submitted!']);
@@ -365,13 +352,11 @@ class ProfileController extends Controller
      * @param  \App\Models\Profiles  $profiles
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
-    {
-    }
+
     public function profileUpdate(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'belongs_to' => 'required',
+
             "name" => 'required',
             "nationality" => 'required',
             "dob" => 'required',
@@ -390,18 +375,18 @@ class ProfileController extends Controller
             "coming_from" => 'required',
             "going_to" => 'required',
             "final_destination" => 'required',
-            'profile_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'product_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'doc_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'profile_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'product_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'doc_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             "note" => 'required',
             "record_status" => 'required',
             "record_dep_transfer" => 'required',
-            "belongs_to" => 'required',
+
 
 
         ]);
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()]);
+            return response()->json(['error' => $validator->errors()], 422);
         }
 
         $editid = $request->input('editid');
@@ -517,8 +502,11 @@ class ProfileController extends Controller
     {
         $existingProfile = Profile::find($id);
         $duplicateProfile = $existingProfile->replicate();
-        $duplicateProfile->is_drafted = null;
+        $duplicateProfile->is_drafted = 1;
+        $duplicateProfile->is_completed = 0;
         $duplicateProfile->save();
+
+        $this->trigerEvent($id);
         return back()->with('message', 'Forwaded updated');
     }
 
@@ -618,5 +606,35 @@ class ProfileController extends Controller
             AddNotification::dispatch($trackProfile);
         }
         return back()->with('message', 'Forwaded updated');
+    }
+
+    public function submitDraft($id)
+    {
+        $profile = Profile::find($id);
+        $profile->is_drafted = 0;
+        $profile->save();
+        if ($profile) {
+            $this->trigerEvent($id);
+        }
+        return back()->with('message', 'Forwaded updated');
+    }
+
+    public function trigerEvent($id)
+    {
+        $trackProfile  = new TrackProfile();
+        $trackProfile->profile_id = $id;
+        $trackProfile->status = "pending";
+        $trackProfile->from = Auth::user()->role;
+        $trackProfile->status =  'pending';
+        $trackProfile->owned_by = Auth::user()->id;
+        $trackProfile->save();
+
+        $timeLine = new TimeLine();
+        $timeLine->profile_id = $id;
+        $timeLine->note = 'Profile Submitted';
+        $timeLine->type = 'pending';
+
+        AddTimeLineNote::dispatch($timeLine);
+        AddNotification::dispatch($timeLine);
     }
 }

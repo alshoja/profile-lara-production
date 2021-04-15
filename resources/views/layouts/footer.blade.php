@@ -69,6 +69,7 @@
 
 <!--end::Global Config-->
 <!--begin::Global Theme Bundle(used by all pages)-->
+<script src="{{ asset('assets/js/pages/crud/forms/widgets/bootstrap-datetimepicker.js?v=7.2.6') }}"></script>
 
 <script src="{{ asset('assets/plugins/global/plugins.bundle.js') }}"></script>
 
@@ -93,18 +94,9 @@
 <script src="{{ asset('assets/js/comon-sweet-alert.js') }}"></script>
 <script src="{{ asset('assets/js/toast.js') }}"></script>
 <script src="{{ asset('assets/js/time.js') }}"></script>
-{{-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-<script>
-    $(window).load(function() {
-        $(".loader").fadeOut("slow");
-    });
 
-</script> --}}
 <script>
-    setInterval(function() {
-        getNotifications()
-        console.info('Checking for new notification.....')
-    }, 2000);
+    setInterval(getNotifications, 5000);
     localStorage.setItem('session_id', {{ Auth::user()->id }});
 
 </script>

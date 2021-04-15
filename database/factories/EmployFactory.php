@@ -28,6 +28,7 @@ class EmployFactory extends Factory
             'employ_id' => User::factory()->state(['role' => 'employ']),
             'dep_id' => Department::factory(),
             'section_id' => Section::factory(),
+            'supervisor_id'=>User::factory()->state(['role' => 'supervisor'])
         ];
     }
 }

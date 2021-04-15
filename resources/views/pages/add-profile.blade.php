@@ -447,9 +447,17 @@
                                             <div class="col-xl-4">
                                                 <div class="form-group">
                                                     <label>DOB</label>
-                                                    <input type="date"
-                                                        class="form-control form-control-solid form-control-lg" name="dob"
-                                                        placeholder="Address Line 1" id="dob" />
+                                                    {{-- <input max="<?php echo date('Y-m-d') ?>" type="date"
+                                                        class="form-control form-control-solid form-control-lg datetimepicker-input" name="dob"
+                                                        placeholder="Address Line 1" id="dob" data-target="#kt_datetimepicker_1" /> --}}
+                                                        <div class="input-group input-group-solid date" id="kt_datetimepicker_3" data-target-input="nearest">
+                                                            <input  type="text" name="dob" class="form-control form-control-solid datetimepicker-input" placeholder="Select date &amp; time" data-target="#kt_datetimepicker_3" />
+                                                            <div class="input-group-append" data-target="#kt_datetimepicker_3" data-toggle="datetimepicker">
+                                                                <span class="input-group-text">
+                                                                    <i class="ki ki-calendar"></i>
+                                                                </span>
+                                                            </div>
+                                                        </div>
                                                     <span class="text-danger error-text dob_err"></span>
                                                 </div>
                                             </div>
@@ -557,9 +565,17 @@
                                             <div class="col-xl-4">
                                                 <div class="form-group">
                                                     <label>Date Of Entry</label>
-                                                    <input type="date" id="entry_date"
+                                                    {{-- <input max="<?php echo date('Y-m-d') ?>" type="date" id="entry_date"
                                                         class="form-control form-control-solid form-control-lg"
-                                                        name="entry_date" placeholder="Address Line 1" />
+                                                        name="entry_date" placeholder="Address Line 1" /> --}}
+                                                        <div class="input-group input-group-solid date" id="kt_datetimepicker_3" data-target-input="nearest">
+                                                            <input  type="text" name="entry_date" class="form-control form-control-solid datetimepicker-input" placeholder="Select date &amp; time" data-target="#kt_datetimepicker_3" />
+                                                            <div class="input-group-append" data-target="#kt_datetimepicker_3" data-toggle="datetimepicker">
+                                                                <span class="input-group-text">
+                                                                    <i class="ki ki-calendar"></i>
+                                                                </span>
+                                                            </div>
+                                                        </div>
                                                     <input type="text" id="editid" hidden name="editid">
                                                     <span class="text-danger error-text entry_date_err"></span>
                                                 </div>
@@ -798,7 +814,7 @@
                                         <div class="row form-group">
                                             <div class="col-md-3">
                                                 <label>Profile Picture</label>
-                                                <span class="text-danger error-text profile_image_err"></span>
+                                                
                                                 <div class="image-input image-input-empty image-input-outline"
                                                     id="kt_image_1"
                                                     style="background-image: url(assets/media/users/blank.png)">
@@ -824,12 +840,13 @@
                                                         <i class="ki ki-bold-close icon-xs text-muted"></i>
                                                     </span>
                                                 </div>
+                                                <span class="text-danger error-text profile_image_err"></span>
                                                 <!-- <span class="form-text text-muted">Max file size is 1MB and max number of files is 5.</span> -->
                                                 <div class="d-md-none mb-2"></div>
                                             </div>
                                             <div class="col-md-3">
                                                 <label>Product Image</label>
-                                                <span class="text-danger error-text product_image_err"></span>
+                                                
                                                 <div class="image-input image-input-empty image-input-outline"
                                                     id="kt_image_2"
                                                     style="background-image: url(assets/media/users/blank.png)">
@@ -855,11 +872,12 @@
                                                         <i class="ki ki-bold-close icon-xs text-muted"></i>
                                                     </span>
                                                 </div>
+                                                <span class="text-danger error-text product_image_err"></span>
                                                 <div class="d-md-none mb-2"></div>
                                             </div>
                                             <div class="col-md-3">
                                                 <label>Document</label>
-                                                <span class="text-danger error-text doc_image_err"></span>
+                                               
                                                 <div class="image-input image-input-empty image-input-outline"
                                                     id="kt_image_3"
                                                     style="background-image: url(assets/media/users/blank.png)">
@@ -886,6 +904,7 @@
                                                         <i class="ki ki-bold-close icon-xs text-muted"></i>
                                                     </span>
                                                 </div>
+                                                <span class="text-danger error-text doc_image_err"></span>
                                                 <div class="d-md-none mb-2"></div>
                                             </div>
                                         </div>
@@ -938,7 +957,7 @@
                                             <div class="col-xl-12">
                                                 <div class="form-group">
                                                     <label>Record Department Status</label>
-                                                    <select required name="record_dep_transfer" id="record_dep_transfer"
+                                                    <select  name="record_dep_transfer" id="record_dep_transfer"
                                                         class="form-control form-control-solid ">
                                                         <option value="">status-1</option>
                                                         <option value="YE">s 1</option>
@@ -1046,7 +1065,6 @@
         function disableNext() {
             document.getElementById("next").disabled = true;
             document.getElementById("previous").disabled = false;
-
         }
 
     </script>
@@ -1095,14 +1113,22 @@
                     printErrorMsg(XMLHttpRequest.responseJSON.error);
                     showToast('You have some validation errors please fix it first !',
                         'Validation Error', 'danger');
+                        
                 },
             });
         });
 
         function printErrorMsg(msg) {
+
             $.each(msg, function(key, value) {
                 $('.' + key + '_err').text(value);
-            });
+                $('#'+ key).on('input',  function(e) {
+
+                $('.' + key + '_err').text(value).hide();
+                });
+
+             });
+           
             document.getElementById("next").disabled = true;
         }
 
@@ -1127,9 +1153,12 @@
                 success: function(data) {
                     if ($.isEmptyObject(data.error)) {
                         console.log(data);
-                    } else {
-                        printErrorMsg(data.error);
-                    }
+                    } 
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    printErrorMsg(XMLHttpRequest.responseJSON.error);
+                    showToast('You have some validation errors please fix it first !',
+                        'Validation Error', 'danger');
                 },
             });
         });
@@ -1152,10 +1181,13 @@
                 success: function(data) {
                     if ($.isEmptyObject(data.error)) {
                         console.log(data);
-                    } else {
-                        printErrorMsg(data.error);
-                    }
+                    } 
                     window.location.href = HOST_URL + "/profile/add-profile";
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    printErrorMsg(XMLHttpRequest.responseJSON.error);
+                    showToast('You have some validation errors please fix it first !',
+                        'Validation Error', 'danger');
                 },
             });
         });
@@ -1179,12 +1211,14 @@
                 data: $('#kt_form1').serialize(),
                 dataType: 'json',
                 success: function(data) {
-
                     if ($.isEmptyObject(data.error)) {
                         console.log(data);
-                    } else {
-                        printErrorMsg(data.error);
-                    }
+                    } 
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    printErrorMsg(XMLHttpRequest.responseJSON.error);
+                    showToast('You have some validation errors please fix it first !',
+                        'Validation Error', 'danger');
                 },
             });
 
@@ -1193,58 +1227,7 @@
 
     </script>
 
-    <!-- stage 3 code-->
-    <script type="text/javascript">
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        $('#editstep').on('click', function() {
-            
-            event.preventDefault();
-            var fd = new FormData();
-            let shipping_no = $('#shipping_no').val();
-            let coming_from = $('#coming_from').val();
-            let going_to = $('#going_to').val();
-            let final_destination = $('#final_destination').val();
-            let profile_image = document.getElementById("profile_image").files[0].name;
-            let product_image = document.getElementById("product_image").files[0].name;
-            let doc_image = document.getElementById("doc_image").files[0].name;
-            let note = $('#note').val();
-            let editid = $('#editid').val();
 
-            fd.append('shipping_no', shipping_no);
-            fd.append('coming_from', coming_from);
-            fd.append('going_to', going_to);
-            fd.append('final_destination', final_destination);
-            fd.append('profile_image', profile_image);
-            fd.append('product_image', product_image);
-            fd.append('doc_image', doc_image);
-            fd.append('note', note);
-            fd.append('editid', editid);
-
-            $.ajax({
-                url: "/stageThree",
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-
-                data: fd,
-                dataType: 'json',
-                async: false,
-                type: 'POST',
-                processData: false,
-                contentType: false,
-                success: function(msg) {
-                    console.log(msg);
-                },
-
-            });
-        });
-
-    </script>
-    <!--end::Content-->
 
     <script>
         $.ajaxSetup({
@@ -1266,9 +1249,12 @@
                 success: function(data) {
                     if ($.isEmptyObject(data.error)) {
                         console.log(data);
-                    } else {
-                        printErrorMsg(data.error);
-                    }
+                    } 
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    printErrorMsg(XMLHttpRequest.responseJSON.error);
+                    showToast('You have some validation errors please fix it first !',
+                        'Validation Error', 'danger');
                 },
 
             });

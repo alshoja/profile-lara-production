@@ -22,7 +22,7 @@
                                 <!--begin::User-->
                                 <div class="mr-3">
                                     <!--begin::Name-->
-                                    <a href="list-employsOrsupervisor.php"
+                                    <a href="#"
                                         class="d-flex align-items-center text-dark text-hover-primary font-size-h5 font-weight-bold mr-3">
                                         {{ $user->name }}
 
@@ -109,13 +109,13 @@
                         <!--begin: Item-->
                         <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
                             @if (request()->query('role') != 'employ')
-                                <span class="mr-4">
+                                {{-- <span class="mr-4">
                                     <i class="flaticon-map icon-2x text-muted font-weight-bold"></i>
-                                </span>
+                                </span> --}}
                                 <div class="d-flex flex-column text-dark-75">
-                                    <span class="font-weight-bolder font-size-sm">Departments</span>
+                                    {{-- <span class="font-weight-bolder font-size-sm">Departments</span> --}}
                                     <span class="font-weight-bolder font-size-h5">
-                                        <span class="text-dark-50 font-weight-bold"></span>249,500</span>
+                                        {{-- <span class="text-dark-50 font-weight-bold"></span>249,500</span> --}}
                                 </div>
                             @endif
 
@@ -125,13 +125,13 @@
                         <!--begin: Item-->
                         <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
                             @if (request()->query('role') != 'employ')
-                                <span class="mr-4">
+                                {{-- <span class="mr-4">
                                     <i class="flaticon-avatar icon-2x text-muted font-weight-bold"></i>
-                                </span>
+                                </span> --}}
                                 <div class="d-flex flex-column text-dark-75">
-                                    <span class="font-weight-bolder font-size-sm">Directors</span>
+                                    {{-- <span class="font-weight-bolder font-size-sm">Directors</span> --}}
                                     <span class="font-weight-bolder font-size-h5">
-                                        <span class="text-dark-50 font-weight-bold">$</span>164,700</span>
+                                        {{-- <span class="text-dark-50 font-weight-bold">$</span>164,700</span> --}}
                                 </div>
                             @endif
 
@@ -232,7 +232,7 @@
                                             <div class="form-group row">
                                                 <div class="col-lg-4">
                                                     <label>Current Password</label>
-                                                    <input type="password" name="current_password" class="form-control"
+                                                    <input @if (Auth::user()->id != $user->id) disabled @endif type="password" name="current_password" class="form-control"
                                                         placeholder="Password" />
                                                     <input type="hidden" value="{{ $user->id }}" name="id">
                                                     <!-- <span class="form-text text-muted">Please enter your full name</span> -->
@@ -313,7 +313,7 @@
                                                             </td>
                                                             <td class="text-right pr-0">
                                                                 @if (Auth::user()->update)
-                                                                    <a href="#"
+                                                                    <a href="{{ url('user/profile-detail/' . $item->subusers->id) }}?role={{ $item->subusers->role }}"
                                                                         class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
                                                                         <span class="svg-icon svg-icon-md svg-icon-primary">
                                                                             <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Write.svg-->
@@ -338,9 +338,8 @@
                                                                         </span>
                                                                     </a>
                                                                 @endif
-                                                                @if (Auth::user()->update)
-
-                                                                    <a href="#"
+                                                                @if (Auth::user()->delete)
+                                                                    <a onclick="alertAndGoToUrl('/user/delete/{{ $item->subusers->id }}','delete ?')" href="#"
                                                                         class="btn btn-icon btn-light btn-hover-primary btn-sm">
                                                                         <span class="svg-icon svg-icon-md svg-icon-primary">
                                                                             <!--begin::Svg Icon | path:assets/media/svg/icons/General/Trash.svg-->

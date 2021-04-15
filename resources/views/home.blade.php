@@ -116,7 +116,7 @@
                                     <div class="timeline-item align-items-start">
                                         <!--begin::Label-->
                                         <div class="timeline-label  text-dark-70 ">
-                                            {{ date('h:i A', strtotime($item->created_at)) }}</div>
+                                            {{ date('h:i', strtotime($item->created_at)) }}</div>
                                         <!--end::Label-->
                                         <!--begin::Badge-->
                                         <div class="timeline-badge">
