@@ -460,9 +460,8 @@
                                                 <div class="form-group">
                                                     <label>DOB</label>
                                                     <input max="<?php echo date('Y-m-d') ?>" type="date"
-                                                        class="form-control form-control-solid form-control-lg" name="dob"
-                                                        placeholder="Address Line 1" id="dob"
-                                                        value="{{ $profile->dob }}" />
+                                                        class="form-control form-control-solid form-control-lg" name="dob" id="dob"
+                                                        value="{{date( 'Y-m-d',strtotime($profile->dob)) }}" />
                                                     <span class="text-danger error-text dob_err"></span>
                                                     <!-- <span class="form-text text-muted">Please enter DOb.</span> -->
                                                 </div>
@@ -571,7 +570,7 @@
                                             <div class="col-xl-4">
                                                 <div class="form-group">
                                                     <label>Date Of Entry</label>
-                                                    <input max="<?php echo date('Y-m-d') ?>" type="date" id="entry_date" value="{{ $profile->entry_date }}"
+                                                    <input max="<?php echo date('Y-m-d') ?>" type="date" id="entry_date" value="{{date( 'Y-m-d',strtotime($profile->entry_date)) }}"
                                                         class="form-control form-control-solid form-control-lg"
                                                         name="entry_date" placeholder="Address Line 1" />
                                                     <input type="text" id="editid" value="{{ $profile->id }}"
@@ -1062,10 +1061,12 @@
                     if ($.isEmptyObject(data.error)) {
                         console.log(data);
                     }
+                    showToast('Profile successfully updated',
+                        'Info', 'success');
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown) {
                     printErrorMsg(XMLHttpRequest.responseJSON.error);
-                    showToast('You have some validation errors please fix it first !',
+                    showToast('Please update the whole form!',
                         'Validation Error', 'danger');
                 },
             });

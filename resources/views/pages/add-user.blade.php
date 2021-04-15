@@ -264,6 +264,7 @@
                                     <label class="ml-3">Department</label>
                                     <select id="department" onChange="getSections(this.value,'department')" required
                                         name="dep_id" class="form-control form-control-solid">
+                                        <option hidden>select</option>
                                         @foreach ($users->departments as $item)
                                             <option value="{{ $item->id }}">{{ $item->name }}</option>
                                         @endforeach
