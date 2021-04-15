@@ -50,7 +50,6 @@ var KTDateWidgets = (function () {
         urlParams.set("range", range);
         urlParams.set("date_range", from + "/" + to);
       }
-      console.log(title);
 
       if (title != "All") {
         // location.href = window.location.href + searchUrl;
