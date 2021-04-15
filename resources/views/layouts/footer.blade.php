@@ -69,6 +69,7 @@
 
 <!--end::Global Config-->
 <!--begin::Global Theme Bundle(used by all pages)-->
+<script src="{{ asset('assets/js/pages/crud/forms/widgets/bootstrap-datetimepicker.js?v=7.2.6') }}"></script>
 
 <script src="{{ asset('assets/plugins/global/plugins.bundle.js') }}"></script>
 
@@ -93,7 +94,6 @@
 <script src="{{ asset('assets/js/comon-sweet-alert.js') }}"></script>
 <script src="{{ asset('assets/js/toast.js') }}"></script>
 <script src="{{ asset('assets/js/time.js') }}"></script>
-<script src="{{ asset('assets/js/polling.js') }}"></script>
 
 <script>
     setInterval(getNotifications, 5000);
