@@ -378,7 +378,7 @@ class ProfileController extends Controller
             'profile_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'product_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'doc_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            "note" => 'required',
+            // "note" => 'required',
             "record_status" => 'required',
             "record_dep_transfer" => 'required',
 

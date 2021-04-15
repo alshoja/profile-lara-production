@@ -246,6 +246,7 @@
                                                                                 </li>
                                                                             @endif
                                                                             @if (request()->query('tab') == 'inbox')
+                                                                            @if (Auth::user()->role == 'employ')
                                                                                 <li class="navi-item">
                                                                                     <a href="{{ url('profile/resubmit', $item->id) }}"
                                                                                         class="navi-link">
@@ -257,6 +258,7 @@
                                                                                             class="navi-text">Resubmit</span>
                                                                                     </a>
                                                                                 </li>
+                                                                            @endif
                                                                             @endif
 
                                                                             {{-- <li class="navi-item">

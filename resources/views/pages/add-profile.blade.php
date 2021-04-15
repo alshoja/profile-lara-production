@@ -451,7 +451,7 @@
                                                         class="form-control form-control-solid form-control-lg datetimepicker-input" name="dob"
                                                         placeholder="Address Line 1" id="dob" data-target="#kt_datetimepicker_1" /> --}}
                                                         <div class="input-group input-group-solid date" id="kt_datetimepicker_3" data-target-input="nearest">
-                                                            <input  type="text" name="dob" class="form-control form-control-solid datetimepicker-input" placeholder="Select date &amp; time" data-target="#kt_datetimepicker_3" />
+                                                            <input  type="text" name="dob" id="dob" class="form-control form-control-solid datetimepicker-input" placeholder="Select date &amp; time" data-target="#kt_datetimepicker_3" />
                                                             <div class="input-group-append" data-target="#kt_datetimepicker_3" data-toggle="datetimepicker">
                                                                 <span class="input-group-text">
                                                                     <i class="ki ki-calendar"></i>
@@ -565,17 +565,17 @@
                                             <div class="col-xl-4">
                                                 <div class="form-group">
                                                     <label>Date Of Entry</label>
-                                                    {{-- <input max="<?php echo date('Y-m-d') ?>" type="date" id="entry_date"
+                                                    <input max="<?php echo date('Y-m-d') ?>" type="date" id="entry_date"
                                                         class="form-control form-control-solid form-control-lg"
-                                                        name="entry_date" placeholder="Address Line 1" /> --}}
-                                                        <div class="input-group input-group-solid date" id="kt_datetimepicker_3" data-target-input="nearest">
-                                                            <input  type="text" name="entry_date" class="form-control form-control-solid datetimepicker-input" placeholder="Select date &amp; time" data-target="#kt_datetimepicker_3" />
+                                                        name="entry_date" placeholder="Address Line 1" />
+                                                        {{-- <div class="input-group input-group-solid date" id="kt_datetimepicker_1" data-target-input="nearest">
+                                                            <input id="entry_date" type="text" name="entry_date" class="form-control form-control-solid datetimepicker-input" placeholder="Select date &amp; time" data-target="#kt_datetimepicker_3" />
                                                             <div class="input-group-append" data-target="#kt_datetimepicker_3" data-toggle="datetimepicker">
                                                                 <span class="input-group-text">
                                                                     <i class="ki ki-calendar"></i>
                                                                 </span>
                                                             </div>
-                                                        </div>
+                                                        </div> --}}
                                                     <input type="text" id="editid" hidden name="editid">
                                                     <span class="text-danger error-text entry_date_err"></span>
                                                 </div>
