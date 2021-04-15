@@ -585,7 +585,7 @@
                 data-placement="right">
                 <a class="btn btn-sm btn-icon btn-bg-light btn-icon-success btn-hover-success"
                     href="{{ url('/user/add-user') }}">
-                    <i class="flaticon2-drop"></i>
+                    <i class="flaticon2-user"></i>
                 </a>
             </li>
         @endif
