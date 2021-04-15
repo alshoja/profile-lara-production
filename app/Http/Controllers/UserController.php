@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Models\DepartmentHead;
 use App\Rules\MatchOldPassword;
 use App\Models\DepartmentDirector;
+use App\Models\DepartmentGeneralDirector;
 use Illuminate\Support\Facades\DB;
 use App\Models\DepartmentSupervisor;
 use Illuminate\Support\Facades\Auth;
@@ -27,10 +28,10 @@ class UserController extends Controller
     {
         $search = request()->query('search');
         if (Auth::user()->role == "admin") {
-            $users = User::where('role', 'general_director')->paginate();
+            $users = User::Orderby('id', 'desc')->where('role', 'general_director')->paginate();
         }
         if (Auth::user()->role == "general_director") {
-            $users = User::with('departmentDirectors')->whereHas('departmentDirectors.users', function ($innerQuery) use ($search) {
+            $users = User::Orderby('id', 'desc')->with('departmentDirectors')->whereHas('departmentDirectors.users', function ($innerQuery) use ($search) {
                 if ($search) {
                     $innerQuery->where('name', 'like', '%' . $search . '%')
                         ->orWhere('email', 'like', '%' . $search . '%');
@@ -39,7 +40,7 @@ class UserController extends Controller
             })->paginate();
         }
         if (Auth::user()->role == "director") {
-            $users = User::with('departmentHeads')->whereHas('departmentHeads.users', function ($innerQuery) use ($search) {
+            $users = User::Orderby('id', 'desc')->with('departmentHeads')->whereHas('departmentHeads.users', function ($innerQuery) use ($search) {
                 if ($search) {
                     $innerQuery->where('name', 'like', '%' . $search . '%')
                         ->orWhere('email', 'like', '%' . $search . '%');
@@ -48,7 +49,7 @@ class UserController extends Controller
             })->paginate();
         }
         if (Auth::user()->role == "department_head") {
-            $users = User::with('supervisors')->whereHas('supervisors.users', function ($innerQuery) use ($search) {
+            $users = User::Orderby('id', 'desc')->with('supervisors')->whereHas('supervisors.users', function ($innerQuery) use ($search) {
                 if ($search) {
                     $innerQuery->where('name', 'like', '%' . $search . '%')
                         ->orWhere('email', 'like', '%' . $search . '%');
@@ -57,7 +58,7 @@ class UserController extends Controller
             })->paginate();
         }
         if (Auth::user()->role == "supervisor") {
-            $users = User::with('employs')->whereHas('employs.users', function ($innerQuery) use ($search) {
+            $users = User::Orderby('id', 'desc')->with('employs')->whereHas('employs.users', function ($innerQuery) use ($search) {
                 if ($search) {
                     $innerQuery->where('name', 'like', '%' . $search . '%')
                         ->orWhere('email', 'like', '%' . $search . '%');
@@ -177,26 +178,18 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, Request $request)
     {
         $user = (object)[];
+        $user->assets = [];
         $role = request()->query('role');
         $user = User::findOrFail($id);
-        if (request()->query('role') == "admin") {
-            $user->assets = [];
+        if (Auth::user()->role == 'admin') {
+            $user->assets =  $this->getAdminRoleUsers($id, $request);
+        } else {
+            $user->assets  = $this->getLoggedUsers($id, $request);
         }
-        if (request()->query('role') == "general_director") {
-            $user->assets =  DepartmentDirector::with('subUsers')->where('general_director_id', $id)->paginate();
-        }
-        if (request()->query('role') == "director") {
-            $user->assets =  DepartmentHead::with('subUsers')->where('director_id', $id)->paginate();
-        }
-        if (request()->query('role') == "department_head") {
-            $user->assets =  DepartmentSupervisor::with('subUsers')->where('depart_head_id', $id)->paginate();
-        }
-        if (request()->query('role') == "supervisor") {
-            $user->assets =  Employ::with('subUsers')->whereIn('dep_id', session('department'))->paginate();
-        }
+        //  return response()->json($user);
         return view('pages.profile-detail', compact('user'));
     }
 
@@ -268,5 +261,63 @@ class UserController extends Controller
             }
             return view('pages.error.foreign-key');
         }
+    }
+
+    public function getAdminRoleUsers($id, Request $request)
+    {
+
+        $users = null;
+        if (request()->query('role') == "admin") {
+            $user = [];
+        }
+        if (request()->query('role') == "general_director") {
+            $gd = null;
+            $gd = DepartmentGeneralDirector::where('general_director_id', $request->route('id'))->first();
+            if ($gd != null) {
+                $user =  DepartmentDirector::with('subUsers')->where('dep_id', $gd->dep_id)->paginate();
+            }
+        }
+        if (request()->query('role') == "director") {
+            $director = null;
+            $director = DepartmentDirector::where('director_id', $request->route('id'))->first();
+            if ($director != null) {
+                $user =  DepartmentHead::with('subUsers')->where('dep_id', $director->dep_id)->paginate();
+            }
+        }
+        if (request()->query('role') == "department_head") {
+            $department_head = null;
+            $department_head = DepartmentHead::where('depart_head_id', $request->route('id'))->first();
+            if ($department_head != null) {
+                $user =  DepartmentSupervisor::with('subUsers')->where('dep_id', $department_head->dep_id)->paginate();
+            }
+        }
+        if (request()->query('role') == "supervisor") {
+            $supervisor = null;
+            $supervisor = DepartmentSupervisor::where('supervisor_id', $request->route('id'))->first();
+            if ($supervisor != null) {
+                $user =  Employ::with('subUsers')->where('dep_id', $supervisor->dep_id)->paginate();
+            }
+        }
+        return $user;
+    }
+    public function getLoggedUsers($id)
+    {
+        $user = null;
+        if (request()->query('role') == "admin") {
+            $user = [];
+        }
+        if (request()->query('role') == "general_director") {
+            $user =  DepartmentDirector::with('subUsers')->whereIn('dep_id', session('department'))->paginate();
+        }
+        if (request()->query('role') == "director") {
+            $user =  DepartmentHead::with('subUsers')->whereIn('dep_id', session('department'))->paginate();
+        }
+        if (request()->query('role') == "department_head") {
+            $user =  DepartmentSupervisor::with('subUsers')->whereIn('dep_id', session('department'))->paginate();
+        }
+        if (request()->query('role') == "supervisor") {
+            $user =  Employ::with('subUsers')->whereIn('dep_id', session('department'))->paginate();
+        }
+        return $user;
     }
 }
