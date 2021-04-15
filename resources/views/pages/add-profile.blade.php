@@ -447,7 +447,7 @@
                                             <div class="col-xl-4">
                                                 <div class="form-group">
                                                     <label>DOB</label>
-                                                    <input type="date"
+                                                    <input max="<?php echo date('Y-m-d') ?>" type="date"
                                                         class="form-control form-control-solid form-control-lg" name="dob"
                                                         placeholder="Address Line 1" id="dob" />
                                                     <span class="text-danger error-text dob_err"></span>
@@ -557,7 +557,7 @@
                                             <div class="col-xl-4">
                                                 <div class="form-group">
                                                     <label>Date Of Entry</label>
-                                                    <input type="date" id="entry_date"
+                                                    <input max="<?php echo date('Y-m-d') ?>" type="date" id="entry_date"
                                                         class="form-control form-control-solid form-control-lg"
                                                         name="entry_date" placeholder="Address Line 1" />
                                                     <input type="text" id="editid" hidden name="editid">
