@@ -64,7 +64,7 @@ function destroyItem(url, id = 0) {
 }
 
 function getNotifications() {
-  console.info('Checking for new notification.....')
+  console.info("Checking for new notification.....");
   let res = null;
   let suburl = "/profiles?tab=inbox";
   let storageName = "notification_" + localStorage.getItem("session_id");
@@ -78,7 +78,7 @@ function getNotifications() {
     type: "GET",
     async: true,
     dataType: "json",
-    timeout: 10000, 
+    timeout: 10000,
     contentType: "application/json",
     success: function (result) {
       let localStorageObj = JSON.parse(localStorage.getItem(storageName));
@@ -158,9 +158,11 @@ function getProfileData(id) {
     dataType: "json",
     contentType: "application/json",
     success: function (result) {
+      console.log(result.trackings);
       setEprofile(result);
       setDocs(result);
       setProducts(result.products);
+      setVerifiedNote(result.trackings);
       const mappedArray = result.timeline.map((obj, i) => {
         let payload = {};
         (payload.name = obj.name), (payload.note = obj.note);
@@ -194,7 +196,27 @@ function getProfileData(id) {
   });
   return res;
 }
+function setVerifiedNote(profile) {
+  console.log("profile", profile);
 
+  if (profile.length > 0) {
+    const session_id = localStorage.getItem("session_id");
+    let signed = profile.some((e) => {
+      console.log(e);
+      return e.owned_by == session_id;
+    });
+    console.log("signed", signed);
+    if (signed == true) {
+      document.getElementById('title').setAttribute('data-original-title','Verified by You');
+      document.getElementById("verfied").classList.add("text-success");
+      document.getElementById("verfied").innerHTML = "  Verfied ✓";
+    }else {
+      document.getElementById('title').setAttribute('data-original-title','Not Verified');
+      document.getElementById("verfied").classList.add("text-danger");
+      document.getElementById("verfied").innerHTML = " Not Verfied ✗";
+    }
+  }
+}
 function setEprofile(profile) {
   let heading = document.getElementById("exampleModalLabel");
   heading.innerHTML = profile.name;
@@ -238,7 +260,6 @@ function setDocs(result) {
 }
 
 function setTrack(trackings) {
-
   let filteredTrackings = trackings.filter((res) => {
     return res.type == "rejected" || res.type == "approved";
   });
@@ -477,6 +498,6 @@ function getSections(val, url) {
       data.sections[i].name +
       "</option>";
   }
-  document.getElementById("section_id").innerHTML = html
+  document.getElementById("section_id").innerHTML = html;
   return false;
 }
