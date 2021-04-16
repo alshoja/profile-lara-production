@@ -197,8 +197,6 @@ function getProfileData(id) {
   return res;
 }
 function setVerifiedNote(profile) {
-  console.log("profile", profile);
-
   if (profile.length > 0) {
     const session_id = localStorage.getItem("session_id");
     let signed = profile.some((e) => {

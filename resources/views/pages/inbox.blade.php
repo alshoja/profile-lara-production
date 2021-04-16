@@ -955,15 +955,21 @@
                                                                                     <div> <img style="width: 10%;"
                                                                                             id="sign_img"
                                                                                             src="{{ url(Auth::user()->sign) }}">
-                                                                                        <span id="title" class="d-inline-block"
-                                                                                            data-toggle="tooltip"
-                                                                                            title="x">
-                                                                                            <h6 id="verfied"
-                                                                                                class="btn btn-hover-transparent-success font-weight-bold mr-2"
-                                                                                                style="pointer-events: none;"
-                                                                                                type="button"
-                                                                                                disabled><span class="text-uppercase">{{ Auth::user()->role }}</span> Verified</h6>
-                                                                                        </span>
+                                                                                        @if (request()->query('tab') == 'pending')
+                                                                                            <span id="title"
+                                                                                                class="d-inline-block"
+                                                                                                data-toggle="tooltip"
+                                                                                                title="x">
+                                                                                                <h6 id="verfied"
+                                                                                                    class="btn btn-hover-transparent-success font-weight-bold mr-2"
+                                                                                                    style="pointer-events: none;"
+                                                                                                    type="button" disabled>
+                                                                                                    <span
+                                                                                                        class="text-uppercase">{{ Auth::user()->role }}</span>
+                                                                                                    Verified</h6>
+                                                                                            </span>
+                                                                                        @endif
+
                                                                                     </div>
 
                                                                                 @endif
