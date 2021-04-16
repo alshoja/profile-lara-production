@@ -252,7 +252,7 @@
                     <a href="#" class="btn btn-icon btn-sm btn-light-primary mr-2 my-1">
                         <i class="ki ki-bold-double-arrow-next icon-xs"></i>
                     </a> --}}
-                    {{ $users->links() }}
+                    {{ $users->appends(request()->query())->links() }}
                 </div>
                 <div class="d-flex align-items-center">
                     <select id="perpage" onchange="perPageItems()"
