@@ -12,13 +12,14 @@ use Illuminate\Http\Request;
 use App\Events\RejectDocument;
 use App\Events\AddNotification;
 use App\Events\AddTimeLineNote;
-use Barryvdh\DomPDF\Facade as PDF;
+// use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Validator;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class ProfileController extends Controller
 {
@@ -519,8 +520,11 @@ class ProfileController extends Controller
     public function renderPdf($id)
     {
         $profile = Profile::with('department', 'section', 'products')->find($id);
+        // return response()->json($profile, 200);
+
         $pdf = PDF::loadView('pdf', $profile);
         return $pdf->stream('invoice.pdf');
+
     }
 
     public function getProfileById($id)
