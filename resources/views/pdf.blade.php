@@ -31,8 +31,8 @@
 
         .Imgcenter {
             display: block;
-            margin-left: 130px;
-            width: 35%;
+            margin-left: 140px;
+            width: 30%;
         }
 
         table,
@@ -72,46 +72,36 @@
                 <th style="text-align:right; " colspan="5">Header</th>
             </tr>
             <tr>
-                <td class="td-c-1">Bill Gates</td>
-                <td>55577854</td>
+                <td class="td-c-1">&nbsp;</td>
+                <td>&nbsp;</td>
                 <td></td>
-                <td class="td-c-1">55577855</td>
-                <td>55577855</td>
+                <td class="td-c-1">&nbsp;</td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
-                <td class="td-c-1">Bill Gates</td>
-                <td>55577854</td>
+                <td class="td-c-1">&nbsp;</td>
+                <td>&nbsp;</td>
                 <td></td>
-                <td class="td-c-1">55577855</td>
-                <td>55577855</td>
-            </tr>
-            <tr>
-                <td class="td-c-1">Bill Gates</td>
-                <td>55577854</td>
+                <td class="td-c-1">&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr> <tr>
+                <td class="td-c-1">&nbsp;</td>
+                <td>&nbsp;</td>
                 <td></td>
-                <td class="td-c-1">55577855</td>
-                <td>55577855</td>
-            </tr>
-            <tr>
-                <td class="td-c-1">Bill Gates</td>
-                <td>55577854</td>
+                <td class="td-c-1">&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr> <tr>
+                <td class="td-c-1">&nbsp;</td>
+                <td>&nbsp;</td>
                 <td></td>
-                <td class="td-c-1">55577855</td>
-                <td>55577855</td>
-            </tr>
-            <tr>
-                <td class="td-c-1">Bill Gates</td>
-                <td>55577854</td>
+                <td class="td-c-1">&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr> <tr>
+                <td class="td-c-1">&nbsp;</td>
+                <td>&nbsp;</td>
                 <td></td>
-                <td class="td-c-1">55577855</td>
-                <td>55577855</td>
-            </tr>
-            <tr>
-                <td class="td-c-1">Bill Gates</td>
-                <td>55577854</td>
-                <td></td>
-                <td class="td-c-1">55577855</td>
-                <td>55577855</td>
+                <td class="td-c-1">&nbsp;</td>
+                <td>&nbsp;</td>
             </tr>
             <tr style="background-color: #fff3e4">
                 <td style="text-align:right; color: green " colspan="5">Header</td>
@@ -131,7 +121,7 @@
             </tfoot>
         </table>
         <div style="border: 1px solid black;margin-top:-1.7px;width:617px;margin-left:0.5px">
-            <h4 align="right" style="color: red; padding: 10px">Title Here</h4>
+            <h3 align="right" style="color: red; padding: 10px">Title Here</h3>
             <p align="right" style="padding: 11px">asdhakjsdhkjahsdkjaksjhdkjahsdkjajksdhkahsd</p>
         </div>
         <div style="black;margin-top:-1.7px">
