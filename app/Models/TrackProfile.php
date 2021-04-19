@@ -17,4 +17,9 @@ class TrackProfile extends Model
         'is_rejected_by'
     ];
     use HasFactory;
+
+    public function sign()
+    {
+        return $this->belongsTo(User::class, 'owned_by', 'id')->select(array('id','name','sign','email'));
+    }
 }
