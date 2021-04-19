@@ -2,7 +2,7 @@
 
 <head>
     <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
-    <title>DIN A4 Page</title>
+    <title>Example</title>
     <style type="text/css">
         body {
             border: 1px solid rgb(248, 232, 0);
@@ -52,6 +52,11 @@
             background-color: #f0a4ff1e
         }
 
+        .sign {
+            style="min-width: 70px !important; 
+            max-width: 100px !important;
+        }
+
     </style>
     <meta charset="utf-8">
 </head>
@@ -62,71 +67,71 @@
             <img class="Imgcenter" src="{{ public_path('sample.png') }}" alt="Logo">
         </div>
         <h3 align="center">Tittle Here</h3>
-            <table style="width:100%">
-                <tr style="background-color: #fff3e4">
-                    <th style="text-align:right; " colspan="5">Header</th>
-                </tr>
+        <table style="width:100%">
+            <tr style="background-color: #fff3e4">
+                <th style="text-align:right; " colspan="5">Header</th>
+            </tr>
+            <tr>
+                <td class="td-c-1">Bill Gates</td>
+                <td>55577854</td>
+                <td></td>
+                <td class="td-c-1">55577855</td>
+                <td>55577855</td>
+            </tr>
+            <tr>
+                <td class="td-c-1">Bill Gates</td>
+                <td>55577854</td>
+                <td></td>
+                <td class="td-c-1">55577855</td>
+                <td>55577855</td>
+            </tr>
+            <tr>
+                <td class="td-c-1">Bill Gates</td>
+                <td>55577854</td>
+                <td></td>
+                <td class="td-c-1">55577855</td>
+                <td>55577855</td>
+            </tr>
+            <tr>
+                <td class="td-c-1">Bill Gates</td>
+                <td>55577854</td>
+                <td></td>
+                <td class="td-c-1">55577855</td>
+                <td>55577855</td>
+            </tr>
+            <tr>
+                <td class="td-c-1">Bill Gates</td>
+                <td>55577854</td>
+                <td></td>
+                <td class="td-c-1">55577855</td>
+                <td>55577855</td>
+            </tr>
+            <tr>
+                <td class="td-c-1">Bill Gates</td>
+                <td>55577854</td>
+                <td></td>
+                <td class="td-c-1">55577855</td>
+                <td>55577855</td>
+            </tr>
+            <tr style="background-color: #fff3e4">
+                <td style="text-align:right; color: green " colspan="5">Header</td>
+            </tr>
+            <tr>
+                <td style="text-align:center; color:red;' " colspan="5">Title Here</td>
+            </tr>
+            <tfoot>
                 <tr>
-                    <td class="td-c-1">Bill Gates</td>
-                    <td>55577854</td>
+                    <td colspan="4">&nbsp;</td>
                     <td></td>
-                    <td class="td-c-1">55577855</td>
-                    <td>55577855</td>
                 </tr>
                 <tr>
-                    <td class="td-c-1">Bill Gates</td>
-                    <td>55577854</td>
+                    <td colspan="4">&nbsp;</td>
                     <td></td>
-                    <td class="td-c-1">55577855</td>
-                    <td>55577855</td>
                 </tr>
-                <tr>
-                    <td class="td-c-1">Bill Gates</td>
-                    <td>55577854</td>
-                    <td></td>
-                    <td class="td-c-1">55577855</td>
-                    <td>55577855</td>
-                </tr>
-                <tr>
-                    <td class="td-c-1">Bill Gates</td>
-                    <td>55577854</td>
-                    <td></td>
-                    <td class="td-c-1">55577855</td>
-                    <td>55577855</td>
-                </tr>
-                <tr>
-                    <td class="td-c-1">Bill Gates</td>
-                    <td>55577854</td>
-                    <td></td>
-                    <td class="td-c-1">55577855</td>
-                    <td>55577855</td>
-                </tr>
-                <tr>
-                    <td class="td-c-1">Bill Gates</td>
-                    <td>55577854</td>
-                    <td></td>
-                    <td class="td-c-1">55577855</td>
-                    <td>55577855</td>
-                </tr>
-                <tr style="background-color: #fff3e4">
-                    <td style="text-align:right; color: green " colspan="5">Header</td>
-                </tr>
-                <tr>
-                    <td style="text-align:center; color:red;' " colspan="5">Title Here</td>
-                </tr>
-                <tfoot>
-                    <tr>
-                      <td colspan="4">&nbsp;</td>
-                      <td ></td>
-                    </tr>
-                    <tr>
-                        <td colspan="4">&nbsp;</td>
-                        <td></td>
-                      </tr>
-                  </tfoot> 
-            </table>
+            </tfoot>
+        </table>
         <div style="border: 1px solid black;margin-top:-1.7px;width:617px;margin-left:0.5px">
-            <h4  align="right" style="color: red; padding: 10px">Title Here</h4>
+            <h4 align="right" style="color: red; padding: 10px">Title Here</h4>
             <p align="right" style="padding: 11px">asdhakjsdhkjahsdkjaksjhdkjahsdkjajksdhkahsd</p>
         </div>
         <div style="black;margin-top:-1.7px">
@@ -143,11 +148,22 @@
                     <td>General_director</td>
                 </tr>
                 <tr>
-                    <td>Employ</td>
-                    <td>Supervisor</td>
-                    <td>Department Head</td>
-                    <td>Director</td>
-                    <td>General_director</td>
+                    <td>
+                        <img class="sign" src="{{ public_path('s.png') }}" alt="Logo">
+                    </td>
+                    <td>
+                        <img class="sign" src="{{ public_path('s.png') }}" alt="Logo">
+                    </td>
+                    <td>
+                        <img class="sign" src="{{ public_path('s.png') }}" alt="Logo">
+                    </td>
+                    <td>
+                        <img class="sign" src="{{ public_path('s.png') }}" alt="Logo">
+                    </td>
+                    <td>
+                        <img class="sign" src="{{ public_path('s.png') }}" alt="Logo">
+                    </td>
+                  
                 </tr>
             </table>
         </div>
