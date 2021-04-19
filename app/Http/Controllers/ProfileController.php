@@ -520,7 +520,7 @@ class ProfileController extends Controller
     public function renderPdf($id)
     {
         $profile = Profile::with('department', 'section', 'products', 'trackings.sign')->find($id);
-        return response()->json($profile, 200);
+        // return response()->json($profile, 200);
         $pdf = PDF::loadView('pdf', $profile);
         return $pdf->stream('invoice.pdf');
     }
