@@ -1,182 +1,162 @@
-<!DOCTYPE html>
-<html lang="en">
+<html dir="rtl" lang="ar">
 
 <head>
-    <meta charset="utf-8">
-    <title>Profile</title>
-    <style>
-        .row {
-            display: table;
-            width: 100%;
-            /*Optional*/
-            table-layout: fixed;
-            /*Optional*/
-            border-spacing: 10px;
-            /*Optional*/
-        }
-
-        .column {
-            display: table-cell;
-            /* background-color: red; */
-            /*Optional*/
-        }
-
-        .clearfix:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-
-        a {
-            color: #5D6975;
-            text-decoration: underline;
-        }
-
+    <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+    <title>Example</title>
+    <style type="text/css">
         body {
-            position: relative;
-            width: 17cm;
-            height: 29.7cm;
-            margin: 0 auto;
-            color: #001028;
-            background: #FFFFFF;
-            font-family: Arial, sans-serif;
-            font-size: 12px;
-            font-family: Arial;
+            border: 1px solid rgb(248, 232, 0);
+            padding: 10px;
+            margin: 0;
+            /* background-color: #f5fdeb */
         }
 
-        header {
-            padding: 10px 0;
-            margin-bottom: 30px;
+        @page {
+            size: 21cm 29.7cm;
+            margin: 2cm
         }
 
-        #logo {
-            text-align: center;
-            margin-bottom: 10px;
+        .A4 {
+            line-height: 120%;
+            text-align: justify;
+            background: transparent
         }
 
-        #logo img {
-            width: 90px;
+        .center {
+            margin: auto;
+            width: 60%;
+            border: 3px solid #73AD21;
+            padding: 10px;
         }
 
-        h1 {
-            border-top: 1px solid #5D6975;
-            border-bottom: 1px solid #5D6975;
-            color: #5D6975;
-            font-size: 2.4em;
-            line-height: 1.4em;
-            font-weight: normal;
-            text-align: center;
-            margin: 0 0 20px 0;
-            background: url(dimension.png);
+        .Imgcenter {
+            display: block;
+            margin-left: 140px;
+            width: 30%;
         }
 
-        #project {
-            float: left;
-        }
-
-        #project span {
-            color: #5D6975;
-            text-align: right;
-            width: 52px;
-            margin-right: 10px;
-            display: inline-block;
-            font-size: 0.8em;
-        }
-
-        #company {
-            float: right;
-            text-align: right;
-        }
-
-        #project div,
-        #company div {
-            white-space: nowrap;
-        }
-
-        table {
-            width: 100%;
+        table,
+        th,
+        td {
+            border: 1px solid black;
             border-collapse: collapse;
-            border-spacing: 0;
-            margin-bottom: 20px;
         }
 
-        table tr:nth-child(2n-1) td {
-            background: #F5F5F5;
-        }
-
-        table th,
-        table td {
-            text-align: center;
-        }
-
-        table th {
-            padding: 5px 20px;
-            color: #5D6975;
-            border-bottom: 1px solid #C1CED9;
-            white-space: nowrap;
-            font-weight: normal;
-        }
-
-        table .service,
-        table .desc {
+        th,
+        td {
+            padding: 4px;
             text-align: left;
         }
 
-        table td {
-            padding: 20px;
-            text-align: right;
+        .td-c-1 {
+            background-color: #f0a4ff1e
         }
 
-        table td.service,
-        table td.desc {
-            vertical-align: top;
-        }
-
-        table td.unit,
-        table td.qty,
-        table td.total {
-            font-size: 1.2em;
-        }
-
-        table td.grand {
-            border-top: 1px solid #5D6975;
-            ;
-        }
-
-        #notices .notice {
-            color: #5D6975;
-            font-size: 1.2em;
-        }
-
-        footer {
-            color: #5D6975;
-            width: 100%;
-            height: 30px;
-            position: absolute;
-            bottom: 0;
-            border-top: 1px solid #C1CED9;
-            padding: 8px 0;
-            text-align: center;
+        .sign {
+            style="min-width: 70px !important; 
+            max-width: 100px !important;
         }
 
     </style>
-    {{-- <link rel="stylesheet" href="style.css" media="all" /> --}}
+    <meta charset="utf-8">
 </head>
 
 <body>
-    <div class="row">
-        <div class="column">C1</div>
-        <div class="column">C2</div>
-        <div class="column">C3</div>
-    </div>
-    <div id="notices">
-        <div>NOTICE:</div>
-        <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>
-    </div>
-    </main>
-    <footer>
-        Invoice was created on a computer and is valid without the signature and seal.
-    </footer>
+    <div class="A4">
+        <div class="Imgcenter">
+            <img class="Imgcenter" src="{{ public_path('sample.png') }}" alt="Logo">
+        </div>
+        <h3 align="center">Tittle Here</h3>
+        <table style="width:100%">
+            <tr style="background-color: #fff3e4">
+                <th style="text-align:right; " colspan="5">Header</th>
+            </tr>
+            <tr>
+                <td class="td-c-1">&nbsp;</td>
+                <td>&nbsp;</td>
+                <td></td>
+                <td class="td-c-1">&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="td-c-1">&nbsp;</td>
+                <td>&nbsp;</td>
+                <td></td>
+                <td class="td-c-1">&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr> <tr>
+                <td class="td-c-1">&nbsp;</td>
+                <td>&nbsp;</td>
+                <td></td>
+                <td class="td-c-1">&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr> <tr>
+                <td class="td-c-1">&nbsp;</td>
+                <td>&nbsp;</td>
+                <td></td>
+                <td class="td-c-1">&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr> <tr>
+                <td class="td-c-1">&nbsp;</td>
+                <td>&nbsp;</td>
+                <td></td>
+                <td class="td-c-1">&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr style="background-color: #fff3e4">
+                <td style="text-align:right; color: green " colspan="5">Header</td>
+            </tr>
+            <tr>
+                <td style="text-align:center; color:red;' " colspan="5">Title Here</td>
+            </tr>
+            <tfoot>
+                <tr>
+                    <td colspan="4">&nbsp;</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="4">&nbsp;</td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+        <div style="border: 1px solid black;margin-top:-1.7px;width:617px;margin-left:0.5px">
+            <h3 align="right" style="color: red; padding: 10px">Title Here</h3>
+            <p align="right" style="padding: 11px">asdhakjsdhkjahsdkjaksjhdkjahsdkjajksdhkahsd</p>
+        </div>
+        <div style="black;margin-top:-1.7px">
+            <table style="width:100%">
+                <tr>
+                    <th style="text-align:right; color: blue" colspan="4">Header</th>
+                    <th style="text-align:right; color: red ">Description Here</th>
+                </tr>
+                <tr style="background-color: #fff3e4">
+                    <td>Employ</td>
+                    <td>Supervisor</td>
+                    <td>Department Head</td>
+                    <td>Director</td>
+                    <td>General_director</td>
+                </tr>
+                <tr>
+                    <td>
+                        <img class="sign" src="{{ public_path('s.png') }}" alt="Logo">
+                    </td>
+                    <td>
+                        <img class="sign" src="{{ public_path('s.png') }}" alt="Logo">
+                    </td>
+                    <td>
+                        <img class="sign" src="{{ public_path('s.png') }}" alt="Logo">
+                    </td>
+                    <td>
+                        <img class="sign" src="{{ public_path('s.png') }}" alt="Logo">
+                    </td>
+                    <td>
+                        <img class="sign" src="{{ public_path('s.png') }}" alt="Logo">
+                    </td>
+                  
+                </tr>
+            </table>
+        </div>
 </body>
 
 </html>

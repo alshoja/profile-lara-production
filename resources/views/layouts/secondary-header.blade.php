@@ -84,7 +84,7 @@
                         <a href="{{ url('/home') }}" class="btn btn-light btn-sm font-weight-bold mr-2"
                             data-toggle="tooltip" title="Reset to default date" data-placement="left">
                             <span class="text-muted font-weight-bold mr-2">Back </span>
-                            {{-- <span class="svg-icon svg-icon-sm svg-icon-primary ml-1">
+                            <span class="svg-icon svg-icon-sm svg-icon-primary ml-1">
                         <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Chat-check.svg-->
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
                             height="24px" viewBox="0 0 24 24" version="1.1">
@@ -99,7 +99,7 @@
                             </g>
                         </svg>
                         <!--end::Svg Icon-->
-                    </span> --}}
+                    </span>
                         </a>
                     @endif
 

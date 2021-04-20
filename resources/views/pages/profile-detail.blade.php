@@ -257,7 +257,7 @@
                                             <div class="row">
                                                 <div class="col-lg-6">
                                                     <input type="submit" value="Change Password"
-                                                        class="btn btn-primary btn-gradient-danger mr-2">
+                                                        class="btn btn-danger btn-gradient-danger mr-2">
                                                     <button type="reset" class="btn btn-secondary">Cancel</button>
                                                 </div>
                                             </div>

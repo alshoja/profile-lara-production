@@ -246,19 +246,19 @@
                                                                                 </li>
                                                                             @endif
                                                                             @if (request()->query('tab') == 'inbox')
-                                                                            @if (Auth::user()->role == 'employ')
-                                                                                <li class="navi-item">
-                                                                                    <a href="{{ url('profile/resubmit', $item->id) }}"
-                                                                                        class="navi-link">
-                                                                                        <span class="navi-icon">
-                                                                                            <i
-                                                                                                class="flaticon-paper-plane"></i>
-                                                                                        </span>
-                                                                                        <span
-                                                                                            class="navi-text">Resubmit</span>
-                                                                                    </a>
-                                                                                </li>
-                                                                            @endif
+                                                                                @if (Auth::user()->role == 'employ')
+                                                                                    <li class="navi-item">
+                                                                                        <a href="{{ url('profile/resubmit', $item->id) }}"
+                                                                                            class="navi-link">
+                                                                                            <span class="navi-icon">
+                                                                                                <i
+                                                                                                    class="flaticon-paper-plane"></i>
+                                                                                            </span>
+                                                                                            <span
+                                                                                                class="navi-text">Resubmit</span>
+                                                                                        </a>
+                                                                                    </li>
+                                                                                @endif
                                                                             @endif
 
                                                                             {{-- <li class="navi-item">
@@ -305,6 +305,7 @@
                                                                     @endif
 
                                                                     @if (Auth::user()->delete)
+                                                                    @if (Auth::user()->role != 'employ')
                                                                         <a onclick="alertAndGoToUrl('/profile/delete/{{ $item->id }}','delete ? {{ $item->name }}')"
                                                                             href="#"
                                                                             class="btn btn-icon btn-light btn-hover-primary btn-sm">
@@ -332,6 +333,7 @@
                                                                             </span>
                                                                         </a>
                                                                     @endif
+                                                                    @endif
                                                                 </td>
                                                             @endif
                                                             <input type="hidden" id="profile_id">
@@ -354,7 +356,7 @@
                                                 </tbody>
                                             </table>
                                             <!-- Modal-->
-                                            
+
                                             <div class="modal fade" id="exampleModalSizeXl" tabindex="-1" role="dialog"
                                                 aria-labelledby="exampleModalSizeXl" aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
@@ -916,21 +918,9 @@
                                                                         <form action="">
                                                                             <div
                                                                                 class="d-flex align-items-center justify-content-between p-4 flex-lg-wrap flex-xl-nowrap">
+
                                                                                 @if (request()->query('tab') == 'inbox')
                                                                                     <div class="d-flex flex-column mr-5">
-                                                                                        <span href="#"
-                                                                                            class="h4 text-dark text-hover-primary mb-5">Approve
-                                                                                            Or Reject
-                                                                                            with a
-                                                                                            Note</span>
-
-                                                                                        <p>
-                                                                                            <textarea required
-                                                                                                name="approve_note"
-                                                                                                class="form-control notebook"
-                                                                                                id="approve_note"
-                                                                                                rows="2">Approved</textarea>
-                                                                                        </p>
                                                                                         <div
                                                                                             class="ml-4 ml-lg-0 ml-xxl-4 flex-shrink-0">
                                                                                             <button
@@ -954,7 +944,23 @@
                                                                                     <div> <img style="width: 10%;"
                                                                                             id="sign_img"
                                                                                             src="{{ url(Auth::user()->sign) }}">
+                                                                                        @if (request()->query('tab') == 'pending')
+                                                                                            <span id="title"
+                                                                                                class="d-inline-block"
+                                                                                                data-toggle="tooltip"
+                                                                                                title="x">
+                                                                                                <h6 id="verfied"
+                                                                                                    class="btn btn-hover-transparent-success font-weight-bold mr-2"
+                                                                                                    style="pointer-events: none;"
+                                                                                                    type="button" disabled>
+                                                                                                    <span
+                                                                                                        class="text-uppercase">{{ Auth::user()->role }}</span>
+                                                                                                    Verified</h6>
+                                                                                            </span>
+                                                                                        @endif
+
                                                                                     </div>
+
                                                                                 @endif
                                                                             </div>
                                                                         </form>
@@ -1062,14 +1068,15 @@
                                                 <a href="#" class="btn btn-icon btn-sm btn-light-primary mr-2 my-1">
                                                     <i class="ki ki-bold-double-arrow-next icon-xs"></i>
                                                 </a> --}}
-                                                {{ $profiles->links() }}
+                                                {{ $profiles->appends(request()->query())->links() }}
                                             </div>
                                             <div class="d-flex align-items-center">
                                                 <select id="perpage" onchange="perPageItems()"
                                                     class="form-control form-control-sm text-primary font-weight-bold mr-4 border-0 bg-light-primary"
                                                     style="width: 75px;">
                                                     @if (request()->query('perPage'))
-                                                        <option selected hidden value="{{ request()->query('perPage') }}">
+                                                        <option selected hidden
+                                                            value="{{ request()->query('perPage') }}">
                                                             {{ request()->query('perPage') }}
                                                         </option>
                                                         <option value="10">10</option>
@@ -1084,10 +1091,11 @@
                                                         <option value="50">50</option>
                                                         <option value="100">100</option>
                                                     @endif
-                        
+
                                                 </select>
                                                 @if (request()->query('perPage'))
-                                                    <span class="text-muted">Displaying {{ request()->query('perPage') }} records</span>
+                                                    <span class="text-muted">Displaying {{ request()->query('perPage') }}
+                                                        records</span>
                                                 @else
                                                     <span class="text-muted">Displaying 10 records</span>
                                                 @endif
@@ -1106,7 +1114,7 @@
                 </div>
                 <!--end::Row-->
                 <!--begin::Pagination-->
-                
+
                 <!--end::Pagination-->
             </div>
             <!--end::Container-->

@@ -64,7 +64,7 @@ function destroyItem(url, id = 0) {
 }
 
 function getNotifications() {
-  console.info('Checking for new notification.....')
+  console.info("Checking for new notification.....");
   let res = null;
   let suburl = "/profiles?tab=inbox";
   let storageName = "notification_" + localStorage.getItem("session_id");
@@ -78,7 +78,7 @@ function getNotifications() {
     type: "GET",
     async: true,
     dataType: "json",
-    timeout: 10000, 
+    timeout: 10000,
     contentType: "application/json",
     success: function (result) {
       let localStorageObj = JSON.parse(localStorage.getItem(storageName));
@@ -158,9 +158,11 @@ function getProfileData(id) {
     dataType: "json",
     contentType: "application/json",
     success: function (result) {
+      console.log("profile", result);
       setEprofile(result);
       setDocs(result);
       setProducts(result.products);
+      setVerifiedNote(result.trackings);
       const mappedArray = result.timeline.map((obj, i) => {
         let payload = {};
         (payload.name = obj.name), (payload.note = obj.note);
@@ -194,7 +196,28 @@ function getProfileData(id) {
   });
   return res;
 }
-
+function setVerifiedNote(profile) {
+  if (profile.length > 0) {
+    const session_id = localStorage.getItem("session_id");
+    let signed = profile.some((e) => {
+      console.log(e);
+      return e.owned_by == session_id;
+    });
+    let title = document.getElementById("title");
+    let verified = document.getElementById("verfied");
+    if (title != null) {
+      if (signed == true) {
+        title.setAttribute("data-original-title", "Verified by You");
+        verified.classList.add("text-success");
+        verified.innerHTML = "  Verfied ✓";
+      } else {
+        title.setAttribute("data-original-title", "Not Verified");
+        verified.classList.add("text-danger");
+        verified.innerHTML = " Not Verfied ✗";
+      }
+    }
+  }
+}
 function setEprofile(profile) {
   let heading = document.getElementById("exampleModalLabel");
   heading.innerHTML = profile.name;
@@ -238,9 +261,10 @@ function setDocs(result) {
 }
 
 function setTrack(trackings) {
-
   let filteredTrackings = trackings.filter((res) => {
-    return res.type == "rejected" || res.type == "approved";
+    return (
+      res.type == "rejected" || res.type == "approved" || res.type == "pending"
+    );
   });
   let contentStr = "";
   if (filteredTrackings.length > 0) {
@@ -412,17 +436,19 @@ function AproveOrReject(action) {
   let profile_id = document.getElementById("profile_id");
   let reject_button = document.getElementById("reject");
   let approve_button = document.getElementById("approve");
-  let note = document.getElementById("approve_note");
-  if (note.value == "") {
-    openAlert("error", "Required Empty", "A valid Note is required");
-    return false;
+  let note = null;
+  console.log(action);
+  if (action == "signed") {
+    note = 'Approved';
+  } else {
+    note = 'Rejected';
   }
   const payLoad = {};
-  payLoad.note = note.value;
+  payLoad.note = note;
   payLoad.profile_id = profile_id.value;
   payLoad.action = action;
   const res = saveOrUpdateOrGet("profile/sign/or/reject", "POST", payLoad);
-  note.value = "";
+  note = null;
   reject_button.disabled = true;
   approve_button.disabled = true;
   location.reload();
@@ -477,6 +503,6 @@ function getSections(val, url) {
       data.sections[i].name +
       "</option>";
   }
-  document.getElementById("section_id").innerHTML = html
+  document.getElementById("section_id").innerHTML = html;
   return false;
 }

@@ -7,12 +7,7 @@ use App\Models\User;
 use App\Models\Profile;
 use App\Models\TimeLine;
 use Illuminate\Http\Request;
-use App\Models\DepartmentHead;
-use App\Models\DepartmentDirector;
 use Illuminate\Support\Facades\Auth;
-use App\Models\DepartmentGeneralDirector;
-use App\Models\DepartmentSupervisor;
-use App\Models\Employ;
 use Illuminate\Database\Eloquent\Builder;
 
 class HomeController extends Controller
@@ -35,7 +30,7 @@ class HomeController extends Controller
     public function welcome(Request $request)
     {
         if (Auth::check()) {
-            return redirect('home');
+            return redirect('profiles?tab=inbox');
         }
         return view('welcome');
     }
