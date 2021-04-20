@@ -16,13 +16,11 @@ function saveOrUpdateOrGet(url, method, formData, id) {
     async: false,
     dataType: "json",
     success: (data) => {
-      console.log(data);
       res = data;
       let message = res.message ? res.message : "Done";
       showToast(message, "", "info");
     },
     error: function (XMLHttpRequest, textStatus, errorThrown) {
-      console.log(XMLHttpRequest);
       if (XMLHttpRequest.status != 400) {
         openAlert("error", "Error", "An Error occured while sending request!");
       }
@@ -60,14 +58,13 @@ function destroyItem(url, id = 0) {
       reloadData();
     },
     error: function (XMLHttpRequest, textStatus, errorThrown) {
-      console.log(textStatus);
       openAlert("error", "Error", "Cannot delete items having data");
     },
   });
 }
 
 function getNotifications() {
-  let fullUrl = HOST_URL + "/notifications";
+  console.info("Checking for new notification.....");
   let res = null;
   let suburl = "/profiles?tab=inbox";
   let storageName = "notification_" + localStorage.getItem("session_id");
@@ -77,10 +74,11 @@ function getNotifications() {
     localStorage.setItem(storageName, JSON.stringify([obj]));
   }
   $.ajax({
-    url: fullUrl,
+    url: HOST_URL + "/notifications",
     type: "GET",
-    async: false,
+    async: true,
     dataType: "json",
+    timeout: 10000,
     contentType: "application/json",
     success: function (result) {
       let localStorageObj = JSON.parse(localStorage.getItem(storageName));
@@ -150,7 +148,6 @@ function getNotifications() {
 }
 
 function getProfileData(id) {
-  console.log("proilde data called");
   document.getElementById("profile_id").value = id;
   let fullUrl = HOST_URL + "/profile/details/" + id;
   let res = null;
@@ -161,12 +158,12 @@ function getProfileData(id) {
     dataType: "json",
     contentType: "application/json",
     success: function (result) {
+      console.log("profile", result);
       setEprofile(result);
-      console.log(result);
       setDocs(result);
       setProducts(result.products);
+      setVerifiedNote(result.trackings);
       const mappedArray = result.timeline.map((obj, i) => {
-        console.log("object", obj);
         let payload = {};
         (payload.name = obj.name), (payload.note = obj.note);
         if (obj.type == "rejected") {
@@ -199,7 +196,28 @@ function getProfileData(id) {
   });
   return res;
 }
-
+function setVerifiedNote(profile) {
+  if (profile.length > 0) {
+    const session_id = localStorage.getItem("session_id");
+    let signed = profile.some((e) => {
+      console.log(e);
+      return e.owned_by == session_id;
+    });
+    let title = document.getElementById("title");
+    let verified = document.getElementById("verfied");
+    if (title != null) {
+      if (signed == true) {
+        title.setAttribute("data-original-title", "Verified by You");
+        verified.classList.add("text-success");
+        verified.innerHTML = "  Verfied ✓";
+      } else {
+        title.setAttribute("data-original-title", "Not Verified");
+        verified.classList.add("text-danger");
+        verified.innerHTML = " Not Verfied ✗";
+      }
+    }
+  }
+}
 function setEprofile(profile) {
   let heading = document.getElementById("exampleModalLabel");
   heading.innerHTML = profile.name;
@@ -237,17 +255,16 @@ function setEprofile(profile) {
 }
 
 function setDocs(result) {
-  console.log(result);
   document.getElementById("doc_1").src = result.doc_image;
   document.getElementById("doc_2").src = result.product_image;
   document.getElementById("doc_3").src = result.profile_image;
 }
 
 function setTrack(trackings) {
-  console.log("filtered", trackings);
-
   let filteredTrackings = trackings.filter((res) => {
-    return res.type == "rejected" || res.type == "approved";
+    return (
+      res.type == "rejected" || res.type == "approved" || res.type == "pending"
+    );
   });
   let contentStr = "";
   if (filteredTrackings.length > 0) {
@@ -360,7 +377,6 @@ function setProducts(data) {
 }
 
 function setNotes(notes) {
-  console.log("notes", notes);
   let notesString = "";
 
   if (notes.length > 0) {
@@ -420,18 +436,19 @@ function AproveOrReject(action) {
   let profile_id = document.getElementById("profile_id");
   let reject_button = document.getElementById("reject");
   let approve_button = document.getElementById("approve");
-  let note = document.getElementById("approve_note");
-  if (note.value == "") {
-    openAlert("error", "Required Empty", "A valid Note is required");
-    return false;
-  }
+  let note = null;
   console.log(action);
+  if (action == "signed") {
+    note = 'Approved';
+  } else {
+    note = 'Rejected';
+  }
   const payLoad = {};
-  payLoad.note = note.value;
+  payLoad.note = note;
   payLoad.profile_id = profile_id.value;
   payLoad.action = action;
   const res = saveOrUpdateOrGet("profile/sign/or/reject", "POST", payLoad);
-  note.value = "";
+  note = null;
   reject_button.disabled = true;
   approve_button.disabled = true;
   location.reload();
@@ -476,7 +493,6 @@ function perPageItems() {
 
 function getSections(val, url) {
   const data = getOrGetById(url, val);
-  console.log('sections',data)
   var html = "";
   var i;
   for (i = 0; i < data.sections.length; i++) {
@@ -487,6 +503,6 @@ function getSections(val, url) {
       data.sections[i].name +
       "</option>";
   }
-  document.getElementById("section_id").innerHTML = html
+  document.getElementById("section_id").innerHTML = html;
   return false;
 }

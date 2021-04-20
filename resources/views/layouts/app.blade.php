@@ -585,7 +585,7 @@
                 data-placement="right">
                 <a class="btn btn-sm btn-icon btn-bg-light btn-icon-success btn-hover-success"
                     href="{{ url('/user/add-user') }}">
-                    <i class="flaticon2-drop"></i>
+                    <i class="flaticon2-user"></i>
                 </a>
             </li>
         @endif
@@ -637,7 +637,7 @@
         width: 100%;
         height: 100%;
         /* z-index: 9999; */
-        background: url('https://lkp.dispendik.surabaya.go.id/assets/loading.gif') 50% 50% no-repeat rgb(249, 249, 249);
+        background: url({{url('loader2.svg')}}) 50% 50% no-repeat rgb(249, 249, 249);
     }
 
     .ajaxloader {

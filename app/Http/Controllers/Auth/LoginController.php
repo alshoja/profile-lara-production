@@ -2,16 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\Employ;
-use App\Models\Section;
-use Illuminate\Http\Request;
-use App\Models\DepartmentHead;
-use App\Models\DepartmentDirector;
 use App\Http\Controllers\Controller;
-use App\Models\DepartmentSupervisor;
-use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
-use App\Models\DepartmentGeneralDirector;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -34,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = 'profiles?tab=inbox';
 
     /**
      * Create a new controller instance.

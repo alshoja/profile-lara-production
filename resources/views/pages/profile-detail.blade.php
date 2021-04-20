@@ -232,7 +232,7 @@
                                             <div class="form-group row">
                                                 <div class="col-lg-4">
                                                     <label>Current Password</label>
-                                                    <input type="password" name="current_password" class="form-control"
+                                                    <input @if (Auth::user()->id != $user->id) disabled @endif type="password" name="current_password" class="form-control"
                                                         placeholder="Password" />
                                                     <input type="hidden" value="{{ $user->id }}" name="id">
                                                     <!-- <span class="form-text text-muted">Please enter your full name</span> -->
@@ -257,7 +257,7 @@
                                             <div class="row">
                                                 <div class="col-lg-6">
                                                     <input type="submit" value="Change Password"
-                                                        class="btn btn-primary btn-gradient-danger mr-2">
+                                                        class="btn btn-danger btn-gradient-danger mr-2">
                                                     <button type="reset" class="btn btn-secondary">Cancel</button>
                                                 </div>
                                             </div>
@@ -313,7 +313,7 @@
                                                             </td>
                                                             <td class="text-right pr-0">
                                                                 @if (Auth::user()->update)
-                                                                    <a href="#"
+                                                                    <a href="{{ url('user/profile-detail/' . $item->subusers->id) }}?role={{ $item->subusers->role }}"
                                                                         class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
                                                                         <span class="svg-icon svg-icon-md svg-icon-primary">
                                                                             <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Write.svg-->
@@ -338,9 +338,8 @@
                                                                         </span>
                                                                     </a>
                                                                 @endif
-                                                                @if (Auth::user()->update)
-
-                                                                    <a href="#"
+                                                                @if (Auth::user()->delete)
+                                                                    <a onclick="alertAndGoToUrl('/user/delete/{{ $item->subusers->id }}','delete ?')" href="#"
                                                                         class="btn btn-icon btn-light btn-hover-primary btn-sm">
                                                                         <span class="svg-icon svg-icon-md svg-icon-primary">
                                                                             <!--begin::Svg Icon | path:assets/media/svg/icons/General/Trash.svg-->

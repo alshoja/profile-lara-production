@@ -81,18 +81,19 @@
                                 </div>
 
                             </div>
-                            <div class="col-lg-2">
-                                <label class="col col-form-label">Can add User</label>
-                                <div class="col-3">
-                                    <span class="switch switch-outline switch-icon switch-success">
-                                        <label>
-                                            <input value="1" type="checkbox" checked="checked" name="can_add_user" />
-                                            <span></span>
-                                        </label>
-                                    </span>
+                            @if (Auth::user()->role != 'employ')
+                                <div class="col-lg-2">
+                                    <label class="col col-form-label">Can add User</label>
+                                    <div class="col-3">
+                                        <span class="switch switch-outline switch-icon switch-success">
+                                            <label>
+                                                <input value="1" type="checkbox" checked="checked" name="can_add_user" />
+                                                <span></span>
+                                            </label>
+                                        </span>
+                                    </div>
                                 </div>
-
-                            </div>
+                            @endif
                         </div>
                         <div class="form-group row">
                             <div class="col-lg-2">
@@ -204,7 +205,7 @@
                                 <!-- <label>User Role</label> -->
                                 <div class="radio-inline">
                                     @if (Auth::user()->role == 'admin')
-                                        <label id="admin-label" class="radio radio-solid text-primary">
+                                        <label id="admin-label" class="radio radio-solid ">
                                             <input type="radio" onclick="toggleDepartment('admin')" name="role"
                                                 checked="checked" value="admin" />
                                             <span></span>
@@ -264,6 +265,7 @@
                                     <label class="ml-3">Department</label>
                                     <select id="department" onChange="getSections(this.value,'department')" required
                                         name="dep_id" class="form-control form-control-solid">
+                                        <option hidden>select</option>
                                         @foreach ($users->departments as $item)
                                             <option value="{{ $item->id }}">{{ $item->name }}</option>
                                         @endforeach

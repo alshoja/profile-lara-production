@@ -28,5 +28,8 @@ class DepartmentDirector extends Model
     {
         return $this->belongsTo(User::class, 'director_id', 'id');
     }
-
+    public function subUsers()
+    {
+        return $this->belongsTo(User::class, 'director_id', 'id');
+    }
 }

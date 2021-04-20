@@ -45,7 +45,7 @@ class SectionController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'section' => ['required', 'string', 'max:10'],
+            'section' => ['required', 'string', 'max:100'],
         ]);
         $section = new Section();
         $section->name = $request->section;
@@ -87,21 +87,14 @@ class SectionController extends Controller
     public function update(Request $request, Section $section)
     {
         $request->validate([
-            'section' => ['required', 'string', 'max:50'],
+            'section' => ['required', 'string', 'max:100'],
         ]);
 
-        // $validator = Validator::make($request->all(), [
-        //     'name' => ['required', 'string', 'max:10', 'unique:departments'],
-        // ]);
-
-        // if ($validator->fails()) {
-        //     return response()->json($validator->errors(), 400);
-        // }
         $department = Section::findOrFail($request->section_id);
         $department->name = $request->section;
         $department->dep_id = $request->dep_id;
         $department->save();
-        return back()->with('message', 'Section updated added');
+        return back()->with('message', 'Section updated');
     }
 
     /**
