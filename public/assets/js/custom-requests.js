@@ -158,7 +158,7 @@ function getProfileData(id) {
     dataType: "json",
     contentType: "application/json",
     success: function (result) {
-      console.log(result.trackings);
+      console.log("profile", result);
       setEprofile(result);
       setDocs(result);
       setProducts(result.products);
@@ -203,15 +203,18 @@ function setVerifiedNote(profile) {
       console.log(e);
       return e.owned_by == session_id;
     });
-    console.log("signed", signed);
-    if (signed == true) {
-      document.getElementById('title').setAttribute('data-original-title','Verified by You');
-      document.getElementById("verfied").classList.add("text-success");
-      document.getElementById("verfied").innerHTML = "  Verfied ✓";
-    }else {
-      document.getElementById('title').setAttribute('data-original-title','Not Verified');
-      document.getElementById("verfied").classList.add("text-danger");
-      document.getElementById("verfied").innerHTML = " Not Verfied ✗";
+    let title = document.getElementById("title");
+    let verified = document.getElementById("verfied");
+    if (title != null) {
+      if (signed == true) {
+        title.setAttribute("data-original-title", "Verified by You");
+        verified.classList.add("text-success");
+        verified.innerHTML = "  Verfied ✓";
+      } else {
+        title.setAttribute("data-original-title", "Not Verified");
+        verified.classList.add("text-danger");
+        verified.innerHTML = " Not Verfied ✗";
+      }
     }
   }
 }
@@ -259,7 +262,9 @@ function setDocs(result) {
 
 function setTrack(trackings) {
   let filteredTrackings = trackings.filter((res) => {
-    return res.type == "rejected" || res.type == "approved";
+    return (
+      res.type == "rejected" || res.type == "approved" || res.type == "pending"
+    );
   });
   let contentStr = "";
   if (filteredTrackings.length > 0) {
@@ -431,17 +436,19 @@ function AproveOrReject(action) {
   let profile_id = document.getElementById("profile_id");
   let reject_button = document.getElementById("reject");
   let approve_button = document.getElementById("approve");
-  let note = document.getElementById("approve_note");
-  if (note.value == "") {
-    openAlert("error", "Required Empty", "A valid Note is required");
-    return false;
+  let note = null;
+  console.log(action);
+  if (action == "signed") {
+    note = 'Approved';
+  } else {
+    note = 'Rejected';
   }
   const payLoad = {};
-  payLoad.note = note.value;
+  payLoad.note = note;
   payLoad.profile_id = profile_id.value;
   payLoad.action = action;
   const res = saveOrUpdateOrGet("profile/sign/or/reject", "POST", payLoad);
-  note.value = "";
+  note = null;
   reject_button.disabled = true;
   approve_button.disabled = true;
   location.reload();

@@ -81,18 +81,19 @@
                                 </div>
 
                             </div>
-                            <div class="col-lg-2">
-                                <label class="col col-form-label">Can add User</label>
-                                <div class="col-3">
-                                    <span class="switch switch-outline switch-icon switch-success">
-                                        <label>
-                                            <input value="1" type="checkbox" checked="checked" name="can_add_user" />
-                                            <span></span>
-                                        </label>
-                                    </span>
+                            @if (Auth::user()->role != 'employ')
+                                <div class="col-lg-2">
+                                    <label class="col col-form-label">Can add User</label>
+                                    <div class="col-3">
+                                        <span class="switch switch-outline switch-icon switch-success">
+                                            <label>
+                                                <input value="1" type="checkbox" checked="checked" name="can_add_user" />
+                                                <span></span>
+                                            </label>
+                                        </span>
+                                    </div>
                                 </div>
-
-                            </div>
+                            @endif
                         </div>
                         <div class="form-group row">
                             <div class="col-lg-2">

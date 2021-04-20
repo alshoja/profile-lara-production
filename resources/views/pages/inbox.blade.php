@@ -305,6 +305,7 @@
                                                                     @endif
 
                                                                     @if (Auth::user()->delete)
+                                                                    @if (Auth::user()->role != 'employ')
                                                                         <a onclick="alertAndGoToUrl('/profile/delete/{{ $item->id }}','delete ? {{ $item->name }}')"
                                                                             href="#"
                                                                             class="btn btn-icon btn-light btn-hover-primary btn-sm">
@@ -331,6 +332,7 @@
                                                                                 <!--end::Svg Icon-->
                                                                             </span>
                                                                         </a>
+                                                                    @endif
                                                                     @endif
                                                                 </td>
                                                             @endif
@@ -919,19 +921,6 @@
 
                                                                                 @if (request()->query('tab') == 'inbox')
                                                                                     <div class="d-flex flex-column mr-5">
-                                                                                        <span href="#"
-                                                                                            class="h4 text-dark text-hover-primary mb-5">Approve
-                                                                                            Or Reject
-                                                                                            with a
-                                                                                            Note</span>
-
-                                                                                        <p>
-                                                                                            <textarea required
-                                                                                                name="approve_note"
-                                                                                                class="form-control notebook"
-                                                                                                id="approve_note"
-                                                                                                rows="2">Approved</textarea>
-                                                                                        </p>
                                                                                         <div
                                                                                             class="ml-4 ml-lg-0 ml-xxl-4 flex-shrink-0">
                                                                                             <button

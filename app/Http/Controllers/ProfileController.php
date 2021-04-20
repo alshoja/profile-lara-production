@@ -12,7 +12,6 @@ use Illuminate\Http\Request;
 use App\Events\RejectDocument;
 use App\Events\AddNotification;
 use App\Events\AddTimeLineNote;
-// use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
@@ -382,9 +381,6 @@ class ProfileController extends Controller
             // "note" => 'required',
             "record_status" => 'required',
             "record_dep_transfer" => 'required',
-
-
-
         ]);
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], 422);
@@ -507,7 +503,7 @@ class ProfileController extends Controller
         $duplicateProfile->is_completed = 0;
         $duplicateProfile->save();
 
-        $this->trigerEvent($id);
+        $this->trigerEvent($duplicateProfile->id);
         return back()->with('message', 'Forwaded updated');
     }
 
