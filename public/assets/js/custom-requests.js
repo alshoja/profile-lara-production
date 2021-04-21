@@ -219,13 +219,12 @@ function setVerifiedNote(profile) {
   }
 }
 function setEprofile(profile) {
-
   let scannedDocument1 = getExtension(profile.scanned_document1);
   let scannedDocument2 = getExtension(profile.scanned_document2);
   let scannedDocument3 = getExtension(profile.scanned_document3);
 
-  console.log('here is the extension of doc1',scannedDocument1);
-  
+  console.log("here is the extension of doc1", scannedDocument1);
+
   let heading = document.getElementById("exampleModalLabel");
   heading.innerHTML = profile.name;
   document.getElementById("name_arabic").innerHTML = profile.name_arabic;
@@ -234,7 +233,7 @@ function setEprofile(profile) {
   document.getElementById("gender").innerHTML = profile.gender;
   document.getElementById("dob").innerHTML = profile.dob;
   document.getElementById("place_birth").innerHTML = profile.place_birth;
-  document.getElementById("address").innerHTML =profile.address;
+  document.getElementById("address").innerHTML = profile.address;
 
   document.getElementById("referal_name").innerHTML = profile.referal_name;
   document.getElementById("product_type").innerHTML = profile.product_type;
@@ -242,31 +241,29 @@ function setEprofile(profile) {
   document.getElementById("passport_issue").innerHTML = profile.passport_issue;
   document.getElementById("date_issue").innerHTML = profile.date_issue;
   document.getElementById("residency").innerHTML = profile.residency;
-   
+
   document.getElementById("location").innerHTML = profile.location;
   document.getElementById("date_expiry").innerHTML = profile.date_expiry;
-  document.getElementById("uid").innerHTML =profile.uid;
+  document.getElementById("uid").innerHTML = profile.uid;
   document.getElementById("proffession").innerHTML = profile.proffession;
 
   document.getElementById("inventory_name").innerHTML = profile.inventory_name;
-  document.getElementById("inventory_codes").innerHTML = profile.inventory_codes;
+  document.getElementById("inventory_codes").innerHTML =
+    profile.inventory_codes;
   document.getElementById("note").innerHTML = profile.note;
   document.getElementById("inventory_detials").innerHTML = profile.inventory_detials;
 
-alert(profile.scanned_document1);
+  alert(profile.scanned_document1);
 
- let extention1= profile.scanned_document1.split('.').pop();
- 
-if(extention1 == 'docx')
-{
- 
-  document.getElementById("scanned_document1").href =profile.scanned_document1;
+  let extention1 = profile.scanned_document1.split(".").pop();
 
-}
+  if (extention1 == "pdf") {
+    document.getElementById("scanned_document1").href =
+      HOST_URL + "/" + profile.scanned_document1;
+  }
 
   document.getElementById("scanned_document2").src = profile.scanned_document2;
   document.getElementById("scanned_document3").src = profile.scanned_document3;
-  
 }
 
 function setDocs(result) {
@@ -525,4 +522,3 @@ function getSections(val, url) {
 function getExtension(file) {
   return file.split(".").pop();
 }
-
