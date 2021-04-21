@@ -260,7 +260,7 @@ alert(profile.scanned_document1);
 if(extention1 == 'docx')
 {
  
-  document.getElementById("scanned_document1").href =HOST_URL+profile.scanned_document1;
+  document.getElementById("scanned_document1").href =profile.scanned_document1;
 
 }
 
