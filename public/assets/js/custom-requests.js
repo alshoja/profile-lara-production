@@ -221,37 +221,45 @@ function setVerifiedNote(profile) {
 function setEprofile(profile) {
   let heading = document.getElementById("exampleModalLabel");
   heading.innerHTML = profile.name;
+  document.getElementById("name_arabic").innerHTML = profile.name_arabic;
   document.getElementById("name").innerHTML = profile.name;
   document.getElementById("nationality").innerHTML = profile.nationality;
   document.getElementById("gender").innerHTML = profile.gender;
   document.getElementById("dob").innerHTML = profile.dob;
-  document.getElementById("citizen_status").innerHTML = profile.citizen_status;
-  document.getElementById("citizen_location").innerHTML =
-    profile.citizen_location;
-  document.getElementById("citizen_id").innerHTML = profile.citizen_id;
-  document.getElementById("citizen_uid").innerHTML = profile.citizen_uid;
+  document.getElementById("place_birth").innerHTML = profile.place_birth;
+  document.getElementById("address").innerHTML =profile.address;
+
+  document.getElementById("referal_name").innerHTML = profile.referal_name;
+  document.getElementById("product_type").innerHTML = profile.product_type;
   document.getElementById("passport_no").innerHTML = profile.passport_no;
-  document.getElementById("passport_type").innerHTML = profile.passport_type;
-  document.getElementById("entered_by").innerHTML = profile.entered_by;
-  document.getElementById("bought_by").innerHTML = profile.bought_by;
-  document.getElementById("entity").innerHTML = profile.entity;
-  document.getElementById("entry_date").innerHTML = profile.entry_date;
-  document.getElementById("entity_location").innerHTML =
-    profile.entity_location;
-  document.getElementById("shipping_no").innerHTML = profile.shipping_no;
-  document.getElementById("coming_from").innerHTML = profile.coming_from;
-  document.getElementById("going_to").innerHTML = profile.going_to;
-  document.getElementById("final_destination").innerHTML =
-    profile.final_destination;
+  document.getElementById("passport_issue").innerHTML = profile.passport_issue;
+  document.getElementById("date_issue").innerHTML = profile.date_issue;
+  document.getElementById("residency").innerHTML = profile.residency;
+   
+  document.getElementById("location").innerHTML = profile.location;
+  document.getElementById("date_expiry").innerHTML = profile.date_expiry;
+  document.getElementById("uid").innerHTML =profile.uid;
+  document.getElementById("proffession").innerHTML = profile.proffession;
+
+  document.getElementById("inventory_name").innerHTML = profile.inventory_name;
+  document.getElementById("inventory_codes").innerHTML = profile.inventory_codes;
   document.getElementById("note").innerHTML = profile.note;
-  document.getElementById("profile_image").src = profile.profile_image;
-  document.getElementById("product_image").src = profile.product_image;
-  document.getElementById("doc_image").src = profile.doc_image;
-  document.getElementById("record_status").innerHTML = profile.record_status;
-  document.getElementById("record_dep_transfer").innerHTML =
-    profile.record_dep_transfer;
-  document.getElementById("depart").innerHTML = profile.department.name;
-  document.getElementById("section").innerHTML = profile.section.name;
+  document.getElementById("inventory_detials").innerHTML = profile.inventory_detials;
+
+alert(profile.scanned_document1);
+
+ let extention1= profile.scanned_document1.split('.').pop();
+ 
+if(extention1 == 'docx')
+{
+ 
+  document.getElementById("scanned_document1").href =HOST_URL+profile.scanned_document1;
+
+}
+
+  document.getElementById("scanned_document2").src = profile.scanned_document2;
+  document.getElementById("scanned_document3").src = profile.scanned_document3;
+  
 }
 
 function setDocs(result) {

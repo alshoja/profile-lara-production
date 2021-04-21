@@ -655,10 +655,9 @@
                                                 <!--begin::Input-->
                                                 <div class="form-group">
                                                     <label>Inventory Detials</label>
-                                                    <textarea class="form-control form-control-solid"  name="inventory_detials" id="inventory_detials">
-                                                        {{ $profile->inventory_detials }}
-                                                    </textarea>
-                                                   <span class="text-danger error-text inventory_detials_err"></span>
+                                                    <textarea  class="form-control form-control-solid form-control-lg"
+                                                    name="inventory_detials" placeholder="Address" id="inventory_detials" >{{ $profile->inventory_detials }}</textarea>
+                                                    <span class="text-danger error-text inventory_detials_err"></span>
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
