@@ -253,17 +253,22 @@ function setEprofile(profile) {
   document.getElementById("note").innerHTML = profile.note;
   document.getElementById("inventory_detials").innerHTML = profile.inventory_detials;
 
-  alert(profile.scanned_document1);
+  
 
-  let extention1 = profile.scanned_document1.split(".").pop();
+  //let extention1 = profile.scanned_document1.split(".").pop();
 
-  if (extention1 == "pdf") {
-    document.getElementById("scanned_document1").href =
-      HOST_URL + "/" + profile.scanned_document1;
+  if ((scannedDocument1 == "pdf") || (scannedDocument1 == "docx" ) ||(scannedDocument1 == "jpeg" ) || (scannedDocument1 == "png" )|| (scannedDocument1 == "jpg" )) {
+    document.getElementById("scanned_document1").href = HOST_URL + "/" + profile.scanned_document1;
   }
 
-  document.getElementById("scanned_document2").src = profile.scanned_document2;
-  document.getElementById("scanned_document3").src = profile.scanned_document3;
+  if ((scannedDocument2 == "pdf") || (scannedDocument2 == "docx" ) ||(scannedDocument2 == "jpeg" ) || (scannedDocument2 == "png" )|| (scannedDocument2 == "jpg" )) {
+    document.getElementById("scanned_document2").href = HOST_URL + "/" + profile.scanned_document2;
+  }
+
+  if ((scannedDocument3 == "pdf") || (scannedDocument3 == "docx" ) ||(scannedDocument3 == "jpeg" ) || (scannedDocument3 == "png" )|| (scannedDocument3 == "jpg" )) {
+    document.getElementById("scanned_document3").href = HOST_URL + "/" + profile.scanned_document3;
+  }
+ 
 }
 
 function setDocs(result) {
