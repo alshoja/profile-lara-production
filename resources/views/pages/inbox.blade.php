@@ -181,20 +181,21 @@
                                                                         class="d-flex align-items-center justify-content-between mb-2">
                                                                         <span
                                                                             class="text-muted mr-2 font-size-sm font-weight-bold">
-                                                                            {{ (count($item->trackings) / 4) * 100 }}
+                                                                            {{ calculatePercenteage($item) }}
                                                                             %</span>
                                                                         <span
-                                                                            class="text-muted font-size-sm font-weight-bold">Progress</span>
+                                                                            class="text-muted font-size-sm font-weight-bold">Progress
+                                                                        </span>
                                                                     </div>
                                                                     <div class="progress progress-xs w-100">
-                                                                        <div class="progress-bar @if ((count($item->trackings) / 4) * 100 == 25) bg-danger @endif
-                                                                            @if ((count($item->trackings) / 4) * 100 == 100)
-                                                                                bg-success
-                                                                            @else bg-warning @endif "
-                                                                                role="progressbar" style="width:
-                                                                                {{ (count($item->trackings) / 4) * 100 }}%;"
-                                                                                aria-valuenow="10" aria-valuemin="0"
-                                                                                aria-valuemax="100">
+                                                                        <div class="progress-bar @if (calculatePercenteage($item) <=30) bg-danger @endif
+                                                                            @if (calculatePercenteage($item) == 100)
+                                                                            bg-success
+                                                                        @else bg-warning @endif "
+                                                                            role="progressbar" style="width:
+                                                                            {{ calculatePercenteage($item) }}%;"
+                                                                            aria-valuenow="10" aria-valuemin="0"
+                                                                            aria-valuemax="100">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -204,7 +205,8 @@
                                                                     <a href="#" data-toggle="dropdown" aria-haspopup="true"
                                                                         aria-expanded="false"
                                                                         class="btn btn-icon btn-light btn-hover-success btn-sm">
-                                                                        <span class="svg-icon svg-icon-md   @if ($item->on_final_approval == 1) svg-icon-warning @else svg-icon-success @endif  ">
+                                                                    <span class="svg-icon svg-icon-md   @if ($item->on_final_approval == 1) svg-icon-warning @else
+                                                                            svg-icon-success @endif ">
                                                                             <!--begin::Svg Icon | path:assets/media/svg/icons/General/Settings-1.svg-->
                                                                             <svg xmlns="http://www.w3.org/2000/svg"
                                                                                 xmlns:xlink="http://www.w3.org/1999/xlink"
