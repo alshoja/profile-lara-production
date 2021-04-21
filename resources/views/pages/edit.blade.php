@@ -72,6 +72,7 @@
                                     </div>
                                     <span class="svg-icon svg-icon-xl wizard-arrow">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
+                                        @if (Auth::user()->role == 'supervisor')
                                         <svg xmlns="http:
                                                                                                             <g stroke="
                                             none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -85,11 +86,13 @@
                                                 transform="translate(9.000001, 11.999997) scale(-1, -1) rotate(90.000000) translate(-9.000001, -11.999997) " />
                                             </g>
                                         </svg>
+                                        @endif
                                         <!--end::Svg Icon-->
                                     </span>
                                 </div>
                                 <!--end::Wizard Step 3 Nav-->
                                 <!--begin::Wizard Step 4 Nav-->
+                                @if (Auth::user()->role == 'supervisor')
                                 <div class="wizard-step" data-wizard-type="step">
                                     <div class="wizard-label">
                                         <i class="wizard-icon flaticon-truck"></i>
@@ -97,47 +100,14 @@
                                     </div>
                                     <span class="svg-icon svg-icon-xl wizard-arrow">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
-                                        <svg xmlns="http:
-                                                                                                            <g stroke="
-                                            none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                            <polygon points="0 0 24 0 24 24 0 24" />
-                                            <rect fill="#000000" opacity="0.3"
-                                                transform="translate(15.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-15.000000, -12.000000) "
-                                                x="14" y="7" width="2" height="10" rx="1" />
-                                            <path
-                                                d="M3.7071045,15.7071045 C3.3165802,16.0976288 2.68341522,16.0976288 2.29289093,15.7071045 C1.90236664,15.3165802 1.90236664,14.6834152 2.29289093,14.2928909 L8.29289093,8.29289093 C8.67146987,7.914312 9.28105631,7.90106637 9.67572234,8.26284357 L15.6757223,13.7628436 C16.0828413,14.136036 16.1103443,14.7686034 15.7371519,15.1757223 C15.3639594,15.5828413 14.7313921,15.6103443 14.3242731,15.2371519 L9.03007346,10.3841355 L3.7071045,15.7071045 Z"
-                                                fill="#000000" fill-rule="nonzero"
-                                                transform="translate(9.000001, 11.999997) scale(-1, -1) rotate(90.000000) translate(-9.000001, -11.999997) " />
-                                            </g>
-                                        </svg>
+                                        
                                         <!--end::Svg Icon-->
                                     </span>
                                 </div>
+                                @endif
                                 <!--end::Wizard Step 4 Nav-->
                                 <!--begin::Wizard Step 5 Nav-->
-                                <div class="wizard-step" data-wizard-type="step">
-                                    <div class="wizard-label">
-                                        <i class="wizard-icon flaticon-globe"></i>
-                                        <h3 class="wizard-title">Department & Section</h3>
-                                    </div>
-                                    <span class="svg-icon svg-icon-xl wizard-arrow last">
-                                        <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
-                                        <svg xmlns="http:
-                                                                                                            <g stroke="
-                                            none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                            <polygon points="0 0 24 0 24 24 0 24" />
-                                            <rect fill="#000000" opacity="0.3"
-                                                transform="translate(12.000000, 12.000000) rotate(-90.000000) translate(-12.000000, -12.000000)"
-                                                x="11" y="5" width="2" height="14" rx="1" />
-                                            <path
-                                                d="M9.70710318,15.7071045 C9.31657888,16.0976288 8.68341391,16.0976288 8.29288961,15.7071045 C7.90236532,15.3165802 7.90236532,14.6834152 8.29288961,14.2928909 L14.2928896,8.29289093 C14.6714686,7.914312 15.281055,7.90106637 15.675721,8.26284357 L21.675721,13.7628436 C22.08284,14.136036 22.1103429,14.7686034 21.7371505,15.1757223 C21.3639581,15.5828413 20.7313908,15.6103443 20.3242718,15.2371519 L15.0300721,10.3841355 L9.70710318,15.7071045 Z"
-                                                fill="#000000" fill-rule="nonzero"
-                                                transform="translate(14.999999, 11.999997) scale(1, -1) rotate(90.000000) translate(-14.999999, -11.999997)" />
-                                            </g>
-                                        </svg>
-                                        <!--end::Svg Icon-->
-                                    </span>
-                                </div>
+                                
                                 <!--end::Wizard Step 5 Nav-->
                             </div>
                         </div>
@@ -164,11 +134,20 @@
                                         <br>
                                         <!-- <h3 class="mb-10 font-weight-bold text-dark">Some Label</h3> -->
                                         <!--begin::Input-->
-                                        <div class="form-group">
-                                            <label>First Name</label>
-                                            <input type="text" class="form-control form-control-solid form-control-lg"
-                                                name="name" placeholder="Name" value="{{ $profile->name }}" id="name" />
-                                            <span class="text-danger error-text name_err"></span>
+                                    <input type="text" hidden name="editid" id="editid" value="{{ $profile->id }}">
+                                        <div class="row form-group">
+                                            <div class="col-xl-6">
+                                                <label>Name Arabic</label>
+                                                     <input type="text" class="form-control form-control-solid form-control-lg"
+                                                name="name_arabic" placeholder="Name"  id="name_arabic" value="{{ $profile->name_arabic }}" />
+                                                <span class="text-danger error-text name_err"></span>
+                                            </div>
+                                            <div class="col-xl-6">
+                                                <label>Name English</label>
+                                                <input type="text" class="form-control form-control-solid form-control-lg"
+                                                    name="name" placeholder="Name"  id="name" value="{{ $profile->name }}" />
+                                                <span class="text-danger error-text name_err"></span>
+                                            </div>
                                         </div>
                                         <!--end::Input-->
                                         <!--begin::Input-->
@@ -466,66 +445,50 @@
                                                     <!-- <span class="form-text text-muted">Please enter DOb.</span> -->
                                                 </div>
                                             </div>
+                                            <div class="col-xl-4">
+                                                <div class="form-group">
+                                                    <label>Place of birth</label>
+                                                    <input type="text" class="form-control form-control-solid form-control-lg"
+                                                    name="place_birth" placeholder="place of birth"  id="place_birth" value="{{ $profile->place_birth }}" />
+                                                </div>
+                                                    <span class="text-danger error-text place_birth_err"></span>
+                                                </div>
+                                                <div class="col-xl-8">
+                                                    <!--begin::Input-->
+                                                    <div class="form-group">
+                                                        <label>Address</label>
+                                                        <textarea  class="form-control form-control-solid form-control-lg"
+                                                        name="address" placeholder="Address" value="{{ $profile->address }}" id="address" >{{ $profile->address }}</textarea>
+                                                        <span class="text-danger error-text address_err"></span>
+                                                    </div>
+                                                    <!--end::Input-->
+                                                </div>
                                         </div>
 
                                         <div class="row">
+                                            
                                             <div class="col-xl-4">
                                                 <!--begin::Input-->
                                                 <div class="form-group">
-                                                    <label>CitizenShip Status</label>
-                                                    <select name="citizen_status"
+                                                    <label>Referal Name</label>
+                                                    <input type="text" class="form-control form-control-solid form-control-lg"
+                                                    name="referal_name" placeholder="Referal Name" value="{{ $profile->referal_name }}" id="referal_name" />
+                                                   <span class="text-danger error-text referal_name_err"></span>
+                                                </div>
+                                                <!--end::Input-->
+                                            </div>
+                                            <div class="col-xl-4">
+                                                <div class="form-group">
+                                                    <label>Product Type</label>
+                                                    <select name="product_type"
                                                         class="form-control form-control-solid form-control-lg"
-                                                        id="citizen_status">
-                                                        <option value="{{ $profile->citizen_status }}">
-                                                            {{ $profile->citizen_status }}</option>
-                                                        <option value="YE">Status 1</option>
-                                                        <option value="ZM">Status 2</option>
-                                                        <option value="ZW">Status 3</option>
+                                                        id="product_type">
+                                                        <option value="{{ $profile->product_type }}">{{ $profile->product_type }}</option>
+                                                        <option value="p1">P1</option>
+                                                        <option value="p2">P2</option>
                                                     </select>
-                                                    <span class="text-danger error-text citizen_status_err"></span>
+                                                    <span class="text-danger error-text product_type_err"></span>
                                                 </div>
-                                                <!--end::Input-->
-                                            </div>
-                                            <div class="col-xl-4">
-                                                <!--begin::Input-->
-                                                <div class="form-group">
-                                                    <label>CitizenShip Location</label>
-                                                    <select name="citizen_location"
-                                                        class="form-control form-control-solid form-control-lg"
-                                                        id="citizen_location">
-                                                        <option value="{{ $profile->citizen_location }}">
-                                                            {{ $profile->citizen_location }}</option>
-                                                        <option value="AF">Male</option>
-                                                        <option value="AX">Female</option>
-                                                    </select>
-                                                    <span class="text-danger error-text citizen_location_err"></span>
-                                                </div>
-                                                <!--end::Input-->
-                                            </div>
-                                            <div class="col-xl-4">
-                                                <div class="form-group">
-                                                    <label>Citizenshi ID No</label>
-                                                    <input type="number"
-                                                        class="form-control form-control-solid form-control-lg"
-                                                        name="citizen_id" placeholder="ID number"
-                                                        value="{{ $profile->citizen_id }}" id="citizen_id" />
-                                                    <span class="text-danger error-text citizen_id_err"></span>
-                                                    <!-- <span class="form-text text-muted">Please enter DOb.</span> -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-xl-4">
-                                                <!--begin::Input-->
-                                                <div class="form-group">
-                                                    <label>Citizenship UID No</label>
-                                                    <input type="text"
-                                                        class="form-control form-control-solid form-control-lg"
-                                                        name="citizen_uid" placeholder="UID No"
-                                                        value="{{ $profile->citizen_uid }}" id="citizen_uid" />
-                                                    <span class="text-danger error-text citizen_uid_err"></span>
-                                                </div>
-                                                <!--end::Input-->
                                             </div>
                                             <div class="col-xl-4">
                                                 <!--begin::Input-->
@@ -533,26 +496,103 @@
                                                     <label>Passport No</label>
                                                     <input type="text"
                                                         class="form-control form-control-solid form-control-lg"
-                                                        name="passport_no" placeholder="Passport Number"
-                                                        value="{{ $profile->passport_no }}" id="passport_no" />
+                                                        name="passport_no" placeholder="Passport Number" value="{{ $profile->passport_no }}"
+                                                        id="passport_no" />
                                                     <span class="text-danger error-text passport_no_err"></span>
+                                                </div>
+                                                <!--end::Input-->
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xl-4">
+                                                <!--begin::Input-->
+                                                <div class="form-group">
+                                                    <label>Passport Issue</label>
+                                                    <select name="passport_issue"
+                                                        class="form-control form-control-solid form-control-lg"
+                                                        id="passport_issue">
+                                                        <option value="{{ $profile->passport_issue }}">{{ $profile->passport_issue }}</option>
+                                                        <option value="YE">P 1</option>
+                                                        <option value="ZM">P 2</option>
+                                                        <option value="ZW">P 3</option>
+                                                    </select>
+                                                    <span class="text-danger error-text passport_issue_err"></span>
+                                                </div>
+                                                <!--end::Input-->
+                                            </div>
+                                            <div class="col-xl-4">
+                                                <!--begin::Input-->
+                                                <div class="form-group">
+                                                    <label>Date of Issue</label>
+                                                    <input max="<?php echo date('Y-m-d') ?>" type="date" id="date_issue"
+                                                        class="form-control form-control-solid form-control-lg"
+                                                        name="date_issue" placeholder="Address Line 1"  value="{{date( 'Y-m-d',strtotime($profile->date_issue)) }}" />
+                                                        
+                                                    <span class="text-danger error-text date_issue_err"></span>
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
                                             <div class="col-xl-4">
                                                 <!--begin::Select-->
                                                 <div class="form-group">
-                                                    <label>Passport Type</label>
-                                                    <select name="passport_type"
+                                                    <label>Residency</label>
+                                                    <select name="residency"
                                                         class="form-control form-control-solid form-control-lg"
-                                                        id="passport_type">
-                                                        <option value="{{ $profile->passport_type }}">
-                                                            {{ $profile->passport_type }}</option>
+                                                        id="residency">
+                                                        <option value="{{ $profile->residency }}">{{ $profile->residency }}</option>
                                                         <option value="YE">P 1</option>
                                                         <option value="ZM">P 2</option>
                                                         <option value="ZW">P 3</option>
                                                     </select>
-                                                    <span class="text-danger error-text passport_type_err"></span>
+                                                    <span class="text-danger error-text residency_err"></span>
+                                                </div>
+                                                <!--end::Select-->
+                                            </div>
+
+                                            <div class="col-xl-4">
+                                                <!--begin::Select-->
+                                                <div class="form-group">
+                                                    <label>Location</label>
+                                                    <input type="text"
+                                                        class="form-control form-control-solid form-control-lg"
+                                                        name="location" placeholder="Location" value="{{ $profile->location }}" id="location" />
+                                                    <span class="text-danger error-text location_err"></span>
+                                                </div>
+                                                <!--end::Select-->
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xl-4">
+                                                <!--begin::Select-->
+                                                <div class="form-group">
+                                                    <label>Passport Expiry Date</label>
+                                                    <input max="<?php echo date('Y-m-d') ?>" type="date" id="date_expiry"
+                                                        class="form-control form-control-solid form-control-lg"
+                                                        name="date_expiry" placeholder="Address Line 1" value="{{date( 'Y-m-d',strtotime($profile->date_expiry)) }}"/>
+                                                    
+                                                    <span class="text-danger error-text date_expiry_err"></span>
+                                                </div>
+                                                <!--end::Select-->
+                                            </div>
+                                            <div class="col-xl-4">
+                                                <!--begin::Select-->
+                                                <div class="form-group">
+                                                    <label>UID Number</label>
+                                                    <input type="text"
+                                                        class="form-control form-control-solid form-control-lg"
+                                                        name="uid" placeholder="UID Number" value="{{ $profile->uid }}" id="uid" />
+                                                    <span class="text-danger error-text uid_err"></span>
+                                                </div>
+                                                <!--end::Select-->
+                                            </div>
+                                            <div class="col-xl-4">
+                                                <!--begin::Select-->
+                                                <div class="form-group">
+                                                    <label>Proffession</label>
+                                                    <input type="text"
+                                                        class="form-control form-control-solid form-control-lg"
+                                                        name="proffession" placeholder="Proffession" value="{{ $profile->proffession }}" id="proffession" />
+                                                    <span class="text-danger error-text proffession_err"></span>
                                                 </div>
                                                 <!--end::Select-->
                                             </div>
@@ -565,448 +605,161 @@
                                     <!--end::Wizard Step 1-->
                                     <!--begin::Wizard Step 2-->
                                     <div class="pb-5" data-wizard-type="step-content">
-                                        <h4 class="mb-10 font-weight-bold text-dark">Label </h4>
+                                        <h4 class="mb-10 font-weight-bold text-dark">INVENTAROY DATA </h4>
+                                        <span id="result"></span>
                                         <div class="row">
-                                            <div class="col-xl-4">
+                                            <div class="col-xl-12">
                                                 <div class="form-group">
-                                                    <label>Date Of Entry</label>
-                                                    <input max="<?php echo date('Y-m-d') ?>" type="date" id="entry_date" value="{{date( 'Y-m-d',strtotime($profile->entry_date)) }}"
-                                                        class="form-control form-control-solid form-control-lg"
-                                                        name="entry_date" placeholder="Address Line 1" />
-                                                    <input type="text" id="editid" value="{{ $profile->id }}"
-                                                        name="editid" hidden>
-                                                    <span class="text-danger error-text entry_date_err"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-xl-3">
-                                                <!--begin::Input-->
-                                                <div class="form-group">
-                                                    <label>Entered By</label>
-                                                    <select name="entered_by" id="entered_by"
+                                                    <label>Inventory Name</label>
+                                                    <select name="inventory_name" id="inventory_name"
                                                         class="form-control form-control-solid form-control-lg">
-                                                        <option value="{{ $profile->entered_by }}">
-                                                            {{ $profile->entered_by }}</option>
+                                                        <option value="{{ $profile->inventory_name }}">{{ $profile->inventory_name }}</option>
                                                         <option value="AF">ALshoja</option>
                                                         <option value="AX">Åland </option>
                                                         <option value="AL">Albania</option>
                                                     </select>
-                                                    <span class="text-danger error-text entered_by_err"></span>
+                                                    
+                                                    
+                                                    <span class="text-danger error-text inventory_name_err"></span>
                                                 </div>
-                                                <!--end::Input-->
-                                            </div>
-                                            <div class="col-xl-3">
-                                                <!--begin::Input-->
-                                                <div class="form-group">
-                                                    <label>Client Bought By</label>
-                                                    <select name="bought_by" id="bought_by"
-                                                        class="form-control form-control-solid form-control-lg">
-                                                        <option value="{{ $profile->bought_by }}">
-                                                            {{ $profile->bought_by }}</option>
-                                                        <option value="AF">ALshoja</option>
-                                                        <option value="AX">Åland </option>
-                                                        <option value="AL">Albania</option>
-                                                    </select>
-                                                    <span class="text-danger error-text bought_by_err"></span>
-
-                                                </div>
-                                                <!--end::Input-->
-                                            </div>
-                                            <div class="col-xl-3">
-                                                <!--begin::Input-->
-                                                <div class="form-group">
-                                                    <label>Client Entity By</label>
-                                                    <select name="entity" id="entity"
-                                                        class="form-control form-control-solid form-control-lg">
-                                                        <option value="{{ $profile->entity_location }}">
-                                                            {{ $profile->entity_location }}</option>
-                                                        <option value="AF">ALshoja</option>
-                                                        <option value="AX">Åland </option>
-                                                        <option value="AL">Albania</option>
-                                                    </select>
-                                                    <span class="text-danger error-text entity_err"></span>
-                                                </div>
-                                                <!--end::Input-->
-                                            </div>
-                                            <div class="col-xl-3">
-                                                <!--begin::Input-->
-                                                <div class="form-group">
-                                                    <label>Client Entity Location</label>
-                                                    <select name="entity_location" id="entity_location"
-                                                        class="form-control form-control-solid form-control-lg">
-                                                        <option value="{{ $profile->entity_location }}">
-                                                            {{ $profile->entity_location }}</option>
-                                                        <option value="AX">Åland </option>
-                                                        <option value="AL">Albania</option>
-                                                    </select>
-                                                    <span class="text-danger error-text entity_location_err"></span>
-                                                </div>
-                                                <!--end::Input-->
                                             </div>
                                         </div>
+
                                         <div class="row">
-                                            <div class="card-header">
-                                                <div class="row">
-                                                    <h3 class="card-title">
-                                                        Label
-                                                    </h3>
+                                            <div class="col-xl-3">
+                                                <!--begin::Input-->
+                                                <div class="form-group">
+                                                    <label>Inventory Codes</label>
+                                                    <select name="inventory_codes" id="inventory_codes"
+                                                    class="form-control form-control-solid form-control-lg">
+                                                    <option value="{{ $profile->inventory_codes }}">{{ $profile->inventory_codes }}</option>
+                                                    <option value="AF">ALshoja</option>
+                                                    <option value="AX">Åland </option>
+                                                    <option value="AL">Albania</option>
+                                                </select>
+                                                <span class="text-danger error-text inventory_codes_err"></span>
                                                 </div>
+                                                <!--end::Input-->
                                             </div>
-                                            <div>
-                                                <div class="form-group row">
-                                                    <div class="col-lg-3">
-                                                        <a href="javascript:void(0);"
-                                                            class="add_button btn btn-sm font-weight-bolder btn-light-primary btn-gradient-success">
-                                                            <i class="la la-plus"></i>Add
-                                                        </a>
-                                                    </div>
+                                            <div class="col-xl-9">
+                                                <!--begin::Input-->
+                                                <div class="form-group">
+                                                    <label>Notes</label>
+                                                    <textarea class="form-control form-control-solid"  name="note"
+                                                        id="note"> {{ $profile->note }}</textarea>
+                                                        <span class="text-danger error-text note_err"></span>
                                                 </div>
-                                                <div class="field_wrapper">
-                                                    @foreach ($profile->products as $key)
-                                                        <div class="row form-group" id="divid{{ $key->id }}">
-                                                            <div class="col-md-4">
-                                                                <!-- <label>Name:</label> -->
-
-                                                                <input required type="text" hidden name="product_id[]"
-                                                                    id="product_id[]" value="{{ $key->id }}">
-                                                                <select name="product_type[]" id="product_type[]"
-                                                                    class="form-control form-control-solid ">
-                                                                    <option value="{{ $key->product_type }}">
-                                                                        {{ $key->product_type }}</option>
-                                                                    <option value="YE">P 1</option>
-                                                                    <option value="ZM">P 2</option>
-                                                                    <option value="ZW">P 3</option>
-                                                                </select>
-                                                                {{-- <div class="d-md-none mb-2"></div> --}}
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <!-- <label>Name:</label> -->
-                                                                <select required name="manufacture_type[]"
-                                                                    id="manufacture_type[]"
-                                                                    class="form-control form-control-solid">
-                                                                    <option value="{{ $key->manufacture_type }}">
-                                                                        {{ $key->manufacture_type }}</option>
-                                                                    <option value="YE">P 1</option>
-                                                                    <option value="ZM">P 2</option>
-                                                                    <option value="ZW">P 3</option>
-                                                                </select>
-                                                                {{-- <div class="d-md-none mb-2"></div> --}}
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <!-- <label>Name:</label> -->
-                                                                <select required name="shipped_type[]" id="shipped_type[]"
-                                                                    class="form-control form-control-solid">
-                                                                    <option value="{{ $key->shipped_type }}">
-                                                                        {{ $key->shipped_type }}</option>
-                                                                    <option value="YE">P 1</option>
-                                                                    <option value="ZM">P 2</option>
-                                                                    <option value="ZW">P 3</option>
-                                                                </select>
-                                                                {{-- <div class="d-md-none mb-2"></div> --}}
-                                                            </div>
-                                                            <div class="col-md-2">
-                                                                <button type="button" value="{{ $key->id }}"
-                                                                    id="productdelete"
-                                                                    class="btn btn-gradient-danger remove-button">
-                                                                    Delete</button>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row form-group" id="divdelete{{ $key->id }}">
-                                                            <div class="col-md-3">
-                                                                <!-- <label>Name:</label> -->
-                                                                <input required type="text" class="form-control"
-                                                                    placeholder="Kg" name="quantity_kg[]" id="quantity_kg[]"
-                                                                    value="{{ $key->quantity_kg }}" />
-                                                                <div class="d-md-none mb-2"></div>
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <!-- <label>Name:</label> -->
-                                                                <input required type="text" class="form-control"
-                                                                    placeholder="G" name="quantity_g[]" id="quantity_g[]"
-                                                                    value="{{ $key->quantity_g }}" />
-                                                                <div class="d-md-none mb-2"></div>
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <!-- <label>Name:</label> -->
-                                                                <input required type="text" class="form-control"
-                                                                    placeholder="ML" name="quantity_ml[]" id="quantity_ml[]"
-                                                                    value="{{ $key->quantity_ml }}" />
-                                                                <div class="d-md-none mb-2"></div>
-                                                            </div>
-
-                                                            <div class="col-md-3">
-                                                                <!-- <label>Number:</label> -->
-                                                                <input required type="text" class="form-control"
-                                                                    placeholder="Digit" name="quantity_digit[]"
-                                                                    id="quantity_digit[]"
-                                                                    value="{{ $key->quantity_digit }}" />
-                                                                <div class="d-md-none mb-2"></div>
-                                                            </div>
-                                                        </div>
-
-                                                    @endforeach
-                                                </div>
-
-
+                                                <!--end::Input-->
                                             </div>
+                                            <div class="col-xl-12">
+                                                <!--begin::Input-->
+                                                <div class="form-group">
+                                                    <label>Inventory Detials</label>
+                                                    <textarea class="form-control form-control-solid"  name="inventory_detials" id="inventory_detials">
+                                                        {{ $profile->inventory_detials }}
+                                                    </textarea>
+                                                   <span class="text-danger error-text inventory_detials_err"></span>
+                                                </div>
+                                                <!--end::Input-->
+                                            </div>
+                                            
                                         </div>
+                                       
+                                       
                                     </div>
 
 
                                     <!--end::Wizard Step 2-->
                                     <!--begin::Wizard Step 3-->
-                                    <div class="pb-5" data-wizard-type="step-content">
-                                        <h6 class="mb-10 font-weight-bold text-dark">Label</h6>
+                                    < <div class="pb-5" data-wizard-type="step-content">
+                                        <h6 class="mb-10 font-weight-bold text-dark">Scanned Documents</h6>
                                         <!--begin::Select-->
-                                        <div class="row">
-                                            <div class="col-xl-3">
-                                                <!--begin::Input-->
-                                                <div class="form-group">
-                                                    <label>Shipping No</label>
-                                                    <input type="text" id="shipping_no"
-                                                        class="form-control form-control-solid form-control-lg"
-                                                        name="shipping_no" placeholder="Shipping No"
-                                                        value="{{ $profile->shipping_no }}" />
-                                                    <span class="text-danger error-text shipping_no_err"></span>
-                                                </div>
-                                                <!--end::Input-->
-                                            </div>
-                                            <div class="col-xl-3">
-                                                <!--begin::Input-->
-                                                <div class="form-group">
-                                                    <label>Coming From</label>
-                                                    <select name="coming_from" id="coming_from"
-                                                        class="form-control form-control-solid form-control-lg">
-                                                        <option value="{{ $profile->coming_from }}">
-                                                            {{ $profile->coming_from }}</option>
-                                                        <option value="AF">ALshoja</option>
-                                                        <option value="AX">Åland </option>
-                                                        <option value="AL">Albania</option>
-                                                    </select>
-                                                    <span class="text-danger error-text coming_from_err"></span>
-                                                </div>
-                                                <!--end::Input-->
-                                            </div>
-                                            <div class="col-xl-3">
-                                                <!--begin::Input-->
-                                                <div class="form-group">
-                                                    <label>Going to</label>
-                                                    <select name="going_to" id="going_to"
-                                                        class="form-control form-control-solid form-control-lg">
-                                                        <option value="{{ $profile->going_to }}">
-                                                            {{ $profile->going_to }}</option>
-                                                        <option value="AF">ALshoja</option>
-                                                        <option value="AX">Åland </option>
-                                                        <option value="AL">Albania</option>
-                                                    </select>
-                                                    <span class="text-danger error-text going_to_err"></span>
-                                                </div>
-                                                <!--end::Input-->
-                                            </div>
-                                            <div class="col-xl-3">
-                                                <!--begin::Input-->
-                                                <div class="form-group">
-                                                    <label>Final Destination</label>
-                                                    <select name="final_destination" id="final_destination"
-                                                        class="form-control form-control-solid form-control-lg">
-                                                        <option value="{{ $profile->final_destination }}">
-                                                            {{ $profile->final_destination }}</option>
-                                                        <option value="AF">ALshoja</option>
-                                                        <option value="AX">Åland </option>
-                                                        <option value="AL">Albania</option>
-                                                    </select>
-                                                    <span class="text-danger error-text final_destination_err"></span>
-                                                </div>
-                                                <!--end::Input-->
-                                            </div>
-                                        </div>
-
-                                        <h6 class="mb-10 font-weight-bold text-dark">Label</h6>
-                                        <div class="row form-group">
-                                            <div class="col-md-3">
-                                                <label>Profile Picture</label>
-                                                <div class="image-input image-input-empty image-input-outline"
-                                                    id="kt_image_1"
-                                                    style="background-image: url({{ url($profile->profile_image) }})">
-                                                    <div class="image-input-wrapper"></div>
-                                                    <label
-                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                        data-action="change" data-toggle="tooltip" title=""
-                                                        data-original-title="Change avatar">
-                                                        <i class="fa fa-pen icon-sm text-muted"></i>
-                                                        <input type="file" name="profile_image" id="profile_image"
-                                                          />
-                                                        <input type="text" hidden name="profile_avatar_remove1"
-                                                            value="{{ $profile->profile_image }}" />
-                                                        <span class="text-danger error-text profile_image_err"></span>
-                                                    </label>
-                                                    <span
-                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                        data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
-                                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
-                                                    </span>
-                                                    <span
-                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                        data-action="remove" data-toggle="tooltip" title="Remove avatar">
-                                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
-                                                    </span>
-                                                </div>
-                                                <!-- <span class="form-text text-muted">Max file size is 1MB and max number of files is 5.</span> -->
-                                                <div class="d-md-none mb-2"></div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <label>Product Image</label>
-                                                <div class="image-input image-input-empty image-input-outline"
-                                                    id="kt_image_2"
-                                                    style="background-image: url({{ url($profile->product_image) }})">
-                                                    <div class="image-input-wrapper"></div>
-                                                    <label
-                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                        data-action="change" data-toggle="tooltip" title=""
-                                                        data-original-title="Change avatar">
-                                                        <i class="fa fa-pen icon-sm text-muted"></i>
-                                                        <input type="file" name="product_image" id="product_image"
-                                                          />
-                                                        <input type="text" hidden name="profile_avatar_remove2"
-                                                            value="{{ $profile->product_image }}" />
-                                                        <span class="text-danger error-text product_image_err"></span>
-                                                    </label>
-                                                    <span
-                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                        data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
-                                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
-                                                    </span>
-                                                    <span
-                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                        data-action="remove" data-toggle="tooltip" title="Remove avatar">
-                                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
-                                                    </span>
-                                                </div>
-                                                <div class="d-md-none mb-2"></div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <label>Document</label>
-                                                <div class="image-input image-input-empty image-input-outline"
-                                                    id="kt_image_3"
-                                                    style="background-image: url(/{{ $profile->doc_image }})">
-                                                    <div class="image-input-wrapper"></div>
-                                                    <label
-                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                        data-action="change" data-toggle="tooltip" title=""
-                                                        data-original-title="Change avatar">
-                                                        <i class="fa fa-pen icon-sm text-muted"></i>
-                                                        <input type="file" name="doc_image" id="doc_image"
-                                                             />
-                                                        <input type="text" hidden sname="profile_avatar_remove3"
-                                                            value="{{ $profile->doc_image }}" />
-                                                        <span class="text-danger error-text doc_image_err"></span>
-                                                    </label>
-                                                    <span
-                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                        data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
-                                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
-                                                    </span>
-                                                    <span
-                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                        data-action="remove" data-toggle="tooltip" title="Remove avatar">
-                                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
-                                                    </span>
-                                                </div>
-                                                <div class="d-md-none mb-2"></div>
-                                            </div>
-                                        </div>
                                         
-                                        <h6 class="mb-10 font-weight-bold text-dark">Label</h6>
+                                        <div class="row form-group">
+                                            <div class="col-md-4">
+                                                <label>Scanned Document 1</label>
+                                                <input type="file" name="scanned_document1" id="scanned_document1" class="form-control form-control-solid" />
+                                                <input type="text" hidden name="profile_avatar_remove1" value="{{ $profile->scanned_document1 }}" />
+                                                <span class="text-danger error-text scanned_document_err"></span>
+                                           </div>
 
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label for="exampleTextarea">Note</label>
-                                                    <textarea class="form-control form-control-solid" rows="3" name="note"
-                                                        id="note">{{ $profile->note }}</textarea>
-                                                    <span class="text-danger error-text note_err"></span>
+                                            <div class="col-md-4">
+                                                <label>Scanned Document 2</label>
+                                                 <input type="file" name="scanned_document2" id="scanned_document2" class="form-control form-control-solid"/>
+                                                 <input type="text" hidden name="profile_avatar_remove2" value="{{ $profile->scanned_document2 }}" />
+                                                 <span class="text-danger error-text scanned_document_err"></span>
+                                            </div>
 
-                                                </div>
+                                            <div class="col-md-4">
+                                                <label>Scanned Document 3</label>
+                                                <input type="file" name="scanned_document3" id="scanned_document3" class="form-control form-control-solid" />
+                                                <input type="text" hidden name="profile_avatar_remove3" value="{{ $profile->scanned_document3 }}" />       
+                                                <span class="text-danger error-text scanned_document2_err"></span>
+                                               
                                             </div>
                                         </div>
+                                       
 
+                                        
+                                        <!--end::Select
+                                                                                                                <input type = 'submit' value = "Save" class="btn btn-success font-weight-bolder"/>
+                                                                                                                <button class="btn btn-success font-weight-bolder" id="editstep">smave</button>-->
+                                        
                                     </div>
+
 
                                     <!--end::Wizard Step 3-->
                                     <!--begin::Wizard Step 4-->
-                                    <div class="pb-5" data-wizard-type="step-content">
+                                    < <div class="pb-5" data-wizard-type="step-content">
+                                        <h6 class="mb-10 font-weight-bold text-dark">Scanned Documents</h6>
+                                        <!--begin::Select-->
+                                        
+                                        <div class="row form-group">
+                                            <div class="col-md-3">
+                                                <label>Scanned Document 4</label>
+                                                <input type="file" name="scanned_document4" id="scanned_document4" class="form-control form-control-solid" />
+                                                <input type="text" hidden name="profile_avatar_remove4" value="{{ $profile->scanned_document4 }}" />
+                                                <span class="text-danger error-text scanned_document_err"></span>
+                                           </div>
 
-                                        <h6 class="mb-10 font-weight-bold text-dark">Label</h6>
-                                        <!--begin::Input-->
-                                        <div class="form-group row">
-                                            <div class="col-xl-12">
-                                                <div class="form-group">
-                                                    <label>Record Status</label>
-                                                    <select name="record_status" id="record_status"
-                                                        class="form-control form-control-solid ">
-                                                        <option value="{{ $profile->record_status }}">
-                                                            {{ $profile->record_status }}</option>
-                                                        <option value="YE">R1</option>
-                                                        <option value="ZM">r 2</option>
-                                                        <option value="ZW">r 3</option>
-                                                    </select>
-                                                    <span class="text-danger error-text record_status_err"></span>
-                                                    <div class="d-md-none mb-2"></div>
-                                                </div>
+                                            <div class="col-md-3">
+                                                <label>Scanned Document 5</label>
+                                                 <input type="file" name="scanned_document5" id="scanned_document5" class="form-control form-control-solid"/>
+                                                 <input type="text" hidden name="profile_avatar_remove5" value="{{ $profile->scanned_document5 }}" />
+                                                 <span class="text-danger error-text scanned_document_err"></span>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <label>Scanned Document 6</label>
+                                                <input type="file" name="scanned_document6" id="scanned_document6" class="form-control form-control-solid" />
+                                                <input type="text" hidden name="profile_avatar_remove6" value="{{ $profile->scanned_document6 }}" />       
+                                                <span class="text-danger error-text scanned_document2_err"></span>
+                                               
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Scanned Document 7</label>
+                                                <input type="file" name="scanned_document7" id="scanned_document7" class="form-control form-control-solid" />
+                                                <input type="text" hidden name="profile_avatar_remove7" value="{{ $profile->scanned_document7 }}" />       
+                                                <span class="text-danger error-text scanned_document2_err"></span>
+                                               
                                             </div>
                                         </div>
+                                       
 
-                                        <h6 class="mb-10 font-weight-bold text-dark">Label</h6>
-                                        <div class="form-group row">
-                                            <div class="col-xl-12">
-                                                <div class="form-group">
-                                                    <label>Record Department Status</label>
-                                                    <select name="record_dep_transfer" id="record_dep_transfer"
-                                                        class="form-control form-control-solid ">
-                                                        <option value="{{ $profile->record_dep_transfer }}">
-                                                            {{ $profile->record_dep_transfer }}</option>
-                                                        <option value="YE">s 1</option>
-                                                        <option value="ZM">s 2</option>
-                                                        <option value="ZW">s 3</option>
-                                                    </select>
-                                                    <span class="text-danger error-text record_dep_transfer_err"></span>
-                                                    <div class="d-md-none mb-2"></div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        
+                                        <!--end::Select
+                                                                                                                <input type = 'submit' value = "Save" class="btn btn-success font-weight-bolder"/>
+                                                                                                                <button class="btn btn-success font-weight-bolder" id="editstep">smave</button>-->
+                                        
                                     </div>
 
                                     <!--end::Wizard Step 4-->
                                     <!--begin::Wizard Step 5-->
-                                    <div class="pb-5" data-wizard-type="step-content">
-                                        {{-- <h6 class="mb-10 font-weight-bold text-dark">Label</h6> --}}
-                                        <!--begin::Input-->
-                                        <div class="form-group row">
-                                            <div class="col-xl-6">
-                                                <div class="form-group">
-                                                    <label>Department</label>
-                                                    <h6>{{ $profile->department->name }}</h6>
-                                                    <div class="d-md-none mb-2"></div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-6">
-                                                <div class="form-group">
-                                                    <label>Section</label>
-                                                    <h6>{{ $profile->section->name }}</h6>
-                                                    <div class="d-md-none mb-2"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="btn-group">
-                                            {{-- <button id="submit" type="submit"
-                                                class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4">Update</button> --}}
-                                        </div>
-
-                                    </div>
+                                    
                                     <!--end::Wizard Step 5-->
                                     <!--begin::Wizard Actions-->
                                     <div class="d-flex justify-content-between border-top mt-5 pt-10">
+                                        
                                         <div class="mr-2">
                                             <button type="button" id="previous"
                                                 class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"

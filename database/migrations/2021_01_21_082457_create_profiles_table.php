@@ -21,7 +21,7 @@ class CreateProfilesTable extends Migration
             $table->string('dob');
             $table->string('gender');
             $table->string('place_birth'); 
-            $table->string('address');
+            $table->text('address');
             $table->string('referal_name');
             $table->string('product_type');
             $table->string('passport_no');
@@ -39,6 +39,10 @@ class CreateProfilesTable extends Migration
             $table->string('scanned_document1');
             $table->string('scanned_document2');
             $table->string('scanned_document3');
+            $table->string('scanned_document4');
+            $table->string('scanned_document5');
+            $table->string('scanned_document6');
+            $table->string('scanned_document7');
              $table->tinyInteger('is_completed')->default(0)->nullable();
             $table->tinyInteger('belongs_to')->nullable();
             $table->tinyInteger('is_drafted')->nullable();
