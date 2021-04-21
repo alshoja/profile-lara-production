@@ -47,6 +47,9 @@ class ProfileController extends Controller
                     ->orWhere('gender', 'like', '%' . $search . '%');
             }
             if ($tab === "inbox") {
+                if (Auth::user()->role == "supervisor") {
+                    $query->orWhere('on_final_approval', 1);
+                }
                 $query->whereHas('trackings', function ($query) {
                     if (Auth::user()->role == "supervisor") {
                         $query->where('from', 'employ')
@@ -122,47 +125,45 @@ class ProfileController extends Controller
     {
         $validator = Validator::make($request->all(), [
 
-                  'name_arabic'  => 'required',
-                   'name'  => 'required',
-                    'nationality' => 'required', 
-                    'dob'  => 'required',
-                    'gender' => 'required',
-                    'place_birth'  => 'required',
-                    'address'  => 'required',
-                    'referal_name'  => 'required',
-                    'product_type'  => 'required',
-                    'passport_no'  => 'required',
-                    'passport_issue'  => 'required',
-                    'date_issue'  => 'required',
+            'name_arabic'  => 'required',
+            'name'  => 'required',
+            'nationality' => 'required',
+            'dob'  => 'required',
+            'gender' => 'required',
+            'place_birth'  => 'required',
+            'address'  => 'required',
+            'referal_name'  => 'required',
+            'product_type'  => 'required',
+            'passport_no'  => 'required',
+            'passport_issue'  => 'required',
+            'date_issue'  => 'required',
             'residency'  => 'required',
-                 'location'  => 'required',
-                    'date_expiry'  => 'required',
-                    'uid'  => 'required',
-                   'proffession'  => 'required',
+            'location'  => 'required',
+            'date_expiry'  => 'required',
+            'uid'  => 'required',
+            'proffession'  => 'required',
         ]);
         if ($validator->fails()) {
-         return response()->json(['error' => $validator->errors()], 422);
+            return response()->json(['error' => $validator->errors()], 422);
         } else {
             $profile = new Profile();
             $profile->name_arabic = $request->name_arabic;
-
             $profile->name = $request->name;
-
             $profile->nationality = $request->nationality;
             $profile->dob = $request->dob;
             $profile->gender = $request->gender;
-            $profile-> place_birth =$request->place_birth;
-            $profile->address =$request->address;
-            $profile->referal_name =$request->referal_name;
-            $profile->product_type=$request->product_type;
-            $profile->passport_no =$request->passport_no;
-            $profile->passport_issue =$request->passport_issue;
-            $profile-> date_issue =$request->date_issue;
-            $profile->residency =$request->residency;
-            $profile->location =$request->location;
-            $profile->date_expiry =$request->date_expiry;
-            $profile->uid =$request->uid;
-            $profile->proffession =$request->proffession;
+            $profile->place_birth = $request->place_birth;
+            $profile->address = $request->address;
+            $profile->referal_name = $request->referal_name;
+            $profile->product_type = $request->product_type;
+            $profile->passport_no = $request->passport_no;
+            $profile->passport_issue = $request->passport_issue;
+            $profile->date_issue = $request->date_issue;
+            $profile->residency = $request->residency;
+            $profile->location = $request->location;
+            $profile->date_expiry = $request->date_expiry;
+            $profile->uid = $request->uid;
+            $profile->proffession = $request->proffession;
             $profile->inventory_name = "";
             $profile->inventory_codes = "";
             $profile->note = "";
@@ -174,14 +175,14 @@ class ProfileController extends Controller
             $profile->scanned_document5 = "";
             $profile->scanned_document6 = "";
             $profile->scanned_document7 = "";
-            
+
             $profile->is_drafted = 1;
             $profile->dep_id = session('department');
             $profile->section_id = session('section')[0];
             $profile->employ_id = Auth::user()->id;
             $profile->save();
             return response()->json(['id' => $profile->id]);
-      }
+        }
     }
 
     public function updateUser(Request $request)
@@ -204,8 +205,6 @@ class ProfileController extends Controller
                 $id = $request->input('editid');
 
                 try {
-                   
-
                     $data = array("inventory_name" => $inventory_name, "inventory_codes" => $inventory_codes, "note" => $note, "inventory_detials" => $inventory_detials);
                     Profile::updateData($id, $data);
                     return response()->json(['success' => 'Form is successfully submitted!']);
@@ -219,7 +218,7 @@ class ProfileController extends Controller
     public function stageThree(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            
+
             'scanned_document1' => 'required',
             'scanned_document2' => 'required',
             'scanned_document3' => 'required',
@@ -228,14 +227,14 @@ class ProfileController extends Controller
             return response()->json(['error' => $validator->errors()], 422);
         } else {
 
-            
-            
+
+
             $scanned_document1 = $request->file('scanned_document1')->store('images');
             $scanned_document2 = $request->file('scanned_document2')->store('images');
             $scanned_document3 = $request->file('scanned_document3')->store('images');
-           
+
             $id = $request->input('editid1');
-            $data = array( "scanned_document1" => $scanned_document1, "scanned_document2" => $scanned_document2, "scanned_document3" => $scanned_document3);
+            $data = array("scanned_document1" => $scanned_document1, "scanned_document2" => $scanned_document2, "scanned_document3" => $scanned_document3);
             try {
                 DB::table('profiles')->where('id', $id)->update($data);
                 return response()->json(['success' => 'Form is successfully submitted!']);
@@ -334,24 +333,23 @@ class ProfileController extends Controller
     public function profileUpdate(Request $request)
     {
         $validator = Validator::make($request->all(), [
-
-                   'name_arabic'  => 'required',
-                   'name'  => 'required',
-                    'nationality' => 'required', 
-                    'dob'  => 'required',
-                    'gender' => 'required',
-                    'place_birth'  => 'required',
-                    'address'  => 'required',
-                    'referal_name'  => 'required',
-                    'product_type'  => 'required',
-                    'passport_no'  => 'required',
-                    'passport_issue'  => 'required',
-                    'date_issue'  => 'required',
-                    'residency'  => 'required',
-                     'location'  => 'required',
-                    'date_expiry'  => 'required',
-                    'uid'  => 'required',
-                    'proffession'  => 'required',
+            'name_arabic'  => 'required',
+            'name'  => 'required',
+            'nationality' => 'required',
+            'dob'  => 'required',
+            'gender' => 'required',
+            'place_birth'  => 'required',
+            'address'  => 'required',
+            'referal_name'  => 'required',
+            'product_type'  => 'required',
+            'passport_no'  => 'required',
+            'passport_issue'  => 'required',
+            'date_issue'  => 'required',
+            'residency'  => 'required',
+            'location'  => 'required',
+            'date_expiry'  => 'required',
+            'uid'  => 'required',
+            'proffession'  => 'required',
         ]);
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], 422);
@@ -404,54 +402,41 @@ class ProfileController extends Controller
         }
 
         $data = array(
-
-
             "name_arabic" => $request->input('name_arabic'),
-            "name"=> $request->input('name'),
-            "nationality"=> $request->input('nationality'),
-            "dob"=> $request->input('dob'),
+            "name" => $request->input('name'),
+            "nationality" => $request->input('nationality'),
+            "dob" => $request->input('dob'),
             "gender" => $request->input('gender'),
-           "place_birth"=> $request->input('place_birth'),
-           "address"=> $request->input('address'),
+            "place_birth" => $request->input('place_birth'),
+            "address" => $request->input('address'),
             "referal_name" => $request->input('referal_name'),
             "product_type" => $request->input('product_type'),
-           "passport_no" => $request->input('passport_no'),
-            "passport_issue"=> $request->input('passport_issue'),
-            "date_issue"=> $request->input('date_issue'),
+            "passport_no" => $request->input('passport_no'),
+            "passport_issue" => $request->input('passport_issue'),
+            "date_issue" => $request->input('date_issue'),
             "residency" => $request->input('residency'),
-           "location"=> $request->input('location'),
-            "date_expiry"=> $request->input('date_expiry'),
+            "location" => $request->input('location'),
+            "date_expiry" => $request->input('date_expiry'),
             "uid" => $request->input('uid'),
-           "proffession"=> $request->input('proffession'),
-            "inventory_name"=> $request->input('inventory_name'),
-           "inventory_codes"=> $request->input('inventory_codes'),
+            "proffession" => $request->input('proffession'),
+            "inventory_name" => $request->input('inventory_name'),
+            "inventory_codes" => $request->input('inventory_codes'),
             "note" => $request->input('note'),
             "inventory_detials" => $request->input('inventory_detials'),
-            "scanned_document1" =>$progileimage,
-           "scanned_document2" =>$productimage,
-            "scanned_document3" =>$docimage,
-            "scanned_document4" =>$docimage4,
-            "scanned_document5" =>$docimage5,
-            "scanned_document6" =>$docimage6,
-            "scanned_document7" =>$docimage7
-
-
-
-
-           
+            "scanned_document1" => $progileimage,
+            "scanned_document2" => $productimage,
+            "scanned_document3" => $docimage,
+            "scanned_document4" => $docimage4,
+            "scanned_document5" => $docimage5,
+            "scanned_document6" => $docimage6,
+            "scanned_document7" => $docimage7
         );
-        
-            try {
-                
-                    
-                DB::table('profiles')->where('id', $editid)->update($data);
-                return response()->json(['success' => 'Form is successfully submitted!']);
-        
-            } catch (\Illuminate\Database\QueryException $ex) {
-                dd($ex->getMessage());
-            }
-
-           
+        try {
+            DB::table('profiles')->where('id', $editid)->update($data);
+            return response()->json(['success' => 'Form is successfully submitted!']);
+        } catch (\Illuminate\Database\QueryException $ex) {
+            dd($ex->getMessage());
+        }
     }
     public function productDelete(Request $request)
     {
