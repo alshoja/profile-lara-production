@@ -117,7 +117,7 @@
 
                                         <!--end::Input-->
                                         <div class="row">
-                                            <div class="col-xl-3">
+                                            <div class="col-xl-4">
                                                 <!--begin::Input-->
                                                 <div class="form-group">
                                                     <label>Nationality</label>
@@ -382,7 +382,7 @@
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
-                                            <div class="col-xl-3">
+                                            <div class="col-xl-4">
                                                 <!--begin::Input-->
                                                 <div class="form-group">
                                                     <label>Gender</label>
@@ -395,7 +395,7 @@
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
-                                            <div class="col-xl-3">
+                                            <div class="col-xl-4">
                                                 <div class="form-group">
                                                     <label>DOB</label>
                                                     <input type="date"
@@ -404,7 +404,7 @@
                                                     <span class="text-danger error-text dob_err"></span>
                                                 </div>
                                             </div>
-                                            <div class="col-xl-3">
+                                            <div class="col-xl-4">
                                                 <div class="form-group">
                                                     <label>Place of birth</label>
                                                     <input type="text" class="form-control form-control-solid form-control-lg"
@@ -412,21 +412,22 @@
                                                 </div>
                                                     <span class="text-danger error-text place_birth_err"></span>
                                                 </div>
+                                                <div class="col-xl-8">
+                                                    <!--begin::Input-->
+                                                    <div class="form-group">
+                                                        <label>Address</label>
+                                                        <textarea  class="form-control form-control-solid form-control-lg"
+                                                        name="address" placeholder="Address" value="" id="address" ></textarea>
+                                                        <span class="text-danger error-text address_err"></span>
+                                                    </div>
+                                                    <!--end::Input-->
+                                                </div>
                                             
                                         </div>
 
                                         <div class="row">
-                                            <div class="col-xl-3">
-                                                <!--begin::Input-->
-                                                <div class="form-group">
-                                                    <label>Address</label>
-                                                    <input type="text" class="form-control form-control-solid form-control-lg"
-                                                    name="address" placeholder="Address" value="" id="address" />
-                                                    <span class="text-danger error-text address_err"></span>
-                                                </div>
-                                                <!--end::Input-->
-                                            </div>
-                                            <div class="col-xl-3">
+                                            
+                                            <div class="col-xl-4">
                                                 <!--begin::Input-->
                                                 <div class="form-group">
                                                     <label>Referal Name</label>
@@ -436,7 +437,7 @@
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
-                                            <div class="col-xl-3">
+                                            <div class="col-xl-4">
                                                 <div class="form-group">
                                                     <label>Product Type</label>
                                                     <select name="product_type"
@@ -449,7 +450,7 @@
                                                     <span class="text-danger error-text product_type_err"></span>
                                                 </div>
                                             </div>
-                                            <div class="col-xl-3">
+                                            <div class="col-xl-4">
                                                 <!--begin::Input-->
                                                 <div class="form-group">
                                                     <label>Passport No</label>
@@ -463,7 +464,7 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-xl-3">
+                                            <div class="col-xl-4">
                                                 <!--begin::Input-->
                                                 <div class="form-group">
                                                     <label>Passport Issue</label>
@@ -479,7 +480,7 @@
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
-                                            <div class="col-xl-3">
+                                            <div class="col-xl-4">
                                                 <!--begin::Input-->
                                                 <div class="form-group">
                                                     <label>Date of Issue</label>
@@ -491,7 +492,7 @@
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
-                                            <div class="col-xl-3">
+                                            <div class="col-xl-4">
                                                 <!--begin::Select-->
                                                 <div class="form-group">
                                                     <label>Residency</label>
@@ -508,7 +509,7 @@
                                                 <!--end::Select-->
                                             </div>
 
-                                            <div class="col-xl-3">
+                                            <div class="col-xl-4">
                                                 <!--begin::Select-->
                                                 <div class="form-group">
                                                     <label>Location</label>
@@ -521,7 +522,7 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-xl-3">
+                                            <div class="col-xl-4">
                                                 <!--begin::Select-->
                                                 <div class="form-group">
                                                     <label>Passport Expiry Date</label>
@@ -533,7 +534,7 @@
                                                 </div>
                                                 <!--end::Select-->
                                             </div>
-                                            <div class="col-xl-3">
+                                            <div class="col-xl-4">
                                                 <!--begin::Select-->
                                                 <div class="form-group">
                                                     <label>UID Number</label>
@@ -544,7 +545,7 @@
                                                 </div>
                                                 <!--end::Select-->
                                             </div>
-                                            <div class="col-xl-3">
+                                            <div class="col-xl-4">
                                                 <!--begin::Select-->
                                                 <div class="form-group">
                                                     <label>Proffession</label>

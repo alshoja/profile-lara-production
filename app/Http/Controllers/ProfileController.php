@@ -170,6 +170,10 @@ class ProfileController extends Controller
             $profile->scanned_document1 = "";
             $profile->scanned_document2 = "";
             $profile->scanned_document3 = "";
+            $profile->scanned_document4 = "";
+            $profile->scanned_document5 = "";
+            $profile->scanned_document6 = "";
+            $profile->scanned_document7 = "";
             
             $profile->is_drafted = 1;
             $profile->dep_id = session('department');
@@ -331,122 +335,123 @@ class ProfileController extends Controller
     {
         $validator = Validator::make($request->all(), [
 
-            "name" => 'required',
-            "nationality" => 'required',
-            "dob" => 'required',
-            "gender" => 'required',
-            "citizen_location" => 'required',
-            "citizen_id" => 'required',
-            "citizen_uid" => 'required',
-            "passport_no" => 'required',
-            "passport_type" => 'required',
-            "entered_by" => 'required',
-            "bought_by" => 'required',
-            "entity" => 'required',
-            "entry_date" => 'required',
-            "entity_location" => 'required',
-            "shipping_no" => 'required',
-            "coming_from" => 'required',
-            "going_to" => 'required',
-            "final_destination" => 'required',
-            'profile_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'product_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'doc_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            // "note" => 'required',
-            "record_status" => 'required',
-            "record_dep_transfer" => 'required',
+                   'name_arabic'  => 'required',
+                   'name'  => 'required',
+                    'nationality' => 'required', 
+                    'dob'  => 'required',
+                    'gender' => 'required',
+                    'place_birth'  => 'required',
+                    'address'  => 'required',
+                    'referal_name'  => 'required',
+                    'product_type'  => 'required',
+                    'passport_no'  => 'required',
+                    'passport_issue'  => 'required',
+                    'date_issue'  => 'required',
+                    'residency'  => 'required',
+                     'location'  => 'required',
+                    'date_expiry'  => 'required',
+                    'uid'  => 'required',
+                    'proffession'  => 'required',
         ]);
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], 422);
         }
 
         $editid = $request->input('editid');
-        $image_1 = $request->file('profile_image');
-        $image_2 = $request->file('product_image');
-        $image_3 = $request->file('doc_image');
+        $image_1 = $request->file('scanned_document1');
+        $image_2 = $request->file('scanned_document2');
+        $image_3 = $request->file('scanned_document3');
+        $image_4 = $request->file('scanned_document4');
+        $image_5 = $request->file('scanned_document5');
+        $image_6 = $request->file('scanned_document6');
+        $image_7 = $request->file('scanned_document7');
+
         if ($image_1 == null) {
             $progileimage =  $request->input('profile_avatar_remove1');
         } else {
-            $progileimage = $request->file('profile_image')->store('images');
+            $progileimage = $request->file('scanned_document1')->store('images');
         }
 
         if ($image_2 == null) {
             $productimage =  $request->input('profile_avatar_remove2');
         } else {
-            $productimage = $request->file('product_image')->store('images');
+            $productimage = $request->file('scanned_document2')->store('images');
         }
         if ($image_3 == null) {
             $docimage =  $request->input('profile_avatar_remove3');
         } else {
-            $docimage = $request->file('doc_image')->store('images');
+            $docimage = $request->file('scanned_document3')->store('images');
+        }
+        if ($image_4 == null) {
+            $docimage4 =  $request->input('profile_avatar_remove4');
+        } else {
+            $docimage4 = $request->file('scanned_document4')->store('images');
+        }
+        if ($image_5 == null) {
+            $docimage5 =  $request->input('profile_avatar_remove5');
+        } else {
+            $docimage5 = $request->file('scanned_document5')->store('images');
+        }
+        if ($image_6 == null) {
+            $docimage6 =  $request->input('profile_avatar_remove6');
+        } else {
+            $docimage6 = $request->file('scanned_document6')->store('images');
+        }
+        if ($image_7 == null) {
+            $docimage7 =  $request->input('profile_avatar_remove7');
+        } else {
+            $docimage7 = $request->file('scanned_document7')->store('images');
         }
 
         $data = array(
-            "name" => $request->input('name'),
-            "nationality" => $request->input('nationality'),
-            "dob" => $request->input('dob'),
-            "gender" => $request->input('citizen_status'),
-            "citizen_location" => $request->input('citizen_location'),
-            "citizen_id" => $request->input('citizen_id'),
-            "citizen_uid" => $request->input('citizen_uid'),
-            "passport_no" => $request->input('passport_no'),
-            "passport_type" => $request->input('passport_no'),
-            "entered_by" => $request->input('entered_by'),
-            "bought_by" => $request->get('bought_by'),
-            "entity" => $request->input('entity'),
-            "entry_date" => $request->input('entry_date'),
-            "entity_location" => $request->input('entity_location'),
-            "shipping_no" => $request->input('shipping_no'),
-            "coming_from" => $request->input('coming_from'),
-            "going_to" => $request->input('going_to'),
-            "final_destination" => $request->input('final_destination'),
-            "profile_image" => $progileimage,
-            "product_image" => $productimage,
-            "doc_image" => $docimage,
+
+
+            "name_arabic" => $request->input('name_arabic'),
+            "name"=> $request->input('name'),
+            "nationality"=> $request->input('nationality'),
+            "dob"=> $request->input('dob'),
+            "gender" => $request->input('gender'),
+           "place_birth"=> $request->input('place_birth'),
+           "address"=> $request->input('address'),
+            "referal_name" => $request->input('referal_name'),
+            "product_type" => $request->input('product_type'),
+           "passport_no" => $request->input('passport_no'),
+            "passport_issue"=> $request->input('passport_issue'),
+            "date_issue"=> $request->input('date_issue'),
+            "residency" => $request->input('residency'),
+           "location"=> $request->input('location'),
+            "date_expiry"=> $request->input('date_expiry'),
+            "uid" => $request->input('uid'),
+           "proffession"=> $request->input('proffession'),
+            "inventory_name"=> $request->input('inventory_name'),
+           "inventory_codes"=> $request->input('inventory_codes'),
             "note" => $request->input('note'),
-            "record_status" => $request->input('record_status'),
-            "record_dep_transfer" => $request->input('record_dep_transfer'),
-            "belongs_to" => $request->input('belongs_to')
+            "inventory_detials" => $request->input('inventory_detials'),
+            "scanned_document1" =>$progileimage,
+           "scanned_document2" =>$productimage,
+            "scanned_document3" =>$docimage,
+            "scanned_document4" =>$docimage4,
+            "scanned_document5" =>$docimage5,
+            "scanned_document6" =>$docimage6,
+            "scanned_document7" =>$docimage7
+
+
+
+
+           
         );
-        if ($request->ajax()) {
+        
             try {
-                $product_id = $request->product_id;
-                $product_type = $request->product_type;
-                $quantity_kg = $request->quantity_kg;
-                $quantity_g = $request->quantity_g;
-                $quantity_ml = $request->quantity_ml;
-                $quantity_digit = $request->quantity_digit;
-                $manufacture_type = $request->manufacture_type;
-                $shipped_type = $request->shipped_type;
-                $profile_id = $editid;
-                $product = new Product();
-                $m = count($product_type);
-                for ($count = 0; $count < count($product_type); $count++) {
-                    $dataa = array(
-                        'id' => $product_id[$count],
-                        'product_type' => $product_type[$count],
-                        'quantity_kg'  => $quantity_kg[$count],
-                        'quantity_g'  => $quantity_g[$count],
-                        'quantity_ml'  => $quantity_ml[$count],
-                        'quantity_digit' => $quantity_digit[$count],
-                        'manufacture_type' => $manufacture_type[$count],
-                        'shipped_type' => $shipped_type[$count],
-                        'profile_id' => $profile_id
-                    );
-                    if ($product_id[$count] == "") {
-                        Product::create($dataa);
-                    } else {
-                        DB::table('products')->where('id', $product_id[$count])->update($dataa);
-                    }
-                    //  Product::create($dataa);
-                }
+                
+                    
                 DB::table('profiles')->where('id', $editid)->update($data);
+                return response()->json(['success' => 'Form is successfully submitted!']);
+        
             } catch (\Illuminate\Database\QueryException $ex) {
                 dd($ex->getMessage());
             }
 
-            return response()->json(['success' => 'Form is successfully submitted!']);
-        }
+           
     }
     public function productDelete(Request $request)
     {

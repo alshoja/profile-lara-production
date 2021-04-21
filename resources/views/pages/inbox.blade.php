@@ -467,12 +467,22 @@
                                                                                     <br>
 
                                                                                     <div class="form-group">
+                                                                                        <div class="col-xl-6">
                                                                                         <label
                                                                                             class="text-muted font-size-sm">First
                                                                                             Name</label>
                                                                                         <p id="name"
                                                                                             class="text-secondary font-weight-lighter font-size-sm">
                                                                                         </p>
+                                                                                        </div>
+                                                                                        <div class="col-xl-6">
+                                                                                            <label
+                                                                                                class="text-muted font-size-sm">First
+                                                                                                Name</label>
+                                                                                            <p id="name"
+                                                                                                class="text-secondary font-weight-lighter font-size-sm">
+                                                                                            </p>
+                                                                                            </div>
 
                                                                                     </div>
 
