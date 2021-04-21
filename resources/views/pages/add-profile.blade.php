@@ -388,9 +388,8 @@
                                                     <label>Gender</label>
                                                     <select name="gender"
                                                         class="form-control form-control-solid form-control-lg" id="gender">
-                                                        <option value="">Select</option>
-                                                        <option value="AF">Male</option>
-                                                        <option value="AX">Female</option>
+                                                        <option value="male">Male</option>
+                                                        <option value="female">Female</option>
                                                     </select>
                                                     <span class="text-danger error-text gender_err"></span>
                                                 </div>
