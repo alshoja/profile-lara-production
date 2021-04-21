@@ -219,6 +219,13 @@ function setVerifiedNote(profile) {
   }
 }
 function setEprofile(profile) {
+
+  let scannedDocument1 = getExtension(profile.scanned_document1);
+  let scannedDocument2 = getExtension(profile.scanned_document2);
+  let scannedDocument3 = getExtension(profile.scanned_document3);
+
+  console.log('here is the extension of doc1',scannedDocument1);
+  
   let heading = document.getElementById("exampleModalLabel");
   heading.innerHTML = profile.name;
   document.getElementById("name_arabic").innerHTML = profile.name_arabic;
@@ -447,9 +454,9 @@ function AproveOrReject(action) {
   let note = null;
   console.log(action);
   if (action == "signed") {
-    note = 'Approved';
+    note = "Approved";
   } else {
-    note = 'Rejected';
+    note = "Rejected";
   }
   const payLoad = {};
   payLoad.note = note;
@@ -514,3 +521,8 @@ function getSections(val, url) {
   document.getElementById("section_id").innerHTML = html;
   return false;
 }
+
+function getExtension(file) {
+  return file.split(".").pop();
+}
+

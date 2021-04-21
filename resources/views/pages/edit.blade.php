@@ -670,7 +670,7 @@
 
                                     <!--end::Wizard Step 2-->
                                     <!--begin::Wizard Step 3-->
-                                    < <div class="pb-5" data-wizard-type="step-content">
+                                     <div class="pb-5" data-wizard-type="step-content">
                                         <h6 class="mb-10 font-weight-bold text-dark">Scanned Documents</h6>
                                         <!--begin::Select-->
                                         
@@ -709,7 +709,7 @@
 
                                     <!--end::Wizard Step 3-->
                                     <!--begin::Wizard Step 4-->
-                                    < <div class="pb-5" data-wizard-type="step-content">
+                                     <div class="pb-5" data-wizard-type="step-content">
                                         <h6 class="mb-10 font-weight-bold text-dark">Scanned Documents</h6>
                                         <!--begin::Select-->
                                         

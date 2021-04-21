@@ -26,11 +26,11 @@ class CreateProfilesTable extends Migration
             $table->string('product_type');
             $table->string('passport_no');
             $table->string('passport_issue');
-            $table->string('date_issue'); 
+            $table->string('date_issue');
             $table->string('residency');
             $table->string('location');
-            $table->string('date_expiry'); 
-            $table->string('uid'); 
+            $table->string('date_expiry');
+            $table->string('uid');
             $table->string('proffession');
             $table->string('inventory_name');
             $table->string('inventory_codes');

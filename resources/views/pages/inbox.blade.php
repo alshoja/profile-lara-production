@@ -6,6 +6,54 @@
             <!--begin::Container-->
             <div class="container">
                 <!--begin::Row-->
+                <div class="modal fade" id="final_documents" tabindex="-1" role="dialog" aria-labelledby="final"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Upload Final Documents</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <i aria-hidden="true" class="ki ki-close"></i>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <!--begin::Form-->
+                                <form class="form" method="POST" action="{{ url('') }}">
+                                    @csrf
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label>Doc 1</label>
+                                            <input name="1" type="file" class="form-control form-control-solid"
+                                                placeholder="Name" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Doc 2</label>
+                                            <input name="2" type="file" class="form-control form-control-solid"
+                                                placeholder="Name" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Doc 3</label>
+                                            <input name="3" type="file" class="form-control form-control-solid"
+                                                placeholder="Name" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Doc 4</label>
+                                            <input name="4" type="file" class="form-control form-control-solid"
+                                                placeholder="Name" />
+                                        </div>
+                                    </div>
+                                    <!--end::Form-->
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-light-primary font-weight-bold"
+                                    data-dismiss="modal">Close</button>
+                                <input type="submit" value="Save" class="btn btn-primary mr-2">
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card card-custom gutter-b">
@@ -70,7 +118,7 @@
                                                 <thead>
                                                     <tr class="text-left text-uppercase">
                                                         <th class="pr-0" style="width: 50px">ID</th>
-                                                        <th class="pr-0" style="width: 50px">Created</th>
+                                                        <th class="pr-0" style="width: 50px">created</th>
                                                         <th class="pr-0" style="width: 50px">author</th>
                                                         <th class="pr-0" style="min-width: 120px"></th>
                                                         <th class="pr-0" style="min-width: 120px">nationality</th>
@@ -88,7 +136,8 @@
                                                             </td>
                                                             <td class="pl-0">
                                                                 <span
-                                                                    class="text-muted text-capitalize font-weight-bold text-muted d-block"> {{ date('Y-m-d ', strtotime($item->created_at)) }}</span>
+                                                                    class="text-muted text-capitalize font-weight-bold text-muted d-block">
+                                                                    {{ date('Y-m-d ', strtotime($item->created_at)) }}</span>
                                                             </td>
                                                             <td class="pl-0">
                                                                 <div class="symbol symbol-50 symbol-light mt-1">
@@ -132,20 +181,21 @@
                                                                         class="d-flex align-items-center justify-content-between mb-2">
                                                                         <span
                                                                             class="text-muted mr-2 font-size-sm font-weight-bold">
-                                                                            {{ (count($item->trackings) / 4) * 100 }}
+                                                                            {{ calculatePercenteage($item) }}
                                                                             %</span>
                                                                         <span
-                                                                            class="text-muted font-size-sm font-weight-bold">Progress</span>
+                                                                            class="text-muted font-size-sm font-weight-bold">Progress
+                                                                        </span>
                                                                     </div>
                                                                     <div class="progress progress-xs w-100">
-                                                                        <div class="progress-bar @if ((count($item->trackings) / 4) * 100 == 25) bg-danger @endif
-                                                                            @if ((count($item->trackings) / 4) * 100 == 100)
-                                                                                bg-success
-                                                                            @else bg-warning @endif "
-                                                                                role="progressbar" style="width:
-                                                                                {{ (count($item->trackings) / 4) * 100 }}%;"
-                                                                                aria-valuenow="10" aria-valuemin="0"
-                                                                                aria-valuemax="100">
+                                                                        <div class="progress-bar @if (calculatePercenteage($item) <=30) bg-danger @endif
+                                                                            @if (calculatePercenteage($item) == 100)
+                                                                            bg-success
+                                                                        @else bg-warning @endif "
+                                                                            role="progressbar" style="width:
+                                                                            {{ calculatePercenteage($item) }}%;"
+                                                                            aria-valuenow="10" aria-valuemin="0"
+                                                                            aria-valuemax="100">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -154,8 +204,9 @@
                                                                 <td class="text-right pr-0">
                                                                     <a href="#" data-toggle="dropdown" aria-haspopup="true"
                                                                         aria-expanded="false"
-                                                                        class="btn btn-icon btn-light btn-hover-primary btn-sm">
-                                                                        <span class="svg-icon svg-icon-md svg-icon-primary">
+                                                                        class="btn btn-icon btn-light btn-hover-success btn-sm">
+                                                                    <span class="svg-icon svg-icon-md   @if ($item->on_final_approval == 1) svg-icon-warning @else
+                                                                            svg-icon-success @endif ">
                                                                             <!--begin::Svg Icon | path:assets/media/svg/icons/General/Settings-1.svg-->
                                                                             <svg xmlns="http://www.w3.org/2000/svg"
                                                                                 xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -229,6 +280,7 @@
                                                                                             note</span>
                                                                                     </a>
                                                                                 </li>
+
                                                                                 <li class="navi-item">
                                                                                     <a href="#" class="navi-link">
                                                                                         <span class="navi-icon">
@@ -242,7 +294,24 @@
                                                                                             class="navi-text">Track</span>
                                                                                     </a>
                                                                                 </li>
+                                                                                @if (Auth::user()->role == 'supervisor')
+                                                                                    @if ($item->on_final_approval == 1)
+                                                                                        <li class="navi-item">
+                                                                                            <a href="#" class="navi-link">
+                                                                                                <span class="navi-icon">
+                                                                                                    <i
+                                                                                                        class="flaticon-file"></i>
+                                                                                                </span>
+                                                                                                <span data-toggle="modal"
+                                                                                                    data-target="#final_documents"
+                                                                                                    class="navi-text">Final
+                                                                                                    Docs</span>
+                                                                                            </a>
+                                                                                        </li>
+                                                                                    @endif
+                                                                                @endif
                                                                             @endif
+
                                                                             @if (request()->query('tab') == 'drafts')
                                                                                 <li class="navi-item">
                                                                                     <a href="{{ url('profile/submit/draft', $item->id) }}"
@@ -286,9 +355,9 @@
 
                                                                     @if (Auth::user()->update && $item->is_completed == 0)
                                                                         <a href="{{ url('profile/edit', $item->id) }}"
-                                                                            class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
+                                                                            class="btn btn-icon btn-light btn-hover-success btn-sm mx-3">
                                                                             <span
-                                                                                class="svg-icon svg-icon-md svg-icon-primary">
+                                                                                class="svg-icon svg-icon-md svg-icon-success">
                                                                                 <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Write.svg-->
                                                                                 <svg xmlns="http://www.w3.org/2000/svg"
                                                                                     xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -319,9 +388,9 @@
                                                                         @if (Auth::user()->role != 'employ')
                                                                             <a onclick="alertAndGoToUrl('/profile/delete/{{ $item->id }}','delete ? {{ $item->name }}')"
                                                                                 href="#"
-                                                                                class="btn btn-icon btn-light btn-hover-primary btn-sm">
+                                                                                class="btn btn-icon btn-light btn-hover-danger btn-sm">
                                                                                 <span
-                                                                                    class="svg-icon svg-icon-md svg-icon-primary">
+                                                                                    class="svg-icon svg-icon-md svg-icon-danger">
                                                                                     <!--begin::Svg Icon | path:assets/media/svg/icons/General/Trash.svg-->
                                                                                     <svg xmlns="http://www.w3.org/2000/svg"
                                                                                         xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -482,7 +551,7 @@
                                                                                             <p id="name"
                                                                                                 class="text-secondary font-weight-lighter font-size-sm">
                                                                                             </p>
-                                                                                            </div>
+                                                                                        </div>
 
                                                                                     </div>
 
