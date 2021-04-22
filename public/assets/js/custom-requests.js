@@ -160,6 +160,7 @@ function getProfileData(id) {
     success: function (result) {
       console.log("profile", result);
       setEprofile(result);
+      setDocs(result);
       setVerifiedNote(result);
       const mappedArray = result.timeline.map((obj, i) => {
         let payload = {};
@@ -223,15 +224,9 @@ function setVerifiedNote(profile) {
     }
   }
 }
-function setEprofile(profile) {
-  let scannedDocument1 = getExtension(profile.scanned_document1);
-  let scannedDocument2 = getExtension(profile.scanned_document2);
-  let scannedDocument3 = getExtension(profile.scanned_document3);
-  let scannedDocument4 = getExtension(profile.scanned_document4);
-  let scannedDocument5 = getExtension(profile.scanned_document5);
-  let scannedDocument6 = getExtension(profile.scanned_document6);
-  let scannedDocument7 = getExtension(profile.scanned_document7);
+function setDocs(doc) {}
 
+function setEprofile(profile) {
   document.getElementById("exampleModalLabel").innerHTML = profile.name;
   document.getElementById("name_arabic").innerHTML = profile.name_arabic;
   document.getElementById("name").innerHTML = profile.name;
@@ -263,107 +258,59 @@ function setEprofile(profile) {
   document.getElementById("note").innerHTML = profile.note;
   document.getElementById("inventory_detials").innerHTML =
     profile.inventory_detials;
-
-  if (
-    scannedDocument1 == "pdf" ||
-    scannedDocument1 == "docx" ||
-    scannedDocument1 == "jpeg" ||
-    scannedDocument1 == "png" ||
-    scannedDocument1 == "jpg"
-  ) {
+    
+  if (profile.scanned_document1 != null) {
     document.getElementById("scanned_document1").href =
       HOST_URL + "/" + profile.scanned_document1;
+      document.getElementById("scanned_document1d").href =
+      HOST_URL + "/" + profile.scanned_document1;
+  }else {
+    document.getElementById("scan1").style.display = "none";
   }
 
-  if (
-    scannedDocument2 == "pdf" ||
-    scannedDocument2 == "docx" ||
-    scannedDocument2 == "jpeg" ||
-    scannedDocument2 == "png" ||
-    scannedDocument2 == "jpg"
-  ) {
+  if (profile.scanned_document2 != null) {
     document.getElementById("scanned_document2").href =
       HOST_URL + "/" + profile.scanned_document2;
+      document.getElementById("scanned_document2d").href =
+      HOST_URL + "/" + profile.scanned_document2;
+  }else {
+    document.getElementById("scan2").style.display = "none";
   }
 
-  if (
-    scannedDocument3 == "pdf" ||
-    scannedDocument3 == "docx" ||
-    scannedDocument3 == "jpeg" ||
-    scannedDocument3 == "png" ||
-    scannedDocument3 == "jpg"
-  ) {
+  if (profile.scanned_document3 != null) {
     document.getElementById("scanned_document3").href =
       HOST_URL + "/" + profile.scanned_document3;
+      document.getElementById("scanned_document3d").href =
+      HOST_URL + "/" + profile.scanned_document3;
+  }else {
+    document.getElementById("scan3").style.display = "none";
   }
 
-  if(profile.scanned_document4 !='')
-  {
-  if (
-    scannedDocument4 == "pdf" ||
-    scannedDocument4 == "docx" ||
-    scannedDocument4 == "jpeg" ||
-    scannedDocument4 == "png" ||
-    scannedDocument4 == "jpg"
-  ) {
+  if (profile.scanned_document4 != null) {
     document.getElementById("scanned_documents4").href =
       HOST_URL + "/" + profile.scanned_document4;
+  } else {
+    document.getElementById("scan4").style.display = "none";
   }
-}
-else{
-  document.getElementById("scan4").style.display = 'none';
-}
-if(profile.scanned_document5 !='')
-  {
-  if (
-    scannedDocument5 == "pdf" ||
-    scannedDocument5 == "docx" ||
-    scannedDocument5 == "jpeg" ||
-    scannedDocument5 == "png" ||
-    scannedDocument5 == "jpg"
-  ) {
+  if (profile.scanned_document5 != null) {
     document.getElementById("scanned_documents5").href =
       HOST_URL + "/" + profile.scanned_document5;
+  } else {
+    document.getElementById("scan5").style.display = "none";
   }
-}
-else{
-  document.getElementById("scan5").style.display = 'none';
-}
 
-if(profile.scanned_document6 !='')
-  {
-  if (
-    scannedDocument6 == "pdf" ||
-    scannedDocument6 == "docx" ||
-    scannedDocument6 == "jpeg" ||
-    scannedDocument6 == "png" ||
-    scannedDocument6 == "jpg"
-  ) {
+  if (profile.scanned_document6 != null) {
     document.getElementById("scanned_documents6").href =
       HOST_URL + "/" + profile.scanned_document6;
+  } else {
+    document.getElementById("scan6").style.display = "none";
   }
-}
-else{
-  document.getElementById("scan6").style.display = 'none';
-}
-if(profile.scanned_document7 !='')
-  {
-  if (
-    scannedDocument7 == "pdf" ||
-    scannedDocument7 == "docx" ||
-    scannedDocument7 == "jpeg" ||
-    scannedDocument7 == "png" ||
-    scannedDocument7 == "jpg"
-  ) {
+  if (profile.scanned_document7 != null) {
     document.getElementById("scanned_documents7").href =
       HOST_URL + "/" + profile.scanned_document7;
+  } else {
+    document.getElementById("scan7").style.display = "none";
   }
-}
-else{
-  document.getElementById("scan7").style.display = 'none';
-}
-
-
 }
 
 function setTrack(trackings) {
