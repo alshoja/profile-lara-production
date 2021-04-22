@@ -160,8 +160,6 @@ function getProfileData(id) {
     success: function (result) {
       console.log("profile", result);
       setEprofile(result);
-      setDocs(result);
-      setProducts(result.products);
       setVerifiedNote(result.trackings);
       const mappedArray = result.timeline.map((obj, i) => {
         let payload = {};
@@ -223,10 +221,7 @@ function setEprofile(profile) {
   let scannedDocument2 = getExtension(profile.scanned_document2);
   let scannedDocument3 = getExtension(profile.scanned_document3);
 
-  console.log("here is the extension of doc1", scannedDocument1);
-
-  let heading = document.getElementById("exampleModalLabel");
-  heading.innerHTML = profile.name;
+  document.getElementById("exampleModalLabel").innerHTML = profile.name;
   document.getElementById("name_arabic").innerHTML = profile.name_arabic;
   document.getElementById("name").innerHTML = profile.name;
   document.getElementById("nationality").innerHTML = profile.nationality;
@@ -248,29 +243,48 @@ function setEprofile(profile) {
   document.getElementById("proffession").innerHTML = profile.proffession;
 
   document.getElementById("inventory_name").innerHTML = profile.inventory_name;
+
+  document.getElementById("depart").innerHTML = profile.department.name;
+  document.getElementById("section").innerHTML = profile.section.name;
+
   document.getElementById("inventory_codes").innerHTML =
     profile.inventory_codes;
   document.getElementById("note").innerHTML = profile.note;
   document.getElementById("inventory_detials").innerHTML =
     profile.inventory_detials;
 
-  alert(profile.scanned_document1);
-
-  let extention1 = profile.scanned_document1.split(".").pop();
-
-  if (extention1 == "pdf") {
+  if (
+    scannedDocument1 == "pdf" ||
+    scannedDocument1 == "docx" ||
+    scannedDocument1 == "jpeg" ||
+    scannedDocument1 == "png" ||
+    scannedDocument1 == "jpg"
+  ) {
     document.getElementById("scanned_document1").href =
       HOST_URL + "/" + profile.scanned_document1;
   }
 
-  document.getElementById("scanned_document2").src = profile.scanned_document2;
-  document.getElementById("scanned_document3").src = profile.scanned_document3;
-}
+  if (
+    scannedDocument2 == "pdf" ||
+    scannedDocument2 == "docx" ||
+    scannedDocument2 == "jpeg" ||
+    scannedDocument2 == "png" ||
+    scannedDocument2 == "jpg"
+  ) {
+    document.getElementById("scanned_document2").href =
+      HOST_URL + "/" + profile.scanned_document2;
+  }
 
-function setDocs(result) {
-  document.getElementById("doc_1").src = result.doc_image;
-  document.getElementById("doc_2").src = result.product_image;
-  document.getElementById("doc_3").src = result.profile_image;
+  if (
+    scannedDocument3 == "pdf" ||
+    scannedDocument3 == "docx" ||
+    scannedDocument3 == "jpeg" ||
+    scannedDocument3 == "png" ||
+    scannedDocument3 == "jpg"
+  ) {
+    document.getElementById("scanned_document3").href =
+      HOST_URL + "/" + profile.scanned_document3;
+  }
 }
 
 function setTrack(trackings) {
@@ -331,63 +345,6 @@ function setTrack(trackings) {
   document.getElementById("track_timeline").innerHTML = contentStr;
 }
 
-function setProducts(data) {
-  let contentStr = "";
-  if (data.length > 0) {
-    data.forEach(function (o) {
-      contentStr +=
-        ` <tr
-        class="">
-        <td
-            class="pl-0 pt-7">
-            ` +
-        o.manufacture_type +
-        `
-          </td>
-        <td
-            class="pl-0 pt-7">
-            ` +
-        o.product_type +
-        `
-           </td>
-        <td
-            class="pl-0 pt-7">
-            ` +
-        o.quantity_digit +
-        `
-            </td>
-        <td
-            class="pl-0 pt-7">
-            ` +
-        o.quantity_g +
-        `
-          </td>
-        <td
-            class="pl-0 pt-7">
-            ` +
-        o.quantity_kg +
-        `
-           </td>
-        <td
-            class="pl-0 pt-7">
-            ` +
-        o.quantity_ml +
-        `
-           </td>
-        <td
-            class="pl-0 pt-7">
-            ` +
-        o.shipped_type +
-        `
-          </td>
-
-      </tr>`;
-    });
-  } else if (data.length <= 0) {
-    contentStr += ` <tr><td>No  Products to Display </td></tr>`;
-  }
-  document.getElementById("product_table").innerHTML = contentStr;
-}
 
 function setNotes(notes) {
   let notesString = "";

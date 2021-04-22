@@ -677,23 +677,78 @@
                                         <div class="row form-group">
                                             <div class="col-md-4">
                                                 <label>Scanned Document 1</label>
+                                                @if($profile->scanned_document1=='')
                                                 <input type="file" name="scanned_document1" id="scanned_document1" class="form-control form-control-solid" />
                                                 <input type="text" hidden name="profile_avatar_remove1" value="{{ $profile->scanned_document1 }}" />
                                                 <span class="text-danger error-text scanned_document_err"></span>
+                                                @else
+                                                <div class="form-group">
+                                                    <label
+                                                        class="text-muted font-size-sm">Uploaded Scanned Document 1</label>
+                                                        <p>
+                                                        <a   href="{{url($profile->scanned_document1)}}" target="_blank" ><svg xmlns="http://www.w3.org/2000/svg" width="25%" height="25%" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
+                                                            <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"/>
+                                                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"/>
+                                                          </svg></a>
+                                                        </p>
+                                                      
+                                                        </div>
+                                                <input type="file" name="scanned_document1" id="scanned_document1" class="form-control form-control-solid" />
+                                                <input type="text" hidden name="profile_avatar_remove1" value="{{ $profile->scanned_document1 }}" />
+                                                <span class="text-danger error-text scanned_document_err"></span>
+                                                @endif
                                            </div>
 
                                             <div class="col-md-4">
                                                 <label>Scanned Document 2</label>
+                                                @if($profile->scanned_document2=='')
                                                  <input type="file" name="scanned_document2" id="scanned_document2" class="form-control form-control-solid"/>
                                                  <input type="text" hidden name="profile_avatar_remove2" value="{{ $profile->scanned_document2 }}" />
                                                  <span class="text-danger error-text scanned_document_err"></span>
+                                                 @else
+                                                <div class="form-group">
+                                                    <label
+                                                        class="text-muted font-size-sm">Uploaded Scanned Document 2</label>
+                                                        <p>
+                                                        <a   href="{{url($profile->scanned_document2)}}" target="_blank" ><svg xmlns="http://www.w3.org/2000/svg" width="25%" height="25%" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
+                                                            <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"/>
+                                                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"/>
+                                                          </svg></a>
+                                                        </p>
+                                                      
+                                                        </div>
+                                                        <input type="file" name="scanned_document2" id="scanned_document2" class="form-control form-control-solid"/>
+                                                 <input type="text" hidden name="profile_avatar_remove2" value="{{ $profile->scanned_document2 }}" />
+                                                 <span class="text-danger error-text scanned_document_err"></span>
+                                                 @endif
+
+
+
+
                                             </div>
 
                                             <div class="col-md-4">
                                                 <label>Scanned Document 3</label>
+                                                @if($profile->scanned_document2=='')
                                                 <input type="file" name="scanned_document3" id="scanned_document3" class="form-control form-control-solid" />
                                                 <input type="text" hidden name="profile_avatar_remove3" value="{{ $profile->scanned_document3 }}" />       
                                                 <span class="text-danger error-text scanned_document2_err"></span>
+                                                @else
+                                                <div class="form-group">
+                                                    <label
+                                                        class="text-muted font-size-sm">Uploaded Scanned Document 3</label>
+                                                        <p>
+                                                        <a   href="{{url($profile->scanned_document3)}}" target="_blank" ><svg xmlns="http://www.w3.org/2000/svg" width="25%" height="25%" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
+                                                            <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"/>
+                                                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"/>
+                                                          </svg></a>
+                                                        </p>
+                                                      
+                                                        </div>
+                                                        <input type="file" name="scanned_document3" id="scanned_document3" class="form-control form-control-solid" />
+                                                <input type="text" hidden name="profile_avatar_remove3" value="{{ $profile->scanned_document3 }}" />       
+                                                <span class="text-danger error-text scanned_document2_err"></span>
+                                                @endif
                                                
                                             </div>
                                         </div>
@@ -737,10 +792,19 @@
                                             </div>
                                             <div class="col-md-3">
                                                 <label>Scanned Document 7</label>
+                                                @if($profile->scanned_document7=='')
                                                 <input type="file" name="scanned_document7" id="scanned_document7" class="form-control form-control-solid" />
                                                 <input type="text" hidden name="profile_avatar_remove7" value="{{ $profile->scanned_document7 }}" />       
                                                 <span class="text-danger error-text scanned_document2_err"></span>
-                                               
+                                              @else
+                                              <a id="scanned_document7"  href="" target="_blank" ><svg xmlns="http://www.w3.org/2000/svg" width="25%" height="25%" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
+                                                <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"/>
+                                                <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"/>
+                                              </svg></a>
+                                              <input type="file" name="scanned_document7" id="scanned_document7" class="form-control form-control-solid" />
+                                              <input type="text" hidden name="profile_avatar_remove7" value="{{ $profile->scanned_document7 }}" />       
+                                              <span class="text-danger error-text scanned_document2_err"></span>
+                                               @endif
                                             </div>
                                         </div>
                                        
