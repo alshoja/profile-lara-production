@@ -331,7 +331,7 @@ function setEprofile(profile) {
   }
 
   if (
-    scannedDocument77 == "pdf" ||
+    scannedDocument7 == "pdf" ||
     scannedDocument7 == "docx" ||
     scannedDocument7 == "jpeg" ||
     scannedDocument7 == "png" ||
