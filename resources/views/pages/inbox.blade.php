@@ -6,57 +6,6 @@
             <!--begin::Container-->
             <div class="container">
                 <!--begin::Row-->
-                <div class="modal fade" id="final_documents" tabindex="-1" role="dialog" aria-labelledby="final"
-                    aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Upload Final Documents</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <i aria-hidden="true" class="ki ki-close"></i>
-                                </button>
-                            </div>
-                            <form  action="{{ url('profileDocumentUpdate') }}" method="POST" enctype="multipart/form-data">
-                                @csrf
-                                <div class="modal-body">
-                                   <!--begin::Form-->
-                               
-                                    @csrf
-                                    <div class="card-body">
-                                        <div class="form-group">
-                                            <label>Doc 1</label>
-                                            <input type="text" id="editingid" name="editingid" hidden>
-                                            <input name="scanned_document4" id="scanned_document4" type="file" class="form-control form-control-solid"
-                                                placeholder="Name" />
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Doc 2</label>
-                                            <input name="scanned_document5" id="scanned_document5" type="file" class="form-control form-control-solid"
-                                                placeholder="Name" />
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Doc 3</label>
-                                            <input name="scanned_document6" id="scanned_document6" type="file" class="form-control form-control-solid"
-                                                placeholder="Name" />
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Doc 4</label>
-                                            <input name="scanned_document7" id="scanned_document7" type="file" class="form-control form-control-solid"
-                                                placeholder="Name" />
-                                        </div>
-                                    </div>
-                                    <!--end::Form-->
-                                 </div>
-                                    <div class="modal-footer">
-                                  <button type="button" class="btn btn-light-primary font-weight-bold"
-                                    data-dismiss="modal">Close</button>
-                                <button type="submit"  id="submit" class="btn btn-primary mr-2">Save</button>
-                            </form>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card card-custom gutter-b">
@@ -303,18 +252,19 @@
                                                                                 </li>
                                                                                 @if (Auth::user()->role == 'supervisor')
                                                                                     {{-- @if ($item->on_final_approval == 1) --}}
-                                                                                        <li class="navi-item">
-                                                                                            <a href="#" class="navi-link" onclick="setEditid({{ $item->id }})">
-                                                                                                <span class="navi-icon">
-                                                                                                    <i
-                                                                                                        class="flaticon-file"></i>
-                                                                                                </span>
-                                                                                                <span data-toggle="modal"
-                                                                                                    data-target="#final_documents"
-                                                                                                    class="navi-text">Final
-                                                                                                    Docs</span>
-                                                                                            </a>
-                                                                                        </li>
+                                                                                    <li class="navi-item">
+                                                                                        <a href="#" class="navi-link"
+                                                                                            onclick="setEditid({{ $item->id }})">
+                                                                                            <span class="navi-icon">
+                                                                                                <i
+                                                                                                    class="flaticon-file"></i>
+                                                                                            </span>
+                                                                                            <span data-toggle="modal"
+                                                                                                data-target="#final_documents{{ $item->id }}"
+                                                                                                class="navi-text">Final
+                                                                                                Docs</span>
+                                                                                        </a>
+                                                                                    </li>
                                                                                     {{-- @endif --}}
                                                                                 @endif
                                                                             @endif
@@ -426,735 +376,787 @@
                                                             @endif
                                                             <input type="hidden" id="profile_id">
                                                         </tr>
-                                                    @endforeach
-                                                    @if (count($profiles) < 1)
-                                                        <tr>
-                                                            <td class="pl-0">
-                                                                <a href="#"
-                                                                    class="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">Oops..!
-                                                                    Nothing Found</a>
-                                                                {{-- <span
+                                                        <div class="modal fade" id="final_documents{{ $item->id }}" tabindex="-1"
+                                                            role="dialog" aria-labelledby="final" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">
+                                                                            Upload Final Documents</h5>
+                                                                        <button type="button" class="close"
+                                                                            data-dismiss="modal" aria-label="Close">
+                                                                            <i aria-hidden="true" class="ki ki-close"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                    <form action="{{ url('profileDocumentUpdate',$item->id) }}"
+                                                                        method="POST" enctype="multipart/form-data">
+                                                                        @csrf
+                                                                        <div class="modal-body">
+                                                                            <!--begin::Form-->
+
+                                                                            @csrf
+                                                                            <div class="card-body">
+                                                                                <div class="form-group">
+                                                                                    <label>Doc 1</label>
+                                                                                    <input type="text" id="editingid"
+                                                                                        name="editingid" hidden>
+                                                                                    <input name="scanned_document4"
+                                                                                        id="scanned_document4" type="file"
+                                                                                        class="form-control form-control-solid"
+                                                                                        placeholder="Name" />
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label>Doc 2</label>
+                                                                                    <input name="scanned_document5"
+                                                                                        id="scanned_document5" type="file"
+                                                                                        class="form-control form-control-solid"
+                                                                                        placeholder="Name" />
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label>Doc 3</label>
+                                                                                    <input name="scanned_document6"
+                                                                                        id="scanned_document6" type="file"
+                                                                                        class="form-control form-control-solid"
+                                                                                        placeholder="Name" />
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label>Doc 4</label>
+                                                                                    <input name="scanned_document7"
+                                                                                        id="scanned_document7" type="file"
+                                                                                        class="form-control form-control-solid"
+                                                                                        placeholder="Name" />
+                                                                                </div>
+                                                                            </div>
+                                                                            <!--end::Form-->
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button"
+                                                                                class="btn btn-light-primary font-weight-bold"
+                                                                                data-dismiss="modal">Close</button>
+                                                                            <button type="submit" id="submit"
+                                                                                class="btn btn-primary mr-2">Save</button>
+                                                                    </form>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                        </div>
+                                        @endforeach
+                                        @if (count($profiles) < 1)
+                                            <tr>
+                                                <td class="pl-0">
+                                                    <a href="#"
+                                                        class="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">Oops..!
+                                                        Nothing Found</a>
+                                                    {{-- <span
                                                                     class="text-muted font-weight-bold text-muted d-block">No
                                                                     Profiles</span> --}}
-                                                            </td>
-                                                        <tr>
-                                                    @endif
-                                                </tbody>
-                                            </table>
-                                            <!-- Modal-->
+                                                </td>
+                                            <tr>
+                                        @endif
+                                        </tbody>
+                                        </table>
+                                        <!-- Modal-->
 
-                                            <div class="modal fade" id="exampleModalSizeXl" tabindex="-1" role="dialog"
-                                                aria-labelledby="exampleModalSizeXl" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Modal
-                                                                Title </h5>
-                                                            <button type="button" class="close" data-dismiss="modal"
-                                                                aria-label="Close">
-                                                                <i aria-hidden="true" class="ki ki-close"></i>
-                                                            </button>
-                                                        </div>
-                                                        <div class="card card-custom">
-                                                            <div class="card-header">
-                                                                <div class="card-toolbar">
-                                                                    <ul class="nav nav-light-danger nav-bold nav-pills">
-                                                                        <li class="nav-item">
-                                                                            <a id="profile_nav_item" class="nav-link active"
-                                                                                data-toggle="tab" href="#kt_tab_pane_5_e">
-                                                                                <span class="nav-icon"><i
-                                                                                        class="flaticon-businesswoman"></i></span>
-                                                                                <span class="nav-text">E-Profile</span>
-                                                                            </a>
-                                                                        </li>
-                                                                        @if (Auth::user()->role != 'employ')
-                                                                            @if (Auth::user()->role != 'admin')
-                                                                                @if (request()->query('tab') != 'completed')
-                                                                                    <li class="nav-item">
-                                                                                        <a class="nav-link"
-                                                                                            data-toggle="tab"
-                                                                                            href="#kt_tab_pane_5_de">
-                                                                                            <span class="nav-icon"><i
-                                                                                                    class="flaticon-information"></i></span>
-                                                                                            <span
-                                                                                                class="nav-text">Decision</span>
-                                                                                        </a>
-                                                                                    </li>
-                                                                                @endif
+                                        <div class="modal fade" id="exampleModalSizeXl" tabindex="-1" role="dialog"
+                                            aria-labelledby="exampleModalSizeXl" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Modal
+                                                            Title </h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <i aria-hidden="true" class="ki ki-close"></i>
+                                                        </button>
+                                                    </div>
+                                                    <div class="card card-custom">
+                                                        <div class="card-header">
+                                                            <div class="card-toolbar">
+                                                                <ul class="nav nav-light-danger nav-bold nav-pills">
+                                                                    <li class="nav-item">
+                                                                        <a id="profile_nav_item" class="nav-link active"
+                                                                            data-toggle="tab" href="#kt_tab_pane_5_e">
+                                                                            <span class="nav-icon"><i
+                                                                                    class="flaticon-businesswoman"></i></span>
+                                                                            <span class="nav-text">E-Profile</span>
+                                                                        </a>
+                                                                    </li>
+                                                                    @if (Auth::user()->role != 'employ')
+                                                                        @if (Auth::user()->role != 'admin')
+                                                                            @if (request()->query('tab') != 'completed')
+                                                                                <li class="nav-item">
+                                                                                    <a class="nav-link" data-toggle="tab"
+                                                                                        href="#kt_tab_pane_5_de">
+                                                                                        <span class="nav-icon"><i
+                                                                                                class="flaticon-information"></i></span>
+                                                                                        <span
+                                                                                            class="nav-text">Decision</span>
+                                                                                    </a>
+                                                                                </li>
                                                                             @endif
                                                                         @endif
+                                                                    @endif
 
-                                                                        <li class="nav-item">
-                                                                            <a id="track_nav_item" class="nav-link"
-                                                                                data-toggle="tab"
-                                                                                href="#kt_tab_pane_5_track">
-                                                                                <span class="nav-icon"><i
-                                                                                        class="flaticon-placeholder-3"></i></span>
-                                                                                <span class="nav-text">Track</span>
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="nav-item dropdown">
-                                                                            <a class="nav-link dropdown-toggle"
-                                                                                data-toggle="dropdown" href="#"
-                                                                                role="button" aria-haspopup="true"
-                                                                                aria-expanded="false">
-                                                                                <span class="nav-icon"><i
-                                                                                        class="flaticon-profile"></i></span>
-                                                                                <span class="nav-text">Docs</span>
-                                                                            </a>
-                                                                            <div class="dropdown-menu">
-                                                                                <a class="dropdown-item" data-toggle="tab"
-                                                                                    href="#kt_tab_pane_5_doc1">Doc-1</a>
-                                                                                <a class="dropdown-item" data-toggle="tab"
-                                                                                    href="#kt_tab_pane_5_doc2">Doc-2</a>
-                                                                                <a class="dropdown-item" data-toggle="tab"
-                                                                                    href="#kt_tab_pane_5_doc3">Doc-3</a>
-                                                                            </div>
-                                                                        </li>
-                                                                        <li class="nav-item">
-                                                                            <a id="note_nav_item" class="nav-link"
-                                                                                data-toggle="tab"
-                                                                                href="#kt_tab_pane_5_note">
-                                                                                <span class="nav-icon"><i
-                                                                                        class="flaticon-speech-bubble-1"></i></span>
-                                                                                <span class="nav-text">Notes</span>
-                                                                            </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
+                                                                    <li class="nav-item">
+                                                                        <a id="track_nav_item" class="nav-link"
+                                                                            data-toggle="tab" href="#kt_tab_pane_5_track">
+                                                                            <span class="nav-icon"><i
+                                                                                    class="flaticon-placeholder-3"></i></span>
+                                                                            <span class="nav-text">Track</span>
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="nav-item dropdown">
+                                                                        <a class="nav-link dropdown-toggle"
+                                                                            data-toggle="dropdown" href="#" role="button"
+                                                                            aria-haspopup="true" aria-expanded="false">
+                                                                            <span class="nav-icon"><i
+                                                                                    class="flaticon-profile"></i></span>
+                                                                            <span class="nav-text">Docs</span>
+                                                                        </a>
+                                                                        <div class="dropdown-menu">
+                                                                            <a class="dropdown-item" data-toggle="tab"
+                                                                                href="#kt_tab_pane_5_doc1">Doc-1</a>
+                                                                            <a class="dropdown-item" data-toggle="tab"
+                                                                                href="#kt_tab_pane_5_doc2">Doc-2</a>
+                                                                            <a class="dropdown-item" data-toggle="tab"
+                                                                                href="#kt_tab_pane_5_doc3">Doc-3</a>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li class="nav-item">
+                                                                        <a id="note_nav_item" class="nav-link"
+                                                                            data-toggle="tab" href="#kt_tab_pane_5_note">
+                                                                            <span class="nav-icon"><i
+                                                                                    class="flaticon-speech-bubble-1"></i></span>
+                                                                            <span class="nav-text">Notes</span>
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
                                                             </div>
-                                                            <div class="card-body">
-                                                                <div class="tab-content">
-                                                                    <div class="tab-pane fade show active"
-                                                                        id="kt_tab_pane_5_e" role="tabpanel"
-                                                                        aria-labelledby="kt_tab_pane_5_e">
-                                                                        <!-- code-->
-                                                                        <div
-                                                                            class="justify-content-center my-10 px-8 my-lg-15 px-lg-10">
-                                                                            <div class="col-xl-12">
-                                                                                <div class="pb-5"
-                                                                                    data-wizard-type="step-content"
-                                                                                    data-wizard-state="current">
-                                                                                    <h6 class="text-success"><small>SUNDAY
-                                                                                            ,21-2021 TIME:01:15:28PM</small>
-                                                                                    </h6>
-                                                                                    <br>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <div class="tab-content">
+                                                                <div class="tab-pane fade show active" id="kt_tab_pane_5_e"
+                                                                    role="tabpanel" aria-labelledby="kt_tab_pane_5_e">
+                                                                    <!-- code-->
+                                                                    <div
+                                                                        class="justify-content-center my-10 px-8 my-lg-15 px-lg-10">
+                                                                        <div class="col-xl-12">
+                                                                            <div class="pb-5"
+                                                                                data-wizard-type="step-content"
+                                                                                data-wizard-state="current">
+                                                                                <h6 class="text-success"><small>SUNDAY
+                                                                                        ,21-2021 TIME:01:15:28PM</small>
+                                                                                </h6>
+                                                                                <br>
 
-                                                                                    <div class="form-group row">
-                                                                                        <div class="col-xl-6">
+                                                                                <div class="form-group row">
+                                                                                    <div class="col-xl-6">
+                                                                                        <label
+                                                                                            class="text-muted font-size-sm">
+                                                                                            Name Arabic</label>
+                                                                                        <p id="name_arabic"
+                                                                                            class="text-secondary font-weight-lighter font-size-sm">
+                                                                                        </p>
+                                                                                    </div>
+                                                                                    <div class="col-xl-6">
+                                                                                        <label
+                                                                                            class="text-muted font-size-sm">
+                                                                                            Name English</label>
+                                                                                        <p id="name"
+                                                                                            class="text-secondary font-weight-lighter font-size-sm">
+                                                                                        </p>
+                                                                                    </div>
+
+                                                                                </div>
+
+                                                                                <div class="row">
+                                                                                    <div class="col-xl-4">
+                                                                                        <!--begin::Input-->
+                                                                                        <div class="form-group">
                                                                                             <label
-                                                                                                class="text-muted font-size-sm">
-                                                                                                Name Arabic</label>
-                                                                                            <p id="name_arabic"
+                                                                                                class="text-muted font-size-sm">Nationality</label>
+                                                                                            <p id="nationality"
                                                                                                 class="text-secondary font-weight-lighter font-size-sm">
                                                                                             </p>
+
                                                                                         </div>
-                                                                                        <div class="col-xl-6">
+                                                                                        <!--end::Input-->
+                                                                                    </div>
+                                                                                    <div class="col-xl-4">
+                                                                                        <!--begin::Input-->
+                                                                                        <div class="form-group">
                                                                                             <label
-                                                                                                class="text-muted font-size-sm">
-                                                                                                Name English</label>
-                                                                                            <p id="name"
+                                                                                                class="text-muted font-size-sm">Gender</label>
+                                                                                            <p id="gender"
                                                                                                 class="text-secondary font-weight-lighter font-size-sm">
                                                                                             </p>
-                                                                                        </div>
 
+                                                                                        </div>
+                                                                                        <!--end::Input-->
                                                                                     </div>
+                                                                                    <div class="col-xl-4">
+                                                                                        <div class="form-group">
+                                                                                            <label
+                                                                                                class="text-muted font-size-sm">DOB</label>
+                                                                                            <p id="dob"
+                                                                                                class="text-secondary font-weight-lighter font-size-sm">
+                                                                                            </p>
 
-                                                                                    <div class="row">
-                                                                                        <div class="col-xl-4">
-                                                                                            <!--begin::Input-->
-                                                                                            <div class="form-group">
-                                                                                                <label
-                                                                                                    class="text-muted font-size-sm">Nationality</label>
-                                                                                                <p id="nationality"
-                                                                                                    class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                </p>
-
-                                                                                            </div>
-                                                                                            <!--end::Input-->
-                                                                                        </div>
-                                                                                        <div class="col-xl-4">
-                                                                                            <!--begin::Input-->
-                                                                                            <div class="form-group">
-                                                                                                <label
-                                                                                                    class="text-muted font-size-sm">Gender</label>
-                                                                                                <p id="gender"
-                                                                                                    class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                </p>
-
-                                                                                            </div>
-                                                                                            <!--end::Input-->
-                                                                                        </div>
-                                                                                        <div class="col-xl-4">
-                                                                                            <div class="form-group">
-                                                                                                <label
-                                                                                                    class="text-muted font-size-sm">DOB</label>
-                                                                                                <p id="dob"
-                                                                                                    class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                </p>
-
-                                                                                            </div>
                                                                                         </div>
                                                                                     </div>
+                                                                                </div>
 
-                                                                                    <div class="row">
-                                                                                        <div class="col-xl-4">
-                                                                                            <!--begin::Input-->
-                                                                                            <div class="form-group">
-                                                                                                <label
-                                                                                                    class="text-muted font-size-sm">Place
-                                                                                                    of Birth
-                                                                                                </label>
-                                                                                                <p id="place_birth"
-                                                                                                    class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                </p>
+                                                                                <div class="row">
+                                                                                    <div class="col-xl-4">
+                                                                                        <!--begin::Input-->
+                                                                                        <div class="form-group">
+                                                                                            <label
+                                                                                                class="text-muted font-size-sm">Place
+                                                                                                of Birth
+                                                                                            </label>
+                                                                                            <p id="place_birth"
+                                                                                                class="text-secondary font-weight-lighter font-size-sm">
+                                                                                            </p>
 
-                                                                                            </div>
-                                                                                            <!--end::Input-->
                                                                                         </div>
-                                                                                        <div class="col-xl-4">
-                                                                                            <!--begin::Input-->
-                                                                                            <div class="form-group">
-                                                                                                <label
-                                                                                                    class="text-muted font-size-sm">Address
-                                                                                                </label>
-                                                                                                <p id="address"
-                                                                                                    class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                </p>
+                                                                                        <!--end::Input-->
+                                                                                    </div>
+                                                                                    <div class="col-xl-4">
+                                                                                        <!--begin::Input-->
+                                                                                        <div class="form-group">
+                                                                                            <label
+                                                                                                class="text-muted font-size-sm">Address
+                                                                                            </label>
+                                                                                            <p id="address"
+                                                                                                class="text-secondary font-weight-lighter font-size-sm">
+                                                                                            </p>
 
-                                                                                            </div>
-                                                                                            <!--end::Input-->
                                                                                         </div>
-                                                                                        <div class="col-xl-4">
-                                                                                            <div class="form-group">
-                                                                                                <label
-                                                                                                    class="text-muted font-size-sm">Referal
-                                                                                                    Name
-                                                                                                </label>
-                                                                                                <p id="referal_name"
-                                                                                                    class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                </p>
+                                                                                        <!--end::Input-->
+                                                                                    </div>
+                                                                                    <div class="col-xl-4">
+                                                                                        <div class="form-group">
+                                                                                            <label
+                                                                                                class="text-muted font-size-sm">Referal
+                                                                                                Name
+                                                                                            </label>
+                                                                                            <p id="referal_name"
+                                                                                                class="text-secondary font-weight-lighter font-size-sm">
+                                                                                            </p>
 
-                                                                                            </div>
                                                                                         </div>
                                                                                     </div>
-                                                                                    <div class="row">
-                                                                                        <div class="col-xl-4">
-                                                                                            <!--begin::Input-->
-                                                                                            <div class="form-group">
-                                                                                                <label
-                                                                                                    class="text-muted font-size-sm">Product
-                                                                                                    Type
-                                                                                                </label>
-                                                                                                <p id="product_type"
-                                                                                                    class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                </p>
+                                                                                </div>
+                                                                                <div class="row">
+                                                                                    <div class="col-xl-4">
+                                                                                        <!--begin::Input-->
+                                                                                        <div class="form-group">
+                                                                                            <label
+                                                                                                class="text-muted font-size-sm">Product
+                                                                                                Type
+                                                                                            </label>
+                                                                                            <p id="product_type"
+                                                                                                class="text-secondary font-weight-lighter font-size-sm">
+                                                                                            </p>
 
-                                                                                            </div>
-                                                                                            <!--end::Input-->
                                                                                         </div>
-                                                                                        <div class="col-xl-4">
-                                                                                            <!--begin::Input-->
-                                                                                            <div class="form-group">
-                                                                                                <label
-                                                                                                    class="text-muted font-size-sm">Passport
-                                                                                                    Number</label>
-                                                                                                <p id="passport_no"
-                                                                                                    class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                </p>
-
-                                                                                            </div>
-                                                                                            <!--end::Input-->
-                                                                                        </div>
-                                                                                        <div class="col-xl-4">
-                                                                                            <!--begin::Select-->
-                                                                                            <div class="form-group">
-                                                                                                <label
-                                                                                                    class="text-muted font-size-sm">Passport
-                                                                                                    Type</label>
-                                                                                                <p id="passport_type"
-                                                                                                    class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                </p>
-
-
-                                                                                            </div>
-                                                                                            <!--end::Select-->
-                                                                                        </div>
-
-                                                                                        <div class="col-xl-4">
-                                                                                            <!--begin::Select-->
-                                                                                            <div class="form-group">
-                                                                                                <label
-                                                                                                    class="text-muted font-size-sm">Passport
-                                                                                                    Issue</label>
-                                                                                                <p id="passport_issue"
-                                                                                                    class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                </p>
-
-
-                                                                                            </div>
-                                                                                            <!--end::Select-->
-                                                                                        </div>
-
-                                                                                        <div class="col-xl-4">
-                                                                                            <!--begin::Select-->
-                                                                                            <div class="form-group">
-                                                                                                <label
-                                                                                                    class="text-muted font-size-sm">Date
-                                                                                                    of
-                                                                                                    Issue</label>
-                                                                                                <p id="date_issue"
-                                                                                                    class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                </p>
-
-
-                                                                                            </div>
-                                                                                            <!--end::Select-->
-                                                                                        </div>
-
-                                                                                        <div class="col-xl-4">
-                                                                                            <!--begin::Select-->
-                                                                                            <div class="form-group">
-                                                                                                <label
-                                                                                                    class="text-muted font-size-sm">Residency
-                                                                                                </label>
-                                                                                                <p id="residency"
-                                                                                                    class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                </p>
-
-
-                                                                                            </div>
-                                                                                            <!--end::Select-->
-                                                                                        </div>
-
-                                                                                        <div class="col-xl-4">
-                                                                                            <!--begin::Select-->
-                                                                                            <div class="form-group">
-                                                                                                <label
-                                                                                                    class="text-muted font-size-sm">Location
-                                                                                                </label>
-                                                                                                <p id="location"
-                                                                                                    class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                </p>
-
-
-                                                                                            </div>
-                                                                                            <!--end::Select-->
-                                                                                        </div>
-
-                                                                                        <div class="col-xl-4">
-                                                                                            <!--begin::Select-->
-                                                                                            <div class="form-group">
-                                                                                                <label
-                                                                                                    class="text-muted font-size-sm">passport
-                                                                                                    Expiry Date
-                                                                                                </label>
-                                                                                                <p id="date_expiry"
-                                                                                                    class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                </p>
-
-
-                                                                                            </div>
-                                                                                            <!--end::Select-->
-                                                                                        </div>
-
-                                                                                        <div class="col-xl-4">
-                                                                                            <!--begin::Select-->
-                                                                                            <div class="form-group">
-                                                                                                <label
-                                                                                                    class="text-muted font-size-sm">UID
-                                                                                                    Number
-                                                                                                </label>
-                                                                                                <p id="uid"
-                                                                                                    class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                </p>
-
-
-                                                                                            </div>
-                                                                                            <!--end::Select-->
-                                                                                        </div>
-
-                                                                                        <div class="col-xl-4">
-                                                                                            <!--begin::Select-->
-                                                                                            <div class="form-group">
-                                                                                                <label
-                                                                                                    class="text-muted font-size-sm">Proffession
-                                                                                                </label>
-                                                                                                <p id="proffession"
-                                                                                                    class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                </p>
-
-
-                                                                                            </div>
-                                                                                            <!--end::Select-->
-                                                                                        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                                                                                        <!--end::Input-->
                                                                                     </div>
+                                                                                    <div class="col-xl-4">
+                                                                                        <!--begin::Input-->
+                                                                                        <div class="form-group">
+                                                                                            <label
+                                                                                                class="text-muted font-size-sm">Passport
+                                                                                                Number</label>
+                                                                                            <p id="passport_no"
+                                                                                                class="text-secondary font-weight-lighter font-size-sm">
+                                                                                            </p>
+
+                                                                                        </div>
+                                                                                        <!--end::Input-->
+                                                                                    </div>
+                                                                                    <div class="col-xl-4">
+                                                                                        <!--begin::Select-->
+                                                                                        <div class="form-group">
+                                                                                            <label
+                                                                                                class="text-muted font-size-sm">Passport
+                                                                                                Type</label>
+                                                                                            <p id="passport_type"
+                                                                                                class="text-secondary font-weight-lighter font-size-sm">
+                                                                                            </p>
+
+
+                                                                                        </div>
+                                                                                        <!--end::Select-->
+                                                                                    </div>
+
+                                                                                    <div class="col-xl-4">
+                                                                                        <!--begin::Select-->
+                                                                                        <div class="form-group">
+                                                                                            <label
+                                                                                                class="text-muted font-size-sm">Passport
+                                                                                                Issue</label>
+                                                                                            <p id="passport_issue"
+                                                                                                class="text-secondary font-weight-lighter font-size-sm">
+                                                                                            </p>
+
+
+                                                                                        </div>
+                                                                                        <!--end::Select-->
+                                                                                    </div>
+
+                                                                                    <div class="col-xl-4">
+                                                                                        <!--begin::Select-->
+                                                                                        <div class="form-group">
+                                                                                            <label
+                                                                                                class="text-muted font-size-sm">Date
+                                                                                                of
+                                                                                                Issue</label>
+                                                                                            <p id="date_issue"
+                                                                                                class="text-secondary font-weight-lighter font-size-sm">
+                                                                                            </p>
+
+
+                                                                                        </div>
+                                                                                        <!--end::Select-->
+                                                                                    </div>
+
+                                                                                    <div class="col-xl-4">
+                                                                                        <!--begin::Select-->
+                                                                                        <div class="form-group">
+                                                                                            <label
+                                                                                                class="text-muted font-size-sm">Residency
+                                                                                            </label>
+                                                                                            <p id="residency"
+                                                                                                class="text-secondary font-weight-lighter font-size-sm">
+                                                                                            </p>
+
+
+                                                                                        </div>
+                                                                                        <!--end::Select-->
+                                                                                    </div>
+
+                                                                                    <div class="col-xl-4">
+                                                                                        <!--begin::Select-->
+                                                                                        <div class="form-group">
+                                                                                            <label
+                                                                                                class="text-muted font-size-sm">Location
+                                                                                            </label>
+                                                                                            <p id="location"
+                                                                                                class="text-secondary font-weight-lighter font-size-sm">
+                                                                                            </p>
+
+
+                                                                                        </div>
+                                                                                        <!--end::Select-->
+                                                                                    </div>
+
+                                                                                    <div class="col-xl-4">
+                                                                                        <!--begin::Select-->
+                                                                                        <div class="form-group">
+                                                                                            <label
+                                                                                                class="text-muted font-size-sm">passport
+                                                                                                Expiry Date
+                                                                                            </label>
+                                                                                            <p id="date_expiry"
+                                                                                                class="text-secondary font-weight-lighter font-size-sm">
+                                                                                            </p>
+
+
+                                                                                        </div>
+                                                                                        <!--end::Select-->
+                                                                                    </div>
+
+                                                                                    <div class="col-xl-4">
+                                                                                        <!--begin::Select-->
+                                                                                        <div class="form-group">
+                                                                                            <label
+                                                                                                class="text-muted font-size-sm">UID
+                                                                                                Number
+                                                                                            </label>
+                                                                                            <p id="uid"
+                                                                                                class="text-secondary font-weight-lighter font-size-sm">
+                                                                                            </p>
+
+
+                                                                                        </div>
+                                                                                        <!--end::Select-->
+                                                                                    </div>
+
+                                                                                    <div class="col-xl-4">
+                                                                                        <!--begin::Select-->
+                                                                                        <div class="form-group">
+                                                                                            <label
+                                                                                                class="text-muted font-size-sm">Proffession
+                                                                                            </label>
+                                                                                            <p id="proffession"
+                                                                                                class="text-secondary font-weight-lighter font-size-sm">
+                                                                                            </p>
+
+
+                                                                                        </div>
+                                                                                        <!--end::Select-->
+                                                                                    </div>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
                                                                                 </div>
-                                                                            </div>
 
-                                                                        </div>
 
-                                                                        <div
-                                                                            class="row  justify-content-center my-10 px-8 my-lg-15 px-lg-10">
-                                                                            <div class="col-xl-12 ">
-                                                                                <div class="pb-5">
-                                                                                    <div class="border-bottom">
 
-                                                                                        <h3>INVENTORY DATA</h3>
-                                                                                    </div>
-
-                                                                                    <br>
-
-                                                                                    <div class="row">
-                                                                                        <div class="col-xl-4">
-                                                                                            <div class="form-group">
-                                                                                                <label
-                                                                                                    class="text-muted font-size-sm">Inventory
-                                                                                                    Name
-                                                                                                </label>
-                                                                                                <p id="inventory_name"
-                                                                                                    class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                </p>
-
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="row">
-                                                                                        <div class="col-xl-3">
-                                                                                            <!--begin::Input-->
-                                                                                            <div class="form-group">
-                                                                                                <label
-                                                                                                    class="text-muted font-size-sm">Inventory
-                                                                                                    Codes
-                                                                                                </label>
-                                                                                                <p id="inventory_codes"
-                                                                                                    class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                </p>
-
-                                                                                            </div>
-                                                                                            <!--end::Input-->
-                                                                                        </div>
-                                                                                        <div class="col-xl-9">
-                                                                                            <!--begin::Input-->
-                                                                                            <div class="form-group">
-                                                                                                <label
-                                                                                                    class="text-muted font-size-sm">Notes
-
-                                                                                                </label>
-                                                                                                <p id="note"
-                                                                                                    class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                </p>
-                                                                                            </div>
-                                                                                            <!--end::Input-->
-                                                                                        </div>
-                                                                                        <div class="col-xl-4">
-                                                                                            <!--begin::Input-->
-                                                                                            <div class="form-group">
-                                                                                                <label
-                                                                                                    class="text-muted font-size-sm">Inventory
-                                                                                                    Details
-
-                                                                                                </label>
-                                                                                                <p id="inventory_detials"
-                                                                                                    class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                </p>
-                                                                                            </div>
-                                                                                            <!--end::Input-->
-                                                                                        </div>
-
-                                                                                    </div>
-
-                                                                                </div>
                                                                             </div>
                                                                         </div>
-
-                                                                        <div
-                                                                            class="row justify-content-center my-10 px-8 my-lg-15 px-lg-10">
-                                                                            <div class="col-xl-12 ">
-                                                                                <div class="pb-5">
-                                                                                    <div class="border-bottom">
-                                                                                        <h3>Scanned Document</h3>
-                                                                                    </div>
-                                                                                    </br>
-
-                                                                                    <div class="row">
-                                                                                        <div class="col-xl-4">
-                                                                                            <div class="form-group">
-                                                                                                <label
-                                                                                                    class="text-muted font-size-sm">Scanned
-                                                                                                    Document 1</label>
-                                                                                                <p>
-                                                                                                    <a id="scanned_document1"
-                                                                                                        href=""
-                                                                                                        target="_blank"><svg
-                                                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                                                            width="25%"
-                                                                                                            height="25%"
-                                                                                                            fill="currentColor"
-                                                                                                            class="bi bi-file-text"
-                                                                                                            viewBox="0 0 16 16">
-                                                                                                            <path
-                                                                                                                d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z" />
-                                                                                                            <path
-                                                                                                                d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
-                                                                                                        </svg></a>
-                                                                                                </p>
-
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-xl-4">
-                                                                                            <div class="form-group">
-                                                                                                <label
-                                                                                                    class="text-muted font-size-sm">Scanned
-                                                                                                    Document 2</label>
-                                                                                                <p>
-                                                                                                    <a id="scanned_document2"
-                                                                                                        href=""
-                                                                                                        target="_blank"><svg
-                                                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                                                            width="25%"
-                                                                                                            height="25%"
-                                                                                                            fill="currentColor"
-                                                                                                            class="bi bi-file-text"
-                                                                                                            viewBox="0 0 16 16">
-                                                                                                            <path
-                                                                                                                d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z" />
-                                                                                                            <path
-                                                                                                                d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
-                                                                                                        </svg></a>
-                                                                                                </p>
-
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-xl-4">
-                                                                                            <div class="form-group">
-                                                                                                <label
-                                                                                                    class="text-muted font-size-sm">Scanned
-                                                                                                    Document 3</label>
-                                                                                                <p>
-                                                                                                    <a id="scanned_document3"
-                                                                                                        href=""
-                                                                                                        target="_blank"><svg
-                                                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                                                            width="25%"
-                                                                                                            height="25%"
-                                                                                                            fill="currentColor"
-                                                                                                            class="bi bi-file-text"
-                                                                                                            viewBox="0 0 16 16">
-                                                                                                            <path
-                                                                                                                d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z" />
-                                                                                                            <path
-                                                                                                                d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
-                                                                                                        </svg></a>
-                                                                                                </p>
-
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-
-
-
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-xl-12">
-                                                                                <div class="pb-5">
-                                                                                    <div class="border-bottom">
-
-                                                                                        <h3>LABEL TITLE HERE</h3>
-                                                                                    </div>
-                                                                                    </br>
-                                                                                    <div class="form-group row">
-                                                                                        <div class="col-xl-6">
-                                                                                            <div class="form-group">
-                                                                                                <label
-                                                                                                    class="text-muted font-size-sm">
-                                                                                                    Department</label>
-                                                                                                <p id="depart"
-                                                                                                    class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                </p>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-xl-6">
-                                                                                            <div class="form-group">
-                                                                                                <label
-                                                                                                    class="text-muted font-size-sm">
-                                                                                                    Section</label>
-                                                                                                <p id="section"
-                                                                                                    class="text-secondary font-weight-lighter font-size-sm">
-                                                                                                </p>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-
-                                                                                </div>
-                                                                            </div>
-
-                                                                        </div>
-
-
-
-
-                                                                        <!-- code end -->
-
-
 
                                                                     </div>
-                                                                    <div class="tab-pane fade" id="kt_tab_pane_5_de"
-                                                                        role="tabpanel" aria-labelledby="kt_tab_pane_5_de">
 
-                                                                        {{-- <div class="card card-custom mb-2"> --}}
-                                                                        <form action="">
-                                                                            <div
-                                                                                class="d-flex align-items-center justify-content-between p-4 flex-lg-wrap flex-xl-nowrap">
+                                                                    <div
+                                                                        class="row  justify-content-center my-10 px-8 my-lg-15 px-lg-10">
+                                                                        <div class="col-xl-12 ">
+                                                                            <div class="pb-5">
+                                                                                <div class="border-bottom">
 
-                                                                                @if (request()->query('tab') == 'inbox')
-                                                                                    <div class="d-flex flex-column mr-5">
-                                                                                        <div
-                                                                                            class="ml-4 ml-lg-0 ml-xxl-4 flex-shrink-0">
-                                                                                            <button
-                                                                                                onclick="AproveOrReject('signed')"
-                                                                                                id="approve" type="button"
-                                                                                                value="Sign & Approve"
-                                                                                                class="btn btn-sm  text-uppercase btn-success">
-                                                                                                Sign
-                                                                                            </button>
-                                                                                            <button
-                                                                                                onclick="AproveOrReject('rejected')"
-                                                                                                id="reject" type="button"
-                                                                                                class="btn btn-sm  text-uppercase btn-danger ">Reject
-                                                                                            </button>
-                                                                                            <img style="width: 10%;"
-                                                                                                id="sign_img"
-                                                                                                src="{{ url(Auth::user()->sign) }}">
+                                                                                    <h3>INVENTORY DATA</h3>
+                                                                                </div>
+
+                                                                                <br>
+
+                                                                                <div class="row">
+                                                                                    <div class="col-xl-4">
+                                                                                        <div class="form-group">
+                                                                                            <label
+                                                                                                class="text-muted font-size-sm">Inventory
+                                                                                                Name
+                                                                                            </label>
+                                                                                            <p id="inventory_name"
+                                                                                                class="text-secondary font-weight-lighter font-size-sm">
+                                                                                            </p>
+
                                                                                         </div>
                                                                                     </div>
-                                                                                @else
-                                                                                    <div> <img style="width: 10%;"
+                                                                                </div>
+                                                                                <div class="row">
+                                                                                    <div class="col-xl-3">
+                                                                                        <!--begin::Input-->
+                                                                                        <div class="form-group">
+                                                                                            <label
+                                                                                                class="text-muted font-size-sm">Inventory
+                                                                                                Codes
+                                                                                            </label>
+                                                                                            <p id="inventory_codes"
+                                                                                                class="text-secondary font-weight-lighter font-size-sm">
+                                                                                            </p>
+
+                                                                                        </div>
+                                                                                        <!--end::Input-->
+                                                                                    </div>
+                                                                                    <div class="col-xl-9">
+                                                                                        <!--begin::Input-->
+                                                                                        <div class="form-group">
+                                                                                            <label
+                                                                                                class="text-muted font-size-sm">Notes
+
+                                                                                            </label>
+                                                                                            <p id="note"
+                                                                                                class="text-secondary font-weight-lighter font-size-sm">
+                                                                                            </p>
+                                                                                        </div>
+                                                                                        <!--end::Input-->
+                                                                                    </div>
+                                                                                    <div class="col-xl-4">
+                                                                                        <!--begin::Input-->
+                                                                                        <div class="form-group">
+                                                                                            <label
+                                                                                                class="text-muted font-size-sm">Inventory
+                                                                                                Details
+
+                                                                                            </label>
+                                                                                            <p id="inventory_detials"
+                                                                                                class="text-secondary font-weight-lighter font-size-sm">
+                                                                                            </p>
+                                                                                        </div>
+                                                                                        <!--end::Input-->
+                                                                                    </div>
+
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div
+                                                                        class="row justify-content-center my-10 px-8 my-lg-15 px-lg-10">
+                                                                        <div class="col-xl-12 ">
+                                                                            <div class="pb-5">
+                                                                                <div class="border-bottom">
+                                                                                    <h3>Scanned Document</h3>
+                                                                                </div>
+                                                                                </br>
+
+                                                                                <div class="row">
+                                                                                    <div class="col-xl-4">
+                                                                                        <div class="form-group">
+                                                                                            <label
+                                                                                                class="text-muted font-size-sm">Scanned
+                                                                                                Document 1</label>
+                                                                                            <p>
+                                                                                                <a id="scanned_document1"
+                                                                                                    href=""
+                                                                                                    target="_blank"><svg
+                                                                                                        xmlns="http://www.w3.org/2000/svg"
+                                                                                                        width="25%"
+                                                                                                        height="25%"
+                                                                                                        fill="currentColor"
+                                                                                                        class="bi bi-file-text"
+                                                                                                        viewBox="0 0 16 16">
+                                                                                                        <path
+                                                                                                            d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z" />
+                                                                                                        <path
+                                                                                                            d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
+                                                                                                    </svg></a>
+                                                                                            </p>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-xl-4">
+                                                                                        <div class="form-group">
+                                                                                            <label
+                                                                                                class="text-muted font-size-sm">Scanned
+                                                                                                Document 2</label>
+                                                                                            <p>
+                                                                                                <a id="scanned_document2"
+                                                                                                    href=""
+                                                                                                    target="_blank"><svg
+                                                                                                        xmlns="http://www.w3.org/2000/svg"
+                                                                                                        width="25%"
+                                                                                                        height="25%"
+                                                                                                        fill="currentColor"
+                                                                                                        class="bi bi-file-text"
+                                                                                                        viewBox="0 0 16 16">
+                                                                                                        <path
+                                                                                                            d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z" />
+                                                                                                        <path
+                                                                                                            d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
+                                                                                                    </svg></a>
+                                                                                            </p>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-xl-4">
+                                                                                        <div class="form-group">
+                                                                                            <label
+                                                                                                class="text-muted font-size-sm">Scanned
+                                                                                                Document 3</label>
+                                                                                            <p>
+                                                                                                <a id="scanned_document3"
+                                                                                                    href=""
+                                                                                                    target="_blank"><svg
+                                                                                                        xmlns="http://www.w3.org/2000/svg"
+                                                                                                        width="25%"
+                                                                                                        height="25%"
+                                                                                                        fill="currentColor"
+                                                                                                        class="bi bi-file-text"
+                                                                                                        viewBox="0 0 16 16">
+                                                                                                        <path
+                                                                                                            d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z" />
+                                                                                                        <path
+                                                                                                            d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
+                                                                                                    </svg></a>
+                                                                                            </p>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+
+
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-xl-12">
+                                                                            <div class="pb-5">
+                                                                                <div class="border-bottom">
+
+                                                                                    <h3>LABEL TITLE HERE</h3>
+                                                                                </div>
+                                                                                </br>
+                                                                                <div class="form-group row">
+                                                                                    <div class="col-xl-6">
+                                                                                        <div class="form-group">
+                                                                                            <label
+                                                                                                class="text-muted font-size-sm">
+                                                                                                Department</label>
+                                                                                            <p id="depart"
+                                                                                                class="text-secondary font-weight-lighter font-size-sm">
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-xl-6">
+                                                                                        <div class="form-group">
+                                                                                            <label
+                                                                                                class="text-muted font-size-sm">
+                                                                                                Section</label>
+                                                                                            <p id="section"
+                                                                                                class="text-secondary font-weight-lighter font-size-sm">
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+
+
+
+
+                                                                    <!-- code end -->
+
+
+
+                                                                </div>
+                                                                <div class="tab-pane fade" id="kt_tab_pane_5_de"
+                                                                    role="tabpanel" aria-labelledby="kt_tab_pane_5_de">
+
+                                                                    {{-- <div class="card card-custom mb-2"> --}}
+                                                                    <form action="">
+                                                                        <div
+                                                                            class="d-flex align-items-center justify-content-between p-4 flex-lg-wrap flex-xl-nowrap">
+
+                                                                            @if (request()->query('tab') == 'inbox')
+                                                                                <div class="d-flex flex-column mr-5">
+                                                                                    <div
+                                                                                        class="ml-4 ml-lg-0 ml-xxl-4 flex-shrink-0">
+                                                                                        <button
+                                                                                            onclick="AproveOrReject('signed')"
+                                                                                            id="approve" type="button"
+                                                                                            value="Sign & Approve"
+                                                                                            class="btn btn-sm  text-uppercase btn-success">
+                                                                                            Sign
+                                                                                        </button>
+                                                                                        <button
+                                                                                            onclick="AproveOrReject('rejected')"
+                                                                                            id="reject" type="button"
+                                                                                            class="btn btn-sm  text-uppercase btn-danger ">Reject
+                                                                                        </button>
+                                                                                        <img style="width: 10%;"
                                                                                             id="sign_img"
                                                                                             src="{{ url(Auth::user()->sign) }}">
-                                                                                        @if (request()->query('tab') == 'pending')
-                                                                                            <span id="title"
-                                                                                                class="d-inline-block"
-                                                                                                data-toggle="tooltip"
-                                                                                                title="x">
-                                                                                                <h6 id="verfied"
-                                                                                                    class="btn btn-hover-transparent-success font-weight-bold mr-2"
-                                                                                                    style="pointer-events: none;"
-                                                                                                    type="button" disabled>
-                                                                                                    <span
-                                                                                                        class="text-uppercase">{{ Auth::user()->role }}</span>
-                                                                                                    Verified
-                                                                                                </h6>
-                                                                                            </span>
-                                                                                        @endif
-
                                                                                     </div>
+                                                                                </div>
+                                                                            @else
+                                                                                <div> <img style="width: 10%;" id="sign_img"
+                                                                                        src="{{ url(Auth::user()->sign) }}">
+                                                                                    @if (request()->query('tab') == 'pending')
+                                                                                        <span id="title"
+                                                                                            class="d-inline-block"
+                                                                                            data-toggle="tooltip" title="x">
+                                                                                            <h6 id="verfied"
+                                                                                                class="btn btn-hover-transparent-success font-weight-bold mr-2"
+                                                                                                style="pointer-events: none;"
+                                                                                                type="button" disabled>
+                                                                                                <span
+                                                                                                    class="text-uppercase">{{ Auth::user()->role }}</span>
+                                                                                                Verified
+                                                                                            </h6>
+                                                                                        </span>
+                                                                                    @endif
 
-                                                                                @endif
-                                                                            </div>
-                                                                        </form>
-                                                                        {{-- </div> --}}
-                                                                    </div>
+                                                                                </div>
 
-                                                                    <div class="tab-pane fade" id="kt_tab_pane_5_track"
-                                                                        role="tabpanel"
-                                                                        aria-labelledby="kt_tab_pane_5_track">
+                                                                            @endif
+                                                                        </div>
+                                                                    </form>
+                                                                    {{-- </div> --}}
+                                                                </div>
 
-                                                                        <div style="margin-right: 80px;"
-                                                                            class="timeline timeline-5">
-                                                                            <div id="track_timeline"
-                                                                                class="timeline-items fixed-div">
-                                                                                <!--begin::Item-->
+                                                                <div class="tab-pane fade" id="kt_tab_pane_5_track"
+                                                                    role="tabpanel" aria-labelledby="kt_tab_pane_5_track">
 
-                                                                                <!--end::Item-->
-                                                                            </div>
+                                                                    <div style="margin-right: 80px;"
+                                                                        class="timeline timeline-5">
+                                                                        <div id="track_timeline"
+                                                                            class="timeline-items fixed-div">
+                                                                            <!--begin::Item-->
+
+                                                                            <!--end::Item-->
                                                                         </div>
                                                                     </div>
+                                                                </div>
 
 
 
-                                                                    <div class="tab-pane fade" id="kt_tab_pane_5_doc1"
-                                                                        role="tabpanel"
-                                                                        aria-labelledby="kt_tab_pane_5_doc1">
-                                                                        <img style="width: 20%" id="doc_1" alt="Pic"
-                                                                            src="assets/media/demos/demo1.png" />
-                                                                    </div>
-                                                                    <div class="tab-pane fade" id="kt_tab_pane_5_doc2"
-                                                                        role="tabpanel"
-                                                                        aria-labelledby="kt_tab_pane_5_doc2">
-                                                                        <img style="width: 20%" id="doc_2" alt="Pic"
-                                                                            src="assets/media/demos/demo2.png" />
-                                                                    </div>
-                                                                    <div class="tab-pane fade" id="kt_tab_pane_5_doc3"
-                                                                        role="tabpanel"
-                                                                        aria-labelledby="kt_tab_pane_5_doc3">
-                                                                        <img style="width: 20%" id="doc_3" alt="Pic"
-                                                                            src="assets/media/demos/demo3.png" />
-                                                                    </div>
+                                                                <div class="tab-pane fade" id="kt_tab_pane_5_doc1"
+                                                                    role="tabpanel" aria-labelledby="kt_tab_pane_5_doc1">
+                                                                    <img style="width: 20%" id="doc_1" alt="Pic"
+                                                                        src="assets/media/demos/demo1.png" />
+                                                                </div>
+                                                                <div class="tab-pane fade" id="kt_tab_pane_5_doc2"
+                                                                    role="tabpanel" aria-labelledby="kt_tab_pane_5_doc2">
+                                                                    <img style="width: 20%" id="doc_2" alt="Pic"
+                                                                        src="assets/media/demos/demo2.png" />
+                                                                </div>
+                                                                <div class="tab-pane fade" id="kt_tab_pane_5_doc3"
+                                                                    role="tabpanel" aria-labelledby="kt_tab_pane_5_doc3">
+                                                                    <img style="width: 20%" id="doc_3" alt="Pic"
+                                                                        src="assets/media/demos/demo3.png" />
+                                                                </div>
 
 
-                                                                    <div class="tab-pane fade" id="kt_tab_pane_5_note"
-                                                                        role="tabpanel"
-                                                                        aria-labelledby="kt_tab_pane_5_note">
-                                                                        <div class="timeline timeline-4">
-                                                                            <div class="timeline-bar">
-                                                                            </div>
-                                                                            <div id="note_chat_timeline"
-                                                                                class="timeline-items">
+                                                                <div class="tab-pane fade" id="kt_tab_pane_5_note"
+                                                                    role="tabpanel" aria-labelledby="kt_tab_pane_5_note">
+                                                                    <div class="timeline timeline-4">
+                                                                        <div class="timeline-bar">
+                                                                        </div>
+                                                                        <div id="note_chat_timeline" class="timeline-items">
 
-                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        @if (request()->query('tab') != 'inbox')
-                                                            <br>
-                                                            <br>
-                                                        @endif
-                                                        @if (request()->query('tab') == 'inbox')
-                                                            <div class="card-body">
-                                                                <div class="form-group mb-1">
-                                                                    <label for="exampleTextarea">Reply
-                                                                        Note <span class="text-danger">*</span></label>
-                                                                    <textarea class="form-control" id="replynote"
-                                                                        rows="2"></textarea>
-                                                                </div>
-                                                                <br>
-                                                                <div class="form-group mb-1">
-                                                                    <button onclick="replyNote()" type="button"
-                                                                        class="btn btn-gradient-success font-weight-bold">Reply</button>
-                                                                </div>
-                                                            </div>
-                                                        @endif
                                                     </div>
+                                                    @if (request()->query('tab') != 'inbox')
+                                                        <br>
+                                                        <br>
+                                                    @endif
+                                                    @if (request()->query('tab') == 'inbox')
+                                                        <div class="card-body">
+                                                            <div class="form-group mb-1">
+                                                                <label for="exampleTextarea">Reply
+                                                                    Note <span class="text-danger">*</span></label>
+                                                                <textarea class="form-control" id="replynote"
+                                                                    rows="2"></textarea>
+                                                            </div>
+                                                            <br>
+                                                            <div class="form-group mb-1">
+                                                                <button onclick="replyNote()" type="button"
+                                                                    class="btn btn-gradient-success font-weight-bold">Reply</button>
+                                                            </div>
+                                                        </div>
+                                                    @endif
                                                 </div>
                                             </div>
-
-                                            <!--end::Modal-->
-
                                         </div>
-                                        <!--end::Table-->
-                                        <div class="d-flex justify-content-between align-items-center flex-wrap">
-                                            <div class="d-flex flex-wrap mr-3">
-                                                {{-- <a href="#" class="btn btn-icon btn-sm btn-light-primary mr-2 my-1">
+
+                                        <!--end::Modal-->
+
+                                    </div>
+                                    <!--end::Table-->
+                                    <div class="d-flex justify-content-between align-items-center flex-wrap">
+                                        <div class="d-flex flex-wrap mr-3">
+                                            {{-- <a href="#" class="btn btn-icon btn-sm btn-light-primary mr-2 my-1">
                                                     <i class="ki ki-bold-double-arrow-back icon-xs"></i>
                                                 </a>
                                                 <a href="#" class="btn btn-icon btn-sm btn-light-primary mr-2 my-1">
@@ -1174,58 +1176,57 @@
                                                 <a href="#" class="btn btn-icon btn-sm btn-light-primary mr-2 my-1">
                                                     <i class="ki ki-bold-double-arrow-next icon-xs"></i>
                                                 </a> --}}
-                                                {{ $profiles->appends(request()->query())->links() }}
-                                            </div>
-                                            <div class="d-flex align-items-center">
-                                                <select id="perpage" onchange="perPageItems()"
-                                                    class="form-control form-control-sm text-primary font-weight-bold mr-4 border-0 bg-light-primary"
-                                                    style="width: 75px;">
-                                                    @if (request()->query('perPage'))
-                                                        <option selected hidden
-                                                            value="{{ request()->query('perPage') }}">
-                                                            {{ request()->query('perPage') }}
-                                                        </option>
-                                                        <option value="10">10</option>
-                                                        <option value="20">20</option>
-                                                        <option value="30">30</option>
-                                                        <option value="50">50</option>
-                                                        <option value="100">100</option>
-                                                    @else
-                                                        <option value="10">10</option>
-                                                        <option value="20">20</option>
-                                                        <option value="30">30</option>
-                                                        <option value="50">50</option>
-                                                        <option value="100">100</option>
-                                                    @endif
-
-                                                </select>
-                                                @if (request()->query('perPage'))
-                                                    <span class="text-muted">Displaying {{ request()->query('perPage') }}
-                                                        records</span>
-                                                @else
-                                                    <span class="text-muted">Displaying 10 records</span>
-                                                @endif
-                                            </div>
+                                            {{ $profiles->appends(request()->query())->links() }}
                                         </div>
-                                        <br>
+                                        <div class="d-flex align-items-center">
+                                            <select id="perpage" onchange="perPageItems()"
+                                                class="form-control form-control-sm text-primary font-weight-bold mr-4 border-0 bg-light-primary"
+                                                style="width: 75px;">
+                                                @if (request()->query('perPage'))
+                                                    <option selected hidden value="{{ request()->query('perPage') }}">
+                                                        {{ request()->query('perPage') }}
+                                                    </option>
+                                                    <option value="10">10</option>
+                                                    <option value="20">20</option>
+                                                    <option value="30">30</option>
+                                                    <option value="50">50</option>
+                                                    <option value="100">100</option>
+                                                @else
+                                                    <option value="10">10</option>
+                                                    <option value="20">20</option>
+                                                    <option value="30">30</option>
+                                                    <option value="50">50</option>
+                                                    <option value="100">100</option>
+                                                @endif
+
+                                            </select>
+                                            @if (request()->query('perPage'))
+                                                <span class="text-muted">Displaying {{ request()->query('perPage') }}
+                                                    records</span>
+                                            @else
+                                                <span class="text-muted">Displaying 10 records</span>
+                                            @endif
+                                        </div>
                                     </div>
-                                    <!--end::Tap pane-->
+                                    <br>
                                 </div>
+                                <!--end::Tap pane-->
                             </div>
-                            <!--end::Body-->
                         </div>
+                        <!--end::Body-->
                     </div>
-
-                    <!--begin::Modal-->
                 </div>
-                <!--end::Row-->
-                <!--begin::Pagination-->
 
-                <!--end::Pagination-->
+                <!--begin::Modal-->
             </div>
-            <!--end::Container-->
+            <!--end::Row-->
+            <!--begin::Pagination-->
+
+            <!--end::Pagination-->
         </div>
-        <!--end::Card-->
+        <!--end::Container-->
+    </div>
+    <!--end::Card-->
     </div>
 @endsection
 <style type="text/css">
@@ -1277,15 +1278,15 @@
 
 </script>
 <script type="text/javascript">
-    function setEditid(editvalue)
-    {
-    
-        document.getElementById('editingid').value=editvalue;
+    function setEditid(editvalue) {
+
+        document.getElementById('editingid').value = editvalue;
     }
+
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-    <script type="text/javascript">
+<script type="text/javascript">
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
