@@ -654,14 +654,14 @@
                                                 <label>Scanned Document 1</label>
                                                 <input type="file" name="scanned_document1" id="scanned_document1"
                                                     class="form-control form-control-solid" />
-                                                <span class="text-danger error-text scanned_document_err"></span>
+                                                <span class="text-danger error-text scanned_document1_err"></span>
                                             </div>
 
                                             <div class="col-md-4">
                                                 <label>Scanned Document 2</label>
                                                 <input type="file" name="scanned_document2" id="scanned_document2"
                                                     class="form-control form-control-solid" />
-                                                <span class="text-danger error-text scanned_document_err"></span>
+                                                <span class="text-danger error-text scanned_document2_err"></span>
                                             </div>
 
                                             <div class="col-md-4">
@@ -669,7 +669,7 @@
                                                 <input type="file" name="scanned_document3" id="scanned_document3"
                                                     class="form-control form-control-solid" />
 
-                                                <span class="text-danger error-text scanned_document2_err"></span>
+                                                <span class="text-danger error-text scanned_document3_err"></span>
 
                                             </div>
                                         </div>
