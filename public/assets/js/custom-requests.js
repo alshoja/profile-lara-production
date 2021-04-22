@@ -227,6 +227,10 @@ function setEprofile(profile) {
   let scannedDocument1 = getExtension(profile.scanned_document1);
   let scannedDocument2 = getExtension(profile.scanned_document2);
   let scannedDocument3 = getExtension(profile.scanned_document3);
+  let scannedDocument4 = getExtension(profile.scanned_document4);
+  let scannedDocument5 = getExtension(profile.scanned_document5);
+  let scannedDocument6 = getExtension(profile.scanned_document6);
+  let scannedDocument7 = getExtension(profile.scanned_document7);
 
   document.getElementById("exampleModalLabel").innerHTML = profile.name;
   document.getElementById("name_arabic").innerHTML = profile.name_arabic;
@@ -292,6 +296,52 @@ function setEprofile(profile) {
     document.getElementById("scanned_document3").href =
       HOST_URL + "/" + profile.scanned_document3;
   }
+
+  if (
+    scannedDocument4 == "pdf" ||
+    scannedDocument4 == "docx" ||
+    scannedDocument4 == "jpeg" ||
+    scannedDocument4 == "png" ||
+    scannedDocument4 == "jpg"
+  ) {
+    document.getElementById("scanned_document4").href =
+      HOST_URL + "/" + profile.scanned_document4;
+  }
+
+  if (
+    scannedDocument5 == "pdf" ||
+    scannedDocument5 == "docx" ||
+    scannedDocument5 == "jpeg" ||
+    scannedDocument5 == "png" ||
+    scannedDocument5 == "jpg"
+  ) {
+    document.getElementById("scanned_document5").href =
+      HOST_URL + "/" + profile.scanned_document5;
+  }
+
+  if (
+    scannedDocument6 == "pdf" ||
+    scannedDocument6 == "docx" ||
+    scannedDocument6 == "jpeg" ||
+    scannedDocument6 == "png" ||
+    scannedDocument6 == "jpg"
+  ) {
+    document.getElementById("scanned_document6").href =
+      HOST_URL + "/" + profile.scanned_document6;
+  }
+
+  if (
+    scannedDocument77 == "pdf" ||
+    scannedDocument7 == "docx" ||
+    scannedDocument7 == "jpeg" ||
+    scannedDocument7 == "png" ||
+    scannedDocument7 == "jpg"
+  ) {
+    document.getElementById("scanned_document7").href =
+      HOST_URL + "/" + profile.scanned_document7;
+  }
+
+
 }
 
 function setTrack(trackings) {

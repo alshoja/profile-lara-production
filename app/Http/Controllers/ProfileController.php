@@ -396,12 +396,19 @@ class ProfileController extends Controller
 
     public function profileDocumentUpdate(Request $request,$id)
     {
+
+          $doc_1=$request->input('scanned_documents4');
+          $doc_2=$request->input('scanned_documents5');
+          $doc_3=$request->input('scanned_documents6');
+          $doc_4=$request->input('scanned_documents5');
+
         if($request->file('scanned_document4') !='')
         {
             $scanned_document4 = $request->file('scanned_document4')->store('images');
         }
         else{
-            $scanned_document4=$request->input('scanned_document4');
+
+            $scanned_document4=$doc_1;
 
         }
         if($request->file('scanned_document5') !='')
@@ -410,21 +417,23 @@ class ProfileController extends Controller
 
         }
         else{
-            $scanned_document5=$request->input('scanned_document5');
+            $scanned_document5=$doc_2;
         }
+
         if($request->file('scanned_document6') !='')
         {
             $scanned_document6 = $request->file('scanned_document6')->store('images');
         }
         else{
-            $scanned_document6 = $request->input('scanned_document6');
+            $scanned_document6 = $doc_3;
 
         }
+
         if( $request->file('scanned_document7')!='')
         {
             $scanned_document7 = $request->file('scanned_document7')->store('images');
         }else{
-            $scanned_document7=$request->input('scanned_document7');
+            $scanned_document7= $doc_4;
 
         }
         
