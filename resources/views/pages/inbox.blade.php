@@ -388,7 +388,7 @@
                                                                             <i aria-hidden="true" class="ki ki-close"></i>
                                                                         </button>
                                                                     </div>
-                                                                    <form action="{{ url('profileDocumentUpdate',$item->id) }}"
+                                                                    <form action="{{ url('profile/document/update',$item->id) }}"
                                                                         method="POST" enctype="multipart/form-data">
                                                                         @csrf
                                                                         <div class="modal-body">

@@ -393,9 +393,10 @@ class ProfileController extends Controller
             dd($ex->getMessage());
         }
     }
-    public function profileDocumentUpdate(Request $request)
+
+    public function profileDocumentUpdate(Request $request,$id)
     {
-        
+        dd($id);
         if($request->file('scanned_document4') !='')
         {
             $scanned_document4 = $request->file('scanned_document4')->store('images');
