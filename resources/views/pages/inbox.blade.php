@@ -295,7 +295,7 @@
                                                                                     </a>
                                                                                 </li>
                                                                                 @if (Auth::user()->role == 'supervisor')
-                                                                                    @if ($item->on_final_approval == 1)
+                                                                                    {{-- @if ($item->on_final_approval == 1) --}}
                                                                                         <li class="navi-item">
                                                                                             <a href="#" class="navi-link">
                                                                                                 <span class="navi-icon">
@@ -308,7 +308,7 @@
                                                                                                     Docs</span>
                                                                                             </a>
                                                                                         </li>
-                                                                                    @endif
+                                                                                    {{-- @endif --}}
                                                                                 @endif
                                                                             @endif
 
@@ -537,12 +537,12 @@
 
                                                                                     <div class="form-group row">
                                                                                         <div class="col-xl-6">
-                                                                                        <label
-                                                                                            class="text-muted font-size-sm">
-                                                                                            Name Arabic</label>
-                                                                                        <p id="name_arabic"
-                                                                                            class="text-secondary font-weight-lighter font-size-sm">
-                                                                                        </p>
+                                                                                            <label
+                                                                                                class="text-muted font-size-sm">
+                                                                                                Name Arabic</label>
+                                                                                            <p id="name_arabic"
+                                                                                                class="text-secondary font-weight-lighter font-size-sm">
+                                                                                            </p>
                                                                                         </div>
                                                                                         <div class="col-xl-6">
                                                                                             <label
@@ -597,8 +597,9 @@
                                                                                             <!--begin::Input-->
                                                                                             <div class="form-group">
                                                                                                 <label
-                                                                                                    class="text-muted font-size-sm">Place of Birth
-                                                                                                    </label>
+                                                                                                    class="text-muted font-size-sm">Place
+                                                                                                    of Birth
+                                                                                                </label>
                                                                                                 <p id="place_birth"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
                                                                                                 </p>
@@ -611,7 +612,7 @@
                                                                                             <div class="form-group">
                                                                                                 <label
                                                                                                     class="text-muted font-size-sm">Address
-                                                                                                    </label>
+                                                                                                </label>
                                                                                                 <p id="address"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
                                                                                                 </p>
@@ -622,8 +623,9 @@
                                                                                         <div class="col-xl-4">
                                                                                             <div class="form-group">
                                                                                                 <label
-                                                                                                    class="text-muted font-size-sm">Referal Name
-                                                                                                    </label>
+                                                                                                    class="text-muted font-size-sm">Referal
+                                                                                                    Name
+                                                                                                </label>
                                                                                                 <p id="referal_name"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
                                                                                                 </p>
@@ -636,8 +638,9 @@
                                                                                             <!--begin::Input-->
                                                                                             <div class="form-group">
                                                                                                 <label
-                                                                                                    class="text-muted font-size-sm">Product Type
-                                                                                        </label>
+                                                                                                    class="text-muted font-size-sm">Product
+                                                                                                    Type
+                                                                                                </label>
                                                                                                 <p id="product_type"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
                                                                                                 </p>
@@ -692,7 +695,8 @@
                                                                                             <!--begin::Select-->
                                                                                             <div class="form-group">
                                                                                                 <label
-                                                                                                    class="text-muted font-size-sm">Date of
+                                                                                                    class="text-muted font-size-sm">Date
+                                                                                                    of
                                                                                                     Issue</label>
                                                                                                 <p id="date_issue"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
@@ -708,7 +712,7 @@
                                                                                             <div class="form-group">
                                                                                                 <label
                                                                                                     class="text-muted font-size-sm">Residency
-                                                                                                    </label>
+                                                                                                </label>
                                                                                                 <p id="residency"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
                                                                                                 </p>
@@ -717,13 +721,13 @@
                                                                                             </div>
                                                                                             <!--end::Select-->
                                                                                         </div>
-                                                                                        
+
                                                                                         <div class="col-xl-4">
                                                                                             <!--begin::Select-->
                                                                                             <div class="form-group">
                                                                                                 <label
                                                                                                     class="text-muted font-size-sm">Location
-                                                                                                    </label>
+                                                                                                </label>
                                                                                                 <p id="location"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
                                                                                                 </p>
@@ -737,8 +741,9 @@
                                                                                             <!--begin::Select-->
                                                                                             <div class="form-group">
                                                                                                 <label
-                                                                                                    class="text-muted font-size-sm">passport Expiry Date
-                                                                                                    </label>
+                                                                                                    class="text-muted font-size-sm">passport
+                                                                                                    Expiry Date
+                                                                                                </label>
                                                                                                 <p id="date_expiry"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
                                                                                                 </p>
@@ -752,8 +757,9 @@
                                                                                             <!--begin::Select-->
                                                                                             <div class="form-group">
                                                                                                 <label
-                                                                                                    class="text-muted font-size-sm">UID Number
-                                                                                                    </label>
+                                                                                                    class="text-muted font-size-sm">UID
+                                                                                                    Number
+                                                                                                </label>
                                                                                                 <p id="uid"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
                                                                                                 </p>
@@ -768,7 +774,7 @@
                                                                                             <div class="form-group">
                                                                                                 <label
                                                                                                     class="text-muted font-size-sm">Proffession
-                                                                                                    </label>
+                                                                                                </label>
                                                                                                 <p id="proffession"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
                                                                                                 </p>
@@ -777,10 +783,10 @@
                                                                                             </div>
                                                                                             <!--end::Select-->
                                                                                         </div>
-                                                                                        
-                                                                                        
-                                                                                        
-                                                                                        
+
+
+
+
 
 
 
@@ -815,8 +821,9 @@
                                                                                         <div class="col-xl-4">
                                                                                             <div class="form-group">
                                                                                                 <label
-                                                                                                    class="text-muted font-size-sm">Inventory Name
-                                                                                                    </label>
+                                                                                                    class="text-muted font-size-sm">Inventory
+                                                                                                    Name
+                                                                                                </label>
                                                                                                 <p id="inventory_name"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
                                                                                                 </p>
@@ -829,8 +836,9 @@
                                                                                             <!--begin::Input-->
                                                                                             <div class="form-group">
                                                                                                 <label
-                                                                                                    class="text-muted font-size-sm">Inventory Codes
-                                                                                                    </label>
+                                                                                                    class="text-muted font-size-sm">Inventory
+                                                                                                    Codes
+                                                                                                </label>
                                                                                                 <p id="inventory_codes"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
                                                                                                 </p>
@@ -843,8 +851,8 @@
                                                                                             <div class="form-group">
                                                                                                 <label
                                                                                                     class="text-muted font-size-sm">Notes
-                                                                                                    
-                                                                                                    </label>
+
+                                                                                                </label>
                                                                                                 <p id="note"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
                                                                                                 </p>
@@ -855,61 +863,72 @@
                                                                                             <!--begin::Input-->
                                                                                             <div class="form-group">
                                                                                                 <label
-                                                                                                    class="text-muted font-size-sm">Inventory Details
-                                                                                                    
-                                                                                                    </label>
+                                                                                                    class="text-muted font-size-sm">Inventory
+                                                                                                    Details
+
+                                                                                                </label>
                                                                                                 <p id="inventory_detials"
                                                                                                     class="text-secondary font-weight-lighter font-size-sm">
                                                                                                 </p>
                                                                                             </div>
                                                                                             <!--end::Input-->
                                                                                         </div>
-                                                                                        
+
                                                                                     </div>
-                                                                                    
+
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        
-                                                                        <div class="row justify-content-center my-10 px-8 my-lg-15 px-lg-10">
+
+                                                                        <div
+                                                                            class="row justify-content-center my-10 px-8 my-lg-15 px-lg-10">
                                                                             <div class="col-xl-12 ">
                                                                                 <div class="pb-5">
                                                                                     <div class="border-bottom">
                                                                                         <h3>Scanned Document</h3>
                                                                                     </div>
                                                                                     </br>
-                                                                                    
 
-                                                                                   
+
+
                                                                                     <div class="col-md-4">
                                                                                         <label
-                                                                                            class="text-muted font-size-sm">Scanned Document 1'</label>
-                                                                                            <a  id="scanned_document1" target="_blank" ><svg xmlns="http://www.w3.org/2000/svg" width="25%" height="25%" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
-                                                                                                <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"/>
-                                                                                                <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"/>
-                                                                                              </svg></a>
-                                                                                          
+                                                                                            class="text-muted font-size-sm">Scanned
+                                                                                            Document 1'</label>
+                                                                                        <a id="scanned_document1"
+                                                                                            target="_blank"><svg
+                                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                                width="25%" height="25%"
+                                                                                                fill="currentColor"
+                                                                                                class="bi bi-file-text"
+                                                                                                viewBox="0 0 16 16">
+                                                                                                <path
+                                                                                                    d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z" />
+                                                                                                <path
+                                                                                                    d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
+                                                                                            </svg></a>
+
                                                                                         </p>
                                                                                     </div>
-                                                                                   
-                                                                                    
-                                                                                    
-                                                                                  
 
-                                                                                   
 
-                                                                                    
 
-                                                                                    
-                                                                                    
+
+
+
+
+
+
+
+
 
                                                                                 </div>
                                                                             </div>
 
                                                                         </div>
-                                                                     
-                                                                                    
-                                                                        
+
+
+
 
                                                                         <!-- code end -->
 
