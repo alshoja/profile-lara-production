@@ -2,34 +2,35 @@
 
 function calculatePercenteage($item)
 {
-  $percentage = 0;
+  $percentage = [];
   if (isPresent($item->trackings, 'employ')) {
-    $percentage = 10;
-  } else 
+    array_push($percentage,10);
+  }  
   if (isPresent($item->trackings, 'supervisor')) {
-    $percentage = 20;
-  } else
+    array_push($percentage,10);
+   
+  } 
   if (isPresent($item->trackings, 'department_head')) {
-    $percentage = 30;
-  } else
+    array_push($percentage,10);
+  } 
   if (isPresent($item->trackings, 'director')) {
-    $percentage = 50;
-    // if ($item->scanned_document4 != '') {
-    //   $percentage = $percentage + 10;
-    // } else if ($item->scanned_document5 != '') {
-    //   $percentage = $percentage + 10;
-    // } else if ($item->scanned_document6 != '') {
-    //   $percentage = $percentage + 10;
-    // } else if ($item->scanned_document7 != '') {
-    //   $percentage = $percentage + 20;
-    // } else {
-    // $percentage = 50;
-    // }
-  } else {
-    $percentage = 0;
-  }
+    array_push($percentage,20);
+    if ($item->scanned_document4 != '') {
+      array_push($percentage,10);
+    }  
+    if ($item->scanned_document5 != '') {
+      array_push($percentage,10);
 
-  return $percentage;
+    } 
+     if ($item->scanned_document6 != '') {
+      array_push($percentage,10);
+
+    }  
+    if ($item->scanned_document7 != '') {
+      array_push($percentage,20);
+    } 
+  } 
+  return array_sum($percentage);;
 }
 
 function isPresent($trackings, $compare)
