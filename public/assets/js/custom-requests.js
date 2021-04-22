@@ -297,6 +297,8 @@ function setEprofile(profile) {
       HOST_URL + "/" + profile.scanned_document3;
   }
 
+  if(profile.scanned_document4 !='')
+  {
   if (
     scannedDocument4 == "pdf" ||
     scannedDocument4 == "docx" ||
@@ -304,10 +306,15 @@ function setEprofile(profile) {
     scannedDocument4 == "png" ||
     scannedDocument4 == "jpg"
   ) {
-    document.getElementById("scanned_document4").href =
+    document.getElementById("scanned_documents4").href =
       HOST_URL + "/" + profile.scanned_document4;
   }
-
+}
+else{
+  document.getElementById("scan4").style.display = 'none';
+}
+if(profile.scanned_document5 !='')
+  {
   if (
     scannedDocument5 == "pdf" ||
     scannedDocument5 == "docx" ||
@@ -315,10 +322,16 @@ function setEprofile(profile) {
     scannedDocument5 == "png" ||
     scannedDocument5 == "jpg"
   ) {
-    document.getElementById("scanned_document5").href =
+    document.getElementById("scanned_documents5").href =
       HOST_URL + "/" + profile.scanned_document5;
   }
+}
+else{
+  document.getElementById("scan5").style.display = 'none';
+}
 
+if(profile.scanned_document6 !='')
+  {
   if (
     scannedDocument6 == "pdf" ||
     scannedDocument6 == "docx" ||
@@ -326,20 +339,29 @@ function setEprofile(profile) {
     scannedDocument6 == "png" ||
     scannedDocument6 == "jpg"
   ) {
-    document.getElementById("scanned_document6").href =
+    document.getElementById("scanned_documents6").href =
       HOST_URL + "/" + profile.scanned_document6;
   }
-
+}
+else{
+  document.getElementById("scan6").style.display = 'none';
+}
+if(profile.scanned_document7 !='')
+  {
   if (
-    scannedDocument77 == "pdf" ||
+    scannedDocument7 == "pdf" ||
     scannedDocument7 == "docx" ||
     scannedDocument7 == "jpeg" ||
     scannedDocument7 == "png" ||
     scannedDocument7 == "jpg"
   ) {
-    document.getElementById("scanned_document7").href =
+    document.getElementById("scanned_documents7").href =
       HOST_URL + "/" + profile.scanned_document7;
   }
+}
+else{
+  document.getElementById("scan7").style.display = 'none';
+}
 
 
 }

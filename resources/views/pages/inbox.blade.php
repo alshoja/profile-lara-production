@@ -1019,6 +1019,7 @@
 
                                                                         </div>
                                                                     </div>
+                                                                    
 
                                                                     <div class="col-xl-12">
                                                                         <div class="pb-5">
@@ -1028,13 +1029,13 @@
                                                                             </div>
                                                                             </br>
                                                                             <div class="row">
-                                                                                <div class="col-xl-3">
+                                                                                <div class="col-xl-3" id="scan4">
                                                                                     <div class="form-group">
                                                                                         <label
                                                                                             class="text-muted font-size-sm">Scanned
-                                                                                            Document 3</label>
+                                                                                            Document 4</label>
                                                                                         <p>
-                                                                                            <a id="scanned_document4"
+                                                                                            <a id="scanned_documents4"
                                                                                                 href="" target="_blank"><svg
                                                                                                     xmlns="http://www.w3.org/2000/svg"
                                                                                                     width="25%" height="25%"
@@ -1050,13 +1051,13 @@
 
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="col-xl-3">
+                                                                                <div class="col-xl-3" id="scan5">
                                                                                     <div class="form-group">
                                                                                         <label
                                                                                             class="text-muted font-size-sm">Scanned
                                                                                             Document 5</label>
                                                                                         <p>
-                                                                                            <a id="scanned_document5"
+                                                                                            <a id="scanned_documents5"
                                                                                                 href="" target="_blank"><svg
                                                                                                     xmlns="http://www.w3.org/2000/svg"
                                                                                                     width="25%" height="25%"
@@ -1072,13 +1073,13 @@
 
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="col-xl-3">
+                                                                                <div class="col-xl-3" id="scan6">
                                                                                     <div class="form-group">
                                                                                         <label
                                                                                             class="text-muted font-size-sm">Scanned
                                                                                             Document 6</label>
                                                                                         <p>
-                                                                                            <a id="scanned_document6"
+                                                                                            <a id="scanned_documents6"
                                                                                                 href="" target="_blank"><svg
                                                                                                     xmlns="http://www.w3.org/2000/svg"
                                                                                                     width="25%" height="25%"
@@ -1094,13 +1095,13 @@
 
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="col-xl-3">
+                                                                                <div class="col-xl-3" id="scan7">
                                                                                     <div class="form-group">
                                                                                         <label
                                                                                             class="text-muted font-size-sm">Scanned
                                                                                             Document 7</label>
                                                                                         <p>
-                                                                                            <a id="scanned_document7"
+                                                                                            <a id="scanned_documents7"
                                                                                                 href="" target="_blank"><svg
                                                                                                     xmlns="http://www.w3.org/2000/svg"
                                                                                                     width="25%" height="25%"
