@@ -396,6 +396,10 @@ class ProfileController extends Controller
 
     public function profileDocumentUpdate(Request $request,$id)
     {
+        $scanned_document4 =null;
+        $scanned_document5 =null;
+        $scanned_document6 =null;
+        $scanned_document7 =null;
         if($request->file('scanned_document4') !='')
         {
             $scanned_document4 = $request->file('scanned_document4')->store('images');

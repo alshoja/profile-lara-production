@@ -39,10 +39,10 @@ class CreateProfilesTable extends Migration
             $table->string('scanned_document1');
             $table->string('scanned_document2');
             $table->string('scanned_document3');
-            $table->string('scanned_document4');
-            $table->string('scanned_document5');
-            $table->string('scanned_document6');
-            $table->string('scanned_document7');
+            $table->string('scanned_document4')->nullable();;
+            $table->string('scanned_document5')->nullable();;
+            $table->string('scanned_document6')->nullable();;
+            $table->string('scanned_document7')->nullable();;
              $table->tinyInteger('is_completed')->default(0)->nullable();
             $table->tinyInteger('belongs_to')->nullable();
             $table->tinyInteger('is_drafted')->nullable();
