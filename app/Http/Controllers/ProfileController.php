@@ -49,6 +49,7 @@ class ProfileController extends Controller
             if ($tab === "inbox") {
                 if (Auth::user()->role == "supervisor") {
                     $query->orWhere('on_final_approval', 1);
+                    $query->orWhere('on_final_approval', 0);
                 }
                 $query->whereHas('trackings', function ($query) {
                     if (Auth::user()->role == "supervisor") {
