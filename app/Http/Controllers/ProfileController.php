@@ -84,10 +84,12 @@ class ProfileController extends Controller
             }
             if ($tab === "completed") {
                 $query->Where('is_completed', 1);
+                $query->Where('on_final_approval', 0);
             }
             if ($tab === "pending") {
                 $query->Where('is_drafted', 0);
                 $query->Where('is_completed', 0);
+                $query->orWhere('on_final_approval', 1);
             }
             if ($from && $to) {
                 $query->whereBetween('created_at', [$from, $to]);

@@ -14,15 +14,17 @@ function calculatePercenteage($item)
   } else
   if (isPresent($item->trackings, 'director')) {
     $percentage = 50;
-    if ($item->scanned_document4 != '') {
-      $percentage = $percentage + 10;
-    } else if ($item->scanned_document5 != '') {
-      $percentage = $percentage + 10;
-    } else if ($item->scanned_document6 != '') {
-      $percentage = $percentage + 10;
-    } else if ($item->scanned_document7 != '') {
-      $percentage = $percentage + 20;
-    }
+    // if ($item->scanned_document4 != '') {
+    //   $percentage = $percentage + 10;
+    // } else if ($item->scanned_document5 != '') {
+    //   $percentage = $percentage + 10;
+    // } else if ($item->scanned_document6 != '') {
+    //   $percentage = $percentage + 10;
+    // } else if ($item->scanned_document7 != '') {
+    //   $percentage = $percentage + 20;
+    // } else {
+    // $percentage = 50;
+    // }
   } else {
     $percentage = 0;
   }
