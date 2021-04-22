@@ -396,6 +396,7 @@
 
                                                                             @csrf
                                                                             <div class="card-body">
+                                                                                @if($item->scanned_document4 =='')
                                                                                 <div class="form-group">
                                                                                     <label>Doc 1</label>
                                                                                     <input type="text" id="editingid"
@@ -405,6 +406,11 @@
                                                                                         class="form-control form-control-solid"
                                                                                         placeholder="Name" />
                                                                                 </div>
+                                                                                @else
+                                                                                <input name="scanned_document4" type="text" hidden value="{{$item->scanned_document4}}">
+                                                                                @endif
+                                                                                
+                                                                                @if($item->scanned_document5 =='')
                                                                                 <div class="form-group">
                                                                                     <label>Doc 2</label>
                                                                                     <input name="scanned_document5"
@@ -412,6 +418,10 @@
                                                                                         class="form-control form-control-solid"
                                                                                         placeholder="Name" />
                                                                                 </div>
+                                                                                @else
+                                                                                <input name="scanned_document5" type="text" hidden value="{{$item->scanned_document5}}">
+                                                                                @endif
+                                                                                @if($item->scanned_document6 =='')
                                                                                 <div class="form-group">
                                                                                     <label>Doc 3</label>
                                                                                     <input name="scanned_document6"
@@ -419,6 +429,10 @@
                                                                                         class="form-control form-control-solid"
                                                                                         placeholder="Name" />
                                                                                 </div>
+                                                                                @else
+                                                                                <input name="scanned_document6" type="text" hidden value="{{$item->scanned_document6}}">
+                                                                                @endif
+                                                                                @if($item->scanned_document7 =='')
                                                                                 <div class="form-group">
                                                                                     <label>Doc 4</label>
                                                                                     <input name="scanned_document7"
@@ -426,6 +440,10 @@
                                                                                         class="form-control form-control-solid"
                                                                                         placeholder="Name" />
                                                                                 </div>
+                                                                                @else
+                                                                                <input name="scanned_document7" type="text" hidden value="{{$item->scanned_document7}}">
+                                                                                @endif
+
                                                                             </div>
                                                                             <!--end::Form-->
                                                                         </div>

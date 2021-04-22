@@ -401,7 +401,7 @@ class ProfileController extends Controller
             $scanned_document4 = $request->file('scanned_document4')->store('images');
         }
         else{
-            $scanned_document4='';
+            $scanned_document4=$request->input('scanned_document4');
 
         }
         if($request->file('scanned_document5') !='')
@@ -410,21 +410,21 @@ class ProfileController extends Controller
 
         }
         else{
-            $scanned_document5='';
+            $scanned_document5=$request->input('scanned_document5');
         }
-        if($request->file('scanned_document6')!='')
+        if($request->file('scanned_document6') !='')
         {
             $scanned_document6 = $request->file('scanned_document6')->store('images');
         }
         else{
-            $scanned_document6='';
+            $scanned_document6 = $request->input('scanned_document6');
 
         }
         if( $request->file('scanned_document7')!='')
         {
             $scanned_document7 = $request->file('scanned_document7')->store('images');
         }else{
-            $scanned_document7='';
+            $scanned_document7=$request->input('scanned_document7');
 
         }
         
