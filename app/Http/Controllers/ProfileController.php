@@ -218,7 +218,6 @@ class ProfileController extends Controller
     public function stageThree(Request $request)
     {
         $validator = Validator::make($request->all(), [
-
             'scanned_document1' => 'required',
             'scanned_document2' => 'required',
             'scanned_document3' => 'required',
@@ -226,9 +225,6 @@ class ProfileController extends Controller
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], 422);
         } else {
-
-
-
             $scanned_document1 = $request->file('scanned_document1')->store('images');
             $scanned_document2 = $request->file('scanned_document2')->store('images');
             $scanned_document3 = $request->file('scanned_document3')->store('images');
@@ -480,7 +476,6 @@ class ProfileController extends Controller
     public function renderPdf($id)
     {
         $profile = Profile::with('department', 'section', 'products', 'trackings.sign')->find($id);
-        // return response()->json($profile, 200);
         $pdf = PDF::loadView('pdf', $profile);
         return $pdf->stream('invoice.pdf');
     }

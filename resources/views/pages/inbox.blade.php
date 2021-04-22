@@ -181,8 +181,8 @@
                                                                         class="d-flex align-items-center justify-content-between mb-2">
                                                                         <span
                                                                             class="text-muted mr-2 font-size-sm font-weight-bold">
-                                                                            {{calculatePercenteage($item)}}%
-                                                                            </span>
+                                                                            {{ calculatePercenteage($item) }}%
+                                                                        </span>
                                                                         <span
                                                                             class="text-muted font-size-sm font-weight-bold">Progress
                                                                         </span>
@@ -296,18 +296,18 @@
                                                                                 </li>
                                                                                 @if (Auth::user()->role == 'supervisor')
                                                                                     {{-- @if ($item->on_final_approval == 1) --}}
-                                                                                        <li class="navi-item">
-                                                                                            <a href="#" class="navi-link">
-                                                                                                <span class="navi-icon">
-                                                                                                    <i
-                                                                                                        class="flaticon-file"></i>
-                                                                                                </span>
-                                                                                                <span data-toggle="modal"
-                                                                                                    data-target="#final_documents"
-                                                                                                    class="navi-text">Final
-                                                                                                    Docs</span>
-                                                                                            </a>
-                                                                                        </li>
+                                                                                    <li class="navi-item">
+                                                                                        <a href="#" class="navi-link">
+                                                                                            <span class="navi-icon">
+                                                                                                <i
+                                                                                                    class="flaticon-file"></i>
+                                                                                            </span>
+                                                                                            <span data-toggle="modal"
+                                                                                                data-target="#final_documents"
+                                                                                                class="navi-text">Final
+                                                                                                Docs</span>
+                                                                                        </a>
+                                                                                    </li>
                                                                                     {{-- @endif --}}
                                                                                 @endif
                                                                             @endif
@@ -423,8 +423,7 @@
                                                     @if (count($profiles) < 1)
                                                         <tr>
                                                             <td class="pl-0">
-                                                                <a href="#" data-toggle="modal"
-                                                                    data-target="#exampleModalSizeXl"
+                                                                <a href="#"
                                                                     class="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">Oops..!
                                                                     Nothing Found</a>
                                                                 {{-- <span
@@ -433,7 +432,6 @@
                                                             </td>
                                                         <tr>
                                                     @endif
-
                                                 </tbody>
                                             </table>
                                             <!-- Modal-->
@@ -889,78 +887,115 @@
                                                                                     </div>
                                                                                     </br>
 
-                                                                                   <div class="row">
-                                                                                    <div class="col-xl-4">
-                                                                                        <div class="form-group">
-                                                                                        <label
-                                                                                            class="text-muted font-size-sm">Scanned Document 1</label>
-                                                                                            <p>
-                                                                                            <a id="scanned_document1"  href="" target="_blank" ><svg xmlns="http://www.w3.org/2000/svg" width="25%" height="25%" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
-                                                                                                <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"/>
-                                                                                                <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"/>
-                                                                                              </svg></a>
-                                                                                            </p>
-                                                                                          
+                                                                                    <div class="row">
+                                                                                        <div class="col-xl-4">
+                                                                                            <div class="form-group">
+                                                                                                <label
+                                                                                                    class="text-muted font-size-sm">Scanned
+                                                                                                    Document 1</label>
+                                                                                                <p>
+                                                                                                    <a id="scanned_document1"
+                                                                                                        href=""
+                                                                                                        target="_blank"><svg
+                                                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                                                            width="25%"
+                                                                                                            height="25%"
+                                                                                                            fill="currentColor"
+                                                                                                            class="bi bi-file-text"
+                                                                                                            viewBox="0 0 16 16">
+                                                                                                            <path
+                                                                                                                d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z" />
+                                                                                                            <path
+                                                                                                                d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
+                                                                                                        </svg></a>
+                                                                                                </p>
+
                                                                                             </div>
-                                                                                    </div>
-                                                                                    <div class="col-xl-4">
-                                                                                        <div class="form-group">
-                                                                                        <label
-                                                                                            class="text-muted font-size-sm">Scanned Document 2</label>
-                                                                                            <p>
-                                                                                            <a id="scanned_document2"  href="" target="_blank" ><svg xmlns="http://www.w3.org/2000/svg" width="25%" height="25%" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
-                                                                                                <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"/>
-                                                                                                <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"/>
-                                                                                              </svg></a>
-                                                                                            </p>
-                                                                                          
+                                                                                        </div>
+                                                                                        <div class="col-xl-4">
+                                                                                            <div class="form-group">
+                                                                                                <label
+                                                                                                    class="text-muted font-size-sm">Scanned
+                                                                                                    Document 2</label>
+                                                                                                <p>
+                                                                                                    <a id="scanned_document2"
+                                                                                                        href=""
+                                                                                                        target="_blank"><svg
+                                                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                                                            width="25%"
+                                                                                                            height="25%"
+                                                                                                            fill="currentColor"
+                                                                                                            class="bi bi-file-text"
+                                                                                                            viewBox="0 0 16 16">
+                                                                                                            <path
+                                                                                                                d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z" />
+                                                                                                            <path
+                                                                                                                d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
+                                                                                                        </svg></a>
+                                                                                                </p>
+
                                                                                             </div>
-                                                                                    </div>
-                                                                                    <div class="col-xl-4">
-                                                                                        <div class="form-group">
-                                                                                        <label
-                                                                                            class="text-muted font-size-sm">Scanned Document 3</label>
-                                                                                            <p>
-                                                                                            <a id="scanned_document3"  href="" target="_blank" ><svg xmlns="http://www.w3.org/2000/svg" width="25%" height="25%" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
-                                                                                                <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"/>
-                                                                                                <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"/>
-                                                                                              </svg></a>
-                                                                                            </p>
-                                                                                          
+                                                                                        </div>
+                                                                                        <div class="col-xl-4">
+                                                                                            <div class="form-group">
+                                                                                                <label
+                                                                                                    class="text-muted font-size-sm">Scanned
+                                                                                                    Document 3</label>
+                                                                                                <p>
+                                                                                                    <a id="scanned_document3"
+                                                                                                        href=""
+                                                                                                        target="_blank"><svg
+                                                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                                                            width="25%"
+                                                                                                            height="25%"
+                                                                                                            fill="currentColor"
+                                                                                                            class="bi bi-file-text"
+                                                                                                            viewBox="0 0 16 16">
+                                                                                                            <path
+                                                                                                                d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z" />
+                                                                                                            <path
+                                                                                                                d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
+                                                                                                        </svg></a>
+                                                                                                </p>
+
                                                                                             </div>
+                                                                                        </div>
                                                                                     </div>
-                                                                                   </div>
-                                         
-                                         
-                                         
+
+
+
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-xl-12">
                                                                                 <div class="pb-5">
                                                                                     <div class="border-bottom">
-                                                                            
+
                                                                                         <h3>LABEL TITLE HERE</h3>
                                                                                     </div>
                                                                                     </br>
                                                                                     <div class="form-group row">
                                                                                         <div class="col-xl-6">
                                                                                             <div class="form-group">
-                                                                                                <label class="text-muted font-size-sm">
+                                                                                                <label
+                                                                                                    class="text-muted font-size-sm">
                                                                                                     Department</label>
-                                                                                                <p id="depart" class="text-secondary font-weight-lighter font-size-sm">
+                                                                                                <p id="depart"
+                                                                                                    class="text-secondary font-weight-lighter font-size-sm">
                                                                                                 </p>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="col-xl-6">
                                                                                             <div class="form-group">
-                                                                                                <label class="text-muted font-size-sm">
+                                                                                                <label
+                                                                                                    class="text-muted font-size-sm">
                                                                                                     Section</label>
-                                                                                                <p id="section" class="text-secondary font-weight-lighter font-size-sm">
+                                                                                                <p id="section"
+                                                                                                    class="text-secondary font-weight-lighter font-size-sm">
                                                                                                 </p>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
-                                                                            
+
                                                                                 </div>
                                                                             </div>
 
