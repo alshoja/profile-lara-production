@@ -487,8 +487,7 @@ class ProfileController extends Controller
         $duplicateProfile->is_drafted = 1;
         $duplicateProfile->is_completed = 0;
         $duplicateProfile->save();
-
-        $this->trigerEvent($duplicateProfile->id);
+        // $this->trigerEvent($duplicateProfile->id);
         return back()->with('message', 'Forwaded updated');
     }
 
