@@ -394,10 +394,41 @@ class ProfileController extends Controller
     public function profileDocumentUpdate(Request $request)
     {
         
-        $scanned_document4 = $request->file('scanned_document4')->store('images');
-        $scanned_document5 = $request->file('scanned_document5')->store('images');
-        $scanned_document6 = $request->file('scanned_document6')->store('images');
-        $scanned_document7 = $request->file('scanned_document7')->store('images');
+        if($request->file('scanned_document4') !='')
+        {
+            $scanned_document4 = $request->file('scanned_document4')->store('images');
+        }
+        else{
+            $scanned_document4='';
+
+        }
+        if($request->file('scanned_document5') !='')
+        {
+            $scanned_document5 = $request->file('scanned_document5')->store('images');
+
+        }
+        else{
+            $scanned_document5='';
+        }
+        if($request->file('scanned_document6')!='')
+        {
+            $scanned_document6 = $request->file('scanned_document6')->store('images');
+        }
+        else{
+            $scanned_document6='';
+
+        }
+        if( $request->file('scanned_document7')!='')
+        {
+            $scanned_document7 = $request->file('scanned_document7')->store('images');
+        }else{
+            $scanned_document7='';
+
+        }
+        
+        
+       
+       
         $editid = $request->input('editingid');
         $data = array(
             "scanned_document4" => $scanned_document4,
