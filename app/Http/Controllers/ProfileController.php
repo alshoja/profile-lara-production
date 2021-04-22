@@ -396,7 +396,6 @@ class ProfileController extends Controller
 
     public function profileDocumentUpdate(Request $request,$id)
     {
-        dd($id);
         if($request->file('scanned_document4') !='')
         {
             $scanned_document4 = $request->file('scanned_document4')->store('images');
@@ -429,10 +428,6 @@ class ProfileController extends Controller
 
         }
         
-        
-       
-       
-        $editid = $request->input('editingid');
         $data = array(
             "scanned_document4" => $scanned_document4,
             "scanned_document5" => $scanned_document5,
@@ -440,7 +435,7 @@ class ProfileController extends Controller
             "scanned_document7" => $scanned_document7
         );
         try {
-            DB::table('profiles')->where('id', $editid)->update($data);
+            DB::table('profiles')->where('id', $id)->update($data);
             return redirect()->back();
         } catch (\Illuminate\Database\QueryException $ex) {
             dd($ex->getMessage());
