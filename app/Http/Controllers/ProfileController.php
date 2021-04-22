@@ -250,10 +250,6 @@ class ProfileController extends Controller
     }
 
     
-
-    
-
-    
     /**
      * Display the specified resource.
      *
@@ -384,7 +380,6 @@ class ProfileController extends Controller
             "scanned_document5" => $docimage5,
             "scanned_document6" => $docimage6,
             "scanned_document7" => $docimage7,
-            "is_drafted" =>0
         );
         try {
             DB::table('profiles')->where('id', $editid)->update($data);
@@ -446,44 +441,29 @@ class ProfileController extends Controller
             "scanned_document7" => $scanned_document7
         );
         try {
+         DB::transaction(function () use($id,$data) {
             DB::table('profiles')->where('id', $id)->update($data);
-          //  $result = Profile::select('scanned_document4','scanned_document5','scanned_document6','scanned_document7')->where('id', $id)->get();
-          $result = DB::table('profiles')->select('scanned_document4','scanned_document5','scanned_document6','scanned_document7')->where('id', $id)->get();
-
-          foreach ($result as $results){
+          $results = Profile::find($id);
             $doc1=  $results->scanned_document4;
             $doc2=  $results->scanned_document5;
             $doc3=  $results->scanned_document6;
             $doc4=  $results->scanned_document7;
 
-          }
-          if(($doc1 !='') && ($doc1 !='') && ($doc1 !='') && ($doc1 !='')){
-
+          if(($doc1 !='') && ($doc2 !='') && ($doc3 !='') && ($doc4 !='')){
             $data=array(
                 "is_completed" => 1,
                 "is_drafted"=>0,
                 "on_final_approval"=>0
             );
-            DB::table('profiles')->where('id', $id)->update($data);
-              
+            DB::table('profiles')->where('id', $id)->update($data);   
           }
-     
+        });
 
-               
-               
-      
-           
             return redirect()->back();
         } catch (\Illuminate\Database\QueryException $ex) {
             dd($ex->getMessage());
         }
 
-    }
-    public function productDelete(Request $request)
-    {
-        $id = $request->input('productid');
-        $product = Product::destroy($id);
-        return response()->json(['success' => 'Form is successfully submitted!']);
     }
 
     /**
