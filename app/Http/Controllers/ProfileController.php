@@ -232,74 +232,29 @@ class ProfileController extends Controller
             $scanned_document1 = $request->file('scanned_document1')->store('images');
             $scanned_document2 = $request->file('scanned_document2')->store('images');
             $scanned_document3 = $request->file('scanned_document3')->store('images');
+            
 
             $id = $request->input('editid1');
-            $data = array("scanned_document1" => $scanned_document1, "scanned_document2" => $scanned_document2, "scanned_document3" => $scanned_document3);
+            $data = array("scanned_document1" => $scanned_document1, "scanned_document2" => $scanned_document2, "scanned_document3" => $scanned_document3,"is_drafted" => 0);
             try {
-                DB::table('profiles')->where('id', $id)->update($data);
-                return response()->json(['success' => 'Form is successfully submitted!']);
-            } catch (\Illuminate\Database\QueryException $ex) {
-                dd($ex->getMessage());
-            }
-        }
-    }
-
-    public function stageFour(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'record_status' => 'required',
-            'record_dep_transfer' => 'required',
-        ]);
-        if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], 422);
-        } else {
-            $record_status = $request->input('record_status');
-            $record_dep_transfer = $request->input('record_dep_transfer');
-            $id = $request->input('editid3');
-            $data = array("record_status" => $record_status, "record_dep_transfer" => $record_dep_transfer);
-            try {
-                DB::table('profiles')->where('id', $id)->update($data);
-                return response()->json(['success' => 'Form is successfully submitted!']);
-            } catch (\Illuminate\Database\QueryException $ex) {
-                dd($ex->getMessage());
-            }
-        }
-    }
-
-    public function stageFive(Request $request)
-    {
-        $id = $request->input('productid');
-        $product = Product::destroy($id);
-        return response()->json(['success' => 'Form is successfully submitted!']);
-    }
-
-    public function stageSix(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'belongs_to' => 'required',
-        ]);
-        if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], 422);
-        }
-
-        $belongs_to = $request->input('belongs_to');
-        $id = $request->input('editid4');
-
-        $data = array(
-            "belongs_to" => $belongs_to, "is_drafted" => 0
-        );
-        try {
-            DB::transaction(function () use ($data, $id) {
+                DB::transaction(function () use ($data, $id) {
                 DB::table('profiles')->where('id', $id)->update($data);
                 if (count($data) > 0) {
                     $this->trigerEvent($id);
                 }
             });
-            return response()->json(['success' => 'Form is successfully submitted!']);
-        } catch (\Illuminate\Database\QueryException $ex) {
-            dd($ex->getMessage());
+                return response()->json(['success' => 'Form is successfully submitted!']);
+            } catch (\Illuminate\Database\QueryException $ex) {
+                dd($ex->getMessage());
+            }
         }
     }
+
+    
+
+    
+
+    
     /**
      * Display the specified resource.
      *
