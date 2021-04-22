@@ -16,39 +16,42 @@
                                     <i aria-hidden="true" class="ki ki-close"></i>
                                 </button>
                             </div>
-                            <div class="modal-body">
-                                <!--begin::Form-->
-                                <form class="form" method="POST" action="{{ url('') }}">
+                            <form  action="{{ url('profileDocumentUpdate') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div class="modal-body">
+                                   <!--begin::Form-->
+                               
                                     @csrf
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label>Doc 1</label>
-                                            <input name="1" type="file" class="form-control form-control-solid"
+                                            <input type="text" id="editingid" name="editingid" hidden>
+                                            <input name="scanned_document4" id="scanned_document4" type="file" class="form-control form-control-solid"
                                                 placeholder="Name" />
                                         </div>
                                         <div class="form-group">
                                             <label>Doc 2</label>
-                                            <input name="2" type="file" class="form-control form-control-solid"
+                                            <input name="scanned_document5" id="scanned_document5" type="file" class="form-control form-control-solid"
                                                 placeholder="Name" />
                                         </div>
                                         <div class="form-group">
                                             <label>Doc 3</label>
-                                            <input name="3" type="file" class="form-control form-control-solid"
+                                            <input name="scanned_document6" id="scanned_document6" type="file" class="form-control form-control-solid"
                                                 placeholder="Name" />
                                         </div>
                                         <div class="form-group">
                                             <label>Doc 4</label>
-                                            <input name="4" type="file" class="form-control form-control-solid"
+                                            <input name="scanned_document7" id="scanned_document7" type="file" class="form-control form-control-solid"
                                                 placeholder="Name" />
                                         </div>
                                     </div>
                                     <!--end::Form-->
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-light-primary font-weight-bold"
+                                 </div>
+                                    <div class="modal-footer">
+                                  <button type="button" class="btn btn-light-primary font-weight-bold"
                                     data-dismiss="modal">Close</button>
-                                <input type="submit" value="Save" class="btn btn-primary mr-2">
-                                </form>
+                                <button type="submit"  id="submit" class="btn btn-primary mr-2">Save</button>
+                            </form>
 
                             </div>
                         </div>
@@ -300,18 +303,18 @@
                                                                                 </li>
                                                                                 @if (Auth::user()->role == 'supervisor')
                                                                                     {{-- @if ($item->on_final_approval == 1) --}}
-                                                                                    <li class="navi-item">
-                                                                                        <a href="#" class="navi-link">
-                                                                                            <span class="navi-icon">
-                                                                                                <i
-                                                                                                    class="flaticon-file"></i>
-                                                                                            </span>
-                                                                                            <span data-toggle="modal"
-                                                                                                data-target="#final_documents"
-                                                                                                class="navi-text">Final
-                                                                                                Docs</span>
-                                                                                        </a>
-                                                                                    </li>
+                                                                                        <li class="navi-item">
+                                                                                            <a href="#" class="navi-link" onclick="setEditid({{ $item->id }})">
+                                                                                                <span class="navi-icon">
+                                                                                                    <i
+                                                                                                        class="flaticon-file"></i>
+                                                                                                </span>
+                                                                                                <span data-toggle="modal"
+                                                                                                    data-target="#final_documents"
+                                                                                                    class="navi-text">Final
+                                                                                                    Docs</span>
+                                                                                            </a>
+                                                                                        </li>
                                                                                     {{-- @endif --}}
                                                                                 @endif
                                                                             @endif
@@ -1271,6 +1274,47 @@
             e.relatedTarget // previous active tab
         })
     }
+
+</script>
+<script type="text/javascript">
+    function setEditid(editvalue)
+    {
+    
+        document.getElementById('editingid').value=editvalue;
+    }
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script type="text/javascript">
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $('#document_Form').submit(function(e) {
+        e.preventDefault();
+        let formData = new FormData(this);
+        alert("itd me");
+        $.ajax({
+            type: 'POST',
+            url: `/profileDocumentUpdate`,
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(data) {
+                if ($.isEmptyObject(data.error)) {
+                    console.log(data);
+                }
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                printErrorMsg(XMLHttpRequest.responseJSON.error);
+                showToast('You have some validation errors please fix it first !',
+                    'Validation Error', 'danger');
+            },
+
+        });
+    });
 
 </script>
 @push('script')

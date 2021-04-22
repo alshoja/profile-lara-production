@@ -383,7 +383,8 @@ class ProfileController extends Controller
             "scanned_document4" => $docimage4,
             "scanned_document5" => $docimage5,
             "scanned_document6" => $docimage6,
-            "scanned_document7" => $docimage7
+            "scanned_document7" => $docimage7,
+            "is_drafted" =>0
         );
         try {
             DB::table('profiles')->where('id', $editid)->update($data);
@@ -391,6 +392,28 @@ class ProfileController extends Controller
         } catch (\Illuminate\Database\QueryException $ex) {
             dd($ex->getMessage());
         }
+    }
+    public function profileDocumentUpdate(Request $request)
+    {
+        
+        $scanned_document4 = $request->file('scanned_document4')->store('images');
+        $scanned_document5 = $request->file('scanned_document5')->store('images');
+        $scanned_document6 = $request->file('scanned_document6')->store('images');
+        $scanned_document7 = $request->file('scanned_document7')->store('images');
+        $editid = $request->input('editingid');
+        $data = array(
+            "scanned_document4" => $scanned_document4,
+            "scanned_document5" => $scanned_document5,
+            "scanned_document6" => $scanned_document6,
+            "scanned_document7" => $scanned_document7
+        );
+        try {
+            DB::table('profiles')->where('id', $editid)->update($data);
+            return redirect()->back();
+        } catch (\Illuminate\Database\QueryException $ex) {
+            dd($ex->getMessage());
+        }
+
     }
     public function productDelete(Request $request)
     {

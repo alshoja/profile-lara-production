@@ -46,6 +46,7 @@ Route::middleware(['auth', 'initUser', 'checkIsBlocked'])->group(function () {
     Route::post('stageFive', [App\Http\Controllers\ProfileController::class, 'stageFive']);
     Route::post('stageSix', [App\Http\Controllers\ProfileController::class, 'stageSix']);
     Route::post('profileUpdate', [App\Http\Controllers\ProfileController::class, 'profileUpdate']);
+    Route::post('profileDocumentUpdate', [App\Http\Controllers\ProfileController::class, 'profileDocumentUpdate']);
     Route::get('profile/pdf/{id}', [App\Http\Controllers\ProfileController::class, 'renderPdf']);
     Route::get('profile/edit/{id}', [App\Http\Controllers\ProfileController::class, 'edit'])->middleware('checkProfilePermision');
     Route::get('inbox', [App\Http\Controllers\ProfileController::class, 'inbox'])->name('inbox');
