@@ -142,12 +142,16 @@
                                                             <td class="pl-0">
                                                                 <div class="symbol symbol-50 symbol-light mt-1">
                                                                     <span class="symbol-label">
-                                                                        @if ($item->gender == 'male')
-                                                                            <img src="{{ url('assets/media/svg/avatars/001-boy.svg') }}"
-                                                                                class="h-75 align-self-end" alt="" />
-
+                                                                        @if ($item->on_final_approval != '1')
+                                                                            @if ($item->gender == 'male')
+                                                                                <img src="{{ url('assets/media/svg/avatars/001-boy.svg') }}"
+                                                                                    class="h-75 align-self-end" alt="" />
+                                                                            @else
+                                                                                <img src="{{ url('assets/media/svg/avatars/002-girl.svg') }}"
+                                                                                    class="h-75 align-self-end" alt="" />
+                                                                            @endif
                                                                         @else
-                                                                            <img src="{{ url('assets/media/svg/avatars/002-girl.svg') }}"
+                                                                            <img src="{{ url('assets/media/svg/upload.gif') }}"
                                                                                 class="h-75 align-self-end" alt="" />
                                                                         @endif
                                                                     </span>

@@ -160,7 +160,7 @@ function getProfileData(id) {
     success: function (result) {
       console.log("profile", result);
       setEprofile(result);
-      setVerifiedNote(result.trackings);
+      setVerifiedNote(result);
       const mappedArray = result.timeline.map((obj, i) => {
         let payload = {};
         (payload.name = obj.name), (payload.note = obj.note);
@@ -195,14 +195,21 @@ function getProfileData(id) {
   return res;
 }
 function setVerifiedNote(profile) {
-  if (profile.length > 0) {
+  let reject_button = document.getElementById("reject");
+  let approve_button = document.getElementById("approve");
+  if (profile.trackings.length > 0) {
     const session_id = localStorage.getItem("session_id");
-    let signed = profile.some((e) => {
-      console.log(e);
+    let signed = profile.trackings.some((e) => {
       return e.owned_by == session_id;
     });
+    console.log(signed);
+
     let title = document.getElementById("title");
     let verified = document.getElementById("verfied");
+    if (signed == true && profile.on_final_approval) {
+      reject_button.disabled = true;
+      approve_button.disabled = true;
+    }
     if (title != null) {
       if (signed == true) {
         title.setAttribute("data-original-title", "Verified by You");
@@ -344,7 +351,6 @@ function setTrack(trackings) {
   }
   document.getElementById("track_timeline").innerHTML = contentStr;
 }
-
 
 function setNotes(notes) {
   let notesString = "";
