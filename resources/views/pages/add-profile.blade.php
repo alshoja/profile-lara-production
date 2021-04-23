@@ -938,7 +938,7 @@
             let saveButtonUpload = $(".uploadSave");
             saveButtonUpload.addClass('spinner spinner-white spinner-right')
             saveButtonUpload.prop('disabled', true);
-            saveButtonUpload.html("Uploading ");
+            saveButtonUpload.html("Uploading ..");
             $.ajax({
                 type: 'POST',
                 url: `/stageThree`,
@@ -956,8 +956,10 @@
                     saveButtonUpload.prop('disabled', false);
                     saveButtonUpload.html("Save");
                     printErrorMsg(XMLHttpRequest.responseJSON.error);
-                    console.log('xml ',XMLHttpRequest)
-                    console.log('textStatus ',textStatus)
+                    if(XMLHttpRequest.status ==413){
+                        showToast('Upload too large !',
+                        'Upload Error', 'danger');
+                    }
                     showToast('You have some validation errors please fix it first !',
                         'Validation Error', 'danger');
                 },
