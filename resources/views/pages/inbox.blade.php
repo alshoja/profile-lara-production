@@ -155,7 +155,7 @@
                                                             @if (request()->query('tab') != 'pending')
                                                                 <td class="text-right pr-0">
                                                                     @if (Auth::user()->role == 'supervisor')
-                                                                        @if ($item->on_final_approval == 0)
+                                                                        @if ($item->on_final_approval == 1)
                                                                             <a data-toggle="modal"
                                                                                 data-target="#final_documents{{ $item->id }}"
                                                                                 href="#"
