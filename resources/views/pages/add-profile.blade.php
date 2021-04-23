@@ -956,6 +956,8 @@
                     saveButtonUpload.prop('disabled', false);
                     saveButtonUpload.html("Save");
                     printErrorMsg(XMLHttpRequest.responseJSON.error);
+                    console.log('xml ',XMLHttpRequest)
+                    console.log('textStatus ',textStatus)
                     showToast('You have some validation errors please fix it first !',
                         'Validation Error', 'danger');
                 },
