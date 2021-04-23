@@ -96,7 +96,7 @@
 <script src="{{ asset('assets/js/time.js') }}"></script>
 
 <script>
-    setInterval(getNotifications, 5000);
+    setInterval(getNotifications, 60000);
     localStorage.setItem('session_id', {{ Auth::user()->id }});
 
 </script>

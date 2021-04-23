@@ -23,7 +23,7 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                                                                                                                    <g stroke="
+                                                                                                                                                    <g stroke="
                                             none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
@@ -48,7 +48,7 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                                                                                                                    <g stroke="
+                                                                                                                                                    <g stroke="
                                             none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
@@ -678,10 +678,9 @@
 
 
                                         <!--end::Select
-                                                                                                                                <input type = 'submit' value = "Save" class="btn btn-success font-weight-bolder"/>
-                                                                                                                                <button class="btn btn-success font-weight-bolder" id="editstep">smave</button>-->
+                                                                                                                                                <input type = 'submit' value = "Save" class="btn btn-success font-weight-bolder"/>                                                                    <button class="btn btn-success font-weight-bolder" id="editstep">smave</button>-->
                                         <button type="submit" id="submit" onclick="enableNext()"
-                                            class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4">Save</button>
+                                            class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4 uploadSave">Save</button>
                                     </div>
                                 </form>
 
@@ -735,7 +734,7 @@
         </div>
         <!--end::Container-->
     </div>
-<script src="{{ asset('assets/js/jquery.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.js') }}"></script>
 
     <script type="text/javascript">
         function enableNext() {
@@ -936,6 +935,10 @@
         $('#kt_form2').submit(function(e) {
             e.preventDefault();
             let formData = new FormData(this);
+            let saveButtonUpload = $(".uploadSave");
+            saveButtonUpload.addClass('spinner spinner-white spinner-right')
+            saveButtonUpload.prop('disabled', true);
+
             $.ajax({
                 type: 'POST',
                 url: `/stageThree`,
@@ -949,6 +952,8 @@
                     location.reload();
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    saveButtonUpload.removeClass('spinner spinner-white spinner-right')
+                    saveButtonUpload.prop('disabled', false);
                     printErrorMsg(XMLHttpRequest.responseJSON.error);
                     showToast('You have some validation errors please fix it first !',
                         'Validation Error', 'danger');
@@ -960,78 +965,77 @@
     </script>
     <script type="text/javascript">
         $(document).ready(function() {
-            console.log('hai initiated')
             var maxField = 10; //Input fields increment limitation
             var addButton = $('.add_button'); //Add button selector
             var wrapper = $('.field_wrapper'); //Input field wrapper
             var fieldHTML = `
-                <div>
-                 <div class="row form-group">
-                    <div class="col-md-4">
+                                <div>
+                                 <div class="row form-group">
+                                    <div class="col-md-4">
 
-                        <select required name="product_type[]" id="product_type[]" class="form-control form-control-solid ">
-                            <option hidden value="">Select Product-1&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            </option>
-                            <option value="YE">P 1</option>
-                            <option value="ZM">P 2</option>
-                            <option value="ZW">P 3</option>
-                        </select>
-                        {{-- <div class="d-md-none mb-2"></div> --}}
-                    </div>
-                    <div class="col-md-4">
+                                        <select required name="product_type[]" id="product_type[]" class="form-control form-control-solid ">
+                                            <option hidden value="">Select Product-1&nbsp;
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                &nbsp;
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            </option>
+                                            <option value="YE">P 1</option>
+                                            <option value="ZM">P 2</option>
+                                            <option value="ZW">P 3</option>
+                                        </select>
+                                        {{-- <div class="d-md-none mb-2"></div> --}}
+                                    </div>
+                                    <div class="col-md-4">
 
-                        <select required name="manufacture_type[]" id="manufacture_type[]" class="form-control form-control-solid">
-                            <option hidden value=""> Select Type-1</option>
-                            <option value="YE">P 1</option>
-                            <option value="ZM">P 2</option>
-                            <option value="ZW">P 3</option>
-                        </select>
-                        {{-- <div class="d-md-none mb-2"></div> --}}
-                    </div>
-                    <div class="col-md-4">
+                                        <select required name="manufacture_type[]" id="manufacture_type[]" class="form-control form-control-solid">
+                                            <option hidden value=""> Select Type-1</option>
+                                            <option value="YE">P 1</option>
+                                            <option value="ZM">P 2</option>
+                                            <option value="ZW">P 3</option>
+                                        </select>
+                                        {{-- <div class="d-md-none mb-2"></div> --}}
+                                    </div>
+                                    <div class="col-md-4">
 
-                        <select required name="shipped_type[]" id="shipped_type[]" class="form-control form-control-solid">
-                            <option selected hidden value="">Select type-3
-                            </option>
-                            <option value="YE">P 1</option>
-                            <option value="ZM">P 2</option>
-                            <option value="ZW">P 3</option>
-                        </select>
-                        {{-- <div class="d-md-none mb-2"></div> --}}
-                    </div>
-                </div>
-                <div class="row form-group">
-                    <div class="col-md-3">
+                                        <select required name="shipped_type[]" id="shipped_type[]" class="form-control form-control-solid">
+                                            <option selected hidden value="">Select type-3
+                                            </option>
+                                            <option value="YE">P 1</option>
+                                            <option value="ZM">P 2</option>
+                                            <option value="ZW">P 3</option>
+                                        </select>
+                                        {{-- <div class="d-md-none mb-2"></div> --}}
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-md-3">
 
-                        <input required type="text" class="form-control" placeholder="Kg" name="quantity_kg[]" id="quantity_kg[]" />
-                        <div class="d-md-none mb-2"></div>
-                    </div>
-                    <div class="col-md-3">
+                                        <input required type="text" class="form-control" placeholder="Kg" name="quantity_kg[]" id="quantity_kg[]" />
+                                        <div class="d-md-none mb-2"></div>
+                                    </div>
+                                    <div class="col-md-3">
 
-                        <input required type="text" class="form-control" placeholder="G" name="quantity_g[]" id="quantity_g[]" />
-                        <div class="d-md-none mb-2"></div>
-                    </div>
-                    <div class="col-md-3">
+                                        <input required type="text" class="form-control" placeholder="G" name="quantity_g[]" id="quantity_g[]" />
+                                        <div class="d-md-none mb-2"></div>
+                                    </div>
+                                    <div class="col-md-3">
 
-                        <input required type="text" class="form-control" placeholder="ML" name="quantity_ml[]" id="quantity_ml[]" />
-                        <div class="d-md-none mb-2"></div>
-                    </div>
+                                        <input required type="text" class="form-control" placeholder="ML" name="quantity_ml[]" id="quantity_ml[]" />
+                                        <div class="d-md-none mb-2"></div>
+                                    </div>
 
-                    <div required class="col-md-3">
-                        <!-- <label>Number:</label> -->
-                        <input type="text" class="form-control" placeholder="Digit" name="quantity_digit[]" id="quantity_digit[]" />
-                        <div class="d-md-none mb-2"></div>
-                    </div>
-                </div>
-                <a style="margin:10px;" href="javascript:;" data-repeater-delete=""
-                    class="btn btn-sm font-weight-bolder btn-danger btn-gradient-danger remove_button">
-                    <i class="la la-trash-o"></i>
-                </a>
-            </div>
-            `
+                                    <div required class="col-md-3">
+                                        <!-- <label>Number:</label> -->
+                                        <input type="text" class="form-control" placeholder="Digit" name="quantity_digit[]" id="quantity_digit[]" />
+                                        <div class="d-md-none mb-2"></div>
+                                    </div>
+                                </div>
+                                <a style="margin:10px;" href="javascript:;" data-repeater-delete=""
+                                    class="btn btn-sm font-weight-bolder btn-danger btn-gradient-danger remove_button">
+                                    <i class="la la-trash-o"></i>
+                                </a>
+                            </div>
+                            `
             var x = 1;
             $(addButton).click(function() {
 

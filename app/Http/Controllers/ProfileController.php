@@ -221,9 +221,9 @@ class ProfileController extends Controller
     public function stageThree(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'scanned_document1' => 'required',
-            'scanned_document2' => 'required',
-            'scanned_document3' => 'required',
+            'scanned_document1' => 'required|max:1024',
+            'scanned_document2' => 'required|max:1024',
+            'scanned_document3' => 'required|max:1024',
         ]);
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], 422);
