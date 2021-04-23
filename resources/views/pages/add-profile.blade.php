@@ -938,7 +938,7 @@
             let saveButtonUpload = $(".uploadSave");
             saveButtonUpload.addClass('spinner spinner-white spinner-right')
             saveButtonUpload.prop('disabled', true);
-            saveButtonUpload.html("Uploading..");
+            saveButtonUpload.html("Uploading ");
             $.ajax({
                 type: 'POST',
                 url: `/stageThree`,
