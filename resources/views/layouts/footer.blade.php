@@ -94,6 +94,7 @@
 <script src="{{ asset('assets/js/comon-sweet-alert.js') }}"></script>
 <script src="{{ asset('assets/js/toast.js') }}"></script>
 <script src="{{ asset('assets/js/time.js') }}"></script>
+<script src="{{ asset('assets/js/auto-logout.js') }}"></script>
 
 <script>
     setInterval(getNotifications, 60000);
