@@ -938,7 +938,7 @@
             let saveButtonUpload = $(".uploadSave");
             saveButtonUpload.addClass('spinner spinner-white spinner-right')
             saveButtonUpload.prop('disabled', true);
-            saveButtonUpload.prop('value', 'Uploading..!')
+            saveButtonUpload.html("Uploading..");
             $.ajax({
                 type: 'POST',
                 url: `/stageThree`,
@@ -954,7 +954,7 @@
                 error: function(XMLHttpRequest, textStatus, errorThrown) {
                     saveButtonUpload.removeClass('spinner spinner-white spinner-right')
                     saveButtonUpload.prop('disabled', false);
-                    saveButtonUpload.prop('value', 'Save')
+                    saveButtonUpload.html("Save");
                     printErrorMsg(XMLHttpRequest.responseJSON.error);
                     showToast('You have some validation errors please fix it first !',
                         'Validation Error', 'danger');
