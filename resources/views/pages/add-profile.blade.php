@@ -957,8 +957,8 @@
                     saveButtonUpload.html("Save");
                     printErrorMsg(XMLHttpRequest.responseJSON.error);
                     if(XMLHttpRequest.status ==413){
-                        showToast('Upload too large !',
-                        'Upload Error', 'danger');
+                        showToast('Upload too large, Please reduce the file size !',
+                        'Opps', 'warning');
                     }
                     showToast('You have some validation errors please fix it first !',
                         'Validation Error', 'danger');

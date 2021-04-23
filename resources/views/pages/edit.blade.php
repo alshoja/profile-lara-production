@@ -23,7 +23,7 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                                                                                            <g stroke="
+                                                                                                                        <g stroke="
                                             none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
@@ -48,7 +48,7 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                                                                                            <g stroke="
+                                                                                                                        <g stroke="
                                             none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
@@ -73,19 +73,19 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         @if (Auth::user()->role == 'supervisor')
-                                        <svg xmlns="http:
-                                                                                                            <g stroke="
-                                            none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                            <polygon points="0 0 24 0 24 24 0 24" />
-                                            <rect fill="#000000" opacity="0.3"
-                                                transform="translate(15.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-15.000000, -12.000000) "
-                                                x="14" y="7" width="2" height="10" rx="1" />
-                                            <path
-                                                d="M3.7071045,15.7071045 C3.3165802,16.0976288 2.68341522,16.0976288 2.29289093,15.7071045 C1.90236664,15.3165802 1.90236664,14.6834152 2.29289093,14.2928909 L8.29289093,8.29289093 C8.67146987,7.914312 9.28105631,7.90106637 9.67572234,8.26284357 L15.6757223,13.7628436 C16.0828413,14.136036 16.1103443,14.7686034 15.7371519,15.1757223 C15.3639594,15.5828413 14.7313921,15.6103443 14.3242731,15.2371519 L9.03007346,10.3841355 L3.7071045,15.7071045 Z"
-                                                fill="#000000" fill-rule="nonzero"
-                                                transform="translate(9.000001, 11.999997) scale(-1, -1) rotate(90.000000) translate(-9.000001, -11.999997) " />
-                                            </g>
-                                        </svg>
+                                            <svg xmlns="http:
+                                                                                                                        <g stroke="
+                                                none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <polygon points="0 0 24 0 24 24 0 24" />
+                                                <rect fill="#000000" opacity="0.3"
+                                                    transform="translate(15.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-15.000000, -12.000000) "
+                                                    x="14" y="7" width="2" height="10" rx="1" />
+                                                <path
+                                                    d="M3.7071045,15.7071045 C3.3165802,16.0976288 2.68341522,16.0976288 2.29289093,15.7071045 C1.90236664,15.3165802 1.90236664,14.6834152 2.29289093,14.2928909 L8.29289093,8.29289093 C8.67146987,7.914312 9.28105631,7.90106637 9.67572234,8.26284357 L15.6757223,13.7628436 C16.0828413,14.136036 16.1103443,14.7686034 15.7371519,15.1757223 C15.3639594,15.5828413 14.7313921,15.6103443 14.3242731,15.2371519 L9.03007346,10.3841355 L3.7071045,15.7071045 Z"
+                                                    fill="#000000" fill-rule="nonzero"
+                                                    transform="translate(9.000001, 11.999997) scale(-1, -1) rotate(90.000000) translate(-9.000001, -11.999997) " />
+                                                </g>
+                                            </svg>
                                         @endif
                                         <!--end::Svg Icon-->
                                     </span>
@@ -93,21 +93,21 @@
                                 <!--end::Wizard Step 3 Nav-->
                                 <!--begin::Wizard Step 4 Nav-->
                                 @if (Auth::user()->role == 'supervisor')
-                                <div class="wizard-step" data-wizard-type="step">
-                                    <div class="wizard-label">
-                                        <i class="wizard-icon flaticon-truck"></i>
-                                        <h3 class="wizard-title">Label 4</h3>
+                                    <div class="wizard-step" data-wizard-type="step">
+                                        <div class="wizard-label">
+                                            <i class="wizard-icon flaticon-truck"></i>
+                                            <h3 class="wizard-title">Label 4</h3>
+                                        </div>
+                                        <span class="svg-icon svg-icon-xl wizard-arrow">
+                                            <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
+
+                                            <!--end::Svg Icon-->
+                                        </span>
                                     </div>
-                                    <span class="svg-icon svg-icon-xl wizard-arrow">
-                                        <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
-                                        
-                                        <!--end::Svg Icon-->
-                                    </span>
-                                </div>
                                 @endif
                                 <!--end::Wizard Step 4 Nav-->
                                 <!--begin::Wizard Step 5 Nav-->
-                                
+
                                 <!--end::Wizard Step 5 Nav-->
                             </div>
                         </div>
@@ -134,18 +134,20 @@
                                         <br>
                                         <!-- <h3 class="mb-10 font-weight-bold text-dark">Some Label</h3> -->
                                         <!--begin::Input-->
-                                    <input type="text" hidden name="editid" id="editid" value="{{ $profile->id }}">
+                                        <input type="text" hidden name="editid" id="editid" value="{{ $profile->id }}">
                                         <div class="row form-group">
                                             <div class="col-xl-6">
                                                 <label>Name Arabic</label>
-                                                     <input type="text" class="form-control form-control-solid form-control-lg"
-                                                name="name_arabic" placeholder="Name"  id="name_arabic" value="{{ $profile->name_arabic }}" />
+                                                <input type="text" class="form-control form-control-solid form-control-lg"
+                                                    name="name_arabic" placeholder="Name" id="name_arabic"
+                                                    value="{{ $profile->name_arabic }}" />
                                                 <span class="text-danger error-text name_err"></span>
                                             </div>
                                             <div class="col-xl-6">
                                                 <label>Name English</label>
                                                 <input type="text" class="form-control form-control-solid form-control-lg"
-                                                    name="name" placeholder="Name"  id="name" value="{{ $profile->name }}" />
+                                                    name="name" placeholder="Name" id="name"
+                                                    value="{{ $profile->name }}" />
                                                 <span class="text-danger error-text name_err"></span>
                                             </div>
                                         </div>
@@ -438,9 +440,10 @@
                                             <div class="col-xl-4">
                                                 <div class="form-group">
                                                     <label>DOB</label>
-                                                    <input max="<?php echo date('Y-m-d') ?>" type="date"
-                                                        class="form-control form-control-solid form-control-lg" name="dob" id="dob"
-                                                        value="{{date( 'Y-m-d',strtotime($profile->dob)) }}" />
+                                                    <input max="<?php echo date('Y-m-d'); ?>"
+                                                        type="date" class="form-control form-control-solid form-control-lg"
+                                                        name="dob" id="dob"
+                                                        value="{{ date('Y-m-d', strtotime($profile->dob)) }}" />
                                                     <span class="text-danger error-text dob_err"></span>
                                                     <!-- <span class="form-text text-muted">Please enter DOb.</span> -->
                                                 </div>
@@ -448,32 +451,38 @@
                                             <div class="col-xl-4">
                                                 <div class="form-group">
                                                     <label>Place of birth</label>
-                                                    <input type="text" class="form-control form-control-solid form-control-lg"
-                                                    name="place_birth" placeholder="place of birth"  id="place_birth" value="{{ $profile->place_birth }}" />
+                                                    <input type="text"
+                                                        class="form-control form-control-solid form-control-lg"
+                                                        name="place_birth" placeholder="place of birth" id="place_birth"
+                                                        value="{{ $profile->place_birth }}" />
                                                 </div>
-                                                    <span class="text-danger error-text place_birth_err"></span>
+                                                <span class="text-danger error-text place_birth_err"></span>
+                                            </div>
+                                            <div class="col-xl-8">
+                                                <!--begin::Input-->
+                                                <div class="form-group">
+                                                    <label>Address</label>
+                                                    <textarea class="form-control form-control-solid form-control-lg"
+                                                        name="address" placeholder="Address"
+                                                        value="{{ $profile->address }}"
+                                                        id="address">{{ $profile->address }}</textarea>
+                                                    <span class="text-danger error-text address_err"></span>
                                                 </div>
-                                                <div class="col-xl-8">
-                                                    <!--begin::Input-->
-                                                    <div class="form-group">
-                                                        <label>Address</label>
-                                                        <textarea  class="form-control form-control-solid form-control-lg"
-                                                        name="address" placeholder="Address" value="{{ $profile->address }}" id="address" >{{ $profile->address }}</textarea>
-                                                        <span class="text-danger error-text address_err"></span>
-                                                    </div>
-                                                    <!--end::Input-->
-                                                </div>
+                                                <!--end::Input-->
+                                            </div>
                                         </div>
 
                                         <div class="row">
-                                            
+
                                             <div class="col-xl-4">
                                                 <!--begin::Input-->
                                                 <div class="form-group">
                                                     <label>Referal Name</label>
-                                                    <input type="text" class="form-control form-control-solid form-control-lg"
-                                                    name="referal_name" placeholder="Referal Name" value="{{ $profile->referal_name }}" id="referal_name" />
-                                                   <span class="text-danger error-text referal_name_err"></span>
+                                                    <input type="text"
+                                                        class="form-control form-control-solid form-control-lg"
+                                                        name="referal_name" placeholder="Referal Name"
+                                                        value="{{ $profile->referal_name }}" id="referal_name" />
+                                                    <span class="text-danger error-text referal_name_err"></span>
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
@@ -483,7 +492,8 @@
                                                     <select name="product_type"
                                                         class="form-control form-control-solid form-control-lg"
                                                         id="product_type">
-                                                        <option value="{{ $profile->product_type }}">{{ $profile->product_type }}</option>
+                                                        <option value="{{ $profile->product_type }}">
+                                                            {{ $profile->product_type }}</option>
                                                         <option value="p1">P1</option>
                                                         <option value="p2">P2</option>
                                                     </select>
@@ -496,8 +506,8 @@
                                                     <label>Passport No</label>
                                                     <input type="text"
                                                         class="form-control form-control-solid form-control-lg"
-                                                        name="passport_no" placeholder="Passport Number" value="{{ $profile->passport_no }}"
-                                                        id="passport_no" />
+                                                        name="passport_no" placeholder="Passport Number"
+                                                        value="{{ $profile->passport_no }}" id="passport_no" />
                                                     <span class="text-danger error-text passport_no_err"></span>
                                                 </div>
                                                 <!--end::Input-->
@@ -511,7 +521,8 @@
                                                     <select name="passport_issue"
                                                         class="form-control form-control-solid form-control-lg"
                                                         id="passport_issue">
-                                                        <option value="{{ $profile->passport_issue }}">{{ $profile->passport_issue }}</option>
+                                                        <option value="{{ $profile->passport_issue }}">
+                                                            {{ $profile->passport_issue }}</option>
                                                         <option value="YE">P 1</option>
                                                         <option value="ZM">P 2</option>
                                                         <option value="ZW">P 3</option>
@@ -524,10 +535,12 @@
                                                 <!--begin::Input-->
                                                 <div class="form-group">
                                                     <label>Date of Issue</label>
-                                                    <input max="<?php echo date('Y-m-d') ?>" type="date" id="date_issue"
+                                                    <input max="<?php echo date('Y-m-d'); ?>"
+                                                        type="date" id="date_issue"
                                                         class="form-control form-control-solid form-control-lg"
-                                                        name="date_issue" placeholder="Address Line 1"  value="{{date( 'Y-m-d',strtotime($profile->date_issue)) }}" />
-                                                        
+                                                        name="date_issue" placeholder="Address Line 1"
+                                                        value="{{ date('Y-m-d', strtotime($profile->date_issue)) }}" />
+
                                                     <span class="text-danger error-text date_issue_err"></span>
                                                 </div>
                                                 <!--end::Input-->
@@ -539,7 +552,8 @@
                                                     <select name="residency"
                                                         class="form-control form-control-solid form-control-lg"
                                                         id="residency">
-                                                        <option value="{{ $profile->residency }}">{{ $profile->residency }}</option>
+                                                        <option value="{{ $profile->residency }}">
+                                                            {{ $profile->residency }}</option>
                                                         <option value="YE">P 1</option>
                                                         <option value="ZM">P 2</option>
                                                         <option value="ZW">P 3</option>
@@ -555,7 +569,8 @@
                                                     <label>Location</label>
                                                     <input type="text"
                                                         class="form-control form-control-solid form-control-lg"
-                                                        name="location" placeholder="Location" value="{{ $profile->location }}" id="location" />
+                                                        name="location" placeholder="Location"
+                                                        value="{{ $profile->location }}" id="location" />
                                                     <span class="text-danger error-text location_err"></span>
                                                 </div>
                                                 <!--end::Select-->
@@ -566,10 +581,12 @@
                                                 <!--begin::Select-->
                                                 <div class="form-group">
                                                     <label>Passport Expiry Date</label>
-                                                    <input max="<?php echo date('Y-m-d') ?>" type="date" id="date_expiry"
+                                                    <input max="<?php echo date('Y-m-d'); ?>"
+                                                        type="date" id="date_expiry"
                                                         class="form-control form-control-solid form-control-lg"
-                                                        name="date_expiry" placeholder="Address Line 1" value="{{date( 'Y-m-d',strtotime($profile->date_expiry)) }}"/>
-                                                    
+                                                        name="date_expiry" placeholder="Address Line 1"
+                                                        value="{{ date('Y-m-d', strtotime($profile->date_expiry)) }}" />
+
                                                     <span class="text-danger error-text date_expiry_err"></span>
                                                 </div>
                                                 <!--end::Select-->
@@ -579,8 +596,8 @@
                                                 <div class="form-group">
                                                     <label>UID Number</label>
                                                     <input type="text"
-                                                        class="form-control form-control-solid form-control-lg"
-                                                        name="uid" placeholder="UID Number" value="{{ $profile->uid }}" id="uid" />
+                                                        class="form-control form-control-solid form-control-lg" name="uid"
+                                                        placeholder="UID Number" value="{{ $profile->uid }}" id="uid" />
                                                     <span class="text-danger error-text uid_err"></span>
                                                 </div>
                                                 <!--end::Select-->
@@ -591,7 +608,8 @@
                                                     <label>Proffession</label>
                                                     <input type="text"
                                                         class="form-control form-control-solid form-control-lg"
-                                                        name="proffession" placeholder="Proffession" value="{{ $profile->proffession }}" id="proffession" />
+                                                        name="proffession" placeholder="Proffession"
+                                                        value="{{ $profile->proffession }}" id="proffession" />
                                                     <span class="text-danger error-text proffession_err"></span>
                                                 </div>
                                                 <!--end::Select-->
@@ -613,13 +631,14 @@
                                                     <label>Inventory Name</label>
                                                     <select name="inventory_name" id="inventory_name"
                                                         class="form-control form-control-solid form-control-lg">
-                                                        <option value="{{ $profile->inventory_name }}">{{ $profile->inventory_name }}</option>
+                                                        <option value="{{ $profile->inventory_name }}">
+                                                            {{ $profile->inventory_name }}</option>
                                                         <option value="AF">ALshoja</option>
                                                         <option value="AX">Åland </option>
                                                         <option value="AL">Albania</option>
                                                     </select>
-                                                    
-                                                    
+
+
                                                     <span class="text-danger error-text inventory_name_err"></span>
                                                 </div>
                                             </div>
@@ -631,13 +650,14 @@
                                                 <div class="form-group">
                                                     <label>Inventory Codes</label>
                                                     <select name="inventory_codes" id="inventory_codes"
-                                                    class="form-control form-control-solid form-control-lg">
-                                                    <option value="{{ $profile->inventory_codes }}">{{ $profile->inventory_codes }}</option>
-                                                    <option value="AF">ALshoja</option>
-                                                    <option value="AX">Åland </option>
-                                                    <option value="AL">Albania</option>
-                                                </select>
-                                                <span class="text-danger error-text inventory_codes_err"></span>
+                                                        class="form-control form-control-solid form-control-lg">
+                                                        <option value="{{ $profile->inventory_codes }}">
+                                                            {{ $profile->inventory_codes }}</option>
+                                                        <option value="AF">ALshoja</option>
+                                                        <option value="AX">Åland </option>
+                                                        <option value="AL">Albania</option>
+                                                    </select>
+                                                    <span class="text-danger error-text inventory_codes_err"></span>
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
@@ -645,9 +665,9 @@
                                                 <!--begin::Input-->
                                                 <div class="form-group">
                                                     <label>Notes</label>
-                                                    <textarea class="form-control form-control-solid"  name="note"
+                                                    <textarea class="form-control form-control-solid" name="note"
                                                         id="note"> {{ $profile->note }}</textarea>
-                                                        <span class="text-danger error-text note_err"></span>
+                                                    <span class="text-danger error-text note_err"></span>
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
@@ -655,72 +675,91 @@
                                                 <!--begin::Input-->
                                                 <div class="form-group">
                                                     <label>Inventory Detials</label>
-                                                    <textarea  class="form-control form-control-solid form-control-lg"
-                                                    name="inventory_detials" placeholder="Address" id="inventory_detials" >{{ $profile->inventory_detials }}</textarea>
+                                                    <textarea class="form-control form-control-solid form-control-lg"
+                                                        name="inventory_detials" placeholder="Address"
+                                                        id="inventory_detials">{{ $profile->inventory_detials }}</textarea>
                                                     <span class="text-danger error-text inventory_detials_err"></span>
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
-                                            
+
                                         </div>
-                                       
-                                       
+
+
                                     </div>
 
 
                                     <!--end::Wizard Step 2-->
                                     <!--begin::Wizard Step 3-->
-                                     <div class="pb-5" data-wizard-type="step-content">
+                                    <div class="pb-5" data-wizard-type="step-content">
                                         <h6 class="mb-10 font-weight-bold text-dark">Scanned Documents</h6>
                                         <!--begin::Select-->
-                                        
+
                                         <div class="row form-group">
                                             <div class="col-md-4">
                                                 <label>Scanned Document 1</label>
-                                                @if($profile->scanned_document1=='')
-                                                <input type="file" name="scanned_document1" id="scanned_document1" class="form-control form-control-solid" />
-                                                <input type="text" hidden name="profile_avatar_remove1" value="{{ $profile->scanned_document1 }}" />
-                                                <span class="text-danger error-text scanned_document_err"></span>
+                                                @if ($profile->scanned_document1 == '')
+                                                    <input type="file" name="scanned_document1" id="scanned_document1"
+                                                        class="form-control form-control-solid" />
+                                                    <input type="text" hidden name="profile_avatar_remove1"
+                                                        value="{{ $profile->scanned_document1 }}" />
+                                                    <span class="text-danger error-text scanned_document_err"></span>
                                                 @else
-                                                <div class="form-group">
-                                                    <label
-                                                        class="text-muted font-size-sm">Uploaded Scanned Document 1</label>
+                                                    <div class="form-group">
+                                                        <label class="text-muted font-size-sm">Uploaded Scanned Document
+                                                            1</label>
                                                         <p>
-                                                        <a   href="{{url($profile->scanned_document1)}}" target="_blank" ><svg xmlns="http://www.w3.org/2000/svg" width="25%" height="25%" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
-                                                            <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"/>
-                                                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"/>
-                                                          </svg></a>
+                                                            <a href="{{ url($profile->scanned_document1) }}"
+                                                                target="_blank"><svg xmlns="http://www.w3.org/2000/svg"
+                                                                    width="25%" height="25%" fill="currentColor"
+                                                                    class="bi bi-file-text" viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z" />
+                                                                    <path
+                                                                        d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
+                                                                </svg></a>
                                                         </p>
-                                                      
-                                                        </div>
-                                                <input type="file" name="scanned_document1" id="scanned_document1" class="form-control form-control-solid" />
-                                                <input type="text" hidden name="profile_avatar_remove1" value="{{ $profile->scanned_document1 }}" />
-                                                <span class="text-danger error-text scanned_document_err"></span>
+
+                                                    </div>
+                                                    <input type="file" name="scanned_document1" id="scanned_document1"
+                                                        class="form-control form-control-solid" />
+                                                    <input type="text" hidden name="profile_avatar_remove1"
+                                                        value="{{ $profile->scanned_document1 }}" />
+                                                    <span class="text-danger error-text scanned_document_err"></span>
                                                 @endif
-                                           </div>
+                                            </div>
 
                                             <div class="col-md-4">
                                                 <label>Scanned Document 2</label>
-                                                @if($profile->scanned_document2=='')
-                                                 <input type="file" name="scanned_document2" id="scanned_document2" class="form-control form-control-solid"/>
-                                                 <input type="text" hidden name="profile_avatar_remove2" value="{{ $profile->scanned_document2 }}" />
-                                                 <span class="text-danger error-text scanned_document_err"></span>
-                                                 @else
-                                                <div class="form-group">
-                                                    <label
-                                                        class="text-muted font-size-sm">Uploaded Scanned Document 2</label>
+                                                @if ($profile->scanned_document2 == '')
+                                                    <input type="file" name="scanned_document2" id="scanned_document2"
+                                                        class="form-control form-control-solid" />
+                                                    <input type="text" hidden name="profile_avatar_remove2"
+                                                        value="{{ $profile->scanned_document2 }}" />
+                                                    <span class="text-danger error-text scanned_document_err"></span>
+                                                @else
+                                                    <div class="form-group">
+                                                        <label class="text-muted font-size-sm">Uploaded Scanned Document
+                                                            2</label>
                                                         <p>
-                                                        <a   href="{{url($profile->scanned_document2)}}" target="_blank" ><svg xmlns="http://www.w3.org/2000/svg" width="25%" height="25%" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
-                                                            <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"/>
-                                                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"/>
-                                                          </svg></a>
+                                                            <a href="{{ url($profile->scanned_document2) }}"
+                                                                target="_blank"><svg xmlns="http://www.w3.org/2000/svg"
+                                                                    width="25%" height="25%" fill="currentColor"
+                                                                    class="bi bi-file-text" viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z" />
+                                                                    <path
+                                                                        d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
+                                                                </svg></a>
                                                         </p>
-                                                      
-                                                        </div>
-                                                        <input type="file" name="scanned_document2" id="scanned_document2" class="form-control form-control-solid"/>
-                                                 <input type="text" hidden name="profile_avatar_remove2" value="{{ $profile->scanned_document2 }}" />
-                                                 <span class="text-danger error-text scanned_document_err"></span>
-                                                 @endif
+
+                                                    </div>
+                                                    <input type="file" name="scanned_document2" id="scanned_document2"
+                                                        class="form-control form-control-solid" />
+                                                    <input type="text" hidden name="profile_avatar_remove2"
+                                                        value="{{ $profile->scanned_document2 }}" />
+                                                    <span class="text-danger error-text scanned_document_err"></span>
+                                                @endif
 
 
 
@@ -729,130 +768,179 @@
 
                                             <div class="col-md-4">
                                                 <label>Scanned Document 3</label>
-                                                @if($profile->scanned_document2=='')
-                                                <input type="file" name="scanned_document3" id="scanned_document3" class="form-control form-control-solid" />
-                                                <input type="text" hidden name="profile_avatar_remove3" value="{{ $profile->scanned_document3 }}" />       
-                                                <span class="text-danger error-text scanned_document2_err"></span>
+                                                @if ($profile->scanned_document2 == '')
+                                                    <input type="file" name="scanned_document3" id="scanned_document3"
+                                                        class="form-control form-control-solid" />
+                                                    <input type="text" hidden name="profile_avatar_remove3"
+                                                        value="{{ $profile->scanned_document3 }}" />
+                                                    <span class="text-danger error-text scanned_document2_err"></span>
                                                 @else
-                                                <div class="form-group">
-                                                    <label
-                                                        class="text-muted font-size-sm">Uploaded Scanned Document 3</label>
+                                                    <div class="form-group">
+                                                        <label class="text-muted font-size-sm">Uploaded Scanned Document
+                                                            3</label>
                                                         <p>
-                                                        <a   href="{{url($profile->scanned_document3)}}" target="_blank" ><svg xmlns="http://www.w3.org/2000/svg" width="25%" height="25%" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
-                                                            <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"/>
-                                                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"/>
-                                                          </svg></a>
+                                                            <a href="{{ url($profile->scanned_document3) }}"
+                                                                target="_blank"><svg xmlns="http://www.w3.org/2000/svg"
+                                                                    width="25%" height="25%" fill="currentColor"
+                                                                    class="bi bi-file-text" viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z" />
+                                                                    <path
+                                                                        d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
+                                                                </svg></a>
                                                         </p>
-                                                      
-                                                        </div>
-                                                        <input type="file" name="scanned_document3" id="scanned_document3" class="form-control form-control-solid" />
-                                                <input type="text" hidden name="profile_avatar_remove3" value="{{ $profile->scanned_document3 }}" />       
-                                                <span class="text-danger error-text scanned_document2_err"></span>
+
+                                                    </div>
+                                                    <input type="file" name="scanned_document3" id="scanned_document3"
+                                                        class="form-control form-control-solid" />
+                                                    <input type="text" hidden name="profile_avatar_remove3"
+                                                        value="{{ $profile->scanned_document3 }}" />
+                                                    <span class="text-danger error-text scanned_document2_err"></span>
                                                 @endif
-                                               
+
                                             </div>
                                         </div>
-                                       
 
-                                        
+
+
                                         <!--end::Select
-                                                                                                                <input type = 'submit' value = "Save" class="btn btn-success font-weight-bolder"/>
-                                                                                                                <button class="btn btn-success font-weight-bolder" id="editstep">smave</button>-->
-                                        
+                                                                                                                            <input type = 'submit' value = "Save" class="btn btn-success font-weight-bolder"/>
+                                                                                                                            <button class="btn btn-success font-weight-bolder" id="editstep">smave</button>-->
+
                                     </div>
 
 
                                     <!--end::Wizard Step 3-->
                                     <!--begin::Wizard Step 4-->
-                                     <div class="pb-5" data-wizard-type="step-content">
+                                    <div class="pb-5" data-wizard-type="step-content">
                                         <h6 class="mb-10 font-weight-bold text-dark">Scanned Documents</h6>
                                         <!--begin::Select-->
-                                        
+
                                         <div class="row form-group">
                                             <div class="col-md-3">
                                                 <label>Scanned Document 4</label>
-                                                @if($profile->scanned_document4=='')
-                                                <input type="file" name="scanned_document4" id="scanned_document4" class="form-control form-control-solid" />
-                                                <input type="text" hidden name="profile_avatar_remove4" value="{{ $profile->scanned_document4 }}" />
-                                                <span class="text-danger error-text scanned_document_err"></span>
+                                                @if ($profile->scanned_document4 == '')
+                                                    <input type="file" name="scanned_document4" id="scanned_document4"
+                                                        class="form-control form-control-solid" />
+                                                    <input type="text" hidden name="profile_avatar_remove4"
+                                                        value="{{ $profile->scanned_document4 }}" />
+                                                    <span class="text-danger error-text scanned_document_err"></span>
                                                 @else
-                                                <a id="scanned_document4"  href="{{url($profile->scanned_document4)}}" target="_blank" ><svg xmlns="http://www.w3.org/2000/svg" width="25%" height="25%" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
-                                                  <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"/>
-                                                  <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"/>
-                                                </svg></a>
-                                                <input type="file" name="scanned_document4" id="scanned_document4" class="form-control form-control-solid" />
-                                                <input type="text" hidden name="profile_avatar_remove4" value="{{ $profile->scanned_document4 }}" />       
-                                                <span class="text-danger error-text scanned_document2_err"></span>
-                                                 @endif
-                                           </div>
+                                                    <a id="scanned_document4"
+                                                        href="{{ url($profile->scanned_document4) }}"
+                                                        target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="25%"
+                                                            height="25%" fill="currentColor" class="bi bi-file-text"
+                                                            viewBox="0 0 16 16">
+                                                            <path
+                                                                d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z" />
+                                                            <path
+                                                                d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
+                                                        </svg></a>
+                                                    <input type="file" name="scanned_document4" id="scanned_document4"
+                                                        class="form-control form-control-solid" />
+                                                    <input type="text" hidden name="profile_avatar_remove4"
+                                                        value="{{ $profile->scanned_document4 }}" />
+                                                    <span class="text-danger error-text scanned_document2_err"></span>
+                                                @endif
+                                            </div>
 
                                             <div class="col-md-3">
                                                 <label>Scanned Document 5</label>
-                                                @if($profile->scanned_document5=='')
-                                                 <input type="file" name="scanned_document5" id="scanned_document5" class="form-control form-control-solid"/>
-                                                 <input type="text" hidden name="profile_avatar_remove5" value="{{ $profile->scanned_document5 }}" />
-                                                 <span class="text-danger error-text scanned_document_err"></span>
-                                                 @else
-                                                 <a id="scanned_document5"  href="{{url($profile->scanned_document5)}}" target="_blank" ><svg xmlns="http://www.w3.org/2000/svg" width="25%" height="25%" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
-                                                   <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"/>
-                                                   <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"/>
-                                                 </svg></a>
-                                                 <input type="file" name="scanned_document5" id="scanned_document5" class="form-control form-control-solid" />
-                                                 <input type="text" hidden name="profile_avatar_remove5" value="{{ $profile->scanned_document5 }}" />       
-                                                 <span class="text-danger error-text scanned_document2_err"></span>
-                                                  @endif
+                                                @if ($profile->scanned_document5 == '')
+                                                    <input type="file" name="scanned_document5" id="scanned_document5"
+                                                        class="form-control form-control-solid" />
+                                                    <input type="text" hidden name="profile_avatar_remove5"
+                                                        value="{{ $profile->scanned_document5 }}" />
+                                                    <span class="text-danger error-text scanned_document_err"></span>
+                                                @else
+                                                    <a id="scanned_document5"
+                                                        href="{{ url($profile->scanned_document5) }}"
+                                                        target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="25%"
+                                                            height="25%" fill="currentColor" class="bi bi-file-text"
+                                                            viewBox="0 0 16 16">
+                                                            <path
+                                                                d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z" />
+                                                            <path
+                                                                d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
+                                                        </svg></a>
+                                                    <input type="file" name="scanned_document5" id="scanned_document5"
+                                                        class="form-control form-control-solid" />
+                                                    <input type="text" hidden name="profile_avatar_remove5"
+                                                        value="{{ $profile->scanned_document5 }}" />
+                                                    <span class="text-danger error-text scanned_document2_err"></span>
+                                                @endif
                                             </div>
 
                                             <div class="col-md-3">
                                                 <label>Scanned Document 6</label>
-                                                @if($profile->scanned_document6=='')
-                                                <input type="file" name="scanned_document6" id="scanned_document6" class="form-control form-control-solid" />
-                                                <input type="text" hidden name="profile_avatar_remove6" value="{{ $profile->scanned_document6 }}" />       
-                                                <span class="text-danger error-text scanned_document2_err"></span>
+                                                @if ($profile->scanned_document6 == '')
+                                                    <input type="file" name="scanned_document6" id="scanned_document6"
+                                                        class="form-control form-control-solid" />
+                                                    <input type="text" hidden name="profile_avatar_remove6"
+                                                        value="{{ $profile->scanned_document6 }}" />
+                                                    <span class="text-danger error-text scanned_document2_err"></span>
                                                 @else
-                                              <a id="scanned_document6"  href="{{url($profile->scanned_document6)}}" target="_blank" ><svg xmlns="http://www.w3.org/2000/svg" width="25%" height="25%" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
-                                                <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"/>
-                                                <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"/>
-                                              </svg></a>
-                                              <input type="file" name="scanned_document6" id="scanned_document6" class="form-control form-control-solid" />
-                                              <input type="text" hidden name="profile_avatar_remove6" value="{{ $profile->scanned_document6 }}" />       
-                                              <span class="text-danger error-text scanned_document2_err"></span>
-                                               @endif
-                                               
+                                                    <a id="scanned_document6"
+                                                        href="{{ url($profile->scanned_document6) }}"
+                                                        target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="25%"
+                                                            height="25%" fill="currentColor" class="bi bi-file-text"
+                                                            viewBox="0 0 16 16">
+                                                            <path
+                                                                d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z" />
+                                                            <path
+                                                                d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
+                                                        </svg></a>
+                                                    <input type="file" name="scanned_document6" id="scanned_document6"
+                                                        class="form-control form-control-solid" />
+                                                    <input type="text" hidden name="profile_avatar_remove6"
+                                                        value="{{ $profile->scanned_document6 }}" />
+                                                    <span class="text-danger error-text scanned_document2_err"></span>
+                                                @endif
+
                                             </div>
                                             <div class="col-md-3">
                                                 <label>Scanned Document 7</label>
-                                                @if($profile->scanned_document7=='')
-                                                <input type="file" name="scanned_document7" id="scanned_document7" class="form-control form-control-solid" />
-                                                <input type="text" hidden name="profile_avatar_remove7" value="{{ $profile->scanned_document7 }}" />       
-                                                <span class="text-danger error-text scanned_document2_err"></span>
-                                              @else
-                                              <a id="scanned_document7"  href="{{url($profile->scanned_document7)}}" target="_blank" ><svg xmlns="http://www.w3.org/2000/svg" width="25%" height="25%" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
-                                                <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"/>
-                                                <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"/>
-                                              </svg></a>
-                                              <input type="file" name="scanned_document7" id="scanned_document7" class="form-control form-control-solid" />
-                                              <input type="text" hidden name="profile_avatar_remove7" value="{{ $profile->scanned_document7 }}" />       
-                                              <span class="text-danger error-text scanned_document2_err"></span>
-                                               @endif
+                                                @if ($profile->scanned_document7 == '')
+                                                    <input type="file" name="scanned_document7" id="scanned_document7"
+                                                        class="form-control form-control-solid" />
+                                                    <input type="text" hidden name="profile_avatar_remove7"
+                                                        value="{{ $profile->scanned_document7 }}" />
+                                                    <span class="text-danger error-text scanned_document2_err"></span>
+                                                @else
+                                                    <a id="scanned_document7"
+                                                        href="{{ url($profile->scanned_document7) }}"
+                                                        target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="25%"
+                                                            height="25%" fill="currentColor" class="bi bi-file-text"
+                                                            viewBox="0 0 16 16">
+                                                            <path
+                                                                d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z" />
+                                                            <path
+                                                                d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
+                                                        </svg></a>
+                                                    <input type="file" name="scanned_document7" id="scanned_document7"
+                                                        class="form-control form-control-solid" />
+                                                    <input type="text" hidden name="profile_avatar_remove7"
+                                                        value="{{ $profile->scanned_document7 }}" />
+                                                    <span class="text-danger error-text scanned_document2_err"></span>
+                                                @endif
                                             </div>
                                         </div>
-                                       
 
-                                        
+
+
                                         <!--end::Select
-                                                                                                                <input type = 'submit' value = "Save" class="btn btn-success font-weight-bolder"/>
-                                                                                                                <button class="btn btn-success font-weight-bolder" id="editstep">smave</button>-->
-                                        
+                                                                                                                            <input type = 'submit' value = "Save" class="btn btn-success font-weight-bolder"/>
+                                                                                                                            <button class="btn btn-success font-weight-bolder" id="editstep">smave</button>-->
+
                                     </div>
 
                                     <!--end::Wizard Step 4-->
                                     <!--begin::Wizard Step 5-->
-                                    
+
                                     <!--end::Wizard Step 5-->
                                     <!--begin::Wizard Actions-->
                                     <div class="d-flex justify-content-between border-top mt-5 pt-10">
-                                        
+
                                         <div class="mr-2">
                                             <button type="button" id="previous"
                                                 class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
@@ -864,7 +952,7 @@
                                                 class="btn btn-success btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
                                                 data-wizard-type="action-next">Next</button>
                                             <button
-                                                class="btn btn-success btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
+                                                class="btn btn-success btn-gradient-success uploadSave font-weight-bolder text-uppercase px-9 py-4"
                                                 id="submit" type="submit">Update</button>
 
                                         </div>
@@ -883,7 +971,7 @@
         </div>
         <!--end::Container-->
     </div>
-<script src="{{ asset('assets/js/jquery.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.js') }}"></script>
 
     <script type="text/javascript">
         $.ajaxSetup({
@@ -894,6 +982,12 @@
 
         $('#kt_form').on('submit', function(event) {
             event.preventDefault();
+
+            let saveButtonUpload = $(".uploadSave");
+            saveButtonUpload.addClass('spinner spinner-white spinner-right')
+            saveButtonUpload.prop('disabled', true);
+            saveButtonUpload.html("updating ..");
+
             $.ajax({
                 url: "/profileUpdate",
                 method: 'POST',
@@ -910,8 +1004,15 @@
                         'Info', 'success');
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    saveButtonUpload.removeClass('spinner spinner-white spinner-right')
+                    saveButtonUpload.prop('disabled', false);
+                    saveButtonUpload.html("Save");
                     printErrorMsg(XMLHttpRequest.responseJSON.error);
-                    showToast('Please update the whole form!',
+                    if (XMLHttpRequest.status == 413) {
+                        showToast('Upload too large, Please reduce the file size !',
+                            'Opps', 'warning');
+                    }
+                    showToast('All fields are not filled',
                         'Validation Error', 'danger');
                 },
             });
@@ -974,73 +1075,73 @@
             var addButton = $('.add_button');
             var wrapper = $('.field_wrapper');
             var fieldHTML = `
-                <div>
-                    <div class="row form-group">
-                        <div class="col-md-4">
-                            <input type="text" hidden name="product_id[]" id="product_id[]">
-                            <select required name="product_type[]" id="product_type[]" class="form-control form-control-solid ">
-                                <option hidden value="">Select Product-1&nbsp;
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    &nbsp;
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                </option>
-                                <option value="YE">P 1</option>
-                                <option value="ZM">P 2</option>
-                                <option value="ZW">P 3</option>
-                            </select>
-                            {{-- <div class="d-md-none mb-2"></div> --}}
-                        </div>
-                        <div class="col-md-4">
+                            <div>
+                                <div class="row form-group">
+                                    <div class="col-md-4">
+                                        <input type="text" hidden name="product_id[]" id="product_id[]">
+                                        <select required name="product_type[]" id="product_type[]" class="form-control form-control-solid ">
+                                            <option hidden value="">Select Product-1&nbsp;
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                &nbsp;
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            </option>
+                                            <option value="YE">P 1</option>
+                                            <option value="ZM">P 2</option>
+                                            <option value="ZW">P 3</option>
+                                        </select>
+                                        {{-- <div class="d-md-none mb-2"></div> --}}
+                                    </div>
+                                    <div class="col-md-4">
 
-                            <select required name="manufacture_type[]" id="manufacture_type[]" class="form-control form-control-solid">
-                                <option hidden value=""> Select Type-1</option>
-                                <option value="YE">P 1</option>
-                                <option value="ZM">P 2</option>
-                                <option value="ZW">P 3</option>
-                            </select>
-                            {{-- <div class="d-md-none mb-2"></div> --}}
-                        </div>
-                        <div class="col-md-4">
+                                        <select required name="manufacture_type[]" id="manufacture_type[]" class="form-control form-control-solid">
+                                            <option hidden value=""> Select Type-1</option>
+                                            <option value="YE">P 1</option>
+                                            <option value="ZM">P 2</option>
+                                            <option value="ZW">P 3</option>
+                                        </select>
+                                        {{-- <div class="d-md-none mb-2"></div> --}}
+                                    </div>
+                                    <div class="col-md-4">
 
-                            <select required name="shipped_type[]" id="shipped_type[]" class="form-control form-control-solid">
-                                <option selected hidden value="">Select type-3
-                                </option>
-                                <option value="YE">P 1</option>
-                                <option value="ZM">P 2</option>
-                                <option value="ZW">P 3</option>
-                            </select>
-                            {{-- <div class="d-md-none mb-2"></div> --}}
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col-md-3">
+                                        <select required name="shipped_type[]" id="shipped_type[]" class="form-control form-control-solid">
+                                            <option selected hidden value="">Select type-3
+                                            </option>
+                                            <option value="YE">P 1</option>
+                                            <option value="ZM">P 2</option>
+                                            <option value="ZW">P 3</option>
+                                        </select>
+                                        {{-- <div class="d-md-none mb-2"></div> --}}
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-md-3">
 
-                            <input required type="text" class="form-control" placeholder="Kg" name="quantity_kg[]" id="quantity_kg[]" />
-                            <div class="d-md-none mb-2"></div>
-                        </div>
-                        <div class="col-md-3">
+                                        <input required type="text" class="form-control" placeholder="Kg" name="quantity_kg[]" id="quantity_kg[]" />
+                                        <div class="d-md-none mb-2"></div>
+                                    </div>
+                                    <div class="col-md-3">
 
-                            <input required type="text" class="form-control" placeholder="G" name="quantity_g[]" id="quantity_g[]" />
-                            <div class="d-md-none mb-2"></div>
-                        </div>
-                        <div class="col-md-3">
+                                        <input required type="text" class="form-control" placeholder="G" name="quantity_g[]" id="quantity_g[]" />
+                                        <div class="d-md-none mb-2"></div>
+                                    </div>
+                                    <div class="col-md-3">
 
-                            <input required type="text" class="form-control" placeholder="ML" name="quantity_ml[]" id="quantity_ml[]" />
-                            <div class="d-md-none mb-2"></div>
-                        </div>
+                                        <input required type="text" class="form-control" placeholder="ML" name="quantity_ml[]" id="quantity_ml[]" />
+                                        <div class="d-md-none mb-2"></div>
+                                    </div>
 
-                        <div class="col-md-3">
-                            <!-- <label>Number:</label> -->
-                            <input required type="text" class="form-control" placeholder="Digit" name="quantity_digit[]"
-                                id="quantity_digit[]" />
-                            <div class="d-md-none mb-2"></div>
-                        </div>
-                    </div>
-                    <a style="margin:10px;" href="javascript:;" data-repeater-delete="" class=" btn btn-gradient-danger remove_button">
-                        Delete
-                    </a>
-                </div>
-                `;
+                                    <div class="col-md-3">
+                                        <!-- <label>Number:</label> -->
+                                        <input required type="text" class="form-control" placeholder="Digit" name="quantity_digit[]"
+                                            id="quantity_digit[]" />
+                                        <div class="d-md-none mb-2"></div>
+                                    </div>
+                                </div>
+                                <a style="margin:10px;" href="javascript:;" data-repeater-delete="" class=" btn btn-gradient-danger remove_button">
+                                    Delete
+                                </a>
+                            </div>
+                            `;
             var x = 1;
 
             $(addButton).click(function() {
