@@ -46,6 +46,14 @@
                                                 </a>
                                             </li>
                                         @endif
+                                        @if (Auth::user()->role == 'supervisor')
+                                        <li class="nav-item">
+                                            <a class="nav-link py-2 px-4   @if (request()->query('tab') === 'final') {{ 'active' }} @endif"
+                                                href="{{ url('profiles?tab=final') }}">
+                                                In Final Process
+                                            </a>
+                                        </li>
+                                        @endif
 
                                         <li class="nav-item">
                                             <a class="nav-link py-2 px-4   @if (request()->query('tab') === 'completed') {{ 'active' }} @endif"
@@ -53,6 +61,7 @@
                                                 Completed
                                             </a>
                                         </li>
+
                                     </ul>
                                 </div>
 
@@ -84,7 +93,7 @@
                                                             <td class="pl-0">
                                                                 <a href="#"
                                                                     class="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">
-                                                                    {{ $item->id }}</a>
+                                                                    {{ $item->dep_id }}</a>
                                                             </td>
                                                             <td class="pl-0">
                                                                 <span
@@ -297,7 +306,7 @@
 
                                                                     @if (Auth::user()->update)
                                                                         @if (Auth::user()->role == 'employ')
-                                                                            @if ((request()->query('tab') == 'inbox') || (request()->query('tab') == 'drafts'))
+                                                                            @if (request()->query('tab') == 'inbox' || request()->query('tab') == 'drafts')
                                                                                 <a href="{{ url('profile/edit', $item->id) }}"
                                                                                     class="btn btn-icon btn-light btn-hover-success btn-sm mx-3">
                                                                                     <span
@@ -332,7 +341,7 @@
                                                                         @endif
                                                                     @endif
 
-                                                                    @if (Auth::user()->delete && $item->is_completed != 1)
+                                                                    @if (Auth::user()->delete && $item->is_completed == 0)
                                                                         @if (Auth::user()->role != 'employ')
                                                                             <a onclick="alertAndGoToUrl('/profile/delete/{{ $item->id }}','delete ? {{ $item->name }}')"
                                                                                 href="#"

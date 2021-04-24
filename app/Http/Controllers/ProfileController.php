@@ -29,6 +29,8 @@ class ProfileController extends Controller
      */
     public function index(Request $request)
     {
+        DB::enableQueryLog();
+
         $tab = null;
         $perPage = null;
         $search = request()->query('search');
@@ -40,40 +42,45 @@ class ProfileController extends Controller
             return Redirect::back();
         }
         $profiles = Profile::with('trackings')->where(function (Builder $query) use ($search, $tab, $from, $to, $perPage) {
+
             if ($search) {
                 $query->orWhere('name', 'like', '%' . $search . '%')
                     ->orWhere('name', 'like', '%' . $search . '%')
                     ->orWhere('nationality', 'like', '%' . $search . '%')
                     ->orWhere('gender', 'like', '%' . $search . '%');
             }
-            if ($tab === "inbox") {
-                if (Auth::user()->role == "supervisor") {
-                    $query->orWhere('on_final_approval', 1);
-                    $query->orWhere('on_final_approval', 0);
-                }
-                $query->whereHas('trackings', function ($query) {
+            if ($tab === "final") {
+                if (Auth::user()->role != 'employ' && Auth::user()->role != 'admin' && count(session('department')) > 0) {
                     if (Auth::user()->role == "supervisor") {
-                        $query->where('from', 'employ')
+                        $query->orWhere('on_final_approval', 1);
+                    }
+                }
+            }
+            if ($tab === "inbox") {
+
+                $query->whereHas('trackings', function ($subquery) {
+                    if (Auth::user()->role == "supervisor") {
+                        $subquery->where('from', 'employ')
                             ->where('status', 'pending')
                             ->where('at_end_user', '!=', 1);
                     }
                     if (Auth::user()->role == "department_head") {
-                        $query->where('from', 'supervisor')
+                        $subquery->where('from', 'supervisor')
                             ->where('status', 'pending')
                             ->orWhere('status', 'rejected');
                     }
                     if (Auth::user()->role == "director") {
-                        $query->where('from', 'department_head')
+                        $subquery->where('from', 'department_head')
                             ->where('status', 'pending')
                             ->orWhere('status', 'rejected');
                     }
                     if (Auth::user()->role == "general_director") {
-                        $query->where('from', 'director')
+                        $subquery->where('from', 'director')
                             ->where('status', 'pending')
                             ->orWhere('status', 'rejected');
                     }
                     if (Auth::user()->role == "employ") {
-                        $query->where('from', 'employ')
+                        $subquery->where('from', 'employ')
                             ->where('status', 'pending')
                             ->where('at_end_user', 1);
                     }
@@ -84,25 +91,22 @@ class ProfileController extends Controller
             }
             if ($tab === "completed") {
                 $query->Where('is_completed', 1);
-                $query->Where('on_final_approval', 0);
+                // $query->Where('on_final_approval', 0);
             }
             if ($tab === "pending") {
                 $query->Where('is_drafted', 0);
                 $query->Where('is_completed', 0);
-                $query->orWhere('on_final_approval', 1);
             }
             if ($from && $to) {
                 $query->whereBetween('created_at', [$from, $to]);
             }
-            if (Auth::user()->role == "admin") {
-                return $query;
-            } else if (Auth::user()->role == "employ") {
-                return $query->where('employ_id', Auth::user()->id);
-            } else {
-                return $query->whereIn('dep_id', session('department'));
-            }
             if ($perPage === null) {
                 $perPage = 10;
+            }
+            if (Auth::user()->role == "admin") {
+                return $query;
+            } else {
+                $query->whereIn('dep_id', session('department'));
             }
         })->orderBy('id', 'DESC')->paginate($perPage);
         return view('pages.inbox', compact('profiles'));
@@ -180,7 +184,7 @@ class ProfileController extends Controller
             $profile->scanned_document7 = "";
 
             $profile->is_drafted = 1;
-            $profile->dep_id = session('department');
+            $profile->dep_id = session('department')[0];
             $profile->section_id = session('section')[0];
             $profile->employ_id = Auth::user()->id;
             $profile->save();
@@ -231,17 +235,17 @@ class ProfileController extends Controller
             $scanned_document1 = $request->file('scanned_document1')->store('images');
             $scanned_document2 = $request->file('scanned_document2')->store('images');
             $scanned_document3 = $request->file('scanned_document3')->store('images');
-            
+
 
             $id = $request->input('editid1');
-            $data = array("scanned_document1" => $scanned_document1, "scanned_document2" => $scanned_document2, "scanned_document3" => $scanned_document3,"is_drafted" => 0);
+            $data = array("scanned_document1" => $scanned_document1, "scanned_document2" => $scanned_document2, "scanned_document3" => $scanned_document3, "is_drafted" => 0);
             try {
                 DB::transaction(function () use ($data, $id) {
-                DB::table('profiles')->where('id', $id)->update($data);
-                if (count($data) > 0) {
-                    $this->trigerEvent($id);
-                }
-            });
+                    DB::table('profiles')->where('id', $id)->update($data);
+                    if (count($data) > 0) {
+                        $this->trigerEvent($id);
+                    }
+                });
                 return response()->json(['success' => 'Form is successfully submitted!']);
             } catch (\Illuminate\Database\QueryException $ex) {
                 dd($ex->getMessage());
@@ -249,7 +253,7 @@ class ProfileController extends Controller
         }
     }
 
-    
+
     /**
      * Display the specified resource.
      *
@@ -389,51 +393,39 @@ class ProfileController extends Controller
         }
     }
 
-    public function profileDocumentUpdate(Request $request,$id)
+    public function profileDocumentUpdate(Request $request, $id)
     {
 
-          $doc_1=$request->input('scanned_documents4');
-          $doc_2=$request->input('scanned_documents5');
-          $doc_3=$request->input('scanned_documents6');
-          $doc_4=$request->input('scanned_documents5');
+        $doc_1 = $request->input('scanned_documents4');
+        $doc_2 = $request->input('scanned_documents5');
+        $doc_3 = $request->input('scanned_documents6');
+        $doc_4 = $request->input('scanned_documents5');
 
-        if($request->file('scanned_document4') !='')
-        {
-            
+        if ($request->file('scanned_document4') != '') {
+
             $scanned_document4 = $request->file('scanned_document4')->store('images');
+        } else {
 
+            $scanned_document4 = $doc_1;
         }
-        else{
-
-            $scanned_document4=$doc_1;
-
-        }
-        if($request->file('scanned_document5') !='')
-        {
+        if ($request->file('scanned_document5') != '') {
             $scanned_document5 = $request->file('scanned_document5')->store('images');
-
-        }
-        else{
-            $scanned_document5=$doc_2;
+        } else {
+            $scanned_document5 = $doc_2;
         }
 
-        if($request->file('scanned_document6') !='')
-        {
+        if ($request->file('scanned_document6') != '') {
             $scanned_document6 = $request->file('scanned_document6')->store('images');
-        }
-        else{
+        } else {
             $scanned_document6 = $doc_3;
-
         }
 
-        if( $request->file('scanned_document7')!='')
-        {
+        if ($request->file('scanned_document7') != '') {
             $scanned_document7 = $request->file('scanned_document7')->store('images');
-        }else{
-            $scanned_document7= $doc_4;
-
+        } else {
+            $scanned_document7 = $doc_4;
         }
-        
+
         $data = array(
             "scanned_document4" => $scanned_document4,
             "scanned_document5" => $scanned_document5,
@@ -441,29 +433,28 @@ class ProfileController extends Controller
             "scanned_document7" => $scanned_document7
         );
         try {
-         DB::transaction(function () use($id,$data) {
-            DB::table('profiles')->where('id', $id)->update($data);
-          $results = Profile::find($id);
-            $doc1=  $results->scanned_document4;
-            $doc2=  $results->scanned_document5;
-            $doc3=  $results->scanned_document6;
-            $doc4=  $results->scanned_document7;
+            DB::transaction(function () use ($id, $data) {
+                DB::table('profiles')->where('id', $id)->update($data);
+                $results = Profile::find($id);
+                $doc1 =  $results->scanned_document4;
+                $doc2 =  $results->scanned_document5;
+                $doc3 =  $results->scanned_document6;
+                $doc4 =  $results->scanned_document7;
 
-          if(($doc1 !='') && ($doc2 !='') && ($doc3 !='') && ($doc4 !='')){
-            $data=array(
-                "is_completed" => 1,
-                "is_drafted"=>0,
-                "on_final_approval"=>0
-            );
-            DB::table('profiles')->where('id', $id)->update($data);   
-          }
-        });
+                if (($doc1 != '') && ($doc2 != '') && ($doc3 != '') && ($doc4 != '')) {
+                    $data = array(
+                        "is_completed" => 1,
+                        "is_drafted" => 0,
+                        "on_final_approval" => 0
+                    );
+                    DB::table('profiles')->where('id', $id)->update($data);
+                }
+            });
 
             return redirect()->back();
         } catch (\Illuminate\Database\QueryException $ex) {
             dd($ex->getMessage());
         }
-
     }
 
     /**

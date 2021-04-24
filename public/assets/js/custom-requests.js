@@ -208,8 +208,10 @@ function setVerifiedNote(profile) {
     let title = document.getElementById("title");
     let verified = document.getElementById("verfied");
     if (signed == true && profile.on_final_approval) {
-      reject_button.disabled = true;
-      approve_button.disabled = true;
+      if (reject_button && approve_button) {
+        reject_button.disabled = true;
+        approve_button.disabled = true;
+      }
     }
     if (title != null) {
       if (signed == true) {
