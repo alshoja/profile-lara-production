@@ -41,24 +41,61 @@ class ProfileController extends Controller
         if ($tab === null) {
             return Redirect::back();
         }
-        $profiles = Profile::with('trackings')->where(function (Builder $query) use ($search, $tab, $from, $to, $perPage) {
-
-            if ($search) {
-                $query->orWhere('name', 'like', '%' . $search . '%')
-                    ->orWhere('name', 'like', '%' . $search . '%')
-                    ->orWhere('nationality', 'like', '%' . $search . '%')
-                    ->orWhere('gender', 'like', '%' . $search . '%');
-            }
+        if ($perPage === null) {
+            $perPage = 10;
+        }
+        if (Auth::user()->role == 'admin') {
+            $profiles = Profile::where('is_drafted', 0)->orderBy('id', 'DESC')->paginate($perPage);
+        } else {
             if ($tab === "final") {
-                if (Auth::user()->role != 'employ' && Auth::user()->role != 'admin' && count(session('department')) > 0) {
-                    if (Auth::user()->role == "supervisor") {
-                        $query->orWhere('on_final_approval', 1);
-                    }
-                }
+                $profiles = $this->final($search, $from, $to, $perPage);
             }
             if ($tab === "inbox") {
+                $profiles = $this->inbox($search, $from, $to, $perPage);
+            }
+            if ($tab === "drafts") {
+                $profiles = $this->drafts($search, $from, $to, $perPage);
+            }
+            if ($tab === "completed") {
+                $profiles = $this->completed($search, $from, $to, $perPage);
+            }
+            if ($tab === "pending") {
+                $profiles = $this->pending($search, $from, $to, $perPage);
+            }
+        }
+        return view('pages.inbox', compact('profiles'));
+    }
 
-                $query->whereHas('trackings', function ($subquery) {
+    public function final($search, $from, $to, $perPage)
+    {
+        $profiles = Profile::with('trackings')
+            ->where('on_final_approval', 1)
+            ->where(function (Builder $query) use ($search, $from, $to) {
+                if ($search) {
+                    $query->orwhere('name', 'like', '%' . $search . '%')
+                        ->orWhere('name', 'like', '%' . $search . '%')
+                        ->orWhere('nationality', 'like', '%' . $search . '%')
+                        ->orWhere('gender', 'like', '%' . $search . '%');
+                }
+                if ($from && $to) {
+                    $query->whereBetween('created_at', [$from, $to]);
+                }
+
+                if (Auth::user()->role == "admin") {
+                    return $query;
+                } else {
+                    return $query->whereIn('dep_id', session('department'));
+                }
+            })->orderBy('id', 'DESC')->paginate($perPage);
+        return $profiles;
+    }
+
+    public function inbox($search, $from, $to, $perPage)
+    {
+        $profiles = Profile::with('trackings')
+            ->whereIn('dep_id', session('department'))
+            ->where(function (Builder $query) use ($search, $from, $to) {
+                return  $query->whereHas('trackings', function ($subquery) {
                     if (Auth::user()->role == "supervisor") {
                         $subquery->where('from', 'employ')
                             ->where('status', 'pending')
@@ -85,31 +122,82 @@ class ProfileController extends Controller
                             ->where('at_end_user', 1);
                     }
                 });
-            }
-            if ($tab === "drafts") {
-                $query->Where('is_drafted', 1);
-            }
-            if ($tab === "completed") {
-                $query->Where('is_completed', 1);
-                // $query->Where('on_final_approval', 0);
-            }
-            if ($tab === "pending") {
-                $query->Where('is_drafted', 0);
-                $query->Where('is_completed', 0);
-            }
-            if ($from && $to) {
-                $query->whereBetween('created_at', [$from, $to]);
-            }
-            if ($perPage === null) {
-                $perPage = 10;
-            }
-            if (Auth::user()->role == "admin") {
+
+                if ($search) {
+                    $query->where('name', 'like', '%' . $search . '%')
+                        ->orWhere('name', 'like', '%' . $search . '%')
+                        ->orWhere('nationality', 'like', '%' . $search . '%')
+                        ->orWhere('gender', 'like', '%' . $search . '%');
+                }
+                if ($from && $to) {
+                    $query->whereBetween('created_at', [$from, $to]);
+                }
                 return $query;
-            } else {
-                $query->whereIn('dep_id', session('department'));
-            }
-        })->orderBy('id', 'DESC')->paginate($perPage);
-        return view('pages.inbox', compact('profiles'));
+            })->orderBy('id', 'DESC')->paginate($perPage);
+        return $profiles;
+    }
+
+    public function completed($search, $from, $to, $perPage)
+    {
+        $profiles = Profile::with('trackings')
+            ->whereIn('dep_id', session('department'))
+            ->where('is_completed', 1)
+            ->where(function (Builder $query) use ($search, $from, $to) {
+                if ($search) {
+                    $query->orwhere('name', 'like', '%' . $search . '%')
+                        ->orWhere('name', 'like', '%' . $search . '%')
+                        ->orWhere('nationality', 'like', '%' . $search . '%')
+                        ->orWhere('gender', 'like', '%' . $search . '%');
+                }
+
+                if ($from && $to) {
+                    $query->whereBetween('created_at', [$from, $to]);
+                }
+                return $query;
+            })->orderBy('id', 'DESC')->paginate($perPage);
+        return $profiles;
+    }
+
+    public function drafts($search, $from, $to, $perPage)
+    {
+        $profiles = Profile::with('trackings')
+            ->whereIn('dep_id', session('department'))
+            ->where('is_drafted', 1)
+            ->where(function (Builder $query) use ($search, $from, $to) {
+                if ($search) {
+                    $query->orwhere('name', 'like', '%' . $search . '%')
+                        ->orWhere('name', 'like', '%' . $search . '%')
+                        ->orWhere('nationality', 'like', '%' . $search . '%')
+                        ->orWhere('gender', 'like', '%' . $search . '%');
+                }
+
+                if ($from && $to) {
+                    $query->whereBetween('created_at', [$from, $to]);
+                }
+                return $query;
+            })->orderBy('id', 'DESC')->paginate($perPage);
+        return $profiles;
+    }
+
+    public function pending($search, $from, $to, $perPage)
+    {
+        $profiles = Profile::with('trackings')
+            ->whereIn('dep_id', session('department'))
+            ->where('is_completed', 0)
+            ->where('is_drafted', 0)
+            ->where(function (Builder $query) use ($search, $from, $to) {
+                if ($search) {
+                    $query->orwhere('name', 'like', '%' . $search . '%')
+                        ->orWhere('name', 'like', '%' . $search . '%')
+                        ->orWhere('nationality', 'like', '%' . $search . '%')
+                        ->orWhere('gender', 'like', '%' . $search . '%');
+                }
+                if ($from && $to) {
+                    $query->whereBetween('created_at', [$from, $to]);
+                }
+                return $query;
+            })->orderBy('id', 'DESC')->paginate($perPage);
+        return $profiles;
     }
 
     /**
