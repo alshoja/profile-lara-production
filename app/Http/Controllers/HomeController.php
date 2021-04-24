@@ -29,7 +29,10 @@ class HomeController extends Controller
      */
     public function welcome(Request $request)
     {
-        if (Auth::check()) {
+        if (Auth::check() && Auth::user()->role == 'admin') {
+            return redirect('home');
+        }
+        if (Auth::check() && Auth::user()->role != 'admin') {
             return redirect('profiles?tab=inbox');
         }
         return view('welcome');

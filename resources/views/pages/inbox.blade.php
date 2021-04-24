@@ -93,7 +93,7 @@
                                                             <td class="pl-0">
                                                                 <a href="#"
                                                                     class="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">
-                                                                    {{ $item->dep_id }}</a>
+                                                                    {{ $item->id }}</a>
                                                             </td>
                                                             <td class="pl-0">
                                                                 <span
@@ -132,9 +132,9 @@
                                                             <td>
                                                                 <span
                                                                     class="text-dark-75 text-capitalize font-weight-bolder d-block font-size-lg">
-                                                                    {{ $item->final_destination }} </span>
-                                                                <span
-                                                                    class="text-muted font-weight-bold">{{ $item->shipping_no }}</span>
+                                                                    {{ $item->product_type }} </span>
+                                                                {{-- <span
+                                                                    class="text-muted font-weight-bold">{{ $item->shipping_no }}</span> --}}
                                                             </td>
                                                             <td>
                                                                 <div class="d-flex flex-column w-100 mr-2">
