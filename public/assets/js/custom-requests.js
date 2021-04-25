@@ -289,6 +289,7 @@ function setEprofile(profile) {
 
   document.getElementById("referal_name").innerHTML = profile.referal_name;
   document.getElementById("product_type").innerHTML = profile.product_type;
+  document.getElementById("passport_type").innerHTML = profile.passport_type;
   document.getElementById("passport_no").innerHTML = profile.passport_no;
   document.getElementById("passport_issue").innerHTML = profile.passport_issue;
   document.getElementById("date_issue").innerHTML = profile.date_issue;
@@ -307,6 +308,7 @@ function setEprofile(profile) {
   document.getElementById("inventory_codes").innerHTML =
     profile.inventory_codes;
   document.getElementById("note").innerHTML = profile.note;
+  document.getElementById("inventory_data").innerHTML = profile.inventory_data;
   document.getElementById("inventory_detials").innerHTML =
     profile.inventory_detials;
 

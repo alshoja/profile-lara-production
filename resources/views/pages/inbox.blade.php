@@ -909,7 +909,20 @@
                                                                                         </div>
                                                                                         <!--end::Input-->
                                                                                     </div>
+                                                                                    <div class="col-xl-4">
+                                                                                        <!--begin::Input-->
+                                                                                        <div class="form-group">
+                                                                                            <label
+                                                                                                class="text-muted font-size-sm">Inventory
+                                                                                                Data
 
+                                                                                            </label>
+                                                                                            <p id="inventory_data"
+                                                                                                class="text-secondary font-weight-lighter font-size-sm">
+                                                                                            </p>
+                                                                                        </div>
+                                                                                        <!--end::Input-->
+                                                                                    </div>
                                                                                 </div>
 
                                                                             </div>
