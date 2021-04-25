@@ -279,7 +279,7 @@ class ProfileController extends Controller
         }
     }
 
-    public function updateUser(Request $request)
+    public function stageTwo(Request $request)
     {
         if ($request->ajax()) {
             $validator = Validator::make($request->all(), [
@@ -372,7 +372,7 @@ class ProfileController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function profileUpdate(Request $request)
+    public function updateProfile(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'name_arabic'  => 'required',

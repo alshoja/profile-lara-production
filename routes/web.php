@@ -40,12 +40,9 @@ Route::middleware(['auth', 'initUser', 'checkIsBlocked'])->group(function () {
     Route::get('profile/submit/draft/{id}', [App\Http\Controllers\ProfileController::class, 'submitDraft'])->name('submitDraft');
     Route::get('profile/add-profile', [App\Http\Controllers\ProfileController::class, 'create']);
     Route::post('profile/add-profile', [App\Http\Controllers\ProfileController::class, 'store']);
-    Route::post('updateUser', [App\Http\Controllers\ProfileController::class, 'updateUser']);
-    Route::post('stageThree', [App\Http\Controllers\ProfileController::class, 'stageThree']);
-    Route::post('stageFour', [App\Http\Controllers\ProfileController::class, 'stageFour']);
-    Route::post('stageFive', [App\Http\Controllers\ProfileController::class, 'stageFive']);
-    Route::post('stageSix', [App\Http\Controllers\ProfileController::class, 'stageSix']);
-    Route::post('profileUpdate', [App\Http\Controllers\ProfileController::class, 'profileUpdate']);
+    Route::post('stage/two', [App\Http\Controllers\ProfileController::class, 'stageTwo']);
+    Route::post('stage/three', [App\Http\Controllers\ProfileController::class, 'stageThree']);
+    Route::post('update/profile', [App\Http\Controllers\ProfileController::class, 'updateProfile']);
     Route::post('profile/document/update/{id}', [App\Http\Controllers\ProfileController::class, 'profileDocumentUpdate']);
     Route::get('profile/pdf/{id}', [App\Http\Controllers\ProfileController::class, 'renderPdf']);
     Route::get('profile/edit/{id}', [App\Http\Controllers\ProfileController::class, 'edit'])->middleware('checkProfilePermision');
