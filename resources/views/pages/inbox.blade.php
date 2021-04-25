@@ -550,7 +550,7 @@
                                                                         </a>
                                                                         <div class="dropdown-menu">
                                                                             <a class="dropdown-item" data-toggle="tab"
-                                                                                href="#kt_tab_pane_5_doc1">Starting
+                                                                                href="#kt_tab_pane_5_doc1">Primary
                                                                                 Documents</a>
                                                                             <a class="dropdown-item" data-toggle="tab"
                                                                                 href="#kt_tab_pane_5_doc2">Final
