@@ -132,50 +132,6 @@ class ProfileController extends Controller
 
         $pro = $pro->whereIn('dep_id', session('department'));
         return $pro->paginate($perPage);
-
-        // $builder = Profile::with('trackings')->get();
-        // $builder->whereIn('dep_id', session('department'))
-        //     ->where(function (Builder $query) use ($search, $from, $to) {
-        //         return  $query->whereHas('trackings', function ($subquery) {
-        //             if (Auth::user()->role == "supervisor") {
-        //                 $subquery->where('from', 'employ')
-        //                     ->where('status', 'pending')
-        //                     ->where('at_end_user', '!=', 1);
-        //             }
-        //             if (Auth::user()->role == "department_head") {
-        //                 $subquery->where('from', 'supervisor')
-        //                     ->where('status', 'pending')
-        //                     ->orWhere('status', 'rejected');
-        //             }
-        //             if (Auth::user()->role == "director") {
-        //                 $subquery->where('from', 'department_head')
-        //                     ->where('status', 'pending')
-        //                     ->orWhere('status', 'rejected');
-        //             }
-        //             if (Auth::user()->role == "general_director") {
-        //                 $subquery->where('from', 'director')
-        //                     ->where('status', 'pending')
-        //                     ->orWhere('status', 'rejected');
-        //             }
-        //             if (Auth::user()->role == "employ") {
-        //                 $subquery->where('from', 'employ')
-        //                     ->where('status', 'pending')
-        //                     ->where('at_end_user', 1);
-        //             }
-        //         });
-
-        //         if ($search) {
-        //             return $query->where('name_arabic', 'like', '%' . $search . '%')
-        //                 ->orWhere('name', 'like', '%' . $search . '%')
-        //                 ->orWhere('passport_no', 'like', '%' . $search . '%')
-        //                 ->orWhere('uid', 'like', '%' . $search . '%');
-        //         }
-        //         if ($from && $to) {
-        //             $query->whereBetween('created_at', [$from, $to]);
-        //         }
-        //         return $query;
-        //     })->orderBy('id', 'DESC')->paginate($perPage);
-        // return $builder;
     }
 
     public function completed($search, $from, $to, $perPage)
