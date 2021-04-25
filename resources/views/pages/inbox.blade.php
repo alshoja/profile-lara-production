@@ -299,7 +299,6 @@
                                                                                     </li>
                                                                                 @endif
                                                                             @endif
-
                                                                         </ul>
                                                                         <!--end::Navigation-->
                                                                     </div>
@@ -551,7 +550,7 @@
                                                                         </a>
                                                                         <div class="dropdown-menu">
                                                                             <a class="dropdown-item" data-toggle="tab"
-                                                                                href="#kt_tab_pane_5_doc1">Initial
+                                                                                href="#kt_tab_pane_5_doc1">Starting
                                                                                 Documents</a>
                                                                             <a class="dropdown-item" data-toggle="tab"
                                                                                 href="#kt_tab_pane_5_doc2">Final
@@ -582,9 +581,8 @@
                                                                             <div class="pb-5"
                                                                                 data-wizard-type="step-content"
                                                                                 data-wizard-state="current">
-                                                                                <h6 class="text-success"><small>SUNDAY
-                                                                                        ,21-2021 TIME:01:15:28PM</small>
-                                                                                </h6>
+                                                                                {{-- <h6 class="text-success"><small><?php echo date('l'); ?>&nbsp;,<?php echo date('d-Y'); ?>&nbsp;Time:<?php echo date('h:i:sa'); ?></small>
+                                                                                </h6> --}}
                                                                                 <br>
 
                                                                                 <div class="form-group row">
