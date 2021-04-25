@@ -23,7 +23,7 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                                                                                                            <g stroke="
+                                                                                                                                    <g stroke="
                                             none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
@@ -48,7 +48,7 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                                                                                                            <g stroke="
+                                                                                                                                    <g stroke="
                                             none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
@@ -74,7 +74,7 @@
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         @if (Auth::user()->role == 'supervisor')
                                             <svg xmlns="http:
-                                                                                                                            <g stroke="
+                                                                                                                                    <g stroke="
                                                 none" stroke-width="1" fill="none" fill-rule="evenodd">
                                                 <polygon points="0 0 24 0 24 24 0 24" />
                                                 <rect fill="#000000" opacity="0.3"
@@ -503,6 +503,23 @@
                                             <div class="col-xl-4">
                                                 <!--begin::Input-->
                                                 <div class="form-group">
+                                                    <label>Date of Issue</label>
+                                                    <input max="<?php echo date('Y-m-d'); ?>"
+                                                        type="date" id="date_issue"
+                                                        class="form-control form-control-solid form-control-lg"
+                                                        name="date_issue" placeholder="Address Line 1"
+                                                        value="{{ date('Y-m-d', strtotime($profile->date_issue)) }}" />
+
+                                                    <span class="text-danger error-text date_issue_err"></span>
+                                                </div>
+                                                <!--end::Input-->
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xl-4">
+                                                <!--begin::Input-->
+                                                <div class="form-group">
                                                     <label>Passport No</label>
                                                     <input type="text"
                                                         class="form-control form-control-solid form-control-lg"
@@ -512,8 +529,6 @@
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
-                                        </div>
-                                        <div class="row">
                                             <div class="col-xl-4">
                                                 <!--begin::Input-->
                                                 <div class="form-group">
@@ -532,19 +547,33 @@
                                                 <!--end::Input-->
                                             </div>
                                             <div class="col-xl-4">
-                                                <!--begin::Input-->
+                                                <!--begin::Select-->
                                                 <div class="form-group">
-                                                    <label>Date of Issue</label>
+                                                    <label>Passport Expiry Date</label>
                                                     <input max="<?php echo date('Y-m-d'); ?>"
-                                                        type="date" id="date_issue"
+                                                        type="date" id="date_expiry"
                                                         class="form-control form-control-solid form-control-lg"
-                                                        name="date_issue" placeholder="Address Line 1"
-                                                        value="{{ date('Y-m-d', strtotime($profile->date_issue)) }}" />
+                                                        name="date_expiry" placeholder="Address Line 1"
+                                                        value="{{ date('Y-m-d', strtotime($profile->date_expiry)) }}" />
 
-                                                    <span class="text-danger error-text date_issue_err"></span>
+                                                    <span class="text-danger error-text date_expiry_err"></span>
                                                 </div>
-                                                <!--end::Input-->
+                                                <!--end::Select-->
                                             </div>
+                                            <div class="col-xl-4">
+                                                <div class="form-group">
+                                                    <label>Passport Type</label>
+                                                    <select name="passport_type"
+                                                        class="form-control form-control-solid form-control-lg"
+                                                        id="passport_type">
+                                                        <option hidden value="">Select</option>
+                                                        <option value="p1">P1</option>
+                                                        <option value="p2">P2</option>
+                                                    </select>
+                                                    <span class="text-danger error-text passport_type_err"></span>
+                                                </div>
+                                            </div>
+
                                             <div class="col-xl-4">
                                                 <!--begin::Select-->
                                                 <div class="form-group">
@@ -577,20 +606,7 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-xl-4">
-                                                <!--begin::Select-->
-                                                <div class="form-group">
-                                                    <label>Passport Expiry Date</label>
-                                                    <input max="<?php echo date('Y-m-d'); ?>"
-                                                        type="date" id="date_expiry"
-                                                        class="form-control form-control-solid form-control-lg"
-                                                        name="date_expiry" placeholder="Address Line 1"
-                                                        value="{{ date('Y-m-d', strtotime($profile->date_expiry)) }}" />
 
-                                                    <span class="text-danger error-text date_expiry_err"></span>
-                                                </div>
-                                                <!--end::Select-->
-                                            </div>
                                             <div class="col-xl-4">
                                                 <!--begin::Select-->
                                                 <div class="form-group">
@@ -615,10 +631,7 @@
                                                 <!--end::Select-->
                                             </div>
                                         </div>
-
                                     </div>
-
-
 
                                     <!--end::Wizard Step 1-->
                                     <!--begin::Wizard Step 2-->
@@ -682,7 +695,16 @@
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
-
+                                            <div class="col-xl-12">
+                                                <!--begin::Input-->
+                                                <div class="form-group">
+                                                    <label>Inventory Data</label>
+                                                    <textarea class="form-control form-control-solid" name="inventory_data"
+                                                        id="inventory_data"></textarea>
+                                                    <span class="text-danger error-text inventory_data_err"></span>
+                                                </div>
+                                                <!--end::Input-->
+                                            </div>
                                         </div>
 
 
@@ -804,8 +826,8 @@
 
 
                                         <!--end::Select
-                                                                                                                                <input type = 'submit' value = "Save" class="btn btn-success font-weight-bolder"/>
-                                                                                                                                <button class="btn btn-success font-weight-bolder" id="editstep">smave</button>-->
+                                                                                                                                        <input type = 'submit' value = "Save" class="btn btn-success font-weight-bolder"/>
+                                                                                                                                        <button class="btn btn-success font-weight-bolder" id="editstep">smave</button>-->
 
                                     </div>
 
@@ -929,8 +951,8 @@
 
 
                                         <!--end::Select
-                                                                                                                                <input type = 'submit' value = "Save" class="btn btn-success font-weight-bolder"/>
-                                                                                                                                <button class="btn btn-success font-weight-bolder" id="editstep">smave</button>-->
+                                                                                                                                        <input type = 'submit' value = "Save" class="btn btn-success font-weight-bolder"/>
+                                                                                                                                        <button class="btn btn-success font-weight-bolder" id="editstep">smave</button>-->
 
                                     </div>
 
@@ -1010,7 +1032,10 @@
                     saveButtonUpload.removeClass('spinner spinner-white spinner-right')
                     saveButtonUpload.prop('disabled', false);
                     saveButtonUpload.html("Save");
-                    printErrorMsg(XMLHttpRequest.responseJSON.error);
+                    console.log(XMLHttpRequest)
+                    if (XMLHttpRequest.responseJSON) {
+                        printErrorMsg(XMLHttpRequest.responseJSON.error);
+                    }
                     if (XMLHttpRequest.status == 413) {
                         showToast('Upload too large, Please reduce the file size !',
                             'Opps', 'warning');
@@ -1078,73 +1103,73 @@
             var addButton = $('.add_button');
             var wrapper = $('.field_wrapper');
             var fieldHTML = `
-                                <div>
-                                    <div class="row form-group">
-                                        <div class="col-md-4">
-                                            <input type="text" hidden name="product_id[]" id="product_id[]">
-                                            <select required name="product_type[]" id="product_type[]" class="form-control form-control-solid ">
-                                                <option hidden value="">Select Product-1&nbsp;
-                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                    &nbsp;
-                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                </option>
-                                                <option value="YE">P 1</option>
-                                                <option value="ZM">P 2</option>
-                                                <option value="ZW">P 3</option>
-                                            </select>
-                                            {{-- <div class="d-md-none mb-2"></div> --}}
-                                        </div>
-                                        <div class="col-md-4">
+                                        <div>
+                                            <div class="row form-group">
+                                                <div class="col-md-4">
+                                                    <input type="text" hidden name="product_id[]" id="product_id[]">
+                                                    <select required name="product_type[]" id="product_type[]" class="form-control form-control-solid ">
+                                                        <option hidden value="">Select Product-1&nbsp;
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            &nbsp;
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        </option>
+                                                        <option value="YE">P 1</option>
+                                                        <option value="ZM">P 2</option>
+                                                        <option value="ZW">P 3</option>
+                                                    </select>
+                                                    {{-- <div class="d-md-none mb-2"></div> --}}
+                                                </div>
+                                                <div class="col-md-4">
 
-                                            <select required name="manufacture_type[]" id="manufacture_type[]" class="form-control form-control-solid">
-                                                <option hidden value=""> Select Type-1</option>
-                                                <option value="YE">P 1</option>
-                                                <option value="ZM">P 2</option>
-                                                <option value="ZW">P 3</option>
-                                            </select>
-                                            {{-- <div class="d-md-none mb-2"></div> --}}
-                                        </div>
-                                        <div class="col-md-4">
+                                                    <select required name="manufacture_type[]" id="manufacture_type[]" class="form-control form-control-solid">
+                                                        <option hidden value=""> Select Type-1</option>
+                                                        <option value="YE">P 1</option>
+                                                        <option value="ZM">P 2</option>
+                                                        <option value="ZW">P 3</option>
+                                                    </select>
+                                                    {{-- <div class="d-md-none mb-2"></div> --}}
+                                                </div>
+                                                <div class="col-md-4">
 
-                                            <select required name="shipped_type[]" id="shipped_type[]" class="form-control form-control-solid">
-                                                <option selected hidden value="">Select type-3
-                                                </option>
-                                                <option value="YE">P 1</option>
-                                                <option value="ZM">P 2</option>
-                                                <option value="ZW">P 3</option>
-                                            </select>
-                                            {{-- <div class="d-md-none mb-2"></div> --}}
-                                        </div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <div class="col-md-3">
+                                                    <select required name="shipped_type[]" id="shipped_type[]" class="form-control form-control-solid">
+                                                        <option selected hidden value="">Select type-3
+                                                        </option>
+                                                        <option value="YE">P 1</option>
+                                                        <option value="ZM">P 2</option>
+                                                        <option value="ZW">P 3</option>
+                                                    </select>
+                                                    {{-- <div class="d-md-none mb-2"></div> --}}
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col-md-3">
 
-                                            <input required type="text" class="form-control" placeholder="Kg" name="quantity_kg[]" id="quantity_kg[]" />
-                                            <div class="d-md-none mb-2"></div>
-                                        </div>
-                                        <div class="col-md-3">
+                                                    <input required type="text" class="form-control" placeholder="Kg" name="quantity_kg[]" id="quantity_kg[]" />
+                                                    <div class="d-md-none mb-2"></div>
+                                                </div>
+                                                <div class="col-md-3">
 
-                                            <input required type="text" class="form-control" placeholder="G" name="quantity_g[]" id="quantity_g[]" />
-                                            <div class="d-md-none mb-2"></div>
-                                        </div>
-                                        <div class="col-md-3">
+                                                    <input required type="text" class="form-control" placeholder="G" name="quantity_g[]" id="quantity_g[]" />
+                                                    <div class="d-md-none mb-2"></div>
+                                                </div>
+                                                <div class="col-md-3">
 
-                                            <input required type="text" class="form-control" placeholder="ML" name="quantity_ml[]" id="quantity_ml[]" />
-                                            <div class="d-md-none mb-2"></div>
-                                        </div>
+                                                    <input required type="text" class="form-control" placeholder="ML" name="quantity_ml[]" id="quantity_ml[]" />
+                                                    <div class="d-md-none mb-2"></div>
+                                                </div>
 
-                                        <div class="col-md-3">
-                                            <!-- <label>Number:</label> -->
-                                            <input required type="text" class="form-control" placeholder="Digit" name="quantity_digit[]"
-                                                id="quantity_digit[]" />
-                                            <div class="d-md-none mb-2"></div>
+                                                <div class="col-md-3">
+                                                    <!-- <label>Number:</label> -->
+                                                    <input required type="text" class="form-control" placeholder="Digit" name="quantity_digit[]"
+                                                        id="quantity_digit[]" />
+                                                    <div class="d-md-none mb-2"></div>
+                                                </div>
+                                            </div>
+                                            <a style="margin:10px;" href="javascript:;" data-repeater-delete="" class=" btn btn-gradient-danger remove_button">
+                                                Delete
+                                            </a>
                                         </div>
-                                    </div>
-                                    <a style="margin:10px;" href="javascript:;" data-repeater-delete="" class=" btn btn-gradient-danger remove_button">
-                                        Delete
-                                    </a>
-                                </div>
-                                `;
+                                        `;
             var x = 1;
 
             $(addButton).click(function() {

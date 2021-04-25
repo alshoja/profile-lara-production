@@ -120,14 +120,14 @@
                                                                     class="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">
                                                                     {{ $item->name }}</a>
                                                                 <span
-                                                                    class="text-muted text-capitalize font-weight-bold text-muted d-block">{{ $item->gender }}</span>
+                                                                    class="text-muted text-capitalize font-weight-bold text-muted d-block">{{ $item->name_arabic }}</span>
                                                             </td>
                                                             <td>
                                                                 <span
                                                                     class="text-dark-75 font-weight-bolder d-block font-size-lg">
-                                                                    {{ $item->citizenship_location }}</span>
-                                                                <span class="text-muted font-weight-bold">
                                                                     {{ $item->nationality }}</span>
+                                                                <span class="text-muted font-weight-bold text-capitalize">
+                                                                    {{ $item->gender }}</span>
                                                             </td>
                                                             <td>
                                                                 <span

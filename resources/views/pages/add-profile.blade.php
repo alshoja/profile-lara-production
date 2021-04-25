@@ -448,42 +448,12 @@
                                                     <select name="product_type"
                                                         class="form-control form-control-solid form-control-lg"
                                                         id="product_type">
-                                                        <option value="">Select</option>
+                                                        <option hidden value="">Select</option>
                                                         <option value="p1">P1</option>
                                                         <option value="p2">P2</option>
                                                     </select>
                                                     <span class="text-danger error-text product_type_err"></span>
                                                 </div>
-                                            </div>
-                                            <div class="col-xl-4">
-                                                <!--begin::Input-->
-                                                <div class="form-group">
-                                                    <label>Passport No</label>
-                                                    <input type="text"
-                                                        class="form-control form-control-solid form-control-lg"
-                                                        name="passport_no" placeholder="Passport Number" value=""
-                                                        id="passport_no" />
-                                                    <span class="text-danger error-text passport_no_err"></span>
-                                                </div>
-                                                <!--end::Input-->
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-xl-4">
-                                                <!--begin::Input-->
-                                                <div class="form-group">
-                                                    <label>Passport Issue</label>
-                                                    <select name="passport_issue"
-                                                        class="form-control form-control-solid form-control-lg"
-                                                        id="passport_issue">
-                                                        <option value="">Select</option>
-                                                        <option value="YE">P 1</option>
-                                                        <option value="ZM">P 2</option>
-                                                        <option value="ZW">P 3</option>
-                                                    </select>
-                                                    <span class="text-danger error-text passport_issue_err"></span>
-                                                </div>
-                                                <!--end::Input-->
                                             </div>
                                             <div class="col-xl-4">
                                                 <!--begin::Input-->
@@ -498,6 +468,63 @@
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
+                                            
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xl-4">
+                                                <!--begin::Input-->
+                                                <div class="form-group">
+                                                    <label>Passport No</label>
+                                                    <input type="text"
+                                                        class="form-control form-control-solid form-control-lg"
+                                                        name="passport_no" placeholder="Passport Number" value=""
+                                                        id="passport_no" />
+                                                    <span class="text-danger error-text passport_no_err"></span>
+                                                </div>
+                                                <!--end::Input-->
+                                            </div>
+                                            <div class="col-xl-4">
+                                                <!--begin::Input-->
+                                                <div class="form-group">
+                                                    <label>Passport Issue</label>
+                                                    <select name="passport_issue"
+                                                        class="form-control form-control-solid form-control-lg"
+                                                        id="passport_issue">
+                                                        <option hidden value="">Select</option>
+                                                        <option value="YE">P 1</option>
+                                                        <option value="ZM">P 2</option>
+                                                        <option value="ZW">P 3</option>
+                                                    </select>
+                                                    <span class="text-danger error-text passport_issue_err"></span>
+                                                </div>
+                                                <!--end::Input-->
+                                            </div>
+                                            <div class="col-xl-4">
+                                                <!--begin::Select-->
+                                                <div class="form-group">
+                                                    <label>Passport Expiry Date</label>
+                                                    <input max="<?php echo date('Y-m-d'); ?>"
+                                                        type="date" id="date_expiry"
+                                                        class="form-control form-control-solid form-control-lg"
+                                                        name="date_expiry" placeholder="Address Line 1" />
+
+                                                    <span class="text-danger error-text date_expiry_err"></span>
+                                                </div>
+                                                <!--end::Select-->
+                                            </div>
+                                            <div class="col-xl-4">
+                                                <div class="form-group">
+                                                    <label>Passport Type</label>
+                                                    <select name="product_type"
+                                                        class="form-control form-control-solid form-control-lg"
+                                                        id="passport_type">
+                                                        <option hidden value="">Select</option>
+                                                        <option value="p1">P1</option>
+                                                        <option value="p2">P2</option>
+                                                    </select>
+                                                    <span class="text-danger error-text passport_type_err"></span>
+                                                </div>
+                                            </div>
                                             <div class="col-xl-4">
                                                 <!--begin::Select-->
                                                 <div class="form-group">
@@ -505,7 +532,7 @@
                                                     <select name="residency"
                                                         class="form-control form-control-solid form-control-lg"
                                                         id="residency">
-                                                        <option value="">Select</option>
+                                                        <option hidden value="">Select</option>
                                                         <option value="YE">P 1</option>
                                                         <option value="ZM">P 2</option>
                                                         <option value="ZW">P 3</option>
@@ -526,21 +553,10 @@
                                                 </div>
                                                 <!--end::Select-->
                                             </div>
+                                           
                                         </div>
                                         <div class="row">
-                                            <div class="col-xl-4">
-                                                <!--begin::Select-->
-                                                <div class="form-group">
-                                                    <label>Passport Expiry Date</label>
-                                                    <input max="<?php echo date('Y-m-d'); ?>"
-                                                        type="date" id="date_expiry"
-                                                        class="form-control form-control-solid form-control-lg"
-                                                        name="date_expiry" placeholder="Address Line 1" />
-
-                                                    <span class="text-danger error-text date_expiry_err"></span>
-                                                </div>
-                                                <!--end::Select-->
-                                            </div>
+                                            
                                             <div class="col-xl-4">
                                                 <!--begin::Select-->
                                                 <div class="form-group">
@@ -633,7 +649,16 @@
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
-
+                                            <div class="col-xl-12">
+                                                <!--begin::Input-->
+                                                <div class="form-group">
+                                                    <label>Inventory Data</label>
+                                                    <textarea class="form-control form-control-solid"
+                                                        name="inventory_data" id="inventory_data"></textarea>
+                                                    <span class="text-danger error-text inventory_data_err"></span>
+                                                </div>
+                                                <!--end::Input-->
+                                            </div>
                                         </div>
 
                                         <button
@@ -674,9 +699,6 @@
 
                                             </div>
                                         </div>
-
-
-
                                         <!--end::Select
                                                                                                                                                 <input type = 'submit' value = "Save" class="btn btn-success font-weight-bolder"/>                                                                    <button class="btn btn-success font-weight-bolder" id="editstep">smave</button>-->
                                         <button type="submit" id="submit" onclick="enableNext()"
@@ -763,6 +785,7 @@
             let referal_name = $('#referal_name').val();
             let product_type = $('#product_type').val();
             let passport_no = $('#passport_no').val();
+            let passport_type = $('#passport_type').val();
             let passport_issue = $('#passport_issue').val();
             let date_issue = $('#date_issue').val();
             let residency = $('#residency').val();
@@ -793,6 +816,7 @@
                     date_expiry: date_expiry,
                     uid: uid,
                     proffession: proffession,
+                    passport_type:passport_type,
                 },
                 success: function(data) {
                     if ($.isEmptyObject(data.error)) {

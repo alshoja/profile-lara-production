@@ -72,10 +72,10 @@ class ProfileController extends Controller
             ->where('on_final_approval', 1)
             ->where(function (Builder $query) use ($search, $from, $to) {
                 if ($search) {
-                    $query->orwhere('name', 'like', '%' . $search . '%')
+                    $query->orwhere('name_arabic', 'like', '%' . $search . '%')
                         ->orWhere('name', 'like', '%' . $search . '%')
-                        ->orWhere('nationality', 'like', '%' . $search . '%')
-                        ->orWhere('gender', 'like', '%' . $search . '%');
+                        ->orWhere('passport_no', 'like', '%' . $search . '%')
+                        ->orWhere('uid', 'like', '%' . $search . '%');
                 }
                 if ($from && $to) {
                     $query->whereBetween('created_at', [$from, $to]);
@@ -92,49 +92,90 @@ class ProfileController extends Controller
 
     public function inbox($search, $from, $to, $perPage)
     {
-        $profiles = Profile::with('trackings')
-            ->whereIn('dep_id', session('department'))
-            ->where(function (Builder $query) use ($search, $from, $to) {
-                return  $query->whereHas('trackings', function ($subquery) {
-                    if (Auth::user()->role == "supervisor") {
-                        $subquery->where('from', 'employ')
-                            ->where('status', 'pending')
-                            ->where('at_end_user', '!=', 1);
-                    }
-                    if (Auth::user()->role == "department_head") {
-                        $subquery->where('from', 'supervisor')
-                            ->where('status', 'pending')
-                            ->orWhere('status', 'rejected');
-                    }
-                    if (Auth::user()->role == "director") {
-                        $subquery->where('from', 'department_head')
-                            ->where('status', 'pending')
-                            ->orWhere('status', 'rejected');
-                    }
-                    if (Auth::user()->role == "general_director") {
-                        $subquery->where('from', 'director')
-                            ->where('status', 'pending')
-                            ->orWhere('status', 'rejected');
-                    }
-                    if (Auth::user()->role == "employ") {
-                        $subquery->where('from', 'employ')
-                            ->where('status', 'pending')
-                            ->where('at_end_user', 1);
-                    }
-                });
+        $pro = Profile::whereIn('dep_id', session('department'));
+        $pro->where(function ($query) use ($search, $from, $to, $pro) {
+            if ($search) {
+                $pro->where('name_arabic', 'like', '%' . $search . '%')
+                    ->orWhere('name', 'like', '%' . $search . '%')
+                    ->orWhere('passport_no', 'like', '%' . $search . '%')
+                    ->orWhere('uid', 'like', '%' . $search . '%');
+            }
+            if ($from && $to) {
+                $pro->whereBetween('created_at', [$from, $to]);
+            }
+            return $query->whereHas('trackings', function ($query) use ($search, $from, $to, $pro) {
+                if (Auth::user()->role == "supervisor") {
+                    $query->where('from', 'employ')
+                        ->where('status', 'pending')
+                        ->where('at_end_user', '!=', 1);
+                }
+                if (Auth::user()->role == "department_head") {
+                    $query->where('from', 'supervisor')
+                        ->where('status', 'pending')
+                        ->orWhere('status', 'rejected');
+                }
+                if (Auth::user()->role == "director") {
+                    $query->where('from', 'department_head')
+                        ->where('status', 'pending')
+                        ->orWhere('status', 'rejected');
+                }
+                if (Auth::user()->role == "general_director") {
+                    $query->where('from', 'director')
+                        ->where('status', 'pending')
+                        ->orWhere('status', 'rejected');
+                }
+                if (Auth::user()->role == "employ") {
+                    $query->where('from', 'employ')
+                        ->where('status', 'pending')
+                        ->where('at_end_user', 1);
+                }
+            });
+        });
+        return $pro->paginate($perPage);
 
-                if ($search) {
-                    $query->where('name', 'like', '%' . $search . '%')
-                        ->orWhere('name', 'like', '%' . $search . '%')
-                        ->orWhere('nationality', 'like', '%' . $search . '%')
-                        ->orWhere('gender', 'like', '%' . $search . '%');
-                }
-                if ($from && $to) {
-                    $query->whereBetween('created_at', [$from, $to]);
-                }
-                return $query;
-            })->orderBy('id', 'DESC')->paginate($perPage);
-        return $profiles;
+        // $builder = Profile::with('trackings')->get();
+        // $builder->whereIn('dep_id', session('department'))
+        //     ->where(function (Builder $query) use ($search, $from, $to) {
+        //         return  $query->whereHas('trackings', function ($subquery) {
+        //             if (Auth::user()->role == "supervisor") {
+        //                 $subquery->where('from', 'employ')
+        //                     ->where('status', 'pending')
+        //                     ->where('at_end_user', '!=', 1);
+        //             }
+        //             if (Auth::user()->role == "department_head") {
+        //                 $subquery->where('from', 'supervisor')
+        //                     ->where('status', 'pending')
+        //                     ->orWhere('status', 'rejected');
+        //             }
+        //             if (Auth::user()->role == "director") {
+        //                 $subquery->where('from', 'department_head')
+        //                     ->where('status', 'pending')
+        //                     ->orWhere('status', 'rejected');
+        //             }
+        //             if (Auth::user()->role == "general_director") {
+        //                 $subquery->where('from', 'director')
+        //                     ->where('status', 'pending')
+        //                     ->orWhere('status', 'rejected');
+        //             }
+        //             if (Auth::user()->role == "employ") {
+        //                 $subquery->where('from', 'employ')
+        //                     ->where('status', 'pending')
+        //                     ->where('at_end_user', 1);
+        //             }
+        //         });
+
+        //         if ($search) {
+        //             return $query->where('name_arabic', 'like', '%' . $search . '%')
+        //                 ->orWhere('name', 'like', '%' . $search . '%')
+        //                 ->orWhere('passport_no', 'like', '%' . $search . '%')
+        //                 ->orWhere('uid', 'like', '%' . $search . '%');
+        //         }
+        //         if ($from && $to) {
+        //             $query->whereBetween('created_at', [$from, $to]);
+        //         }
+        //         return $query;
+        //     })->orderBy('id', 'DESC')->paginate($perPage);
+        // return $builder;
     }
 
     public function completed($search, $from, $to, $perPage)
@@ -144,10 +185,10 @@ class ProfileController extends Controller
             ->where('is_completed', 1)
             ->where(function (Builder $query) use ($search, $from, $to) {
                 if ($search) {
-                    $query->orwhere('name', 'like', '%' . $search . '%')
+                    $query->orwhere('name_arabic', 'like', '%' . $search . '%')
                         ->orWhere('name', 'like', '%' . $search . '%')
-                        ->orWhere('nationality', 'like', '%' . $search . '%')
-                        ->orWhere('gender', 'like', '%' . $search . '%');
+                        ->orWhere('passport_no', 'like', '%' . $search . '%')
+                        ->orWhere('uid', 'like', '%' . $search . '%');
                 }
 
                 if ($from && $to) {
@@ -165,10 +206,10 @@ class ProfileController extends Controller
             ->where('is_drafted', 1)
             ->where(function (Builder $query) use ($search, $from, $to) {
                 if ($search) {
-                    $query->orwhere('name', 'like', '%' . $search . '%')
+                    $query->orwhere('name_arabic', 'like', '%' . $search . '%')
                         ->orWhere('name', 'like', '%' . $search . '%')
-                        ->orWhere('nationality', 'like', '%' . $search . '%')
-                        ->orWhere('gender', 'like', '%' . $search . '%');
+                        ->orWhere('passport_no', 'like', '%' . $search . '%')
+                        ->orWhere('uid', 'like', '%' . $search . '%');
                 }
 
                 if ($from && $to) {
@@ -187,10 +228,10 @@ class ProfileController extends Controller
             ->where('is_drafted', 0)
             ->where(function (Builder $query) use ($search, $from, $to) {
                 if ($search) {
-                    $query->orwhere('name', 'like', '%' . $search . '%')
+                    $query->orwhere('name_arabic', 'like', '%' . $search . '%')
                         ->orWhere('name', 'like', '%' . $search . '%')
-                        ->orWhere('nationality', 'like', '%' . $search . '%')
-                        ->orWhere('gender', 'like', '%' . $search . '%');
+                        ->orWhere('passport_no', 'like', '%' . $search . '%')
+                        ->orWhere('uid', 'like', '%' . $search . '%');
                 }
                 if ($from && $to) {
                     $query->whereBetween('created_at', [$from, $to]);
@@ -237,6 +278,7 @@ class ProfileController extends Controller
             'date_expiry'  => 'required',
             'uid'  => 'required',
             'proffession'  => 'required',
+            'passport_type' => 'required'
         ]);
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], 422);
@@ -258,6 +300,7 @@ class ProfileController extends Controller
             $profile->location = $request->location;
             $profile->date_expiry = $request->date_expiry;
             $profile->uid = $request->uid;
+            $profile->passport_type = $request->passport_type;
             $profile->proffession = $request->proffession;
             $profile->inventory_name = "";
             $profile->inventory_codes = "";
@@ -288,19 +331,20 @@ class ProfileController extends Controller
                 'inventory_codes' => 'required',
                 'note' => 'required',
                 'inventory_detials' => 'required',
-
+                'inventory_data' => 'required',
             ]);
             if ($validator->fails()) {
                 return response()->json(['error' => $validator->errors()], 422);
             } else {
                 $inventory_name = $request->input('inventory_name');
                 $inventory_codes = $request->input('inventory_codes');
-                $note = $request->input('note');
+                $inventory_data = $request->input('inventory_data');
                 $inventory_detials = $request->input('inventory_detials');
+                $note = $request->input('note');
                 $id = $request->input('editid');
 
                 try {
-                    $data = array("inventory_name" => $inventory_name, "inventory_codes" => $inventory_codes, "note" => $note, "inventory_detials" => $inventory_detials);
+                    $data = array("inventory_name" => $inventory_name,"inventory_data" => $inventory_data, "inventory_codes" => $inventory_codes, "note" => $note, "inventory_detials" => $inventory_detials);
                     Profile::updateData($id, $data);
                     return response()->json(['success' => 'Form is successfully submitted!']);
                 } catch (\Illuminate\Database\QueryException $ex) {
@@ -392,6 +436,12 @@ class ProfileController extends Controller
             'date_expiry'  => 'required',
             'uid'  => 'required',
             'proffession'  => 'required',
+            'inventory_data' => 'required',
+            'passport_type'  => 'required',
+            'inventory_name' => 'required',
+            'inventory_codes' => 'required',
+            'note' => 'required',
+            'inventory_detials' => 'required',
         ]);
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], 422);
@@ -463,6 +513,8 @@ class ProfileController extends Controller
             "proffession" => $request->input('proffession'),
             "inventory_name" => $request->input('inventory_name'),
             "inventory_codes" => $request->input('inventory_codes'),
+            "passport_type" => $request->input('passport_type'),
+            "inventory_data" => $request->input('inventory_data'),
             "note" => $request->input('note'),
             "inventory_detials" => $request->input('inventory_detials'),
             "scanned_document1" => $progileimage,
