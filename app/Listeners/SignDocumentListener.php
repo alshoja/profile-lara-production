@@ -56,7 +56,7 @@ class SignDocumentListener
                 $track->save();
 
                 $profile = Profile::where('id', $event->trackProfile->profile_id)->firstOrFail();
-                $profile->is_completed = 1;
+                $profile->on_final_approval = 1;
                 $profile->save();
             }
             if (Auth::user()->role != "general_director" && Auth::user()->role != "employ" && Auth::user()->role != "admin") {

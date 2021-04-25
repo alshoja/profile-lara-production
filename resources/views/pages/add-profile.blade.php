@@ -23,7 +23,7 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                                                                                                    <g stroke="
+                                                                                                                                                    <g stroke="
                                             none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
@@ -48,7 +48,7 @@
                                     <span class="svg-icon svg-icon-xl wizard-arrow">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
                                         <svg xmlns="http:
-                                                                                                                    <g stroke="
+                                                                                                                                                    <g stroke="
                                             none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <polygon points="0 0 24 0 24 24 0 24" />
                                             <rect fill="#000000" opacity="0.3"
@@ -72,72 +72,16 @@
                                     </div>
                                     <span class="svg-icon svg-icon-xl wizard-arrow">
                                         <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
-                                        <svg xmlns="http:
-                                                                                                                    <g stroke="
-                                            none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                            <polygon points="0 0 24 0 24 24 0 24" />
-                                            <rect fill="#000000" opacity="0.3"
-                                                transform="translate(15.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-15.000000, -12.000000) "
-                                                x="14" y="7" width="2" height="10" rx="1" />
-                                            <path
-                                                d="M3.7071045,15.7071045 C3.3165802,16.0976288 2.68341522,16.0976288 2.29289093,15.7071045 C1.90236664,15.3165802 1.90236664,14.6834152 2.29289093,14.2928909 L8.29289093,8.29289093 C8.67146987,7.914312 9.28105631,7.90106637 9.67572234,8.26284357 L15.6757223,13.7628436 C16.0828413,14.136036 16.1103443,14.7686034 15.7371519,15.1757223 C15.3639594,15.5828413 14.7313921,15.6103443 14.3242731,15.2371519 L9.03007346,10.3841355 L3.7071045,15.7071045 Z"
-                                                fill="#000000" fill-rule="nonzero"
-                                                transform="translate(9.000001, 11.999997) scale(-1, -1) rotate(90.000000) translate(-9.000001, -11.999997) " />
-                                            </g>
-                                        </svg>
+
                                         <!--end::Svg Icon-->
                                     </span>
                                 </div>
                                 <!--end::Wizard Step 3 Nav-->
                                 <!--begin::Wizard Step 4 Nav-->
-                                <div class="wizard-step" data-wizard-type="step">
-                                    <div class="wizard-label">
-                                        <i class="wizard-icon flaticon-truck"></i>
-                                        <h3 class="wizard-title">Label 4</h3>
-                                    </div>
-                                    <span class="svg-icon svg-icon-xl wizard-arrow">
-                                        <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
-                                        <svg xmlns="http:
-                                                                                                                    <g stroke="
-                                            none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                            <polygon points="0 0 24 0 24 24 0 24" />
-                                            <rect fill="#000000" opacity="0.3"
-                                                transform="translate(15.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-15.000000, -12.000000) "
-                                                x="14" y="7" width="2" height="10" rx="1" />
-                                            <path
-                                                d="M3.7071045,15.7071045 C3.3165802,16.0976288 2.68341522,16.0976288 2.29289093,15.7071045 C1.90236664,15.3165802 1.90236664,14.6834152 2.29289093,14.2928909 L8.29289093,8.29289093 C8.67146987,7.914312 9.28105631,7.90106637 9.67572234,8.26284357 L15.6757223,13.7628436 C16.0828413,14.136036 16.1103443,14.7686034 15.7371519,15.1757223 C15.3639594,15.5828413 14.7313921,15.6103443 14.3242731,15.2371519 L9.03007346,10.3841355 L3.7071045,15.7071045 Z"
-                                                fill="#000000" fill-rule="nonzero"
-                                                transform="translate(9.000001, 11.999997) scale(-1, -1) rotate(90.000000) translate(-9.000001, -11.999997) " />
-                                            </g>
-                                        </svg>
-                                        <!--end::Svg Icon-->
-                                    </span>
-                                </div>
+
                                 <!--end::Wizard Step 4 Nav-->
                                 <!--begin::Wizard Step 5 Nav-->
-                                <div class="wizard-step" data-wizard-type="step">
-                                    <div class="wizard-label">
-                                        <i class="wizard-icon flaticon-globe"></i>
-                                        <h3 class="wizard-title">Department & Section</h3>
-                                    </div>
-                                    <span class="svg-icon svg-icon-xl wizard-arrow last">
-                                        <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
-                                        <svg xmlns="http:
-                                                                                                                    <g stroke="
-                                            none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                            <polygon points="0 0 24 0 24 24 0 24" />
-                                            <rect fill="#000000" opacity="0.3"
-                                                transform="translate(12.000000, 12.000000) rotate(-90.000000) translate(-12.000000, -12.000000)"
-                                                x="11" y="5" width="2" height="14" rx="1" />
-                                            <path
-                                                d="M9.70710318,15.7071045 C9.31657888,16.0976288 8.68341391,16.0976288 8.29288961,15.7071045 C7.90236532,15.3165802 7.90236532,14.6834152 8.29288961,14.2928909 L14.2928896,8.29289093 C14.6714686,7.914312 15.281055,7.90106637 15.675721,8.26284357 L21.675721,13.7628436 C22.08284,14.136036 22.1103429,14.7686034 21.7371505,15.1757223 C21.3639581,15.5828413 20.7313908,15.6103443 20.3242718,15.2371519 L15.0300721,10.3841355 L9.70710318,15.7071045 Z"
-                                                fill="#000000" fill-rule="nonzero"
-                                                transform="translate(14.999999, 11.999997) scale(1, -1) rotate(90.000000) translate(-14.999999, -11.999997)" />
-                                            </g>
-                                        </svg>
-                                        <!--end::Svg Icon-->
-                                    </span>
-                                </div>
+
                                 <!--end::Wizard Step 5 Nav-->
                             </div>
                         </div>
@@ -154,11 +98,19 @@
                                         <br>
                                         <!-- <h3 class="mb-10 font-weight-bold text-dark">Some Label</h3> -->
                                         <!--begin::Input-->
-                                        <div class="form-group">
-                                            <label>First Name</label>
-                                            <input type="text" class="form-control form-control-solid form-control-lg"
-                                                name="name" placeholder="Name" value="" id="name" />
-                                            <span class="text-danger error-text name_err"></span>
+                                        <div class="row form-group">
+                                            <div class="col-xl-6">
+                                                <label>Name Arabic</label>
+                                                <input type="text" class="form-control form-control-solid form-control-lg"
+                                                    name="name_arabic" placeholder="Name" value="" id="name_arabic" />
+                                                <span class="text-danger error-text name_err"></span>
+                                            </div>
+                                            <div class="col-xl-6">
+                                                <label>Name English</label>
+                                                <input type="text" class="form-control form-control-solid form-control-lg"
+                                                    name="name" placeholder="Name" value="" id="name" />
+                                                <span class="text-danger error-text name_err"></span>
+                                            </div>
                                         </div>
                                         <!--end::Input-->
                                         <!--begin::Input-->
@@ -436,9 +388,8 @@
                                                     <label>Gender</label>
                                                     <select name="gender"
                                                         class="form-control form-control-solid form-control-lg" id="gender">
-                                                        <option value="">Select</option>
-                                                        <option value="AF">Male</option>
-                                                        <option value="AX">Female</option>
+                                                        <option value="male">Male</option>
+                                                        <option value="female">Female</option>
                                                     </select>
                                                     <span class="text-danger error-text gender_err"></span>
                                                 </div>
@@ -447,77 +398,79 @@
                                             <div class="col-xl-4">
                                                 <div class="form-group">
                                                     <label>DOB</label>
-                                                    {{-- <input max="<?php echo date('Y-m-d') ?>" type="date"
-                                                        class="form-control form-control-solid form-control-lg datetimepicker-input" name="dob"
-                                                        placeholder="Address Line 1" id="dob" data-target="#kt_datetimepicker_1" /> --}}
-                                                        <div class="input-group input-group-solid date" id="kt_datetimepicker_3" data-target-input="nearest">
-                                                            <input  type="text" name="dob" id="dob" class="form-control form-control-solid datetimepicker-input" placeholder="Select date &amp; time" data-target="#kt_datetimepicker_3" />
-                                                            <div class="input-group-append" data-target="#kt_datetimepicker_3" data-toggle="datetimepicker">
-                                                                <span class="input-group-text">
-                                                                    <i class="ki ki-calendar"></i>
-                                                                </span>
-                                                            </div>
-                                                        </div>
+                                                    <input type="date"
+                                                        class="form-control form-control-solid form-control-lg" name="dob"
+                                                        placeholder="Address Line 1" id="dob" />
                                                     <span class="text-danger error-text dob_err"></span>
                                                 </div>
                                             </div>
+                                            <div class="col-xl-4">
+                                                <div class="form-group">
+                                                    <label>Place of birth</label>
+                                                    <input type="text"
+                                                        class="form-control form-control-solid form-control-lg"
+                                                        name="place_birth" placeholder="place of birth" value=""
+                                                        id="place_birth" />
+                                                </div>
+                                                <span class="text-danger error-text place_birth_err"></span>
+                                            </div>
+                                            <div class="col-xl-8">
+                                                <!--begin::Input-->
+                                                <div class="form-group">
+                                                    <label>Address</label>
+                                                    <textarea class="form-control form-control-solid form-control-lg"
+                                                        name="address" placeholder="Address" value=""
+                                                        id="address"></textarea>
+                                                    <span class="text-danger error-text address_err"></span>
+                                                </div>
+                                                <!--end::Input-->
+                                            </div>
+
                                         </div>
 
                                         <div class="row">
+
                                             <div class="col-xl-4">
                                                 <!--begin::Input-->
                                                 <div class="form-group">
-                                                    <label>CitizenShip Status</label>
-                                                    <select name="citizen_status"
-                                                        class="form-control form-control-solid form-control-lg"
-                                                        id="citizen_status">
-                                                        <option value="">Select</option>
-                                                        <option value="YE">Status 1</option>
-                                                        <option value="ZM">Status 2</option>
-                                                        <option value="ZW">Status 3</option>
-                                                    </select>
-                                                    <span class="text-danger error-text citizen_status_err"></span>
-                                                </div>
-                                                <!--end::Input-->
-                                            </div>
-                                            <div class="col-xl-4">
-                                                <!--begin::Input-->
-                                                <div class="form-group">
-                                                    <label>CitizenShip Location</label>
-                                                    <select name="citizen_location"
-                                                        class="form-control form-control-solid form-control-lg"
-                                                        id="citizen_location">
-                                                        <option value="">Select</option>
-                                                        <option value="AF">Male</option>
-                                                        <option value="AX">Female</option>
-                                                    </select>
-                                                    <span class="text-danger error-text citizen_location_err"></span>
-                                                </div>
-                                                <!--end::Input-->
-                                            </div>
-                                            <div class="col-xl-4">
-                                                <div class="form-group">
-                                                    <label>Citizenshi ID No</label>
-                                                    <input type="number"
-                                                        class="form-control form-control-solid form-control-lg"
-                                                        name="citizen_id" placeholder="ID number" value=""
-                                                        id="citizen_id" />
-                                                    <span class="text-danger error-text citizen_id_err"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-xl-4">
-                                                <!--begin::Input-->
-                                                <div class="form-group">
-                                                    <label>Citizenship UID No</label>
+                                                    <label>Referal Name</label>
                                                     <input type="text"
                                                         class="form-control form-control-solid form-control-lg"
-                                                        name="citizen_uid" placeholder="UID No" value="" id="citizen_uid" />
-                                                    <span class="text-danger error-text citizen_uid_err"></span>
+                                                        name="referal_name" placeholder="Referal Name" value=""
+                                                        id="referal_name" />
+                                                    <span class="text-danger error-text referal_name_err"></span>
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
+                                            <div class="col-xl-4">
+                                                <div class="form-group">
+                                                    <label>Product Type</label>
+                                                    <select name="product_type"
+                                                        class="form-control form-control-solid form-control-lg"
+                                                        id="product_type">
+                                                        <option hidden value="">Select</option>
+                                                        <option value="p1">P1</option>
+                                                        <option value="p2">P2</option>
+                                                    </select>
+                                                    <span class="text-danger error-text product_type_err"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-4">
+                                                <!--begin::Input-->
+                                                <div class="form-group">
+                                                    <label>Date of Issue</label>
+                                                    <input max="<?php echo date('Y-m-d'); ?>"
+                                                        type="date" id="date_issue"
+                                                        class="form-control form-control-solid form-control-lg"
+                                                        name="date_issue" placeholder="Address Line 1" />
+
+                                                    <span class="text-danger error-text date_issue_err"></span>
+                                                </div>
+                                                <!--end::Input-->
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="row">
                                             <div class="col-xl-4">
                                                 <!--begin::Input-->
                                                 <div class="form-group">
@@ -531,18 +484,99 @@
                                                 <!--end::Input-->
                                             </div>
                                             <div class="col-xl-4">
-                                                <!--begin::Select-->
+                                                <!--begin::Input-->
                                                 <div class="form-group">
-                                                    <label>Passport Type</label>
-                                                    <select name="passport_type"
+                                                    <label>Passport Issue</label>
+                                                    <select name="passport_issue"
                                                         class="form-control form-control-solid form-control-lg"
-                                                        id="passport_type">
-                                                        <option value="">Select</option>
+                                                        id="passport_issue">
+                                                        <option hidden value="">Select</option>
                                                         <option value="YE">P 1</option>
                                                         <option value="ZM">P 2</option>
                                                         <option value="ZW">P 3</option>
                                                     </select>
+                                                    <span class="text-danger error-text passport_issue_err"></span>
+                                                </div>
+                                                <!--end::Input-->
+                                            </div>
+                                            <div class="col-xl-4">
+                                                <!--begin::Select-->
+                                                <div class="form-group">
+                                                    <label>Passport Expiry Date</label>
+                                                    <input max="<?php echo date('Y-m-d'); ?>"
+                                                        type="date" id="date_expiry"
+                                                        class="form-control form-control-solid form-control-lg"
+                                                        name="date_expiry" placeholder="Address Line 1" />
+
+                                                    <span class="text-danger error-text date_expiry_err"></span>
+                                                </div>
+                                                <!--end::Select-->
+                                            </div>
+                                            <div class="col-xl-4">
+                                                <div class="form-group">
+                                                    <label>Passport Type</label>
+                                                    <select name="product_type"
+                                                        class="form-control form-control-solid form-control-lg"
+                                                        id="passport_type">
+                                                        <option hidden value="">Select</option>
+                                                        <option value="p1">P1</option>
+                                                        <option value="p2">P2</option>
+                                                    </select>
                                                     <span class="text-danger error-text passport_type_err"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-4">
+                                                <!--begin::Select-->
+                                                <div class="form-group">
+                                                    <label>Residency</label>
+                                                    <select name="residency"
+                                                        class="form-control form-control-solid form-control-lg"
+                                                        id="residency">
+                                                        <option hidden value="">Select</option>
+                                                        <option value="YE">P 1</option>
+                                                        <option value="ZM">P 2</option>
+                                                        <option value="ZW">P 3</option>
+                                                    </select>
+                                                    <span class="text-danger error-text residency_err"></span>
+                                                </div>
+                                                <!--end::Select-->
+                                            </div>
+
+                                            <div class="col-xl-4">
+                                                <!--begin::Select-->
+                                                <div class="form-group">
+                                                    <label>Location</label>
+                                                    <input type="text"
+                                                        class="form-control form-control-solid form-control-lg"
+                                                        name="location" placeholder="Location" value="" id="location" />
+                                                    <span class="text-danger error-text location_err"></span>
+                                                </div>
+                                                <!--end::Select-->
+                                            </div>
+                                           
+                                        </div>
+                                        <div class="row">
+                                            
+                                            <div class="col-xl-4">
+                                                <!--begin::Select-->
+                                                <div class="form-group">
+                                                    <label>UID Number</label>
+                                                    <input type="text"
+                                                        class="form-control form-control-solid form-control-lg" name="uid"
+                                                        placeholder="UID Number" value="" id="uid" />
+                                                    <span class="text-danger error-text uid_err"></span>
+                                                </div>
+                                                <!--end::Select-->
+                                            </div>
+                                            <div class="col-xl-4">
+                                                <!--begin::Select-->
+                                                <div class="form-group">
+                                                    <label>Proffession</label>
+                                                    <input type="text"
+                                                        class="form-control form-control-solid form-control-lg"
+                                                        name="proffession" placeholder="Proffession" value=""
+                                                        id="proffession" />
+                                                    <span class="text-danger error-text proffession_err"></span>
                                                 </div>
                                                 <!--end::Select-->
                                             </div>
@@ -559,185 +593,74 @@
                                     <!--end::Wizard Step 1-->
                                     <!--begin::Wizard Step 2-->
                                     <div class="pb-5" data-wizard-type="step-content">
-                                        <h4 class="mb-10 font-weight-bold text-dark">Label </h4>
+                                        <h4 class="mb-10 font-weight-bold text-dark">INVENTAROY DATA </h4>
                                         <span id="result"></span>
                                         <div class="row">
-                                            <div class="col-xl-4">
+                                            <div class="col-xl-12">
                                                 <div class="form-group">
-                                                    <label>Date Of Entry</label>
-                                                    <input max="<?php echo date('Y-m-d') ?>" type="date" id="entry_date"
-                                                        class="form-control form-control-solid form-control-lg"
-                                                        name="entry_date" placeholder="Address Line 1" />
-                                                        {{-- <div class="input-group input-group-solid date" id="kt_datetimepicker_1" data-target-input="nearest">
-                                                            <input id="entry_date" type="text" name="entry_date" class="form-control form-control-solid datetimepicker-input" placeholder="Select date &amp; time" data-target="#kt_datetimepicker_3" />
-                                                            <div class="input-group-append" data-target="#kt_datetimepicker_3" data-toggle="datetimepicker">
-                                                                <span class="input-group-text">
-                                                                    <i class="ki ki-calendar"></i>
-                                                                </span>
-                                                            </div>
-                                                        </div> --}}
+                                                    <label>Inventory Name</label>
+                                                    <select name="inventory_name" id="inventory_name"
+                                                        class="form-control form-control-solid form-control-lg">
+                                                        <option value="">Select</option>
+                                                        <option value="AF">ALshoja</option>
+                                                        <option value="AX">Åland </option>
+                                                        <option value="AL">Albania</option>
+                                                    </select>
+
                                                     <input type="text" id="editid" hidden name="editid">
-                                                    <span class="text-danger error-text entry_date_err"></span>
+                                                    <span class="text-danger error-text inventory_name_err"></span>
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="row">
                                             <div class="col-xl-3">
                                                 <!--begin::Input-->
                                                 <div class="form-group">
-                                                    <label>Entered By</label>
-                                                    <select name="entered_by" id="entered_by"
+                                                    <label>Inventory Codes</label>
+                                                    <select name="inventory_codes" id="inventory_codes"
                                                         class="form-control form-control-solid form-control-lg">
                                                         <option value="">Select</option>
                                                         <option value="AF">ALshoja</option>
                                                         <option value="AX">Åland </option>
                                                         <option value="AL">Albania</option>
                                                     </select>
-                                                    <span class="text-danger error-text entered_by_err"></span>
+                                                    <span class="text-danger error-text inventory_codes_err"></span>
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
-                                            <div class="col-xl-3">
+                                            <div class="col-xl-9">
                                                 <!--begin::Input-->
                                                 <div class="form-group">
-                                                    <label>Client Bought By</label>
-                                                    <select name="bought_by" id="bought_by"
-                                                        class="form-control form-control-solid form-control-lg">
-                                                        <option value="">Select</option>
-                                                        <option value="AF">ALshoja</option>
-                                                        <option value="AX">Åland </option>
-                                                        <option value="AL">Albania</option>
-                                                    </select>
-                                                    <span class="text-danger error-text bought_by_err"></span>
+                                                    <label>Notes</label>
+                                                    <textarea class="form-control form-control-solid" name="note"
+                                                        id="note"></textarea>
+                                                    <span class="text-danger error-text note_err"></span>
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
-                                            <div class="col-xl-3">
+                                            <div class="col-xl-12">
                                                 <!--begin::Input-->
                                                 <div class="form-group">
-                                                    <label>Client Entity By</label>
-                                                    <select name="entity" id="entity"
-                                                        class="form-control form-control-solid form-control-lg">
-                                                        <option value="">Select</option>
-                                                        <option value="AF">ALshoja</option>
-                                                        <option value="AX">Åland </option>
-                                                        <option value="AL">Albania</option>
-                                                    </select>
-                                                    <span class="text-danger error-text entity_err"></span>
+                                                    <label>Inventory Detials</label>
+                                                    <textarea class="form-control form-control-solid"
+                                                        name="inventory_detials" id="inventory_detials"></textarea>
+                                                    <span class="text-danger error-text inventory_detials_err"></span>
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
-                                            <div class="col-xl-3">
+                                            <div class="col-xl-12">
                                                 <!--begin::Input-->
                                                 <div class="form-group">
-                                                    <label>Client Entity Location</label>
-                                                    <select name="entity_location" id="entity_location"
-                                                        class="form-control form-control-solid form-control-lg">
-                                                        <option value="">Select</option>
-                                                        <option value="AX">Åland </option>
-                                                        <option value="AL">Albania</option>
-                                                    </select>
-                                                    <span class="text-danger error-text entity_location_err"></span>
+                                                    <label>Inventory Data</label>
+                                                    <textarea class="form-control form-control-solid"
+                                                        name="inventory_data" id="inventory_data"></textarea>
+                                                    <span class="text-danger error-text inventory_data_err"></span>
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="card-header">
-                                                <div class="row">
-                                                    <h3 class="card-title">
-                                                        Label
-                                                    </h3>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div class="form-group row">
-                                                    <div class="col-lg-3">
-                                                        <a href="javascript:void(0);"
-                                                            class="add_button btn btn-sm font-weight-bolder btn-light-primary btn-gradient-success">
-                                                            <i class="la la-plus"></i>Add
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="field_wrapper">
-                                                    <div class="row form-group">
-                                                        <div class="col-md-4">
-                                                            <!-- <label>Name:</label> -->
-                                                            <select required name="product_type[]" id="product_type[]"
-                                                                class="form-control form-control-solid ">
-                                                                <option hidden value="">Select Product-1&nbsp;
-                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                    &nbsp;
-                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                </option>
-                                                                <option value="YE">P 1</option>
-                                                                <option value="ZM">P 2</option>
-                                                                <option value="ZW">P 3</option>
-                                                            </select>
 
-                                                            {{-- <div class="d-md-none mb-2"></div> --}}
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <!-- <label>Name:</label> -->
-                                                            <select name="manufacture_type[]" id="manufacture_type[]"
-                                                                class="form-control form-control-solid" required>
-                                                                <option hidden value=""> Select Type-1</option>
-                                                                <option value="YE">P 1</option>
-                                                                <option value="ZM">P 2</option>
-                                                                <option value="ZW">P 3</option>
-                                                            </select>
-
-                                                            {{-- <div class="d-md-none mb-2"></div> --}}
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <!-- <label>Name:</label> -->
-                                                            <select name="shipped_type[]" id="shipped_type[]"
-                                                                class="form-control form-control-solid" required>
-                                                                <option selected hidden value="">Select type-3
-                                                                </option>
-                                                                <option value="YE">P 1</option>
-                                                                <option value="ZM">P 2</option>
-                                                                <option value="ZW">P 3</option>
-                                                            </select>
-
-                                                            {{-- <div class="d-md-none mb-2"></div> --}}
-                                                        </div>
-                                                    </div>
-                                                    <div class="row form-group">
-                                                        <div class="col-md-3">
-                                                            <!-- <label>Name:</label> -->
-                                                            <input type="text" class="form-control" placeholder="Kg"
-                                                                name="quantity_kg[]" id="quantity_kg[]" required />
-
-                                                            <div class="d-md-none mb-2"></div>
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <!-- <label>Name:</label> -->
-                                                            <input required type="text" class="form-control" placeholder="G"
-                                                                name="quantity_g[]" id="quantity_g[]" />
-
-                                                            <div class="d-md-none mb-2"></div>
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <!-- <label>Name:</label> -->
-                                                            <input type="text" class="form-control" placeholder="ML"
-                                                                name="quantity_ml[]" id="quantity_ml[]" required />
-
-                                                            <div class="d-md-none mb-2"></div>
-                                                        </div>
-
-                                                        <div class="col-md-3">
-                                                            <!-- <label>Number:</label> -->
-                                                            <input type="text" class="form-control" placeholder="Digit"
-                                                                name="quantity_digit[]" id="quantity_digit[]" required />
-
-                                                            <div class="d-md-none mb-2"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
                                         <button
                                             class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
                                             id="submit" type="submit" onclick="enableNext()">save</button>
@@ -749,265 +672,44 @@
                                     <!--end::Wizard Step 2-->
                                     <!--begin::Wizard Step 3-->
                                     <div class="pb-5" data-wizard-type="step-content">
-                                        <h6 class="mb-10 font-weight-bold text-dark">Label</h6>
+                                        <h6 class="mb-10 font-weight-bold text-dark">Scanned Documents</h6>
                                         <!--begin::Select-->
-                                        <div class="row">
-                                            <div class="col-xl-3">
-                                                <!--begin::Input-->
-                                                <div class="form-group">
-                                                    <label>Shipping No</label>
-                                                    <input type="text" id="shipping_no"
-                                                        class="form-control form-control-solid form-control-lg"
-                                                        name="shipping_no" placeholder="Shipping No" value="" />
-                                                    <span class="text-danger error-text shipping_no_err"></span>
-                                                </div>
-                                                <!--end::Input-->
-                                            </div>
-                                            <div class="col-xl-3">
-                                                <!--begin::Input-->
-                                                <div class="form-group">
-                                                    <label>Coming From</label>
-                                                    <select name="coming_from" id="coming_from"
-                                                        class="form-control form-control-solid form-control-lg">
-                                                        <option value="">Select</option>
-                                                        <option value="AF">ALshoja</option>
-                                                        <option value="AX">Åland </option>
-                                                        <option value="AL">Albania</option>
-                                                    </select>
-                                                    <span class="text-danger error-text coming_from_err"></span>
-                                                </div>
-                                                <!--end::Input-->
-                                            </div>
-                                            <div class="col-xl-3">
-                                                <!--begin::Input-->
-                                                <div class="form-group">
-                                                    <label>Going to</label>
-                                                    <select name="going_to" id="going_to"
-                                                        class="form-control form-control-solid form-control-lg">
-                                                        <option value="">Select</option>
-                                                        <option value="AF">ALshoja</option>
-                                                        <option value="AX">Åland </option>
-                                                        <option value="AL">Albania</option>
-                                                    </select>
-                                                    <span class="text-danger error-text going_to_err"></span>
-                                                </div>
-                                                <!--end::Input-->
-                                            </div>
-                                            <div class="col-xl-3">
-                                                <!--begin::Input-->
-                                                <div class="form-group">
-                                                    <label>Final Destination</label>
-                                                    <select name="final_destination" id="final_destination"
-                                                        class="form-control form-control-solid form-control-lg">
-                                                        <option value="">Select</option>
-                                                        <option value="AF">ALshoja</option>
-                                                        <option value="AX">Åland </option>
-                                                        <option value="AL">Albania</option>
-                                                    </select>
-                                                    <span class="text-danger error-text final_destination_err"></span>
-                                                </div>
-                                                <!--end::Input-->
-                                            </div>
-                                        </div>
-
-                                        <h6 class="mb-10 font-weight-bold text-dark">Label</h6>
+                                        <input type="text" id="editid1" hidden name="editid1">
                                         <div class="row form-group">
-                                            <div class="col-md-3">
-                                                <label>Profile Picture</label>
-                                                
-                                                <div class="image-input image-input-empty image-input-outline"
-                                                    id="kt_image_1"
-                                                    style="background-image: url(assets/media/users/blank.png)">
-                                                    <div class="image-input-wrapper"></div>
-                                                    <label
-                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                        data-action="change" data-toggle="tooltip" title=""
-                                                        data-original-title="Change avatar">
-                                                        <i class="fa fa-pen icon-sm text-muted"></i>
-                                                        <input type="file" name="profile_image" id="profile_image"
-                                                            accept=".png, .jpg, .jpeg" />
-                                                        <input type="hidden" name="profile_avatar_remove" />
-
-                                                    </label>
-                                                    <span
-                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                        data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
-                                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
-                                                    </span>
-                                                    <span
-                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                        data-action="remove" data-toggle="tooltip" title="Remove avatar">
-                                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
-                                                    </span>
-                                                </div>
-                                                <span class="text-danger error-text profile_image_err"></span>
-                                                <!-- <span class="form-text text-muted">Max file size is 1MB and max number of files is 5.</span> -->
-                                                <div class="d-md-none mb-2"></div>
+                                            <div class="col-md-4">
+                                                <label>Scanned Document 1</label>
+                                                <input type="file" name="scanned_document1" id="scanned_document1"
+                                                    class="form-control form-control-solid" />
+                                                <span class="text-danger error-text scanned_document1_err"></span>
                                             </div>
-                                            <div class="col-md-3">
-                                                <label>Product Image</label>
-                                                
-                                                <div class="image-input image-input-empty image-input-outline"
-                                                    id="kt_image_2"
-                                                    style="background-image: url(assets/media/users/blank.png)">
-                                                    <div class="image-input-wrapper"></div>
-                                                    <label
-                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                        data-action="change" data-toggle="tooltip" title=""
-                                                        data-original-title="Change avatar">
-                                                        <i class="fa fa-pen icon-sm text-muted"></i>
-                                                        <input type="file" name="product_image" id="product_image"
-                                                            accept=".png, .jpg, .jpeg" />
-                                                        <input type="hidden" name="profile_avatar_remove" />
 
-                                                    </label>
-                                                    <span
-                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                        data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
-                                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
-                                                    </span>
-                                                    <span
-                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                        data-action="remove" data-toggle="tooltip" title="Remove avatar">
-                                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
-                                                    </span>
-                                                </div>
-                                                <span class="text-danger error-text product_image_err"></span>
-                                                <div class="d-md-none mb-2"></div>
+                                            <div class="col-md-4">
+                                                <label>Scanned Document 2</label>
+                                                <input type="file" name="scanned_document2" id="scanned_document2"
+                                                    class="form-control form-control-solid" />
+                                                <span class="text-danger error-text scanned_document2_err"></span>
                                             </div>
-                                            <div class="col-md-3">
-                                                <label>Document</label>
-                                               
-                                                <div class="image-input image-input-empty image-input-outline"
-                                                    id="kt_image_3"
-                                                    style="background-image: url(assets/media/users/blank.png)">
-                                                    <div class="image-input-wrapper"></div>
-                                                    <label
-                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                        data-action="change" data-toggle="tooltip" title=""
-                                                        data-original-title="Change avatar">
-                                                        <i class="fa fa-pen icon-sm text-muted"></i>
-                                                        <input type="file" name="doc_image" id="doc_image"
-                                                            accept=".png, .jpg, .jpeg" />
-                                                        <input type="hidden" name="profile_avatar_remove" />
 
+                                            <div class="col-md-4">
+                                                <label>Scanned Document 3</label>
+                                                <input type="file" name="scanned_document3" id="scanned_document3"
+                                                    class="form-control form-control-solid" />
 
-                                                    </label>
-                                                    <span
-                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                        data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
-                                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
-                                                    </span>
-                                                    <span
-                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                        data-action="remove" data-toggle="tooltip" title="Remove avatar">
-                                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
-                                                    </span>
-                                                </div>
-                                                <span class="text-danger error-text doc_image_err"></span>
-                                                <div class="d-md-none mb-2"></div>
-                                            </div>
-                                        </div>
-                                        <h6 class="mb-10 font-weight-bold text-dark">Label</h6>
+                                                <span class="text-danger error-text scanned_document3_err"></span>
 
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label for="exampleTextarea">Note</label>
-                                                    <textarea class="form-control form-control-solid" rows="3" name="note"
-                                                        id="note"></textarea>
-                                                    <input type="text" id="editid1" hidden name="editid1">
-                                                    <span class="text-danger error-text note_err"></span>
-                                                </div>
                                             </div>
                                         </div>
                                         <!--end::Select
-                                                                                                                <input type = 'submit' value = "Save" class="btn btn-success font-weight-bolder"/>
-                                                                                                                <button class="btn btn-success font-weight-bolder" id="editstep">smave</button>-->
+                                                                                                                                                <input type = 'submit' value = "Save" class="btn btn-success font-weight-bolder"/>                                                                    <button class="btn btn-success font-weight-bolder" id="editstep">smave</button>-->
                                         <button type="submit" id="submit" onclick="enableNext()"
-                                            class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4">Save</button>
+                                            class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4 uploadSave">Save</button>
                                     </div>
                                 </form>
-                                <form id="kt_form3" method="post" action="/stageFour">
-                                    <!--end::Wizard Step 3-->
-                                    <!--begin::Wizard Step 4-->
-                                    <div class="pb-5" data-wizard-type="step-content">
 
-                                        <h6 class="mb-10 font-weight-bold text-dark">Label</h6>
-                                        <!--begin::Input-->
-                                        <div class="form-group row">
-                                            <div class="col-xl-12">
-                                                <div class="form-group">
-                                                    <label>Record Status</label>
-                                                    <select name="record_status" id="record_status"
-                                                        class="form-control form-control-solid ">
-                                                        <option value="">Record-1</option>
-                                                        <option value="YE">R1</option>
-                                                        <option value="ZM">r 2</option>
-                                                        <option value="ZW">r 3</option>
-                                                    </select>
-                                                    <span class="text-danger error-text record_status_err"></span>
-                                                    <div class="d-md-none mb-2"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <h6 class="mb-10 font-weight-bold text-dark">Label</h6>
-                                        <div class="form-group row">
-                                            <div class="col-xl-12">
-                                                <div class="form-group">
-                                                    <label>Record Department Status</label>
-                                                    <select  name="record_dep_transfer" id="record_dep_transfer"
-                                                        class="form-control form-control-solid ">
-                                                        <option value="">status-1</option>
-                                                        <option value="YE">s 1</option>
-                                                        <option value="ZM">s 2</option>
-                                                        <option value="ZW">s 3</option>
-                                                    </select>
-                                                    <span class="text-danger error-text record_dep_transfer_err"></span>
-                                                    <input type="text" id="editid3" hidden name="editid3">
-                                                    <div class="d-md-none mb-2"></div>
-                                                </div>
-                                            </div>
-
-                                            <button
-                                                class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
-                                                id="submit" type="submit" onclick="enableNext()">save</button>
-                                        </div>
-
-                                    </div>
-                                </form>
                                 <form id="kt_form4">
                                     <!--end::Wizard Step 4-->
                                     <!--begin::Wizard Step 5-->
-                                    <div class="pb-5" data-wizard-type="step-content">
-                                        <h6 class="mb-10 font-weight-bold text-dark">Label</h6>
-                                        <!--begin::Input-->
-                                        <div class="form-group row">
-                                            <div class="col-xl-6">
-                                                <div class="form-group">
-                                                    <label>General Director</label>
-                                                    <select name="belongs_to" id="belongs_to"
-                                                        class="form-control form-control-solid ">
-                                                        <option value="1">Record-1</option>
-                                                        <option value="2">R1</option>
-                                                        <option value="3">r 2</option>
-                                                        <option value="4">r 3</option>
-                                                    </select>
-                                                    <span class="text-danger error-text belongs_to_err"></span>
-                                                    <div class="d-md-none mb-2"></div>
-                                                    <input type="text" id="editid4" hidden name="editid4">
-                                                </div>
-                                            </div>
-                                        </div>
 
-                                        <button
-                                            class="btn btn-primary btn-gradient-success font-weight-bolder text-uppercase px-9 py-4"
-                                            id="submit" type="submit">save</button>
-
-
-
-                                    </div>
                                     <!--end::Wizard Step 5-->
                                     <!--begin::Wizard Actions-->
                                     <div class="d-flex justify-content-between border-top mt-5 pt-10">
@@ -1054,7 +756,8 @@
         </div>
         <!--end::Container-->
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="{{ asset('assets/js/jquery.js') }}"></script>
+
     <script type="text/javascript">
         function enableNext() {
             document.getElementById("next").disabled = false;
@@ -1072,32 +775,48 @@
         $('#kt_form').on('submit', function(event) {
             event.preventDefault();
 
+            let name_arabic = $('#name_arabic').val();
             let name = $('#name').val();
             let nationality = $('#nationality').val();
             let gender = $('#gender').val();
             let dob = $('#dob').val();
-            let citizen_status = $('#citizen_status').val();
-            let citizen_location = $('#citizen_location').val();
-            let citizen_id = $('#citizen_id').val();
-            let citizen_uid = $('#citizen_uid').val();
+            let place_birth = $('#place_birth').val();
+            let address = $('#address').val();
+            let referal_name = $('#referal_name').val();
+            let product_type = $('#product_type').val();
             let passport_no = $('#passport_no').val();
             let passport_type = $('#passport_type').val();
+            let passport_issue = $('#passport_issue').val();
+            let date_issue = $('#date_issue').val();
+            let residency = $('#residency').val();
+            let location = $('#location').val();
+            let date_expiry = $('#date_expiry').val();
+            let uid = $('#uid').val();
+            let proffession = $('#proffession').val();
 
             $.ajax({
                 url: "/profile/add-profile",
                 type: "POST",
                 data: {
                     "_token": "{{ csrf_token() }}",
+                    name_arabic: name_arabic,
                     name: name,
                     nationality: nationality,
                     gender: gender,
                     dob: dob,
-                    citizen_status: citizen_status,
-                    citizen_location: citizen_location,
-                    citizen_id: citizen_id,
-                    citizen_uid: citizen_uid,
+                    place_birth: place_birth,
+                    address: address,
+                    referal_name: referal_name,
+                    product_type: product_type,
                     passport_no: passport_no,
-                    passport_type: passport_type,
+                    passport_issue: passport_issue,
+                    date_issue: date_issue,
+                    residency: residency,
+                    location: location,
+                    date_expiry: date_expiry,
+                    uid: uid,
+                    proffession: proffession,
+                    passport_type:passport_type,
                 },
                 success: function(data) {
                     if ($.isEmptyObject(data.error)) {
@@ -1106,6 +825,7 @@
                         $('#editid1').val(id);
                         $('#editid3').val(id);
                         $('#editid4').val(id);
+                        enableNext();
 
                     }
                 },
@@ -1113,7 +833,7 @@
                     printErrorMsg(XMLHttpRequest.responseJSON.error);
                     showToast('You have some validation errors please fix it first !',
                         'Validation Error', 'danger');
-                        
+
                 },
             });
         });
@@ -1122,13 +842,13 @@
 
             $.each(msg, function(key, value) {
                 $('.' + key + '_err').text(value);
-                $('#'+ key).on('input',  function(e) {
+                $('#' + key).on('input', function(e) {
 
-                $('.' + key + '_err').text(value).hide();
+                    $('.' + key + '_err').text(value).hide();
                 });
 
-             });
-           
+            });
+
             document.getElementById("next").disabled = true;
         }
 
@@ -1153,7 +873,7 @@
                 success: function(data) {
                     if ($.isEmptyObject(data.error)) {
                         console.log(data);
-                    } 
+                    }
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown) {
                     printErrorMsg(XMLHttpRequest.responseJSON.error);
@@ -1181,7 +901,7 @@
                 success: function(data) {
                     if ($.isEmptyObject(data.error)) {
                         console.log(data);
-                    } 
+                    }
                     window.location.href = HOST_URL + "/profile/add-profile";
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown) {
@@ -1213,7 +933,7 @@
                 success: function(data) {
                     if ($.isEmptyObject(data.error)) {
                         console.log(data);
-                    } 
+                    }
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown) {
                     printErrorMsg(XMLHttpRequest.responseJSON.error);
@@ -1239,7 +959,10 @@
         $('#kt_form2').submit(function(e) {
             e.preventDefault();
             let formData = new FormData(this);
-
+            let saveButtonUpload = $(".uploadSave");
+            saveButtonUpload.addClass('spinner spinner-white spinner-right')
+            saveButtonUpload.prop('disabled', true);
+            saveButtonUpload.html("Uploading ..");
             $.ajax({
                 type: 'POST',
                 url: `/stageThree`,
@@ -1249,10 +972,18 @@
                 success: function(data) {
                     if ($.isEmptyObject(data.error)) {
                         console.log(data);
-                    } 
+                    }
+                    location.reload();
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    saveButtonUpload.removeClass('spinner spinner-white spinner-right')
+                    saveButtonUpload.prop('disabled', false);
+                    saveButtonUpload.html("Save");
                     printErrorMsg(XMLHttpRequest.responseJSON.error);
+                    if(XMLHttpRequest.status ==413){
+                        showToast('Upload too large, Please reduce the file size !',
+                        'Opps', 'warning');
+                    }
                     showToast('You have some validation errors please fix it first !',
                         'Validation Error', 'danger');
                 },
@@ -1263,101 +994,89 @@
     </script>
     <script type="text/javascript">
         $(document).ready(function() {
-            console.log('hai initiated')
             var maxField = 10; //Input fields increment limitation
             var addButton = $('.add_button'); //Add button selector
             var wrapper = $('.field_wrapper'); //Input field wrapper
             var fieldHTML = `
-                                            <div> 
-                                            <div class="row form-group">
-                                                                                                <div class="col-md-4">
-                                                                                                  
-                                                                                                    <select required name="product_type[]" id="product_type[]"
-                                                                                                        class="form-control form-control-solid ">
-                                                                                                        <option hidden value="">Select Product-1&nbsp;
-                                                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                                                            &nbsp;
-                                                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                                                        </option>
-                                                                                                        <option value="YE">P 1</option>
-                                                                                                        <option value="ZM">P 2</option>
-                                                                                                        <option value="ZW">P 3</option>
-                                                                                                    </select>
-                                                                                                    {{-- <div class="d-md-none mb-2"></div> --}}
-                                                                                                </div>
-                                                                                                <div class="col-md-4">
-                                                                                                  
-                                                                                                    <select required name="manufacture_type[]" id="manufacture_type[]"
-                                                                                                        class="form-control form-control-solid">
-                                                                                                        <option hidden value=""> Select Type-1</option>
-                                                                                                        <option value="YE">P 1</option>
-                                                                                                        <option value="ZM">P 2</option>
-                                                                                                        <option value="ZW">P 3</option>
-                                                                                                    </select>
-                                                                                                    {{-- <div class="d-md-none mb-2"></div> --}}
-                                                                                                </div>
-                                                                                                <div class="col-md-4">
-                                                                                               
-                                                                                                    <select required name="shipped_type[]" id="shipped_type[]"
-                                                                                                        class="form-control form-control-solid">
-                                                                                                        <option selected hidden value="">Select type-3
-                                                                                                        </option>
-                                                                                                        <option value="YE">P 1</option>
-                                                                                                        <option value="ZM">P 2</option>
-                                                                                                        <option value="ZW">P 3</option>
-                                                                                                    </select>
-                                                                                                    {{-- <div class="d-md-none mb-2"></div> --}}
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div class="row form-group">
-                                                                                                <div class="col-md-3">
-                                                                                                   
-                                                                                                    <input required type="text" class="form-control" placeholder="Kg"
-                                                                                                        name="quantity_kg[]" id="quantity_kg[]" />
-                                                                                                    <div class="d-md-none mb-2"></div>
-                                                                                                </div>
-                                                                                                <div class="col-md-3">
-                                                                                                   
-                                                                                                    <input required type="text" class="form-control" placeholder="G"
-                                                                                                        name="quantity_g[]" id="quantity_g[]" />
-                                                                                                    <div class="d-md-none mb-2"></div>
-                                                                                                </div>
-                                                                                                <div class="col-md-3">
-                                                                                                 
-                                                                                                    <input required type="text" class="form-control" placeholder="ML"
-                                                                                                        name="quantity_ml[]" id="quantity_ml[]" />
-                                                                                                    <div class="d-md-none mb-2"></div>
-                                                                                                </div>
+                                <div>
+                                 <div class="row form-group">
+                                    <div class="col-md-4">
 
-                                                                                                <div required class="col-md-3">
-                                                                                                    <!-- <label>Number:</label> -->
-                                                                                                    <input type="text" class="form-control" placeholder="Digit"
-                                                                                                        name="quantity_digit[]" id="quantity_digit[]" />
-                                                                                                    <div class="d-md-none mb-2"></div>
-                                                                                                </div>
-                                                                                            </div> 
-                                                                                             <a style="margin:10px;" href="javascript:;" data-repeater-delete=""
-                                                                                                        class="btn btn-sm font-weight-bolder btn-danger btn-gradient-danger remove_button">
-                                                                                                        <i class="la la-trash-o"></i>
-                                                                                                    </a>
-                                                                                                    </div>`
-            // var fieldHTML = '<div><input type="text" name="field_name[]" value=""/><a href="javascript:void(0);" class="remove_button"><img src="remove-icon.png"/></a></div>'; //New input field html 
-            var x = 1; //Initial field counter is 1
+                                        <select required name="product_type[]" id="product_type[]" class="form-control form-control-solid ">
+                                            <option hidden value="">Select Product-1&nbsp;
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                &nbsp;
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            </option>
+                                            <option value="YE">P 1</option>
+                                            <option value="ZM">P 2</option>
+                                            <option value="ZW">P 3</option>
+                                        </select>
+                                        {{-- <div class="d-md-none mb-2"></div> --}}
+                                    </div>
+                                    <div class="col-md-4">
 
-            //Once add button is clicked
+                                        <select required name="manufacture_type[]" id="manufacture_type[]" class="form-control form-control-solid">
+                                            <option hidden value=""> Select Type-1</option>
+                                            <option value="YE">P 1</option>
+                                            <option value="ZM">P 2</option>
+                                            <option value="ZW">P 3</option>
+                                        </select>
+                                        {{-- <div class="d-md-none mb-2"></div> --}}
+                                    </div>
+                                    <div class="col-md-4">
+
+                                        <select required name="shipped_type[]" id="shipped_type[]" class="form-control form-control-solid">
+                                            <option selected hidden value="">Select type-3
+                                            </option>
+                                            <option value="YE">P 1</option>
+                                            <option value="ZM">P 2</option>
+                                            <option value="ZW">P 3</option>
+                                        </select>
+                                        {{-- <div class="d-md-none mb-2"></div> --}}
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-md-3">
+
+                                        <input required type="text" class="form-control" placeholder="Kg" name="quantity_kg[]" id="quantity_kg[]" />
+                                        <div class="d-md-none mb-2"></div>
+                                    </div>
+                                    <div class="col-md-3">
+
+                                        <input required type="text" class="form-control" placeholder="G" name="quantity_g[]" id="quantity_g[]" />
+                                        <div class="d-md-none mb-2"></div>
+                                    </div>
+                                    <div class="col-md-3">
+
+                                        <input required type="text" class="form-control" placeholder="ML" name="quantity_ml[]" id="quantity_ml[]" />
+                                        <div class="d-md-none mb-2"></div>
+                                    </div>
+
+                                    <div required class="col-md-3">
+                                        <!-- <label>Number:</label> -->
+                                        <input type="text" class="form-control" placeholder="Digit" name="quantity_digit[]" id="quantity_digit[]" />
+                                        <div class="d-md-none mb-2"></div>
+                                    </div>
+                                </div>
+                                <a style="margin:10px;" href="javascript:;" data-repeater-delete=""
+                                    class="btn btn-sm font-weight-bolder btn-danger btn-gradient-danger remove_button">
+                                    <i class="la la-trash-o"></i>
+                                </a>
+                            </div>
+                            `
+            var x = 1;
             $(addButton).click(function() {
-                //Check maximum number of input fields
+
                 if (x < maxField) {
-                    x++; //Increment field counter
-                    $(wrapper).append(fieldHTML); //Add field html
+                    x++;
+                    $(wrapper).append(fieldHTML);
                 }
             });
-
-            //Once remove button is clicked
             $(wrapper).on('click', '.remove_button', function(e) {
                 e.preventDefault();
-                $(this).parent('div').remove(); //Remove field html
-                x--; //Decrement field counter
+                $(this).parent('div').remove();
+                x--;
             });
         });
 

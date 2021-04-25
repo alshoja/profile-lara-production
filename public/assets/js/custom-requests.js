@@ -161,8 +161,7 @@ function getProfileData(id) {
       console.log("profile", result);
       setEprofile(result);
       setDocs(result);
-      setProducts(result.products);
-      setVerifiedNote(result.trackings);
+      setVerifiedNote(result);
       const mappedArray = result.timeline.map((obj, i) => {
         let payload = {};
         (payload.name = obj.name), (payload.note = obj.note);
@@ -197,14 +196,23 @@ function getProfileData(id) {
   return res;
 }
 function setVerifiedNote(profile) {
-  if (profile.length > 0) {
+  let reject_button = document.getElementById("reject");
+  let approve_button = document.getElementById("approve");
+  if (profile.trackings.length > 0) {
     const session_id = localStorage.getItem("session_id");
-    let signed = profile.some((e) => {
-      console.log(e);
+    let signed = profile.trackings.some((e) => {
       return e.owned_by == session_id;
     });
+    console.log(signed);
+
     let title = document.getElementById("title");
     let verified = document.getElementById("verfied");
+    if (signed == true && profile.on_final_approval) {
+      if (reject_button && approve_button) {
+        reject_button.disabled = true;
+        approve_button.disabled = true;
+      }
+    }
     if (title != null) {
       if (signed == true) {
         title.setAttribute("data-original-title", "Verified by You");
@@ -218,46 +226,137 @@ function setVerifiedNote(profile) {
     }
   }
 }
+
+function setDocs(profile) {
+  if (profile.scanned_document1) {
+    document.getElementById("scanned_document1d").href =
+      HOST_URL + "/" + profile.scanned_document1;
+
+  } else {
+    document.getElementById("scan1d").style.display = "none";
+  }
+
+  if (profile.scanned_document2) {
+    document.getElementById("scanned_document2d").href =
+      HOST_URL + "/" + profile.scanned_document2;
+  } else {
+    document.getElementById("scan2d").style.display = "none";
+  }
+
+  if (profile.scanned_document3) {
+    document.getElementById("scanned_document3d").href =
+      HOST_URL + "/" + profile.scanned_document3;
+  } else {
+    document.getElementById("scan3d").style.display = "none";
+  }
+
+  if (profile.scanned_document4) {
+    document.getElementById("scanned_documents4d").href =
+      HOST_URL + "/" + profile.scanned_document4;
+  } else {
+    document.getElementById("scan4d").style.display = "none";
+  }
+  if (profile.scanned_document5) {
+    document.getElementById("scanned_documents5d").href =
+      HOST_URL + "/" + profile.scanned_document5;
+  } else {
+    document.getElementById("scan5d").style.display = "none";
+  }
+
+  if (profile.scanned_document6) {
+    document.getElementById("scanned_documents6d").href =
+      HOST_URL + "/" + profile.scanned_document6;
+  } else {
+    document.getElementById("scan6d").style.display = "none";
+  }
+  if (profile.scanned_document7) {
+    document.getElementById("scanned_documents7d").href =
+      HOST_URL + "/" + profile.scanned_document7;
+  } else {
+    document.getElementById("scan7d").style.display = "none";
+  }
+}
+
 function setEprofile(profile) {
-  let heading = document.getElementById("exampleModalLabel");
-  heading.innerHTML = profile.name;
+  document.getElementById("exampleModalLabel").innerHTML = profile.name;
+  document.getElementById("name_arabic").innerHTML = profile.name_arabic;
   document.getElementById("name").innerHTML = profile.name;
   document.getElementById("nationality").innerHTML = profile.nationality;
   document.getElementById("gender").innerHTML = profile.gender;
   document.getElementById("dob").innerHTML = profile.dob;
-  document.getElementById("citizen_status").innerHTML = profile.citizen_status;
-  document.getElementById("citizen_location").innerHTML =
-    profile.citizen_location;
-  document.getElementById("citizen_id").innerHTML = profile.citizen_id;
-  document.getElementById("citizen_uid").innerHTML = profile.citizen_uid;
+  document.getElementById("place_birth").innerHTML = profile.place_birth;
+  document.getElementById("address").innerHTML = profile.address;
+
+  document.getElementById("referal_name").innerHTML = profile.referal_name;
+  document.getElementById("product_type").innerHTML = profile.product_type;
   document.getElementById("passport_no").innerHTML = profile.passport_no;
-  document.getElementById("passport_type").innerHTML = profile.passport_type;
-  document.getElementById("entered_by").innerHTML = profile.entered_by;
-  document.getElementById("bought_by").innerHTML = profile.bought_by;
-  document.getElementById("entity").innerHTML = profile.entity;
-  document.getElementById("entry_date").innerHTML = profile.entry_date;
-  document.getElementById("entity_location").innerHTML =
-    profile.entity_location;
-  document.getElementById("shipping_no").innerHTML = profile.shipping_no;
-  document.getElementById("coming_from").innerHTML = profile.coming_from;
-  document.getElementById("going_to").innerHTML = profile.going_to;
-  document.getElementById("final_destination").innerHTML =
-    profile.final_destination;
-  document.getElementById("note").innerHTML = profile.note;
-  document.getElementById("profile_image").src = profile.profile_image;
-  document.getElementById("product_image").src = profile.product_image;
-  document.getElementById("doc_image").src = profile.doc_image;
-  document.getElementById("record_status").innerHTML = profile.record_status;
-  document.getElementById("record_dep_transfer").innerHTML =
-    profile.record_dep_transfer;
+  document.getElementById("passport_issue").innerHTML = profile.passport_issue;
+  document.getElementById("date_issue").innerHTML = profile.date_issue;
+  document.getElementById("residency").innerHTML = profile.residency;
+
+  document.getElementById("location").innerHTML = profile.location;
+  document.getElementById("date_expiry").innerHTML = profile.date_expiry;
+  document.getElementById("uid").innerHTML = profile.uid;
+  document.getElementById("proffession").innerHTML = profile.proffession;
+
+  document.getElementById("inventory_name").innerHTML = profile.inventory_name;
+
   document.getElementById("depart").innerHTML = profile.department.name;
   document.getElementById("section").innerHTML = profile.section.name;
-}
 
-function setDocs(result) {
-  document.getElementById("doc_1").src = result.doc_image;
-  document.getElementById("doc_2").src = result.product_image;
-  document.getElementById("doc_3").src = result.profile_image;
+  document.getElementById("inventory_codes").innerHTML =
+    profile.inventory_codes;
+  document.getElementById("note").innerHTML = profile.note;
+  document.getElementById("inventory_detials").innerHTML =
+    profile.inventory_detials;
+
+  if (profile.scanned_document1) {
+    document.getElementById("scanned_document1").href =
+      HOST_URL + "/" + profile.scanned_document1;
+
+  } else {
+    document.getElementById("scan1").style.display = "none";
+  }
+
+  if (profile.scanned_document2) {
+    document.getElementById("scanned_document2").href =
+      HOST_URL + "/" + profile.scanned_document2;
+  } else {
+    document.getElementById("scan2").style.display = "none";
+  }
+
+  if (profile.scanned_document3) {
+    document.getElementById("scanned_document3").href =
+      HOST_URL + "/" + profile.scanned_document3;
+  } else {
+    document.getElementById("scan3").style.display = "none";
+  }
+
+  if (profile.scanned_document4) {
+    document.getElementById("scanned_documents4").href =
+      HOST_URL + "/" + profile.scanned_document4;
+  } else {
+    document.getElementById("scan4").style.display = "none";
+  }
+  if (profile.scanned_document5) {
+    document.getElementById("scanned_documents5").href =
+      HOST_URL + "/" + profile.scanned_document5;
+  } else {
+    document.getElementById("scan5").style.display = "none";
+  }
+
+  if (profile.scanned_document6) {
+    document.getElementById("scanned_documents6").href =
+      HOST_URL + "/" + profile.scanned_document6;
+  } else {
+    document.getElementById("scan6").style.display = "none";
+  }
+  if (profile.scanned_document7) {
+    document.getElementById("scanned_documents7").href =
+      HOST_URL + "/" + profile.scanned_document7;
+  } else {
+    document.getElementById("scan7").style.display = "none";
+  }
 }
 
 function setTrack(trackings) {
@@ -316,64 +415,6 @@ function setTrack(trackings) {
     contentStr += ` <br><br><div>No Track Data to Display </div>`;
   }
   document.getElementById("track_timeline").innerHTML = contentStr;
-}
-
-function setProducts(data) {
-  let contentStr = "";
-  if (data.length > 0) {
-    data.forEach(function (o) {
-      contentStr +=
-        ` <tr
-        class="">
-        <td
-            class="pl-0 pt-7">
-            ` +
-        o.manufacture_type +
-        `
-          </td>
-        <td
-            class="pl-0 pt-7">
-            ` +
-        o.product_type +
-        `
-           </td>
-        <td
-            class="pl-0 pt-7">
-            ` +
-        o.quantity_digit +
-        `
-            </td>
-        <td
-            class="pl-0 pt-7">
-            ` +
-        o.quantity_g +
-        `
-          </td>
-        <td
-            class="pl-0 pt-7">
-            ` +
-        o.quantity_kg +
-        `
-           </td>
-        <td
-            class="pl-0 pt-7">
-            ` +
-        o.quantity_ml +
-        `
-           </td>
-        <td
-            class="pl-0 pt-7">
-            ` +
-        o.shipped_type +
-        `
-          </td>
-
-      </tr>`;
-    });
-  } else if (data.length <= 0) {
-    contentStr += ` <tr><td>No  Products to Display </td></tr>`;
-  }
-  document.getElementById("product_table").innerHTML = contentStr;
 }
 
 function setNotes(notes) {
@@ -439,9 +480,9 @@ function AproveOrReject(action) {
   let note = null;
   console.log(action);
   if (action == "signed") {
-    note = 'Approved';
+    note = "Approved";
   } else {
-    note = 'Rejected';
+    note = "Rejected";
   }
   const payLoad = {};
   payLoad.note = note;
@@ -505,4 +546,8 @@ function getSections(val, url) {
   }
   document.getElementById("section_id").innerHTML = html;
   return false;
+}
+
+function getExtension(file) {
+  return file.split(".").pop();
 }

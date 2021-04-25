@@ -31,8 +31,8 @@ class SetDepartmentAndSection
 
     protected function setUserSession($user)
     {
-        $departmentIds = [];
-        $section = [];
+        $departmentIds = array();
+        $section = array();
         if (Auth::user()->role == "general_director") {
             $departmentIds = DepartmentGeneralDirector::where('general_director_id', Auth::user()->id)->get()->pluck('dep_id');
             $section = 0;
@@ -45,8 +45,8 @@ class SetDepartmentAndSection
             $departmentIds = DepartmentSupervisor::where('supervisor_id', Auth::user()->id)->get()->pluck('dep_id');
         } else if (Auth::user()->role == "employ") {
             $section = Employ::where('employ_id', Auth::user()->id)->get()->pluck('section_id');
-            if (count($section) >0) {
-                $departmentIds = Section::where('id', $section[0])->get()->pluck('dep_id')[0];
+            if (count($section) > 0) {
+                $departmentIds[0] = Section::where('id', $section[0])->get()->pluck('dep_id')[0];
             }
         } else if (Auth::user()->role == "admin") {
             $departmentIds = 0;
@@ -58,5 +58,7 @@ class SetDepartmentAndSection
                 'section' => $section,
             ]
         );
+        // dd(session('section'));
+
     }
 }
