@@ -925,7 +925,7 @@
                                                                                 </div>
                                                                                 </br>
                                                                                 <div class="row">
-                                                                                    <div class="col-xl-4">
+                                                                                    <div class="col-xl-4" id="scan1">
                                                                                         <div class="form-group">
                                                                                             <label
                                                                                                 class="text-muted font-size-sm">Scanned
@@ -949,7 +949,7 @@
 
                                                                                         </div>
                                                                                     </div>
-                                                                                    <div class="col-xl-4">
+                                                                                    <div class="col-xl-4" id="scan2">
                                                                                         <div class="form-group">
                                                                                             <label
                                                                                                 class="text-muted font-size-sm">Scanned
@@ -973,7 +973,7 @@
 
                                                                                         </div>
                                                                                     </div>
-                                                                                    <div class="col-xl-4">
+                                                                                    <div class="col-xl-4" id="scan3">
                                                                                         <div class="form-group">
                                                                                             <label
                                                                                                 class="text-muted font-size-sm">Scanned
@@ -1221,7 +1221,6 @@
 
                                                                 <div class="tab-pane fade" id="kt_tab_pane_5_doc1"
                                                                     role="tabpanel" aria-labelledby="kt_tab_pane_5_doc1">
-                                                                    <p id="scan1">
                                                                         {{-- doc 1 --}}
                                                                     <div class="row">
                                                                         <div class="col-xl-4" id="scan1d">
@@ -1291,7 +1290,6 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    </p>
                                                                 </div>
                                                                 <div class="tab-pane fade" id="kt_tab_pane_5_doc2"
                                                                     role="tabpanel" aria-labelledby="kt_tab_pane_5_doc2">

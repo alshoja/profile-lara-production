@@ -226,6 +226,7 @@ function setVerifiedNote(profile) {
     }
   }
 }
+
 function setDocs(profile) {
   if (profile.scanned_document1) {
     document.getElementById("scanned_document1d").href =
