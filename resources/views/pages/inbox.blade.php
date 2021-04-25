@@ -47,12 +47,12 @@
                                             </li>
                                         @endif
                                         @if (Auth::user()->role == 'supervisor')
-                                        <li class="nav-item">
-                                            <a class="nav-link py-2 px-4   @if (request()->query('tab') === 'final') {{ 'active' }} @endif"
-                                                href="{{ url('profiles?tab=final') }}">
-                                                In Final Process
-                                            </a>
-                                        </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link py-2 px-4   @if (request()->query('tab') === 'final') {{ 'active' }} @endif"
+                                                    href="{{ url('profiles?tab=final') }}">
+                                                    In Final Process
+                                                </a>
+                                            </li>
                                         @endif
 
                                         <li class="nav-item">
@@ -383,7 +383,7 @@
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
                                                                         <h5 class="modal-title" id="exampleModalLabel">
-                                                                            Upload Final Documents</h5>
+                                                                            Final Documents</h5>
                                                                         <button type="button" class="close"
                                                                             data-dismiss="modal" aria-label="Close">
                                                                             <i aria-hidden="true" class="ki ki-close"></i>
@@ -547,15 +547,17 @@
                                                                             aria-haspopup="true" aria-expanded="false">
                                                                             <span class="nav-icon"><i
                                                                                     class="flaticon-profile"></i></span>
-                                                                            <span class="nav-text">Docs</span>
+                                                                            <span class="nav-text">Documents</span>
                                                                         </a>
                                                                         <div class="dropdown-menu">
                                                                             <a class="dropdown-item" data-toggle="tab"
-                                                                                href="#kt_tab_pane_5_doc1">Doc-1</a>
+                                                                                href="#kt_tab_pane_5_doc1">Initial
+                                                                                Documents</a>
                                                                             <a class="dropdown-item" data-toggle="tab"
-                                                                                href="#kt_tab_pane_5_doc2">Doc-2</a>
-                                                                            <a class="dropdown-item" data-toggle="tab"
-                                                                                href="#kt_tab_pane_5_doc3">Doc-3</a>
+                                                                                href="#kt_tab_pane_5_doc2">Final
+                                                                                Documents</a>
+                                                                            {{-- <a class="dropdown-item" data-toggle="tab"
+                                                                                href="#kt_tab_pane_5_doc3">Doc-3</a> --}}
                                                                         </div>
                                                                     </li>
                                                                     <li class="nav-item">
@@ -922,7 +924,6 @@
                                                                                     <h3>Scanned Document</h3>
                                                                                 </div>
                                                                                 </br>
-
                                                                                 <div class="row">
                                                                                     <div class="col-xl-4">
                                                                                         <div class="form-group">
@@ -997,17 +998,12 @@
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
-
-
-
                                                                             </div>
                                                                         </div>
-
 
                                                                         <div class="col-xl-12">
                                                                             <div class="pb-5">
                                                                                 <div class="border-bottom">
-
                                                                                     <h3>Final Document</h3>
                                                                                 </div>
                                                                                 </br>
@@ -1151,6 +1147,7 @@
                                                                     <!-- code end -->
 
                                                                 </div>
+
                                                                 <div class="tab-pane fade" id="kt_tab_pane_5_de"
                                                                     role="tabpanel" aria-labelledby="kt_tab_pane_5_de">
 
@@ -1225,34 +1222,177 @@
                                                                 <div class="tab-pane fade" id="kt_tab_pane_5_doc1"
                                                                     role="tabpanel" aria-labelledby="kt_tab_pane_5_doc1">
                                                                     <p id="scan1">
-                                                                        <a id="scanned_document1d" href="#"
-                                                                            target="_blank"><svg
-                                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                                width="25%" height="25%" fill="currentColor"
-                                                                                class="bi bi-file-text" viewBox="0 0 16 16">
-                                                                                <path
-                                                                                    d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z" />
-                                                                                <path
-                                                                                    d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
-                                                                            </svg></a>
+                                                                        {{-- doc 1 --}}
+                                                                    <div class="row">
+                                                                        <div class="col-xl-4" id="scan1d">
+                                                                            <div class="form-group">
+                                                                                <label
+                                                                                    class="text-muted font-size-sm">Scanned
+                                                                                    Document 1</label>
+                                                                                <p>
+                                                                                    <a id="scanned_document1d" href=""
+                                                                                        target="_blank"><svg
+                                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                                            width="25%" height="25%"
+                                                                                            fill="currentColor"
+                                                                                            class="bi bi-file-text"
+                                                                                            viewBox="0 0 16 16">
+                                                                                            <path
+                                                                                                d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z" />
+                                                                                            <path
+                                                                                                d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
+                                                                                        </svg></a>
+                                                                                </p>
+
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-xl-4" id="scan2d">
+                                                                            <div class="form-group">
+                                                                                <label
+                                                                                    class="text-muted font-size-sm">Scanned
+                                                                                    Document 2</label>
+                                                                                <p>
+                                                                                    <a id="scanned_document2d" href=""
+                                                                                        target="_blank"><svg
+                                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                                            width="25%" height="25%"
+                                                                                            fill="currentColor"
+                                                                                            class="bi bi-file-text"
+                                                                                            viewBox="0 0 16 16">
+                                                                                            <path
+                                                                                                d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z" />
+                                                                                            <path
+                                                                                                d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
+                                                                                        </svg></a>
+                                                                                </p>
+
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-xl-4" id="scan3d">
+                                                                            <div class="form-group">
+                                                                                <label
+                                                                                    class="text-muted font-size-sm">Scanned
+                                                                                    Document 3</label>
+                                                                                <p>
+                                                                                    <a id="scanned_document3d" href=""
+                                                                                        target="_blank"><svg
+                                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                                            width="25%" height="25%"
+                                                                                            fill="currentColor"
+                                                                                            class="bi bi-file-text"
+                                                                                            viewBox="0 0 16 16">
+                                                                                            <path
+                                                                                                d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z" />
+                                                                                            <path
+                                                                                                d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
+                                                                                        </svg></a>
+                                                                                </p>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                     </p>
                                                                 </div>
                                                                 <div class="tab-pane fade" id="kt_tab_pane_5_doc2"
                                                                     role="tabpanel" aria-labelledby="kt_tab_pane_5_doc2">
-                                                                    <p id="scan2">
-                                                                        <a id="scanned_document2d" href="#"
-                                                                            target="_blank"><svg
-                                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                                width="25%" height="25%" fill="currentColor"
-                                                                                class="bi bi-file-text" viewBox="0 0 16 16">
-                                                                                <path
-                                                                                    d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z" />
-                                                                                <path
-                                                                                    d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
-                                                                            </svg></a>
-                                                                    </p>
+                                                                        {{-- doc 2 --}}
+                                                                    <div class="col-xl-12">
+                                                                        <div class="pb-5">
+                                                                            <div class="row">
+                                                                                <div class="col-xl-3" id="scan4d">
+                                                                                    <div class="form-group">
+                                                                                        <label
+                                                                                            class="text-muted font-size-sm">Scanned
+                                                                                            Document 4</label>
+                                                                                        <p>
+                                                                                            <a id="scanned_documents4d"
+                                                                                                href="" target="_blank"><svg
+                                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                                    width="25%" height="25%"
+                                                                                                    fill="currentColor"
+                                                                                                    class="bi bi-file-text"
+                                                                                                    viewBox="0 0 16 16">
+                                                                                                    <path
+                                                                                                        d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z" />
+                                                                                                    <path
+                                                                                                        d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
+                                                                                                </svg></a>
+                                                                                        </p>
+
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-xl-3" id="scan5d">
+                                                                                    <div class="form-group">
+                                                                                        <label
+                                                                                            class="text-muted font-size-sm">Scanned
+                                                                                            Document 5</label>
+                                                                                        <p>
+                                                                                            <a id="scanned_documents5d"
+                                                                                                href="" target="_blank"><svg
+                                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                                    width="25%" height="25%"
+                                                                                                    fill="currentColor"
+                                                                                                    class="bi bi-file-text"
+                                                                                                    viewBox="0 0 16 16">
+                                                                                                    <path
+                                                                                                        d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z" />
+                                                                                                    <path
+                                                                                                        d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
+                                                                                                </svg></a>
+                                                                                        </p>
+
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-xl-3" id="scan6d">
+                                                                                    <div class="form-group">
+                                                                                        <label
+                                                                                            class="text-muted font-size-sm">Scanned
+                                                                                            Document 6</label>
+                                                                                        <p>
+                                                                                            <a id="scanned_documents6d"
+                                                                                                href="" target="_blank"><svg
+                                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                                    width="25%" height="25%"
+                                                                                                    fill="currentColor"
+                                                                                                    class="bi bi-file-text"
+                                                                                                    viewBox="0 0 16 16">
+                                                                                                    <path
+                                                                                                        d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z" />
+                                                                                                    <path
+                                                                                                        d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
+                                                                                                </svg></a>
+                                                                                        </p>
+
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-xl-3" id="scan7d">
+                                                                                    <div class="form-group">
+                                                                                        <label
+                                                                                            class="text-muted font-size-sm">Scanned
+                                                                                            Document 7</label>
+                                                                                        <p>
+                                                                                            <a id="scanned_documents7d"
+                                                                                                href="" target="_blank"><svg
+                                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                                    width="25%" height="25%"
+                                                                                                    fill="currentColor"
+                                                                                                    class="bi bi-file-text"
+                                                                                                    viewBox="0 0 16 16">
+                                                                                                    <path
+                                                                                                        d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z" />
+                                                                                                    <path
+                                                                                                        d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
+                                                                                                </svg></a>
+                                                                                        </p>
+
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="tab-pane fade" id="kt_tab_pane_5_doc3"
+                                                                {{-- <div class="tab-pane fade" id="kt_tab_pane_5_doc3"
                                                                     role="tabpanel" aria-labelledby="kt_tab_pane_5_doc3">
                                                                     <p id="scan3">
                                                                         <a id="scanned_document3d" href="#"
@@ -1266,7 +1406,7 @@
                                                                                     d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
                                                                             </svg></a>
                                                                     </p>
-                                                                </div>
+                                                                </div> --}}
 
 
                                                                 <div class="tab-pane fade" id="kt_tab_pane_5_note"

@@ -226,7 +226,55 @@ function setVerifiedNote(profile) {
     }
   }
 }
-function setDocs(doc) {}
+function setDocs(profile) {
+  if (profile.scanned_document1) {
+    document.getElementById("scanned_document1d").href =
+      HOST_URL + "/" + profile.scanned_document1;
+
+  } else {
+    document.getElementById("scan1d").style.display = "none";
+  }
+
+  if (profile.scanned_document2) {
+    document.getElementById("scanned_document2d").href =
+      HOST_URL + "/" + profile.scanned_document2;
+  } else {
+    document.getElementById("scan2d").style.display = "none";
+  }
+
+  if (profile.scanned_document3) {
+    document.getElementById("scanned_document3d").href =
+      HOST_URL + "/" + profile.scanned_document3;
+  } else {
+    document.getElementById("scan3d").style.display = "none";
+  }
+
+  if (profile.scanned_document4) {
+    document.getElementById("scanned_documents4d").href =
+      HOST_URL + "/" + profile.scanned_document4;
+  } else {
+    document.getElementById("scan4d").style.display = "none";
+  }
+  if (profile.scanned_document5) {
+    document.getElementById("scanned_documents5d").href =
+      HOST_URL + "/" + profile.scanned_document5;
+  } else {
+    document.getElementById("scan5d").style.display = "none";
+  }
+
+  if (profile.scanned_document6) {
+    document.getElementById("scanned_documents6d").href =
+      HOST_URL + "/" + profile.scanned_document6;
+  } else {
+    document.getElementById("scan6d").style.display = "none";
+  }
+  if (profile.scanned_document7) {
+    document.getElementById("scanned_documents7d").href =
+      HOST_URL + "/" + profile.scanned_document7;
+  } else {
+    document.getElementById("scan7d").style.display = "none";
+  }
+}
 
 function setEprofile(profile) {
   document.getElementById("exampleModalLabel").innerHTML = profile.name;
@@ -264,8 +312,7 @@ function setEprofile(profile) {
   if (profile.scanned_document1) {
     document.getElementById("scanned_document1").href =
       HOST_URL + "/" + profile.scanned_document1;
-    document.getElementById("scanned_document1d").href =
-      HOST_URL + "/" + profile.scanned_document1;
+
   } else {
     document.getElementById("scan1").style.display = "none";
   }
@@ -273,16 +320,12 @@ function setEprofile(profile) {
   if (profile.scanned_document2) {
     document.getElementById("scanned_document2").href =
       HOST_URL + "/" + profile.scanned_document2;
-    document.getElementById("scanned_document2d").href =
-      HOST_URL + "/" + profile.scanned_document2;
   } else {
     document.getElementById("scan2").style.display = "none";
   }
 
   if (profile.scanned_document3) {
     document.getElementById("scanned_document3").href =
-      HOST_URL + "/" + profile.scanned_document3;
-    document.getElementById("scanned_document3d").href =
       HOST_URL + "/" + profile.scanned_document3;
   } else {
     document.getElementById("scan3").style.display = "none";
