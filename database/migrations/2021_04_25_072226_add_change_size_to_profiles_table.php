@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddPassportTypeToProfilesTable extends Migration
+class AddChangeSizeToProfilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,8 @@ class AddPassportTypeToProfilesTable extends Migration
     public function up()
     {
         Schema::table('profiles', function (Blueprint $table) {
-            $table->string('passport_type');
-            $table->longText('inventory_data')->nullable();
+            $table->longText('note')->nullable()->change();
+            $table->longText('inventory_detials')->change();
         });
     }
 
@@ -27,8 +27,8 @@ class AddPassportTypeToProfilesTable extends Migration
     public function down()
     {
         Schema::table('profiles', function (Blueprint $table) {
-            $table->string('passport_type');
-            $table->longText('inventory_data')->nullable();
+            $table->longText('note')->nullable()->change();
+            $table->longText('inventory_detials')->change();
         });
     }
 }
