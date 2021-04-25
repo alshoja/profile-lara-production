@@ -92,45 +92,45 @@ class ProfileController extends Controller
 
     public function inbox($search, $from, $to, $perPage)
     {
-        $pro = Profile::whereIn('dep_id', session('department'));
-        $pro->where(function ($query) use ($search, $from, $to, $pro) {
+        $pro = Profile::query();
+        $pro->whereHas('trackings', function ($query) use ($search, $from, $to, $pro) {
+            if (Auth::user()->role == "supervisor") {
+                $query->where('from', 'employ')
+                    ->where('status', 'pending')
+                    ->where('at_end_user', '!=', 1);
+            }
+            if (Auth::user()->role == "department_head") {
+                $query->where('from', 'supervisor')
+                    ->where('status', 'pending')
+                    ->orWhere('status', 'rejected');
+            }
+            if (Auth::user()->role == "director") {
+                $query->where('from', 'department_head')
+                    ->where('status', 'pending')
+                    ->orWhere('status', 'rejected');
+            }
+            if (Auth::user()->role == "general_director") {
+                $query->where('from', 'director')
+                    ->where('status', 'pending')
+                    ->orWhere('status', 'rejected');
+            }
+            if (Auth::user()->role == "employ") {
+                $query->where('from', 'employ')
+                    ->where('status', 'pending')
+                    ->where('at_end_user', 1);
+            }
             if ($search) {
-                $pro->where('name_arabic', 'like', '%' . $search . '%')
+                $query->where('name_arabic', 'like', '%' . $search . '%')
                     ->orWhere('name', 'like', '%' . $search . '%')
                     ->orWhere('passport_no', 'like', '%' . $search . '%')
                     ->orWhere('uid', 'like', '%' . $search . '%');
             }
             if ($from && $to) {
-                $pro->whereBetween('created_at', [$from, $to]);
+                $query->whereBetween('created_at', [$from, $to]);
             }
-            return $query->whereHas('trackings', function ($query) use ($search, $from, $to, $pro) {
-                if (Auth::user()->role == "supervisor") {
-                    $query->where('from', 'employ')
-                        ->where('status', 'pending')
-                        ->where('at_end_user', '!=', 1);
-                }
-                if (Auth::user()->role == "department_head") {
-                    $query->where('from', 'supervisor')
-                        ->where('status', 'pending')
-                        ->orWhere('status', 'rejected');
-                }
-                if (Auth::user()->role == "director") {
-                    $query->where('from', 'department_head')
-                        ->where('status', 'pending')
-                        ->orWhere('status', 'rejected');
-                }
-                if (Auth::user()->role == "general_director") {
-                    $query->where('from', 'director')
-                        ->where('status', 'pending')
-                        ->orWhere('status', 'rejected');
-                }
-                if (Auth::user()->role == "employ") {
-                    $query->where('from', 'employ')
-                        ->where('status', 'pending')
-                        ->where('at_end_user', 1);
-                }
-            });
         });
+
+        $pro = $pro->whereIn('dep_id', session('department'));
         return $pro->paginate($perPage);
 
         // $builder = Profile::with('trackings')->get();
@@ -344,7 +344,7 @@ class ProfileController extends Controller
                 $id = $request->input('editid');
 
                 try {
-                    $data = array("inventory_name" => $inventory_name,"inventory_data" => $inventory_data, "inventory_codes" => $inventory_codes, "note" => $note, "inventory_detials" => $inventory_detials);
+                    $data = array("inventory_name" => $inventory_name, "inventory_data" => $inventory_data, "inventory_codes" => $inventory_codes, "note" => $note, "inventory_detials" => $inventory_detials);
                     Profile::updateData($id, $data);
                     return response()->json(['success' => 'Form is successfully submitted!']);
                 } catch (\Illuminate\Database\QueryException $ex) {
