@@ -491,7 +491,6 @@ class ProfileController extends Controller
 
     public function profileDocumentUpdate(Request $request, $id)
     {
-
         $doc_1 = $request->input('scanned_documents4');
         $doc_2 = $request->input('scanned_documents5');
         $doc_3 = $request->input('scanned_documents6');
@@ -586,7 +585,8 @@ class ProfileController extends Controller
      */
     public function renderPdf($id)
     {
-        $profile = Profile::with('department', 'section', 'products', 'trackings.sign')->find($id);
+        $profile = Profile::with('department', 'section', 'trackings.sign')->find($id);
+        // dd($profile);
         $pdf = PDF::loadView('pdf', $profile);
         return $pdf->stream('invoice.pdf');
     }
@@ -705,4 +705,5 @@ class ProfileController extends Controller
         AddTimeLineNote::dispatch($timeLine);
         AddNotification::dispatch($timeLine);
     }
+
 }

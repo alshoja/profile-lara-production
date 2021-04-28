@@ -532,6 +532,9 @@
                                                                         @endif
                                                                     @endif
 
+                                                                    {{-- some kind of comment --}}
+                                                                    {{-- {lksdjalksjdkljasd} --}}
+
                                                                     <li class="nav-item">
                                                                         <a id="track_nav_item" class="nav-link"
                                                                             data-toggle="tab" href="#kt_tab_pane_5_track">

@@ -56,11 +56,11 @@
             style="min-width: 70px !important; 
             max-width: 100px !important;
         }
+        body { font-family: DejaVu Sans, sans-serif; }
 
     </style>
     <meta charset="utf-8">
 </head>
-
 <body>
     <div class="A4">
         <div class="Imgcenter">
@@ -72,17 +72,17 @@
                 <th style="text-align:right; " colspan="5">Header</th>
             </tr>
             <tr>
-                <td class="td-c-1">&nbsp;</td>
+                <td class="td-c-1">&nbsp;{{$name}}</td>
                 <td>&nbsp;</td>
                 <td></td>
-                <td class="td-c-1">&nbsp;</td>
+                <td class="td-c-1">&nbsp;{{$name_arabic}}</td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td class="td-c-1">&nbsp;</td>
+                <td class="td-c-1">&nbsp;{{$nationality}}</td>
                 <td>&nbsp;</td>
                 <td></td>
-                <td class="td-c-1">&nbsp;</td>
+                <td class="td-c-1">&nbsp;{{$gender}}</td>
                 <td>&nbsp;</td>
             </tr> <tr>
                 <td class="td-c-1">&nbsp;</td>
@@ -122,7 +122,7 @@
         </table>
         <div style="border: 1px solid black;margin-top:-1.7px;width:617px;margin-left:0.5px">
             <h3 align="right" style="color: red; padding: 10px">Title Here</h3>
-            <p align="right" style="padding: 11px">asdhakjsdhkjahsdkjaksjhdkjahsdkjajksdhkahsd</p>
+            <p align="right" style="padding: 11px">{{$address}}</p>
         </div>
         <div style="black;margin-top:-1.7px">
             <table style="width:100%">
