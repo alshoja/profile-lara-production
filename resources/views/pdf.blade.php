@@ -1,8 +1,8 @@
 <html dir="rtl" lang="ar">
 
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
-    <title>Example</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>{{$id}}</title>
     <style type="text/css">
         body {
             border: 1px solid rgb(248, 232, 0);
@@ -31,7 +31,7 @@
 
         .Imgcenter {
             display: block;
-            margin-left: 140px;
+            margin-right: 390px;
             width: 30%;
         }
 
@@ -56,7 +56,7 @@
             style="min-width: 70px !important; 
             max-width: 100px !important;
         }
-        body { font-family: DejaVu Sans, sans-serif; }
+        /* body { font-family: DejaVu Sans, sans-serif; } */
 
     </style>
     <meta charset="utf-8">
@@ -64,7 +64,7 @@
 <body>
     <div class="A4">
         <div class="Imgcenter">
-            <img class="Imgcenter" src="{{ public_path('sample.png') }}" alt="Logo">
+            <img src="{{ public_path("sample.png") }}" height="100px">
         </div>
         <h3 align="center">Tittle Here</h3>
         <table style="width:100%">
@@ -120,7 +120,7 @@
                 </tr>
             </tfoot>
         </table>
-        <div style="border: 1px solid black;margin-top:-1.7px;width:617px;margin-left:0.5px">
+        <div style="border: 1px solid black;margin-top:-1.7px;width:871px;margin-left:0.5px">
             <h3 align="right" style="color: red; padding: 10px">Title Here</h3>
             <p align="right" style="padding: 11px">{{$address}}</p>
         </div>

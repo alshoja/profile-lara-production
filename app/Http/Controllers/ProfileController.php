@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Validator;
-use Barryvdh\DomPDF\Facade as PDF;
+use Barryvdh\Snappy\Facades\SnappyPdf as PDF;
 
 class ProfileController extends Controller
 {
@@ -585,10 +585,11 @@ class ProfileController extends Controller
      */
     public function renderPdf($id)
     {
+        $profile = null;
         $profile = Profile::with('department', 'section', 'trackings.sign')->find($id);
-        // dd($profile);
-        $pdf = PDF::loadView('pdf', $profile);
-        return $pdf->stream('invoice.pdf');
+        if (is_null($profile)) return abort(404);
+        $pdf = PDF::setOption('enable-local-file-access', true)->loadView('pdf', $profile);
+        return $pdf->stream($profile->id . 'pdf');
     }
 
     public function getProfileById($id)
@@ -705,5 +706,4 @@ class ProfileController extends Controller
         AddTimeLineNote::dispatch($timeLine);
         AddNotification::dispatch($timeLine);
     }
-
 }
