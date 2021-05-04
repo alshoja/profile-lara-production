@@ -588,7 +588,8 @@ class ProfileController extends Controller
         $profile = null;
         $profile = Profile::with('department', 'section', 'trackings.sign')->find($id);
         if (is_null($profile)) return abort(404);
-        $pdf = PDF::setOption('enable-local-file-access', true)->loadView('pdf', $profile);
+        $pdf = PDF::loadView('pdf', $profile);
+        // return $pdf->download('invoice.pdf');
         return $pdf->stream($profile->id . 'pdf');
     }
 
