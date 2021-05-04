@@ -578,8 +578,10 @@ class ProfileController extends Controller
     }
 
     /**
-     * Render the specified PDF.
-     *
+     * Render the specified PDF in server.
+     * sudo cp vendor/h4cc/wkhtmltoimage-amd64/bin/wkhtmltoimage-amd64 /usr/local/bin/
+     * sudo cp vendor/h4cc/wkhtmltopdf-amd64/bin/wkhtmltopdf-amd64 /usr/local/bin/
+     * 
      * @param  \App\Models\Profiles  $profiles
      * @return \Illuminate\Http\Response
      */
@@ -589,7 +591,6 @@ class ProfileController extends Controller
         $profile = Profile::with('department', 'section', 'trackings.sign')->find($id);
         if (is_null($profile)) return abort(404);
         $pdf = PDF::loadView('pdf', $profile);
-        // return $pdf->download('invoice.pdf');
         return $pdf->stream($profile->id . 'pdf');
     }
 
