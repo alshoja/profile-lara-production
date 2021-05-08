@@ -649,7 +649,7 @@
                                                 </div>
                                                 <!--end::Input-->
                                             </div>
-                                            <div class="col-xl-12">
+                                            {{-- <div class="col-xl-12">
                                                 <!--begin::Input-->
                                                 <div class="form-group">
                                                     <label>Inventory Data</label>
@@ -658,7 +658,7 @@
                                                     <span class="text-danger error-text inventory_data_err"></span>
                                                 </div>
                                                 <!--end::Input-->
-                                            </div>
+                                            </div> --}}
                                         </div>
 
                                         <button

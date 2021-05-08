@@ -6,7 +6,6 @@
             <!--begin::Dashboard-->
             <!--begin::Row-->
             <div class="row">
-
                 <div class="col-lg-6 col-xxl-4">
                     <!--begin::Stats Widget 11-->
                     <div class="card card-custom card-stretch card-stretch-half gutter-b">
@@ -121,8 +120,9 @@
                                         <!--begin::Badge-->
                                         <div class="timeline-badge">
                                             <i class="fa fa-genderless 
-                                            @if ($item->type == 'pending') text-warning @endif
-                                            @if ($item->type == 'note') text-grey @endif
+                                                @if ($item->type == 'pending') text-warning @endif
+                                                @if ($item->type == 'note') text-grey
+                                                @endif
                                                 @if ($item->type == 'approved')
                                                     text-success
                                                 @endif
@@ -295,79 +295,7 @@
                         <!--end::Header-->
                         <!--begin::Body-->
                         <div class="card-body pt-0 pb-3">
-                            <div class="tab-content">
-                                <!--begin::Table-->
-                                <div class="table-responsive">
-                                    <table
-                                        class="table table-head-custom table-head-bg table-borderless table-vertical-center">
-                                        <thead>
-                                            <tr class="text-left text-uppercase">
-                                                <th style="min-width: 250px" class="pl-7">
-                                                    <!-- <span class="text-dark-75">Name</span> -->
-                                                    Name
-                                                </th>
-                                                <th style="min-width: 100px">Gender</th>
-                                                <th style="min-width: 100px">Country</th>
-                                                <th style="min-width: 100px">Date</th>
-                                                {{-- <th style="min-width: 130px">rating</th> --> --}}
-                                                <th style="min-width: 80px"></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($dashData->profileList as $item)
-
-                                                <tr>
-                                                    <td class="pl-0 py-8">
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="symbol symbol-50 symbol-light mr-4">
-                                                                <span class="symbol-label">
-                                                                    @if ($item->gender == 'male')
-                                                                        <img src="{{ url('assets/media/svg/avatars/001-boy.svg') }}"
-                                                                            class="h-75 align-self-end" alt="" />
-
-                                                                    @else
-                                                                        <img src="{{ url('assets/media/svg/avatars/002-girl.svg') }}"
-                                                                            class="h-75 align-self-end" alt="" />
-                                                                    @endif
-
-                                                                </span>
-                                                            </div>
-                                                            <div>
-                                                                <a href="#"
-                                                                    class="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">
-                                                                    {{ $item->name }}</a>
-                                                                <span
-                                                                    class="text-muted font-weight-bold d-block">{{ $item->citizen_location }}</span>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <span
-                                                            class="text-dark-75 text-capitalize font-weight-bolder d-block font-size-lg">{{ $item->gender }}</span>
-                                                        <!-- <span class="text-muted font-weight-bold">In Proccess</span> -->
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
-                                                            {{ $item->nationality }}</span>
-                                                        <!-- <span class="text-muted font-weight-bold">Paid</span> -->
-                                                    </td>
-                                                    <td>
-                                                        <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
-                                                            {{ date('Y-m-d ', strtotime($item->created_at)) }}</span>
-                                                        <!-- <span class="text-muted font-weight-bold">Paid</span> -->
-                                                    </td>
-                                                    <td class="pr-0 text-right">
-                                                        <a href="{{ url('profile/track?tab=completed') }}"
-                                                            class="btn btn-success btn-gradient-success  font-weight-bolder font-size-sm">More</a>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <!--end::Table-->
-                            </div>
+                            <x-Inbox :profiles="$dashData->profileList" />
                         </div>
                         <!--end::Body-->
                     </div>

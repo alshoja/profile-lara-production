@@ -288,20 +288,20 @@ class ProfileController extends Controller
                 'inventory_codes' => 'required',
                 'note' => 'required',
                 'inventory_detials' => 'required',
-                'inventory_data' => 'required',
+                // 'inventory_data' => 'required',
             ]);
             if ($validator->fails()) {
                 return response()->json(['error' => $validator->errors()], 422);
             } else {
                 $inventory_name = $request->input('inventory_name');
                 $inventory_codes = $request->input('inventory_codes');
-                $inventory_data = $request->input('inventory_data');
+                // $inventory_data = $request->input('inventory_data');
                 $inventory_detials = $request->input('inventory_detials');
                 $note = $request->input('note');
                 $id = $request->input('editid');
 
                 try {
-                    $data = array("inventory_name" => $inventory_name, "inventory_data" => $inventory_data, "inventory_codes" => $inventory_codes, "note" => $note, "inventory_detials" => $inventory_detials);
+                    $data = array("inventory_name" => $inventory_name, "inventory_codes" => $inventory_codes, "note" => $note, "inventory_detials" => $inventory_detials);
                     Profile::updateData($id, $data);
                     return response()->json(['success' => 'Form is successfully submitted!']);
                 } catch (\Illuminate\Database\QueryException $ex) {
@@ -321,9 +321,9 @@ class ProfileController extends Controller
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], 422);
         } else {
-            $scanned_document1 = Storage::disk('local')->put($request->file('scanned_document1')->getClientOriginalName(),$request->file('scanned_document1')->get());
-            $scanned_document2 = Storage::disk('local')->put($request->file('scanned_document2')->getClientOriginalName(),$request->file('scanned_document2')->get());
-            $scanned_document3 = Storage::disk('local')->put($request->file('scanned_document3')->getClientOriginalName(),$request->file('scanned_document3')->get());
+            $scanned_document1 = Storage::disk('links')->put($request->file('scanned_document1')->getClientOriginalName(),$request->file('scanned_document1')->get());
+            $scanned_document2 = Storage::disk('links')->put($request->file('scanned_document2')->getClientOriginalName(),$request->file('scanned_document2')->get());
+            $scanned_document3 = Storage::disk('links')->put($request->file('scanned_document3')->getClientOriginalName(),$request->file('scanned_document3')->get());
 
             // $scanned_document1 = $request->file('scanned_document1')->store('images');
             // $scanned_document2 = $request->file('scanned_document2')->store('images');
@@ -397,7 +397,7 @@ class ProfileController extends Controller
             'date_expiry'  => 'required',
             'uid'  => 'required',
             'proffession'  => 'required',
-            'inventory_data' => 'required',
+            // 'inventory_data' => 'required',
             'passport_type'  => 'required',
             'inventory_name' => 'required',
             'inventory_codes' => 'required',
@@ -420,44 +420,44 @@ class ProfileController extends Controller
         if ($image_1 == null) {
             $progileimage =  $request->input('profile_avatar_remove1');
         } else {
-            $progileimage = Storage::disk('local')->put($request->file('scanned_document1')->getClientOriginalName(),$request->file('scanned_document1')->get());
+            $progileimage = Storage::disk('links')->put($request->file('scanned_document1')->getClientOriginalName(),$request->file('scanned_document1')->get());
             // $progileimage = $request->file('scanned_document1')->store('images');
         }
 
         if ($image_2 == null) {
             $productimage =  $request->input('profile_avatar_remove2');
         } else {
-            $productimage = Storage::disk('local')->put($request->file('scanned_document2')->getClientOriginalName(),$request->file('scanned_document2')->get());
+            $productimage = Storage::disk('links')->put($request->file('scanned_document2')->getClientOriginalName(),$request->file('scanned_document2')->get());
             // $productimage = $request->file('scanned_document2')->store('images');
         }
         if ($image_3 == null) {
             $docimage =  $request->input('profile_avatar_remove3');
         } else {
-            $docimage = Storage::disk('local')->put($request->file('scanned_document3')->getClientOriginalName(),$request->file('scanned_document3')->get());
+            $docimage = Storage::disk('links')->put($request->file('scanned_document3')->getClientOriginalName(),$request->file('scanned_document3')->get());
             // $docimage = $request->file('scanned_document3')->store('images');
         }
         if ($image_4 == null) {
             $docimage4 =  $request->input('profile_avatar_remove4');
         } else {
-            $docimage4 = Storage::disk('local')->put($request->file('scanned_document4')->getClientOriginalName(),$request->file('scanned_document4')->get());
+            $docimage4 = Storage::disk('links')->put($request->file('scanned_document4')->getClientOriginalName(),$request->file('scanned_document4')->get());
             // $docimage4 = $request->file('scanned_document4')->store('images');
         }
         if ($image_5 == null) {
             $docimage5 =  $request->input('profile_avatar_remove5');
         } else {
-            $docimage5 = Storage::disk('local')->put($request->file('scanned_document5')->getClientOriginalName(),$request->file('scanned_document5')->get());
+            $docimage5 = Storage::disk('links')->put($request->file('scanned_document5')->getClientOriginalName(),$request->file('scanned_document5')->get());
             // $docimage5 = $request->file('scanned_document5')->store('images');
         }
         if ($image_6 == null) {
             $docimage6 =  $request->input('profile_avatar_remove6');
         } else {
-            $docimage6 = Storage::disk('local')->put($request->file('scanned_document6')->getClientOriginalName(),$request->file('scanned_document6')->get());
+            $docimage6 = Storage::disk('links')->put($request->file('scanned_document6')->getClientOriginalName(),$request->file('scanned_document6')->get());
             // $docimage6 = $request->file('scanned_document6')->store('images');
         }
         if ($image_7 == null) {
             $docimage7 =  $request->input('profile_avatar_remove7');
         } else {
-            $docimage7 = Storage::disk('local')->put($request->file('scanned_document7')->getClientOriginalName(),$request->file('scanned_document7')->get());
+            $docimage7 = Storage::disk('links')->put($request->file('scanned_document7')->getClientOriginalName(),$request->file('scanned_document7')->get());
             // $docimage7 = $request->file('scanned_document7')->store('images');
         }
 
@@ -482,7 +482,7 @@ class ProfileController extends Controller
             "inventory_name" => $request->input('inventory_name'),
             "inventory_codes" => $request->input('inventory_codes'),
             "passport_type" => $request->input('passport_type'),
-            "inventory_data" => $request->input('inventory_data'),
+            // "inventory_data" => $request->input('inventory_data'),
             "note" => $request->input('note'),
             "inventory_detials" => $request->input('inventory_detials'),
             "scanned_document1" => $progileimage,
@@ -509,28 +509,28 @@ class ProfileController extends Controller
         $doc_4 = $request->input('scanned_documents5');
 
         if ($request->file('scanned_document4') != '') {
-            $scanned_document4 = Storage::disk('local')->put($request->file('scanned_document4')->getClientOriginalName(), $request->file('scanned_document4')->get());
+            $scanned_document4 = Storage::disk('links')->put($request->file('scanned_document4')->getClientOriginalName(), $request->file('scanned_document4')->get());
             // $scanned_document4 = $request->file('scanned_document4')->store('images');
         } else {
 
             $scanned_document4 = $doc_1;
         }
         if ($request->file('scanned_document5') != '') {
-            $scanned_document5 = Storage::disk('local')->put($request->file('scanned_document5')->getClientOriginalName(), $request->file('scanned_document5')->get());
+            $scanned_document5 = Storage::disk('links')->put($request->file('scanned_document5')->getClientOriginalName(), $request->file('scanned_document5')->get());
             // $scanned_document5 = $request->file('scanned_document5')->store('images');
         } else {
             $scanned_document5 = $doc_2;
         }
 
         if ($request->file('scanned_document6') != '') {
-            $scanned_document6 = Storage::disk('local')->put($request->file('scanned_document6')->getClientOriginalName(), $request->file('scanned_document6')->get());
+            $scanned_document6 = Storage::disk('links')->put($request->file('scanned_document6')->getClientOriginalName(), $request->file('scanned_document6')->get());
             // $scanned_document6 = $request->file('scanned_document6')->store('images');
         } else {
             $scanned_document6 = $doc_3;
         }
 
         if ($request->file('scanned_document7') != '') {
-            $scanned_document7 = Storage::disk('local')->put($request->file('scanned_document7')->getClientOriginalName(),$request->file('scanned_document7')->get());
+            $scanned_document7 = Storage::disk('links')->put($request->file('scanned_document7')->getClientOriginalName(),$request->file('scanned_document7')->get());
             // $scanned_document7 = $request->file('scanned_document7')->store('images');
         } else {
             $scanned_document7 = $doc_4;
@@ -594,8 +594,8 @@ class ProfileController extends Controller
 
     /**
      * Render the specified PDF in server.
-     * sudo cp vendor/h4cc/wkhtmltoimage-amd64/bin/wkhtmltoimage-amd64 /usr/local/bin/
-     * sudo cp vendor/h4cc/wkhtmltopdf-amd64/bin/wkhtmltopdf-amd64 /usr/local/bin/
+     * sudo cp vendor/h4cc/wkhtmltoimage-amd64/bin/wkhtmltoimage-amd64 /usr/links/bin/
+     * sudo cp vendor/h4cc/wkhtmltopdf-amd64/bin/wkhtmltopdf-amd64 /usr/links/bin/
      * 
      * @param  \App\Models\Profiles  $profiles
      * @return \Illuminate\Http\Response
