@@ -17,10 +17,10 @@
                             <div class="input-group input-group-sm input-group-solid max-w-175px">
                                 <input type="text" id="search" onkeypress="search(event)" name="search"
                                     value="{{ request()->query('search') }}" class="form-control pl-4"
-                                    placeholder="Search..." />
-                                <div class="input-group-append">
+                                    placeholder="search..." />
+                                <div onclick="searchByClick()"  class="input-group-append">
                                     <span class="input-group-text">
-                                        <span class="svg-icon svg-icon-md">
+                                        <span  class="svg-icon svg-icon-md">
                                             <!--begin::Svg Icon | path:assets/media/svg/icons/General/Search.svg-->
                                             <svg xmlns="http://www.w3.org/2000/svg"
                                                 xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
@@ -81,7 +81,7 @@
                         </span>
                     </a>
                     @if (request()->query('title') || request()->query('from'))
-                        <a href="{{ url('/home') }}" class="btn btn-light btn-sm font-weight-bold mr-2"
+                        <a href="{{ url()->previous() }}" class="btn btn-light btn-sm font-weight-bold mr-2"
                             data-toggle="tooltip" title="Reset to default date" data-placement="left">
                             <span class="text-muted font-weight-bold mr-2">Back </span>
                             <span class="svg-icon svg-icon-sm svg-icon-primary ml-1">

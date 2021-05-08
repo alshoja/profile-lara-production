@@ -115,13 +115,23 @@
 </script>
 <script>
     function search(event) {
+        console.log(event);
         const urlParams = new URLSearchParams(window.location.search);
         const search = document.getElementById('search').value;
         var x = event.code;
         if (x == "Enter") {
             urlParams.set("search", search);
             window.location.search = urlParams;
+            return
         }
+    }
+
+    function searchByClick() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const search = document.getElementById('search').value;
+        urlParams.set("search", search);
+        window.location.search = urlParams;
+        return
     }
 
 </script>
