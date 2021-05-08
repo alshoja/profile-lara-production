@@ -10,3 +10,20 @@ $(document).ready(function () {
   });
   $("body").trigger("mousemove");
 });
+
+function isNumber(evt) {
+  evt = (evt) ? evt : window.event;
+  var charCode = (evt.which) ? evt.which : evt.keyCode;
+  if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+    // alert("Please enter only Numbers.");
+    return false;
+  }
+
+  return true;
+}
+
+function limitText(limitField, limitNum) {
+  if (limitField.value.length > limitNum) {
+      limitField.value = limitField.value.substring(0, limitNum);
+  }
+}

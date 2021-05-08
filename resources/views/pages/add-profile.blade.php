@@ -561,7 +561,7 @@
                                                 <!--begin::Select-->
                                                 <div class="form-group">
                                                     <label>UID Number</label>
-                                                    <input type="text"
+                                                    <input onkeypress="return isNumber(event)" onKeyDown="limitText(this,15);" onKeyUp="limitText(this,15);"  type="text"
                                                         class="form-control form-control-solid form-control-lg" name="uid"
                                                         placeholder="UID Number" value="" id="uid" />
                                                     <span class="text-danger error-text uid_err"></span>
