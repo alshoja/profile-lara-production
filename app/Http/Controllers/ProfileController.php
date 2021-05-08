@@ -496,7 +496,7 @@ class ProfileController extends Controller
         $doc_1 = $request->input('scanned_documents4');
         $doc_2 = $request->input('scanned_documents5');
         $doc_3 = $request->input('scanned_documents6');
-        $doc_4 = $request->input('scanned_documents5');
+        $doc_4 = $request->input('scanned_documents7');
 
         if ($request->file('scanned_document4') != '') {
             $scanned_document4 = $request->file('scanned_document4')->store('images');
