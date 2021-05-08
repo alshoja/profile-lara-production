@@ -595,6 +595,13 @@ class ProfileController extends Controller
         return $pdf->stream($profile->id . 'pdf');
     }
 
+    public function renderDocuments($file)
+    {
+        
+        return view('embed',["file"=>$file]);
+
+    }
+
     public function getProfileById($id)
     {
         $profile = Profile::with('timeline', 'trackings', 'department', 'section', 'products')->findOrFail($id);

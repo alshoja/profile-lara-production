@@ -231,7 +231,6 @@ function setDocs(profile) {
   if (profile.scanned_document1) {
     document.getElementById("scanned_document1d").href =
       HOST_URL + "/" + profile.scanned_document1;
-
   } else {
     document.getElementById("scan1d").style.display = "none";
   }
@@ -314,48 +313,47 @@ function setEprofile(profile) {
 
   if (profile.scanned_document1) {
     document.getElementById("scanned_document1").href =
-      HOST_URL + "/" + profile.scanned_document1;
-
+      HOST_URL + "/pdf/" + removeUrl(profile.scanned_document1);
   } else {
     document.getElementById("scan1").style.display = "none";
   }
 
   if (profile.scanned_document2) {
     document.getElementById("scanned_document2").href =
-      HOST_URL + "/" + profile.scanned_document2;
+      HOST_URL + "/pdf/" + removeUrl(profile.scanned_document2);
   } else {
     document.getElementById("scan2").style.display = "none";
   }
 
   if (profile.scanned_document3) {
     document.getElementById("scanned_document3").href =
-      HOST_URL + "/" + profile.scanned_document3;
+      HOST_URL + "/pdf/" + removeUrl(profile.scanned_document3);
   } else {
     document.getElementById("scan3").style.display = "none";
   }
 
   if (profile.scanned_document4) {
     document.getElementById("scanned_documents4").href =
-      HOST_URL + "/" + profile.scanned_document4;
+      HOST_URL + "/pdf/" + removeUrl(profile.scanned_document4);
   } else {
     document.getElementById("scan4").style.display = "none";
   }
   if (profile.scanned_document5) {
     document.getElementById("scanned_documents5").href =
-      HOST_URL + "/" + profile.scanned_document5;
+      HOST_URL + "/pdf/" + removeUrl(profile.scanned_document5);
   } else {
     document.getElementById("scan5").style.display = "none";
   }
 
   if (profile.scanned_document6) {
     document.getElementById("scanned_documents6").href =
-      HOST_URL + "/" + profile.scanned_document6;
+      HOST_URL + "/pdf/" + removeUrl(profile.scanned_document6);
   } else {
     document.getElementById("scan6").style.display = "none";
   }
   if (profile.scanned_document7) {
     document.getElementById("scanned_documents7").href =
-      HOST_URL + "/" + profile.scanned_document7;
+      HOST_URL + "/pdf/" + removeUrl(profile.scanned_document7);
   } else {
     document.getElementById("scan7").style.display = "none";
   }
@@ -552,4 +550,8 @@ function getSections(val, url) {
 
 function getExtension(file) {
   return file.split(".").pop();
+}
+
+function removeUrl(string) {
+  return string.substring(string.lastIndexOf("/") + 1);
 }
