@@ -46,7 +46,7 @@
                                                 </a>
                                             </li>
                                         @endif
-                                        @if (Auth::user()->role == 'supervisor')
+                                        @if (Auth::user()->role == 'supervisor' || Auth::user()->role == 'employ')
                                             <li class="nav-item">
                                                 <a class="nav-link py-2 px-4   @if (request()->query('tab') === 'final') {{ 'active' }} @endif"
                                                     href="{{ url('profiles?tab=final') }}">

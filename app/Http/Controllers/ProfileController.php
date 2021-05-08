@@ -321,13 +321,10 @@ class ProfileController extends Controller
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], 422);
         } else {
-            $scanned_document1 = Storage::disk('links')->put($request->file('scanned_document1')->getClientOriginalName(),$request->file('scanned_document1')->get());
-            $scanned_document2 = Storage::disk('links')->put($request->file('scanned_document2')->getClientOriginalName(),$request->file('scanned_document2')->get());
-            $scanned_document3 = Storage::disk('links')->put($request->file('scanned_document3')->getClientOriginalName(),$request->file('scanned_document3')->get());
 
-            // $scanned_document1 = $request->file('scanned_document1')->store('images');
-            // $scanned_document2 = $request->file('scanned_document2')->store('images');
-            // $scanned_document3 = $request->file('scanned_document3')->store('images');
+            $scanned_document1 = $request->file('scanned_document1')->store('images');
+            $scanned_document2 = $request->file('scanned_document2')->store('images');
+            $scanned_document3 = $request->file('scanned_document3')->store('images');
 
 
             $id = $request->input('editid1');
@@ -420,45 +417,38 @@ class ProfileController extends Controller
         if ($image_1 == null) {
             $progileimage =  $request->input('profile_avatar_remove1');
         } else {
-            $progileimage = Storage::disk('links')->put($request->file('scanned_document1')->getClientOriginalName(),$request->file('scanned_document1')->get());
-            // $progileimage = $request->file('scanned_document1')->store('images');
+            $progileimage = $request->file('scanned_document1')->store('images');
         }
 
         if ($image_2 == null) {
             $productimage =  $request->input('profile_avatar_remove2');
         } else {
-            $productimage = Storage::disk('links')->put($request->file('scanned_document2')->getClientOriginalName(),$request->file('scanned_document2')->get());
-            // $productimage = $request->file('scanned_document2')->store('images');
+            $productimage = $request->file('scanned_document2')->store('images');
         }
         if ($image_3 == null) {
             $docimage =  $request->input('profile_avatar_remove3');
         } else {
-            $docimage = Storage::disk('links')->put($request->file('scanned_document3')->getClientOriginalName(),$request->file('scanned_document3')->get());
-            // $docimage = $request->file('scanned_document3')->store('images');
+            $docimage = $request->file('scanned_document3')->store('images');
         }
         if ($image_4 == null) {
             $docimage4 =  $request->input('profile_avatar_remove4');
         } else {
-            $docimage4 = Storage::disk('links')->put($request->file('scanned_document4')->getClientOriginalName(),$request->file('scanned_document4')->get());
-            // $docimage4 = $request->file('scanned_document4')->store('images');
+            $docimage4 = $request->file('scanned_document4')->store('images');
         }
         if ($image_5 == null) {
             $docimage5 =  $request->input('profile_avatar_remove5');
         } else {
-            $docimage5 = Storage::disk('links')->put($request->file('scanned_document5')->getClientOriginalName(),$request->file('scanned_document5')->get());
-            // $docimage5 = $request->file('scanned_document5')->store('images');
+            $docimage5 = $request->file('scanned_document5')->store('images');
         }
         if ($image_6 == null) {
             $docimage6 =  $request->input('profile_avatar_remove6');
         } else {
-            $docimage6 = Storage::disk('links')->put($request->file('scanned_document6')->getClientOriginalName(),$request->file('scanned_document6')->get());
-            // $docimage6 = $request->file('scanned_document6')->store('images');
+            $docimage6 = $request->file('scanned_document6')->store('images');
         }
         if ($image_7 == null) {
             $docimage7 =  $request->input('profile_avatar_remove7');
         } else {
-            $docimage7 = Storage::disk('links')->put($request->file('scanned_document7')->getClientOriginalName(),$request->file('scanned_document7')->get());
-            // $docimage7 = $request->file('scanned_document7')->store('images');
+            $docimage7 = $request->file('scanned_document7')->store('images');
         }
 
         $data = array(
@@ -509,29 +499,25 @@ class ProfileController extends Controller
         $doc_4 = $request->input('scanned_documents5');
 
         if ($request->file('scanned_document4') != '') {
-            $scanned_document4 = Storage::disk('links')->put($request->file('scanned_document4')->getClientOriginalName(), $request->file('scanned_document4')->get());
-            // $scanned_document4 = $request->file('scanned_document4')->store('images');
+            $scanned_document4 = $request->file('scanned_document4')->store('images');
         } else {
 
             $scanned_document4 = $doc_1;
         }
         if ($request->file('scanned_document5') != '') {
-            $scanned_document5 = Storage::disk('links')->put($request->file('scanned_document5')->getClientOriginalName(), $request->file('scanned_document5')->get());
-            // $scanned_document5 = $request->file('scanned_document5')->store('images');
+            $scanned_document5 = $request->file('scanned_document5')->store('images');
         } else {
             $scanned_document5 = $doc_2;
         }
 
         if ($request->file('scanned_document6') != '') {
-            $scanned_document6 = Storage::disk('links')->put($request->file('scanned_document6')->getClientOriginalName(), $request->file('scanned_document6')->get());
-            // $scanned_document6 = $request->file('scanned_document6')->store('images');
+            $scanned_document6 = $request->file('scanned_document6')->store('images');
         } else {
             $scanned_document6 = $doc_3;
         }
 
         if ($request->file('scanned_document7') != '') {
-            $scanned_document7 = Storage::disk('links')->put($request->file('scanned_document7')->getClientOriginalName(),$request->file('scanned_document7')->get());
-            // $scanned_document7 = $request->file('scanned_document7')->store('images');
+            $scanned_document7 = $request->file('scanned_document7')->store('images');
         } else {
             $scanned_document7 = $doc_4;
         }

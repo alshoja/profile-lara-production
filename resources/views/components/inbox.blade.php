@@ -91,7 +91,7 @@ aria-labelledby="kt_tab_pane_11_1">
                     </td>
                     @if (request()->query('tab') != 'pending')
                         <td class="text-right pr-0">
-                            @if (Auth::user()->role == 'supervisor')
+                            @if (Auth::user()->role == 'supervisor' || Auth::user()->role == 'employ')
                                 @if ($item->on_final_approval == 1)
                                     <a data-toggle="modal"
                                         data-target="#final_documents{{ $item->id }}"
