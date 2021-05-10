@@ -51,7 +51,7 @@ cp .env.example .env
     
 4. Do it only on Production 
 
-    ```cp server/.htaccess .htaccess
+        cp server/.htaccess .htaccess
 
 ## How to run ?
 
