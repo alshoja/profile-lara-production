@@ -19,7 +19,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome'])->name('
 Route::get('/blocked', function () {
     return view('pages.error.blocked');
 });
-
+Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
 Auth::routes();
 
 Route::middleware(['auth', 'initUser', 'checkIsBlocked'])->group(function () {

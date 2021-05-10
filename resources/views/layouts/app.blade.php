@@ -310,6 +310,7 @@
                 <!--end::Aside Menu-->
             </div>
             <!--end::Aside-->
+            
             <!--begin::Wrapper-->
             <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
                 <!--begin::Header-->
@@ -327,6 +328,46 @@
                         <!--begin::Topbar-->
 
                         <div class="topbar">
+                            <div class="dropdown">
+                                <!--begin::Toggle-->
+                                <div class="topbar-item" data-toggle="dropdown" data-offset="10px,0px" aria-expanded="true">
+                                    <div class="btn btn-icon btn-clean btn-dropdown btn-lg mr-1">
+                                        <img class="h-20px w-20px rounded-sm" src="assets/media/svg/flags/<?php echo  Config::get('languages')[App::getLocale()]['flag-icon'] ?>" alt="">
+                                    </div>
+                                </div>
+                                <!--end::Toggle-->
+                                <!--begin::Dropdown-->
+                                <div class="dropdown-menu p-0 m-0 dropdown-menu-anim-up dropdown-menu-sm dropdown-menu-right" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-117px, 65px, 0px);">
+                                    <!--begin::Nav-->
+                                    <ul class="navi navi-hover py-4">
+                                        <!--begin::Item-->
+                                        {{-- <li class="navi-item active">
+                                            <a href="#" class="navi-link">
+                                                <span class="symbol symbol-20 mr-3">
+                                                    <img src="assets/media/svg/flags/<?php echo  Config::get('languages')[App::getLocale()]['flag-icon'] ?>" alt="">
+                                                </span>
+                                                <span class="navi-text">{{ Config::get('languages')[App::getLocale()]['display'] }}</span>
+                                            </a>
+                                        </li> --}}
+                                        @foreach (Config::get('languages') as $lang => $language)
+                                        @if ($lang != App::getLocale())
+                                        <li class="navi-item">
+                                            <a href="{{ route('lang.switch', $lang) }}" class="navi-link">
+                                                <span class="symbol symbol-20 mr-3">
+                                                    <img src="assets/media/svg/flags/<?php echo $language['flag-icon']?>" alt="">
+                                                </span>
+                                                <span class="navi-text">{{$language['display']}}</span>
+                                            </a>
+                                        </li>
+                                        @endif
+                                        @endforeach
+                                       
+                                        <!--end::Item-->
+                                    </ul>
+                                    <!--end::Nav-->
+                                </div>
+                                <!--end::Dropdown-->
+                            </div>
                             <!--begin::Notifications-->
                             @if (Auth::user()->role != 'admin')
                                 <div class="dropdown">
