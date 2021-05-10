@@ -54,8 +54,6 @@ cp .env.example .env
 
 * Username :(Copy from users table after seeding)
 * Password : password
-```
-
 
 ## Built With
 
