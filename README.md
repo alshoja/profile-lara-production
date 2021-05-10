@@ -48,7 +48,10 @@ cp .env.example .env
 3.Migrate and Seed the database
 
     php artisan migrate --seed
+    
+4.Do it only on Production 
 
+    cp server/.htaccess .htaccess
 
 ## How to run ?
 
