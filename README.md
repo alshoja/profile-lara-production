@@ -55,14 +55,7 @@ cp .env.example .env
 * Username :(Copy from users table after seeding)
 * Password : password
 ```
-Update any of the user's role field to 'admin' in users table for access of admin panel
-```
-  Or
-  
- # Update the role in first entry of user as admin
- ```
- UPDATE `users` SET `role` = 'admin' WHERE `users`.`id` = 1;
- ```
+
 
 ## Built With
 
