@@ -330,17 +330,17 @@
                         <div class="topbar">
                             <div class="dropdown">
                                 <!--begin::Toggle-->
-                                <div class="topbar-item" data-toggle="dropdown" data-offset="10px,0px"
+                                <div class="topbar-item" data-offset="10px,0px"
                                     aria-expanded="true">
                                     <div class="btn btn-icon btn-clean btn-dropdown btn-lg mr-1">
-                                        <img class="h-20px w-20px rounded-sm"
-                                            src="{{asset('assets/media/svg/flags/'.Config::get('languages')[App::getLocale()]['flag-icon'])}}"
+                                        <img onclick="toggleFullscreen();" class="h-20px w-20px rounded-sm"
+                                            src="{{asset('assets/media/svg/icons/General/Expand-arrows.svg')}}"
                                             alt="">
                                     </div>
                                 </div>
                                 <!--end::Toggle-->
                                 <!--begin::Dropdown-->
-                                <div class="dropdown-menu p-0 m-0 dropdown-menu-anim-up dropdown-menu-sm dropdown-menu-right"
+                                {{-- <div class="dropdown-menu p-0 m-0 dropdown-menu-anim-up dropdown-menu-sm dropdown-menu-right"
                                     x-placement="bottom-end"
                                     style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-117px, 65px, 0px);">
                                     <!--begin::Nav-->
@@ -363,7 +363,7 @@
                                         <!--end::Item-->
                                     </ul>
                                     <!--end::Nav-->
-                                </div>
+                                </div> --}}
                                 <!--end::Dropdown-->
                             </div>
                             <!--begin::Notifications-->

@@ -44,3 +44,19 @@
     <link rel="icon" type="image/png" href="{{ asset('assets/media/logos/logo-light.png') }}" />
 </head>
 <!--end::Head-->
+<style>
+    ::backdrop {
+        background: -webkit-gradient(linear, right top, left top, from(#02DF8D), to(#029563));
+        background: linear-gradient(-90deg, #02DF8D 0%, #029563 100%);
+    }
+
+    html,
+    *:fullscreen,
+    *:-webkit-full-screen,
+    *:-moz-full-screen {
+        background: -webkit-gradient(linear, right top, left top, from(#02DF8D), to(#029563));
+        background: linear-gradient(-90deg, #02DF8D 0%, #029563 100%);
+
+    }
+
+</style>
