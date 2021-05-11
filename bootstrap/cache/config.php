@@ -388,6 +388,34 @@
       'time' => 2,
     ),
   ),
+  'languages' => 
+  array (
+    'en' => 
+    array (
+      'display' => 'English',
+      'flag-icon' => '226-united-states.svg',
+    ),
+    'ar' => 
+    array (
+      'display' => 'Arabic',
+      'flag-icon' => '151-united-arab-emirates.svg',
+    ),
+    'ger' => 
+    array (
+      'display' => 'German',
+      'flag-icon' => '162-germany.svg',
+    ),
+    'jap' => 
+    array (
+      'display' => 'Japanese',
+      'flag-icon' => '014-japan.svg',
+    ),
+    'por' => 
+    array (
+      'display' => 'Portuguese',
+      'flag-icon' => '005-portugal.svg',
+    ),
+  ),
   'logging' => 
   array (
     'default' => 'stack',

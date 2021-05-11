@@ -41,28 +41,22 @@ cp .env.example .env
     
 2.Update the Env
 
-    DB_DATABASE=''
-    DB_USERNAME=''
-    DB_PASSWORD=''
+     DB_DATABASE=''
+     DB_USERNAME=''
+     DB_PASSWORD=''
     
 3.Migrate and Seed the database
 
     php artisan migrate --seed
+    
+4.Do it only on Production 
 
+    cp server/.htaccess .htaccess
 
 ## How to run ?
 
 * Username :(Copy from users table after seeding)
 * Password : password
-```
-Update any of the user's role field to 'admin' in users table for access of admin panel
-```
-  Or
-  
- # Update the role in first entry of user as admin
- ```
- UPDATE `users` SET `role` = 'admin' WHERE `users`.`id` = 1;
- ```
 
 ## Built With
 
